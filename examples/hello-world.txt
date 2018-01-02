@@ -1,0 +1,5 @@
+:: Start
+This is a simple story with a [[link _with italics_]].
+
+:: link _with italics_
+It works!

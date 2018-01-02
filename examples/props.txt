@@ -1,0 +1,4 @@
+:: Start
+foo: 'red'
+--
+The value that was set in the props section of this passage was `foo`.
