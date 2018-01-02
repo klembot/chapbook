@@ -41,7 +41,7 @@ module.exports = class {
 	addModifier(name, regexp, modifier) {
 		/* Check for repeats. */
 
-		if (this.modifiers.some(d => d.name === name)) {
+		if (this.modifiers.some(m => m.name === name)) {
 			throw new Error(`A modifier named "${name}" has already been added to this renderer`);
 		}
 
@@ -55,7 +55,7 @@ module.exports = class {
 	removeModifier(name) {
 		const oldLen = this.modifiers.length;
 
-		this.modifiers = this.modifiers.filter(d => d.name !== name);
+		this.modifiers = this.modifiers.filter(m => m.name !== name);
 
 		if (this.modifiers.length === oldLen) {
 			throw new Error(`A modifier named "${name}" does not exist in this renderer`);
@@ -137,19 +137,19 @@ module.exports = class {
 						*/
 
 						if (this.verbose) {
-							console.log(`Running ${activemodifiers.length} modifiers on text block...`);
-							activemodifiers.forEach(d => {
-								d.process(blockOutput, modifierOpts);
+							console.log(`Running ${activeModifiers.length} modifiers on text block...`);
+							activemodifiers.forEach(m => {
+								m.process(blockOutput, modifierOpts);
 								console.table(blockOutput);
 							});
 						}
 						else {
-							activemodifiers.forEach(d => d.process(blockOutput, modifierOpts));
+							activeModifiers.forEach(m => m.process(blockOutput, modifierOpts));
 						}
 
 						output.markdown += blockOutput.beforeText + blockOutput.text +
 							blockOutput.afterText;
-						activemodifiers = [];
+						activeModifiers = [];
 
 						if (this.verbose) {
 							console.log(`Output after modifiers:`);
@@ -161,29 +161,29 @@ module.exports = class {
 					case 'modifier': {
 						/* Find all modifiers whose regexp matches this one's. */
 
-						const dirs = this.modifiers.filter(
-							d => d.regexp.test(block.content)
+						const mods = this.modifiers.filter(
+							m => m.regexp.test(block.content)
 						);
 
-						if (dirs.length === 1) {
-							const dir = dirs[0];
+						if (mods.length === 1) {
+							const mod = mods[0];
 
 							if (this.verbose) {
-								console.log(`Activated "${dir.name}" modifier matching [${block.content}]`);
+								console.log(`Activated "${mod.name}" modifier matching [${block.content}]`);
 							}
 
-							if (!modifierInstances[dir.name]) {
+							if (!modifierInstances[mod.name]) {
 								if (this.verbose) {
-									console.log(`Creating new instance of "${dir.name}" modifier`);
+									console.log(`Creating new instance of "${mod.name}" modifier`);
 								}
 
-								modifierInstances[dir.name] =
-									new dir.modifier(block.content);
+								modifierInstances[mod.name] =
+									new mod.modifier(block.content);
 							}
 
-							activemodifiers.push(modifierInstances[dir.name]);
+							activeModifiers.push(modifierInstances[mod.name]);
 						}
-						else if (dirs.length === 0) {
+						else if (mods.length === 0) {
 							output.warnings.push(`No modifiers matched "[${block.content}]". It was ignored.`);
 						}
 						else {
