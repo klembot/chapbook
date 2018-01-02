@@ -1,3 +1,31 @@
+html {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+}
+
+body {
+	font-family: Times, "Times New Roman", serif;
+	color: hsl(0, 0%, 2%);
+	background: hsl(0, 0%, 98%);
+}
+
+a {
+	color: hsl(0, 0%, 2%);
+	text-decoration-color: hsl(0, 0%, 75%);
+}
+
 tw-storydata {
 	display: none;
+}
+
+#main {
+	font-size: 1.5rem;
+	width: 28em;
+	line-height: 135%;
+}
+
+#main :first-child {
+	margin-top: 0;
 }
