@@ -3,7 +3,7 @@ const {spy} = require('sinon');
 const Renderer = require('./renderer');
 
 describe('template renderer', () => {
-	class TestDirective {
+	class TestModifier {
 		process(src, opts) {
 			src.beforeText = '*test-start*';
 			src.text = src.text.toUpperCase();
@@ -13,9 +13,9 @@ describe('template renderer', () => {
 		}
 	}
 
-	const directiveInput = {
+	const modifierInput = {
 		blocks: [
-			{type: 'directive', content: 'test'},
+			{type: 'modifier', content: 'test'},
 			{type: 'text', content: 'Hello world'}
 		]
 	};
@@ -83,99 +83,99 @@ describe('template renderer', () => {
 		expect(result.html).to.equal('<p>Hello world.</p>\n<p>This is me.</p>\n');
 	});
 
-	it('allows adding directives', () => {
-		renderer.addDirective('test', /.*/, TestDirective);
-		expect(renderer.directives.length).to.equal(1);
+	it('allows adding modifiers', () => {
+		renderer.addModifier('test', /.*/, TestModifier);
+		expect(renderer.modifiers.length).to.equal(1);
 	});
 
-	it('allows removing directives', () => {
-		renderer.addDirective('test', /.*/, TestDirective);
-		renderer.removeDirective('test');
-		expect(renderer.directives.length).to.equal(0);
+	it('allows removing modifiers', () => {
+		renderer.addModifier('test', /.*/, TestModifier);
+		renderer.removeModifier('test');
+		expect(renderer.modifiers.length).to.equal(0);
 	});
 
-	it('throws an error if a directive is added repeatedly', () => {
-		renderer.addDirective('test', /.*/, TestDirective);
-		expect(() => renderer.addDirective('test', /.*/, TestDirective)).to.throw;
+	it('throws an error if a modifier is added repeatedly', () => {
+		renderer.addModifier('test', /.*/, TestModifier);
+		expect(() => renderer.addModifier('test', /.*/, TestModifier)).to.throw;
 	});
 
-	it('throws an error if a nonexistent directive is requested to be removed', () => {
-		expect(() => renderer.removeDirective('test')).to.throw;
+	it('throws an error if a nonexistent modifier is requested to be removed', () => {
+		expect(() => renderer.removemodifier('test')).to.throw;
 	});
 
-	it('warns about unknown directives', () => {
-		const result = renderer.render(directiveInput);
+	it('warns about unknown modifiers', () => {
+		const result = renderer.render(modifierInput);
 
 		expect(result.warnings.length).to.equal(1);
-		expect(result.warnings[0]).to.contain('No directives matched "[test]"');
+		expect(result.warnings[0]).to.contain('No modifiers matched "[test]"');
 	});
 
-	it('warns about directive blocks that match more than one directive', () => {
-		renderer.addDirective('test', /test/, TestDirective);
-		renderer.addDirective('test2', /test/, TestDirective);
+	it('warns about modifier blocks that match more than one modifier', () => {
+		renderer.addModifier('test', /test/, TestModifier);
+		renderer.addModifier('test2', /test/, TestModifier);
 
-		const result = renderer.render(directiveInput);
+		const result = renderer.render(modifierInput);
 
 		expect(result.warnings.length).to.equal(1);
-		expect(result.warnings[0]).to.contain('More than one directive matched "[test]"');
+		expect(result.warnings[0]).to.contain('More than one modifier matched "[test]"');
 	});
 
-	it('passes text through a directive\'s process method', () => {
+	it('passes text through a modifier\'s process method', () => {
 		let processSpy = spy();
 
-		class SpyDirective {
+		class Spymodifier {
 			process(src) {
 				processSpy(src);
 			}
 		}
 
-		renderer.addDirective('test', /test/, SpyDirective);
-		renderer.render(directiveInput);
+		renderer.addModifier('test', /test/, Spymodifier);
+		renderer.render(modifierInput);
 		expect(processSpy.calledOnce);
 		expect(processSpy.args[0][0].text).to.equal('Hello world');
 	});
 
-	it('persists changes made to the text by a directive', () => {
-		renderer.addDirective('test', /test/, TestDirective);
+	it('persists changes made to the text by a modifier', () => {
+		renderer.addModifier('test', /test/, TestModifier);
 
-		const result = renderer.render(directiveInput);
+		const result = renderer.render(modifierInput);
 
 		expect(result.markdown).to.equal('*test-start*HELLO WORLD*test-end*');
 	});
 
-	it('allows directives to raise warnings', () => {
-		renderer.addDirective('test', /test/, TestDirective);
+	it('allows modifiers to raise warnings', () => {
+		renderer.addModifier('test', /test/, TestModifier);
 
-		const result = renderer.render(directiveInput);
+		const result = renderer.render(modifierInput);
 
 		expect(result.warnings.length).to.equal(1);
 		expect(result.warnings[0]).to.equal('A test warning');
 	});
 
-	it('allows directives to raise errors', () => {
-		renderer.addDirective('test', /test/, TestDirective);
+	it('allows modifiers to raise errors', () => {
+		renderer.addModifier('test', /test/, TestModifier);
 
-		const result = renderer.render(directiveInput);
+		const result = renderer.render(modifierInput);
 
 		expect(result.errors.length).to.equal(1);
 		expect(result.errors[0]).to.equal('A test error');
 	});
 
-	it('uses the same directive instance across multiple directive invocations', () => {
+	it('uses the same modifier instance across multiple modifier invocations', () => {
 		let processCalls = [];
 
-		class InstanceDirective {
+		class Instancemodifier {
 			process() {
 				processCalls.push(this);
 			}
 		}
 
-		renderer.addDirective('test', /test/, InstanceDirective);
+		renderer.addModifier('test', /test/, Instancemodifier);
 		renderer.render({
 			blocks: [
-				{type: 'directive', content: 'test'},
+				{type: 'modifier', content: 'test'},
 				{type: 'text', content: 'Hello world'},
-				{type: 'directive', content: 'test'},
+				{type: 'modifier', content: 'test'},
 				{type: 'text', content: 'Hello world'}
 			]
 		});
@@ -184,36 +184,36 @@ describe('template renderer', () => {
 		expect(processCalls[0]).to.equal(processCalls[1]);
 	});
 
-	it('does not reuse a directive instance across multiple renderings', () => {
+	it('does not reuse a modifier instance across multiple renderings', () => {
 		let processCalls = [];
 
-		class InstanceDirective {
+		class Instancemodifier {
 			process() {
 				processCalls.push(this);
 			}
 		}
 
-		renderer.addDirective('test', /test/, InstanceDirective);
-		renderer.render(directiveInput);
-		renderer.render(directiveInput);
+		renderer.addModifier('test', /test/, Instancemodifier);
+		renderer.render(modifierInput);
+		renderer.render(modifierInput);
 
 		expect(processCalls.length).to.equal(2);
 		expect(processCalls[0]).to.not.equal(processCalls[1]);
 	});
 
-	it('resets directives after a text block', () => {
+	it('resets modifiers after a text block', () => {
 		let processSpy = spy();
 
-		class SpyDirective {
+		class Spymodifier {
 			process(src) {
 				processSpy(src);
 			}
 		}
 
-		renderer.addDirective('test', /test/, SpyDirective);
+		renderer.addModifier('test', /test/, Spymodifier);
 		renderer.render({
 			blocks: [
-				{type: 'directive', content: 'test'},
+				{type: 'modifier', content: 'test'},
 				{type: 'text', content: 'Hello world'},
 				{type: 'text', content: 'Hello world again'},
 			]

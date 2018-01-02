@@ -7,7 +7,7 @@ This is a template parser that processes text in a specific format:
 	prop: value
 	--
 
-2. Then, a series of a mixture of plain text blocks and directives. Directives
+2. Then, a series of a mixture of plain text blocks and modifiers. Modifiers
    exist on a single line that begins and ends with [ and ]. They affect the
    following text block *only*. Text blocks are all other text.
 */
@@ -27,9 +27,9 @@ module.exports = class {
 		this.propsSep = /^--$/m;
 
 		/*
-		The regexp matching a directive block.
+		The regexp matching a modifier block.
 		*/
-		this.directivePattern = /^\[(.+)\]$/gm;
+		this.modifierPattern = /^\[(.+)\]$/gm;
 
 		Object.assign(this, opts);
 	}
@@ -98,8 +98,8 @@ module.exports = class {
 		}
 
 		/*
-		Scan the text for directives. They always begin immediately with a
-		bracket. Because of the /g flag on the directive pattern, successive
+		Scan the text for modifiers. They always begin immediately with a
+		bracket. Because of the /g flag on the modifier pattern, successive
 		runs of exec() match each instance.
 		*/
 
@@ -117,19 +117,19 @@ module.exports = class {
 			result.blocks.push({type, content: trimmedContent});
 		};
 
-		const directivePat = new RegExp(this.directivePattern);
+		const modifierPat = new RegExp(this.modifierPattern);
 		let searchIndex = 0;
-		let directiveMatch = directivePat.exec(text);
+		let modifierMatch = modifierPat.exec(text);
 
-		while (directiveMatch) {
-			addBlock('text', text.substring(searchIndex, directiveMatch.index));
-			addBlock('directive', directiveMatch[1]);
-			searchIndex = directivePat.lastIndex;
-			directiveMatch = directivePat.exec(text);
+		while (modifierMatch) {
+			addBlock('text', text.substring(searchIndex, modifierMatch.index));
+			addBlock('modifier', modifierMatch[1]);
+			searchIndex = modifierPat.lastIndex;
+			modifierMatch = modifierPat.exec(text);
 		}
 
 		/*
-		We've finished parsing directives; put any remaining text into a final
+		We've finished parsing modifiers; put any remaining text into a final
 		block.
 		*/
 

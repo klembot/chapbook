@@ -16,9 +16,9 @@ module.exports = class {
 		this.verbose = false;
 
 		/*
-		Active directives.
+		Active modifiers.
 		*/
-		this.directives = [];
+		this.modifiers = [];
 
 		/*
 		Options passed to the `marked` module in the `toHtml()` function.
@@ -33,32 +33,32 @@ module.exports = class {
 	}
 
 	/*
-	Adds a directive class to the rendering process. During each render, a new
-	instance of the directive will be created. This is to allow a directive to
+	Adds a modifier class to the rendering process. During each render, a new
+	instance of the modifier will be created. This is to allow a modifier to
 	remember state between invocations.
 	*/
 
-	addDirective(name, regexp, directive) {
+	addModifier(name, regexp, modifier) {
 		/* Check for repeats. */
 
-		if (this.directives.some(d => d.name === name)) {
-			throw new Error(`A directive named "${name}" has already been added to this renderer`);
+		if (this.modifiers.some(d => d.name === name)) {
+			throw new Error(`A modifier named "${name}" has already been added to this renderer`);
 		}
 
-		this.directives.push({name, regexp, directive});
+		this.modifiers.push({name, regexp, modifier});
 	}
 
 	/*
-	Removes a directive class from the rendering process.
+	Removes a modifier class from the rendering process.
 	*/
 
-	removeDirective(name) {
-		const oldLen = this.directives.length;
+	removeModifier(name) {
+		const oldLen = this.modifiers.length;
 
-		this.directives = this.directives.filter(d => d.name !== name);
+		this.modifiers = this.modifiers.filter(d => d.name !== name);
 
-		if (this.directives.length === oldLen) {
-			throw new Error(`A directive named "${name}" does not exist in this renderer`);
+		if (this.modifiers.length === oldLen) {
+			throw new Error(`A modifier named "${name}" does not exist in this renderer`);
 		}
 	}
 
@@ -102,14 +102,14 @@ module.exports = class {
 		Parse the blocks in sequence.
 		*/
 
-		let activeDirectives = [];
-		let directiveInstances = {};
+		let activemodifiers = [];
+		let modifierInstances = {};
 
 		/*
-		Tiny functions we give to active directives to allow adding warnings and errors.
+		Tiny functions we give to active modifiers to allow adding warnings and errors.
 		*/
 
-		const directiveOpts = {
+		const modifierOpts = {
 			addWarning(message) { output.warnings.push(message); },
 			addError(message) { output.errors.push(message); }
 		};
@@ -119,7 +119,7 @@ module.exports = class {
 				switch (block.type) {
 					case 'text': {
 						/*
-						We allow directives to change the text, as well as add text
+						We allow modifiers to change the text, as well as add text
 						before or after it. We allow this separation to keep the
 						original text intact.
 						*/
@@ -131,37 +131,37 @@ module.exports = class {
 						};
 
 						/*
-						Allow all active directives to alter the text, then clear
-						them so that the next set of directives will start with a
+						Allow all active modifiers to alter the text, then clear
+						them so that the next set of modifiers will start with a
 						clean slate.
 						*/
 
 						if (this.verbose) {
-							console.log(`Running ${activeDirectives.length} directives on text block...`);
-							activeDirectives.forEach(d => {
-								d.process(blockOutput, directiveOpts);
+							console.log(`Running ${activemodifiers.length} modifiers on text block...`);
+							activemodifiers.forEach(d => {
+								d.process(blockOutput, modifierOpts);
 								console.table(blockOutput);
 							});
 						}
 						else {
-							activeDirectives.forEach(d => d.process(blockOutput, directiveOpts));
+							activemodifiers.forEach(d => d.process(blockOutput, modifierOpts));
 						}
 
 						output.markdown += blockOutput.beforeText + blockOutput.text +
 							blockOutput.afterText;
-						activeDirectives = [];
+						activemodifiers = [];
 
 						if (this.verbose) {
-							console.log(`Output after directives:`);
+							console.log(`Output after modifiers:`);
 							console.table(blockOutput);
 						}
 						break;
 					}
 
-					case 'directive': {
-						/* Find all directives whose regexp matches this one's. */
+					case 'modifier': {
+						/* Find all modifiers whose regexp matches this one's. */
 
-						const dirs = this.directives.filter(
+						const dirs = this.modifiers.filter(
 							d => d.regexp.test(block.content)
 						);
 
@@ -169,25 +169,25 @@ module.exports = class {
 							const dir = dirs[0];
 
 							if (this.verbose) {
-								console.log(`Activated "${dir.name}" directive matching [${block.content}]`);
+								console.log(`Activated "${dir.name}" modifier matching [${block.content}]`);
 							}
 
-							if (!directiveInstances[dir.name]) {
+							if (!modifierInstances[dir.name]) {
 								if (this.verbose) {
-									console.log(`Creating new instance of "${dir.name}" directive`);
+									console.log(`Creating new instance of "${dir.name}" modifier`);
 								}
 
-								directiveInstances[dir.name] =
-									new dir.directive();
+								modifierInstances[dir.name] =
+									new dir.modifier(block.content);
 							}
 
-							activeDirectives.push(directiveInstances[dir.name]);
+							activemodifiers.push(modifierInstances[dir.name]);
 						}
 						else if (dirs.length === 0) {
-							output.warnings.push(`No directives matched "[${block.content}]". It was ignored.`);
+							output.warnings.push(`No modifiers matched "[${block.content}]". It was ignored.`);
 						}
 						else {
-							output.warnings.push(`More than one directive matched "[${block.content}]". It was ignored.`);
+							output.warnings.push(`More than one modifier matched "[${block.content}]". It was ignored.`);
 						}
 						break;
 					}

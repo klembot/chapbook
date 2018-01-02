@@ -72,11 +72,11 @@ describe('template parser', () => {
 		expect(result.blocks[0].content).to.equal('Hello world');
 	});
 
-	it('parses a directive correctly', () => {
+	it('parses a modifier correctly', () => {
 		const result = parser.parse('[hello world]');
 
 		expect(result.blocks.length).to.equal(1);
-		expect(result.blocks[0].type).to.equal('directive');
+		expect(result.blocks[0].type).to.equal('modifier');
 		expect(result.blocks[0].content).to.equal('hello world');
 	});
 
@@ -89,23 +89,23 @@ describe('template parser', () => {
 		expect(result.blocks[0].content).to.equal(src.trim());
 	});
 
-	it ('parses mixtures of text blocks and directives correctly', () => {
+	it ('parses mixtures of text blocks and modifiers correctly', () => {
 		const result = parser.parse('This is a text block.\n[hello]\nAnd another block.\n\n[hello again]\nFinally...');
 
 		expect(result.blocks.length).to.equal(5);
 		expect(result.blocks[0].type).to.equal('text');
 		expect(result.blocks[0].content).to.equal('This is a text block.');
-		expect(result.blocks[1].type).to.equal('directive');
+		expect(result.blocks[1].type).to.equal('modifier');
 		expect(result.blocks[1].content).to.equal('hello');
 		expect(result.blocks[2].type).to.equal('text');
 		expect(result.blocks[2].content).to.equal('And another block.');
-		expect(result.blocks[3].type).to.equal('directive');
+		expect(result.blocks[3].type).to.equal('modifier');
 		expect(result.blocks[3].content).to.equal('hello again');
 		expect(result.blocks[4].type).to.equal('text');
 		expect(result.blocks[4].content).to.equal('Finally...');
 	});
 
-	it('parses mixtures of props, text blocks, and directives correctly', () => {
+	it('parses mixtures of props, text blocks, and modifiers correctly', () => {
 		const result = parser.parse('foo: 1\nbar: \'red\'\n--\nThis is a text block.\n[hello]\nAnd another block.\n\n[hello again]\nFinally...');
 
 		expect(result.props.foo).to.equal('1');
@@ -113,11 +113,11 @@ describe('template parser', () => {
 		expect(result.blocks.length).to.equal(5);
 		expect(result.blocks[0].type).to.equal('text');
 		expect(result.blocks[0].content).to.equal('This is a text block.');
-		expect(result.blocks[1].type).to.equal('directive');
+		expect(result.blocks[1].type).to.equal('modifier');
 		expect(result.blocks[1].content).to.equal('hello');
 		expect(result.blocks[2].type).to.equal('text');
 		expect(result.blocks[2].content).to.equal('And another block.');
-		expect(result.blocks[3].type).to.equal('directive');
+		expect(result.blocks[3].type).to.equal('modifier');
 		expect(result.blocks[3].content).to.equal('hello again');
 		expect(result.blocks[4].type).to.equal('text');
 		expect(result.blocks[4].content).to.equal('Finally...');
@@ -125,5 +125,5 @@ describe('template parser', () => {
 
 	it('logs to the console with the verbose property');
 	it('allows modifying the propsSep property');
-	it('allows modifying the directivePattern property');
+	it('allows modifying the modifierPattern property');
 });
