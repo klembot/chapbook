@@ -13,7 +13,7 @@ module.exports = class {
 		/*
 		If true, logs information to the console as it renders.
 		*/
-		this.verbose = true;
+		this.verbose = false;
 
 		/*
 		Active modifiers.
@@ -132,8 +132,8 @@ module.exports = class {
 
 						let blockOutput = {
 							text: parsePassageLinks(block.content),
-							beforeText: '',
-							afterText: '\n\n'
+							beforeText: '\n\n',
+							afterText: ''
 						};
 
 						/*
