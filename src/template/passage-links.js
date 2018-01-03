@@ -5,17 +5,18 @@ module.exports = {
 		el.addEventListener('click', e => {
 			let target = e.target;
 
-			while (target && !target.getAttribute('data-passage')) {
+			while (target && target.getAttribute &&
+					!target.getAttribute('data-passage')) {
 				target = target.parentNode;
 			}
 
-			const passage = target.getAttribute('data-passage');
+			if (target.getAttribute) {
+				const passage = target.getAttribute('data-passage');
 
-			if (!passage) {
-				return;
+				if (passage) {
+					onClick(passage);
+				}
 			}
-
-			onClick(passage);
 		});
 	},
 
