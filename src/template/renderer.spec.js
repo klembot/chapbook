@@ -4,6 +4,7 @@ const Renderer = require('./renderer');
 
 describe('template renderer', () => {
 	class TestModifier {
+		setup() {}
 		process(src, opts) {
 			src.beforeText = '*test-start*';
 			src.text = src.text.toUpperCase();
@@ -126,6 +127,7 @@ describe('template renderer', () => {
 		let processSpy = spy();
 
 		class SpyModifier {
+			setup() {}
 			process(src) {
 				processSpy(src);
 			}
@@ -169,6 +171,7 @@ describe('template renderer', () => {
 		let processCalls = [];
 
 		class InstanceModifier {
+			setup() {}
 			process() {
 				processCalls.push(this);
 			}
@@ -194,6 +197,7 @@ describe('template renderer', () => {
 		let processCalls = [];
 
 		class InstanceModifier {
+			setup() {}
 			process() {
 				processCalls.push(this);
 			}
@@ -213,6 +217,7 @@ describe('template renderer', () => {
 		let processSpy = spy();
 
 		class SpyModifier {
+			setup() {}
 			process(src) {
 				processSpy(src);
 			}
