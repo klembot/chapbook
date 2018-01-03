@@ -12,6 +12,8 @@ describe('template renderer', () => {
 			opts.addError('A test error');
 		}
 	}
+	
+	TestModifier.regexps = [/^test/i];
 
 	const modifierInput = {
 		blocks: [
@@ -84,23 +86,23 @@ describe('template renderer', () => {
 	});
 
 	it('allows adding modifiers', () => {
-		renderer.addModifier('test', /.*/, TestModifier);
+		renderer.addModifier('test', TestModifier);
 		expect(renderer.modifiers.length).to.equal(1);
 	});
 
 	it('allows removing modifiers', () => {
-		renderer.addModifier('test', /.*/, TestModifier);
+		renderer.addModifier('test', TestModifier);
 		renderer.removeModifier('test');
 		expect(renderer.modifiers.length).to.equal(0);
 	});
 
 	it('throws an error if a modifier is added repeatedly', () => {
-		renderer.addModifier('test', /.*/, TestModifier);
-		expect(() => renderer.addModifier('test', /.*/, TestModifier)).to.throw;
+		renderer.addModifier('test', TestModifier);
+		expect(() => renderer.addModifier('test', TestModifier)).to.throw;
 	});
 
 	it('throws an error if a nonexistent modifier is requested to be removed', () => {
-		expect(() => renderer.removemodifier('test')).to.throw;
+		expect(() => renderer.removeModifier('test')).to.throw;
 	});
 
 	it('warns about unknown modifiers', () => {
@@ -111,8 +113,8 @@ describe('template renderer', () => {
 	});
 
 	it('warns about modifier blocks that match more than one modifier', () => {
-		renderer.addModifier('test', /test/, TestModifier);
-		renderer.addModifier('test2', /test/, TestModifier);
+		renderer.addModifier('test', TestModifier);
+		renderer.addModifier('test2', TestModifier);
 
 		const result = renderer.render(modifierInput);
 
@@ -123,20 +125,22 @@ describe('template renderer', () => {
 	it('passes text through a modifier\'s process method', () => {
 		let processSpy = spy();
 
-		class Spymodifier {
+		class SpyModifier {
 			process(src) {
 				processSpy(src);
 			}
 		}
 
-		renderer.addModifier('test', /test/, Spymodifier);
+		SpyModifier.regexps = [/^test/];
+
+		renderer.addModifier('test', SpyModifier);
 		renderer.render(modifierInput);
 		expect(processSpy.calledOnce);
 		expect(processSpy.args[0][0].text).to.equal('Hello world');
 	});
 
 	it('persists changes made to the text by a modifier', () => {
-		renderer.addModifier('test', /test/, TestModifier);
+		renderer.addModifier('test', TestModifier);
 
 		const result = renderer.render(modifierInput);
 
@@ -144,7 +148,7 @@ describe('template renderer', () => {
 	});
 
 	it('allows modifiers to raise warnings', () => {
-		renderer.addModifier('test', /test/, TestModifier);
+		renderer.addModifier('test', TestModifier);
 
 		const result = renderer.render(modifierInput);
 
@@ -153,7 +157,7 @@ describe('template renderer', () => {
 	});
 
 	it('allows modifiers to raise errors', () => {
-		renderer.addModifier('test', /test/, TestModifier);
+		renderer.addModifier('test', TestModifier);
 
 		const result = renderer.render(modifierInput);
 
@@ -164,13 +168,15 @@ describe('template renderer', () => {
 	it('uses the same modifier instance across multiple modifier invocations', () => {
 		let processCalls = [];
 
-		class Instancemodifier {
+		class InstanceModifier {
 			process() {
 				processCalls.push(this);
 			}
 		}
 
-		renderer.addModifier('test', /test/, Instancemodifier);
+		InstanceModifier.regexps = [/test/];
+
+		renderer.addModifier('test', InstanceModifier);
 		renderer.render({
 			blocks: [
 				{type: 'modifier', content: 'test'},
@@ -187,13 +193,15 @@ describe('template renderer', () => {
 	it('does not reuse a modifier instance across multiple renderings', () => {
 		let processCalls = [];
 
-		class Instancemodifier {
+		class InstanceModifier {
 			process() {
 				processCalls.push(this);
 			}
 		}
 
-		renderer.addModifier('test', /test/, Instancemodifier);
+		InstanceModifier.regexps = [/test/];
+
+		renderer.addModifier('test', InstanceModifier);
 		renderer.render(modifierInput);
 		renderer.render(modifierInput);
 
@@ -204,13 +212,15 @@ describe('template renderer', () => {
 	it('resets modifiers after a text block', () => {
 		let processSpy = spy();
 
-		class Spymodifier {
+		class SpyModifier {
 			process(src) {
 				processSpy(src);
 			}
 		}
 
-		renderer.addModifier('test', /test/, Spymodifier);
+		SpyModifier.regexps = [/test/];
+
+		renderer.addModifier('test', SpyModifier);
 		renderer.render({
 			blocks: [
 				{type: 'modifier', content: 'test'},

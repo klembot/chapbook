@@ -38,14 +38,20 @@ module.exports = class {
 	remember state between invocations.
 	*/
 
-	addModifier(name, regexp, modifier) {
+	addModifier(name, modifier) {
 		/* Check for repeats. */
 
 		if (this.modifiers.some(m => m.name === name)) {
 			throw new Error(`A modifier named "${name}" has already been added to this renderer`);
 		}
 
-		this.modifiers.push({name, regexp, modifier});
+		if (!modifier.regexps || !modifier.regexps.length) {
+			throw new Error(`A modifier must have a static regexps property`);
+		}
+
+		modifier.regexps.forEach(
+			regexp => this.modifiers.push({name, regexp, modifier})
+		);
 	}
 
 	/*
@@ -102,7 +108,7 @@ module.exports = class {
 		Parse the blocks in sequence.
 		*/
 
-		let activemodifiers = [];
+		let activeModifiers = [];
 		let modifierInstances = {};
 
 		/*
