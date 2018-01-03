@@ -1,7 +1,9 @@
 const Modifiers = require('./modifiers');
 const Parser = require('./template/parser');
+const Persistence = require('./persistence');
 const Renderer = require('./template/renderer');
 const Story = require('./story');
+const Trail = require('./trail');
 const View = require('./view');
 const passageLinks = require('./template/passage-links');
 
@@ -30,34 +32,52 @@ const Globals = module.exports = {
 		Globals.story.loadFromHtml(document.querySelector('tw-storydata'));
 
 		/*
+		Start up persistence.
+		*/
+
+		Globals.persistence = new Persistence(Globals.story.name);
+
+		/*
+		If possible, resume from where the user last left off--otherwise, start
+		from the beginning.
+		*/
+
+		if (Globals.persistence.canRestore()) {
+			Globals.trail = new Trail(Globals.persistence.restore());
+		}
+		else {
+			Globals.trail = new Trail();
+		}
+
+		/*
 		Expose properties on the window.
 		*/
 
 		Object.assign(window, Globals);
-	},
 
-	go(passageNameOrId) {
-		Globals.view.show(Globals.render(passageNameOrId));
-	},
+		/*
+		Start the story.
+		*/
 
-	render(passageNameOrId) {
-		let passage;
-
-		if (typeof passageNameOrId === 'number') {
-			passage = Globals.story.passages.find(
-				p => p.id === passageNameOrId
-			);
-
-			if (!passage) {
-				throw new Error(`There is no passage with ID ${passageNameOrId}.`);
-			}
+		if (Globals.trail.length > 0) {
+			Globals.view.show(Globals.render(Globals.trail.last));
 		}
 		else {
-			passage = Globals.story.passage(passageNameOrId);
+			Globals.restart();
+		}
+	},
 
-			if (!passage) {
-				throw new Error(`There is no passage named "${passageNameOrId}".`);
-			}
+	go(passageName) {
+		Globals.trail.add(passageName);
+		Globals.view.show(Globals.render(passageName));
+		Globals.persistence.save(Globals.trail.passages);
+	},
+
+	render(passageName) {
+		let passage = Globals.story.passage(passageName);
+
+		if (!passage) {
+			throw new Error(`There is no passage named "${passageName}".`);
 		}
 
 		const output = Globals.renderer.render(
@@ -68,6 +88,16 @@ const Globals = module.exports = {
 	},
 
 	restart() {
-		Globals.go(Globals.story.startNode);
+		const passage = Globals.story.passages.find(
+			p => p.id === Globals.story.startNode
+		);
+
+		if (!passage) {
+			throw new Error(`There is no passsage with the ID ${Global.story.startNode}.`);
+		}
+
+		Globals.persistence.delete();
+		Globals.trail.clear();
+		Globals.go(passage.name);
 	}
 };

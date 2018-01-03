@@ -1,19 +1,25 @@
-html {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	min-height: 100vh;
+* {
+	box-sizing: border-box;
 }
 
 body {
-	font-family: Times, "Times New Roman", serif;
-	color: hsl(0, 0%, 2%);
-	background: hsl(0, 0%, 98%);
+	font-family: Georgia, serif;
+	color: #2e3436;
+	background: #eeeeec;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 a {
 	color: hsl(0, 0%, 2%);
-	text-decoration-color: hsl(0, 0%, 75%);
+	text-decoration-color: hsl(190, 80%, 40%);
+}
+
+a:hover {
+	color: hsl(190, 80%, 40%);
 }
 
 tw-storydata {
@@ -21,9 +27,17 @@ tw-storydata {
 }
 
 #main {
-	font-size: 1.5rem;
-	width: 28em;
-	line-height: 135%;
+	font-size: 20px;
+	width: 35em;
+	line-height: 150%;
+	min-height: calc(100vh - 2em);
+	margin: 1em;
+	padding: 2em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background: hsl(0, 0%, 98%);
+	box-shadow: 0 4px 8px hsl(0, 0%, 85%);
 }
 
 #main :first-child {
