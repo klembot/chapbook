@@ -1,3 +1,4 @@
+const Modifiers = require('./modifiers');
 const Parser = require('./template/parser');
 const Renderer = require('./template/renderer');
 const Story = require('./story');
@@ -12,6 +13,7 @@ const Globals = module.exports = {
 
 		Globals.parser = new Parser();
 		Globals.renderer = new Renderer();
+		Modifiers.addBuiltins(Globals.renderer);
 
 		/*
 		Connect our view to the DOM.

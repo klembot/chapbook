@@ -13,7 +13,7 @@ module.exports = class {
 		/*
 		If true, logs information to the console as it renders.
 		*/
-		this.verbose = false;
+		this.verbose = true;
 
 		/*
 		Active modifiers.
@@ -144,7 +144,7 @@ module.exports = class {
 
 						if (this.verbose) {
 							console.log(`Running ${activeModifiers.length} modifiers on text block...`);
-							activemodifiers.forEach(m => {
+							activeModifiers.forEach(m => {
 								m.process(blockOutput, modifierOpts);
 								console.table(blockOutput);
 							});
@@ -183,10 +183,10 @@ module.exports = class {
 									console.log(`Creating new instance of "${mod.name}" modifier`);
 								}
 
-								modifierInstances[mod.name] =
-									new mod.modifier(block.content);
+								modifierInstances[mod.name] = new mod.modifier();
 							}
 
+							modifierInstances[mod.name].setup(block.content);
 							activeModifiers.push(modifierInstances[mod.name]);
 						}
 						else if (mods.length === 0) {
