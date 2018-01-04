@@ -1,11 +1,20 @@
 :: Start
 config.appearance.googleFont: '<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">'
-config.appearance.bg: 'light-green'
+config.appearance.bg: 'light green'
 config.appearance.borderStyle: 'line'
 config.appearance.borderColor: 'brown'
 config.appearance.borderWidth: 4
 config.appearance.pageFg: 'purple'
 config.appearance.font: 'Poiret One'
 config.appearance.fontSize: 36
+config.appearance.linkColor: 'lime'
+config.appearance.linkActiveColor: 'dark lime'
+config.appearance.linkStyle: 'small caps'
 --
-This shows how to customize the appearance of a story.
+This shows how to customize the appearance of a story... but not, perhaps, how to make it [[look good]].
+
+
+:: look good
+"To achieve harmony in bad taste is the height of elegance."
+
+--Jean Genet

@@ -2,14 +2,18 @@ const colors = require('./colors');
 
 let appearanceStyle, googleFontStyle;
 let props = {
-	bg: 'pale-blue-gray',
-	borderColor: 'dark-gray',
+	bg: 'pale blue gray',
+	borderColor: 'dark gray',
 	borderStyle: 'shadow',
 	borderWidth: 1,
-	fg: 'dark-gray',
+	fg: 'dark gray',
 	font: 'Georgia, serif',
-	fontSize: 20,
+	fontSize: 18,
 	googleFont: '',
+	linkActiveColor: 'pink',
+	linkColor: 'dark gray',
+	linkStyle: 'underline',
+	linkUnderlineColor: 'pink',
 	pageBg: 'white',
 	pageFg: 'dark-gray'
 };
@@ -49,11 +53,37 @@ function setStyle() {
 			break;
 	}
 
+	let linkStyle = '';
+
+	switch (props.linkStyle) {
+		case 'underline':
+			linkStyle = 'text-decoration: underline;';
+			break;
+
+		case 'small caps':
+			linkStyle = 'text-decoration: none; text-transform: uppercase; font-size: 75%; letter-spacing: 0.02em;';
+			break;
+
+		case 'italics':
+			linkStyle = 'text-decoration: none; font-style: italic;';
+			break;
+	}
+
 	appearanceStyle.innerHTML = `
 		body {
 			font-family: "${props.font}";
 			background-color: ${color(props.bg)};
 			color: ${color(props.fg)};
+		}
+
+		a {
+			color: ${color(props.linkColor)};
+			text-decoration-color: ${color(props.linkUnderlineColor)};
+			${linkStyle}
+		}
+
+		a:hover {
+			color: ${color(props.linkActiveColor)};
 		}
 
 		.page {
@@ -91,6 +121,10 @@ addProp('fg');
 addProp('font');
 addProp('fontSize');
 addProp('googleFont');
+addProp('linkActiveColor');
+addProp('linkColor');
+addProp('linkStyle');
+addProp('linkUnderlineColor');
 addProp('pageBg');
 addProp('pageFg');
 
