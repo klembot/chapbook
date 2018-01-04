@@ -13,7 +13,7 @@ module.exports = class {
 		/*
 		If true, logs information to the console as it renders.
 		*/
-		this.verbose = false;
+		this.verbose = true;
 
 		/*
 		Active modifiers.
@@ -96,8 +96,43 @@ module.exports = class {
 		*/
 
 		if (parsed.props) {
+			if (this.verbose) {
+				console.log(`Setting props...`, parsed.props);
+			}
+
 			Object.keys(parsed.props).forEach(name => {
-				window[name] = eval(parsed.props[name]);
+				if (this.verbose) {
+					console.log(`Setting prop "${name}"`);
+				}
+
+				const dotted = name.split('.');
+				let target = window;
+				let finalName;
+
+				if (dotted.length > 1) {
+					if (this.verbose) {
+						console.log(`Walking dotted prop name`);
+					}
+
+					finalName = dotted.pop();
+
+					dotted.forEach(dotPart => {
+						if (target[dotPart] === undefined) {
+							if (this.verbose) {
+								console.log(`Creating property ${dotPart}`);
+							}
+
+							target[dotPart] = {};
+						}
+	
+						target = target[dotPart];
+					});
+				}
+				else {
+					finalName = name;
+				}
+
+				target[finalName] = eval(parsed.props[name]);
 			});
 		}
 		else {

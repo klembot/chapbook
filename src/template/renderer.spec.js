@@ -57,6 +57,15 @@ describe('template renderer', () => {
 		expect(window.foo).to.equal(4);
 	});
 
+	it('handles prop values with dots', () => {
+		const input = {
+			props: {'foo.bar.baz': 1}
+		};
+
+		renderer.render(input);
+		expect(window.foo.bar.baz).to.equal(1);
+	})
+
 	it('ignores a lack of props', () => {
 		expect(renderer.render({blocks: []})).to.not.throw;
 	});

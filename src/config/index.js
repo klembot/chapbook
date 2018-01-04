@@ -2,8 +2,6 @@
 
 */
 
-module.exports = class {
-	create(description, getter, setter) {
-				
-	}	
+module.exports = {
+	appearance: require('./appearance')
 }

@@ -1,0 +1,4 @@
+:: Start
+config.appearance.bg: 'light-green'
+--
+This shows how to customize the appearance.

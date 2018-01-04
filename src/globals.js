@@ -1,3 +1,4 @@
+const Config = require('./config');
 const Modifiers = require('./modifiers');
 const Parser = require('./template/parser');
 const Persistence = require('./persistence');
@@ -48,6 +49,8 @@ const Globals = module.exports = {
 		else {
 			Globals.trail = new Trail();
 		}
+
+		Globals.config = Config;
 
 		/*
 		Expose properties on the window.
