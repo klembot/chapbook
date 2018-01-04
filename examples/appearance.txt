@@ -1,4 +1,11 @@
 :: Start
+config.appearance.googleFont: '<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">'
 config.appearance.bg: 'light-green'
+config.appearance.borderStyle: 'line'
+config.appearance.borderColor: 'brown'
+config.appearance.borderWidth: 4
+config.appearance.pageFg: 'purple'
+config.appearance.font: 'Poiret One'
+config.appearance.fontSize: 36
 --
-This shows how to customize the appearance.
+This shows how to customize the appearance of a story.

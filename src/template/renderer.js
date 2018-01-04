@@ -13,7 +13,7 @@ module.exports = class {
 		/*
 		If true, logs information to the console as it renders.
 		*/
-		this.verbose = true;
+		this.verbose = false;
 
 		/*
 		Active modifiers.

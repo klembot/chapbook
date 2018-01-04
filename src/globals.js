@@ -22,7 +22,7 @@ const Globals = module.exports = {
 		Connect our view to the DOM.
 		*/
 
-		Globals.view = new View(document.querySelector('#main'));
+		Globals.view = new View(document.querySelector('.page'));
 		passageLinks.attachTo(Globals.view.el, Globals.go);
 
 		/*
