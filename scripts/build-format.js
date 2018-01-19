@@ -7,9 +7,10 @@ const pkg = require('../package.json');
 const encoding = {encoding: 'utf8'};
 
 Promise.all([
-	exec('cssnano src/*.css'),
+	exec('postcss src/index.css -c'),
 	exec('browserify -g uglifyify -t [ babelify --presets [ env ] ] src/index.js', {maxBuffer: Infinity})
 ]).then(results => {
+	console.log(results[0].stderr);
 	const distPath = 'dist/' + pkg.name.toLowerCase() + '-' + pkg.version;
 	const htmlTemplate = ejs.compile(fs.readFileSync('src/index.ejs', encoding));
 	const formatData = {
