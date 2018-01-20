@@ -10,6 +10,9 @@ This is a template parser that processes text in a specific format:
 2. Then, a series of a mixture of plain text blocks and modifiers. Modifiers
    exist on a single line that begins and ends with [ and ]. They affect the
    following text block *only*. Text blocks are all other text.
+
+   Modifiers can be joined on a single line by placing a semicolon between them,
+   e.g. [modifier 1; modifier 2]
 */
 
 const splitLines = require('split-lines');
@@ -123,7 +126,43 @@ module.exports = class {
 
 		while (modifierMatch) {
 			addBlock('text', text.substring(searchIndex, modifierMatch.index));
-			addBlock('modifier', modifierMatch[1]);
+
+			/*
+			Scan the modifier content for semicolons not inside quotation marks.
+			We cannot allow single quotes here because we allow modifiers such
+			as "cont'd".
+			*/
+
+			const modifierSrc = modifierMatch[1];
+			let modifier = '';
+
+			for (let i = 0; i < modifierSrc.length; i++) {
+				switch (modifierSrc[i]) {
+					case '"':
+						/* Scan ahead. */
+
+						modifier += '"';
+
+						for (i = i + 1; i < modifierSrc.length; i++) {
+							modifier += modifierSrc[i];
+
+							if (modifierSrc[i] === '"' && modifierSrc[i - 1] !== '\\') {
+								break;
+							}
+						}
+						break;
+
+					case ';':
+						addBlock('modifier', modifier);
+						modifier = '';
+						break;
+
+					default:
+						modifier += modifierSrc[i];
+				}
+			}
+
+			addBlock('modifier', modifier);
 			searchIndex = modifierPat.lastIndex;
 			modifierMatch = modifierPat.exec(text);
 		}

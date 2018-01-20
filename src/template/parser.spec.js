@@ -123,6 +123,54 @@ describe('template parser', () => {
 		expect(result.blocks[4].content).to.equal('Finally...');
 	});
 
+	it('allows multiple modifiers to be joined with a semicolon', () => {
+		const result = parser.parse(
+			'This is a text block.\n[hello; hello]\nAnd another block.'
+		);
+
+		expect(result.blocks.length).to.equal(4);
+		expect(result.blocks[0].type).to.equal('text');
+		expect(result.blocks[0].content).to.equal('This is a text block.');
+		expect(result.blocks[1].type).to.equal('modifier');
+		expect(result.blocks[1].content).to.equal('hello');
+		expect(result.blocks[2].type).to.equal('modifier');
+		expect(result.blocks[2].content).to.equal('hello');
+		expect(result.blocks[3].type).to.equal('text');
+		expect(result.blocks[3].content).to.equal('And another block.');
+	});
+
+	it('ignores semicolons inside quoted phrases inside a modifier', () => {
+		const result = parser.parse(
+			'This is a text block.\n[hello "I wonder;"; hello]\nAnd another block.'
+		);
+
+		expect(result.blocks.length).to.equal(4);
+		expect(result.blocks[0].type).to.equal('text');
+		expect(result.blocks[0].content).to.equal('This is a text block.');
+		expect(result.blocks[1].type).to.equal('modifier');
+		expect(result.blocks[1].content).to.equal('hello "I wonder;"');
+		expect(result.blocks[2].type).to.equal('modifier');
+		expect(result.blocks[2].content).to.equal('hello');
+		expect(result.blocks[3].type).to.equal('text');
+		expect(result.blocks[3].content).to.equal('And another block.');
+	});
+
+	it('handles escaped quotation marks inside compound modifiers correctly', () => {
+		const result = parser.parse(
+			'This is a text block.\n[hello "I \\"wonder\\";"; hello]\nAnd another block.'
+		);
+
+		expect(result.blocks.length).to.equal(4);
+		expect(result.blocks[0].type).to.equal('text');
+		expect(result.blocks[0].content).to.equal('This is a text block.');
+		expect(result.blocks[1].type).to.equal('modifier');
+		expect(result.blocks[1].content).to.equal('hello "I \\"wonder\\";"');
+		expect(result.blocks[2].type).to.equal('modifier');
+		expect(result.blocks[2].content).to.equal('hello');
+		expect(result.blocks[3].type).to.equal('text');
+		expect(result.blocks[3].content).to.equal('And another block.');
+	});
+
 	it('logs to the console with the verbose property');
 	it('allows modifying the varsSep property');
 	it('allows modifying the modifierPattern property');
