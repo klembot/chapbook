@@ -90,8 +90,6 @@ describe('Conditional modifier', () => {
 	it('only evaluates a condition once with an else', () => {
 		window.testCall = stub().returns(true);
 
-		console.log(typeof window.testCall);
-
 		output = renderer.render({
 			blocks: [
 				{type: 'text', content: 'Hello'},

@@ -23,7 +23,6 @@ output it.
 */
 
 renderer.codespan = src => {
-	console.log(src);
 	const func = new Function(`return (${unescape(src)})`);
 	const result = func.apply(window);
 
