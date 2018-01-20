@@ -30,7 +30,9 @@
   },
   "dependencies": {
     "lodash.escape": "^4.0.1",
+    "lodash.unescape": "^4.0.1",
     "marked": "^0.3.9",
+    "seedrandom": "^2.4.3",
     "split-lines": "^1.1.0",
     "timestring": "^5.0.0"
   },

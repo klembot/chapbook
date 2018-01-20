@@ -2,6 +2,7 @@ const Config = require('./config');
 const Modifiers = require('./modifiers');
 const Parser = require('./template/parser');
 const Persistence = require('./persistence');
+const Random = require('./random');
 const Renderer = require('./template/renderer');
 const Story = require('./story');
 const Trail = require('./trail');
@@ -51,6 +52,7 @@ const Globals = module.exports = {
 		}
 
 		Globals.config = Config;
+		Globals.random = new Random();
 
 		/*
 		Expose properties on the window.

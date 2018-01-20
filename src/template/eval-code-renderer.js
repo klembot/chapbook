@@ -4,13 +4,14 @@ them.
 */
 
 const marked = require('marked');
+const unescape = require('lodash.unescape');
 
 let renderer = new marked.Renderer();
 
 /* Evaluate code blocks without outputting anything. */
 
 renderer.code = src => {
-	const func = new Function(src);
+	const func = new Function(unescape(src));
 
 	func.apply(window);
 	return '';
@@ -22,7 +23,8 @@ output it.
 */
 
 renderer.codespan = src => {
-	const func = new Function(`return (${src})`);
+	console.log(src);
+	const func = new Function(`return (${unescape(src)})`);
 	const result = func.apply(window);
 
 	if (result !== null && result !== undefined) {
