@@ -37,9 +37,9 @@ describe('template renderer', () => {
 	});
 	afterEach(cleanup);
 
-	it('sets props on the window object', () => {
+	it('sets vars on the window object', () => {
 		const input = {
-			props: {foo: '"hello"'},
+			vars: {foo: '"hello"'},
 			blocks: []
 		};
 
@@ -49,7 +49,7 @@ describe('template renderer', () => {
 
 	it('evaluates prop values', () => {
 		const input = {
-			props: {foo: '2 + 2'},
+			vars: {foo: '2 + 2'},
 			blocks: []
 		};
 
@@ -59,19 +59,19 @@ describe('template renderer', () => {
 
 	it('handles prop values with dots', () => {
 		const input = {
-			props: {'foo.bar.baz': 1}
+			vars: {'foo.bar.baz': 1}
 		};
 
 		renderer.render(input);
 		expect(window.foo.bar.baz).to.equal(1);
 	})
 
-	it('ignores a lack of props', () => {
+	it('ignores a lack of vars', () => {
 		expect(renderer.render({blocks: []})).to.not.throw;
 	});
 
 	it('ignores a lack of blocks', () => {
-		expect(renderer.render({props: {}})).to.not.throw;
+		expect(renderer.render({vars: {}})).to.not.throw;
 	});
 
 	it('renders text blocks to HTML', () => {

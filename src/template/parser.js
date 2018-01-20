@@ -1,7 +1,7 @@
 /*
 This is a template parser that processes text in a specific format:
 
-1. An optional props section that looks like this:
+1. An optional vars section that looks like this:
 
 	prop: value
 	prop: value
@@ -22,9 +22,9 @@ module.exports = class {
 		this.verbose = false;
 	
 		/*
-		The regexp matching the end of a props section of source code.
+		The regexp matching the end of a vars section of source code.
 		*/
-		this.propsSep = /^--$/m;
+		this.varsSep = /^--$/m;
 
 		/*
 		The regexp matching a modifier block.
@@ -36,30 +36,30 @@ module.exports = class {
 
 	/*
 	Parses a source string into a structured object:
-		props: a key => value structure
+		vars: a key => value structure
 		blocks: an array of {type, content} blocks
 		warnings: an array of warning strings
 	*/
 	parse(src) {
 		let result = {
-			props: {},
+			vars: {},
 			blocks: [],
 			warnings: []
 		};
 
-		/* Does the source start with a props section? */
+		/* Does the source start with a vars section? */
 
-		let propsBits = src.split(this.propsSep, 2);
-		let props, text;
+		let varsBits = src.split(this.varsSep, 2);
+		let vars, text;
 
-		if (propsBits.length === 2) {
+		if (varsBits.length === 2) {
 			if (this.verbose) {
-				console.log('Props section detected');
+				console.log('vars section detected');
 			}
 
-			[props, text] = propsBits;
+			[vars, text] = varsBits;
 
-			splitLines(props).forEach(line => {
+			splitLines(vars).forEach(line => {
 				if (line.trim() === '') {
 					return;
 				}
@@ -70,7 +70,7 @@ module.exports = class {
 					const name = line.substr(0, firstColon).trim();
 					const value = line.substr(firstColon + 1).trim();
 	
-					if (result.props[name] !== undefined) {
+					if (result.vars[name] !== undefined) {
 						result.warnings.push(
 							`The property "${name}" was defined more than once; using the last value.`
 						);
@@ -80,7 +80,7 @@ module.exports = class {
 						console.log(`Setting prop "${name}" to "${value}"`);
 					}
 
-					result.props[name] = value;
+					result.vars[name] = value;
 				}
 				else {
 					result.warnings.push(
@@ -91,10 +91,10 @@ module.exports = class {
 		}
 		else {
 			if (this.verbose) {
-				console.log('No props section detected');
+				console.log('No vars section detected');
 			}
 
-			text = propsBits[0];
+			text = varsBits[0];
 		}
 
 		/*

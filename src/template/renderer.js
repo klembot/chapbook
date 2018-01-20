@@ -95,12 +95,12 @@ module.exports = class {
 		Set global variables as denoted by properties.
 		*/
 
-		if (parsed.props) {
+		if (parsed.vars) {
 			if (this.verbose) {
-				console.log(`Setting props...`, parsed.props);
+				console.log(`Setting vars...`, parsed.vars);
 			}
 
-			Object.keys(parsed.props).forEach(name => {
+			Object.keys(parsed.vars).forEach(name => {
 				if (this.verbose) {
 					console.log(`Setting prop "${name}"`);
 				}
@@ -132,11 +132,11 @@ module.exports = class {
 					finalName = name;
 				}
 
-				target[finalName] = eval(parsed.props[name]);
+				target[finalName] = eval(parsed.vars[name]);
 			});
 		}
 		else {
-			console.warn('Renderer was given an object with no props');
+			console.warn('Renderer was given an object with no vars');
 		}
 
 		/*

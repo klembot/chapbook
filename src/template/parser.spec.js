@@ -8,39 +8,39 @@ describe('template parser', () => {
 		parser = new Parser();
 	});
 
-	it('returns an object with props, blocks, and warnings properties', () => {
+	it('returns an object with vars, blocks, and warnings properties', () => {
 		const result = parser.parse('hello');
 		
 		expect(result).to.be.an('object');
-		expect(result.props).to.be.an('object');
+		expect(result.vars).to.be.an('object');
 		expect(result.blocks).to.be.an('array');
 		expect(result.warnings).to.be.an('array');
 	});
 
-	it('parses props but does not evaluate expressions', () => {
+	it('parses vars but does not evaluate expressions', () => {
 		const result = parser.parse('foo: 2\nbar: \'red\'\nbaz: true\n--\n');
 
-		expect(result.props.foo).to.equal('2');
-		expect(result.props.bar).to.equal('\'red\'');
-		expect(result.props.baz).to.equal('true');
+		expect(result.vars.foo).to.equal('2');
+		expect(result.vars.bar).to.equal('\'red\'');
+		expect(result.vars.baz).to.equal('true');
 	});
 
-	it('ignores empty lines in the props section', () => {
+	it('ignores empty lines in the vars section', () => {
 		const result = parser.parse('foo: 2\n  \n\t\nbar: 3\n--\n');
 
-		expect(result.props.foo).to.equal('2');
-		expect(result.props.bar).to.equal('3');
+		expect(result.vars.foo).to.equal('2');
+		expect(result.vars.bar).to.equal('3');
 	});
 
-	it('warns about repeated props', () => {
+	it('warns about repeated vars', () => {
 		const result = parser.parse('foo: 2\n foo: 3\n--\n');
 
 		expect(result.warnings.length).to.equal(1);
 		expect(result.warnings[0]).to.include('defined more than once');
-		expect(result.props.foo).to.equal('3');
+		expect(result.vars.foo).to.equal('3');
 	});
 
-	it('warns about malformed lines in props', () => {
+	it('warns about malformed lines in vars', () => {
 		const result = parser.parse('hello there\n--\n');
 
 		expect(result.warnings.length).to.equal(1);
@@ -105,11 +105,11 @@ describe('template parser', () => {
 		expect(result.blocks[4].content).to.equal('Finally...');
 	});
 
-	it('parses mixtures of props, text blocks, and modifiers correctly', () => {
+	it('parses mixtures of vars, text blocks, and modifiers correctly', () => {
 		const result = parser.parse('foo: 1\nbar: \'red\'\n--\nThis is a text block.\n[hello]\nAnd another block.\n\n[hello again]\nFinally...');
 
-		expect(result.props.foo).to.equal('1');
-		expect(result.props.bar).to.equal('\'red\'');
+		expect(result.vars.foo).to.equal('1');
+		expect(result.vars.bar).to.equal('\'red\'');
 		expect(result.blocks.length).to.equal(5);
 		expect(result.blocks[0].type).to.equal('text');
 		expect(result.blocks[0].content).to.equal('This is a text block.');
@@ -124,6 +124,6 @@ describe('template parser', () => {
 	});
 
 	it('logs to the console with the verbose property');
-	it('allows modifying the propsSep property');
+	it('allows modifying the varsSep property');
 	it('allows modifying the modifierPattern property');
 });
