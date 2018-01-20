@@ -67,6 +67,6 @@ module.exports = class {
 	*/
 
 	choice(...choices) {
-		return choices[Math.round(this.rng() * choices.length)];
+		return choices[Math.round(this.rng() * (choices.length - 1))];
 	}
 };
