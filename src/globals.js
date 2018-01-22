@@ -1,4 +1,5 @@
 const Config = require('./config');
+const Image = require('./image');
 const Input = require('./input');
 const Modifiers = require('./modifiers');
 const Parser = require('./template/parser');
@@ -35,6 +36,7 @@ const Globals = module.exports = {
 		Globals.story.loadFromHtml(document.querySelector('tw-storydata'));
 
 		Globals.config = Config;
+		Globals.image = Image;
 		Input.attachTo(Globals.view.el);
 		Globals.input = Input;
 		Globals.random = new Random();

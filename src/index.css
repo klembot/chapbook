@@ -26,6 +26,10 @@ a:hover {
 	color: #E91E63;
 }
 
+img {
+	max-width: 100%;
+}
+
 tw-storydata {
 	display: none;
 }
