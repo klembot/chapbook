@@ -5,6 +5,7 @@ variables).
 */
 
 const marked = require('marked');
+const set = require('lodash.set');
 const EvalCodeRenderer = require('./eval-code-renderer');
 const {parse:parsePassageLinks} = require('./passage-links');
 
@@ -102,37 +103,10 @@ module.exports = class {
 
 			Object.keys(parsed.vars).forEach(name => {
 				if (this.verbose) {
-					console.log(`Setting prop "${name}"`);
+					console.log(`Setting var "${name}"`);
 				}
 
-				const dotted = name.split('.');
-				let target = window;
-				let finalName;
-
-				if (dotted.length > 1) {
-					if (this.verbose) {
-						console.log(`Walking dotted prop name`);
-					}
-
-					finalName = dotted.pop();
-
-					dotted.forEach(dotPart => {
-						if (target[dotPart] === undefined) {
-							if (this.verbose) {
-								console.log(`Creating property ${dotPart}`);
-							}
-
-							target[dotPart] = {};
-						}
-	
-						target = target[dotPart];
-					});
-				}
-				else {
-					finalName = name;
-				}
-
-				target[finalName] = eval(parsed.vars[name]);
+				set(window, name, eval(parsed.vars[name]));
 			});
 		}
 		else {

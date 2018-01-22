@@ -1,3 +1,6 @@
+const get = require('lodash.get');
+const set = require('lodash.set');
+
 class Persistence {
 	static browserEnabled() {
 		try {
@@ -21,7 +24,7 @@ class Persistence {
 
 	remember(varName) {
 		if (this.remembered.indexOf(varName) !== -1) {
-			throw new Error(`"${varName}" is already being persisted.`);
+			return;
 		}
 
 		this.remembered.push(varName);
@@ -34,7 +37,10 @@ class Persistence {
 				JSON.stringify({
 					trail,
 					vars: this.remembered.reduce(
-						(result, r) => result.r = window[r],
+						(result, r) => {
+							result[r] = get(window, r);
+							return result;
+						},
 						{}
 					)
 				})
@@ -54,7 +60,11 @@ class Persistence {
 		if (this.canRestore()) {
 			const toRestore = JSON.parse(window.localStorage.getItem(this.key));
 
-			Object.keys(toRestore.vars).forEach(v => window[v] = toRestore.vars[v]);
+			Object.keys(toRestore.vars).forEach(v => {
+				this.remember(v);
+				set(window, v, toRestore.vars[v]);
+			});
+
 			return toRestore.trail;
 		}
 		else {

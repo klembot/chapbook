@@ -33,8 +33,18 @@ const Globals = module.exports = {
 		Globals.story = new Story();
 		Globals.story.loadFromHtml(document.querySelector('tw-storydata'));
 
+		Globals.config = Config;
+		Globals.random = new Random();
+
 		/*
-		Start up persistence.
+		Expose properties on the window.
+		*/
+
+		Object.assign(window, Globals);
+
+		/*
+		Start up persistence. This should happen as late as possible so that
+		restoring variables overwrites defaults.
 		*/
 
 		Globals.persistence = new Persistence(Globals.story.name);
@@ -51,21 +61,13 @@ const Globals = module.exports = {
 			Globals.trail = new Trail();
 		}
 
-		Globals.config = Config;
-		Globals.random = new Random();
-
-		/*
-		Expose properties on the window.
-		*/
-
-		Object.assign(window, Globals);
-
 		/*
 		Start the story.
 		*/
 
 		if (Globals.trail.length > 0) {
 			Globals.view.show(Globals.render(Globals.trail.last));
+			Globals.persistence.save(Globals.trail.passages);
 		}
 		else {
 			Globals.restart();
@@ -85,9 +87,12 @@ const Globals = module.exports = {
 			throw new Error(`There is no passage named "${passageName}".`);
 		}
 
-		const output = Globals.renderer.render(
-			Globals.parser.parse(passage.source)
-		);
+		const parsed = Globals.parser.parse(passage.source);
+		const output = Globals.renderer.render(parsed);
+
+		/* Remember vars that were set. */
+
+		Object.keys(parsed.vars).forEach(v => Globals.persistence.remember(v));
 
 		return output.html;
 	},
