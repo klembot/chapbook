@@ -32,7 +32,7 @@ module.exports = class {
 		/*
 		The regexp matching a modifier block.
 		*/
-		this.modifierPattern = /^\[(.+)\]$/gm;
+		this.modifierPattern = /^\[([^\[].+[^\]])\]$/gm;
 
 		Object.assign(this, opts);
 	}

@@ -89,6 +89,15 @@ describe('template parser', () => {
 		expect(result.blocks[0].content).to.equal(src.trim());
 	});
 
+	it('ignores [[bracketed links]] on a line by themselves', () => {
+		const src = '[[This is a link not a modifier]]\n';
+		const result = parser.parse(src);
+
+		expect(result.blocks.length).to.equal(1);
+		expect(result.blocks[0].type).to.equal('text');
+		expect(result.blocks[0].content).to.equal(src.trim());
+	});
+
 	it ('parses mixtures of text blocks and modifiers correctly', () => {
 		const result = parser.parse('This is a text block.\n[hello]\nAnd another block.\n\n[hello again]\nFinally...');
 
