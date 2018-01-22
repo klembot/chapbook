@@ -1,6 +1,10 @@
 /* Functions for embedding images. */
 
 module.exports = {
+	flickr(embedCode) {
+		return embedCode;
+	},
+
 	unsplash(url, altText = '') {
 		const id = url.replace(/.*\//, '');
 		const width = document.querySelector('div.page').offsetWidth;
