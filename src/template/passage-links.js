@@ -1,17 +1,13 @@
+const closest = require('closest');
 const escape = require('lodash.escape');
 
 module.exports = {
 	attachTo(el, onClick) {
 		el.addEventListener('click', e => {
-			let target = e.target;
+			const target = closest(e.target, '[data-cb-passage]', true);
 
-			while (target && target.getAttribute &&
-					!target.getAttribute('data-passage')) {
-				target = target.parentNode;
-			}
-
-			if (target.getAttribute) {
-				const passage = target.getAttribute('data-passage');
+			if (target) {
+				const passage = target.dataset.cbPassage;
 
 				if (passage) {
 					onClick(passage);
@@ -63,7 +59,7 @@ module.exports = {
 				return `<a href="${target}">${display}</a>`;
 			}
 			else {
-				return `<a href="javascript:void(0)" data-passage="${escape(target)}">${display}</a>`;
+				return `<a href="javascript:void(0)" data-cb-passage="${escape(target)}">${display}</a>`;
 			}
 		});
 

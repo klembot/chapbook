@@ -1,4 +1,5 @@
 const Config = require('./config');
+const Input = require('./input');
 const Modifiers = require('./modifiers');
 const Parser = require('./template/parser');
 const Persistence = require('./persistence');
@@ -34,6 +35,8 @@ const Globals = module.exports = {
 		Globals.story.loadFromHtml(document.querySelector('tw-storydata'));
 
 		Globals.config = Config;
+		Input.attachTo(Globals.view.el);
+		Globals.input = Input;
 		Globals.random = new Random();
 
 		/*

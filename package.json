@@ -29,6 +29,7 @@
     "uglifyify": "^4.0.5"
   },
   "dependencies": {
+    "closest": "^0.0.1",
     "lodash.escape": "^4.0.1",
     "lodash.get": "^4.4.2",
     "lodash.set": "^4.3.2",
