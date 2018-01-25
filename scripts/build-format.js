@@ -8,7 +8,7 @@ const encoding = {encoding: 'utf8'};
 
 Promise.all([
 	exec('postcss src/index.css -c'),
-	exec('browserify -g uglifyify -t [ babelify --presets [ env ] ] src/index.js', {maxBuffer: Infinity})
+	exec('browserify -g uglifyify -t [ babelify --presets [ env ] ] src/index.js | uglifyjs', {maxBuffer: Infinity})
 ]).then(results => {
 	console.log(results[0].stderr);
 	const distPath = 'dist/' + pkg.name.toLowerCase() + '-' + pkg.version;

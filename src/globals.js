@@ -1,4 +1,5 @@
 const Config = require('./config');
+const Icon = require('./icon');
 const Image = require('./image');
 const Input = require('./input');
 const Modifiers = require('./modifiers');
@@ -36,6 +37,7 @@ const Globals = module.exports = {
 		Globals.story.loadFromHtml(document.querySelector('tw-storydata'));
 
 		Globals.config = Config;
+		Globals.icon = Icon;
 		Globals.image = Image;
 		Input.attachTo(Globals.view.el);
 		Globals.input = Input;

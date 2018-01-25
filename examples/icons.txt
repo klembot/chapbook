@@ -1,0 +1,4 @@
+:: Start
+Here's an icon: `icon('image')`
+
+Here's a thicker icon: `icon('image').stroke(4)`
