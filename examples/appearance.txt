@@ -4,6 +4,7 @@ config.appearance.bg: 'light green'
 config.appearance.borderStyle: 'line'
 config.appearance.borderColor: 'brown'
 config.appearance.borderWidth: 4
+config.appearance.pageBg: 'white'
 config.appearance.pageFg: 'purple'
 config.appearance.font: 'Poiret One'
 config.appearance.fontSize: 36
