@@ -1,18 +1,18 @@
-const Config = require('./config');
-const Icon = require('./icon');
-const Image = require('./image');
-const Input = require('./input');
-const Modifiers = require('./modifiers');
-const Parser = require('./template/parser');
-const Persistence = require('./persistence');
-const Random = require('./random');
-const Renderer = require('./template/renderer');
-const Story = require('./story');
-const Trail = require('./trail');
-const View = require('./view');
-const passageLinks = require('./template/passage-links');
+import Config from './config';
+import Icon from './icon';
+import Image from './image';
+import Input from './input';
+import Modifiers from './modifiers';
+import Parser from './template/parser';
+import Persistence from './persistence';
+import Random from './random';
+import Renderer from './template/renderer';
+import Story from './story';
+import Trail from './trail';
+import View from './view';
+import {attachTo as attachPassageLinks} from './template/passage-links';
 
-const Globals = module.exports = {
+const Globals = {
 	init() {
 		/*
 		Create template parsers and renderers.
@@ -27,7 +27,7 @@ const Globals = module.exports = {
 		*/
 
 		Globals.view = new View(document.querySelector('.page'));
-		passageLinks.attachTo(Globals.view.el, Globals.go);
+		attachPassageLinks.attachTo(Globals.view.el, Globals.go);
 
 		/*
 		Load the story from the page's HTML.
@@ -118,3 +118,5 @@ const Globals = module.exports = {
 		Globals.go(passage.name);
 	}
 };
+
+export default Globals;

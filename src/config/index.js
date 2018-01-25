@@ -2,6 +2,8 @@
 
 */
 
-module.exports = {
-	appearance: require('./appearance')
-}
+import Appearance from './appearance';
+
+export default {
+	appearance: Appearance
+};

@@ -3,7 +3,7 @@ These colors come from the Material design palette. Normal colors are the 500
 variants, pale the 50, light the 200, and dark the 900.
 */
 
-module.exports = {
+export default {
 	'black': '#000000',
 	'white': '#ffffff',
 

@@ -2,8 +2,8 @@
 Causes text to appear after a delay.
 */
 
-const timestring = require('timestring');
-const wrap = require('../util/wrap-markdown');
+import timestring from 'timestring';
+import wrap from '../util/wrap-markdown';
 
 class After {
 	setup(invocation) {
@@ -22,4 +22,4 @@ After.regexps = [
 	/^after\s/i
 ];
 
-module.exports = After;
+export default After;

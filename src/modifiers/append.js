@@ -14,4 +14,4 @@ Append.regexps = [
 	/^append$/i
 ];
 
-module.exports = Append;
+export default Append;

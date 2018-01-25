@@ -3,8 +3,8 @@ A custom renderer for Marked that, instead of outputting code blocks, evaluates
 them.
 */
 
-const marked = require('marked');
-const unescape = require('lodash.unescape');
+import marked from 'marked';
+import unescape from 'lodash.unescape';
 
 let renderer = new marked.Renderer();
 
@@ -31,4 +31,4 @@ renderer.codespan = src => {
 	}
 }
 
-module.exports = renderer;
+export default renderer;

@@ -1,5 +1,3 @@
-const Globals = require('./globals');
+import Globals from './globals';
 
-(() => {
-	Globals.init();
-})();
+Globals.init();

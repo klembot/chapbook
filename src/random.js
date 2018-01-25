@@ -2,9 +2,9 @@
 Functions for random behavior.
 */
 
-const seedrandom = require('seedrandom');
+import seedrandom from 'seedrandom';
 
-module.exports = class {
+export default class {
 	constructor(seed) {
 		this.rng = seedrandom(seed);
 	}

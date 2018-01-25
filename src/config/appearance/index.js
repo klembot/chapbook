@@ -1,6 +1,6 @@
-const Body = require('./body');
-const Links = require('./links');
-const Page = require('./page');
+import Body from './body';
+import Links from './links';
+import Page from './page';
 
 let config = {};
 
@@ -32,4 +32,4 @@ modules.forEach(mod => {
 	});
 });
 
-module.exports = config;
+export default config;

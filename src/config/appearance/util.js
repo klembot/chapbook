@@ -1,18 +1,18 @@
-const colors = require('./colors');
+import colors from './colors';
 
-module.exports = {
-	autopx(value) {
-		return typeof value === 'number' ? value + 'px' : value;
-	},
-
-	color(value) {
-		return colors[value] || value;
-	},
-
-	cssify(selector, props) {
-		return selector + '{' + Object.keys(props).reduce(
-			(result, current) => result + current + ':' + props[current] + ';',
-			''
-		) + '}';
-	}
+function autopx(value) {
+	return typeof value === 'number' ? value + 'px' : value;
 }
+
+function color(value) {
+	return colors[value] || value;
+}
+
+function cssify(selector, props) {
+	return selector + '{' + Object.keys(props).reduce(
+		(result, current) => result + current + ':' + props[current] + ';',
+		''
+	) + '}';
+}
+
+export {autopx, color, cssify};

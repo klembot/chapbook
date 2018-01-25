@@ -1,5 +1,5 @@
-const get = require('lodash.get');
-const set = require('lodash.set');
+import get from 'lodash.get';
+import set from 'lodash.set';
 
 class Persistence {
 	static browserEnabled() {
@@ -77,4 +77,4 @@ class Persistence {
 	}
 }
 
-module.exports = Persistence;
+export default Persistence;

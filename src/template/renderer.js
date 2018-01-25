@@ -4,12 +4,12 @@ more than render it to HTML, as templates have side effects (e.g. changing
 variables).
 */
 
-const marked = require('marked');
-const set = require('lodash.set');
-const EvalCodeRenderer = require('./eval-code-renderer');
-const {parse:parsePassageLinks} = require('./passage-links');
+import marked from 'marked';
+import set from 'lodash.set';
+import EvalCodeRenderer from './eval-code-renderer';
+import {parse as parsePassageLinks} from './passage-links';
 
-module.exports = class {
+export default class {
 	constructor(opts = {}) {
 		/*
 		If true, logs information to the console as it renders.
@@ -106,7 +106,7 @@ module.exports = class {
 					console.log(`Setting var "${name}"`);
 				}
 
-				set(window, name, eval(parsed.vars[name]));
+				set(window, name, new Function('return ' + parsed.vars[name])());
 			});
 		}
 		else {

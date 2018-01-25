@@ -1,6 +1,6 @@
-const {cssify, color, autopx} = require('./util');
+import {cssify, color, autopx} from './util';
 
-module.exports = class {
+export default class {
 	constructor() {
 		this.props = {
 			linkActiveColor: 'pink',

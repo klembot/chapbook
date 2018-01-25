@@ -1,4 +1,4 @@
-const feather = require('feather-icons');
+import feather from 'feather-icons';
 
 class Icon {
 	constructor(id) {
@@ -21,6 +21,6 @@ class Icon {
 	}
 }
 
-module.exports = function(...args) {
+export default function(...args) {
 	return new Icon(...args);
 };

@@ -1,8 +1,8 @@
-const {cssify, color, autopx} = require('./util');
+import {cssify, color, autopx} from './util';
 
 const urlRE = /['"]http[^'"]+['"]/i;
 
-module.exports = class {
+export default class {
 	constructor() {
 		this.props = {
 			bg: 'pale blue gray',

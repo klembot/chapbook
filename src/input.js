@@ -2,12 +2,12 @@
 Functions to allow players to input text or make choices.
 */
 
-const closest = require('closest');
-const escape = require('lodash.escape');
-const get = require('lodash.get');
-const set = require('lodash.set');
+import closest from 'closest';
+import escape from 'lodash.escape';
+import get from 'lodash.get';
+import set from 'lodash.set';
 
-module.exports = {
+export default {
 	attachTo(el) {
 		/* Cycling links. */
 		

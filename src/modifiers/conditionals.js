@@ -45,4 +45,4 @@ Conditionals.regexps = [
 	/^else$/i
 ];
 
-module.exports = Conditionals;
+export default Conditionals;

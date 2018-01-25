@@ -15,9 +15,9 @@ This is a template parser that processes text in a specific format:
    e.g. [modifier 1; modifier 2]
 */
 
-const splitLines = require('split-lines');
+import splitLines from 'split-lines';
 
-module.exports = class {
+export default class {
 	constructor(opts = {}) {
 		/*
 		If true, logs information to the console as it parses.

@@ -1,6 +1,6 @@
 /* Functions for embedding images. */
 
-module.exports = {
+export default {
 	flickr(embedCode) {
 		return embedCode;
 	},

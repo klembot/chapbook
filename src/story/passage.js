@@ -2,7 +2,7 @@
 A class to manage a passage as published from Twine.
 */
 
-module.exports = class {
+export default class {
 	constructor() {
 		this.tags = [];
 	}

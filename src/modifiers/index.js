@@ -1,9 +1,9 @@
-const After = require('./after');
-const Append = require('./append');
-const Conditionals = require('./conditionals');
-const Continue = require('./continue');
+import After from './after';
+import Append from './append';
+import Conditionals from './conditionals';
+import Continue from './continue';
 
-module.exports = {
+export default {
 	addBuiltins(renderer) {
 		renderer.addModifier('after', After);
 		renderer.addModifier('append', Append);

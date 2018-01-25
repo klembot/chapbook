@@ -1,7 +1,7 @@
-const borders = require('./borders');
-const {cssify, color} = require('./util');
+import borders from './borders';
+import {cssify, color} from './util';
 
-module.exports = class {
+export default class {
 	constructor() {
 		this.props = {
 			pageBg: 'pale blue gray',

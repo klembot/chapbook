@@ -1,4 +1,4 @@
-module.exports = class {
+export default class {
 	constructor(existing = []) {
 		this.passages = existing;
 	}

@@ -2,9 +2,9 @@
 A class to manage the story as published from Twine.
 */
 
-const Passage = require('./passage');
+import Passage from './passage';
 
-module.exports = class {
+export default class {
 	constructor(view, parser, renderer) {
 		this.view = view;
 		this.parser = parser;

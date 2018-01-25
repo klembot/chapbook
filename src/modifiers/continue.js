@@ -14,4 +14,4 @@ Continue.regexps = [
 	/^cont$/i
 ];
 
-module.exports = Continue;
+export default Continue;

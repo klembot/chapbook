@@ -1,6 +1,6 @@
-const {color} = require('./util');
+import {color} from './util';
 
-module.exports = function (style, color) {
+export default function (style, color) {
 	switch (style) {
 		case 'none':
 			return {};
