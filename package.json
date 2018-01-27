@@ -20,6 +20,7 @@
     "jsdom-global": "^3.0.2",
     "mkdirp": "^0.5.1",
     "mocha": "^4.0.1",
+    "mock-local-storage": "^1.0.5",
     "pify": "^3.0.0",
     "postcss-cli": "^4.1.1",
     "postcss-import": "^11.0.0",
@@ -37,6 +38,7 @@
     "lodash.get": "^4.4.2",
     "lodash.set": "^4.3.2",
     "lodash.unescape": "^4.0.1",
+    "lodash.unset": "^4.5.2",
     "marked": "^0.3.9",
     "seedrandom": "^2.4.3",
     "split-lines": "^1.1.0",
@@ -47,6 +49,6 @@
     "build:release": "NODE_ENV=production node scripts/build-format.js",
     "examples": "node scripts/build-examples.js",
     "lint": "eslint src/",
-    "test": "mocha -r \"./mocha-babel\" -r \"jsdom-global/register\" \"src/**/*.spec.js\""
+    "test": "mocha -r \"./mocha-babel\" -r \"jsdom-global/register\" -r mock-local-storage \"src/**/*.spec.js\""
   }
 }

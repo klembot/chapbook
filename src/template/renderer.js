@@ -10,7 +10,7 @@ import CustomMarkdown from './custom-markdown';
 import linkParser from './link-parser';
 
 export default class {
-	constructor(opts = {}) {
+	constructor(vars, opts = {}) {		
 		/*
 		If true, logs information to the console as it renders.
 		*/
@@ -31,6 +31,7 @@ export default class {
 		};
 
 		Object.assign(this, opts);
+		this.vars = vars;
 	}
 
 	/*
@@ -106,7 +107,7 @@ export default class {
 					console.log(`Setting var "${name}"`);
 				}
 
-				set(window, name, new Function('return ' + parsed.vars[name])());
+				this.vars.set(name, new Function('return ' + parsed.vars[name])());
 			});
 		}
 		else {

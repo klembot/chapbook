@@ -4,22 +4,29 @@ import Input from './input';
 import {Link, linker} from './link';
 import Modifiers from './modifiers';
 import Parser from './template/parser';
-import Persistence from './persistence';
 import Random from './random';
 import Renderer from './template/renderer';
 import SideMatter from './side-matter';
 import Story from './story';
-import Trail from './trail';
+import Vars from './vars';
 import View from './view';
 
 const Globals = {
 	init() {
 		/*
+		Load the story from the page's HTML.
+		*/
+
+		Globals.story = new Story();
+		Globals.story.loadFromHtml(document.querySelector('tw-storydata'));
+		Globals.vars = new Vars(Globals.story.name);
+
+		/*
 		Create template parsers and renderers.
 		*/
 
 		Globals.parser = new Parser();
-		Globals.renderer = new Renderer();
+		Globals.renderer = new Renderer(Globals.vars);
 		Modifiers.addBuiltins(Globals.renderer);
 
 		/*
@@ -27,14 +34,7 @@ const Globals = {
 		*/
 
 		Globals.view = new View(document.querySelector('.page article'));
-		attachPassageLinks(Globals.view.el, Globals.go);
-
-		/*
-		Load the story from the page's HTML.
-		*/
-
-		Globals.story = new Story();
-		Globals.story.loadFromHtml(document.querySelector('tw-storydata'));
+		Link.addPassageListener(Globals.view.el, Globals.go);
 
 		Globals.config = Config;
 		Globals.header = new SideMatter(document.querySelector('.page header'), Globals.render);
@@ -43,7 +43,6 @@ const Globals = {
 		Globals.footer.right = '`link(\'Restart\').restart()`';
 		Globals.image = Image;
 		Globals.link = linker;
-		Link.addPassageListener(Globals.view.el);
 		Globals.input = Input;
 		Globals.random = new Random();
 
@@ -54,51 +53,32 @@ const Globals = {
 		Object.assign(window, Globals);
 
 		/*
-		Start up persistence. This should happen as late as possible so that
-		restoring variables overwrites defaults.
-		*/
-
-		Globals.persistence = new Persistence(Globals.story.name);
-
-		/*
 		If possible, resume from where the user last left off--otherwise, start
-		from the beginning.
+		from the beginning. This should occur as late as possible in
+		initialization so that author-set values overwrite defaults.
 		*/
-
-		if (Globals.persistence.canRestore()) {
-			Globals.trail = new Trail(Globals.persistence.restore());
-		}
-		else {
-			Globals.trail = new Trail();
-		}
+		
+		Globals.vars.restore();
+		Globals.vars.default('trail', []);
 
 		/*
 		Start the story.
 		*/
 
-		if (Globals.trail.length > 0) {
-			Globals.view.show(Globals.show(Globals.trail.last));
-			Globals.persistence.save(Globals.trail.passages);
+		const trail = Globals.vars.get('trail');
+
+		if (trail.length > 0) {
+			/* Just show the passage without creating a new history entry. */
+
+			Globals.view.show(Globals.show(trail[trail.length - 1]));
 		}
 		else {
 			Globals.restart();
 		}
-
-		/* Update the header and footer. */
-
-		Globals.header.update();
-		Globals.footer.update();
 	},
 
 	render(source) {
-		const parsed = Globals.parser.parse(source);
-		const output = Globals.renderer.render(parsed);
-
-		/* Remember vars that were set. */
-
-		Object.keys(parsed.vars).forEach(v => Globals.persistence.remember(v));
-
-		return output.html;
+		return Globals.renderer.render(Globals.parser.parse(source)).html;
 	},
 
 	show(passageName) {
@@ -112,14 +92,12 @@ const Globals = {
 	},
 
 	go(passageName) {
-		Globals.trail.add(passageName);
-		Globals.view.show(Globals.show(passageName));
-		Globals.persistence.save(Globals.trail.passages);
+		const trail = Globals.vars.get('trail');
 
-		/* The header and footer may have changed based on this. */
+		trail.push(passageName);
 
-		Globals.header.update();
-		Globals.footer.update();	
+		Globals.vars.set('trail', trail);
+		Globals.view.show(Globals.show(passageName));	
 	},
 
 	restart() {
@@ -131,8 +109,8 @@ const Globals = {
 			throw new Error(`There is no passsage with the ID ${Global.story.startNode}.`);
 		}
 
-		Globals.persistence.delete();
-		Globals.trail.clear();
+		Globals.vars.forgetAll();
+		Globals.vars.set('trail', []);
 		Globals.go(passage.name);
 	}
 };

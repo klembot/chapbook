@@ -23,47 +23,46 @@ describe('template renderer', () => {
 		]
 	};
 
-	const cleanup = () => {
-		if (window.foo) {
-			delete window.foo;
-		}
-	};
-
 	let renderer;
 
 	beforeEach(() => {
 		renderer = new Renderer();
-		cleanup();
 	});
-	afterEach(cleanup);
 
-	it('sets vars on the window object', () => {
+	it('sets vars', () => {
+		let setSpy = spy();
 		const input = {
 			vars: {foo: '"hello"'},
 			blocks: []
 		};
 
+		renderer.vars = {set: setSpy};
 		renderer.render(input);
-		expect(window.foo).to.exist;
+		expect(setSpy.calledOnce);
+		expect(setSpy.calledWith('foo', 'hello'));
 	});
 
-	it('evaluates prop values', () => {
+	it('evaluates var values', () => {
+		let setSpy = spy();
 		const input = {
 			vars: {foo: '2 + 2'},
 			blocks: []
 		};
 
+		renderer.vars = {set: setSpy};
 		renderer.render(input);
-		expect(window.foo).to.equal(4);
+		expect(setSpy.calledWith('foo', 4));
 	});
 
-	it('handles prop values with dots', () => {
+	it('handles var names with dots', () => {
+		let setSpy = spy();
 		const input = {
 			vars: {'foo.bar.baz': 1}
 		};
 
+		renderer.vars = {set: setSpy};
 		renderer.render(input);
-		expect(window.foo.bar.baz).to.equal(1);
+		expect(setSpy.calledWith('foo.bar.baz', 1));
 	})
 
 	it('ignores a lack of vars', () => {
