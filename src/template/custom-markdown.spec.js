@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 import renderer from './eval-code-renderer';
 
-describe('eval code renderer', () => {
+describe('custom Markdown renderer', () => {
 	beforeEach(() => {
 		delete window.foo;
 	});

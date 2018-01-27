@@ -1,6 +1,6 @@
 /*
 A custom renderer for Marked that, instead of outputting code blocks, evaluates
-them.
+them, and outputs small caps instead of strikethrough text.
 */
 
 import marked from 'marked';
@@ -29,6 +29,10 @@ renderer.codespan = src => {
 	if (result !== null && result !== undefined) {
 		return result.toString();
 	}
+}
+
+renderer.del = src => {
+	return `<span class="small-caps">${src}</span>`;
 }
 
 export default renderer;

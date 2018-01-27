@@ -6,7 +6,7 @@ variables).
 
 import marked from 'marked';
 import set from 'lodash.set';
-import EvalCodeRenderer from './eval-code-renderer';
+import CustomMarkdown from './custom-markdown';
 import {parse as parsePassageLinks} from './passage-links';
 
 export default class {
@@ -26,7 +26,7 @@ export default class {
 		*/
 
 		this.markedOptions = {
-			renderer: EvalCodeRenderer,
+			renderer: CustomMarkdown,
 			smartypants: true
 		};
 
