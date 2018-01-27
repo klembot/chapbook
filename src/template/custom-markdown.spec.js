@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import renderer from './eval-code-renderer';
+import renderer from './custom-markdown';
 
 describe('custom Markdown renderer', () => {
 	beforeEach(() => {

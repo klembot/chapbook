@@ -7,7 +7,7 @@ variables).
 import marked from 'marked';
 import set from 'lodash.set';
 import CustomMarkdown from './custom-markdown';
-import {parse as parsePassageLinks} from './passage-links';
+import linkParser from './link-parser';
 
 export default class {
 	constructor(opts = {}) {
@@ -140,7 +140,7 @@ export default class {
 						*/
 
 						let blockOutput = {
-							text: parsePassageLinks(block.content),
+							text: linkParser(block.content),
 							beforeText: '\n\n',
 							afterText: ''
 						};

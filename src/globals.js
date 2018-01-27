@@ -1,7 +1,7 @@
 import Config from './config';
 import Image from './image';
 import Input from './input';
-import Link from './link';
+import {Link, linker} from './link';
 import Modifiers from './modifiers';
 import Parser from './template/parser';
 import Persistence from './persistence';
@@ -43,8 +43,8 @@ const Globals = {
 		Globals.footer.left = '_`story.name`_';
 		Globals.footer.right = '`link(\'Restart\').restart()`';
 		Globals.image = Image;
-		Globals.link = Link;
-		Input.attachTo(Globals.view.el);
+		Globals.link = linker;
+		Link.addPassageListener(Globals.view.el);
 		Globals.input = Input;
 		Globals.random = new Random();
 

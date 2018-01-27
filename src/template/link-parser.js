@@ -1,22 +1,7 @@
-import closest from 'closest';
 import escape from 'lodash.escape';
 import Link from '../link';
 
-function attachTo(el, onClick) {
-	el.addEventListener('click', e => {
-		const target = closest(e.target, '[data-cb-passage]', true);
-
-		if (target) {
-			const passage = target.dataset.cbPassage;
-
-			if (passage) {
-				onClick(passage);
-			}
-		}
-	});
-}
-
-function parse(source) {
+export default function(source) {
 	let result = source;
 
 	/* [[links]] */
@@ -57,6 +42,4 @@ function parse(source) {
 	});
 
 	return result;
-}
-
-export {attachTo, parse};
+};

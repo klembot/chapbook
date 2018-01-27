@@ -1,6 +1,21 @@
+import closest from 'closest';
 import escape from 'lodash.escape';
 
 class Link {
+	static addPassageListener(el) {
+		el.addEventListener('click', e => {
+			const target = closest(e.target, '[data-cb-passage]', true);
+	
+			if (target) {
+				const passage = target.dataset.cbPassage;
+	
+				if (passage) {
+					onClick(passage);
+				}
+			}
+		});
+	}
+
 	constructor(label) {
 		this.label = label;
 	}
@@ -45,6 +60,8 @@ class Link {
 	}
 }
 
-export default function(...args) {
+function linker(...args) {
 	return new Link(...args);
 }
+
+export {Link, linker};
