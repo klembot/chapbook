@@ -25,7 +25,7 @@ const Globals = {
 		Connect our view to the DOM.
 		*/
 
-		Globals.view = new View(document.querySelector('.page'));
+		Globals.view = new View(document.querySelector('.page article'));
 		attachPassageLinks(Globals.view.el, Globals.go);
 
 		/*
