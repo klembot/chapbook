@@ -11,7 +11,6 @@ import SideMatter from './side-matter';
 import Story from './story';
 import Trail from './trail';
 import View from './view';
-import {attachTo as attachPassageLinks} from './template/passage-links';
 
 const Globals = {
 	init() {

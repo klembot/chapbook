@@ -1,5 +1,5 @@
 import escape from 'lodash.escape';
-import Link from '../link';
+import {Link} from '../link';
 
 export default function(source) {
 	let result = source;
