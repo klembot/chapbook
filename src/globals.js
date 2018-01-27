@@ -6,6 +6,7 @@ import Parser from './template/parser';
 import Persistence from './persistence';
 import Random from './random';
 import Renderer from './template/renderer';
+import SideMatter from './side-matter';
 import Story from './story';
 import Trail from './trail';
 import View from './view';
@@ -36,6 +37,9 @@ const Globals = {
 		Globals.story.loadFromHtml(document.querySelector('tw-storydata'));
 
 		Globals.config = Config;
+		Globals.header = new SideMatter(document.querySelector('.page header'), Globals.render);
+		Globals.footer = new SideMatter(document.querySelector('.page footer'), Globals.render);
+		Globals.footer.left = '_`story.name`_';
 		Globals.image = Image;
 		Input.attachTo(Globals.view.el);
 		Globals.input = Input;
@@ -71,28 +75,21 @@ const Globals = {
 		*/
 
 		if (Globals.trail.length > 0) {
-			Globals.view.show(Globals.render(Globals.trail.last));
+			Globals.view.show(Globals.show(Globals.trail.last));
 			Globals.persistence.save(Globals.trail.passages);
 		}
 		else {
 			Globals.restart();
 		}
+
+		/* Update the header and footer. */
+
+		Globals.header.update();
+		Globals.footer.update();
 	},
 
-	go(passageName) {
-		Globals.trail.add(passageName);
-		Globals.view.show(Globals.render(passageName));
-		Globals.persistence.save(Globals.trail.passages);
-	},
-
-	render(passageName) {
-		let passage = Globals.story.passage(passageName);
-
-		if (!passage) {
-			throw new Error(`There is no passage named "${passageName}".`);
-		}
-
-		const parsed = Globals.parser.parse(passage.source);
+	render(source) {
+		const parsed = Globals.parser.parse(source);
 		const output = Globals.renderer.render(parsed);
 
 		/* Remember vars that were set. */
@@ -100,6 +97,27 @@ const Globals = {
 		Object.keys(parsed.vars).forEach(v => Globals.persistence.remember(v));
 
 		return output.html;
+	},
+
+	show(passageName) {
+		let passage = Globals.story.passage(passageName);
+
+		if (!passage) {
+			throw new Error(`There is no passage named "${passageName}".`);
+		}
+
+		return Globals.render(passage.source);
+	},
+
+	go(passageName) {
+		Globals.trail.add(passageName);
+		Globals.view.show(Globals.show(passageName));
+		Globals.persistence.save(Globals.trail.passages);
+
+		/* The header and footer may have changed based on this. */
+
+		Globals.header.update();
+		Globals.footer.update();	
 	},
 
 	restart() {
