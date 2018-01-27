@@ -1,5 +1,4 @@
 import Config from './config';
-import Icon from './icon';
 import Image from './image';
 import Input from './input';
 import Modifiers from './modifiers';
@@ -37,7 +36,6 @@ const Globals = {
 		Globals.story.loadFromHtml(document.querySelector('tw-storydata'));
 
 		Globals.config = Config;
-		Globals.icon = Icon;
 		Globals.image = Image;
 		Input.attachTo(Globals.view.el);
 		Globals.input = Input;

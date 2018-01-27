@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "closest": "^0.0.1",
-    "feather-icons": "^4.5.0",
     "lodash.escape": "^4.0.1",
     "lodash.get": "^4.4.2",
     "lodash.set": "^4.3.2",
