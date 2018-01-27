@@ -47,9 +47,6 @@
     "build:release": "NODE_ENV=production node scripts/build-format.js",
     "examples": "node scripts/build-examples.js",
     "lint": "eslint src/",
-    "test": "mocha --compilers js:babel-core/register -r \"jsdom-global/register\" \"src/**/*.spec.js\""
-  },
-  "babel": {
-    "presets": ["env"]
+    "test": "mocha -r \"./mocha-babel\" -r \"jsdom-global/register\" \"src/**/*.spec.js\""
   }
 }
