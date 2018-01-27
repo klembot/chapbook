@@ -27,7 +27,7 @@ const Globals = {
 		*/
 
 		Globals.view = new View(document.querySelector('.page'));
-		attachPassageLinks.attachTo(Globals.view.el, Globals.go);
+		attachPassageLinks(Globals.view.el, Globals.go);
 
 		/*
 		Load the story from the page's HTML.

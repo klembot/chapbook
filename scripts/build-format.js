@@ -1,6 +1,7 @@
 const ejs = require('ejs');
 const exec = require('child-process-promise').exec;
 const fs = require('fs');
+const {minify:minifyHtml} = require('html-minifier');
 const mkdirp = require('mkdirp');
 const pkg = require('../package.json');
 
@@ -10,10 +11,9 @@ Promise.all([
 	exec('postcss src/index.css -c'),
 	exec('rollup --config', {maxBuffer: Infinity})
 ]).then(results => {
-	console.log(results[0].stderr);
 	const distPath = 'dist/' + pkg.name.toLowerCase() + '-' + pkg.version;
 	const htmlTemplate = ejs.compile(fs.readFileSync('src/index.ejs', encoding));
-	const formatData = {
+	let formatData = {
 		author: pkg.author.replace(/ <.*>/, ''),
 		description: pkg.description,
 		name: pkg.name,
@@ -26,9 +26,24 @@ Promise.all([
 		version: pkg.version
 	};
 
+	if (process.env.NODE_ENV === 'production') {
+		formatData.source = minifyHtml(
+			formatData.source,
+			{
+				collapseBooleanAttributes: true,
+				collapseWhitespace: true,
+				removeAttributeQuotes: true,
+				removeComments: true,
+				removeRedundantAttributes: true				
+			}
+		);
+	}
+
 	mkdirp.sync(distPath);
 	fs.writeFileSync(
 		distPath + '/format.js',
 		'window.storyFormat(' + JSON.stringify(formatData) + ');'
 	);
+}).catch(e => {
+	console.log('Build failed', e);
 });
