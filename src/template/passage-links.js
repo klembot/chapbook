@@ -1,5 +1,6 @@
 import closest from 'closest';
 import escape from 'lodash.escape';
+import Link from '../link';
 
 function attachTo(el, onClick) {
 	el.addEventListener('click', e => {
@@ -21,14 +22,14 @@ function parse(source) {
 	/* [[links]] */
 
 	result = result.replace(/\[\[(.*?)\]\]/g, (match, target) => {
-		let display = target;
+		let label = target;
 
 		/* display|target format */
 
 		const barIndex = target.indexOf('|');
 
 		if (barIndex !== -1) {
-			display = target.substr(0, barIndex);
+			label = target.substr(0, barIndex);
 			target = target.substr(barIndex + 1);
 		}
 		else {
@@ -37,7 +38,7 @@ function parse(source) {
 			const rightArrIndex = target.indexOf('->');
 
 			if (rightArrIndex !== -1) {
-				display = target.substr(0, rightArrIndex);
+				label = target.substr(0, rightArrIndex);
 				target = target.substr(rightArrIndex + 2);
 			}
 			else {
@@ -46,20 +47,13 @@ function parse(source) {
 				const leftArrIndex = target.indexOf('<-');
 
 				if (leftArrIndex !== -1) {
-					display = target.substr(leftArrIndex + 2);
+					label = target.substr(leftArrIndex + 2);
 					target = target.substr(0, leftArrIndex);
 				}
 			}
 		}
 
-		/* Does this look like an external link? */
-
-		if (/^\w+:\/\/\/?\w/i.test(target)) {
-			return `<a href="${target}">${display}</a>`;
-		}
-		else {
-			return `<a href="javascript:void(0)" data-cb-passage="${escape(target)}">${display}</a>`;
-		}
+		return new Link(label).to(target).toString();
 	});
 
 	return result;

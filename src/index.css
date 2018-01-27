@@ -53,6 +53,22 @@ tw-storydata {
 	flex-grow: 1;
 }
 
+.page header, .page footer {
+	display: flex;
+}
+
+.page header span, .page footer span {
+	flex-grow: 1;
+}
+
+.page header .center, .page footer .center {
+	text-align: center;
+}
+
+.page header .right, .page footer .right {
+	text-align: right;
+}
+
 .page header {
 	margin-top: 0;
 }
