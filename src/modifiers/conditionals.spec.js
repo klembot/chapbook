@@ -1,12 +1,13 @@
-const {expect} = require('chai');
-const {stub} = require('sinon');
-const Conditionals = require('./conditionals');
-const Renderer = require('../template/renderer');
+import {expect} from 'chai';
+import {stub} from 'sinon';
+import Conditionals from './conditionals';
+import Renderer from '../template/renderer';
 
 describe('Conditional modifier', () => {
-	let render;
+	let renderer;
 
 	beforeEach(() => {
+		console.log(Renderer);
 		renderer = new Renderer();
 		renderer.addModifier('conditionals', Conditionals);
 	});
@@ -90,7 +91,7 @@ describe('Conditional modifier', () => {
 	it('only evaluates a condition once with an else', () => {
 		window.testCall = stub().returns(true);
 
-		output = renderer.render({
+		let output = renderer.render({
 			blocks: [
 				{type: 'text', content: 'Hello'},
 				{type: 'modifier', content: 'if window.testCall()'},

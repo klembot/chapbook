@@ -1,5 +1,5 @@
-const {expect} = require('chai');
-const Parser = require('./parser');
+import {expect} from 'chai';
+import Parser from './parser';
 
 describe('template parser', () => {
 	let parser;

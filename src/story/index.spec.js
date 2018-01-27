@@ -1,5 +1,5 @@
-const {expect} = require('chai');
-const Story = require('./index');
+import {expect} from 'chai';
+import Story from './index';
 
 describe('Story class', () => {
 	let story;

@@ -1,5 +1,5 @@
-const {expect} = require('chai');
-const Passage = require('./passage');
+import {expect} from 'chai';
+import Passage from './passage';
 
 describe('Passage', function() {
 	let passage;

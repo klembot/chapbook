@@ -1,5 +1,5 @@
-const {expect} = require('chai');
-const renderer = require('./eval-code-renderer');
+import {expect} from 'chai';
+import renderer from './eval-code-renderer';
 
 describe('eval code renderer', () => {
 	beforeEach(() => {

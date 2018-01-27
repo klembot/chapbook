@@ -1,5 +1,5 @@
-const {expect} = require('chai');
-const wrap = require('./wrap-markdown');
+import {expect} from 'chai';
+import wrap from './wrap-markdown';
 
 describe('Markdown <span> wrapper', () => {
 	it('wraps a single line properly', () => {

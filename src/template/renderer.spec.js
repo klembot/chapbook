@@ -1,6 +1,6 @@
-const {expect} = require('chai');
-const {spy} = require('sinon');
-const Renderer = require('./renderer');
+import {expect} from 'chai';
+import {spy} from 'sinon';
+import Renderer from './renderer';
 
 describe('template renderer', () => {
 	class TestModifier {

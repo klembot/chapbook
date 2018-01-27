@@ -1,6 +1,6 @@
-const {expect} = require('chai');
-const Append = require('./append');
-const Renderer = require('../template/renderer');
+import {expect} from 'chai';
+import Append from './append';
+import Renderer from '../template/renderer';
 
 describe('Append modifier', () => {
 	let renderer = new Renderer();

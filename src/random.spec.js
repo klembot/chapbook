@@ -1,5 +1,5 @@
-const {expect} = require('chai');
-const Random = require('./random');
+import {expect} from 'chai';
+import Random from './random';
 
 describe('random module', () => {
 	const rand = new Random();

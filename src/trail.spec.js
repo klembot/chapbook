@@ -1,5 +1,5 @@
-const {expect} = require('chai');
-const Trail = require('./trail');
+import {expect} from 'chai';
+import Trail from './trail';
 
 describe('Trail class', () => {
 	it('creates an empty array when instantiated', () => {

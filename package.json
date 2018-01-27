@@ -50,5 +50,8 @@
     "examples": "node scripts/build-examples.js",
     "lint": "eslint src/",
     "test": "mocha --compilers js:babel-core/register -r \"jsdom-global/register\" \"src/**/*.spec.js\""
+  },
+  "babel": {
+    "presets": ["env"]
   }
 }
