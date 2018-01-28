@@ -1,7 +1,7 @@
 const positions = ['left', 'center', 'right'];
 
 export default class {
-	constructor(el, render) {
+	constructor(el, render, vars) {
 		this.el = el;
 		this.render = render;
 
@@ -13,6 +13,8 @@ export default class {
 			this[pos + 'El'] = posEl;
 			this[pos] = '';
 		});
+
+		vars.addListener('*', () => { this.update() });
 	}
 
 	update() {

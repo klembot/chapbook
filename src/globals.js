@@ -45,8 +45,16 @@ const Globals = {
 		Link.addPassageListener(Globals.view.el, Globals.go);
 		initStyle(Globals.vars);
 
-		Globals.header = new SideMatter(document.querySelector('.page header'), Globals.render);
-		Globals.footer = new SideMatter(document.querySelector('.page footer'), Globals.render);
+		Globals.header = new SideMatter(
+			document.querySelector('.page header'),
+			Globals.render,
+			Globals.vars
+		);
+		Globals.footer = new SideMatter(
+			document.querySelector('.page footer'),
+			Globals.render,
+			Globals.vars
+		);
 		Globals.footer.left = '_`story.name`_';
 		Globals.footer.right = '`link(\'Restart\').restart()`';
 		Globals.image = Image;
