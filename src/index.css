@@ -38,6 +38,10 @@ tw-storydata {
 	flex-grow: 1;
 }
 
+.page article :first-child {
+	margin-top: 0;
+}
+
 .page header, .page footer {
 	display: flex;
 }
