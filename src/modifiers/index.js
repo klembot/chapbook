@@ -10,4 +10,4 @@ export default {
 		renderer.addModifier('conditionals', Conditionals);
 		renderer.addModifier('continue', Continue);
 	}
-}
+};

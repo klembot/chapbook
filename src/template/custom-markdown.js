@@ -29,10 +29,10 @@ renderer.codespan = src => {
 	if (result !== null && result !== undefined) {
 		return result.toString();
 	}
-}
+};
 
 renderer.del = src => {
 	return `<span class="small-caps">${src}</span>`;
-}
+};
 
 export default renderer;

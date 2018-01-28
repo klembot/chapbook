@@ -10,7 +10,7 @@ class After {
 		this.delay = timestring(invocation.replace(/^after\s/i, ''), 'ms');
 	}
 
-	process(output, opts) {
+	process(output) {
 		output.text = wrap(
 			output.text,
 			{class: 'fade-in', style: `animation-delay: ${this.delay}ms`}

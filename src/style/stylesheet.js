@@ -1,6 +1,7 @@
 /*
 A lightweight JavaScript interface for adding stylesheets to the DOM. Its main
-interface is its rules property, which stores selector => rules pairs. For example:
+interface is its rules property, which stores selector => rules pairs. For
+example:
 
 this.rules['body p'] = {color: 'red', 'font-size': 18};
 
@@ -25,7 +26,8 @@ export default class {
 	}
 
 	/*
-	Translates a color name to a hex value if it exists; otherwise leaves it alone.
+	Translates a color name to a hex value if it exists; otherwise leaves it
+	alone.
 	*/
 
 	color(value) {
@@ -42,7 +44,7 @@ export default class {
 				(result, current) => result + current + ':' +
 					props[current] + ';',
 				''
-			) + '}';	
+			) + '}';
 		}
 
 		this.el.innerHTML = Object.keys(this.rules).reduce(

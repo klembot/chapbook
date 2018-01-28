@@ -7,7 +7,6 @@ describe('Conditional modifier', () => {
 	let renderer;
 
 	beforeEach(() => {
-		console.log(Renderer);
 		renderer = new Renderer();
 		renderer.addModifier('conditionals', Conditionals);
 	});

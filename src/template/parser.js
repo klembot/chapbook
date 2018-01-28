@@ -32,7 +32,7 @@ export default class {
 		/*
 		The regexp matching a modifier block.
 		*/
-		this.modifierPattern = /^\[([^\[].+[^\]])\]$/gm;
+		this.modifierPattern = /^\[([^[].+[^\]])\]$/gm;
 
 		Object.assign(this, opts);
 	}
@@ -57,6 +57,7 @@ export default class {
 
 		if (varsBits.length === 2) {
 			if (this.verbose) {
+				// eslint-disable-next-line no-console
 				console.log('vars section detected');
 			}
 
@@ -80,6 +81,7 @@ export default class {
 					}
 
 					if (this.verbose) {
+						// eslint-disable-next-line no-console
 						console.log(`Setting prop "${name}" to "${value}"`);
 					}
 
@@ -94,6 +96,7 @@ export default class {
 		}
 		else {
 			if (this.verbose) {
+				// eslint-disable-next-line no-console
 				console.log('No vars section detected');
 			}
 
@@ -114,6 +117,7 @@ export default class {
 			}
 
 			if (this.verbose) {
+				// eslint-disable-next-line no-console
 				console.log(`Creating '${type}' block with content: "${trimmedContent}"`);
 			}
 

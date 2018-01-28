@@ -8,7 +8,7 @@ import Stylesheet from './stylesheet';
 
 let vars, style;
 
-function updateStyle(key, value, prevValue) {
+function updateStyle() {
 	if (vars.get('config.style.googleFont')) {
 		googleFont(vars.get('config.style.googleFont'));
 	}
@@ -106,7 +106,7 @@ function init(varsInstance) {
 	vars.default('config.style.inputFont', '"Hoefler Text", "Calisto MT", Georgia, serif');
 	vars.default('config.style.inputFontSize', 18);
 	vars.default('config.style.inputBg', 'transparent');
-	vars.default('config.style.inputFg', 'dark gray');	
+	vars.default('config.style.inputFg', 'dark gray');
 	vars.default('config.style.inputBorderColor', 'gray');
 	vars.default('config.style.pageStyle', 'shadow');
 	vars.default('config.style.linkColor', 'dark gray');
@@ -120,7 +120,7 @@ function init(varsInstance) {
 		vars.default(`config.style.${type}LinkColor`, 'dark gray');
 		vars.default(`config.style.${type}LinkActiveColor`, 'cyan');
 		vars.default(`config.style.${type}LinkLineColor`, 'cyan');
-		vars.default(`config.style.${type}LinkStyle`, 'small caps');	
+		vars.default(`config.style.${type}LinkStyle`, 'small caps');
 	});
 
 	vars.addListener('config.style', updateStyle);

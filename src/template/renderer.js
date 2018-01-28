@@ -5,12 +5,11 @@ variables).
 */
 
 import marked from 'marked';
-import set from 'lodash.set';
 import CustomMarkdown from './custom-markdown';
 import linkParser from './link-parser';
 
 export default class {
-	constructor(vars, opts = {}) {		
+	constructor(vars, opts = {}) {
 		/*
 		If true, logs information to the console as it renders.
 		*/
@@ -72,7 +71,8 @@ export default class {
 
 	/*
 	As a final step, the text blocks concatenated are run through this function
-	to convert the source to HTML. By default, this runs the text through `marked`.
+	to convert the source to HTML. By default, this runs the text through
+	`marked`.
 	*/
 
 	toHtml(source) {
@@ -99,11 +99,13 @@ export default class {
 
 		if (parsed.vars) {
 			if (this.verbose) {
+				// eslint-disable-next-line no-console
 				console.log(`Setting vars...`, parsed.vars);
 			}
 
 			Object.keys(parsed.vars).forEach(name => {
 				if (this.verbose) {
+					// eslint-disable-next-line no-console
 					console.log(`Setting var "${name}"`);
 				}
 
@@ -111,6 +113,7 @@ export default class {
 			});
 		}
 		else {
+			// eslint-disable-next-line no-console
 			console.warn('Renderer was given an object with no vars');
 		}
 
@@ -122,7 +125,8 @@ export default class {
 		let modifierInstances = {};
 
 		/*
-		Tiny functions we give to active modifiers to allow adding warnings and errors.
+		Tiny functions we give to active modifiers to allow adding warnings and
+		errors.
 		*/
 
 		const modifierOpts = {
@@ -135,9 +139,9 @@ export default class {
 				switch (block.type) {
 					case 'text': {
 						/*
-						We allow modifiers to change the text, as well as add text
-						before or after it. We allow this separation to keep the
-						original text intact.
+						We allow modifiers to change the text, as well as add
+						text before or after it. We allow this separation to
+						keep the original text intact.
 						*/
 
 						let blockOutput = {
@@ -153,29 +157,37 @@ export default class {
 						*/
 
 						if (this.verbose) {
+							// eslint-disable-next-line no-console
 							console.log(`Running ${activeModifiers.length} modifiers on text block...`);
 							activeModifiers.forEach(m => {
 								m.process(blockOutput, modifierOpts);
+								// eslint-disable-next-line no-console
 								console.table(blockOutput);
 							});
 						}
 						else {
-							activeModifiers.forEach(m => m.process(blockOutput, modifierOpts));
+							activeModifiers.forEach(
+								m => m.process(blockOutput, modifierOpts)
+							);
 						}
 
-						output.markdown += blockOutput.beforeText + blockOutput.text +
-							blockOutput.afterText;
+						output.markdown += blockOutput.beforeText +
+							blockOutput.text + blockOutput.afterText;
 						activeModifiers = [];
 
 						if (this.verbose) {
+							// eslint-disable-next-line no-console
 							console.log(`Output after modifiers:`);
+							// eslint-disable-next-line no-console
 							console.table(blockOutput);
 						}
 						break;
 					}
 
 					case 'modifier': {
-						/* Find all modifiers whose regexp matches this one's. */
+						/*
+						Find all modifiers whose regexp matches this one's.
+						*/
 
 						const mods = this.modifiers.filter(
 							m => m.regexp.test(block.content)
@@ -185,15 +197,18 @@ export default class {
 							const mod = mods[0];
 
 							if (this.verbose) {
+								// eslint-disable-next-line no-console
 								console.log(`Activated "${mod.name}" modifier matching [${block.content}]`);
 							}
 
 							if (!modifierInstances[mod.name]) {
 								if (this.verbose) {
+									// eslint-disable-next-line no-console
 									console.log(`Creating new instance of "${mod.name}" modifier`);
 								}
 
-								modifierInstances[mod.name] = new mod.modifier();
+								modifierInstances[mod.name] =
+									new mod.modifier();
 							}
 
 							modifierInstances[mod.name].setup(block.content);
@@ -216,6 +231,7 @@ export default class {
 			});
 		}
 		else {
+			// eslint-disable-next-line no-console
 			console.warn('Renderer was given an object with no blocks');
 		}
 

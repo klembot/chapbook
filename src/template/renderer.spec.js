@@ -63,7 +63,7 @@ describe('template renderer', () => {
 		renderer.vars = {set: setSpy};
 		renderer.render(input);
 		expect(setSpy.calledWith('foo.bar.baz', 1));
-	})
+	});
 
 	it('ignores a lack of vars', () => {
 		expect(renderer.render({blocks: []})).to.not.throw;

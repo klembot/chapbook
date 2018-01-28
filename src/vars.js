@@ -32,6 +32,7 @@ export default class {
 		const prevValue = this.get(key);
 
 		if (this.verbose) {
+			// eslint-disable-next-line no-console
 			console.log(`Setting var "${key}" to "${value}"`);
 		}
 
@@ -43,8 +44,9 @@ export default class {
 			/* Set up the proxy on the window object. */
 
 			if (this.verbose) {
+				// eslint-disable-next-line no-console
 				console.log(`Setting up proxy properties on window for "${key}"`);
-			}	
+			}
 
 			unset(window, key);
 
@@ -150,6 +152,7 @@ export default class {
 
 	save() {
 		if (this.verbose) {
+			// eslint-disable-next-line no-console
 			console.log('Saving vars');
 		}
 
@@ -179,17 +182,21 @@ export default class {
 
 	restore() {
 		if (this.verbose) {
+			// eslint-disable-next-line no-console
 			console.log('Restoring vars');
 		}
 
 		if (this.canRestore()) {
-			const toRestore = JSON.parse(window.localStorage.getItem(this.saveKey));
+			const toRestore = JSON.parse(
+				window.localStorage.getItem(this.saveKey)
+			);
 
 			Object.keys(toRestore.vars).forEach(v => {
 				this.set(v, toRestore.vars[v]);
 			});
 
 			if (this.verbose) {
+				// eslint-disable-next-line no-console
 				console.log('Restore complete', this.state);
 			}
 			
@@ -197,6 +204,7 @@ export default class {
 		}
 		else {
 			if (this.verbose) {
+				// eslint-disable-next-line no-console
 				console.log('Restoring not possible');
 			}
 
@@ -211,6 +219,7 @@ export default class {
 
 	forgetAll() {
 		if (this.verbose) {
+			// eslint-disable-next-line no-console
 			console.log('Forgetting all vars');
 		}
 

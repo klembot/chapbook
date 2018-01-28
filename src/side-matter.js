@@ -5,7 +5,7 @@ export default class {
 		this.el = el;
 		this.render = render;
 
-		positions.forEach(pos => {			
+		positions.forEach(pos => {
 			const posEl = document.createElement('span');
 			
 			posEl.className = pos;
@@ -14,7 +14,7 @@ export default class {
 			this[pos] = '';
 		});
 
-		vars.addListener('*', () => { this.update() });
+		vars.addListener('*', () => { this.update(); });
 	}
 
 	update() {

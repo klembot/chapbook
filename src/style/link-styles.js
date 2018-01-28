@@ -31,7 +31,7 @@ export default function(rules, type, lineColor) {
 					'text-decoration': 'none',
 					'text-transform': 'uppercase',
 					'font-size': '70%',
-					'letter-spacing': '0.075em'	
+					'letter-spacing': '0.075em'
 				}
 			);
 			break;

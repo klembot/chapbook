@@ -4,6 +4,7 @@ import Renderer from '../template/renderer';
 
 describe('Append modifier', () => {
 	let renderer = new Renderer();
+	
 	renderer.addModifier('append', Append);
 
 	it('causes text to appear with the previous block', () => {

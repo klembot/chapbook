@@ -27,7 +27,7 @@ class Conditionals {
 					return;
 				}
 
-				this.conditionEval = !this.conditionEval;	
+				this.conditionEval = !this.conditionEval;
 				break;
 		}
 

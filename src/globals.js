@@ -104,7 +104,7 @@ const Globals = {
 				Globals.go(startPassage.name);
 			}
 			else {
-				throw new Error(`The start passage, with ID ${Global.story.startNode}, does not exist.`);
+				throw new Error(`The start passage, with ID ${Globals.story.startNode}, does not exist.`);
 			}
 		}
 	},
@@ -129,7 +129,7 @@ const Globals = {
 		trail.push(passageName);
 
 		Globals.vars.set('trail', trail);
-		Globals.view.show(Globals.show(passageName));	
+		Globals.view.show(Globals.show(passageName));
 	},
 
 	restart() {
@@ -138,7 +138,7 @@ const Globals = {
 		);
 
 		if (!passage) {
-			throw new Error(`There is no passsage with the ID ${Global.story.startNode}.`);
+			throw new Error(`There is no passsage with the ID ${Globals.story.startNode}.`);
 		}
 
 		Globals.vars.forgetAll();
