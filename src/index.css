@@ -13,6 +13,16 @@ body {
 	transition: background-color 1s ease-in-out;
 }
 
+hr {
+	border: none;
+}
+
+hr:after {
+	content: '* \a0 * \a0 *';
+	display: block;
+	text-align: center;
+}
+
 img {
 	max-width: 100%;
 	height: auto;
