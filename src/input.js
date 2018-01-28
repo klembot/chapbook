@@ -133,7 +133,28 @@ class Input {
 				vars.set(target.dataset.cbSaveTo, target.value);
 			}
 		});
-	}	
+
+		/* Validation checking. */
+
+		document.querySelector('form#cb-validation').addEventListener('submit', e => {
+			if (Input.validationCallback) {
+				Input.validationCallback();
+			}
+
+			e.preventDefault();
+		});
+	}
+	
+	/*
+	Triggers browser validation messages by simulating a click to a hidden
+	button. We have to do it this way because submitting a form directly
+	bypasses validation.
+	*/
+
+	static ifAllValid(func) {
+		Input.validationCallback = func;
+		document.querySelector('button#cb-validation-tester').click();
+	}
 }
 
 function createFactory(vars) {

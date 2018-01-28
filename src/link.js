@@ -1,5 +1,6 @@
 import closest from 'closest';
 import escape from 'lodash.escape';
+import {Input} from './input';
 
 class Link {
 	static attachTo(el, onClick) {
@@ -10,7 +11,7 @@ class Link {
 				const passage = target.dataset.cbPassage;
 	
 				if (passage) {
-					onClick(passage);
+					Input.ifAllValid(() => onClick(passage));
 				}
 			}
 		});

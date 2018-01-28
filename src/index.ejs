@@ -7,11 +7,15 @@
 		<style><%- style %></style>
 	</head>
 	<body>
-		<div class="page" aria-live="polite">
-			<header></header>
-			<article></article>
-			<footer></footer>
-		</div>
+		<form id="cb-validation">
+			<button id="cb-validation-tester" hidden></button>
+			<button id="cb-block-enter-key" hidden></button>
+			<div class="page" aria-live="polite">
+				<header></header>
+				<article></article>
+				<footer></footer>
+			</div>
+		</form>
 		{{STORY_DATA}}
 		<script><%- script %></script>
 	</body>
