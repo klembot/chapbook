@@ -78,12 +78,18 @@ export default class {
 	}
 
 	/*
-	Sets a default value for a key. This does *not* trigger an event the same
-	way that set() does. 
+	Sets a default value for a key. If the key is currently unset, this also
+	sets it.
 	*/
 
 	default(key, value) {
+		const needToSet = this.get(key) === undefined;
+
 		this.defaults[key] = value;
+		
+		if (needToSet) {
+			this.set(key, value);
+		}
 	}
 
 	/*
