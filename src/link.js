@@ -60,8 +60,8 @@ class Link {
 	}
 }
 
-function linker(...args) {
+function factory(...args) {
 	return new Link(...args);
 }
 
-export {Link, linker};
+export {Link, factory};

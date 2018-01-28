@@ -1,7 +1,7 @@
 import Config from './config';
 import Image from './image';
 import Input from './input';
-import {Link, linker} from './link';
+import {Link, factory as linkFactory} from './link';
 import Modifiers from './modifiers';
 import Parser from './template/parser';
 import Random from './random';
@@ -42,7 +42,7 @@ const Globals = {
 		Globals.footer.left = '_`story.name`_';
 		Globals.footer.right = '`link(\'Restart\').restart()`';
 		Globals.image = Image;
-		Globals.link = linker;
+		Globals.link = linkFactory;
 		Globals.input = Input;
 		Globals.random = new Random();
 
