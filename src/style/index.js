@@ -3,6 +3,7 @@ A singleton that updates the appearance of elements onscreen.
 */
 
 import googleFont from './google-font';
+import linkStyles from './link-styles';
 import Stylesheet from './stylesheet';
 
 let vars, style;
@@ -57,59 +58,32 @@ function updateStyle(key, value, prevValue) {
 			throw new Error(`No page style named "${vars.get('config.style.pageStyle')}" exists.`);
 	}
 
-	switch (vars.get('config.style.linkStyle')) {
-		case 'bold':
-			Object.assign(
-				style.rules['.page a'],
-				{
-					'text-decoration': 'none',
-					'font-weight': 'bold'
-				}
-			);
-			break;
+	linkStyles(
+		style.rules['.page a'],
+		vars.get('config.style.linkStyle'),
+		style.color(vars.get('config.style.linkLineColor'))
+	);
 
-		case 'italic':
-			Object.assign(
-				style.rules['.page a'],
-				{
-					'text-decoration': 'none',
-					'font-style': 'italic'
-				}
-			);
-			break;
+	['header', 'footer'].forEach(type => {
+		style.rules[type] = {
+			'font-family': vars.get(`config.style.${type}Font`),
+			'font-size': style.autopx(vars.get(`config.style.${type}FontSize`))
+		};
 
-		case 'none':
-			style.rules['.page a']['text-decoration'] = 'none';
-			break;
+		style.rules[`${type} a`] = {
+			'color': vars.get(`config.style.${type}LinkColor`)
+		};
 
-		case 'small caps':
-			Object.assign(
-				style.rules['.page a'],
-				{
-					'text-decoration': 'none',
-					'text-transform': 'uppercase',
-					'font-size': '70%',
-					'letter-spacing': '0.075em'	
-				}
-			);
-			break;
+		style.rules[`${type} a:hover`] = {
+			'color': vars.get(`config.style.${type}LinkActiveColor`)
+		};
 
-		case 'underline':
-			/*
-			We rely on links receiving an underline by default.
-			*/
-
-			Object.assign(
-				style.rules['.page a'],
-				{
-					'text-decoration-color': color(vars.get('config.style.linkLineColor'))
-				}
-			);
-			break;
-
-		default:
-			throw new Error(`No link style named "${vars.get('config.style.linkStyle')}" exists.`);
-	}
+		linkStyles(
+			style.rules[`${type} a`],
+			vars.get(`config.style.${type}LinkStyle`),
+			vars.get(`config.style.${type}LinkLineColor`)
+		);
+	});
 
 	style.update();
 }
@@ -127,6 +101,16 @@ function init(varsInstance) {
 	vars.default('config.style.linkActiveColor', 'cyan');
 	vars.default('config.style.linkLineColor', 'cyan');
 	vars.default('config.style.linkStyle', 'underline');
+
+	['header', 'footer'].forEach(type => {
+		vars.default(`config.style.${type}Font`, '');
+		vars.default(`config.style.${type}FontSize`, 16);
+		vars.default(`config.style.${type}LinkColor`, 'dark gray');
+		vars.default(`config.style.${type}LinkActiveColor`, 'cyan');
+		vars.default(`config.style.${type}LinkLineColor`, 'cyan');
+		vars.default(`config.style.${type}LinkStyle`, 'small caps');	
+	});
+
 	vars.addListener('config.style', updateStyle);
 	updateStyle();
 }
