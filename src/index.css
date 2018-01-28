@@ -28,6 +28,10 @@ img {
 	height: auto;
 }
 
+input[type="text"], select {
+	padding: 0.25em;
+}
+
 tw-storydata {
 	display: none;
 }

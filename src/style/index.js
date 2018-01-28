@@ -35,6 +35,13 @@ function updateStyle(key, value, prevValue) {
 		},
 		'.page a:hover': {
 			'color': color(vars.get('config.style.linkActiveColor'))
+		},
+		'.page input[type="text"], .page select': {
+			'background-color': color(vars.get('config.style.inputBg')),
+			'border': `1px solid ${color(vars.get('config.style.inputBorderColor'))}`,
+			'color': color(vars.get('config.style.inputFg')),
+			'font-family': color(vars.get('config.style.inputFont')),
+			'font-size': autopx(vars.get('config.style.inputFontSize'))
 		}
 	};
 
@@ -96,6 +103,11 @@ function init(varsInstance) {
 	vars.default('config.style.fontSize', 18);
 	vars.default('config.style.backdrop', 'pale blue gray');
 	vars.default('config.style.pageBorderColor', '');
+	vars.default('config.style.inputFont', '"Hoefler Text", "Calisto MT", Georgia, serif');
+	vars.default('config.style.inputFontSize', 18);
+	vars.default('config.style.inputBg', 'transparent');
+	vars.default('config.style.inputFg', 'dark gray');	
+	vars.default('config.style.inputBorderColor', 'gray');
 	vars.default('config.style.pageStyle', 'shadow');
 	vars.default('config.style.linkColor', 'dark gray');
 	vars.default('config.style.linkActiveColor', 'cyan');
