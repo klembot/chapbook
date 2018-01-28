@@ -5,25 +5,12 @@
 }
 
 body {
-	font-family: "Hoefler Text", "Calisto MT", Georgia, serif;
-	font-size: 20px;
-	color: #2e3436;
-	background: #ECEFF1;
 	margin: 0;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	transition: background-color 1s ease-in-out;
-}
-
-a {
-	color: hsl(0, 0%, 2%);
-	text-decoration-color: #E91E63;
-}
-
-a:hover {
-	color: #E91E63;
 }
 
 img {
@@ -45,8 +32,6 @@ tw-storydata {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	background: #ffffff;
-	box-shadow: 0 4px 8px hsla(0, 0%, 0%, 0.25);
 }
 
 .page article {

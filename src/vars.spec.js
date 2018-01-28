@@ -25,13 +25,27 @@ describe('vars', () => {
 		expect(vars.get('foo.bar.baz')).to.equal(1);
 	});
 
-	it('allows defaults values', () => {
+	it('preserves existing deep keys', () => {
+		vars.set('foo.bar.baz', 1);
+		vars.set('foo.bar.quux', 2);
+		expect(vars.get('foo.bar.baz')).to.equal(1);
+		expect(vars.get('foo.bar.quux')).to.equal(2);
+	});
+
+	it('allows default values', () => {
 		vars.set('foo', 1);
 		vars.default('foo', 2);
 		expect(vars.get('foo')).to.equal(1);
 
 		vars.set('foo', undefined);
 		vars.default('foo', 2);
+		expect(vars.get('foo')).to.equal(2);
+	});
+
+	it('preserves defaults even after a value has been set', () => {
+		vars.default('foo', 2);
+		vars.set('foo', 1);
+		vars.set('foo', undefined);
 		expect(vars.get('foo')).to.equal(2);
 	});
 
@@ -63,7 +77,7 @@ describe('vars', () => {
 		vars.addListener('foo', listener);
 		vars.set('foo', 1);
 		expect(listener.calledOnce);
-		expect(listener.calledWith('foo', 1, undefined));
+		expect(listener.calledWith('foo', 1, undefined, vars));
 	});
 
 	it('reports previous values of a key to listeners', () => {
@@ -73,7 +87,7 @@ describe('vars', () => {
 		vars.addListener('foo', listener);
 		vars.set('foo', 2);
 		expect(listener.calledOnce);
-		expect(listener.calledWith('foo', 2, 1));
+		expect(listener.calledWith('foo', 2, 1, vars));
 	});
 
 	it('notifies listeners of subproperties', () => {
@@ -81,7 +95,7 @@ describe('vars', () => {
 
 		vars.addListener('foo', listener);
 		vars.set('foo.bar.baz', 1);
-		expect(listener.calledWith('foo.bar.baz', 1, undefined));
+		expect(listener.calledWith('foo.bar.baz', 1, undefined, vars));
 	});
 
 	it('allows wildcard listeners', () => {
@@ -90,8 +104,8 @@ describe('vars', () => {
 		vars.addListener('*', listener);
 		vars.set('foo', 1);
 		vars.set('bar', 2);
-		expect(listener.calledWith('foo', 1, undefined));
-		expect(listener.calledWith('bar', 2, undefined));
+		expect(listener.calledWith('foo', 1, undefined, vars));
+		expect(listener.calledWith('bar', 2, undefined, vars));
 	});
 
 	it('deletes all state with forgetAll()', () => {

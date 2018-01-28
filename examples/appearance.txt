@@ -1,16 +1,15 @@
 :: Start
-config.appearance.googleFont: '<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">'
-config.appearance.bg: 'light green'
-config.appearance.borderStyle: 'line'
-config.appearance.borderColor: 'brown'
-config.appearance.borderWidth: 4
-config.appearance.pageBg: 'white'
-config.appearance.pageFg: 'purple'
-config.appearance.font: 'Poiret One'
-config.appearance.fontSize: 36
-config.appearance.linkColor: 'lime'
-config.appearance.linkActiveColor: 'dark lime'
-config.appearance.linkStyle: 'small caps'
+config.style.googleFont: '<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">'
+config.style.backdrop: 'light green'
+config.style.pageStyle: 'thin line'
+config.style.pageBorderColor: 'brown'
+config.style.bg: 'white'
+config.style.fg: 'purple'
+config.style.font: 'Poiret One'
+config.style.fontSize: 36
+config.style.linkColor: 'lime'
+config.style.linkActiveColor: 'dark lime'
+config.style.linkStyle: 'small caps'
 --
 This shows how to customize the appearance of a story... but not, perhaps, how to make it [[look good]].
 

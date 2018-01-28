@@ -16,8 +16,11 @@ export default class {
 	constructor(saveKey) {
 		this.saveKey = saveKey;
 		this.state = {};
+		this.defaults = {};
 		this.keys = [];
 		this.listeners = [];
+		this.autosave = true;
+		this.verbose = false;
 	}
 
 	/*
@@ -28,12 +31,20 @@ export default class {
 	set(key, value) {
 		const prevValue = this.get(key);
 
+		if (this.verbose) {
+			console.log(`Setting var "${key}" to "${value}"`);
+		}
+
 		set(this.state, key, value);
 
 		if (this.keys.indexOf(key) === -1) {
 			this.keys.push(key);
 
 			/* Set up the proxy on the window object. */
+
+			if (this.verbose) {
+				console.log(`Setting up proxy properties on window for "${key}"`);
+			}	
 
 			unset(window, key);
 
@@ -55,25 +66,24 @@ export default class {
 			});
 		}
 
-		if (this.canSave()) {
+		if (this.autosave && this.canSave()) {
 			this.save();
 		}
 
 		this.listeners.forEach(l => {
 			if (l.regexp.test(key)) {
-				l.func(key, value, prevValue);
+				l.func(key, value, prevValue, this);
 			}
 		});
 	}
 
 	/*
-	Calls set() only if a key is currently unset.
+	Sets a default value for a key. This does *not* trigger an event the same
+	way that set() does. 
 	*/
 
 	default(key, value) {
-		if (this.get(key) === undefined) {
-			this.set(key, value);
-		}
+		this.defaults[key] = value;
 	}
 
 	/*
@@ -81,7 +91,7 @@ export default class {
 	*/
 
 	get(key) {
-		return get(this.state, key);
+		return get(this.state, key) || get(this.defaults, key);
 	}
 
 	/*
@@ -133,6 +143,10 @@ export default class {
 	*/
 
 	save() {
+		if (this.verbose) {
+			console.log('Saving vars');
+		}
+
 		try {
 			window.localStorage.setItem(
 				this.saveKey,
@@ -158,91 +172,44 @@ export default class {
 	}
 
 	restore() {
+		if (this.verbose) {
+			console.log('Restoring vars');
+		}
+
 		if (this.canRestore()) {
 			const toRestore = JSON.parse(window.localStorage.getItem(this.saveKey));
 
 			Object.keys(toRestore.vars).forEach(v => {
 				this.set(v, toRestore.vars[v]);
 			});
+
+			if (this.verbose) {
+				console.log('Restore complete', this.state);
+			}
 			
 			return true;
 		}
 		else {
+			if (this.verbose) {
+				console.log('Restoring not possible');
+			}
+
 			return false;
 		}
 	}
 
+	/*
+	Forgets all values, but does not remove defaults. (If you want to do that,
+	default a key to undefined.)
+	*/
+
 	forgetAll() {
+		if (this.verbose) {
+			console.log('Forgetting all vars');
+		}
+
 		this.state = {};
 		this.keys = [];
 		window.localStorage.removeItem(this.saveKey);
 	}
 }
-
-/*
-
-export default class {
-	constructor(key) {
-		this.key = key;
-		this.remembered = [];
-	}
-
-	remembered(varName) {
-		return this.remembered.indexOf(varName) !== -1;
-	}
-
-	remember(varName) {
-		if (this.remembered.indexOf(varName) !== -1) {
-			return;
-		}
-
-		this.remembered.push(varName);
-	}
-
-	save(trail) {
-		try {
-			window.localStorage.setItem(
-				this.key,
-				JSON.stringify({
-					trail,
-					vars: this.remembered.reduce(
-						(result, r) => {
-							result[r] = get(window, r);
-							return result;
-						},
-						{}
-					)
-				})
-			);
-		}
-		catch (e) {
-			throw new Error(`Could not save the story state (${e.message}).`);
-		}
-	}
-
-	canRestore() {
-		return this.canSave() &&
-			window.localStorage.getItem(this.key) !== null;
-	}
-
-	restore() {
-		if (this.canRestore()) {
-			const toRestore = JSON.parse(window.localStorage.getItem(this.key));
-
-			Object.keys(toRestore.vars).forEach(v => {
-				this.remember(v);
-				set(window, v, toRestore.vars[v]);
-			});
-
-			return toRestore.trail;
-		}
-		else {
-			return false;
-		}
-	}
-
-	forgetAll() {
-		window.localStorage.removeItem(this.key);
-	}
-}
-*/

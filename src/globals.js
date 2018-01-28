@@ -1,4 +1,3 @@
-import Config from './config';
 import Image from './image';
 import Input from './input';
 import {Link, factory as linkFactory} from './link';
@@ -8,6 +7,7 @@ import Random from './random';
 import Renderer from './template/renderer';
 import SideMatter from './side-matter';
 import Story from './story';
+import {init as initStyle} from './style';
 import Vars from './vars';
 import View from './view';
 
@@ -19,7 +19,15 @@ const Globals = {
 
 		Globals.story = new Story();
 		Globals.story.loadFromHtml(document.querySelector('tw-storydata'));
+
+		/*
+		Create our variable tracker. We want this to occur as early as possible
+		because other modules depend on it. We turn off autosaving so any setup
+		doesn't blow away pre-existing data in local storage.
+		*/
+
 		Globals.vars = new Vars(Globals.story.name);
+		Globals.vars.autosave = false;
 
 		/*
 		Create template parsers and renderers.
@@ -35,8 +43,8 @@ const Globals = {
 
 		Globals.view = new View(document.querySelector('.page article'));
 		Link.addPassageListener(Globals.view.el, Globals.go);
+		initStyle(Globals.vars);
 
-		Globals.config = Config;
 		Globals.header = new SideMatter(document.querySelector('.page header'), Globals.render);
 		Globals.footer = new SideMatter(document.querySelector('.page footer'), Globals.render);
 		Globals.footer.left = '_`story.name`_';
@@ -59,6 +67,7 @@ const Globals = {
 		*/
 		
 		Globals.vars.restore();
+		Globals.vars.autosave = true;
 		Globals.vars.default('trail', []);
 
 		/*
@@ -73,7 +82,16 @@ const Globals = {
 			Globals.view.show(Globals.show(trail[trail.length - 1]));
 		}
 		else {
-			Globals.restart();
+			const startPassage = Globals.story.passages.find(
+				p => p.id === Globals.story.startNode
+			);
+
+			if (startPassage) {
+				Globals.go(startPassage.name);
+			}
+			else {
+				throw new Error(`The start passage, with ID ${Global.story.startNode}, does not exist.`);
+			}
 		}
 	},
 
