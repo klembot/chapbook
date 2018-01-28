@@ -1,5 +1,5 @@
 import Image from './image';
-import Input from './input';
+import {Input, createFactory as createInputFactory} from './input';
 import {Link, factory as linkFactory} from './link';
 import Modifiers from './modifiers';
 import Parser from './template/parser';
@@ -42,8 +42,13 @@ const Globals = {
 		*/
 
 		Globals.view = new View(document.querySelector('.page article'));
-		Link.addPassageListener(Globals.view.el, Globals.go);
+		Input.attachTo(Globals.view.el, Globals.vars);
+		Link.attachTo(Globals.view.el, Globals.go);
 		initStyle(Globals.vars);
+
+		/*
+		Set up header and footer.
+		*/
 
 		Globals.header = new SideMatter(
 			document.querySelector('.page header'),
@@ -57,9 +62,10 @@ const Globals = {
 		);
 		Globals.footer.left = '_`story.name`_';
 		Globals.footer.right = '`link(\'Restart\').restart()`';
+
 		Globals.image = Image;
 		Globals.link = linkFactory;
-		Globals.input = Input;
+		Globals.input = createInputFactory(Globals.vars);
 		Globals.random = new Random();
 
 		/*

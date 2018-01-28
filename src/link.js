@@ -2,7 +2,7 @@ import closest from 'closest';
 import escape from 'lodash.escape';
 
 class Link {
-	static addPassageListener(el, onClick) {
+	static attachTo(el, onClick) {
 		el.addEventListener('click', e => {
 			const target = closest(e.target, '[data-cb-passage]', true);
 	

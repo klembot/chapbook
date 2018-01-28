@@ -1,16 +1,91 @@
 /*
-Functions to allow players to input text or make choices.
+Allows the player to make choices or enter text.
 */
 
 import closest from 'closest';
 import escape from 'lodash.escape';
-import get from 'lodash.get';
-import set from 'lodash.set';
 
-export default {
-	attachTo(el) {
-		/* Cycling links. */
+class Input {
+	constructor(vars, saveTo) {
+		this.vars = vars;
+		this.saveTo = saveTo;
+		this.type = 'text';
+		this.required = true;
+	}
+
+	choices(...choices) {
+		this.choices = choices;
+		return this;
+	}
+
+	cyclingLink(...choices) {
+		this.type = 'cyclingLink';
+		this.choices = choices;
+		return this;
+	}
+
+	menu(...choices) {
+		this.type = 'menu';
+		this.choices = choices;
+		return this;
+	}
+
+	text() {
+		this.type = 'text';
+		return this;
+	}
+
+	required() {
+		this.required = true;
+		return this;
+	}
+
+	optional() {
+		this.required = false;
+		return this;
+	}
+	
+	toString() {
+		switch (this.type) {
+			case 'cyclingLink': {
+				let current = this.vars.get(this.saveTo);
+
+				if (current === undefined) {
+					this.vars.set(this.saveTo, this.choices[0]);
+					current = this.choices[0];
+				}
+
+				return `<a href="javascript:void(0)" class="stationary" data-cb-save-to="${escape(this.saveTo)}" ${this.required && 'required'} data-cb-cycle="${escape(JSON.stringify(this.choices))}">${current}</a>`;
+			}
+
+			case 'menu': {
+				let current = this.vars.get(this.saveTo);
+
+				if (current === undefined) {
+					this.vars.set(this.saveTo, this.choices[0]);
+					current = this.choices[0];
+				}
+
+				const choiceHtml = this.choices.reduce(
+					(result, choice) =>
+						result + `<option value="${choice}" ${current === choice && 'selected'}>${choice}</option>`,
+					''
+				);
 		
+				return `<select data-cb-save-to="${escape(this.saveTo)}">${choiceHtml}</select>`;
+			}
+
+			case 'text':
+				return `<input type="text" value="${escape(this.vars.get(this.saveTo))}" ${this.required && 'required'} data-cb-save-to="${escape(this.saveTo)}">`;
+
+			default:
+				throw new Error(`No input type named "${this.type}" exists.`);
+		}
+	}
+
+	static attachTo(el, vars) {
+		/* Cycling links. */
+				
 		el.addEventListener('click', e => {
 			const target = closest(
 				e.target,
@@ -27,9 +102,8 @@ export default {
 					index = 0;
 				}
 
-				set(window, varName, choices[index]);
+				vars.set(varName, choices[index]);
 				target.textContent = choices[index];
-				/* TODO: persistence */	
 			}
 		});
 
@@ -39,10 +113,10 @@ export default {
 			const target = closest(e.target, 'select[data-cb-save-to]', true);
 
 			if (target) {
-				const varName = target.dataset.cbSaveTo;
-
-				set(window, varName, target.options[target.selectedIndex].value);
-				/* TODO: persistence */
+				vars.set(
+					target.dataset.cbSaveTo,
+					target.options[target.selectedIndex].value
+				);
 			}
 		});
 
@@ -56,29 +130,14 @@ export default {
 			);
 
 			if (target) {
-				const varName = target.dataset.cbSaveTo;
-
-				set(window, varName, target.value);
-				/* TODO: persistence */
+				vars.set(target.dataset.cbSaveTo, target.value);
 			}
 		});
-	},
+	}	
+}
 
-	cyclingLink(varName, ...choices) {
-		return `<a href="javascript:void(0)" class="stationary" data-cb-save-to="${escape(varName)}" data-cb-cycle="${escape(JSON.stringify(choices))}">${choices[0]}</a>`;
-	},
+function createFactory(vars) {
+	return (...args) => new Input(vars, ...args);
+}
 
-	menu(varName, ...choices) {
-		const choiceHtml = choices.reduce(
-			(result, choice) =>
-				result + `<option value="${choice}">${choice}</option>`,
-			''
-		);
-
-		return `<select data-cb-save-to="${escape(varName)}">${choiceHtml}</select>`;
-	},
-
-	text(varName, required = true) {
-		return `<input type="text" value="${escape(get(window, varName))}" data-cb-save-to="${escape(varName)}">`;
-	}
-};
+export {Input, createFactory};

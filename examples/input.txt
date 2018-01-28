@@ -1,9 +1,9 @@
 :: Start
-Your favorite color is `input.cyclingLink('color', 'red', 'green', 'blue')`.
+Your favorite color is `input('color').cyclingLink('red', 'green', 'blue')`.
 
-Your favorite food is `input.menu('food', 'pizza', 'sushi', 'tacos')`.
+Your favorite food is `input('food').menu('pizza', 'sushi', 'tacos')`.
 
-Your name is `input.text('name')`.
+Your name is `input('name')`.
 
 [[Check those]]
 
