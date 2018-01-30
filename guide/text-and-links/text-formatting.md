@@ -3,7 +3,7 @@ Of course, you can type paragraphs into a Twine passage in Chapbook and it will 
 
 The term 'markup language' might sound complex, but in reality it's just a set of conventions of how to represent formatting in plain text. For example, to make part of your text italicized when displayed, you simply type asterisks around it, `*like so*`.
 
-If you've never used Markdown before, try using the [dingus](dingus), an online playground with a funny name that not only allows you to quickly see how text will be rendered, but also has a cheatsheet that summarizes the different formatting available to you. Bear in mind, however, that Chapbook has a few extra formatting options available to you above and beyond the standard Markdown set.
+If you've never used Markdown before, try using the [dingus](dingus) as you read this section. It'san online playground with a funny name that not only allows you to quickly see how text will be rendered, but also has a cheatsheet that summarizes the different formatting available to you. Bear in mind, however, that Chapbook has a few extra formatting options available to you above and beyond the standard Markdown set.
 
 ## Italics and Boldface
 To italicize a a phrase, type `*` or `_` (a single underscore)[^1] around it.
@@ -91,6 +91,15 @@ You can also enter HTML into a passage without any extra code surrounding it. It
 Markdown has a quirk where if you enter Markdown code inside of an inline element such as `<b>` or `<span>`, it will convert it to HTML. But in block elements such as `<p>` or `<div>`, it won't.
 
 [^1]: Underscores as italics have a tangled history behind them; they resemble underlines, which were more-or-less invented as a workaround for typewriters being unable to italicize words.
+
+## Code Blocks Don't Behave As You Might Expect
+If you're already familiar with Markdown, you might know that you can normally put backticks (<code>`</code>) around text to put it in a monospaced font, `like this`. However, you'll find that if you do this in Chapbook, the text you enter won't display at all. This is because Chapbook interprets these blocks as special instructions. See **TBD** for more information on this.
+
+In the meantime, just be aware that if you are looking for text to appear as though it's been typed, put `<code>` and `</code>` around it.
+
+Typed                        | Displayed
+-----------------------------|------------------------
+`<code>echo "hello"</code>`  | `echo "hello"`
 
 [markdown]: https://daringfireball.net/markdown
 [dingus]: https://daringfireball.net/projects/markdown/dingus
