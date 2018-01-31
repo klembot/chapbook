@@ -51,6 +51,7 @@
     "build:release": "NODE_ENV=production node scripts/build-format.js",
     "examples": "node scripts/build-examples.js",
     "guide": "gitbook serve guide",
+    "guide:init": "cd guide && gitbook install && cd ..",
     "lint": "eslint src/",
     "test": "mocha -r \"./mocha-babel\" -r \"jsdom-global/register\" -r mock-local-storage \"src/**/*.spec.js\""
   }
