@@ -3,6 +3,14 @@
 	animation: fade-in 1s forwards;
 }
 
+.fade-out {
+	animation: fade-in 1s reverse forwards;
+}
+
+.fast-animation {
+	animation-duration: 0.5s;
+}
+
 @keyframes fade-in {
 	from {
 		opacity: 0;
