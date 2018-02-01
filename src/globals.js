@@ -41,7 +41,7 @@ const Globals = {
 		Connect our view to the DOM.
 		*/
 
-		Globals.view = new View(document.querySelector('.page article'));
+		Globals.view = new View(document.querySelector('.page article'), Globals.vars);
 		Input.attachTo(Globals.view.el, Globals.vars);
 		Link.attachTo(Globals.view.el, Globals.go);
 		initStyle(Globals.vars);
