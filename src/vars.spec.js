@@ -40,6 +40,14 @@ describe('vars', () => {
 		vars.set('foo', undefined);
 		vars.default('foo', 2);
 		expect(vars.get('foo')).to.equal(2);
+
+		vars.set('foo', null);
+		vars.default('foo', 2);
+		expect(vars.get('foo')).to.equal(2);
+
+		vars.set('foo', false);
+		vars.default('foo', 2);
+		expect(vars.get('foo')).to.equal(false);
 	});
 
 	it('preserves defaults even after a value has been set', () => {

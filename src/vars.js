@@ -99,7 +99,13 @@ export default class {
 	*/
 
 	get(key) {
-		return get(this.state, key) || get(this.defaults, key);
+		const value = get(this.state, key);
+
+		if (value !== undefined && value !== null) {
+			return value;
+		}
+
+		return get(this.defaults, key);
 	}
 
 	/*
