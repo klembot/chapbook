@@ -33,5 +33,35 @@ describe('random module', () => {
 		expect(rand.choice('a')).to.equal('a');
 	});
 
+	it('selects from an array with choice()', () => {
+		let result = rand.choice(['a', 'b', 'c']);
+
+		expect(result === 'a' || result === 'b' || result === 'c').to.equal(true);
+		expect(rand.choice(['a'])).to.equal('a');
+	});
+
+	it('shuffles args with shuffle()', () => {
+		let result = rand.shuffle('a', 'b', 'c');
+
+		expect(result.length).to.equal(3);
+		expect(result.filter(i => i === 'a').length).to.equal(1);
+		expect(result.filter(i => i === 'b').length).to.equal(1);
+		expect(result.filter(i => i === 'c').length).to.equal(1);
+	});
+
+	it('shuffles a copy of an array with shuffle()', () => {
+		let src = ['a', 'b', 'c'];
+		let result = rand.shuffle(src);
+
+		console.log(result);
+		expect(result.length).to.equal(3);
+		expect(result.filter(i => i === 'a').length).to.equal(1);
+		expect(result.filter(i => i === 'b').length).to.equal(1);
+		expect(result.filter(i => i === 'c').length).to.equal(1);
+		expect(src[0]).to.equal('a');
+		expect(src[1]).to.equal('b');
+		expect(src[2]).to.equal('c');
+	});
+
 	it('acts predictably when seeded');
 });

@@ -3,6 +3,7 @@ Functions for random behavior.
 */
 
 import seedrandom from 'seedrandom';
+import shuffle from 'lodash.shuffle';
 
 export default class {
 	constructor(seed) {
@@ -63,10 +64,36 @@ export default class {
 	}
 
 	/*
-	Returns a randomly chosen argument.
+	If only one argument is passed and it is an array:
+		Returns a randomly chosen item in the array.
+	Otherwise:
+		Returns a randomly chosen argument.
 	*/
 
 	choice(...choices) {
-		return choices[Math.round(this.rng() * (choices.length - 1))];
+		let toChooseFrom = choices;
+		
+		if (choices.length === 1 && Array.isArray(choices[0])) {
+			toChooseFrom = choices[0];
+		}
+
+		return toChooseFrom[Math.round(this.rng() * (toChooseFrom.length - 1))];
+	}
+
+	/*
+	If only one argument is passed and it is an array:
+		Returns a copy of the array, but with items are in random order.
+	Otherwise:
+		Returns the arguments passed in random order.
+	*/
+
+	shuffle(...items) {
+		let toShuffle = items;
+
+		if (items.length === 1 && Array.isArray(items[0])) {
+			toShuffle = items[0];
+		}
+
+		return(shuffle(toShuffle.slice()));
 	}
 };
