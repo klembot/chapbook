@@ -138,7 +138,11 @@ const Globals = {
 		Globals.view.show(Globals.show(passageName));
 	},
 
-	restart() {
+	restart(prompt) {
+		if (!window.confirm('Are you sure you want to restart? This will erase all saved progress.')) {
+			return;
+		}
+
 		const passage = Globals.story.passages.find(
 			p => p.id === Globals.story.startNode
 		);

@@ -43,7 +43,7 @@ class Link {
 
 	restart() {
 		this.type = 'url';
-		this.target = 'javascript:restart()';
+		this.target = 'javascript:restart(true)';
 		return this;
 	}
 
