@@ -36,6 +36,34 @@ tw-storydata {
 	display: none;
 }
 
+pre {
+	font-family: "Courier New", "Courier", monospace;
+	display: block;
+	overflow: auto;
+	line-height: 120%;
+}
+
+.error {
+	background: #ffebee;
+	color: #b71c1c;
+	padding: 0.5em;
+	margin-bottom: 1em;
+}
+
+.error :last-child {
+	margin-bottom: 0;
+}
+
+.page .error a {
+	color: #b71c1c;
+	text-decoration-color: #b71c1c;
+}
+
+.page .error a:hover {
+	color: #f44336;
+	text-decoration-color: #f44336;
+}
+
 .page {
 	width: 35em;
 	max-width: calc(100vw - 2em);
@@ -96,4 +124,9 @@ tw-storydata {
 	text-transform: uppercase;
 	font-size: 70%;
 	letter-spacing: 0.075em;
+}
+
+.system {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu Cantarell, "Helvetica Neue", sans-serif;
+	font-size: 14px;
 }

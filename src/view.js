@@ -22,7 +22,7 @@ export default class {
 		if (this.el.innerHTML.trim() !== '') {
 			outEl = document.createElement('div');
 
-			outEl.innerHTML = this.el.querySelector('[data-cb-fader]').innerHTML;
+			outEl.innerHTML = this.el.innerHTML;
 			outEl.setAttribute('aria-hidden', true);
 			outEl.style.pointerEvents = 'none';
 			outEl.style.position = 'absolute';

@@ -3,6 +3,7 @@ import {Input, createFactory as createInputFactory} from './input';
 import {Link, factory as linkFactory} from './link';
 import Modifiers from './modifiers';
 import Parser from './template/parser';
+import ProblemReporter from './problem-reporter';
 import Random from './random';
 import Renderer from './template/renderer';
 import SideMatter from './side-matter';
@@ -28,6 +29,11 @@ const Globals = {
 
 		Globals.vars = new Vars(Globals.story.name);
 		Globals.vars.autosave = false;
+
+		Globals.problemReporter = new ProblemReporter(
+			document.querySelector('.page article'),
+			Globals.vars
+		);
 
 		/*
 		Create template parsers and renderers.

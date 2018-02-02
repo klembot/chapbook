@@ -1,0 +1,6 @@
+:: Start
+* [[Test a regular JS error]]
+
+
+:: Test a regular JS error
+`xyzzy()`
