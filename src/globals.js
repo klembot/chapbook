@@ -129,6 +129,16 @@ const Globals = {
 				throw new Error(`The start passage, with ID ${Globals.story.startNode}, does not exist.`);
 			}
 		}
+
+		/*
+		Turn on CSS transitions for all appearance properties. We need to do
+		this late so that there is no transition while we are setting things up
+		initially.
+		*/
+
+		window.setTimeout(() => {
+			document.querySelector('html').classList.add('transition-all');
+		}, 0);
 	},
 
 	render(source) {
