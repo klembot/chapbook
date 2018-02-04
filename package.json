@@ -24,6 +24,7 @@
     "pify": "^3.0.0",
     "postcss-cli": "^4.1.1",
     "postcss-import": "^11.0.0",
+    "postcss-nesting": "^4.2.1",
     "rollup": "^0.55.0",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^8.2.6",
@@ -35,6 +36,7 @@
   },
   "dependencies": {
     "closest": "^0.0.1",
+    "custom-event": "^1.0.1",
     "lodash.escape": "^4.0.1",
     "lodash.get": "^4.4.2",
     "lodash.set": "^4.3.2",

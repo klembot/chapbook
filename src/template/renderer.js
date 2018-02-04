@@ -9,7 +9,7 @@ import CustomMarkdown from './custom-markdown';
 import linkParser from './link-parser';
 
 export default class {
-	constructor(vars, opts = {}) {
+	constructor(vars, alarm, opts = {}) {
 		/*
 		If true, logs information to the console as it renders.
 		*/
@@ -31,6 +31,7 @@ export default class {
 
 		Object.assign(this, opts);
 		this.vars = vars;
+		this.alarm = alarm;
 	}
 
 	/*
@@ -43,11 +44,11 @@ export default class {
 		/* Check for repeats. */
 
 		if (this.modifiers.some(m => m.name === name)) {
-			throw new Error(`A modifier named "${name}" has already been added to this renderer`);
+			throw new Error(`A modifier named "${name}" has already been added to this renderer.`);
 		}
 
 		if (!modifier.regexps || !modifier.regexps.length) {
-			throw new Error(`A modifier must have a static regexps property`);
+			throw new Error(`A modifier must have a static regexps property.`);
 		}
 
 		modifier.regexps.forEach(
@@ -65,7 +66,7 @@ export default class {
 		this.modifiers = this.modifiers.filter(m => m.name !== name);
 
 		if (this.modifiers.length === oldLen) {
-			throw new Error(`A modifier named "${name}" does not exist in this renderer`);
+			throw new Error(`A modifier named "${name}" does not exist in this renderer.`);
 		}
 	}
 
@@ -75,7 +76,9 @@ export default class {
 	`marked`.
 	*/
 
-	toHtml(source) {
+	toHtml(source, errors, warnings) {
+		this.markedOptions.renderer.warnings = warnings;
+		this.markedOptions.renderer.errors = errors;
 		marked.setOptions(this.markedOptions);
 		return marked(source);
 	}
@@ -234,8 +237,9 @@ export default class {
 			// eslint-disable-next-line no-console
 			console.warn('Renderer was given an object with no blocks');
 		}
-
-		output.html = this.toHtml(output.markdown);
+		
+		output.html = this.toHtml(output.markdown, output.errors, output.warnings);
+		this.alarm.update(output.errors, output.warnings);
 		return output;
 	}
 };

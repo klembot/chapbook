@@ -62,7 +62,7 @@ function updateStyle() {
 			break;
 
 		default:
-			throw new Error(`No page style named "${vars.get('config.style.pageStyle')}" exists.`);
+			throw new Error(`There is no page style named "${vars.get('config.style.pageStyle')}" exists.`);
 	}
 
 	linkStyles(

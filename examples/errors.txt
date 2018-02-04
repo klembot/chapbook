@@ -1,6 +1,23 @@
 :: Start
-* [[Test a regular JS error]]
+testing: true
+--
+* [[Test a codespan JS error]]
+* [[Test a code fence JS error]]
+* [[Test a missing modifier]]
 
 
-:: Test a regular JS error
+:: Test a codespan JS error
 `xyzzy()`
+
+
+:: Test a code fence JS error
+```
+xyzzy()
+```
+
+
+:: Test a missing modifier
+This is regular text...
+
+[xyzzy]
+And some more text.

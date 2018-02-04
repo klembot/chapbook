@@ -1,4 +1,4 @@
-let config = {plugins: [require('postcss-import')]};
+let config = {plugins: [require('postcss-import'), require('postcss-nesting')]};
 
 if (process.env.NODE_ENV === 'production') {
 	config.plugins.push(require('cssnano'));

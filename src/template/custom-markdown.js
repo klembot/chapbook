@@ -11,10 +11,30 @@ let renderer = new marked.Renderer();
 /* Evaluate code blocks without outputting anything. */
 
 renderer.code = src => {
-	const func = new Function(unescape(src));
+	try {
+		const func = new Function(unescape(src));
+		
+		func.apply(window);
+	}
+	catch (e) {
+		let detail;
 
-	func.apply(window);
-	return '';
+		if (e.error && e.error.stack) {
+			detail = e.error.stack;
+		}
+		else {
+			detail = e.message + '\n[No stack trace available]';
+		}
+
+		if (renderer.errors) {
+			renderer.errors.push(`An error occurred while evaluating <code>${src}</code>.<br><pre>${detail}</pre>`);
+		}
+		else {
+			throw e;
+		}
+	}
+
+ 	return '';
 };
 
 /*
@@ -23,11 +43,23 @@ output it.
 */
 
 renderer.codespan = src => {
-	const func = new Function(`return (${unescape(src)})`);
-	const result = func.apply(window);
+	try {
+		const func = new Function(`return (${unescape(src)})`);
+		const result = func.apply(window);
 
-	if (result !== null && result !== undefined) {
-		return result.toString();
+		if (result !== null && result !== undefined) {
+			return result.toString();
+		}
+	}
+	catch (e) {
+		if (renderer.errors) {
+			renderer.errors.push(`An error occurred while evaluating <code>${src}</code> (${e.message}).`);
+		}
+		else {
+			throw e;
+		}
+
+		return '';
 	}
 };
 

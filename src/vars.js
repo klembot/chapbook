@@ -125,7 +125,7 @@ export default class {
 			regexp = new RegExp('^' + key);
 		}
 
-		this.listeners.push({regexp, func});
+		this.listeners.push({key, regexp, func});
 	}
 
 	/*
@@ -133,8 +133,10 @@ export default class {
 	listener, this does nothing.
 	*/
 
-	removeListener(func) {
-		this.listeners = this.listeners.filter(l => l.func !== func);
+	removeListener(key, func) {
+		this.listeners = this.listeners.filter(
+			l => l.func !== func || l.key !== func
+		);
 	}
 
 	/*

@@ -15,12 +15,12 @@ body {
 
 hr {
 	border: none;
-}
 
-hr:after {
-	content: '* \a0 * \a0 *';
-	display: block;
-	text-align: center;
+	&:after {
+		content: '* \a0 * \a0 *';
+		display: block;
+		text-align: center;	
+	}
 }
 
 img {
@@ -43,27 +43,6 @@ pre {
 	line-height: 120%;
 }
 
-.error {
-	background: #ffebee;
-	color: #b71c1c;
-	padding: 0.5em;
-	margin-bottom: 1em;
-}
-
-.error :last-child {
-	margin-bottom: 0;
-}
-
-.page .error a {
-	color: #b71c1c;
-	text-decoration-color: #b71c1c;
-}
-
-.page .error a:hover {
-	color: #f44336;
-	text-decoration-color: #f44336;
-}
-
 .page {
 	width: 35em;
 	max-width: calc(100vw - 2em);
@@ -74,50 +53,90 @@ pre {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-}
 
-.page article {
-	flex-grow: 1;
-}
+	& article {
+		flex-grow: 1;
 
-.page article :first-child {
-	margin-top: 0;
-}
+		& :first-child {
+			margin-top: 0;
+		}
+	}
+		
+	& header, & footer {
+		display: flex;
 
-.page header, .page footer {
-	display: flex;
-}
+		& span {
+			flex-grow: 1;
+		}
 
-.page header span, .page footer span {
-	flex-grow: 1;
-}
+		& p {
+			margin: 0.5em 0 0 0;
+		}
 
-.page header p, .page footer p {
-	margin: 0.5em 0 0 0;
-}
+		& .center {
+			text-align: center;
+		}
 
-.page header .center, .page footer .center {
-	text-align: center;
-}
+		& .right {
+			text-align: right;
+		}
+	}
+	
+	& header {
+		margin-top: 0;
 
-.page header .right, .page footer .right {
-	text-align: right;
-}
+		&.has-content {
+			border-bottom: 1px solid black;
+		}
+	}
+	
+	& footer {
+		margin-bottom: 0;
 
-.page header {
-	margin-top: 0;
-}
+		&.has-content {
+			border-top: 1px solid black;
+		}
+	}
 
-.page header.has-content {
-	border-bottom: 1px solid black;
-}
+	& .error, & .warning {
+		background: #ffebee;
+		color: #b71c1c;
+		padding: 0.5em;
+		margin-bottom: 1em;
+	
+		& :first-child {
+			margin-top: 0;
+		}
+	
+		& :last-child {
+			margin-bottom: 0;
+		}
+	}
 
-.page footer {
-	margin-bottom: 0;
-}
+	& .error a {
+		color: #b71c1c;
+		text-decoration-color: #b71c1c;
 
-.page footer.has-content {
-	border-top: 1px solid black;
+		&:hover {
+			color: #f44336;
+			text-decoration-color: #f44336;	
+		}
+	}
+
+	& .warning {
+		background: #fffde7;
+		color: #f57f17;
+
+		& a {
+			color: #f57f17;
+			text-decoration-color: #f57f17;
+
+			&:hover {
+				color: #ffeb3b;
+				text-decoration-color: #ffeb3b;	
+			}
+		}
+	}
 }
 
 .small-caps {

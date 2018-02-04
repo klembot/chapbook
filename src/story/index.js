@@ -21,7 +21,7 @@ export default class {
 	loadFromHtml(el) {
 		/* Basic attributes. */
 
-		(['name', 'creator', 'ifid']).forEach(
+		(['name', 'creator', 'ifid', 'options']).forEach(
 			attr => this[attr] = el.getAttribute(attr)
 		);
 
@@ -29,7 +29,7 @@ export default class {
 
 		this.startNode = parseInt(el.getAttribute('startnode'));
 		this.creatorVersion = el.getAttribute('creator-version');
-		
+
 		/* Load custom script and styles. */
 
 		const elsToContents = els => Array.from(els).map(el => el.textContent);

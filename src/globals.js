@@ -1,9 +1,9 @@
+import Alarm from './alarm';
 import Image from './image';
 import {Input, createFactory as createInputFactory} from './input';
 import {Link, factory as linkFactory} from './link';
 import Modifiers from './modifiers';
 import Parser from './template/parser';
-import ProblemReporter from './problem-reporter';
 import Random from './random';
 import Renderer from './template/renderer';
 import SideMatter from './side-matter';
@@ -24,14 +24,30 @@ const Globals = {
 		/*
 		Create our variable tracker. We want this to occur as early as possible
 		because other modules depend on it. We turn off autosaving so any setup
-		doesn't blow away pre-existing data in local storage.
+		doesn't blow away pre-existing data in local storage. We'll turn it back
+		on below.
 		*/
 
 		Globals.vars = new Vars(Globals.story.name);
 		Globals.vars.autosave = false;
 
-		Globals.problemReporter = new ProblemReporter(
-			document.querySelector('.page article'),
+		/*
+		Set the testing variable based on story options. That is, publishing a
+		story in test mode will trigger this.
+		*/
+
+		Globals.vars.set(
+			'testing',
+			typeof Globals.story.options === 'string' && Globals.story.options.indexOf('debug') !== -1
+		);
+
+		/*
+		Add error reporting; clear shown messages if the player moves to another
+		passage.
+		*/
+
+		Globals.alarm = new Alarm(
+			document.querySelector('.page .messages'),
 			Globals.vars
 		);
 
@@ -40,7 +56,7 @@ const Globals = {
 		*/
 
 		Globals.parser = new Parser();
-		Globals.renderer = new Renderer(Globals.vars);
+		Globals.renderer = new Renderer(Globals.vars, Globals.alarm);
 		Modifiers.addBuiltins(Globals.renderer);
 
 		/*
