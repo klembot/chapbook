@@ -27,6 +27,7 @@ describe('template renderer', () => {
 
 	beforeEach(() => {
 		renderer = new Renderer();
+		renderer.alarm = {update: () => {}};
 	});
 
 	it('sets vars', () => {

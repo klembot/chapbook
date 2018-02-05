@@ -8,6 +8,7 @@ describe('Conditional modifier', () => {
 
 	beforeEach(() => {
 		renderer = new Renderer();
+		renderer.alarm = {update: () => {}};
 		renderer.addModifier('conditionals', Conditionals);
 	});
 

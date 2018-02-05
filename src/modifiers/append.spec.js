@@ -5,6 +5,7 @@ import Renderer from '../template/renderer';
 describe('Append modifier', () => {
 	let renderer = new Renderer();
 	
+	renderer.alarm = {update: () => {}};
 	renderer.addModifier('append', Append);
 
 	it('causes text to appear with the previous block', () => {
