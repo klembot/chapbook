@@ -40,11 +40,15 @@ export default class {
 
 	update() {
 		function cssify(selector, props) {
-			return selector + '{' + Object.keys(props).reduce(
-				(result, current) => result + current + ':' +
-					props[current] + ';',
-				''
-			) + '}';
+			return (
+				selector +
+				'{' +
+				Object.keys(props).reduce(
+					(result, current) => result + current + ':' + props[current] + ';',
+					''
+				) +
+				'}'
+			);
 		}
 
 		this.el.innerHTML = Object.keys(this.rules).reduce(

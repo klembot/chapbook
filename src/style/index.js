@@ -16,30 +16,30 @@ function updateStyle() {
 	if (!style) {
 		style = new Stylesheet();
 	}
-	
+
 	const {color, autopx} = style;
 
 	style.rules = {
-		'body': {
+		body: {
 			'background-color': color(vars.get('config.style.backdrop'))
 		},
 		'.page': {
 			'background-color': color(vars.get('config.style.bg')),
-			'color': color(vars.get('config.style.fg')),
+			color: color(vars.get('config.style.fg')),
 			'font-family': color(vars.get('config.style.font')),
 			'font-size': autopx(vars.get('config.style.fontSize'))
 		},
 		'.page a': {
-			'color': color(vars.get('config.style.linkColor')),
+			color: color(vars.get('config.style.linkColor')),
 			'text-decoration-color': color(vars.get('config.style.linkLineColor'))
 		},
 		'.page a:hover': {
-			'color': color(vars.get('config.style.linkActiveColor'))
+			color: color(vars.get('config.style.linkActiveColor'))
 		},
 		'.page input[type="text"], .page select': {
 			'background-color': color(vars.get('config.style.inputBg')),
-			'border': `1px solid ${color(vars.get('config.style.inputBorderColor'))}`,
-			'color': color(vars.get('config.style.inputFg')),
+			border: `1px solid ${color(vars.get('config.style.inputBorderColor'))}`,
+			color: color(vars.get('config.style.inputFg')),
 			'font-family': color(vars.get('config.style.inputFont')),
 			'font-size': autopx(vars.get('config.style.inputFontSize'))
 		}
@@ -54,15 +54,23 @@ function updateStyle() {
 			break;
 
 		case 'thin line':
-			style.rules['.page'].border = `1px solid ${color(vars.get('config.style.pageBorderColor'))}`;
+			style.rules['.page'].border = `1px solid ${color(
+				vars.get('config.style.pageBorderColor')
+			)}`;
 			break;
 
 		case 'thick line':
-			style.rules['.page'].border = `4px solid ${color(vars.get('config.style.pageBorderColor'))}`;
+			style.rules['.page'].border = `4px solid ${color(
+				vars.get('config.style.pageBorderColor')
+			)}`;
 			break;
 
 		default:
-			throw new Error(`There is no page style named "${vars.get('config.style.pageStyle')}" exists.`);
+			throw new Error(
+				`There is no page style named "${vars.get(
+					'config.style.pageStyle'
+				)}" exists.`
+			);
 	}
 
 	linkStyles(
@@ -78,11 +86,11 @@ function updateStyle() {
 		};
 
 		style.rules[`${type} a`] = {
-			'color': vars.get(`config.style.${type}LinkColor`)
+			color: vars.get(`config.style.${type}LinkColor`)
 		};
 
 		style.rules[`${type} a:hover`] = {
-			'color': vars.get(`config.style.${type}LinkActiveColor`)
+			color: vars.get(`config.style.${type}LinkActiveColor`)
 		};
 
 		linkStyles(
@@ -99,11 +107,17 @@ function init(varsInstance) {
 	vars = varsInstance;
 	vars.default('config.style.bg', 'white');
 	vars.default('config.style.fg', 'dark gray');
-	vars.default('config.style.font', '"Hoefler Text", "Calisto MT", Georgia, serif');
+	vars.default(
+		'config.style.font',
+		'"Hoefler Text", "Calisto MT", Georgia, serif'
+	);
 	vars.default('config.style.fontSize', 18);
 	vars.default('config.style.backdrop', 'pale blue gray');
 	vars.default('config.style.pageBorderColor', '');
-	vars.default('config.style.inputFont', '"Hoefler Text", "Calisto MT", Georgia, serif');
+	vars.default(
+		'config.style.inputFont',
+		'"Hoefler Text", "Calisto MT", Georgia, serif'
+	);
 	vars.default('config.style.inputFontSize', 18);
 	vars.default('config.style.inputBg', 'transparent');
 	vars.default('config.style.inputFg', 'dark gray');

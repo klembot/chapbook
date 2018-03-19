@@ -11,8 +11,8 @@ describe('custom Markdown renderer', () => {
 	});
 
 	it('evaluates code inside backtick fences silently', () => {
-		const result = renderer.code('\nwindow.foo = \'red\';\n');
-		
+		const result = renderer.code("\nwindow.foo = 'red';\n");
+
 		expect(result).to.equal('');
 		expect(window.foo).to.equal('red');
 	});

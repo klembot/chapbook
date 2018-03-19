@@ -1,7 +1,7 @@
 import Alarm from './alarm';
-import Image from './image';
+import {Image, createFactory as createImageFactory} from './image';
 import {Input, createFactory as createInputFactory} from './input';
-import {Link, factory as linkFactory} from './link';
+import {Link, createFactory as createLinkFactory} from './link';
 import Modifiers from './modifiers';
 import Parser from './template/parser';
 import Random from './random';
@@ -38,7 +38,8 @@ const Globals = {
 
 		Globals.vars.set(
 			'testing',
-			typeof Globals.story.options === 'string' && Globals.story.options.indexOf('debug') !== -1
+			typeof Globals.story.options === 'string' &&
+				Globals.story.options.indexOf('debug') !== -1
 		);
 
 		/*
@@ -63,7 +64,10 @@ const Globals = {
 		Connect our view to the DOM.
 		*/
 
-		Globals.view = new View(document.querySelector('.page article'), Globals.vars);
+		Globals.view = new View(
+			document.querySelector('.page article'),
+			Globals.vars
+		);
 		Input.attachTo(Globals.view.el, Globals.vars);
 		Link.attachTo(Globals.view.el, Globals.go);
 		initStyle(Globals.vars);
@@ -83,10 +87,10 @@ const Globals = {
 			Globals.vars
 		);
 		Globals.footer.left = '_`story.name`_';
-		Globals.footer.right = '`link(\'Restart\').restart()`';
+		Globals.footer.right = "`link('Restart').restart()`";
 
-		Globals.image = Image;
-		Globals.link = linkFactory;
+		Globals.image = createImageFactory();
+		Globals.link = createLinkFactory(Globals.vars);
 		Globals.input = createInputFactory(Globals.vars);
 		Globals.random = new Random();
 
@@ -101,7 +105,7 @@ const Globals = {
 		from the beginning. This should occur as late as possible in
 		initialization so that author-set values overwrite defaults.
 		*/
-		
+
 		Globals.vars.restore();
 		Globals.vars.autosave = true;
 		Globals.vars.default('trail', []);
@@ -116,17 +120,19 @@ const Globals = {
 			/* Just show the passage without creating a new history entry. */
 
 			Globals.view.show(Globals.show(trail[trail.length - 1]));
-		}
-		else {
+		} else {
 			const startPassage = Globals.story.passages.find(
 				p => p.id === Globals.story.startNode
 			);
 
 			if (startPassage) {
 				Globals.go(startPassage.name);
-			}
-			else {
-				throw new Error(`The start passage, with ID ${Globals.story.startNode}, does not exist.`);
+			} else {
+				throw new Error(
+					`The start passage, with ID ${
+						Globals.story.startNode
+					}, does not exist.`
+				);
 			}
 		}
 
@@ -165,7 +171,11 @@ const Globals = {
 	},
 
 	restart(prompt) {
-		if (!window.confirm('Are you sure you want to restart? This will erase all saved progress.')) {
+		if (
+			!window.confirm(
+				'Are you sure you want to restart? This will erase all saved progress.'
+			)
+		) {
 			return;
 		}
 
@@ -174,7 +184,9 @@ const Globals = {
 		);
 
 		if (!passage) {
-			throw new Error(`There is no passsage with the ID ${Globals.story.startNode}.`);
+			throw new Error(
+				`There is no passsage with the ID ${Globals.story.startNode}.`
+			);
 		}
 
 		Globals.vars.forgetAll();

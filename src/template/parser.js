@@ -23,7 +23,7 @@ export default class {
 		If true, logs information to the console as it parses.
 		*/
 		this.verbose = false;
-	
+
 		/*
 		The regexp matching the end of a vars section of source code.
 		*/
@@ -73,7 +73,7 @@ export default class {
 				if (firstColon !== -1) {
 					const name = line.substr(0, firstColon).trim();
 					const value = line.substr(firstColon + 1).trim();
-	
+
 					if (result.vars[name] !== undefined) {
 						result.warnings.push(
 							`The property "${name}" was defined more than once; using the last value.`
@@ -86,15 +86,13 @@ export default class {
 					}
 
 					result.vars[name] = value;
-				}
-				else {
+				} else {
 					result.warnings.push(
 						`The line "${line}" in the properties section is missing a colon. It was ignored.`
 					);
 				}
 			});
-		}
-		else {
+		} else {
 			if (this.verbose) {
 				// eslint-disable-next-line no-console
 				console.log('No vars section detected');
@@ -118,7 +116,9 @@ export default class {
 
 			if (this.verbose) {
 				// eslint-disable-next-line no-console
-				console.log(`Creating '${type}' block with content: "${trimmedContent}"`);
+				console.log(
+					`Creating '${type}' block with content: "${trimmedContent}"`
+				);
 			}
 
 			result.blocks.push({type, content: trimmedContent});
@@ -179,4 +179,4 @@ export default class {
 		addBlock('text', text.substring(searchIndex));
 		return result;
 	}
-};
+}

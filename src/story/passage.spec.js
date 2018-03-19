@@ -5,7 +5,8 @@ describe('Passage', function() {
 	let passage;
 	const passageContainer = document.createElement('div');
 
-	passageContainer.innerHTML = '<tw-passagedata pid="1" name="Test Passage" tags="tag1 tag2">&lt;Hello world&gt;</tw-passagedata>';
+	passageContainer.innerHTML =
+		'<tw-passagedata pid="1" name="Test Passage" tags="tag1 tag2">&lt;Hello world&gt;</tw-passagedata>';
 
 	const passageEl = passageContainer.querySelector('tw-passagedata');
 
@@ -32,7 +33,8 @@ describe('Passage', function() {
 		const noTagContainer = document.createElement('div');
 		const noTagPassage = new Passage();
 
-		noTagContainer.innerHTML = '<tw-passagedata pid="1" name="Test Passage">&lt;Hello</tw-passagedata>';
+		noTagContainer.innerHTML =
+			'<tw-passagedata pid="1" name="Test Passage">&lt;Hello</tw-passagedata>';
 
 		noTagPassage.loadFromHtml(noTagContainer.querySelector('tw-passagedata'));
 	});

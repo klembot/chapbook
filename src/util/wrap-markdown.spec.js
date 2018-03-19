@@ -38,7 +38,9 @@ describe('Markdown <span> wrapper', () => {
 		expect(wrap('Hello\n\nthere\n\n\nbuddy', {foo: 'bar'})).to.equal(
 			'<span foo="bar">Hello</span>\n\n<span foo="bar">there</span>\n\n\n<span foo="bar">buddy</span>'
 		);
-		expect(wrap('Hello\n\nthere\n\n\nbuddy', {foo: 'bar', baz: 'quux'})).to.equal(
+		expect(
+			wrap('Hello\n\nthere\n\n\nbuddy', {foo: 'bar', baz: 'quux'})
+		).to.equal(
 			'<span foo="bar" baz="quux">Hello</span>\n\n<span foo="bar" baz="quux">there</span>\n\n\n<span foo="bar" baz="quux">buddy</span>'
 		);
 	});

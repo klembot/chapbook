@@ -18,10 +18,11 @@ export default class {
 	}
 
 	show(html) {
-		const segmentLength = this.vars.get('config.view.transitionDuration') / 2 + 's'; 
+		const segmentLength =
+			this.vars.get('config.view.transitionDuration') / 2 + 's';
 		let inEl = document.createElement('div');
 		let outEl;
-		
+
 		if (this.el.innerHTML.trim() !== '') {
 			outEl = document.createElement('div');
 			outEl.innerHTML = this.el.innerHTML;
@@ -41,16 +42,15 @@ export default class {
 						outEl.removeEventListener('animationend', removeOut);
 						outEl.parentNode.removeChild(outEl);
 					}
-				}
-			}
-			else {
+				};
+			} else {
 				removeOut = e => {
 					if (e.target === outEl) {
 						outEl.removeEventListener('animationend', removeOut);
 						outEl.parentNode.removeChild(outEl);
 						this.el.appendChild(inEl);
 					}
-				}
+				};
 			}
 
 			outEl.addEventListener('animationend', removeOut);
@@ -79,8 +79,7 @@ export default class {
 			if (outEl) {
 				this.el.appendChild(outEl);
 			}
-		}
-		else {
+		} else {
 			/*
 			We are fading in the new content after the existing content
 			disappears. If there isn't any content to fade out, fade it in
@@ -89,12 +88,11 @@ export default class {
 
 			if (outEl) {
 				this.el.appendChild(outEl);
-			}
-			else {
+			} else {
 				this.el.appendChild(inEl);
 			}
 		}
 
 		this.el.dispatchEvent(new CustomEvent('content-change'));
 	}
-};
+}

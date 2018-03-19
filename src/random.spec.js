@@ -19,11 +19,21 @@ describe('random module', () => {
 	});
 
 	it('rejects incorrect specs with roll()', () => {
-		expect(() => { rand.roll('d4'); }).to.throw;
-		expect(() => { rand.roll('5'); }).to.throw;
-		expect(() => { rand.roll(5); }).to.throw;
-		expect(() => { rand.roll('nd4'); }).to.throw;
-		expect(() => { rand.roll('4dx'); }).to.throw;
+		expect(() => {
+			rand.roll('d4');
+		}).to.throw;
+		expect(() => {
+			rand.roll('5');
+		}).to.throw;
+		expect(() => {
+			rand.roll(5);
+		}).to.throw;
+		expect(() => {
+			rand.roll('nd4');
+		}).to.throw;
+		expect(() => {
+			rand.roll('4dx');
+		}).to.throw;
 	});
 
 	it('selects args with choice()', () => {

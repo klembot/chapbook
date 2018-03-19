@@ -7,7 +7,9 @@ class Conditionals {
 		this.type = invocation.replace(/\s.*/, '').toLowerCase();
 
 		if (this.type !== 'else') {
-			this.condition = new Function('return ' + invocation.replace(/.*?\s/, ''));
+			this.condition = new Function(
+				'return ' + invocation.replace(/.*?\s/, '')
+			);
 		}
 	}
 
@@ -23,7 +25,9 @@ class Conditionals {
 
 			case 'else':
 				if (!this.condition) {
-					opts.addError('There was no matching if modifier for an else modifier.');
+					opts.addError(
+						'There was no matching if modifier for an else modifier.'
+					);
 					return;
 				}
 
@@ -37,12 +41,8 @@ class Conditionals {
 			output.afterText = '';
 		}
 	}
-};
+}
 
-Conditionals.regexps = [
-	/^if\s/i,
-	/^unless\s/i,
-	/^else$/i
-];
+Conditionals.regexps = [/^if\s/i, /^unless\s/i, /^else$/i];
 
 export default Conditionals;

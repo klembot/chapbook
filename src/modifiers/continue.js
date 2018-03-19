@@ -7,11 +7,6 @@ class Continue {
 	process() {}
 }
 
-Continue.regexps = [
-	/^continued$/i,
-	/^continue$/i,
-	/^cont'd$/i,
-	/^cont$/i
-];
+Continue.regexps = [/^continued$/i, /^continue$/i, /^cont'd$/i, /^cont$/i];
 
 export default Continue;

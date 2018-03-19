@@ -44,15 +44,17 @@ export default class {
 		/* Check for repeats. */
 
 		if (this.modifiers.some(m => m.name === name)) {
-			throw new Error(`A modifier named "${name}" has already been added to this renderer.`);
+			throw new Error(
+				`A modifier named "${name}" has already been added to this renderer.`
+			);
 		}
 
 		if (!modifier.regexps || !modifier.regexps.length) {
 			throw new Error(`A modifier must have a static regexps property.`);
 		}
 
-		modifier.regexps.forEach(
-			regexp => this.modifiers.push({name, regexp, modifier})
+		modifier.regexps.forEach(regexp =>
+			this.modifiers.push({name, regexp, modifier})
 		);
 	}
 
@@ -66,7 +68,9 @@ export default class {
 		this.modifiers = this.modifiers.filter(m => m.name !== name);
 
 		if (this.modifiers.length === oldLen) {
-			throw new Error(`A modifier named "${name}" does not exist in this renderer.`);
+			throw new Error(
+				`A modifier named "${name}" does not exist in this renderer.`
+			);
 		}
 	}
 
@@ -114,8 +118,7 @@ export default class {
 
 				this.vars.set(name, new Function('return ' + parsed.vars[name])());
 			});
-		}
-		else {
+		} else {
 			// eslint-disable-next-line no-console
 			console.warn('Renderer was given an object with no vars');
 		}
@@ -133,8 +136,12 @@ export default class {
 		*/
 
 		const modifierOpts = {
-			addWarning(message) { output.warnings.push(message); },
-			addError(message) { output.errors.push(message); }
+			addWarning(message) {
+				output.warnings.push(message);
+			},
+			addError(message) {
+				output.errors.push(message);
+			}
 		};
 
 		if (parsed.blocks) {
@@ -148,7 +155,7 @@ export default class {
 						*/
 
 						let blockOutput = {
-							text: linkParser(block.content),
+							text: linkParser(block.content, this.vars),
 							beforeText: '\n\n',
 							afterText: ''
 						};
@@ -161,21 +168,22 @@ export default class {
 
 						if (this.verbose) {
 							// eslint-disable-next-line no-console
-							console.log(`Running ${activeModifiers.length} modifiers on text block...`);
+							console.log(
+								`Running ${activeModifiers.length} modifiers on text block...`
+							);
 							activeModifiers.forEach(m => {
 								m.process(blockOutput, modifierOpts);
 								// eslint-disable-next-line no-console
 								console.table(blockOutput);
 							});
-						}
-						else {
-							activeModifiers.forEach(
-								m => m.process(blockOutput, modifierOpts)
+						} else {
+							activeModifiers.forEach(m =>
+								m.process(blockOutput, modifierOpts)
 							);
 						}
 
-						output.markdown += blockOutput.beforeText +
-							blockOutput.text + blockOutput.afterText;
+						output.markdown +=
+							blockOutput.beforeText + blockOutput.text + blockOutput.afterText;
 						activeModifiers = [];
 
 						if (this.verbose) {
@@ -192,8 +200,8 @@ export default class {
 						Find all modifiers whose regexp matches this one's.
 						*/
 
-						const mods = this.modifiers.filter(
-							m => m.regexp.test(block.content)
+						const mods = this.modifiers.filter(m =>
+							m.regexp.test(block.content)
 						);
 
 						if (mods.length === 1) {
@@ -201,27 +209,34 @@ export default class {
 
 							if (this.verbose) {
 								// eslint-disable-next-line no-console
-								console.log(`Activated "${mod.name}" modifier matching [${block.content}]`);
+								console.log(
+									`Activated "${mod.name}" modifier matching [${block.content}]`
+								);
 							}
 
 							if (!modifierInstances[mod.name]) {
 								if (this.verbose) {
 									// eslint-disable-next-line no-console
-									console.log(`Creating new instance of "${mod.name}" modifier`);
+									console.log(
+										`Creating new instance of "${mod.name}" modifier`
+									);
 								}
 
-								modifierInstances[mod.name] =
-									new mod.modifier();
+								modifierInstances[mod.name] = new mod.modifier();
 							}
 
 							modifierInstances[mod.name].setup(block.content);
 							activeModifiers.push(modifierInstances[mod.name]);
-						}
-						else if (mods.length === 0) {
-							output.warnings.push(`No modifiers matched "[${block.content}]". It was ignored.`);
-						}
-						else {
-							output.warnings.push(`More than one modifier matched "[${block.content}]". It was ignored.`);
+						} else if (mods.length === 0) {
+							output.warnings.push(
+								`No modifiers matched "[${block.content}]". It was ignored.`
+							);
+						} else {
+							output.warnings.push(
+								`More than one modifier matched "[${
+									block.content
+								}]". It was ignored.`
+							);
 						}
 						break;
 					}
@@ -232,14 +247,13 @@ export default class {
 						);
 				}
 			});
-		}
-		else {
+		} else {
 			// eslint-disable-next-line no-console
 			console.warn('Renderer was given an object with no blocks');
 		}
-		
+
 		output.html = this.toHtml(output.markdown, output.errors, output.warnings);
 		this.alarm.update(output.errors, output.warnings);
 		return output;
 	}
-};
+}

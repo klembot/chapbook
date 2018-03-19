@@ -6,10 +6,13 @@ Markdown in a <span> for you.
 */
 
 export default (markdown, attributes = {}) => {
-	const tag = '<span' + Object.keys(attributes).reduce(
-		(result, current) => result + ` ${current}="${attributes[current]}"`,
-		''
-	) + '>';
+	const tag =
+		'<span' +
+		Object.keys(attributes).reduce(
+			(result, current) => result + ` ${current}="${attributes[current]}"`,
+			''
+		) +
+		'>';
 
 	return tag + markdown.replace(/[\r\n]{2,}/g, `</span>$&${tag}`) + '</span>';
 };

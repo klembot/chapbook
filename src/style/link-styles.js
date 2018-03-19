@@ -1,23 +1,17 @@
 export default function(rules, type, lineColor) {
 	switch (type) {
 		case 'bold':
-			Object.assign(
-				rules,
-				{
-					'text-decoration': 'none',
-					'font-weight': 'bold'
-				}
-			);
+			Object.assign(rules, {
+				'text-decoration': 'none',
+				'font-weight': 'bold'
+			});
 			break;
 
 		case 'italic':
-			Object.assign(
-				rules,
-				{
-					'text-decoration': 'none',
-					'font-style': 'italic'
-				}
-			);
+			Object.assign(rules, {
+				'text-decoration': 'none',
+				'font-style': 'italic'
+			});
 			break;
 
 		case 'none':
@@ -25,15 +19,12 @@ export default function(rules, type, lineColor) {
 			break;
 
 		case 'small caps':
-			Object.assign(
-				rules,
-				{
-					'text-decoration': 'none',
-					'text-transform': 'uppercase',
-					'font-size': '70%',
-					'letter-spacing': '0.075em'
-				}
-			);
+			Object.assign(rules, {
+				'text-decoration': 'none',
+				'text-transform': 'uppercase',
+				'font-size': '70%',
+				'letter-spacing': '0.075em'
+			});
 			break;
 
 		case 'underline':
@@ -41,12 +32,9 @@ export default function(rules, type, lineColor) {
 			We rely on links receiving an underline by default.
 			*/
 
-			Object.assign(
-				rules,
-				{
-					'text-decoration-color': lineColor
-				}
-			);
+			Object.assign(rules, {
+				'text-decoration-color': lineColor
+			});
 			break;
 
 		default:

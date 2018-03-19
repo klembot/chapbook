@@ -13,7 +13,7 @@ export default class {
 		this.customScripts = [];
 		this.customStyles = [];
 	}
-	
+
 	/*
 	Loads all data from a <tw-storydata> DOM element.
 	*/
@@ -21,8 +21,8 @@ export default class {
 	loadFromHtml(el) {
 		/* Basic attributes. */
 
-		(['name', 'creator', 'ifid', 'options']).forEach(
-			attr => this[attr] = el.getAttribute(attr)
+		['name', 'creator', 'ifid', 'options'].forEach(
+			attr => (this[attr] = el.getAttribute(attr))
 		);
 
 		/* Camel-case creator version and start node. */
@@ -34,20 +34,26 @@ export default class {
 
 		const elsToContents = els => Array.from(els).map(el => el.textContent);
 
-		this.customScripts = elsToContents(el.querySelectorAll('[type="text/twine-javascript"]'));
-		this.customStyles = elsToContents(el.querySelectorAll('[type="text/twine-css"]'));
+		this.customScripts = elsToContents(
+			el.querySelectorAll('[type="text/twine-javascript"]')
+		);
+		this.customStyles = elsToContents(
+			el.querySelectorAll('[type="text/twine-css"]')
+		);
 
 		/* Create passages. */
 
-		this.passages = Array.from(el.querySelectorAll('tw-passagedata')).map(el => {
-			let p = new Passage();
+		this.passages = Array.from(el.querySelectorAll('tw-passagedata')).map(
+			el => {
+				let p = new Passage();
 
-			p.loadFromHtml(el);
-			return p;
-		});
+				p.loadFromHtml(el);
+				return p;
+			}
+		);
 	}
 
 	passage(name) {
 		return this.passages.find(p => p.name === name);
 	}
-};
+}

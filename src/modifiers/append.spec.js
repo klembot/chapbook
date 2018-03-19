@@ -4,7 +4,7 @@ import Renderer from '../template/renderer';
 
 describe('Append modifier', () => {
 	let renderer = new Renderer();
-	
+
 	renderer.alarm = {update: () => {}};
 	renderer.addModifier('append', Append);
 

@@ -10,8 +10,6 @@ class Append {
 	}
 }
 
-Append.regexps = [
-	/^append$/i
-];
+Append.regexps = [/^append$/i];
 
 export default Append;

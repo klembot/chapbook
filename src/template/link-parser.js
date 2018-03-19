@@ -1,6 +1,6 @@
 import {Link} from '../link';
 
-export default function(source) {
+export default function(source, vars) {
 	let result = source;
 
 	/* [[links]] */
@@ -15,8 +15,7 @@ export default function(source) {
 		if (barIndex !== -1) {
 			label = target.substr(0, barIndex);
 			target = target.substr(barIndex + 1);
-		}
-		else {
+		} else {
 			/* display->target format */
 
 			const rightArrIndex = target.indexOf('->');
@@ -24,8 +23,7 @@ export default function(source) {
 			if (rightArrIndex !== -1) {
 				label = target.substr(0, rightArrIndex);
 				target = target.substr(rightArrIndex + 2);
-			}
-			else {
+			} else {
 				/* target<-display format */
 
 				const leftArrIndex = target.indexOf('<-');
@@ -37,8 +35,8 @@ export default function(source) {
 			}
 		}
 
-		return new Link(label).to(target).toString();
+		return new Link(vars, label).to(target).toString();
 	});
 
 	return result;
-};
+}

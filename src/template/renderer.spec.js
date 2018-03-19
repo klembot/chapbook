@@ -13,7 +13,7 @@ describe('template renderer', () => {
 			opts.addError('A test error');
 		}
 	}
-	
+
 	TestModifier.regexps = [/^test/i];
 
 	const modifierInput = {
@@ -76,9 +76,7 @@ describe('template renderer', () => {
 
 	it('renders text blocks to HTML', () => {
 		const result = renderer.render({
-			blocks: [
-				{type: 'text', content: 'Hello world.\n\nThis is me.'}
-			]
+			blocks: [{type: 'text', content: 'Hello world.\n\nThis is me.'}]
 		});
 
 		expect(result.html).to.equal('<p>Hello world.</p>\n<p>This is me.</p>\n');
@@ -129,10 +127,12 @@ describe('template renderer', () => {
 		const result = renderer.render(modifierInput);
 
 		expect(result.warnings.length).to.equal(1);
-		expect(result.warnings[0]).to.contain('More than one modifier matched "[test]"');
+		expect(result.warnings[0]).to.contain(
+			'More than one modifier matched "[test]"'
+		);
 	});
 
-	it('passes text through a modifier\'s process method', () => {
+	it("passes text through a modifier's process method", () => {
 		let processSpy = spy();
 
 		class SpyModifier {
@@ -239,7 +239,7 @@ describe('template renderer', () => {
 			blocks: [
 				{type: 'modifier', content: 'test'},
 				{type: 'text', content: 'Hello world'},
-				{type: 'text', content: 'Hello world again'},
+				{type: 'text', content: 'Hello world again'}
 			]
 		});
 		expect(processSpy.calledOnce);

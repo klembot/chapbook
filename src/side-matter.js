@@ -7,14 +7,16 @@ export default class {
 
 		positions.forEach(pos => {
 			const posEl = document.createElement('span');
-			
+
 			posEl.className = pos;
 			this.el.appendChild(posEl);
 			this[pos + 'El'] = posEl;
 			this[pos] = '';
 		});
 
-		vars.addListener('*', () => { this.update(); });
+		vars.addListener('*', () => {
+			this.update();
+		});
 	}
 
 	update() {
@@ -32,8 +34,7 @@ export default class {
 
 		if (hasContent) {
 			this.el.classList.add('has-content');
-		}
-		else {
+		} else {
 			this.el.classList.remove('has-content');
 		}
 	}

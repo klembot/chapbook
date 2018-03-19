@@ -45,13 +45,17 @@ export default class {
 		const rolls = parseInt(bits[0]);
 
 		if (isNaN(rolls)) {
-			throw new Error(`The number of rolls specified (${bits[0]}) isn't a number.`);
+			throw new Error(
+				`The number of rolls specified (${bits[0]}) isn't a number.`
+			);
 		}
 
 		const sides = parseInt(bits[1]);
 
 		if (isNaN(sides)) {
-			throw new Error(`The number of die sides specified (${bits[1]}) isn't a number.`);
+			throw new Error(
+				`The number of die sides specified (${bits[1]}) isn't a number.`
+			);
 		}
 
 		let total = 0;
@@ -72,7 +76,7 @@ export default class {
 
 	choice(...choices) {
 		let toChooseFrom = choices;
-		
+
 		if (choices.length === 1 && Array.isArray(choices[0])) {
 			toChooseFrom = choices[0];
 		}
@@ -94,6 +98,6 @@ export default class {
 			toShuffle = items[0];
 		}
 
-		return(shuffle(toShuffle.slice()));
+		return shuffle(toShuffle.slice());
 	}
-};
+}

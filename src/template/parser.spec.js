@@ -10,7 +10,7 @@ describe('template parser', () => {
 
 	it('returns an object with vars, blocks, and warnings properties', () => {
 		const result = parser.parse('hello');
-		
+
 		expect(result).to.be.an('object');
 		expect(result.vars).to.be.an('object');
 		expect(result.blocks).to.be.an('array');
@@ -18,10 +18,10 @@ describe('template parser', () => {
 	});
 
 	it('parses vars but does not evaluate expressions', () => {
-		const result = parser.parse('foo: 2\nbar: \'red\'\nbaz: true\n--\n');
+		const result = parser.parse("foo: 2\nbar: 'red'\nbaz: true\n--\n");
 
 		expect(result.vars.foo).to.equal('2');
-		expect(result.vars.bar).to.equal('\'red\'');
+		expect(result.vars.bar).to.equal("'red'");
 		expect(result.vars.baz).to.equal('true');
 	});
 
@@ -81,7 +81,8 @@ describe('template parser', () => {
 	});
 
 	it('ignores bracketed phrases inside text blocks', () => {
-		const src = 'Hello [world]\n[This is a left bracket but not a right one\n[this]: is a Markdown link\n';
+		const src =
+			'Hello [world]\n[This is a left bracket but not a right one\n[this]: is a Markdown link\n';
 		const result = parser.parse(src);
 
 		expect(result.blocks.length).to.equal(1);
@@ -98,8 +99,10 @@ describe('template parser', () => {
 		expect(result.blocks[0].content).to.equal(src.trim());
 	});
 
-	it ('parses mixtures of text blocks and modifiers correctly', () => {
-		const result = parser.parse('This is a text block.\n[hello]\nAnd another block.\n\n[hello again]\nFinally...');
+	it('parses mixtures of text blocks and modifiers correctly', () => {
+		const result = parser.parse(
+			'This is a text block.\n[hello]\nAnd another block.\n\n[hello again]\nFinally...'
+		);
 
 		expect(result.blocks.length).to.equal(5);
 		expect(result.blocks[0].type).to.equal('text');
@@ -115,10 +118,12 @@ describe('template parser', () => {
 	});
 
 	it('parses mixtures of vars, text blocks, and modifiers correctly', () => {
-		const result = parser.parse('foo: 1\nbar: \'red\'\n--\nThis is a text block.\n[hello]\nAnd another block.\n\n[hello again]\nFinally...');
+		const result = parser.parse(
+			"foo: 1\nbar: 'red'\n--\nThis is a text block.\n[hello]\nAnd another block.\n\n[hello again]\nFinally..."
+		);
 
 		expect(result.vars.foo).to.equal('1');
-		expect(result.vars.bar).to.equal('\'red\'');
+		expect(result.vars.bar).to.equal("'red'");
 		expect(result.blocks.length).to.equal(5);
 		expect(result.blocks[0].type).to.equal('text');
 		expect(result.blocks[0].content).to.equal('This is a text block.');

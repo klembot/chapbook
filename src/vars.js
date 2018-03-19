@@ -88,7 +88,7 @@ export default class {
 		const needToSet = this.get(key) === undefined;
 
 		this.defaults[key] = value;
-		
+
 		if (needToSet) {
 			this.set(key, value);
 		}
@@ -120,8 +120,7 @@ export default class {
 
 		if (key === '*') {
 			regexp = /.*/;
-		}
-		else {
+		} else {
 			regexp = new RegExp('^' + key);
 		}
 
@@ -148,8 +147,7 @@ export default class {
 			window.localStorage.setItem('chapbook-test', 'a');
 			window.localStorage.removeItem('chapbook-test');
 			return true;
-		}
-		catch (e) {
+		} catch (e) {
 			return false;
 		}
 	}
@@ -168,24 +166,19 @@ export default class {
 			window.localStorage.setItem(
 				this.saveKey,
 				JSON.stringify({
-					vars: this.keys.reduce(
-						(result, r) => {
-							result[r] = get(this.state, r);
-							return result;
-						},
-						{}
-					)
+					vars: this.keys.reduce((result, r) => {
+						result[r] = get(this.state, r);
+						return result;
+					}, {})
 				})
 			);
-		}
-		catch (e) {
+		} catch (e) {
 			throw new Error(`Could not save the story state (${e.message}).`);
 		}
 	}
 
 	canRestore() {
-		return this.canSave() &&
-			window.localStorage.getItem(this.saveKey) !== null;
+		return this.canSave() && window.localStorage.getItem(this.saveKey) !== null;
 	}
 
 	restore() {
@@ -195,9 +188,7 @@ export default class {
 		}
 
 		if (this.canRestore()) {
-			const toRestore = JSON.parse(
-				window.localStorage.getItem(this.saveKey)
-			);
+			const toRestore = JSON.parse(window.localStorage.getItem(this.saveKey));
 
 			Object.keys(toRestore.vars).forEach(v => {
 				this.set(v, toRestore.vars[v]);
@@ -207,10 +198,9 @@ export default class {
 				// eslint-disable-next-line no-console
 				console.log('Restore complete', this.state);
 			}
-			
+
 			return true;
-		}
-		else {
+		} else {
 			if (this.verbose) {
 				// eslint-disable-next-line no-console
 				console.log('Restoring not possible');

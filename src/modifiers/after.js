@@ -11,15 +11,13 @@ class After {
 	}
 
 	process(output) {
-		output.text = wrap(
-			output.text,
-			{class: 'fade-in', style: `animation-delay: ${this.delay}ms`}
-		);
+		output.text = wrap(output.text, {
+			class: 'fade-in',
+			style: `animation-delay: ${this.delay}ms`
+		});
 	}
 }
 
-After.regexps = [
-	/^after\s/i
-];
+After.regexps = [/^after\s/i];
 
 export default After;

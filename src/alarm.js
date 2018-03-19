@@ -42,7 +42,7 @@ export default class {
 		if (this.vars.get('config.alarm.enabled')) {
 			this.errors.forEach((err, index) => {
 				result += `<div class="system error">${err}`;
-				
+
 				if (index === this.errors.length - 1) {
 					result += this.vars.get('config.alarm.forceRestartMessage');
 				}
@@ -65,24 +65,25 @@ export default class {
 		Marked will blame itself if rendering has problems, but it probably is
 		our fault, so remove that pointer.
 		*/
-		
-		const markedError = '\nPlease report this to https://github.com/chjj/marked.';
+
+		const markedError =
+			'\nPlease report this to https://github.com/chjj/marked.';
 
 		try {
 			let detail = '';
 
 			if (e.error && e.error.stack) {
 				detail = e.error.stack;
-			}
-			else {
+			} else {
 				detail = e.message + '\n[No stack trace available]';
 			}
 
 			detail = detail.replace(markedError, '');
-			this.addError(`<p>An unexpected problem has occurred.</p><pre>${escape(detail)}</pre>`);
+			this.addError(
+				`<p>An unexpected problem has occurred.</p><pre>${escape(detail)}</pre>`
+			);
 			e.preventDefault();
-		}
-		catch (e) {
+		} catch (e) {
 			/* Things have gotten really screwy-- at least log the error. */
 
 			console.log(e);

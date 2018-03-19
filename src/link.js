@@ -6,10 +6,10 @@ class Link {
 	static attachTo(el, onClick) {
 		el.addEventListener('click', e => {
 			const target = closest(e.target, '[data-cb-passage]', true);
-	
+
 			if (target) {
 				const passage = target.dataset.cbPassage;
-	
+
 				if (passage) {
 					Input.ifAllValid(() => onClick(passage));
 				}
@@ -17,52 +17,58 @@ class Link {
 		});
 	}
 
-	constructor(label) {
-		this.label = label;
+	constructor(vars, label) {
+		this.vars = vars;
+		this.el = document.createElement('a');
+
+		if (label) {
+			this.labelled(label);
+		}
 	}
 
 	labelled(label) {
-		this.label = label;
+		this.el.innerHTML = '';
+		this.el.appendChild(document.createTextNode(label));
 		return this;
 	}
 
 	to(target) {
-		this.target = target;
-
 		/* Does this look like an external link? */
 
 		if (/^\w+:\/\/\/?\w/i.test(target)) {
-			this.type = 'url';
-		}
-		else {
-			this.type = 'passage';
+			this.el.setAttribute('href', target);
+			this.el.dataset.cbPassage = undefined;
+		} else {
+			this.el.setAttribute('href', 'javascript:void(0)');
+			this.el.dataset.cbPassage = target;
 		}
 
 		return this;
 	}
 
+	back(count = 1) {
+		const trail = this.vars.get('trail');
+
+		if (count < trail.length - 1) {
+			return this.to(trail[trail.length - count]);
+		}
+
+		return this.to(trail[0]);
+	}
+
 	restart() {
-		this.type = 'url';
-		this.target = 'javascript:restart(true)';
+		this.el.dataset.cbPassage = undefined;
+		this.el.setAttribute('href', 'javascript:restart(true)');
 		return this;
 	}
 
 	toString() {
-		switch (this.type) {
-			case 'url':
-				return `<a href="${escape(this.target)}">${this.label}</a>`;
-			
-			case 'passage':
-				return `<a href="javascript:void(0)" data-cb-passage="${escape(this.target)}">${this.label}</a>`;
-
-			default:
-				throw new Error(`Don't know how to render links with type "${this.type}".`);
-		}
+		return this.el.outerHTML;
 	}
 }
 
-function factory(...args) {
-	return new Link(...args);
+function createFactory(vars) {
+	return (...args) => new Link(vars, ...args);
 }
 
-export {Link, factory};
+export {Link, createFactory};

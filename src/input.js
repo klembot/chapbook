@@ -44,7 +44,7 @@ class Input {
 		this.required = false;
 		return this;
 	}
-	
+
 	toString() {
 		switch (this.type) {
 			case 'cyclingLink': {
@@ -55,7 +55,11 @@ class Input {
 					current = this.choices[0];
 				}
 
-				return `<a href="javascript:void(0)" class="stationary" data-cb-save-to="${escape(this.saveTo)}" ${this.required && 'required'} data-cb-cycle="${escape(JSON.stringify(this.choices))}">${current}</a>`;
+				return `<a href="javascript:void(0)" class="stationary" data-cb-save-to="${escape(
+					this.saveTo
+				)}" ${this.required && 'required'} data-cb-cycle="${escape(
+					JSON.stringify(this.choices)
+				)}">${current}</a>`;
 			}
 
 			case 'menu': {
@@ -68,15 +72,23 @@ class Input {
 
 				const choiceHtml = this.choices.reduce(
 					(result, choice) =>
-						result + `<option value="${choice}" ${current === choice && 'selected'}>${choice}</option>`,
+						result +
+						`<option value="${choice}" ${current === choice &&
+							'selected'}>${choice}</option>`,
 					''
 				);
-		
-				return `<select data-cb-save-to="${escape(this.saveTo)}">${choiceHtml}</select>`;
+
+				return `<select data-cb-save-to="${escape(
+					this.saveTo
+				)}">${choiceHtml}</select>`;
 			}
 
 			case 'text':
-				return `<input type="text" value="${escape(this.vars.get(this.saveTo))}" ${this.required && 'required'} data-cb-save-to="${escape(this.saveTo)}">`;
+				return `<input type="text" value="${escape(
+					this.vars.get(this.saveTo)
+				)}" ${this.required && 'required'} data-cb-save-to="${escape(
+					this.saveTo
+				)}">`;
 
 			default:
 				throw new Error(`No input type named "${this.type}" exists.`);
@@ -85,7 +97,7 @@ class Input {
 
 	static attachTo(el, vars) {
 		/* Cycling links. */
-				
+
 		el.addEventListener('click', e => {
 			const target = closest(
 				e.target,
@@ -97,7 +109,7 @@ class Input {
 				const varName = target.dataset.cbSaveTo;
 				const choices = JSON.parse(target.dataset.cbCycle);
 				let index = choices.indexOf(target.textContent) + 1;
-				
+
 				if (index === choices.length) {
 					index = 0;
 				}
@@ -136,15 +148,17 @@ class Input {
 
 		/* Validation checking. */
 
-		document.querySelector('form#cb-validation').addEventListener('submit', e => {
-			if (Input.validationCallback) {
-				Input.validationCallback();
-			}
+		document
+			.querySelector('form#cb-validation')
+			.addEventListener('submit', e => {
+				if (Input.validationCallback) {
+					Input.validationCallback();
+				}
 
-			e.preventDefault();
-		});
+				e.preventDefault();
+			});
 	}
-	
+
 	/*
 	Triggers browser validation messages by simulating a click to a hidden
 	button. We have to do it this way because submitting a form directly
