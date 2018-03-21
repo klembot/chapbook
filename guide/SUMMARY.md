@@ -9,3 +9,4 @@
 * Adding State to Stories
   * [What is State?](state/what-is-state.md)
   * [The Vars Section](state/the-vars-section.md)
+  * [Displaying Variables](state/displaying-variables.md)
