@@ -83,6 +83,15 @@ True if the left side is smaller than the right side. If you use `<=`, then this
 
 Generally speaking, one string is considered larger than another if it would come after it in alphabetical order. For example, `'b' > 'a'`. But these comparisons can be confusing and unintuitive. Is `'+'` greater than `'&'`? It in fact is, but would you know at a glance? It might surprise you to learn than `'A' < 'a'`.[^2] So it is usually best not to use greater-than or less-than operators with strings.
 
+Below is an example vars section that demonstrates how these can be used.
+
+```
+correct: guess === 3
+nighttime: hour >= 18
+--
+The quizmaster leans back in his chair and grins.
+```
+
 Boolean variables have their own separate set of operators.
 
 * `!`, "not"  
