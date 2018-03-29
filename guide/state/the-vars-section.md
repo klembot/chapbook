@@ -27,7 +27,13 @@ Remember that three dashes creates a visible section break in passage text. Use 
 
 You may only have one vars section in each passage, but then there's really only ever need for one. The name of state variables must follow a few rules, too. They must start with a letter (upper or lowercase), underscore (`_`), or dollar sign (`$`); after the first character can come any combination of the preceding kinds of characters as well as digits.[^1]
 
-Sadly, you can't use spaces in your variable names. Because of this, a common practice called _camel casing_ (because of the camel-like humps in the resulting word) glues phrases together using capital letters, like the `doomedToDieInFiveMinutes` example above. Another school of thought prefers to use underscores instead; e.g. `doomed_to_die_in_five_minutes`. Either's perfectly fine. Use whichever feels most comfortable to you.
+Sadly, you can't use spaces in your variable names. Because of this, a common practice called _camel casing_ (because of the camel-like humps in the resulting word) glues phrases together using capital letters, like the `doomedToDieInFiveMinutes` example above. Another school of thought, _snake casing_, prefers to use underscores instead; e.g. `doomed_to_die_in_five_minutes`. Either's perfectly fine. Use whichever feels most comfortable to you.
+
+{% hint style='info' %}
+A variable name can contain periods (`.`), but they carry a special meaning. Until you've read TBD, it's best to leave them out of variable names.
+{% endhint %}
+
+TODO reserved variable names
 
 The only time variable names are shown to a player is if an error occurs in your story while they are playing it, so choose names that are easy to remember and descriptive. There's no need for a `clueF` variable when you can have `sawFootprintsInVault` instead.
 
@@ -47,7 +53,7 @@ _Booleans_ simply record a true or false value. Like numbers, you don't need to 
 
 ### Summing Up
 
-There are other, more complex types of values that will be discussed later. But numbers, strings, and booleans will get you quite far. To review, here's an example of a passage whose vars section contains all three types of variables.
+There are other, more complex types of values that will be discussed later, but numbers, strings, and booleans will get you quite far. To review, here's an example of a passage whose vars section contains all three types of variables.
 
 ```
 dollarsInPocket: 12
@@ -65,7 +71,7 @@ You don't have to set variables to plain values--meaning, a vars section could l
 dollarsInPocket: dollarsInPocket + 1
 ```
 
-You can use the basic mathematical operations--addition, subtraction, multiplication, and division--with numeric variables. You can use addition to connect two strings together--for instance, `fullName: first + ' ' + last`--but you cannot use any other mathematical operators with strings.
+These are called _expressions_. You can think of an expression as a formula or calculation. It's anything that can be transformed into a signle value via the _evaluation_ process. For example, you can use the basic mathematical operations--addition, subtraction, multiplication, and division--with numeric variables. You can use addition to connect two strings together--for instance, `fullName: first + ' ' + last`--but you cannot use any other mathematical operators with strings.
 
 You can also compare two numbers or strings, yielding a boolean.
 
