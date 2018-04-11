@@ -71,12 +71,12 @@ You don't have to set variables to plain values--meaning, a vars section could l
 dollarsInPocket: dollarsInPocket + 1
 ```
 
-These are called _expressions_. You can think of an expression as a formula or calculation. It's anything that can be transformed into a signle value via the _evaluation_ process. For example, you can use the basic mathematical operations--addition, subtraction, multiplication, and division--with numeric variables. You can use addition to connect two strings together--for instance, `fullName: first + ' ' + last`--but you cannot use any other mathematical operators with strings.
+These are called _expressions_. You can think of an expression as a formula or calculation. It's anything that can be transformed into a single value via the _evaluation_ process. For example, you can use the basic mathematical operations--addition, subtraction, multiplication, and division--with numeric variables. You can also use addition to connect two strings together--for instance, `fullName: first + ' ' + last`--but you cannot use any other mathematical operators with strings.
 
 You can also compare two numbers or strings, yielding a boolean.
 
 * `===`, "equal to"  
-True if both side are the same number.
+True if both sides are the same number or string. Strings have to be exactly the same: `'DOE'` does not equal `'doe'`, nor does `'doe '` (note the trailing space) equal `'doe'`.
 
 * `!==`, "not equal to"  
 True if both sides aren't the same.
@@ -109,6 +109,14 @@ True only if both sides are true.
 * <code>&#124;&#124;</code>, "or"  
 True if one or both sides are true.
 
+## Clarifying Expressions With Parentheses
+
+Often expressions are complex. For example, in a simple role-playing scenario, you might decide a character armed with a hammer does `strength * 2 + 4` damage. But if `strength` is 12, does that mean that the expression evaluates to 28 (multiply 12 by 2, then add 4) or 72 (add 2 to 4, then multiply by 12)?
+
+You may remember from algebra class that mathematical operators have rules relating to precedence; specifically, multiplication occurs before addition. But you probably have never been taught what the rules are for boolean logic--e.g. what does `!true || false` evaluate to?[^3]--and even if you do know the rules, it can be tricky to correctly apply them in a complex expression.
+
+In these situations, you can use parentheses to help make an expression easy to follow, or even to override the normal order of operations. `(strength * 2) + 4` makes it clear how the expression will be evaluated--and if indeed you wanted the answer above to be 72, you can specify that by writing `strength * (2 + 4)`.
+
 ## Variables Do Not Change On Their Own
 
 An important thing to remember about setting variables to calculated values is that the calculation only happens once, when you set the variable. Imagine this scenario:
@@ -120,3 +128,4 @@ The variables are now inconsistent: `teethChattering` is true but `temperature` 
 
 [^1]: You can use non-Latin characters in variable names, such as `sabiduría` or `мудрость`, but bear in mind that older web browsers that do not fully support the Unicode standard--in practice, old versions of Internet Explorer that have miniscule usage rates nowadays--may be deeply confused by them.
 [^2]: The final authority on ordering characters in a string is the Unicode standard. Characters are compared by their Unicode code points; a higher numeric code point means that a character is greater than another.
+[^3] In case you're curious, `!true || false` evaluates to false. The not operator takes precedent over the or.

@@ -10,10 +10,10 @@ name: 'Chris'
 "Hi, `name`," your guide greets you.
 ```
 
-Will display as: `"Hi, Chris," your guide greets you.` This example is a little silly, since you could just as easily write `Chris` where <code>`name`</code> is, but you could keep using <code>`name`</code> later in your story. You could use this, for example, to allow the player to choose a gender (or lack thereof) and then use the correct pronouns throughout the story.
+Will display as: `"Hi, Chris," your guide greets you.` This example is a little silly, since you could just as easily write `Chris` where <code>`name`</code> is. But the advantage of storing it in a variable is that you could keep using <code>`name`</code> later in your story. You could also use this, for example, to allow the player to choose a gender (or lack thereof) and then use the correct pronouns throughout the story.
 
 {% hint style='info' %}
-In this respect, Chapbook syntax diverges from standard Markdown, which uses backticks for code.
+In this respect, Chapbook syntax diverges from standard Markdown, which uses backticks to display text in a monospaced font. If you'd like to do this with Chapbook, instead enclose the text in `<code>` and `</code>`, i.e. `<code>10 GOTO 30</code>`.
 {% endhint %}
 
 ## Backticks Are Versatile
