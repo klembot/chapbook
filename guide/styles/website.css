@@ -50,6 +50,10 @@ span.widont {
 	font-style: italic;
 }
 
+.markdown-section h3 {
+	font-style: italic;
+}
+
 /* Use small caps for table headings. */
 
 .markdown-section table th {
