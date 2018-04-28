@@ -55,7 +55,7 @@ You could try [[unlocking it]] with the the key you found, or just [[turn back]]
 Nothing to do here but [[turn back]].
 ```
 
-`else` modifiers display the text following them if the previous `if` did not display. They have no relationship with `unless` conditions.
+`else` modifiers display the text following them if the previous `if` did not display. They have no relationship with `unless` conditions. `else`s also only apply on a per-passage basis; if you use an `if` in one passage, you cannot place the matching `else` in a different passage. If you find yourself wanting to do something along these lines, instead repeat the same condition in the second passage and use an `unless` instead of an `if`.
 
 ## Modifiers (Including Conditional Ones) Cannot Be Nested
 
@@ -89,8 +89,21 @@ You could [[open the door]]...
 
 ## Disabling Conditions For Testing
 
-It can be useful to temporarily force a conditional modifier to always 
+It can be useful to override a conditional modifier so that it always or never displays, regardless of circumstances. You can use [comments] to temporarily override the logic you've set up.
+
+```
+<!--[if hasKey]-->
+This text is now always shown.
+
+<!--
+[if hasKey]
+This text is now never shown.
+-->
+```
+
+Be careful of `else` modifiers, however. You'll need to disable them as well with a comment if you disable the `if` they are connected to.
 
 TODO discussion of whether to make conditional display explicit to players
 
 [^1]: Truthfully, it is also possible to write `[if stringVariable]` or `[if 2 + 2]`. In these cases, any non-empty string (e.g. not `''`) is treated as true, and any non-zero number is treated as true. It's best to be explicit, however, and write `[if stringVariable !== '']` and `[if 2 + 2 !== 0]`.
+[comments]: ../text-and-links/comments.html
