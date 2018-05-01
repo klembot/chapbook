@@ -17,6 +17,14 @@
 }
 
 /*
+Tighten leading.
+*/
+
+.markdown-section {
+	line-height: 1.4;
+}
+
+/*
 Use the Chapbook font family, and slightly larger than normal text to
 accommodate it.
 */
