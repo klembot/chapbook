@@ -68,8 +68,10 @@ span.widont {
 }
 
 .markdown-section h3 {
-	font-style: italic;
-	font-size: 1em;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	font-size: 0.7em;
+	margin-bottom: 0.4em;
 }
 
 /* Use small caps for table headings. */

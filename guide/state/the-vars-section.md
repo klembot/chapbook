@@ -41,17 +41,11 @@ The only time variable names are shown to a player is if an error occurs in your
 
 The example at the start of this section assigned numbers to variables, but variables can hold other types of values.
 
-### Strings
-
 _Strings_ are collections of letters, numbers, spaces, and other symbols. Strings are surrounded by either apostrophes (`'`) or quotation marks (`"`) so that's it clear where they begin and end. You can use either punctuation mark to mark off a string's beginning and end, but just like Markdown italics and bold, you have to be consistent with each usage. If you need to use a delimiter character inside a string, type a backslash (`\`) in front of it, e.g. `'Don\'t, just don\'t.'`.
 
 Strings are great for storing names for things. For example, if you want to allow the player to set the name of the main character at the start of a story, a string would be the best type of variable to use. You can also use strings to store fuzzy kinds of values. You could record the state of a relationship between two characters as `'friendly'`, `'neutral'`, `'wary'`, or `'hostile'`.
 
-### Booleans
-
 _Booleans_ simply record a true or false value. Like numbers, you don't need to put anything around a boolean to signal what it is; just type `true` or `false`. Booleans are good for recording whether something has occurred in a story; for example, whether the main character has found a clue.
-
-### Summing Up
 
 There are other, more complex types of values that will be discussed later, but numbers, strings, and booleans will get you quite far. To review, here's an example of a passage whose vars section contains all three types of variables.
 
@@ -128,4 +122,4 @@ The variables are now inconsistent: `teethChattering` is true but `temperature` 
 
 [^1]: You can use non-Latin characters in variable names, such as `sabiduría` or `мудрость`, but bear in mind that older web browsers that do not fully support the Unicode standard--in practice, old versions of Internet Explorer that have miniscule usage rates nowadays--may be deeply confused by them.
 [^2]: The final authority on ordering characters in a string is the Unicode standard. Characters are compared by their Unicode code points; a higher numeric code point means that a character is greater than another.
-[^3] In case you're curious, `!true || false` evaluates to false. The not operator takes precedent over the or.
+[^3]: In case you're curious, `!true || false` evaluates to false. The not operator takes precedent over the or.

@@ -13,3 +13,5 @@
   * [Displaying Variables](state/displaying-variables.md)
   * [Conditional Display](state/conditional-display.md)
   * [Continuity Between Sessions](state/continuity.md)
+* Data Structures and Customization
+  * [Arrays and Objects](structures/arrays-and-objects.md)
