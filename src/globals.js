@@ -104,9 +104,13 @@ const Globals = {
 		If possible, resume from where the user last left off--otherwise, start
 		from the beginning. This should occur as late as possible in
 		initialization so that author-set values overwrite defaults.
+
+		Exception: if we're in debug mode, start from scratch.
 		*/
 
-		Globals.vars.restore();
+		if (!/\bdebug\b/.test(Globals.story.options)) {
+			Globals.vars.restore();
+		}
 		Globals.vars.autosave = true;
 		Globals.vars.default('trail', []);
 
