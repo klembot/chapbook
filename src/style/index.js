@@ -109,14 +109,14 @@ function init(varsInstance) {
 	vars.default('config.style.fg', 'dark gray');
 	vars.default(
 		'config.style.font',
-		'"Hoefler Text", "Calisto MT", Georgia, serif'
+		'Palatino, "Palatino Linotype", Georgia, serif'
 	);
 	vars.default('config.style.fontSize', 18);
 	vars.default('config.style.backdrop', 'pale blue gray');
 	vars.default('config.style.pageBorderColor', '');
 	vars.default(
 		'config.style.inputFont',
-		'"Hoefler Text", "Calisto MT", Georgia, serif'
+		'Palatino, "Palatino Linotype", Georgia, serif'
 	);
 	vars.default('config.style.inputFontSize', 18);
 	vars.default('config.style.inputBg', 'transparent');
