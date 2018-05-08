@@ -30,19 +30,7 @@ accommodate it.
 */
 
 .book.font-family-1 {
-	font-family: "Hoefler Text", "Calisto MT", Georgia, serif;
-}
-
-.book.font-size-0 .book-body .page-inner section {
-	font-size: 1.4rem;
-}
-
-.book.font-size-1 .book-body .page-inner section {
-	font-size: 1.6rem;
-}
-
-.book.font-size-2 .book-body .page-inner section {
-	font-size: 1.8rem;
+	font-family: Palatino, 'Palatino Linotype', Georgia, serif;
 }
 
 /* &nbsp; shows up larger than a regular space with our font. */
@@ -54,12 +42,14 @@ span.widont {
 
 /* Avoid boldface for headings. */
 
-.markdown-section h1, .markdown-section h2, .markdown-section h3 {
+.markdown-section h1,
+.markdown-section h2,
+.markdown-section h3 {
 	font-weight: normal;
 }
 
 .markdown-section h1 {
-	font-size: 2em;
+	font-size: 1.8em;
 }
 
 .markdown-section h2 {
@@ -85,7 +75,8 @@ span.widont {
 
 /* Remove some unnecessary table borders and backgrounds. */
 
-.markdown-section table th, .markdown-section table tr:first-child {
+.markdown-section table th,
+.markdown-section table tr:first-child {
 	border-top: none;
 }
 
@@ -93,11 +84,13 @@ span.widont {
 	border-bottom: none;
 }
 
-.markdown-section table td:first-child, .markdown-section table th:first-child {
+.markdown-section table td:first-child,
+.markdown-section table th:first-child {
 	border-left: none;
 }
 
-.markdown-section table td:last-child, .markdown-section table th:last-child {
+.markdown-section table td:last-child,
+.markdown-section table th:last-child {
 	border-right: none;
 }
 
