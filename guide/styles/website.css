@@ -1,0 +1,99 @@
+/* Use default font rendering. */
+
+* {
+	-webkit-font-smoothing: auto;
+}
+
+/* Force line wrapping in code examples. */
+
+.markdown-section pre > code {
+	white-space: pre-wrap;
+}
+
+/* Hide font selector. */
+
+.font-settings .buttons:nth-child(3) {
+	display: none;
+}
+
+/*
+Tighten leading.
+*/
+
+.markdown-section {
+	line-height: 1.4;
+}
+
+/*
+Use the Chapbook font family, and slightly larger than normal text to
+accommodate it.
+*/
+
+.book.font-family-1 {
+	font-family: Palatino, 'Palatino Linotype', Georgia, serif;
+}
+
+/* &nbsp; shows up larger than a regular space with our font. */
+
+span.widont {
+	display: inline-block;
+	max-width: 0.3em;
+}
+
+/* Avoid boldface for headings. */
+
+.markdown-section h1,
+.markdown-section h2,
+.markdown-section h3 {
+	font-weight: normal;
+}
+
+.markdown-section h1 {
+	font-size: 1.8em;
+}
+
+.markdown-section h2 {
+	font-style: italic;
+	font-size: 1.2em;
+}
+
+.markdown-section h3 {
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	font-size: 0.7em;
+	margin-bottom: 0.4em;
+}
+
+/* Use small caps for table headings. */
+
+.markdown-section table th {
+	font-weight: normal;
+	text-transform: uppercase;
+	font-size: 70%;
+	letter-spacing: 0.08em;
+}
+
+/* Remove some unnecessary table borders and backgrounds. */
+
+.markdown-section table th,
+.markdown-section table tr:first-child {
+	border-top: none;
+}
+
+.markdown-section table tr:last-child td {
+	border-bottom: none;
+}
+
+.markdown-section table td:first-child,
+.markdown-section table th:first-child {
+	border-left: none;
+}
+
+.markdown-section table td:last-child,
+.markdown-section table th:last-child {
+	border-right: none;
+}
+
+.markdown-section table tr:nth-child(2n) {
+	background: none;
+}
