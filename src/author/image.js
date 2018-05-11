@@ -1,4 +1,4 @@
-/* Functions for embedding images. */
+/* Author functions for embedding images. */
 
 import Colors from './style/colors';
 

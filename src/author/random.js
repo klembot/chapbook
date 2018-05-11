@@ -1,6 +1,4 @@
-/*
-Functions for random behavior.
-*/
+/* Author unctions for random behavior. */
 
 import seedrandom from 'seedrandom';
 import shuffle from 'lodash.shuffle';

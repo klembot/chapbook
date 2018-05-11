@@ -1,5 +1,5 @@
 /*
-Allows the player to make choices or enter text.
+Author functions to allows the player to make choices or enter text.
 */
 
 import closest from 'closest';

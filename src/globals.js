@@ -1,10 +1,11 @@
 import Alarm from './alarm';
-import {Image, createFactory as createImageFactory} from './image';
-import {Input, createFactory as createInputFactory} from './input';
-import {Link, createFactory as createLinkFactory} from './link';
+import {createFactory as createCodeFactory} from './author/code';
+import {Image, createFactory as createImageFactory} from './author/image';
+import {Input, createFactory as createInputFactory} from './author/input';
+import {Link, createFactory as createLinkFactory} from './author/link';
 import Modifiers from './modifiers';
 import Parser from './template/parser';
-import Random from './random';
+import Random from './author/random';
 import Renderer from './template/renderer';
 import SideMatter from './side-matter';
 import Story from './story';
@@ -89,6 +90,7 @@ const Globals = {
 		Globals.footer.left = '_`story.name`_';
 		Globals.footer.right = "`link('Restart').restart()`";
 
+		Globals.code = createCodeFactory(Globals.parser, Globals.renderer);
 		Globals.image = createImageFactory();
 		Globals.link = createLinkFactory(Globals.vars);
 		Globals.input = createInputFactory(Globals.vars);
@@ -149,10 +151,6 @@ const Globals = {
 		window.setTimeout(() => {
 			document.querySelector('html').classList.add('transition-all');
 		}, 0);
-	},
-
-	render(source) {
-		return Globals.renderer.render(Globals.parser.parse(source)).html;
 	},
 
 	show(passageName) {

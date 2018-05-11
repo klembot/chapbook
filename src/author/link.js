@@ -1,3 +1,5 @@
+/* Author functions for creating links. */
+
 import closest from 'closest';
 import escape from 'lodash.escape';
 import {Input} from './input';
