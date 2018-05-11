@@ -5,6 +5,7 @@ import {Input, createFactory as createInputFactory} from './author/input';
 import {Link, createFactory as createLinkFactory} from './author/link';
 import Modifiers from './modifiers';
 import Parser from './template/parser';
+import {createFactory as createPassageFactory} from './author/passage';
 import Random from './author/random';
 import Renderer from './template/renderer';
 import SideMatter from './side-matter';
@@ -74,26 +75,39 @@ const Globals = {
 		initStyle(Globals.vars);
 
 		/*
+		Set up the author-facing render function. We also use for the header and
+		footer.
+		*/
+
+		Globals.code = createCodeFactory(Globals.parser, Globals.renderer);
+
+		/*
 		Set up header and footer.
 		*/
 
 		Globals.header = new SideMatter(
 			document.querySelector('.page header'),
-			Globals.render,
+			Globals.code,
 			Globals.vars
 		);
 		Globals.footer = new SideMatter(
 			document.querySelector('.page footer'),
-			Globals.render,
+			Globals.code,
 			Globals.vars
 		);
 		Globals.footer.left = '_`story.name`_';
 		Globals.footer.right = "`link('Restart').restart()`";
 
-		Globals.code = createCodeFactory(Globals.parser, Globals.renderer);
+		/* Set up the rest of the author functions. */
+
 		Globals.image = createImageFactory();
 		Globals.link = createLinkFactory(Globals.vars);
 		Globals.input = createInputFactory(Globals.vars);
+		Globals.passage = createPassageFactory(
+			Globals.story,
+			Globals.parser,
+			Globals.renderer
+		);
 		Globals.random = new Random();
 
 		/*
@@ -125,7 +139,7 @@ const Globals = {
 		if (trail.length > 0) {
 			/* Just show the passage without creating a new history entry. */
 
-			Globals.view.show(Globals.show(trail[trail.length - 1]));
+			Globals.view.show(Globals.passage(trail[trail.length - 1]));
 		} else {
 			const startPassage = Globals.story.passages.find(
 				p => p.id === Globals.story.startNode
@@ -153,23 +167,13 @@ const Globals = {
 		}, 0);
 	},
 
-	show(passageName) {
-		let passage = Globals.story.passage(passageName);
-
-		if (!passage) {
-			throw new Error(`There is no passage named "${passageName}".`);
-		}
-
-		return Globals.render(passage.source);
-	},
-
 	go(passageName) {
 		const trail = Globals.vars.get('trail');
 
 		trail.push(passageName);
 
 		Globals.vars.set('trail', trail);
-		Globals.view.show(Globals.show(passageName));
+		Globals.view.show(Globals.passage(passageName));
 	},
 
 	restart(prompt) {

@@ -1,6 +1,6 @@
 /* Author functions for embedding images. */
 
-import Colors from './style/colors';
+import Colors from '../style/colors';
 
 class Image {
 	constructor(url) {

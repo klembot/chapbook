@@ -1,4 +1,4 @@
-import {Link} from '../link';
+import {Link} from '../author/link';
 
 export default function(source, vars) {
 	let result = source;
