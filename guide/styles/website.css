@@ -10,6 +10,33 @@
 	white-space: pre-wrap;
 }
 
+/* Make superscripts smaller. */
+
+.markdown-section sup {
+	font-size: 75%;
+}
+
+/* Make footnotes look like regular text. */
+
+.markdown-section blockquote[id^='fn_'] {
+	color: inherit;
+	border-left: none;
+	padding: 0;
+}
+
+.markdown-section blockquote[id='fn_1'] {
+	margin-top: 3em;
+	padding-top: 1em;
+	border-top: 1px solid #333;
+}
+
+/* Use Courier for code. */
+
+.markdown-section code {
+	font-family: Courier, 'Courier New', monospace;
+	background: none;
+}
+
 /* Hide font selector. */
 
 .font-settings .buttons:nth-child(3) {
