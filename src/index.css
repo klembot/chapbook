@@ -44,12 +44,12 @@ pre {
 }
 
 .page {
-	width: 35em;
+	width: 40em;
 	max-width: calc(100vw - 2em);
 	line-height: 150%;
 	min-height: calc(100vh - 2em);
 	margin: 1em;
-	padding: 2em;
+	padding: 4em;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
