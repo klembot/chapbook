@@ -1,0 +1,7 @@
+digraph {
+	1 [label="{name: 'Mrs. Silver', age: 31, motive: 'greed'}" shape="none"];
+	mrsSilver [shape="none"];
+	mrsSilversTwin [shape="none"];
+	mrsSilver -> 1;
+	mrsSilversTwin -> 1;
+}

@@ -23,7 +23,7 @@ There are two reasons to record state separately: first, for convenience's sake.
 
 [^1]: [_You Are The Hero_](yath), a retrospective of the _Fighting Fantasy_ book series, offers an intriguing peek into the history of one of these RPG-influenced gamebook series. And if you've never tried the genre, [Project Aon](aon) hosts nearly all of the works of Joe Dever, who was perhaps the most prolific RPG gamebook author, in a format that can be played in a web browser for free.
 
-[^2]: To pick apart just one thing _D&D_ : there are many different types of intelligence, and the concept of assigning numeric scores to intelligence in people has a [dark history](https://www.theatlantic.com/national/archive/2013/05/why-people-keep-misunderstanding-the-connection-between-race-and-iq/275876/).
+[^2]: To pick apart just one thing in the _D&D_ paradigm: there are many different types of intelligence, and the concept of assigning numeric scores to intelligence in people has a [dark history](https://www.theatlantic.com/national/archive/2013/05/why-people-keep-misunderstanding-the-connection-between-race-and-iq/275876/).
 
 [^3]: For more on incorporating randomness into your story, see *TBD*.
 
