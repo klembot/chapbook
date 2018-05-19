@@ -1,4 +1,5 @@
 import Alarm from './alarm';
+import Debug from './debug';
 import {createFactory as createCodeFactory} from './author/code';
 import {Image, createFactory as createImageFactory} from './author/image';
 import {Input, createFactory as createInputFactory} from './author/input';
@@ -100,6 +101,7 @@ const Globals = {
 
 		/* Set up the rest of the author functions. */
 
+		Globals.debug = new Debug();
 		Globals.image = createImageFactory();
 		Globals.link = createLinkFactory(Globals.vars);
 		Globals.input = createInputFactory(Globals.vars);
@@ -154,6 +156,15 @@ const Globals = {
 					}, does not exist.`
 				);
 			}
+		}
+
+		/*
+		Activate the debugger if we're in debug mode.
+		*/
+
+		if (/\bdebug\b/.test(Globals.story.options)) {
+			Globals.debug.addDefaultPanels(Globals.vars);
+			Globals.debug.activate();
 		}
 
 		/*

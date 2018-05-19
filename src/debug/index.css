@@ -1,0 +1,93 @@
+body.with-debugger {
+	align-items: flex-start;
+}
+
+#cb-debug {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: calc(100vw - 42em);
+	font-size: 18px;
+	background: hsla(0, 0%, 0%, 0.85);
+	color: white;
+
+	& .panel {
+		font-size: 12px;
+
+		& .title {
+			display: block;
+			width: 100%;
+			background: hsl(0, 0%, 85%);
+			color: black;
+			text-align: left;
+			border: none;
+			padding: 2px;
+			font-size: 13px;
+			cursor: pointer;
+			transition: none;
+
+			&:hover {
+				background: hsl(0, 0%, 90%);
+			}
+
+			&:focus {
+				outline: none;
+				background: white;
+			}
+
+			&::before {
+				display: inline-block;
+				content: '+';
+				width: 1em;
+				text-align: center;
+				font-weight: bold;
+				font-size: 125%;
+				line-height: 100%;
+				margin-right: 0.25em;
+			}
+		}
+
+		& .content {
+			display: none;
+
+			& p {
+				margin: 0;
+				padding: 1em 2px;
+			}
+
+			& table {
+				border-collapse: collapse;
+				width: 100%;
+				max-width: 100%;
+			}
+
+			& td {
+				vertical-align: top;
+				border: 1px solid hsl(0, 0%, 85%);
+
+				&:first-child {
+					border-left: none;
+				}
+
+				&:last-child {
+					border-right: none;
+				}
+
+				&.force-wrap {
+					word-wrap: break-word;
+				}
+			}
+		}
+
+		&.open {
+			& .title::before {
+				content: '-';
+			}
+
+			& .content {
+				display: block;
+			}
+		}
+	}
+}

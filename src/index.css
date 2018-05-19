@@ -1,4 +1,5 @@
 @import 'animation.css';
+@import 'debug/index.css';
 
 * {
 	box-sizing: border-box;
@@ -49,7 +50,7 @@ pre {
 	line-height: 150%;
 	min-height: calc(100vh - 2em);
 	margin: 1em;
-	padding: 4em;
+	padding: 4em 4em 2em 4em;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
