@@ -153,6 +153,19 @@ export default class {
 	}
 
 	/*
+	Returns a JSON-ready representation of data stored in this object.
+	*/
+
+	toJSON() {
+		return {
+			vars: this.keys.reduce((result, r) => {
+				result[r] = get(this.state, r);
+				return result;
+			}, {})
+		};
+	}
+
+	/*
 	Saves all values to local storage for later retrieval by restore().
 	*/
 
@@ -163,15 +176,7 @@ export default class {
 		}
 
 		try {
-			window.localStorage.setItem(
-				this.saveKey,
-				JSON.stringify({
-					vars: this.keys.reduce((result, r) => {
-						result[r] = get(this.state, r);
-						return result;
-					}, {})
-				})
-			);
+			window.localStorage.setItem(this.saveKey, JSON.stringify(this.toJSON()));
 		} catch (e) {
 			throw new Error(`Could not save the story state (${e.message}).`);
 		}

@@ -162,8 +162,13 @@ const Globals = {
 		Activate the debugger if we're in debug mode.
 		*/
 
-		if (/\bdebug\b/.test(Globals.story.options)) {
-			Globals.debug.addDefaultPanels(Globals.vars);
+		if (/\bdebug\b/.test(Globals.story.options) || true) {
+			Globals.debug.addDefaultPanels(
+				Globals.vars,
+				Globals.view,
+				Globals.story,
+				Globals.passage
+			);
 			Globals.debug.activate();
 		}
 

@@ -1,4 +1,5 @@
 import Panel from './panel';
+import SnapshotsPanel from './snapshots';
 import StatePanel from './state';
 
 export default class {
@@ -17,11 +18,13 @@ export default class {
 		document.body.removeChild(this.el);
 	}
 
-	addDefaultPanels(vars) {
+	addDefaultPanels(vars, view, story, passage) {
+		const snapshotsPanel = new SnapshotsPanel(vars, view, story, passage);
 		const statePanel = new StatePanel(vars);
 
 		statePanel.open();
 		this.addPanel(statePanel);
+		this.addPanel(snapshotsPanel);
 	}
 
 	addPanel(titleOrPanel) {
