@@ -179,7 +179,7 @@ const Globals = {
 		*/
 
 		window.setTimeout(() => {
-			document.querySelector('html').classList.add('transition-all');
+			document.querySelector('.page').classList.add('transition-all');
 		}, 0);
 	},
 
