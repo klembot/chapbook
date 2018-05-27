@@ -13,16 +13,6 @@ body {
 	align-items: center;
 }
 
-hr {
-	border: none;
-
-	&:after {
-		content: '* \a0 * \a0 *';
-		display: block;
-		text-align: center;
-	}
-}
-
 img {
 	max-width: 100%;
 	height: auto;
@@ -33,10 +23,6 @@ select {
 	padding: 0.25em;
 }
 
-tw-storydata {
-	display: none;
-}
-
 pre {
 	font-family: 'Courier New', 'Courier', monospace;
 	display: block;
@@ -44,7 +30,16 @@ pre {
 	line-height: 120%;
 }
 
+tw-storydata {
+	display: none;
+}
+
 .page {
+	/*
+	In order to expose things to authors, many default display properties are
+	set in style/index.js, specifically the init() function.
+	*/
+
 	width: 40em;
 	max-width: calc(100vw - 2em);
 	line-height: 150%;
@@ -97,6 +92,16 @@ pre {
 
 		&.has-content {
 			border-top: 1px solid black;
+		}
+	}
+
+	& hr {
+		border: none;
+
+		&:after {
+			content: '* \a0 * \a0 *';
+			display: block;
+			text-align: center;
 		}
 	}
 
