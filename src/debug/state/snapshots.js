@@ -2,7 +2,7 @@
 
 import cloneDeep from 'lodash.clonedeep';
 import closest from 'closest';
-import Panel from './panel';
+import Panel from '../panel';
 
 export default class extends Panel {
 	constructor(vars, view, story, passage) {
@@ -62,7 +62,7 @@ export default class extends Panel {
 			.reduce(
 				(result, current) =>
 					result +
-					`<div class="segmented-button"><button data-load-snapshot="${current}" aria-label="Load snapshot &quot;${current}&quot;">${current}</button><button data-delete-snapshot="${current}" aria-label="Delete snapshot &quot;${current}&quot;" class="fixed"><strong>&times;</strong></button></div>`,
+					`<div class="segmented-button block"><button data-load-snapshot="${current}" aria-label="Load snapshot &quot;${current}&quot;">${current}</button><button data-delete-snapshot="${current}" aria-label="Delete snapshot &quot;${current}&quot;" class="fixed"><strong>&times;</strong></button></div>`,
 				''
 			);
 	}

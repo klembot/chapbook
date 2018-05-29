@@ -163,13 +163,17 @@ const Globals = {
 		*/
 
 		if (/\bdebug\b/.test(Globals.story.options) || true) {
+			/*
 			Globals.debug.addDefaultPanels(
 				Globals.vars,
 				Globals.view,
 				Globals.story,
 				Globals.passage
 			);
+			*/
+
 			Globals.debug.activate();
+			Globals.debug.addDefaultTabs();
 		}
 
 		/*

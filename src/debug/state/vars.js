@@ -1,11 +1,12 @@
-/* A panel displaying the story state. */
+/* A panel displaying the current vars. */
 
-import Panel from './panel';
+import closest from 'closest';
 import escape from 'lodash.escape';
+import Panel from '../panel';
 
 export default class extends Panel {
 	constructor(vars) {
-		super('State');
+		super('Variables');
 		this.showDefaults = false;
 		this.vars = vars;
 		this.vars.addListener('*', () => this.update());
@@ -30,6 +31,33 @@ export default class extends Panel {
 		toggleEl.appendChild(label);
 
 		this.dataEl = document.createElement('div');
+		this.dataEl.addEventListener('change', e => {
+			const input = closest(e.target, '[data-var]', true);
+
+			if (input) {
+				try {
+					const newValue = new Function(`return ${input.value}`)();
+
+					this.vars.set(input.dataset.var, newValue);
+				} catch (e) {
+					window.alert(
+						`The expression "${escape(input.value)}" could not be evaluated (${
+							e.message
+						}).`
+					);
+
+					input.value = this.vars.get(input.dataset.var);
+				}
+			}
+		});
+		this.dataEl.addEventListener('click', e => {
+			const input = closest(e.target, '[data-var]', true);
+
+			if (input) {
+				input.select();
+			}
+		});
+
 		this.contentEl.appendChild(toggleEl);
 		this.contentEl.appendChild(this.dataEl);
 		this.update();
@@ -42,13 +70,14 @@ export default class extends Panel {
 			keys = keys.filter(k => this.vars.defaults[k] !== this.vars.get(k));
 		}
 
-		this.dataEl.innerHTML = `<table>${keys.reduce(
-			(result, k) =>
+		this.dataEl.innerHTML = `<table>${keys.reduce((result, key) => {
+			const k = escape(key);
+			const value = escape(JSON.stringify(this.vars.get(k)));
+
+			return (
 				result +
-				`<tr><td>${escape(k)}</td><td class="force-wrap">${escape(
-					JSON.stringify(this.vars.get(k))
-				)}</td></tr>`,
-			''
-		)}</table>`;
+				`<tr><td class="disabled">${k}</td><td><input type="text" id="cb-debug-variable-${k}" data-var="${k}" value="${value}"></td></tr>`
+			);
+		}, '')}</table>`;
 	}
 }

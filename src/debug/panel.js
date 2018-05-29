@@ -1,32 +1,20 @@
 export default class {
 	constructor(title) {
-		this.title = title;
 		this.el = document.createElement('div');
-		this.el.classList.add('panel', 'system');
-
-		this.titleEl = document.createElement('button');
-		this.titleEl.classList.add('title');
-		this.titleEl.appendChild(document.createTextNode(title));
-		this.titleEl.addEventListener('click', () =>
-			this.el.classList.toggle('open')
-		);
-
-		this.el.appendChild(this.titleEl);
-
+		this.el.classList.add('panel');
+		this.titleEl = document.createElement('h2');
 		this.contentEl = document.createElement('div');
-		this.contentEl.classList.add('content');
+		this.el.appendChild(this.titleEl);
 		this.el.appendChild(this.contentEl);
+		this.title = title;
 	}
 
-	open() {
-		this.el.classList.add('open');
+	get title() {
+		return this._title;
 	}
 
-	close() {
-		this.el.classList.remove('open');
-	}
-
-	setTitle(title) {
-		this.titleEl.firstChild.nodeValue = title;
+	set title(value) {
+		this._title = value;
+		this.titleEl.innerHTML = value;
 	}
 }

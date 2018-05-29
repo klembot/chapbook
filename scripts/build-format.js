@@ -8,7 +8,7 @@ const pkg = require('../package.json');
 const encoding = {encoding: 'utf8'};
 
 Promise.all([
-	exec('postcss src/index.css -c'),
+	exec('node-sass src/index.scss'),
 	exec('rollup --config', {maxBuffer: Infinity})
 ])
 	.then(results => {

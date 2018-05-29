@@ -1,11 +1,12 @@
-import Panel from './panel';
-import SnapshotsPanel from './snapshots';
-import StatePanel from './state';
+import StateTab from './state';
+import Tabs from './tabs';
 
 export default class {
 	constructor() {
 		this.el = document.createElement('div');
 		this.el.setAttribute('id', 'cb-debug');
+		this.tabs = new Tabs();
+		this.el.appendChild(this.tabs.el);
 	}
 
 	activate() {
@@ -18,23 +19,7 @@ export default class {
 		document.body.removeChild(this.el);
 	}
 
-	addDefaultPanels(vars, view, story, passage) {
-		const snapshotsPanel = new SnapshotsPanel(vars, view, story, passage);
-		const statePanel = new StatePanel(vars);
-
-		statePanel.open();
-		this.addPanel(statePanel);
-		this.addPanel(snapshotsPanel);
-	}
-
-	addPanel(titleOrPanel) {
-		let panel = titleOrPanel;
-
-		if (typeof titleOrPanel === 'string') {
-			panel = new Panel(title);
-		}
-
-		this.el.appendChild(panel.el);
-		return panel;
+	addDefaultTabs(vars, view, story, passage) {
+		new StateTab(this.tabs, vars, view, story, passage);
 	}
 }
