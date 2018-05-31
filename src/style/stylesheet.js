@@ -8,8 +8,6 @@ this.rules['body p'] = {color: 'red', 'font-size': 18};
 This creates CSS rules as-is; you must use the key 'font-size', not fontSize.
 */
 
-import Colors from './colors';
-
 export default class {
 	constructor(rules = {}) {
 		this.el = document.createElement('style');
@@ -23,15 +21,6 @@ export default class {
 
 	autopx(value) {
 		return typeof value === 'number' ? value + 'px' : value;
-	}
-
-	/*
-	Translates a color name to a hex value if it exists; otherwise leaves it
-	alone.
-	*/
-
-	color(value) {
-		return Colors[value] || value;
 	}
 
 	/*

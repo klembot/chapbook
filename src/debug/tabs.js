@@ -5,7 +5,7 @@ export default class {
 		this.tabList.classList.add('tabs');
 		this.el.appendChild(this.tabList);
 		this.tabList.addEventListener('click', e =>
-			this.showTab(e.target.dataset.tab)
+			this.show(e.target.dataset.tab)
 		);
 	}
 

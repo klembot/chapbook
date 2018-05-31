@@ -1,5 +1,6 @@
 import Alarm from './alarm';
 import Debug from './debug';
+import {createFactory as createColorFactory} from './author/color';
 import {createFactory as createCodeFactory} from './author/code';
 import {Image, createFactory as createImageFactory} from './author/image';
 import {Input, createFactory as createInputFactory} from './author/input';
@@ -102,6 +103,7 @@ const Globals = {
 		/* Set up the rest of the author functions. */
 
 		Globals.debug = new Debug();
+		Globals.color = createColorFactory();
 		Globals.image = createImageFactory();
 		Globals.link = createLinkFactory(Globals.vars);
 		Globals.input = createInputFactory(Globals.vars);

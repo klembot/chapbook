@@ -8,7 +8,7 @@ const pkg = require('../package.json');
 const encoding = {encoding: 'utf8'};
 
 Promise.all([
-	exec('node-sass src/index.scss'),
+	exec('node-sass --include-path=node_modules/open-color src/index.scss'),
 	exec('rollup --config', {maxBuffer: Infinity})
 ])
 	.then(results => {
@@ -46,5 +46,6 @@ Promise.all([
 		);
 	})
 	.catch(e => {
-		console.log('Build failed', e);
+		console.log('Build failed', e.message);
+		process.exit(1);
 	});

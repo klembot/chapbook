@@ -1,4 +1,5 @@
 @import 'animation';
+@import 'open-color.scss';
 @import 'layout';
 @import 'typography';
 @import 'debug/style';
@@ -118,8 +119,8 @@ tw-storydata {
 
 	.error,
 	.warning {
-		background: #ffebee;
-		color: #b71c1c;
+		background: $oc-red-0;
+		color: $oc-red-9;
 		padding: 0.5em;
 		margin-bottom: 1em;
 		overflow: auto;
@@ -134,26 +135,26 @@ tw-storydata {
 	}
 
 	.error a {
-		color: #b71c1c;
-		text-decoration-color: #b71c1c;
+		color: $oc-red-9;
+		text-decoration-color: $oc-red-9;
 
 		&:hover {
-			color: #f44336;
-			text-decoration-color: #f44336;
+			color: $oc-red-6;
+			text-decoration-color: $oc-red-6;
 		}
 	}
 
 	.warning {
-		background: #fffde7;
-		color: #f57f17;
+		background: $oc-yellow-0;
+		color: $oc-yellow-9;
 
 		a {
-			color: #f57f17;
-			text-decoration-color: #f57f17;
+			color: $oc-yellow-9;
+			text-decoration-color: $oc-yellow-9;
 
 			&:hover {
-				color: #ffeb3b;
-				text-decoration-color: #ffeb3b;
+				color: $oc-yellow-6;
+				text-decoration-color: $oc-yellow-6;
 			}
 		}
 	}

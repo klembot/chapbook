@@ -1,4 +1,5 @@
 import babel from 'rollup-plugin-babel';
+import json from 'rollup-plugin-json';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import uglify from 'rollup-plugin-uglify';
@@ -7,12 +8,9 @@ let config = {
 	input: 'src/index.js',
 	output: {
 		format: 'iife',
-		strict: false,
+		strict: false
 	},
-	plugins: [
-		resolve({browser: true}),
-		commonjs()
-	]
+	plugins: [resolve({browser: true}), commonjs(), json()]
 };
 
 if (process.env.NODE_ENV === 'production') {
@@ -21,9 +19,12 @@ if (process.env.NODE_ENV === 'production') {
 			exclude: 'node_modules/**',
 			plugins: ['external-helpers'],
 			presets: [
-				['env', {targets: {browsers: ['iOS > 9', 'IE 11', '>10%']}, modules: false}]
+				[
+					'env',
+					{targets: {browsers: ['iOS > 9', 'IE 11', '>10%']}, modules: false}
+				]
 			]
-		}),
+		})
 	);
 
 	config.plugins.push(uglify());

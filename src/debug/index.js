@@ -1,4 +1,5 @@
 import StateTab from './state';
+import StyleTab from './style';
 import Tabs from './tabs';
 
 export default class {
@@ -21,5 +22,6 @@ export default class {
 
 	addDefaultTabs(vars, view, story, passage) {
 		new StateTab(this.tabs, vars, view, story, passage);
+		new StyleTab(this.tabs, vars, view);
 	}
 }
