@@ -3,35 +3,17 @@
 import closest from 'closest';
 import escape from 'lodash.escape';
 import Panel from '../panel';
+import html from './vars.html';
 
 export default class extends Panel {
 	constructor(vars) {
-		super('Variables');
+		super('Variables', html);
 		this.showDefaults = false;
 		this.vars = vars;
 		this.vars.addListener('*', () => this.update());
+		this.varsTable = this.hook('vars-table');
 
-		const checkBox = document.createElement('input');
-
-		checkBox.setAttribute('type', 'checkbox');
-		checkBox.setAttribute('id', 'cb-debug-state-show-defaults');
-		checkBox.addEventListener('change', () => {
-			this.showDefaults = !this.showDefaults;
-			this.update();
-		});
-
-		const label = document.createElement('label');
-
-		label.setAttribute('for', 'cb-debug-state-show-defaults');
-		label.appendChild(document.createTextNode('Show Defaults'));
-
-		const toggleEl = document.createElement('p');
-
-		toggleEl.appendChild(checkBox);
-		toggleEl.appendChild(label);
-
-		this.dataEl = document.createElement('div');
-		this.dataEl.addEventListener('change', e => {
+		this.varsTable.addEventListener('change', e => {
 			const input = closest(e.target, '[data-var]', true);
 
 			if (input) {
@@ -50,7 +32,7 @@ export default class extends Panel {
 				}
 			}
 		});
-		this.dataEl.addEventListener('click', e => {
+		this.varsTable.addEventListener('click', e => {
 			const input = closest(e.target, '[data-var]', true);
 
 			if (input) {
@@ -58,8 +40,6 @@ export default class extends Panel {
 			}
 		});
 
-		this.contentEl.appendChild(toggleEl);
-		this.contentEl.appendChild(this.dataEl);
 		this.update();
 	}
 
@@ -70,7 +50,7 @@ export default class extends Panel {
 			keys = keys.filter(k => this.vars.defaults[k] !== this.vars.get(k));
 		}
 
-		this.dataEl.innerHTML = `<table>${keys.reduce((result, key) => {
+		this.varsTable.innerHTML = `<table>${keys.reduce((result, key) => {
 			const k = escape(key);
 			const value = escape(JSON.stringify(this.vars.get(k)));
 

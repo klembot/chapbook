@@ -1,0 +1,40 @@
+.cb-color-picker {
+	.swatches {
+		display: flex;
+		padding: 0 $debug-ui-padding;
+	}
+
+	.hue {
+		display: flex;
+		flex-direction: column;
+		border-top: 1px solid $debug-input-border;
+		border-bottom: 1px solid $debug-input-border;
+
+		&:first-child {
+			border-left: 1px solid $debug-input-border;
+		}
+
+		&:last-child {
+			border-right: 1px solid $debug-input-border;
+		}
+	}
+
+	button {
+		box-sizing: border-box;
+		display: inline-block;
+		width: 15px;
+		height: 15px;
+		padding: 0;
+		border: none;
+
+		&:hover {
+			transform: scale(1.25);
+			box-shadow: 0 0 0 1px black;
+		}
+	}
+}
+
+#cb-debug .cb-color-picker button {
+	border: none;
+	border-radius: 0;
+}

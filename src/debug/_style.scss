@@ -6,6 +6,8 @@ $debug-input-border: $oc-gray-5;
 $debug-font-size: 12px;
 $debug-tab-height: 20px;
 
+@import 'style/color-picker/index.scss';
+
 body.with-debugger {
 	align-items: flex-start;
 }
@@ -78,6 +80,10 @@ body.with-debugger {
 		color: $oc-gray-7;
 		@include small-caps;
 		font-size: $debug-font-size - 1px;
+		padding: 0 $debug-ui-padding;
+	}
+
+	p {
 		padding: 0 $debug-ui-padding;
 	}
 

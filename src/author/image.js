@@ -1,6 +1,6 @@
 /* Author functions for embedding images. */
 
-import Colors from '../style/colors';
+import {Color} from '../author/color';
 
 class Image {
 	constructor(url) {
@@ -16,7 +16,7 @@ class Image {
 	}
 
 	placeholder(color) {
-		this.el.style.backgroundColor = Colors[color] || color;
+		this.el.style.backgroundColor = new Color(color).hex || color;
 		return this;
 	}
 

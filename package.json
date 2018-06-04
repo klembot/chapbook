@@ -38,6 +38,7 @@
     "lodash.clonedeep": "^4.5.0",
     "lodash.escape": "^4.0.1",
     "lodash.get": "^4.4.2",
+    "lodash.kebabcase": "^4.1.1",
     "lodash.set": "^4.3.2",
     "lodash.shuffle": "^4.2.0",
     "lodash.unescape": "^4.0.1",

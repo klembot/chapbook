@@ -3,10 +3,11 @@
 import cloneDeep from 'lodash.clonedeep';
 import closest from 'closest';
 import Panel from '../panel';
+import html from './snapshots.html';
 
 export default class extends Panel {
 	constructor(vars, view, story, passage) {
-		super('Snapshots');
+		super('Snapshots', html);
 		this.vars = vars;
 		this.view = view;
 		this.story = story;
@@ -14,22 +15,8 @@ export default class extends Panel {
 		this.snapshots = {};
 		this.restore();
 
-		const addButton = document.createElement('button');
-
-		addButton.classList.add('block');
-		addButton.addEventListener('click', () => {
-			const name = window.prompt('Enter a name for this snapshot:');
-
-			if (name) {
-				this.addSnapshot(name);
-			}
-		});
-
-		addButton.appendChild(document.createTextNode('Add Snapshot'));
-		this.contentEl.appendChild(addButton);
-
-		this.snapshotButtons = document.createElement('div');
-		this.snapshotButtons.addEventListener('click', e => {
+		this.snapshotList = this.hook('snapshot-list');
+		this.snapshotList.addEventListener('click', e => {
 			const loadSnapshot = closest(e.target, '[data-load-snapshot]', true);
 
 			if (loadSnapshot) {
@@ -52,12 +39,19 @@ export default class extends Panel {
 			}
 		});
 
-		this.contentEl.appendChild(this.snapshotButtons);
+		this.hook('add-snapshot').addEventListener('click', () => {
+			const name = window.prompt('Enter a name for this snapshot:');
+
+			if (name) {
+				this.addSnapshot(name);
+			}
+		});
+
 		this.update();
 	}
 
 	update() {
-		this.snapshotButtons.innerHTML = Object.keys(this.snapshots)
+		this.snapshotList.innerHTML = Object.keys(this.snapshots)
 			.sort()
 			.reduce(
 				(result, current) =>
