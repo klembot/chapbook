@@ -156,6 +156,14 @@ body.with-debugger {
 		}
 	}
 
+	textarea {
+		background: $debug-input-bg;
+		border: 1px solid $debug-input-border;
+		padding: $debug-ui-padding;
+		width: 100%;
+		height: 7.75em;
+	}
+
 	.block {
 		display: block;
 		margin: $debug-ui-padding;

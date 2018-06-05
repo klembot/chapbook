@@ -1,6 +1,7 @@
 import closest from 'closest';
 import kebabCase from 'lodash.kebabcase';
 import ColorPicker from './color-picker';
+import Config from './config';
 import FontPicker from './font-picker';
 import Panel from '../panel';
 import fields from './fields';
@@ -145,6 +146,8 @@ export default class {
 			}
 		});
 
+		this.configPanel = new Config(vars);
+		this.el.appendChild(this.configPanel.el);
 		this.update();
 	}
 
@@ -174,5 +177,9 @@ export default class {
 		Object.keys(this.pickers).forEach(varName => {
 			this.pickers[varName].forEach(p => p.set(this.vars.get(varName)));
 		});
+
+		/* Update the config panel. */
+
+		this.configPanel.update();
 	}
 }
