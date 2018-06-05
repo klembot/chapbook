@@ -87,6 +87,7 @@ export default class {
 				}, '')
 			);
 
+			p.open = false;
 			this.el.appendChild(p.el);
 		});
 

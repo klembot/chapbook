@@ -2,12 +2,17 @@ export default class {
 	constructor(title, htmlContent = '') {
 		this.el = document.createElement('div');
 		this.el.classList.add('panel');
-		this.titleEl = document.createElement('h2');
+		const titleContainer = document.createElement('h2');
+		this.titleEl = document.createElement('button');
+		this.titleEl.addEventListener('click', () => (this.open = !this.open));
+		titleContainer.appendChild(this.titleEl);
 		this.contentEl = document.createElement('div');
+		this.contentEl.classList.add('content');
 		this.contentEl.innerHTML = htmlContent;
-		this.el.appendChild(this.titleEl);
+		this.el.appendChild(titleContainer);
 		this.el.appendChild(this.contentEl);
 		this.title = title;
+		this.open = true;
 	}
 
 	get title() {
@@ -17,6 +22,20 @@ export default class {
 	set title(value) {
 		this._title = value;
 		this.titleEl.innerHTML = value;
+	}
+
+	get open() {
+		return this._open;
+	}
+
+	set open(value) {
+		if (value) {
+			this.el.classList.add('open');
+		} else {
+			this.el.classList.remove('open');
+		}
+
+		this._open = value;
 	}
 
 	hook(name) {
