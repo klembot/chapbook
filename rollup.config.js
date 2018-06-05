@@ -2,6 +2,7 @@ import babel from 'rollup-plugin-babel';
 import json from 'rollup-plugin-json';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
+import string from 'rollup-plugin-string';
 import uglify from 'rollup-plugin-uglify';
 
 let config = {
@@ -10,7 +11,12 @@ let config = {
 		format: 'iife',
 		strict: false
 	},
-	plugins: [resolve({browser: true}), commonjs(), json()]
+	plugins: [
+		resolve({browser: true}),
+		commonjs(),
+		json(),
+		string({include: '**/*.html'})
+	]
 };
 
 if (process.env.NODE_ENV === 'production') {
@@ -21,7 +27,10 @@ if (process.env.NODE_ENV === 'production') {
 			presets: [
 				[
 					'env',
-					{targets: {browsers: ['iOS > 9', 'IE 11', '>10%']}, modules: false}
+					{
+						targets: {browsers: ['iOS > 9', 'IE 11', '>10%']},
+						modules: false
+					}
 				]
 			]
 		})

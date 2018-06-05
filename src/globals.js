@@ -175,13 +175,12 @@ const Globals = {
 		}
 
 		/*
-		Turn on CSS transitions for all appearance properties. We need to do
-		this late so that there is no transition while we are setting things up
-		initially.
+		Enable CSS transitions. We need to do this late so that there is no
+		transition while we are setting things up initially.
 		*/
 
 		window.setTimeout(() => {
-			document.querySelector('.page').classList.add('transition-all');
+			document.querySelector('.page').classList.add('enable-transitions');
 		}, 0);
 	},
 

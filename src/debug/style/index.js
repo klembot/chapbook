@@ -91,8 +91,8 @@ export default class {
 		});
 
 		/*
-			Create picker objects for the placeholders created above.
-			*/
+		Create picker objects for the placeholders created above.
+		*/
 
 		Array.from(this.el.querySelectorAll('[data-container]')).forEach(
 			placeholder => {
