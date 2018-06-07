@@ -123,6 +123,12 @@ body.with-debugger {
 		font-size: $debug-font-size;
 	}
 
+	input {
+		background: $debug-input-bg;
+		border: 1px solid $debug-input-border;
+		padding: $debug-ui-padding;
+	}
+
 	table {
 		background: $debug-input-bg;
 		table-layout: fixed;
@@ -172,6 +178,27 @@ body.with-debugger {
 
 	.disabled {
 		color: #757575;
+	}
+
+	.indented-input {
+		margin-left: calc(10em + #{$debug-ui-padding});
+		font-size: 12px;
+	}
+
+	.input-group {
+		display: flex;
+		align-items: center;
+
+		label:first-child {
+			text-align: right;
+			margin-right: $debug-ui-padding;
+			width: 10em;
+		}
+
+		input,
+		select {
+			flex-grow: 1;
+		}
 	}
 
 	.segmented-button {

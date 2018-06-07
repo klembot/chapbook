@@ -21,13 +21,15 @@ export default class {
 		this.el.classList.add('cb-font-picker');
 
 		this.el.innerHTML =
-			`<p><label for="${id}">${label}</label><select id="${id}">` +
+			`<p class="input-group"><label for="${id}">${label}</label><select id="${id}">` +
 			Object.keys(choices)
 				.sort()
 				.reduce(
 					(output, current) =>
 						output +
-						`<option value="${escape(choices[current])}">${current}</option>`,
+						`<option value="${escape(
+							choices[current]
+						)}">${current}</option>`,
 					''
 				) +
 			'</select>';

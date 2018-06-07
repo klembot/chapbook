@@ -23,8 +23,8 @@ export default class {
 		this.el = document.createElement('div');
 		this.el.classList.add('cb-color-picker');
 		this.el.innerHTML =
-			`<p><label for="${id}">${label}</label><input type="text" id="${id}"></p>` +
-			'<div class="swatches">' +
+			`<p class="input-group"><label for="${id}">${label}</label><input type="text" id="${id}"><button data-toggle-swatches>&hellip;</button></p>` +
+			'<div class="swatches indented-input">' +
 			colorOrder.reduce((output, hue) => {
 				return (
 					output +
@@ -42,15 +42,34 @@ export default class {
 		this.inputEl = this.el.querySelector('input[type="text"]');
 
 		this.el.addEventListener('click', e => {
-			const button = closest(e.target, '[data-color]', true);
+			const swatchButton = closest(e.target, '[data-color]', true);
 
-			if (button) {
-				this.inputEl.value = button.dataset.color;
-				this.callback(button.dataset.color);
+			if (swatchButton) {
+				this.inputEl.value = swatchButton.dataset.color;
+				this.callback(swatchButton.dataset.color);
+				return;
+			}
+
+			if (closest(e.target, '[data-toggle-swatches]', true)) {
+				this.showSwatches = !this.showSwatches;
 			}
 		});
 
 		container.appendChild(this.el);
+	}
+
+	get showSwatches() {
+		return this._showSwatches;
+	}
+
+	set showSwatches(value) {
+		this._showSwatches = value;
+
+		if (value) {
+			this.el.classList.add('show-swatches');
+		} else {
+			this.el.classList.remove('show-swatches');
+		}
 	}
 
 	set(value) {

@@ -1,12 +1,18 @@
 .cb-color-picker {
 	.swatches {
-		display: flex;
+		display: none;
 		padding: 0 $debug-ui-padding;
+		flex-grow: 1;
+	}
+
+	&.show-swatches .swatches {
+		display: flex;
 	}
 
 	.hue {
 		display: flex;
 		flex-direction: column;
+		flex-grow: 1;
 		border-top: 1px solid $debug-input-border;
 		border-bottom: 1px solid $debug-input-border;
 
@@ -17,19 +23,19 @@
 		&:last-child {
 			border-right: 1px solid $debug-input-border;
 		}
-	}
 
-	button {
-		box-sizing: border-box;
-		display: inline-block;
-		width: 15px;
-		height: 15px;
-		padding: 0;
-		border: none;
+		button {
+			box-sizing: border-box;
+			display: inline-block;
+			width: 100%;
+			height: 15px;
+			padding: 0;
+			border: none;
 
-		&:hover {
-			transform: scale(1.25);
-			box-shadow: 0 0 0 1px black;
+			&:hover {
+				transform: scale(1.25);
+				box-shadow: 0 0 0 1px black;
+			}
 		}
 	}
 }

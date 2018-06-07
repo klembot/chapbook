@@ -7,7 +7,7 @@ import Panel from '../panel';
 import fields from './fields';
 
 function numberHtmlForField(field, id) {
-	return `<p><label for="${id}">${
+	return `<p class="input-group"><label for="${id}">${
 		field.label
 	}</label><input type="number" id="${id}" data-bind="${field.bind}"></p>`;
 }
@@ -27,7 +27,7 @@ function selectHtmlForField(field, id) {
 			''
 		);
 
-	return `<p><label for="${id}">${
+	return `<p class="input-group"><label for="${id}">${
 		field.label
 	}</label><select id="${id}" data-bind="${
 		field.bind
