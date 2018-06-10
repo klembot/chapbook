@@ -1,8 +1,10 @@
 $debug-ui-padding: 4px;
-$debug-bg: $oc-gray-4;
-$debug-fg: black;
-$debug-input-bg: $oc-gray-1;
-$debug-input-border: $oc-gray-5;
+$debug-bg: hsla(0, 0%, 0%, 0.8);
+$debug-fg: $oc-gray-4;
+$debug-input-bg: transparent;
+$debug-input-fg: $debug-fg;
+$debug-input-border: $oc-gray-4;
+$debug-table-border: $oc-gray-4;
 $debug-font-size: 12px;
 $debug-tab-height: 20px;
 
@@ -20,7 +22,7 @@ body.with-debugger {
 	width: calc(100vw - #{$pageWidth} - 2 * #{$pageMargin});
 	font-size: 18px;
 	background: $debug-bg;
-	color: black;
+	color: $debug-fg;
 	border-left: 1px solid $debug-fg;
 	@include system-font;
 
@@ -66,7 +68,7 @@ body.with-debugger {
 				border: none;
 				width: 100%;
 				font-weight: normal;
-				color: $oc-gray-7;
+				color: $oc-gray-5;
 				@include small-caps;
 				font-size: $debug-font-size - 1px;
 				padding: 0 $debug-ui-padding;
@@ -78,7 +80,7 @@ body.with-debugger {
 				}
 
 				&:hover {
-					color: black;
+					color: white;
 				}
 			}
 		}
@@ -107,6 +109,7 @@ body.with-debugger {
 	}
 
 	button {
+		color: $debug-input-fg;
 		background: $debug-input-bg;
 		padding: $debug-ui-padding;
 		border-radius: 2 * $debug-ui-padding;
@@ -124,6 +127,7 @@ body.with-debugger {
 	}
 
 	input {
+		color: $debug-input-fg;
 		background: $debug-input-bg;
 		border: 1px solid $debug-input-border;
 		padding: $debug-ui-padding;
@@ -138,7 +142,7 @@ body.with-debugger {
 
 	td {
 		position: relative;
-		border: 1px solid $debug-input-border;
+		border: 1px solid $debug-table-border;
 		padding: $debug-ui-padding;
 		vertical-align: top;
 
@@ -165,6 +169,7 @@ body.with-debugger {
 	textarea {
 		background: $debug-input-bg;
 		border: 1px solid $debug-input-border;
+		color: $debug-input-fg;
 		padding: $debug-ui-padding;
 		width: 100%;
 		height: 7.75em;
@@ -177,7 +182,7 @@ body.with-debugger {
 	}
 
 	.disabled {
-		color: #757575;
+		color: $oc-gray-6;
 	}
 
 	.indented-input {
