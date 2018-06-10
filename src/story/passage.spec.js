@@ -9,7 +9,7 @@ passageContainer.innerHTML =
 
 const passageEl = passageContainer.querySelector('tw-passagedata');
 
-test.beforeEach(t => {
+test.beforeEach(() => {
 	passage = new Passage();
 	passage.loadFromHtml(passageEl);
 });

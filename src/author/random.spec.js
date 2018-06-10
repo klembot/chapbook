@@ -3,7 +3,7 @@ import Random from './random';
 
 let rand;
 
-test.beforeEach(t => (rand = new Random()));
+test.beforeEach(() => (rand = new Random()));
 
 test('returns boolean values from coinFlip()', t => {
 	t.is(typeof rand.coinFlip(), 'boolean');

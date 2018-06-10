@@ -55,7 +55,8 @@ function updateStyle() {
 			break;
 
 		case 'shadow':
-			style.rules['.page']['box-shadow'] = '0 4px 8px hsla(0, 0%, 0%, 0.25)';
+			style.rules['.page']['box-shadow'] =
+				'0 4px 8px hsla(0, 0%, 0%, 0.25)';
 			break;
 
 		case 'thin line':

@@ -9,7 +9,7 @@ storyContainer.innerHTML =
 
 const storyEl = storyContainer.querySelector('tw-storydata');
 
-test.beforeEach(t => {
+test.beforeEach(() => {
 	story = new Story();
 	story.loadFromHtml(storyEl);
 });

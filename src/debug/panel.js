@@ -2,7 +2,9 @@ export default class {
 	constructor(title, htmlContent = '') {
 		this.el = document.createElement('div');
 		this.el.classList.add('panel');
+
 		const titleContainer = document.createElement('h2');
+
 		this.titleEl = document.createElement('button');
 		this.titleEl.addEventListener('click', () => (this.open = !this.open));
 		titleContainer.appendChild(this.titleEl);

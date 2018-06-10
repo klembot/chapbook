@@ -3,7 +3,6 @@ Color-related functions. Right now this supports either hex triplets or Material
 Design color keywords that look like `red.500`.
 */
 
-import get from 'lodash.get';
 import colors from 'open-color/open-color.json';
 
 class Color {

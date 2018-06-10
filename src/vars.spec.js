@@ -4,7 +4,7 @@ import Vars from './vars';
 
 let vars;
 
-test.beforeEach(t => {
+test.beforeEach(() => {
 	vars = new Vars('test');
 
 	if (typeof window.foo === 'object') {

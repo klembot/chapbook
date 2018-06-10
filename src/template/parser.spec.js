@@ -3,7 +3,7 @@ import Parser from './parser';
 
 let parser;
 
-test.beforeEach(t => {
+test.beforeEach(() => {
 	parser = new Parser();
 });
 

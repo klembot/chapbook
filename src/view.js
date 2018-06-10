@@ -61,7 +61,7 @@ export default class {
 		inEl.style.animationDuration = segmentLength;
 		this.el.innerHTML = '';
 
-		/* 
+		/*
 		After animating in, we have to remove the fade-in class so that it
 		doesn't re-fade as part of the out element in the next transition.
 		*/
