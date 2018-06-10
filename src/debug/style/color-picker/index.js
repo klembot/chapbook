@@ -23,7 +23,7 @@ export default class {
 		this.el = document.createElement('div');
 		this.el.classList.add('cb-color-picker');
 		this.el.innerHTML =
-			`<p class="input-group"><label for="${id}">${label}</label><input type="text" id="${id}"><button data-toggle-swatches>&hellip;</button></p>` +
+			`<p class="input-group"><label for="${id}">${label}</label><input type="text" id="${id}"></p>` +
 			'<div class="swatches indented-input">' +
 			colorOrder.reduce((output, hue) => {
 				return (
@@ -49,9 +49,20 @@ export default class {
 				this.callback(swatchButton.dataset.color);
 				return;
 			}
+		});
 
-			if (closest(e.target, '[data-toggle-swatches]', true)) {
-				this.showSwatches = !this.showSwatches;
+		const textInput = this.el.querySelector('input[type="text"]');
+
+		textInput.addEventListener('focus', () => (this.showSwatches = true));
+		document.body.addEventListener('click', e => {
+			let target = e.target;
+
+			while (target && target !== this.el) {
+				target = target.parentNode;
+			}
+
+			if (target !== this.el) {
+				this.showSwatches = false;
 			}
 		});
 
