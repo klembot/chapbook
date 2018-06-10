@@ -1,0 +1,6 @@
+/*
+This is used by AVA testing only. See src/build-format.js for what's actually
+used to create the format.
+*/
+
+{"presets": [["env", {"targets": {"node": "current"}}]]}

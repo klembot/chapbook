@@ -1,77 +1,66 @@
-import {expect} from 'chai';
+import test from 'ava';
 import Random from './random';
 
-describe('random module', () => {
-	const rand = new Random();
+let rand;
 
-	it('returns boolean values from coinFlip()', () => {
-		expect(rand.coinFlip()).to.be.a('Boolean');
-	});
+test.beforeEach(t => (rand = new Random()));
 
-	it('rolls dice with roll()', () => {
-		let result = rand.roll('1d4');
-
-		expect(result >= 1 && result <= 4).to.equal(true);
-
-		result = rand.roll('5d20');
-
-		expect(result >= 5 && result <= 100).to.equal(true);
-	});
-
-	it('rejects incorrect specs with roll()', () => {
-		expect(() => {
-			rand.roll('d4');
-		}).to.throw;
-		expect(() => {
-			rand.roll('5');
-		}).to.throw;
-		expect(() => {
-			rand.roll(5);
-		}).to.throw;
-		expect(() => {
-			rand.roll('nd4');
-		}).to.throw;
-		expect(() => {
-			rand.roll('4dx');
-		}).to.throw;
-	});
-
-	it('selects args with choice()', () => {
-		let result = rand.choice('a', 'b', 'c');
-
-		expect(result === 'a' || result === 'b' || result === 'c').to.equal(true);
-		expect(rand.choice('a')).to.equal('a');
-	});
-
-	it('selects from an array with choice()', () => {
-		let result = rand.choice(['a', 'b', 'c']);
-
-		expect(result === 'a' || result === 'b' || result === 'c').to.equal(true);
-		expect(rand.choice(['a'])).to.equal('a');
-	});
-
-	it('shuffles args with shuffle()', () => {
-		let result = rand.shuffle('a', 'b', 'c');
-
-		expect(result.length).to.equal(3);
-		expect(result.filter(i => i === 'a').length).to.equal(1);
-		expect(result.filter(i => i === 'b').length).to.equal(1);
-		expect(result.filter(i => i === 'c').length).to.equal(1);
-	});
-
-	it('shuffles a copy of an array with shuffle()', () => {
-		let src = ['a', 'b', 'c'];
-		let result = rand.shuffle(src);
-
-		console.log(result);
-		expect(result.length).to.equal(3);
-		expect(result.filter(i => i === 'a').length).to.equal(1);
-		expect(result.filter(i => i === 'b').length).to.equal(1);
-		expect(result.filter(i => i === 'c').length).to.equal(1);
-		expect(src[0]).to.equal('a');
-		expect(src[1]).to.equal('b');
-		expect(src[2]).to.equal('c');
-	});
-
-	it('acts predictably when seeded');
+test('returns boolean values from coinFlip()', t => {
+	t.is(typeof rand.coinFlip(), 'boolean');
 });
+
+test('rolls dice with roll()', t => {
+	let result = rand.roll('1d4');
+
+	t.true(result >= 1 && result <= 4);
+
+	result = rand.roll('5d20');
+
+	t.true(result >= 5 && result <= 100);
+});
+
+test('rejects incorrect specs with roll()', t => {
+	t.throws(() => rand.roll('d4'));
+	t.throws(() => rand.roll('5'));
+	t.throws(() => rand.roll(5));
+	t.throws(() => rand.roll('nd4'));
+	t.throws(() => rand.roll('4dx'));
+});
+
+test('selects args with choice()', t => {
+	let result = rand.choice('a', 'b', 'c');
+
+	t.true(result === 'a' || result === 'b' || result === 'c');
+	t.is(rand.choice('a'), 'a');
+});
+
+test('selects from an array with choice()', t => {
+	let result = rand.choice(['a', 'b', 'c']);
+
+	t.true(result === 'a' || result === 'b' || result === 'c');
+	t.is(rand.choice(['a']), 'a');
+});
+
+test('shuffles args with shuffle()', t => {
+	let result = rand.shuffle('a', 'b', 'c');
+
+	t.is(result.length, 3);
+	t.is(result.filter(i => i === 'a').length, 1);
+	t.is(result.filter(i => i === 'b').length, 1);
+	t.is(result.filter(i => i === 'c').length, 1);
+});
+
+test('shuffles a copy of an array with shuffle()', t => {
+	let src = ['a', 'b', 'c'];
+	let result = rand.shuffle(src);
+
+	t.is(result.length, 3);
+	t.is(result.filter(i => i === 'a').length, 1);
+	t.is(result.filter(i => i === 'b').length, 1);
+	t.is(result.filter(i => i === 'c').length, 1);
+	t.is(src[0], 'a');
+	t.is(src[1], 'b');
+	t.is(src[2], 'c');
+});
+
+test.todo('acts predictably when seeded');

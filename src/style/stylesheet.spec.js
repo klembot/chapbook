@@ -1,19 +1,16 @@
-import {expect} from 'chai';
-import Colors from './colors';
+import test from 'ava';
 import Stylesheet from './stylesheet';
 
-describe('Stylesheet class', () => {
-	let style;
+let style;
 
-	beforeEach(() => {
-		style = new Stylesheet();
-	});
+test.beforeEach(() => {
+	style = new Stylesheet();
+});
 
-	it('converts numbers to pixel units with autopx()', () => {
-		expect(style.autopx(1)).to.equal('1px');
-	});
+test('converts numbers to pixel units with autopx()', t => {
+	t.is(style.autopx(1), '1px');
+});
 
-	it('leaves non-numeric values alone with autopx()', () => {
-		expect(style.autopx('1em')).to.equal('1em');
-	});
+test('leaves non-numeric values alone with autopx()', t => {
+	t.is(style.autopx('1em'), '1em');
 });

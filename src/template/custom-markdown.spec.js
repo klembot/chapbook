@@ -1,23 +1,21 @@
-import {expect} from 'chai';
+import test from 'ava';
 import renderer from './custom-markdown';
 
-describe('custom Markdown renderer', () => {
-	beforeEach(() => {
-		delete window.foo;
-	});
+test.beforeEach(() => {
+	delete window.foo;
+});
 
-	afterEach(() => {
-		delete window.foo;
-	});
+test.afterEach(() => {
+	delete window.foo;
+});
 
-	it('evaluates code inside backtick fences silently', () => {
-		const result = renderer.code("\nwindow.foo = 'red';\n");
+test('evaluates code inside backtick fences silently', t => {
+	const result = renderer.code("\nwindow.foo = 'red';\n");
 
-		expect(result).to.equal('');
-		expect(window.foo).to.equal('red');
-	});
+	t.is(result, '');
+	t.is(window.foo, 'red');
+});
 
-	it('interpolates JavaScript values inside backticks', () => {
-		expect(renderer.codespan('2 + 2')).to.equal('4');
-	});
+test('interpolates JavaScript values inside backticks', t => {
+	t.is(renderer.codespan('2 + 2'), '4');
 });
