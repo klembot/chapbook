@@ -133,6 +133,7 @@ const Globals = {
 		}
 		Globals.vars.autosave = true;
 		Globals.vars.default('trail', []);
+		Globals.vars.default('breadcrumbs', []);
 
 		/*
 		Start the story.
@@ -166,12 +167,7 @@ const Globals = {
 
 		if (/\bdebug\b/.test(Globals.story.options) || true) {
 			Globals.debug.activate();
-			Globals.debug.addDefaultTabs(
-				Globals.vars,
-				Globals.view,
-				Globals.story,
-				Globals.passage
-			);
+			Globals.debug.addDefaultTabs(Globals);
 		}
 
 		/*
@@ -184,17 +180,24 @@ const Globals = {
 		}, 0);
 	},
 
-	go(passageName) {
+	go(passageName, breadcrumbName) {
 		const trail = Globals.vars.get('trail');
 
 		trail.push(passageName);
+
+		if (breadcrumbName) {
+			const breadcrumbs = Globals.vars.get('breadcrumbs');
+
+			breadcrumbs.push(breadcrumbName);
+		}
 
 		Globals.vars.set('trail', trail);
 		Globals.view.show(Globals.passage(passageName));
 	},
 
-	restart(prompt) {
+	restart(dontPrompt) {
 		if (
+			!dontPrompt &&
 			!window.confirm(
 				'Are you sure you want to restart? This will erase all saved progress.'
 			)
@@ -213,6 +216,7 @@ const Globals = {
 		}
 
 		Globals.vars.forgetAll();
+		Globals.vars.set('breadcrumbs', []);
 		Globals.vars.set('trail', []);
 		Globals.go(passage.name);
 	}

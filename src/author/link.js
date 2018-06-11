@@ -12,7 +12,7 @@ class Link {
 				const passage = target.dataset.cbPassage;
 
 				if (passage) {
-					Input.ifAllValid(() => onClick(passage));
+					Input.ifAllValid(() => onClick(passage, target.innerText));
 				}
 			}
 		});
