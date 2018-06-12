@@ -3,6 +3,7 @@ A class to manage the story as published from Twine.
 */
 
 import Passage from './passage';
+import {selectAll} from '../util/dom-select';
 
 export default class {
 	constructor(view, parser, renderer) {
@@ -43,14 +44,12 @@ export default class {
 
 		/* Create passages. */
 
-		this.passages = Array.from(el.querySelectorAll('tw-passagedata')).map(
-			el => {
-				let p = new Passage();
+		this.passages = selectAll(el, 'tw-passagedata').map(el => {
+			let p = new Passage();
 
-				p.loadFromHtml(el);
-				return p;
-			}
-		);
+			p.loadFromHtml(el);
+			return p;
+		});
 	}
 
 	passage(name) {

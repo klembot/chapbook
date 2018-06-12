@@ -4,6 +4,7 @@ import ColorPicker from './color-picker';
 import Config from './config';
 import FontPicker from './font-picker';
 import Panel from '../panel';
+import {selectAll} from '../../util/dom-select';
 import fields from './fields';
 
 function numberHtmlForField(field, id) {
@@ -96,35 +97,33 @@ export default class {
 		Create picker objects for the placeholders created above.
 		*/
 
-		Array.from(this.el.querySelectorAll('[data-container]')).forEach(
-			placeholder => {
-				const bind = placeholder.dataset.toBind;
-				let picker;
+		selectAll(this.el, '[data-container]').forEach(placeholder => {
+			const bind = placeholder.dataset.toBind;
+			let picker;
 
-				switch (placeholder.dataset.container) {
-					case 'color-picker':
-						picker = new ColorPicker(
-							placeholder,
-							placeholder.dataset.id,
-							placeholder.dataset.label,
-							value => this.vars.set(bind, value)
-						);
-						break;
+			switch (placeholder.dataset.container) {
+				case 'color-picker':
+					picker = new ColorPicker(
+						placeholder,
+						placeholder.dataset.id,
+						placeholder.dataset.label,
+						value => this.vars.set(bind, value)
+					);
+					break;
 
-					case 'font-picker':
-						picker = new FontPicker(
-							placeholder,
-							placeholder.dataset.id,
-							placeholder.dataset.label,
-							value => this.vars.set(bind, value)
-						);
-						break;
-				}
-
-				this.pickers[bind] = this.pickers[bind] || [];
-				this.pickers[bind].push(picker);
+				case 'font-picker':
+					picker = new FontPicker(
+						placeholder,
+						placeholder.dataset.id,
+						placeholder.dataset.label,
+						value => this.vars.set(bind, value)
+					);
+					break;
 			}
-		);
+
+			this.pickers[bind] = this.pickers[bind] || [];
+			this.pickers[bind].push(picker);
+		});
 
 		/*
 		Add event listeners to events on our native fields, e.g. non-picker fields.
@@ -154,7 +153,7 @@ export default class {
 	update() {
 		/* Update native fields. */
 
-		Array.from(this.el.querySelectorAll('[data-bind]')).forEach(el => {
+		selectAll(this.el, '[data-bind]').forEach(el => {
 			const varValue = this.vars.get(el.dataset.bind);
 
 			switch (el.nodeName) {

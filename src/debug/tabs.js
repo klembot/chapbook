@@ -1,3 +1,5 @@
+import {selectAll} from '../util/dom-select';
+
 export default class {
 	constructor() {
 		this.el = document.createElement('div');
@@ -31,7 +33,7 @@ export default class {
 	}
 
 	show(name) {
-		Array.from(this.el.querySelectorAll('[data-tab]')).forEach(t => {
+		selectAll(this.el, '[data-tab]').forEach(t => {
 			if ((t.dataset.tab || t.dataset.tabName) === name) {
 				t.classList.add('active');
 			} else {

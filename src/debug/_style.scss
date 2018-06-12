@@ -126,7 +126,8 @@ body.with-debugger {
 		font-size: $debug-font-size;
 	}
 
-	input {
+	input,
+	select {
 		color: $debug-input-fg;
 		background: $debug-input-bg;
 		border: 1px solid $debug-input-border;

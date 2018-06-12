@@ -1,3 +1,4 @@
+import HistoryTab from './history';
 import StateTab from './state';
 import StyleTab from './style';
 import Tabs from './tabs';
@@ -20,8 +21,15 @@ export default class {
 		document.body.removeChild(this.el);
 	}
 
-	addDefaultTabs(vars, view, story, passage) {
-		new StateTab(this.tabs, vars, view, story, passage);
-		new StyleTab(this.tabs, vars, view);
+	addDefaultTabs(globals) {
+		new StateTab(
+			this.tabs,
+			globals.vars,
+			globals.view,
+			globals.story,
+			globals.passage
+		);
+		new HistoryTab(this.tabs, globals.vars, globals.restart);
+		new StyleTab(this.tabs, globals.vars, globals.view);
 	}
 }

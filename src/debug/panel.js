@@ -1,3 +1,5 @@
+import {select, selectAll} from '../util/dom-select';
+
 export default class {
 	constructor(title, htmlContent = '') {
 		this.el = document.createElement('div');
@@ -41,10 +43,10 @@ export default class {
 	}
 
 	hook(name) {
-		return this.el.querySelector(`[data-hook="${name}"]`);
+		return select(this.el, `[data-hook="${name}"]`);
 	}
 
 	hooks(name) {
-		return Array.from(this.el.querySelectorAll(`[data-hook="${name}"]`));
+		return selectAll(this.el, `[data-hook="${name}"]`);
 	}
 }
