@@ -63,4 +63,10 @@ test('shuffles a copy of an array with shuffle()', t => {
 	t.is(src[2], 'c');
 });
 
-test.todo('acts predictably when seeded');
+test('acts predictably when seeded', t => {
+	rand.seed = 1234;
+
+	t.snapshot(rand.roll('1d10'));
+	t.snapshot(rand.roll('1d10'));
+	t.snapshot(rand.roll('1d10'));
+});

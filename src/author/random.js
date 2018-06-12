@@ -5,7 +5,12 @@ import shuffle from 'lodash.shuffle';
 
 export default class {
 	constructor(seed) {
+		this.seed = seed;
 		this.rng = seedrandom(seed);
+	}
+
+	get seed() {
+		return this._seed;
 	}
 
 	/*
@@ -13,7 +18,8 @@ export default class {
 	Useful for testing.
 	*/
 
-	seed(value) {
+	set seed(value) {
+		this._seed = value;
 		this.rng = seedrandom(value);
 	}
 
