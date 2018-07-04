@@ -1,0 +1,44 @@
+digraph {
+	loadPage[shape="box", style="rounded", label="Browser loads page"]
+	setDefaults[shape="box", label="State defaults are set"]
+	loadDom[shape="box", label="Story loads from DOM data\nand trail is defaulted to start passage"]
+	restoreState[shape="box", label="State restores from local storage\nif possible"]
+	addStyle[shape="box", label="Custom story styles added"]
+	addScript[shape="box", label="Custom story scripts run"]
+
+	loadPage -> setDefaults -> loadDom -> restoreState -> addStyle -> addScript
+
+	setPassageVars[shape="box", label="Passage at end of trail sets vars"]
+	displayPassage[shape="box", label="Passage at end of trail displays"]
+	idle[shape="box", label="Engine idles"]
+
+	addScript -> setPassageVars -> displayPassage -> idle
+
+	navRequested[shape="box", label="Player clicks a passage link"]
+	checkRequired[shape="diamond", label="Are any\nrequired fields\nblank?"]
+	blockNav[shape="box", label="Navigation is blocked\nand browser shows error"]
+
+	idle -> navRequested -> checkRequired
+	checkRequired -> blockNav[label="no"]
+	blockNav -> idle
+
+	goFuncCalled[shape="box", label="Story code calls go()"]
+
+	idle -> goFuncCalled -> setInputs
+
+	setInputs[shape="box", label="State set with contents of inputs"]
+	addPassage[shape="box", label="New passage appended to trail"]
+
+	checkRequired -> setInputs[label="yes"]
+	setInputs -> addPassage -> setPassageVars
+
+	restart[shape="box", label="Story code calls restart()"]
+	unsetAll[shape="box", label="All set variables are cleared,\nincluding trail"]
+
+	idle -> restart -> unsetAll -> setPassageVars
+
+	changeLiveInput[shape="box", label="Player changes a live input\nor story code calls refresh()"]
+	setLiveInputs[shape="box", label="State set with contents of all inputs"]
+
+	idle -> changeLiveInput -> setLiveInputs -> displayPassage
+}

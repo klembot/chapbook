@@ -1,25 +1,11 @@
-/* Author functions for creating links. */
+// Author functions for creating links.
 
-import closest from 'closest';
+import factoryFor from '../util/class-factory';
+import {get} from '../state';
 import {Input} from './input';
 
-class Link {
-	static attachTo(el, onClick) {
-		el.addEventListener('click', e => {
-			const target = closest(e.target, '[data-cb-passage]', true);
-
-			if (target) {
-				const passage = target.dataset.cbPassage;
-
-				if (passage) {
-					Input.ifAllValid(() => onClick(passage, target.innerText));
-				}
-			}
-		});
-	}
-
-	constructor(vars, label) {
-		this.vars = vars;
+export class Link {
+	constructor(label) {
 		this.el = document.createElement('a');
 
 		if (label) {
@@ -38,17 +24,19 @@ class Link {
 
 		if (/^\w+:\/\/\/?\w/i.test(target)) {
 			this.el.setAttribute('href', target);
-			this.el.dataset.cbPassage = undefined;
+			this.el.dataset.cbCall = undefined;
+			this.el.dataset.cbArgs = undefined;
 		} else {
-			this.el.setAttribute('href', 'javascript:void(0)');
-			this.el.dataset.cbPassage = target;
+			this.el.setAttribute('href', `javascript:void(0)`);
+			this.el.dataset.cbCall = 'go';
+			this.el.dataset.cbArgs = `"${target}"`;
 		}
 
 		return this;
 	}
 
 	back(count = 1) {
-		const trail = this.vars.get('trail');
+		const trail = get('trail');
 
 		if (count < trail.length - 1) {
 			return this.to(trail[trail.length - count]);
@@ -58,8 +46,9 @@ class Link {
 	}
 
 	restart() {
-		this.el.dataset.cbPassage = undefined;
-		this.el.setAttribute('href', 'javascript:restart(true)');
+		this.el.setAttribute('href', 'javascript:void(0)');
+		this.el.dataset.cbCall = 'restart';
+		delete this.el.dataset.cbArgs;
 		return this;
 	}
 
@@ -68,8 +57,4 @@ class Link {
 	}
 }
 
-function createFactory(vars) {
-	return (...args) => new Link(vars, ...args);
-}
-
-export {Link, createFactory};
+export default factoryFor(Link);

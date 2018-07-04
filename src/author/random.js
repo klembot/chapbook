@@ -1,41 +1,42 @@
-/* Author unctions for random behavior. */
+// Author functions for random behavior. These are guaranteed to stay consistent
+// over multiple loads.
 
 import seedrandom from 'seedrandom';
-import shuffle from 'lodash.shuffle';
+import shuffle from 'shuffle-array';
+import event from '../event';
+import {get, set} from '../state';
+import {story} from '../story';
 
-export default class {
-	constructor(seed) {
-		this.seed = seed;
-		this.rng = seedrandom(seed);
+export const defaults = {
+	'config.random.seed': () => story.name,
+	'config.random.privateState': null
+};
+
+let rng;
+
+event.on('state-change', ({name}) => {
+	if (name === 'config.random.seed') {
+		let rng = seedrandom(get('config.random.seed'), {state: true});
 	}
+});
 
-	get seed() {
-		return this._seed;
-	}
+function saveRngState() {
+	set('config.random.privateState', rng.state());
+}
 
-	/*
-	Seeds the random number generator so that subsequent calls are predictable.
-	Useful for testing.
-	*/
-
-	set seed(value) {
-		this._seed = value;
-		this.rng = seedrandom(value);
-	}
-
-	/*
-	Returns either true or false, randomly.
-	*/
+export default {
+	// Returns either true or false, randomly.
 
 	coinFlip() {
-		return this.rng() > 0.5;
-	}
+		const value = rng();
 
-	/*
-	Returns a set of simulated die rolls. See
-	https://en.wikipedia.org/wiki/Dice_notation for an explanation of the format
-	this accepts.
-	*/
+		saveRngState();
+		return value > 0.5;
+	},
+
+	// Returns a set of simulated die rolls. See
+	// https://en.wikipedia.org/wiki/Dice_notation for an explanation of the format
+	// this accepts.
 
 	roll(spec) {
 		const bits = spec.split(/d/i);
@@ -65,18 +66,17 @@ export default class {
 		let total = 0;
 
 		for (let i = 0; i < rolls; i++) {
-			total += 1 + Math.round(this.rng() * (sides - 1));
+			total += 1 + Math.round(rng() * (sides - 1));
 		}
 
+		saveRngState();
 		return total;
-	}
+	},
 
-	/*
-	If only one argument is passed and it is an array:
-		Returns a randomly chosen item in the array.
-	Otherwise:
-		Returns a randomly chosen argument.
-	*/
+	// If only one argument is passed and it is an array:
+	// 	Returns a randomly chosen item in the array.
+	// Otherwise:
+	// 	Returns a randomly chosen argument.
 
 	choice(...choices) {
 		let toChooseFrom = choices;
@@ -85,15 +85,16 @@ export default class {
 			toChooseFrom = choices[0];
 		}
 
-		return toChooseFrom[Math.round(this.rng() * (toChooseFrom.length - 1))];
-	}
+		const index = Math.round(rng() * (toChooseFrom.length - 1));
 
-	/*
-	If only one argument is passed and it is an array:
-		Returns a copy of the array, but with items are in random order.
-	Otherwise:
-		Returns the arguments passed in random order.
-	*/
+		saveRngState();
+		return toChooseFrom[index];
+	},
+
+	// If only one argument is passed and it is an array:
+	// 	Returns a copy of the array, but with items are in random order.
+	// Otherwise:
+	// 	Returns the arguments passed in random order.
 
 	shuffle(...items) {
 		let toShuffle = items;
@@ -102,6 +103,9 @@ export default class {
 			toShuffle = items[0];
 		}
 
-		return shuffle(toShuffle.slice());
+		const result = shuffle(toShuffle, {copy: true, rng});
+
+		saveRngState();
+		return result;
 	}
-}
+};

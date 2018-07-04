@@ -4,8 +4,9 @@ Design color keywords that look like `red.500`.
 */
 
 import colors from 'open-color/open-color.json';
+import factoryFor from '../util/class-factory';
 
-class Color {
+export class Color {
 	constructor(value) {
 		if (value) {
 			if (value[0] && value[0] === '#') {
@@ -41,8 +42,4 @@ class Color {
 	}
 }
 
-function createFactory() {
-	return (...args) => new Color(...args);
-}
-
-export {Color, createFactory};
+export default factoryFor(Color);

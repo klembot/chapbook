@@ -1,7 +1,7 @@
 /* An author function to render arbitrary code to HTML. */
 
-function createFactory(parser, renderer) {
-	return code => renderer.render(parser.parse(code)).html;
-}
+import {render} from '../template';
 
-export {createFactory};
+export default function code(source) {
+	return template.render(source);
+}

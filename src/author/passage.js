@@ -1,23 +1,17 @@
-/* Author functions for working with passages. */
+// Author functions for working with passages.
 
-import Passage from '../story/passage';
+import factoryFor from '../util/class-factory';
+import {passages} from '../story';
+import {render} from '../template';
 
-class RenderablePassage extends Passage {
-	constructor(passage, parser, renderer) {
-		super();
-		['id', 'name', 'source', 'tags'].forEach(i => (this[i] = passage[i]));
-		this.parser = parser;
-		this.renderer = renderer;
+export class Passage {
+	constructor(name) {
+		Object.assign(this, passages.find(p => p.name === name));
 	}
 
 	toString() {
-		return this.renderer.render(this.parser.parse(this.source)).html;
+		return render(this.source);
 	}
 }
 
-function createFactory(story, parser, renderer) {
-	return passageName =>
-		new RenderablePassage(story.passage(passageName), parser, renderer);
-}
-
-export {RenderablePassage, createFactory};
+export default factoryFor(Passage);

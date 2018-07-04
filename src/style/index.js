@@ -1,150 +1,165 @@
-/*
-A singleton that updates the appearance of elements onscreen.
-*/
+// Sets all user-visible styles.
 
-import {Color} from '../author/color';
-import googleFont from './google-font';
-import linkStyles from './link-styles';
-import Stylesheet from './stylesheet';
+import createLoggers from '../logger';
+import event from '../event';
+import {get} from '../state';
+import {parseColor, parseFont} from './parse';
 
-let vars, style;
+const {log} = createLoggers('style');
 
-function updateStyle() {
-	if (vars.get('config.style.googleFont')) {
-		googleFont(vars.get('config.style.googleFont'));
-	}
+export const defaults = {
+	'config.style.backdrop': 'gray-0',
+	'config.style.pageStyle': 'shadow',
+	'config.style.page.font': 'Palatino/Palatino Linotype/Georgia/serif 18',
+	'config.style.page.color': 'gray-9 on white',
+	'config.style.page.link.color': 'gray-9',
+	'config.style.page.link.lineColor': 'red-5',
+	'config.style.page.link.font': 'underline',
+	'config.style.page.link.active.color': 'red-5 on red-0',
+	'config.style.page.header.font': '16',
+	'config.style.page.header.link.font': 'small caps',
+	'config.style.page.footer.font': '16',
+	'config.style.page.footer.link.font': 'small caps'
+};
 
-	if (!style) {
-		style = new Stylesheet();
-	}
+const rules = {};
+const el = document.createElement('style');
 
-	function hex(key) {
-		return new Color(vars.get(key)).hex;
-	}
+export function style(selector, selectorRules) {
+	rules[selector] = rules[selector] || {};
+	Object.assign(rules[selector], selectorRules);
+	update();
+}
 
-	const {color, autopx} = style;
+function update() {
+	// TODO: throttle this somehow so that multiple calls in one loop don't waste time
 
-	style.rules = {
-		body: {
-			'background-color': hex('config.style.backdrop')
-		},
-		'.page': {
-			'background-color': hex('config.style.bg'),
-			color: hex('config.style.fg'),
-			'font-family': vars.get('config.style.font'),
-			'font-size': autopx(vars.get('config.style.fontSize'))
-		},
-		'.page a': {
-			color: hex('config.style.linkColor'),
-			'text-decoration-color': hex('config.style.linkLineColor')
-		},
-		'.page a:hover': {
-			color: hex('config.style.linkActiveColor')
-		},
-		'.page input[type="text"], .page select': {
-			'background-color': hex('config.style.inputBg'),
-			border: `1px solid ${hex('config.style.inputBorderColor')}`,
-			color: hex('config.style.inputFg'),
-			'font-family': vars.get('config.style.inputFont'),
-			'font-size': autopx(vars.get('config.style.inputFontSize'))
-		}
-	};
-
-	switch (vars.get('config.style.pageStyle')) {
-		case 'none':
-			break;
-
-		case 'shadow':
-			style.rules['.page']['box-shadow'] =
-				'0 4px 8px hsla(0, 0%, 0%, 0.25)';
-			break;
-
-		case 'thin line':
-			style.rules['.page'].border = `1px solid ${hex(
-				'config.style.pageBorderColor'
-			)}`;
-			break;
-
-		case 'thick line':
-			style.rules['.page'].border = `4px solid ${hex(
-				'config.style.pageBorderColor'
-			)}`;
-			break;
-
-		default:
-			throw new Error(
-				`There is no page style named "${vars.get(
-					'config.style.pageStyle'
-				)}" exists.`
-			);
-	}
-
-	linkStyles(
-		style.rules['.page a'],
-		vars.get('config.style.linkStyle'),
-		hex('config.style.linkLineColor')
-	);
-
-	['header', 'footer'].forEach(type => {
-		style.rules[type] = {
-			'font-family': vars.get(`config.style.${type}Font`),
-			'font-size': style.autopx(vars.get(`config.style.${type}FontSize`))
-		};
-
-		style.rules[`${type} a`] = {
-			color: hex(`config.style.${type}LinkColor`)
-		};
-
-		style.rules[`${type} a:hover`] = {
-			color: hex(`config.style.${type}LinkActiveColor`)
-		};
-
-		linkStyles(
-			style.rules[`${type} a`],
-			vars.get(`config.style.${type}LinkStyle`),
-			hex(`config.style.${type}LinkLineColor`)
+	function cssify(selector, props) {
+		return (
+			selector +
+			'{' +
+			Object.keys(props).reduce(
+				(result, current) =>
+					result + current + ':' + props[current].toString() + ';',
+				''
+			) +
+			'}'
 		);
-	});
+	}
 
-	style.update();
+	el.innerHTML = Object.keys(rules).reduce(
+		(result, rule) => result + cssify(rule, rules[rule]),
+		''
+	);
 }
 
-function init(varsInstance) {
-	vars = varsInstance;
-	vars.default('config.style.bg', 'white');
-	vars.default('config.style.fg', 'gray-9');
-	vars.default(
-		'config.style.font',
-		'Palatino, "Palatino Linotype", Georgia, serif'
-	);
-	vars.default('config.style.fontSize', 18);
-	vars.default('config.style.backdrop', 'gray-0');
-	vars.default('config.style.pageBorderColor', '');
-	vars.default(
-		'config.style.inputFont',
-		'Palatino, "Palatino Linotype", Georgia, serif'
-	);
-	vars.default('config.style.inputFontSize', 18);
-	vars.default('config.style.inputBg', 'transparent');
-	vars.default('config.style.inputFg', 'gray-9');
-	vars.default('config.style.inputBorderColor', 'gray-5');
-	vars.default('config.style.pageStyle', 'shadow');
-	vars.default('config.style.linkColor', 'gray-9');
-	vars.default('config.style.linkActiveColor', 'pink-5');
-	vars.default('config.style.linkLineColor', 'pink-5');
-	vars.default('config.style.linkStyle', 'underline');
+export function init() {
+	document.head.appendChild(el);
+	event.on('state-change', ({name, value}) => {
+		// Special-case properties.
 
-	['header', 'footer'].forEach(type => {
-		vars.default(`config.style.${type}Font`, '');
-		vars.default(`config.style.${type}FontSize`, 16);
-		vars.default(`config.style.${type}LinkColor`, 'gray-9');
-		vars.default(`config.style.${type}LinkActiveColor`, 'pink-5');
-		vars.default(`config.style.${type}LinkLineColor`, 'pink-5');
-		vars.default(`config.style.${type}LinkStyle`, 'small caps');
+		switch (name) {
+			case 'config.style.backdrop':
+				log('Setting backdrop color');
+				style('#backdrop', {
+					'background-color': parseColor(value).color
+				});
+				return;
+
+			case 'config.style.pageStyle':
+			case 'config.style.pageStyle.color':
+				log('Setting page style');
+				switch (get('config.style.pageStyle')) {
+					case 'none':
+						style('#page', {border: 'none', 'box-shadow': 'none'});
+						break;
+
+					case 'shadow':
+						style('#page', {
+							border: 'none',
+							'box-shadow': '0 4px 8px hsla(0, 0%, 0%, 0.25)'
+						});
+						break;
+
+					case 'thick-line':
+						style('#page', {
+							border: `4px solid ${
+								parseColor(get('config.style.pageBorderColor'))
+									.color
+							}`,
+							'box-shadow': 'none'
+						});
+						break;
+
+					case 'thin-line':
+						style('#page', {
+							border: `1px solid ${
+								parseColor(get('config.style.pageBorderColor'))
+									.color
+							}`,
+							'box-shadow': 'none'
+						});
+						break;
+				}
+
+				return;
+		}
+
+		// Font and color properties.
+
+		if (/^config\.style\.page\./i.test(name)) {
+			let selector = '#page';
+
+			const props = name
+				.replace(/^config\.style\.page\./i, '')
+				.split('.');
+
+			// Drill down to a font, color, or lineColor property. To prevent
+			// weird scenarios, we only allow drilling down in specificity.
+
+			if (props[0].toLowerCase() === 'header') {
+				selector += ' header';
+				props.shift();
+			} else if (props[0].toLowerCase() === 'footer') {
+				selector += ' footer';
+				props.shift();
+			}
+
+			if (props[0].toLowerCase() === 'link') {
+				selector += ' a';
+				props.shift();
+			}
+
+			if (props[0].toLowerCase() === 'active') {
+				selector = `${selector}:hover, ${selector}:active`;
+				props.shift();
+			}
+
+			// We should either be at either a color, font, or lineColor
+			// property. If we aren't, we do nothing-- this property must either
+			// have some other purpose or it's a mistake by the author.
+
+			switch (props[0].toLowerCase()) {
+				case 'color':
+					log(`Setting color for ${selector}`);
+					style(selector, parseColor(value));
+					break;
+
+				case 'lineColor':
+					log(`Setting line color for ${selector}`);
+					style(selector, {
+						'text-decoration-color': parseColor(value).color
+					});
+
+				case 'font':
+					log(`Setting font for ${selector}`);
+					style(selector, parseFont(value));
+					break;
+			}
+
+			if (props[0].toLowerCase() === 'font') {
+			} else if (props[0].toLowerCase() === 'color') {
+			}
+		}
 	});
-
-	vars.addListener('config.style', updateStyle);
-	updateStyle();
 }
-
-export {init};

@@ -1,8 +1,9 @@
+// In order to allow for customization, many styles are set in the `config`
+// variable. This handles basic layout.
+
 @import 'animation';
-@import 'open-color.scss';
 @import 'layout';
 @import 'typography';
-@import 'debug/style';
 
 * {
 	box-sizing: border-box;
@@ -10,10 +11,7 @@
 
 body {
 	margin: 0;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	padding: 0;
 }
 
 img {
@@ -26,32 +24,26 @@ select {
 	padding: 0.25em;
 }
 
-pre {
-	font-family: 'Courier New', 'Courier', monospace;
-	display: block;
-	overflow: auto;
-	line-height: 120%;
-}
-
 tw-storydata {
 	display: none;
 }
 
-.page {
-	/*
-	In order to expose things to authors, many default display properties are
-	set in style/index.js, specifically the init() function.
-	*/
+#backdrop {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
-	width: $pageWidth;
-	max-width: calc(100vw - 2em);
-	line-height: 150%;
-	min-height: calc(100vh - 2em);
-	margin: $pageMargin;
-	padding: 4em 4em 2em 4em;
+#page {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	width: $pageWidth;
+	max-width: calc(100vw - 2em);
+	line-height: 150%;
+	margin: $pageMargin;
+	padding: 4em 4em 2em 4em;
 
 	article {
 		flex-grow: 1;
@@ -65,7 +57,7 @@ tw-storydata {
 	footer {
 		display: flex;
 
-		span {
+		> div {
 			flex-grow: 1;
 		}
 
@@ -105,57 +97,6 @@ tw-storydata {
 			content: '* \a0 * \a0 *';
 			display: block;
 			text-align: center;
-		}
-	}
-
-	.small-caps {
-		@include small-caps;
-	}
-
-	.system {
-		@include system-font;
-		font-size: 14px;
-	}
-
-	.error,
-	.warning {
-		background: $oc-red-0;
-		color: $oc-red-9;
-		padding: 0.5em;
-		margin-bottom: 1em;
-		overflow: auto;
-
-		& :first-child {
-			margin-top: 0;
-		}
-
-		& :last-child {
-			margin-bottom: 0;
-		}
-	}
-
-	.error a {
-		color: $oc-red-9;
-		text-decoration-color: $oc-red-9;
-
-		&:hover {
-			color: $oc-red-6;
-			text-decoration-color: $oc-red-6;
-		}
-	}
-
-	.warning {
-		background: $oc-yellow-0;
-		color: $oc-yellow-9;
-
-		a {
-			color: $oc-yellow-9;
-			text-decoration-color: $oc-yellow-9;
-
-			&:hover {
-				color: $oc-yellow-6;
-				text-decoration-color: $oc-yellow-6;
-			}
 		}
 	}
 }
