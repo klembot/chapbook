@@ -12,11 +12,13 @@ export const defaults = {
 	'config.random.privateState': null
 };
 
-let rng;
+// Default the seed
 
-event.on('state-change', ({name}) => {
+let rng = seedrandom(new Date(), {state: true});
+
+event.on('state-change', ({name, value}) => {
 	if (name === 'config.random.seed') {
-		let rng = seedrandom(get('config.random.seed'), {state: true});
+		rng = seedrandom(value, {state: true});
 	}
 });
 
@@ -43,7 +45,7 @@ export default {
 
 		if (bits.length !== 2) {
 			throw new Error(
-				'A roll must in the format [number of rolls]d[number of sides], i.e. 1d4.'
+				'A roll must be in the format [number of rolls]d[number of sides], i.e. 1d4.'
 			);
 		}
 

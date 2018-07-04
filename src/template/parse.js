@@ -2,7 +2,8 @@
 //
 // 1. An optional vars section that looks like this:
 //
-//    prop: value prop: value
+//    prop: value
+//    prop: value
 //    --
 //
 // 2. Then, a series of a mixture of plain text blocks and modifiers. Modifiers

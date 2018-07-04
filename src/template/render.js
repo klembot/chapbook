@@ -70,7 +70,7 @@ export default function render(
 				);
 
 				activeModifiers.forEach(m =>
-					m.process(blockOutput, {
+					m.mod.process(blockOutput, {
 						state: modifierState[m.mod],
 						invocation: m.invocation
 					})
@@ -107,7 +107,6 @@ export default function render(
 					modifierState[mod] = modifierState[mod] || {};
 					activeModifiers.push({
 						mod,
-						data: modifierState[mod],
 						invocation: block.content
 					});
 				} else if (mods.length === 0) {

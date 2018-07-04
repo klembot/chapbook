@@ -2,7 +2,7 @@
 
 export default {
 	match: /^if\s|else$|unless\s/i,
-	process(output, {event, invocation, data}) {
+	process(output, {invocation, state}) {
 		const type = invocation.replace(/\s.*/, '').toLowerCase();
 		let condition;
 
@@ -14,25 +14,25 @@ export default {
 
 		switch (type) {
 			case 'if':
-				data.conditionEval = this.condition.apply(window);
+				state.conditionEval = condition.apply(window);
 				break;
 
 			case 'unless':
-				data.conditionEval = !this.condition.apply(window);
+				state.conditionEval = !condition.apply(window);
 				break;
 
 			case 'else':
-				if (!data.conditionEval) {
+				if (state.conditionEval === undefined) {
 					throw new Error(
 						'There was no matching if modifier for an else modifier.'
 					);
 				}
 
-				data.conditionEval = !data.conditionEval;
+				state.conditionEval = !state.conditionEval;
 				break;
 		}
 
-		if (!data.conditionEval) {
+		if (!state.conditionEval) {
 			output.text = '';
 			output.beforeText = '';
 			output.afterText = '';
