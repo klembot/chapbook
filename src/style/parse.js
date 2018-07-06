@@ -70,7 +70,7 @@ export function parseFont(source) {
 		result['letter-spacing'] = '0.075em';
 		result['text-transform'] = 'uppercase';
 
-		if (result['font-size']) {
+		if (result['font-size'] && result['font-size'] !== 'inherit') {
 			result['font-size'] = `calc(0.7 * ${result['font-size']})`;
 		} else {
 			result['font-size'] = '70%';
@@ -142,8 +142,6 @@ export function parseFont(source) {
 				trimmedSource
 			))
 		) {
-			console.log(`saw ${modMatch[0]} in "${trimmedSource}"`);
-
 			switch (modMatch[0]) {
 				case 'bold':
 					applyBold(result);
@@ -173,7 +171,9 @@ export function parseFont(source) {
 
 		// Anything left over is a font name.
 
-		applyFonts(result, trimmedSource);
+		if (trimmedSource.trim() !== '') {
+			applyFonts(result, trimmedSource);
+		}
 	}
 
 	return result;

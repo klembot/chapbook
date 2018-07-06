@@ -34,15 +34,30 @@ export function style(selector, selectorRules) {
 function update() {
 	// TODO: throttle this somehow so that multiple calls in one loop don't waste time
 
+	// The sort() is necessary because of how some browser parse
+	// `text-decoration` and `text-decoration-color`. Google Chrome, for
+	// example, will treat `text-decoration` as overriding
+	// `text-decoration-color`; however, Internet Explorer doesn't understand
+	// `text-decoration-color` and needs `text-decoration` to be set for any
+	// styling at all to appear. Sorting guarantees that `text-decoration-color`
+	// appears after `text-decoration` in the declarations, preventing the two
+	// from stepping on each other.
+
 	function cssify(selector, props) {
 		return (
 			selector +
 			'{' +
-			Object.keys(props).reduce(
-				(result, current) =>
-					result + current + ':' + props[current].toString() + ';',
-				''
-			) +
+			Object.keys(props)
+				.sort()
+				.reduce(
+					(result, current) =>
+						result +
+						current +
+						':' +
+						props[current].toString() +
+						';',
+					''
+				) +
 			'}'
 		);
 	}
@@ -145,11 +160,12 @@ export function init() {
 					style(selector, parseColor(value));
 					break;
 
-				case 'lineColor':
+				case 'linecolor':
 					log(`Setting line color for ${selector}`);
 					style(selector, {
 						'text-decoration-color': parseColor(value).color
 					});
+					break;
 
 				case 'font':
 					log(`Setting font for ${selector}`);

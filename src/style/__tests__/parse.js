@@ -43,10 +43,15 @@ describe('parseFont()', () => {
 	});
 
 	test('parses modifiers on their own', () => {
-		const result = parseFont('bold italic');
+		let result = parseFont('bold italic');
 
+		expect(result['font-family']).toBe('inherit');
 		expect(result['font-weight']).toBe('bold');
 		expect(result['font-style']).toBe('italic');
+
+		result = parseFont('small caps');
+
+		expect(result['font-size']).toBe('70%');
 	});
 
 	test('automatically adds quotes to font family names', () => {
