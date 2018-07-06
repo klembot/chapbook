@@ -30,7 +30,7 @@ export function validate() {
 }
 
 export function transferToState() {
-	queryAll(document, '[data-cb-set]').forEach(i => {
+	selectAll(document, '[data-cb-set]').forEach(i => {
 		const name = i.dataset.set;
 
 		switch (i.nodeName) {

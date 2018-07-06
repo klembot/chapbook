@@ -15,9 +15,7 @@ export function go(name) {
 	let passage = passageNamed(name);
 
 	if (!passage) {
-		throw new Error(
-			`There is no passage with the name or ID "${nameOrId}"`
-		);
+		throw new Error(`There is no passage with the name "${name}"`);
 	}
 
 	// Do not validate the inputs-- just save and go.

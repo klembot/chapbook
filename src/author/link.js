@@ -24,12 +24,10 @@ export class Link {
 
 		if (/^\w+:\/\/\/?\w/i.test(target)) {
 			this.el.setAttribute('href', target);
-			this.el.dataset.cbCall = undefined;
-			this.el.dataset.cbArgs = undefined;
+			this.el.dataset.cbGo = undefined;
 		} else {
 			this.el.setAttribute('href', `javascript:void(0)`);
-			this.el.dataset.cbCall = 'go';
-			this.el.dataset.cbArgs = `"${target}"`;
+			this.el.dataset.cbGo = target;
 		}
 
 		return this;
@@ -47,8 +45,7 @@ export class Link {
 
 	restart() {
 		this.el.setAttribute('href', 'javascript:void(0)');
-		this.el.dataset.cbCall = 'restart';
-		delete this.el.dataset.cbArgs;
+		this.el.dataset.cbRestart = '';
 		return this;
 	}
 

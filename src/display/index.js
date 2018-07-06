@@ -49,7 +49,7 @@ function attachDomListeners(el) {
 		const goLink = closest(e.target, '[data-cb-go]', true);
 
 		if (goLink) {
-			validate().then(() => go(goLink.dataset.go));
+			validate().then(() => go(goLink.dataset.cbGo));
 		}
 
 		const restartLink = closest(e.target, '[data-cb-restart]', true);
