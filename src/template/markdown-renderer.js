@@ -8,12 +8,21 @@ let renderer = new marked.Renderer();
 
 Object.assign(renderer, {
 	code(src) {
-		// Evaluate code blocks without outputting anything.
+		// Evaluate code blocks without outputting anything normally. The code
+		// can call `write()` to create output. (We use `write()` so that it
+		// does not conflict with `window.print()`.) This implementation is
+		// based on Underscore templating.
 
 		try {
-			const func = new Function(unescape(src));
+			const func = new Function(`
+				function write() { write.__out += write.__join.call(arguments, ''); }
+				write.__out = '';
+				write.__join = Array.prototype.join;
+				${unescape(src)};
+				return write.__out;
+			`);
 
-			func.apply(window);
+			return func.apply(window);
 		} catch (e) {
 			let detail = 'unknown error';
 

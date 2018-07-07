@@ -8,13 +8,27 @@ afterEach(() => {
 	delete window.foo;
 });
 
-test('evaluates code inside backtick fences silently', () => {
-	const result = renderer.code("\nwindow.foo = 'red';\n");
+describe('custom Markdown renderer', () => {
+	test('evaluates code inside backtick fences silently', () => {
+		const result = renderer.code("\nwindow.foo = 'red';\n");
 
-	expect(result).toBe('');
-	expect(window.foo).toBe('red');
-});
+		expect(result).toBe('');
+		expect(window.foo).toBe('red');
+	});
 
-test('interpolates JavaScript values inside backticks', () => {
-	expect(renderer.codespan('2 + 2')).toBe('4');
+	test('outputs source with write() inside backtick fences', () => {
+		let result = renderer.code("\nwrite('hello world');\n");
+
+		expect(result).toBe('hello world');
+
+		result = renderer.code("\nwrite('hello', ' world');\n");
+		expect(result).toBe('hello world');
+
+		result = renderer.code("\nwrite('hello'); write(' world');\n");
+		expect(result).toBe('hello world');
+	});
+
+	test('interpolates JavaScript values inside backticks', () => {
+		expect(renderer.codespan('2 + 2')).toBe('4');
+	});
 });
