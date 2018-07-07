@@ -36,6 +36,50 @@ export class Color {
 		this.hsla[3] = rgba[3] || 1;
 	}
 
+	spin(degrees) {
+		this.hsla[0] = (this.hsla[0] + degrees) % 360;
+		return this;
+	}
+
+	saturate(percent) {
+		this.hsla[1] = Math.min(
+			this.hsla[1] + this.hsla[1] * (1 + percent),
+			100
+		);
+		return this;
+	}
+
+	desaturate(percent) {
+		this.hsla[1] = Math.max(this.hsla[1] - this.hsla[1] * (1 + percent), 0);
+		return this;
+	}
+
+	lighten(percent) {
+		this.hsla[2] = Math.min(
+			this.hsla[2] + this.hsla[2] * (1 + percent),
+			100
+		);
+		return this;
+	}
+
+	darken(percent) {
+		this.hsla[2] = Math.min(
+			this.hsla[2] - this.hsla[2] * (1 + percent),
+			100
+		);
+		return this;
+	}
+
+	fadeIn(percent) {
+		this.hsla[3] = Math.min(this.hsla[3] + this.hsla[3] * (1 + percent), 1);
+		return this;
+	}
+
+	fadeOut(percent) {
+		this.hsla[3] = Math.min(this.hsla[3] - this.hsla[3] * (1 + percent), 1);
+		return this;
+	}
+
 	toString() {
 		return `hsla(${this.hsla[0]}, ${this.hsla[1]}%, ${this.hsla[2]}%, ${
 			this.hsla[3]
