@@ -34,4 +34,18 @@ describe('Color', () => {
 			'hsla(240, 100%, 50%, 0.66)'
 		);
 	});
+
+	it('parses Open Color keywords', () => {
+		expect(new Color('white').toString()).toBe('hsla(0, 0%, 100%, 1)');
+
+		// Rounding errors(?) here.
+
+		expect(new Color('red').toString()).toBe(
+			'hsla(0, 65.4320987654321%, 47.647058823529406%, 1)'
+		);
+
+		expect(new Color('red-5').toString()).toBe(
+			'hsla(0, 100%, 70.98039215686275%, 1)'
+		);
+	});
 });

@@ -17,7 +17,7 @@ export class Color {
 				if (Array.isArray(openColors[value])) {
 					value = openColors[value][openColors[value].length - 1];
 				} else {
-					value = colors[value];
+					value = openColors[value];
 				}
 			}
 
