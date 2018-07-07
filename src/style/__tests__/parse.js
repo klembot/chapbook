@@ -1,5 +1,6 @@
 import colors from 'open-color/open-color.json';
 import {autopx, parseColor, parseFont} from '../parse';
+import {Color} from '../../author/color';
 
 describe('autopx()', () => {
 	test('converts integers to px', () => {
@@ -14,21 +15,23 @@ describe('autopx()', () => {
 
 describe('parseColor()', () => {
 	test('parses single colors as foregrounds', () => {
-		expect(parseColor('#ff0000').color).toBe('#ff0000');
+		expect(parseColor('#ff0000').color).toBe(
+			new Color('#ff0000').toString()
+		);
 	});
 
 	test('parses Open Color keywords as foregrounds', () => {
-		expect(parseColor('red-5').color).toEqual(colors.red[5]);
+		expect(parseColor('red-5').color).toBe(new Color('red-5').toString());
 	});
 
 	test('parses "x on y" format as foreground and background', () => {
 		expect(parseColor('#ff0000 on #00ff00')).toEqual({
-			'background-color': '#00ff00',
-			color: '#ff0000'
+			'background-color': new Color('#00ff00').toString(),
+			color: new Color('#ff0000').toString()
 		});
 		expect(parseColor('#ff0000 ON #00ff00')).toEqual({
-			'background-color': '#00ff00',
-			color: '#ff0000'
+			'background-color': new Color('#00ff00').toString(),
+			color: new Color('#ff0000').toString()
 		});
 	});
 });

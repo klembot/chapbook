@@ -1,44 +1,45 @@
-/*
-Color-related functions. Right now this supports either hex triplets or Material
-Design color keywords that look like `red.500`.
-*/
+// Color-related functions. This accepts #rrggbb, #rrggbbaa, hsl, hsla, rgb,
+// rgba, and Open Color keywords. If you specify a bare Open Color, e.g. "red",
+// it will pick the darkest part of the color range for you.
 
-import colors from 'open-color/open-color.json';
+import openColors from 'open-color/open-color.json';
+import parseColor from 'pure-color/parse';
+import rgbToHsl from 'pure-color/convert/rgb2hsl';
 import factoryFor from '../util/class-factory';
 
 export class Color {
-	constructor(value) {
+	constructor(value = 'black') {
 		if (value) {
-			if (value[0] && value[0] === '#') {
-				this.hex = value;
-				return;
-			}
+			// If we matched only one part of an Open Color keyword, check to
+			// see if there's a range.
 
-			if (colors[value]) {
-				if (Array.isArray(colors[value])) {
-					this.hex = colors[value][colors[value].length - 1];
+			if (openColors[value]) {
+				if (Array.isArray(openColors[value])) {
+					value = openColors[value][openColors[value].length - 1];
 				} else {
-					this.hex = colors[value];
+					value = colors[value];
 				}
-
-				return;
 			}
 
 			const colorLookup = /^(\w+)-(\d)$/.exec(value);
 
-			if (colorLookup && colors[colorLookup[1]]) {
-				this.hex = colors[colorLookup[1]][colorLookup[2]];
-				return;
+			if (colorLookup && openColors[colorLookup[1]]) {
+				value = openColors[colorLookup[1]][colorLookup[2]];
 			}
 		}
 
-		/* Fall back to black. */
+		// pure-color doesn't convert alpha, so we have to maintain it manually.
 
-		this.hex = '#000000';
+		const rgba = parseColor(value);
+
+		this.hsla = rgbToHsl(rgba);
+		this.hsla[3] = rgba[3] || 1;
 	}
 
 	toString() {
-		return this.hex;
+		return `hsla(${this.hsla[0]}, ${this.hsla[1]}%, ${this.hsla[2]}%, ${
+			this.hsla[3]
+		})`;
 	}
 }
 
