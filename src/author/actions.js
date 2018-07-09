@@ -1,6 +1,6 @@
 // Top-level actions that will be globally exposed.
 
-import {get, set} from '../state';
+import {get, reset, set} from '../state';
 import {log as _log} from '../logger';
 import {passageNamed} from '../story';
 import {transferToState as transferInputsToState} from '../display/inputs';
@@ -26,5 +26,10 @@ export function go(name) {
 
 export function restart() {
 	log('Restarting');
-	set('trail', null);
+	reset();
+
+	// We need to reload the window so that any JavaScript in story code is
+	// removed.
+
+	window.location.reload();
 }

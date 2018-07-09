@@ -2,6 +2,7 @@
 
 import deepGet from 'get-value';
 import deepSet from 'set-value';
+import deepUnset from 'unset-value';
 import event from '../event';
 import logger from '../logger';
 import {story} from '../story';
@@ -11,7 +12,7 @@ let vars = {};
 let defaults = {};
 
 const stateDefaults = {
-	'config.state.autosave': false,
+	'config.state.autosave': true,
 	'config.state.saveKey': () => 'chapbook-state-' + story.name
 };
 export {stateDefaults as defaults};
@@ -48,11 +49,42 @@ function addGlobalProxy(target, name) {
 	});
 }
 
+function removeGlobalProxy(target, name) {
+	deepUnset(target, name);
+}
+
 // Resets all set variables, but not defaults. (If you want to do that, default
-// a key to undefined.)
+// a key to undefined.) This emits `state-change` events as it works.
 
 export function reset() {
-	vars = {};
+	function deleteProps(obj, objName) {
+		Object.keys(obj).forEach(k => {
+			const keyName = objName === '' ? k : `${objName}.${k}`;
+
+			if (typeof obj[k] === 'object' && !Array.isArray(obj[k])) {
+				deleteProps(obj[k], keyName);
+			} else {
+				// We can't use a `set()` call here because we would be setting
+				// off a ton of local storage serializations at once.
+
+				const previous = obj[k];
+
+				delete obj[k];
+				removeGlobalProxy(window, objName);
+				event.emit('state-change', {
+					name: keyName,
+					value: get(keyName),
+					previous
+				});
+			}
+		});
+	}
+
+	deleteProps(vars, '');
+
+	if (get('config.state.autosave')) {
+		save();
+	}
 }
 
 // Sets a state variable, triggering a `state-change` event if it is changing a
