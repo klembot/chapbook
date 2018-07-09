@@ -37,7 +37,7 @@ function attachDomListeners(el) {
 
 		if (cycleLink) {
 			const choices = JSON.parse(cycleLink.dataset.cycle);
-			const index = choices.indexOf(cycleLink.textContent) + 1;
+			let index = choices.indexOf(cycleLink.textContent) + 1;
 
 			if (index === choices.length) {
 				index = 0;
