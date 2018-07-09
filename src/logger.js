@@ -5,6 +5,7 @@ export const defaults = {
 	'config.logger.show.parse': false,
 	'config.logger.show.render': false,
 	'config.logger.show.state': true,
+	'config.logger.show.story': true,
 	'config.logger.show.style': true
 };
 

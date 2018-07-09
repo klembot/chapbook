@@ -3,8 +3,11 @@
 // `trail`; putting the entire story into state would waste space and behave
 // unpredictably, as change events would not necessarily trigger correctly.
 
+import createLogger from './logger';
 import {selectAll} from './util/dom-select';
 import {setDefault} from './state';
+
+const logger = createLogger('story');
 
 export const story = {
 	name: 'Untitled Story',
@@ -54,10 +57,27 @@ export function loadFromData(el) {
 }
 
 export function init() {
-	console.log('TODO: run custom scripts');
-	console.log('TODO: add custom styles');
 	setDefault('trail', [startPassage().name]);
 	document.title = story.name;
+}
+
+export function runCustomScripts() {
+	logger.log(`Running custom scripts (${story.customScripts.length})`);
+
+	story.customScripts.forEach(s => {
+		new Function(s).apply(window);
+	});
+}
+
+export function addCustomStyles() {
+	logger.log(`Adding custom styles (${story.customStyles.length})`);
+
+	story.customStyles.forEach(s => {
+		const styleEl = document.createElement('style');
+
+		styleEl.innerHTML = s;
+		document.head.appendChild(styleEl);
+	});
 }
 
 export function startPassage() {

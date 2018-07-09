@@ -2,7 +2,12 @@ import authorFunctions from './author';
 import {canRestore, restore, set} from './state';
 import initDefaults from './state/defaults';
 import {init as initDisplay} from './display';
-import {init as initStory, loadFromData, passageNamed, story} from './story';
+import {
+	init as initStory,
+	loadFromData,
+	runCustomScripts,
+	addCustomStyles
+} from './story';
 import {init as initStyle} from './style';
 import './index.scss';
 
@@ -16,3 +21,6 @@ initStory();
 if (canRestore()) {
 	restore();
 }
+
+addCustomStyles();
+runCustomScripts();
