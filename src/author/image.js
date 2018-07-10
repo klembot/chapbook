@@ -1,8 +1,9 @@
 /* Author functions for embedding images. */
 
-import {Color} from '../author/color';
+import color from '../author/color';
+import factoryFor from '../util/class-factory';
 
-class Image {
+export class Image {
 	constructor(url) {
 		this.el = document.createElement('img');
 		this.url(url);
@@ -15,8 +16,8 @@ class Image {
 		return this;
 	}
 
-	placeholder(color) {
-		this.el.style.backgroundColor = new Color(color).hex || color;
+	placeholder(_color) {
+		this.el.style.backgroundColor = color(_color).toString() || color;
 		return this;
 	}
 
@@ -44,7 +45,7 @@ class Image {
 		const pageWidth = document.querySelector('div.page').offsetWidth;
 
 		this.el.setAttribute('width', pageWidth);
-		this.el.setAttribute('height', pageWidth * 1 / value);
+		this.el.setAttribute('height', (pageWidth * 1) / value);
 		return this;
 	}
 
@@ -54,8 +55,4 @@ class Image {
 	}
 }
 
-function createFactory() {
-	return (...args) => new Image(...args);
-}
-
-export {Image, createFactory};
+export default factoryFor(Image);

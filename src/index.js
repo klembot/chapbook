@@ -1,3 +1,26 @@
-import Globals from './globals';
+import authorFunctions from './author';
+import {canRestore, restore, set} from './state';
+import initDefaults from './state/defaults';
+import {init as initDisplay} from './display';
+import {
+	init as initStory,
+	loadFromData,
+	runCustomScripts,
+	addCustomStyles
+} from './story';
+import {init as initStyle} from './style';
+import './index.scss';
 
-Globals.init();
+loadFromData(document.querySelector('tw-storydata'));
+Object.assign(window, authorFunctions);
+initStyle();
+initDefaults();
+initDisplay();
+initStory();
+
+if (canRestore()) {
+	restore();
+}
+
+addCustomStyles();
+runCustomScripts();

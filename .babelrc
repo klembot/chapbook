@@ -1,6 +1,3 @@
-/*
-This is used by AVA testing only. See src/build-format.js for what's actually
-used to create the format.
-*/
+// This is used by testing only. See webpack.config.js for actual build settings.
 
 {"presets": [["env", {"targets": {"node": "current"}}]]}

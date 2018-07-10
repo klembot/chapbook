@@ -1,0 +1,32 @@
+:: Start
+## Palette
+
+```
+window.swatch = (color, label = '') => {
+	return `<span
+		style="display:inline-flex;align-items:center;justify-content:center;background:${color};width: 50px;height:50px">
+		${label}
+		</span>`;
+}
+
+(['gray', 'red', 'pink', 'grape', 'violet', 'indigo', 'blue',
+'cyan', 'teal', 'green', 'lime', 'yellow', 'orange']).forEach(name => {
+	write(`<p>${name}</p><p>`);
+	
+	for (let i = 0; i < 10; i++) {
+		write(swatch(color(`${name}-${i}`), i));
+	}
+
+	write('</p>');
+});
+```
+
+## Manipulation
+
+Saturation
+`swatch(color('red-8')) + swatch(color('red-8').saturate(0.5))`
+`swatch(color('blue-5')) + swatch(color('blue-5').desaturate(1))`
+
+Lightness
+`swatch(color('red-8')) + swatch(color('red-8').darken(0.25))`
+`swatch(color('blue-5')) + swatch(color('blue-5').lighten(0.25))`
