@@ -1,7 +1,6 @@
 // In order to allow for customization, many styles are set in the `config`
 // variable. This handles basic layout.
 
-@import 'animation';
 @import 'layout';
 @import 'typography';
 
@@ -26,77 +25,4 @@ select {
 
 tw-storydata {
 	display: none;
-}
-
-#backdrop {
-	min-height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-#page {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	width: $pageWidth;
-	max-width: calc(100vw - 2em);
-	line-height: 150%;
-	margin: $pageMargin;
-	padding: 4em 4em 2em 4em;
-
-	article {
-		flex-grow: 1;
-
-		:first-child {
-			margin-top: 0;
-		}
-	}
-
-	header,
-	footer {
-		display: flex;
-
-		> div {
-			flex-grow: 1;
-		}
-
-		p {
-			margin: 0.5em 0 0 0;
-		}
-
-		.center {
-			text-align: center;
-		}
-
-		.right {
-			text-align: right;
-		}
-	}
-
-	header {
-		margin-top: 0;
-
-		&.has-content {
-			border-bottom: 1px solid black;
-		}
-	}
-
-	footer {
-		margin-bottom: 0;
-
-		&.has-content {
-			border-top: 1px solid black;
-		}
-	}
-
-	hr {
-		border: none;
-
-		&:after {
-			content: '* \a0 * \a0 *';
-			display: block;
-			text-align: center;
-		}
-	}
 }
