@@ -1,3 +1,4 @@
+@import '~open-color/open-color.scss';
 @import '../layout';
 @import '../typography';
 
@@ -70,6 +71,30 @@
 			content: '* \a0 * \a0 *';
 			display: block;
 			text-align: center;
+		}
+	}
+
+	.error {
+		@include system-font;
+
+		background: $oc-red-0;
+		color: $oc-red-9;
+		padding: 0.5em;
+		border-left: 4px solid $oc-red-3;
+		position: relative;
+		margin-bottom: 1em;
+		overflow: auto;
+
+		& :first-child {
+			margin-top: 0;
+		}
+
+		& :last-child {
+			margin-bottom: 0;
+		}
+
+		a {
+			color: $oc-red-9;
 		}
 	}
 }

@@ -3,6 +3,7 @@
 
 import marked from 'marked';
 import unescape from 'lodash.unescape';
+import {get} from '../state';
 
 let renderer = new marked.Renderer();
 
@@ -24,22 +25,20 @@ Object.assign(renderer, {
 
 			return func.apply(window);
 		} catch (e) {
-			let detail = 'unknown error';
+			if (get('config.testing')) {
+				let detail = 'unknown error';
 
-			if (e.error && e.error.stack) {
-				detail = e.error.stack;
+				if (e.error && e.error.stack) {
+					detail = e.error.stack;
+				} else {
+					detail = e.message + '\n[No stack trace available]';
+				}
+
+				return `<div class="error">An error occured evaluating:<pre>${src}</pre><p><pre>${detail}</pre></p></div>`;
 			} else {
-				detail = e.message + '\n[No stack trace available]';
+				throw e;
 			}
-
-			console.error(
-				`An error occurred while evaluating "${src}" (${detail})`
-			);
 		}
-
-		// In all cases, return nothing to display.
-
-		return '';
 	},
 
 	codespan(src) {
@@ -54,11 +53,13 @@ Object.assign(renderer, {
 				return result.toString();
 			}
 		} catch (e) {
-			console.error(
-				`An error occurred while evaluating "${src}" (${e.message})`
-			);
-
-			return '';
+			if (get('config.testing')) {
+				return `<span class="error">An error occurred evaluating <code>${src}</code>: ${
+					e.message
+				}</span>`;
+			} else {
+				throw e;
+			}
 		}
 	},
 

@@ -1,4 +1,5 @@
 import leftPad from 'left-pad';
+import event from './event';
 import {get} from './state';
 
 export const defaults = {
@@ -17,14 +18,13 @@ export function log(source, message) {
 	if (get(`config.logger.show.${source}`)) {
 		console.log(prefix(source) + message);
 	}
+
+	event.emit('log', {source, message});
 }
 
 export function warn(source, message) {
 	console.warn(prefix(source) + message);
-}
-
-export function error(source, message) {
-	console.error(prefix(source) + message);
+	event.emit('log-warning', {source, message});
 }
 
 export default function createLoggers(sourceName) {
@@ -35,10 +35,8 @@ export default function createLoggers(sourceName) {
 
 		warn(message) {
 			warn(sourceName, message);
-		},
-
-		error(message) {
-			error(sourceName, message);
 		}
 	};
 }
+
+window.logger = {log, warn};

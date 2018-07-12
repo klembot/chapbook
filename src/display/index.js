@@ -10,10 +10,12 @@
 //   a JSON-encoded array.
 
 import closest from 'closest';
+import coalesceCalls from '../util/coalesce-calls';
 import event from '../event';
 import {crossfade, fadeInOut, none} from './transitions';
 import {get} from '../state';
 import {go, restart} from '../author/actions';
+import {init as initCrash} from './crash';
 import {passageNamed} from '../story';
 import {render} from '../template';
 import {validate} from './inputs';
@@ -69,22 +71,10 @@ function attachDomListeners(el) {
 	});
 }
 
-// It is of course possible for variables, including the trail, to update
-// multiple times in one JavaScript execution stack. We use flags to prevent
-// multiple updates to the DOM in one stack, since it's inefficient and can lead
-// to odd display.
+const updateDom = coalesceCalls(function update(calls) {
+	// Update the trail if we were ever passed a `true` argument.
 
-let updateNeeded = false;
-let updateTrail = false;
-
-function updateDom() {
-	if (!updateNeeded) {
-		return;
-	}
-
-	// Update the trail if needed.
-
-	if (updateTrail) {
+	if (calls.some(c => c[0])) {
 		const trail = get('trail');
 		const bodyTransition = get('config.body.transition.name');
 
@@ -128,14 +118,10 @@ function updateDom() {
 			}
 		});
 	});
-
-	// Reset flags.
-
-	updateNeeded = false;
-	updateTrail = false;
-}
+});
 
 export function init() {
+	initCrash();
 	mainContent = document.querySelector('#page article');
 	marginals = {};
 
@@ -147,17 +133,5 @@ export function init() {
 	});
 
 	attachDomListeners(document.body);
-
-	event.on('state-change', ({name, value}) => {
-		updateNeeded = true;
-
-		if (name === 'trail') {
-			updateTrail = true;
-		}
-
-		// Delay execution of updateDom until after the current execution stack
-		// completes.
-
-		Promise.resolve().then(updateDom);
-	});
+	event.on('state-change', ({name, value}) => updateDom(name === 'trail'));
 }

@@ -58,6 +58,12 @@ export function loadFromData(el) {
 
 export function init() {
 	setDefault('trail', [startPassage().name]);
+	setDefault(
+		'config.testing',
+		(typeof story.options === 'string' &&
+			story.options.indexOf('debug') !== -1) ||
+			process.env.NODE_ENV !== 'production'
+	);
 	document.title = story.name;
 }
 

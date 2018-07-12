@@ -110,17 +110,13 @@ export default function render(
 						invocation: block.content
 					});
 				} else if (mods.length === 0) {
-					warn(
-						`No modifiers matched "[${
-							block.content
-						}]". It was ignored.`
-					);
+					markdown += `<p class="error">No modifiers matched "[${
+						block.content
+					}]". It was ignored.</p>`;
 				} else {
-					warn(
-						`More than one modifier matched "[${
-							block.content
-						}]". It was ignored.`
-					);
+					markdown += `<p class="error">More than one modifier matched "[${
+						block.content
+					}]". It was ignored.</p>`;
 				}
 				break;
 			}
