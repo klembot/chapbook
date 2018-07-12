@@ -174,7 +174,9 @@ export function init() {
 			}
 
 			if (props[0].toLowerCase() === 'font') {
+				// TODO
 			} else if (props[0].toLowerCase() === 'color') {
+				// TODO
 			}
 		}
 	});
