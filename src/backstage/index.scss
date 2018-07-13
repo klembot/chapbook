@@ -1,0 +1,250 @@
+@import '~open-color/open-color.scss';
+@import '../layout';
+@import '../typography';
+@import 'backstage';
+
+body.backstage-visible #backdrop {
+	justify-content: flex-start;
+}
+
+#backstage {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: calc(100vw - #{$pageWidth} - 2 * #{$pageMargin});
+	font-size: 18px;
+	background: $backstage-bg;
+	color: $backstage-fg;
+	border-left: 1px solid $backstage-fg;
+	transform: translateX(100%);
+	@include system-font;
+
+	&.open {
+		transform: none;
+	}
+
+	.toggle-visibility {
+		position: absolute;
+		right: 100%;
+		top: 0;
+		height: 40px;
+		width: 40px;
+		background: black;
+		color: $oc-gray-4;
+		border-radius: 0;
+		font-size: 24px;
+	}
+
+	ul.tabs {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		border-bottom: 1px solid $backstage-fg;
+		font-size: 12px;
+
+		li {
+			flex-grow: 1;
+			border-right: 1px solid $backstage-fg;
+			text-align: center;
+
+			&:last-child {
+				border-right: none;
+			}
+
+			a {
+				color: $backstage-fg;
+				text-decoration: none;
+				display: block;
+				height: $backstage-tab-height;
+				padding: $backstage-ui-padding;
+
+				&.active {
+					background: $backstage-fg;
+					color: $backstage-bg;
+				}
+			}
+		}
+	}
+
+	.panel {
+		h2 {
+			margin: 0;
+
+			button {
+				text-align: left;
+				background: none;
+				border: none;
+				width: 100%;
+				font-weight: normal;
+				color: $oc-gray-5;
+				@include small-caps;
+				font-size: $backstage-font-size - 1px;
+				padding: 0 $backstage-ui-padding;
+
+				&:before {
+					content: '\25ba';
+					display: inline-block;
+					width: 1.25em;
+				}
+
+				&:hover {
+					color: white;
+				}
+			}
+		}
+
+		.content {
+			display: none;
+		}
+
+		&.open {
+			h2 button:before {
+				content: '\25bc';
+			}
+
+			.content {
+				display: block;
+			}
+		}
+	}
+
+	.tab-content {
+		display: none;
+
+		&.active {
+			display: block;
+		}
+	}
+
+	button {
+		color: $backstage-input-fg;
+		background: $backstage-input-bg;
+		padding: $backstage-ui-padding;
+		border-radius: 2 * $backstage-ui-padding;
+		border: 1px solid $backstage-input-border;
+	}
+
+	p {
+		padding: 0 $backstage-ui-padding;
+	}
+
+	p,
+	li,
+	td {
+		font-size: $backstage-font-size;
+	}
+
+	input,
+	select {
+		color: $backstage-input-fg;
+		background: $backstage-input-bg;
+		border: 1px solid $backstage-input-border;
+		padding: $backstage-ui-padding;
+	}
+
+	table {
+		background: $backstage-input-bg;
+		table-layout: fixed;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	td {
+		position: relative;
+		border: 1px solid $backstage-table-border;
+		padding: $backstage-ui-padding;
+		vertical-align: top;
+
+		&:first-child {
+			border-left: none;
+		}
+
+		&:last-child {
+			border-right: none;
+		}
+
+		input {
+			background: none;
+			border: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			padding: $backstage-ui-padding;
+		}
+	}
+
+	textarea {
+		background: $backstage-input-bg;
+		border: 1px solid $backstage-input-border;
+		color: $backstage-input-fg;
+		padding: $backstage-ui-padding;
+		width: 100%;
+		height: 7.75em;
+	}
+
+	.block {
+		display: block;
+		margin: $backstage-ui-padding;
+		width: calc(100% - #{2 * $backstage-ui-padding});
+	}
+
+	.disabled {
+		color: $oc-gray-6;
+	}
+
+	.indented-input {
+		margin-left: calc(10em + #{$backstage-ui-padding});
+		font-size: 12px;
+	}
+
+	.input-group {
+		display: flex;
+		align-items: center;
+
+		label:first-child {
+			text-align: right;
+			margin-right: $backstage-ui-padding;
+			width: 10em;
+		}
+
+		input,
+		select {
+			flex-grow: 1;
+		}
+	}
+
+	.segmented-button {
+		display: flex;
+
+		button {
+			border-left: none;
+			border-radius: 0;
+			flex-grow: 1;
+
+			&:first-child {
+				border-left: 1px solid $backstage-input-border;
+				border-top-left-radius: 2 * $backstage-ui-padding;
+				border-bottom-left-radius: 2 * $backstage-ui-padding;
+			}
+
+			&:last-child {
+				border-top-right-radius: 2 * $backstage-ui-padding;
+				border-bottom-right-radius: 2 * $backstage-ui-padding;
+			}
+		}
+
+		.fixed {
+			flex-grow: 0;
+			min-width: 24px;
+		}
+	}
+
+	.tab-content {
+		max-height: calc(100vh - #{$backstage-tab-height});
+		overflow: auto;
+	}
+}

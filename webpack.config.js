@@ -16,6 +16,15 @@ const config = {
 	module: {
 		rules: [
 			{
+				test: /\.jsx$/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: [['preact']]
+					}
+				}
+			},
+			{
 				test: /\.scss$/,
 				use: [
 					cssPlugin.loader,
@@ -58,6 +67,9 @@ const config = {
 			}
 		})
 	],
+	resolve: {
+		extensions: ['.js', '.jsx']
+	},
 	serve: {
 		dev: {
 			stats: 'minimal'
