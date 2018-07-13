@@ -7,7 +7,7 @@ testing: true
 
 
 :: Test a codespan JS error
-`xyzzy()`
+Everything was going great until `xyzzy()` showed up.
 
 
 :: Test a code fence JS error
