@@ -98,3 +98,13 @@
 		}
 	}
 }
+
+@media screen and (max-width: 768px) {
+	#page {
+		margin: 0;
+		width: 100vw;
+		max-width: 100vw;
+		min-height: 100vh;
+		padding: 1em;
+	}
+}
