@@ -34,3 +34,8 @@
 		}
 	}
 }
+
+#backstage .tab-content {
+	max-height: calc(100vh - $backstage-tab-height);
+	overflow: auto;
+}

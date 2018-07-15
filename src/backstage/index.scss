@@ -40,11 +40,8 @@ body.backstage-visible #backdrop {
 	}
 
 	.tab-content {
-		display: none;
-
-		&.active {
-			display: block;
-		}
+		max-height: calc(100vh - $backstage-tab-height);
+		overflow: auto;
 	}
 
 	button {

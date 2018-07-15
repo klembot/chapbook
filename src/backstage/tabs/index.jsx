@@ -26,7 +26,9 @@ export default class Tabs extends Component {
 		return (
 			<div>
 				<ul class="tabs">{tabs}</ul>
-				{this.props.children[this.state.selected]}
+				<div class="tab-content">
+					{this.props.children[this.state.selected]}
+				</div>
 			</div>
 		);
 	}
