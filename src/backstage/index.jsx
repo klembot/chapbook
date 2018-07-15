@@ -1,10 +1,12 @@
 import {h, render, Component} from 'preact';
+import State from './state';
+import Tabs from './tabs';
 import './index.scss';
 
 export class Backstage extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {open: false};
+		this.state = {open: true};
 	}
 
 	setBodyClass() {
@@ -21,8 +23,8 @@ export class Backstage extends Component {
 
 	render() {
 		const label = this.state.open
-			? {icon: '\u2192', text: 'Close'}
-			: {icon: '\u2190', text: 'Open'};
+			? {icon: '\u203a', text: 'Close'}
+			: {icon: '\u2039', text: 'Open'};
 
 		return (
 			<div id="backstage" class={this.state.open && 'open'}>
@@ -33,7 +35,10 @@ export class Backstage extends Component {
 				>
 					{label.icon}
 				</button>
-				Backstage!
+				<Tabs>
+					<State label="State" />
+					<div label="Two">Two</div>
+				</Tabs>
 			</div>
 		);
 	}

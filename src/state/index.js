@@ -133,6 +133,21 @@ export function get(name) {
 		: varValue;
 }
 
+// Returns an object representing the current state, that can be given back to
+// deserialize(). Although this a plain JavaScript object, it should be
+// considered read-only.
+
+export function serialize() {
+	return Object.assign({}, vars);
+}
+
+// Sets state based on a previously serialized object. This will trigger
+// `state-change` events as it works.
+
+export function deserialize(previous) {
+	Object.keys(previous).forEach(v => set(v, previous[v]));
+}
+
 // Returns whether it is possible to save values to local storage.
 
 export function canSave() {
@@ -151,7 +166,7 @@ export function save() {
 	log('Saving to local storage');
 	window.localStorage.setItem(
 		get('config.state.saveKey'),
-		JSON.stringify(vars)
+		JSON.stringify(serialize())
 	);
 	log('Save complete');
 }
@@ -169,11 +184,38 @@ export function canRestore() {
 
 export function restore() {
 	log('Restoring variables from local storage');
-
-	const toRestore = JSON.parse(
-		window.localStorage.getItem(get('config.state.saveKey'))
+	deserialize(
+		JSON.parse(window.localStorage.getItem(get('config.state.saveKey')))
 	);
-
-	Object.keys(toRestore).forEach(v => set(v, toRestore[v]));
 	log('Restore complete');
+}
+
+// Returns all variable names currently set.
+
+export function varNames(includeDefaults) {
+	function catalog(obj, prefix, result = []) {
+		return Object.keys(obj).reduce((out, k) => {
+			if (
+				typeof obj[k] === 'object' &&
+				obj[k] &&
+				!Array.isArray(obj[k])
+			) {
+				catalog(obj[k], prefix ? prefix + '.' + k : k, out);
+			} else {
+				let varName = prefix ? prefix + '.' + k : k;
+
+				if (out.indexOf(varName) === -1) {
+					out.push(varName);
+				}
+			}
+
+			return out;
+		}, result);
+	}
+
+	if (includeDefaults) {
+		return catalog(defaults, null, catalog(vars, null)).sort();
+	}
+
+	return catalog(vars).sort();
 }

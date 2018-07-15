@@ -1,0 +1,36 @@
+@import '../backstage';
+
+#backstage ul.tabs {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	border-bottom: 1px solid $backstage-fg;
+	font-size: 12px;
+
+	li {
+		flex-grow: 1;
+		border-right: 1px solid $backstage-fg;
+		text-align: center;
+
+		&:last-child {
+			border-right: none;
+		}
+
+		button {
+			color: $backstage-fg;
+			text-decoration: none;
+			display: block;
+			width: 100%;
+			height: $backstage-tab-height;
+			padding: $backstage-ui-padding;
+			border: none;
+			border-radius: 0;
+
+			&.active {
+				background: $backstage-fg;
+				color: $backstage-bg;
+			}
+		}
+	}
+}

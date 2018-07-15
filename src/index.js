@@ -20,7 +20,6 @@ initDisplay();
 initStory();
 
 if (get('config.testing')) {
-	console.log('initing backstage');
 	initBackstage();
 }
 

@@ -13,10 +13,11 @@ body.backstage-visible #backdrop {
 	right: 0;
 	bottom: 0;
 	width: calc(100vw - #{$pageWidth} - 2 * #{$pageMargin});
+	max-height: 100vh;
 	font-size: 18px;
 	background: $backstage-bg;
-	color: $backstage-fg;
 	border-left: 1px solid $backstage-fg;
+	color: $backstage-fg;
 	transform: translateX(100%);
 	@include system-font;
 
@@ -26,88 +27,16 @@ body.backstage-visible #backdrop {
 
 	.toggle-visibility {
 		position: absolute;
-		right: 100%;
 		top: 0;
-		height: 40px;
-		width: 40px;
-		background: black;
-		color: $oc-gray-4;
+		bottom: 0;
+		right: 100%;
+		width: 20px;
+		color: $backstage-fg;
+		background: $oc-gray-5;
+		border-top: none;
+		border-bottom: none;
 		border-radius: 0;
 		font-size: 24px;
-	}
-
-	ul.tabs {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		display: flex;
-		border-bottom: 1px solid $backstage-fg;
-		font-size: 12px;
-
-		li {
-			flex-grow: 1;
-			border-right: 1px solid $backstage-fg;
-			text-align: center;
-
-			&:last-child {
-				border-right: none;
-			}
-
-			a {
-				color: $backstage-fg;
-				text-decoration: none;
-				display: block;
-				height: $backstage-tab-height;
-				padding: $backstage-ui-padding;
-
-				&.active {
-					background: $backstage-fg;
-					color: $backstage-bg;
-				}
-			}
-		}
-	}
-
-	.panel {
-		h2 {
-			margin: 0;
-
-			button {
-				text-align: left;
-				background: none;
-				border: none;
-				width: 100%;
-				font-weight: normal;
-				color: $oc-gray-5;
-				@include small-caps;
-				font-size: $backstage-font-size - 1px;
-				padding: 0 $backstage-ui-padding;
-
-				&:before {
-					content: '\25ba';
-					display: inline-block;
-					width: 1.25em;
-				}
-
-				&:hover {
-					color: white;
-				}
-			}
-		}
-
-		.content {
-			display: none;
-		}
-
-		&.open {
-			h2 button:before {
-				content: '\25bc';
-			}
-
-			.content {
-				display: block;
-			}
-		}
 	}
 
 	.tab-content {
