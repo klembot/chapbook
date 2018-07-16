@@ -1,5 +1,6 @@
 import {h, render, Component} from 'preact';
 import State from './state';
+import Style from './style';
 import Tabs from './tabs';
 import './index.scss';
 
@@ -37,7 +38,7 @@ export class Backstage extends Component {
 				</button>
 				<Tabs>
 					<State label="State" />
-					<div label="Two">Two</div>
+					<Style label="Style" />
 				</Tabs>
 			</div>
 		);

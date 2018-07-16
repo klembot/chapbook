@@ -39,11 +39,6 @@ body.backstage-visible #backdrop {
 		font-size: 24px;
 	}
 
-	.tab-content {
-		max-height: calc(100vh - $backstage-tab-height);
-		overflow: auto;
-	}
-
 	button {
 		color: $backstage-input-fg;
 		background: $backstage-input-bg;

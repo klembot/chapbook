@@ -4,7 +4,12 @@ import './index.scss';
 export default class Panel extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {open: true};
+		this.state = {
+			open:
+				this.props.initiallyOpen !== undefined
+					? this.props.initiallyOpen
+					: true
+		};
 	}
 
 	toggle() {
