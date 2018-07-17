@@ -1,4 +1,5 @@
 import {h, render, Component} from 'preact';
+import Notes from './notes';
 import State from './state';
 import Style from './style';
 import Tabs from './tabs';
@@ -39,6 +40,7 @@ export class Backstage extends Component {
 				<Tabs>
 					<State label="State" />
 					<Style label="Style" />
+					<Notes label="Notes" />
 				</Tabs>
 			</div>
 		);
