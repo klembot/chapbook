@@ -38,7 +38,7 @@ function addGlobalProxy(target, name) {
 
 	Object.defineProperty(target, targetName, {
 		get() {
-			get(name);
+			return get(name);
 		},
 		set(value) {
 			set(name, value);
