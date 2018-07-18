@@ -6,7 +6,7 @@ Pick a color:
 
 
 :: Red
-color: 'red'
+col: 'red'
 --
 Okay, what would you like to test?
 * [[An if modifier]]
@@ -15,7 +15,7 @@ Okay, what would you like to test?
 
 
 :: Blue
-color: 'blue'
+col: 'blue'
 --
 Okay, what would you like to test?
 * [[An if modifier]]
@@ -25,10 +25,10 @@ Okay, what would you like to test?
 :: An if modifier
 Let me see...
 
-[if color === 'red']
+[if col === 'red']
 You picked red.
 
-[if color === 'blue']
+[if col === 'blue']
 You picked blue.
 
 [continue]
@@ -37,17 +37,17 @@ This text appears no matter what.
 :: An unless modifier
 Let me see...
 
-[unless color === 'red']
+[unless col === 'red']
 You picked something other than red.
 
-[unless color === 'blue']
+[unless col === 'blue']
 You picked something other than blue.
 
 [continue]
 This text appears no matter what.
 
 :: An if/else modifier combination
-[if color === 'red']
+[if col === 'red']
 You picked red.
 
 [else]
