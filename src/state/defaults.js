@@ -5,6 +5,7 @@ import {defaults as loggerDefaults} from '../logger';
 import {defaults as randomDefaults} from '../author/random';
 import {defaults as stateDefaults, setDefault} from './index';
 import {defaults as styleDefaults} from '../style';
+import {defaults as templateDefaults} from '../template';
 
 export default function init() {
 	[
@@ -12,7 +13,8 @@ export default function init() {
 		loggerDefaults,
 		randomDefaults,
 		stateDefaults,
-		styleDefaults
+		styleDefaults,
+		templateDefaults
 	].forEach(defs =>
 		Object.keys(defs).forEach(k => {
 			if (typeof defs[k] === 'function') {
