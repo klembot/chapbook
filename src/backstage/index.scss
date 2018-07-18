@@ -27,16 +27,23 @@ body.backstage-visible #backdrop {
 
 	.toggle-visibility {
 		position: absolute;
-		top: 0;
-		bottom: 0;
+		top: calc(50% - 25px);
 		right: 100%;
-		width: 20px;
+		width: 25px;
+		height: 50px;
+		padding: 0;
+		background: $backstage-bg;
 		color: $backstage-fg;
-		background: $oc-gray-5;
-		border-top: none;
-		border-bottom: none;
-		border-radius: 0;
-		font-size: 24px;
+		border: none;
+		border-top-left-radius: 25px;
+		border-bottom-left-radius: 25px;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+		border-left: 1px solid black;
+		border-top: 1px solid black;
+		border-bottom: 1px solid black;
+		border-right: 1px solid $oc-gray-5;
+		font-size: 18px;
 	}
 
 	button {
@@ -45,6 +52,10 @@ body.backstage-visible #backdrop {
 		padding: $backstage-ui-padding;
 		border-radius: 2 * $backstage-ui-padding;
 		border: 1px solid $backstage-input-border;
+
+		&:hover {
+			background: $oc-gray-3;
+		}
 	}
 
 	p {

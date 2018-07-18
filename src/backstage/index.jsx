@@ -25,8 +25,8 @@ export class Backstage extends Component {
 
 	render() {
 		const label = this.state.open
-			? {icon: '\u203a', text: 'Close'}
-			: {icon: '\u2039', text: 'Open'};
+			? {icon: '\u2192', text: 'Close'}
+			: {icon: '\u2190', text: 'Open'};
 
 		return (
 			<div id="backstage" class={this.state.open && 'open'}>
