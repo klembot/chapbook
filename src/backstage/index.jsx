@@ -1,4 +1,6 @@
 import {h, render, Component} from 'preact';
+import {init as initRecorder} from './history/recorder';
+import History from './history';
 import Notes from './notes';
 import State from './state';
 import Style from './style';
@@ -39,6 +41,7 @@ export class Backstage extends Component {
 				</button>
 				<Tabs>
 					<State label="State" />
+					<History label="History" />
 					<Style label="Style" />
 					<Notes label="Notes" />
 				</Tabs>
@@ -56,5 +59,6 @@ export class Backstage extends Component {
 }
 
 export function init() {
+	initRecorder();
 	render(<Backstage />, document.body);
 }

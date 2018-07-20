@@ -83,6 +83,10 @@ body.backstage-visible #backdrop {
 		width: 100%;
 	}
 
+	th {
+		text-align: left;
+	}
+
 	td {
 		position: relative;
 		border: 1px solid $backstage-table-border;
@@ -97,9 +101,11 @@ body.backstage-visible #backdrop {
 			border-right: none;
 		}
 
-		input {
+		input,
+		button {
 			background: none;
 			border: none;
+			border-radius: 0;
 			position: absolute;
 			top: 0;
 			left: 0;

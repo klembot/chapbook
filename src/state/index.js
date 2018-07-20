@@ -81,9 +81,10 @@ export function reset() {
 	}
 
 	deleteProps(vars, '');
+	event.emit('state-reset');
 
 	if (get('config.state.autosave')) {
-		save();
+		saveToStorage();
 	}
 }
 
@@ -104,7 +105,7 @@ export function set(name, value) {
 	}
 
 	if (get('config.state.autosave')) {
-		save();
+		saveToStorage();
 	}
 }
 
@@ -134,23 +135,24 @@ export function get(name) {
 }
 
 // Returns an object representing the current state, that can be given back to
-// deserialize(). Although this a plain JavaScript object, it should be
+// restoreFromObject(). Although this a plain JavaScript object, it should be
 // considered read-only.
 
-export function serialize() {
+export function saveToObject() {
 	return Object.assign({}, vars);
 }
 
 // Sets state based on a previously serialized object. This will trigger
 // `state-change` events as it works.
 
-export function deserialize(previous) {
+export function restoreFromObject(previous) {
+	reset();
 	Object.keys(previous).forEach(v => set(v, previous[v]));
 }
 
 // Returns whether it is possible to save values to local storage.
 
-export function canSave() {
+export function canSaveToStorage() {
 	try {
 		window.localStorage.setItem('chapbook-test', 'a');
 		window.localStorage.removeItem('chapbook-test');
@@ -160,31 +162,31 @@ export function canSave() {
 	}
 }
 
-// Saves all values to local storage for later retrieval by restore().
+// Saves all values to local storage for later retrieval by restoreFromStorage().
 
-export function save() {
+export function saveToStorage() {
 	log('Saving to local storage');
 	window.localStorage.setItem(
 		get('config.state.saveKey'),
-		JSON.stringify(serialize())
+		JSON.stringify(saveToObject())
 	);
 	log('Save complete');
 }
 
 // Returns whether there is state to restore in local storage.
 
-export function canRestore() {
+export function canRestoreFromStorage() {
 	return (
-		canSave() &&
+		canSaveToStorage() &&
 		window.localStorage.getItem(get('config.state.saveKey')) !== null
 	);
 }
 
 // Restores state from local storage.
 
-export function restore() {
+export function restoreFromStorage() {
 	log('Restoring variables from local storage');
-	deserialize(
+	restoreFromObject(
 		JSON.parse(window.localStorage.getItem(get('config.state.saveKey')))
 	);
 	log('Restore complete');

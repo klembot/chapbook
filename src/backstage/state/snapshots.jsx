@@ -1,7 +1,7 @@
 // A panel allowing saving and restoring state.
 
 import {h, Component} from 'preact';
-import {get, deserialize, serialize} from '../../state';
+import {get, restoreFromObject, saveToObject} from '../../state';
 import Panel from '../panel';
 
 export default class Snapshots extends Component {
@@ -18,14 +18,14 @@ export default class Snapshots extends Component {
 			this.setState({
 				snapshots: this.state.snapshots.concat({
 					name,
-					state: serialize()
+					state: saveToObject()
 				})
 			});
 		}
 	}
 
 	loadSnapshot(index) {
-		deserialize(this.state.snapshots[index].state);
+		restoreFromObject(this.state.snapshots[index].state);
 	}
 
 	deleteSnapshot(index) {
