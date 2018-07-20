@@ -3,8 +3,12 @@
 @import '../typography';
 @import 'backstage';
 
-body.backstage-visible #backdrop {
-	justify-content: flex-start;
+body.backstage-visible {
+	#backdrop {
+		justify-content: flex-start;
+		max-width: calc(100vw - 30rem);
+		padding-right: calc(30px - #{$pageMargin});
+	}
 }
 
 #backstage {
@@ -12,21 +16,35 @@ body.backstage-visible #backdrop {
 	top: 0;
 	right: 0;
 	bottom: 0;
-	width: calc(100vw - #{$pageWidth} - 2 * #{$pageMargin});
+	width: 30rem;
 	max-height: 100vh;
 	font-size: 18px;
 	background: $backstage-bg;
-	border-left: 1px solid $backstage-fg;
 	color: $backstage-fg;
 	transform: translateX(100%);
 	@include system-font;
 
 	&.open {
 		transform: none;
+
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 4px;
+			right: 100%;
+			background: linear-gradient(
+				to left,
+				hsla(0, 0%, 0%, 0.25),
+				transparent
+			);
+		}
 	}
 
 	.toggle-visibility {
 		position: absolute;
+		z-index: 1;
 		top: calc(50% - 25px);
 		right: 100%;
 		width: 25px;
@@ -39,10 +57,7 @@ body.backstage-visible #backdrop {
 		border-bottom-left-radius: 25px;
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
-		border-left: 1px solid black;
-		border-top: 1px solid black;
-		border-bottom: 1px solid black;
-		border-right: 1px solid $oc-gray-5;
+		box-shadow: -2px 0px 1px hsla(0, 0%, 0%, 0.25);
 		font-size: 18px;
 	}
 
