@@ -1,6 +1,7 @@
 const fs = require('fs');
 const cssPlugin = require('mini-css-extract-plugin');
 const htmlPlugin = require('html-webpack-plugin');
+const path = require('path');
 const TwineStory = require('twine-utils/story');
 
 const isRelease = process.env.NODE_ENV === 'production';
@@ -55,9 +56,15 @@ const config = {
 				const story = new TwineStory();
 
 				story.mergeTwee(
-					fs.readFileSync(`examples/${args.example}.txt`, {
-						encoding: 'utf8'
-					})
+					fs.readFileSync(
+						path.resolve(
+							__dirname,
+							`./examples/${args.example}.txt`
+						),
+						{
+							encoding: 'utf8'
+						}
+					)
 				);
 
 				story.attributes.name = 'Hello World';
