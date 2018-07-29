@@ -1,0 +1,13 @@
+@import '../backstage';
+
+#backstage table.history {
+	td.actions {
+		width: 2.5em;
+	}
+
+	td.go {
+		&[rowspan='2'] {
+			border-right: 1px solid $backstage-fg;
+		}
+	}
+}

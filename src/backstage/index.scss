@@ -22,24 +22,22 @@ body.backstage-visible {
 	background: $backstage-bg;
 	color: $backstage-fg;
 	transform: translateX(100%);
+	box-shadow: inset 2px 0px 3px hsla(0, 0%, 0%, 0.25);
 	@include system-font;
+
+	&:before {
+		content: '';
+		position: absolute;
+		z-index: 2;
+		top: calc(50% - 25px);
+		right: calc(100% - 4px);
+		height: 50px;
+		width: 4px;
+		background: $backstage-bg;
+	}
 
 	&.open {
 		transform: none;
-
-		&:after {
-			content: '';
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			width: 4px;
-			right: 100%;
-			background: linear-gradient(
-				to left,
-				hsla(0, 0%, 0%, 0.25),
-				transparent
-			);
-		}
 	}
 
 	.toggle-visibility {
@@ -57,7 +55,7 @@ body.backstage-visible {
 		border-bottom-left-radius: 25px;
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
-		box-shadow: -2px 0px 1px hsla(0, 0%, 0%, 0.25);
+		box-shadow: inset 2px 0px 3px hsla(0, 0%, 0%, 0.25);
 		font-size: 18px;
 	}
 
@@ -95,7 +93,8 @@ body.backstage-visible {
 		background: $backstage-input-bg;
 		table-layout: fixed;
 		border-collapse: collapse;
-		width: 100%;
+		width: calc(100% - #{$backstage-ui-padding * 2});
+		margin: $backstage-ui-padding;
 	}
 
 	th {

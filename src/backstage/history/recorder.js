@@ -24,6 +24,10 @@ function add({name, value}) {
 }
 
 export function rewindTo(index) {
+	if (!history[index]) {
+		throw new Error(`There is no history at index ${index} to rewind to.`);
+	}
+
 	restoreFromObject(history[index].state);
 }
 

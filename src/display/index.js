@@ -77,17 +77,21 @@ const updateDom = coalesceCalls(function update(calls) {
 	if (calls.some(c => c[0])) {
 		const trail = get('trail');
 		const bodyTransition = get('config.body.transition.name');
+		const passage = passageNamed(trail[trail.length - 1]);
 
-		if (transitions[bodyTransition]) {
-			transitions[bodyTransition](
-				mainContent,
-				render(passageNamed(trail[trail.length - 1]).source),
-				get('config.body.transition.duration')
-			);
+		if (passage) {
+			if (transitions[bodyTransition]) {
+				transitions[bodyTransition](
+					mainContent,
+					render(passage.source),
+					get('config.body.transition.duration')
+				);
+			} else {
+				transitions.none(mainContent, render(passage.source));
+			}
 		} else {
-			transitions.none(
-				mainContent,
-				render(passageNamed(trail[trail.length - 1]).source)
+			throw new Error(
+				`There is no passage named "${trail[trail.length - 1]}".`
 			);
 		}
 	}

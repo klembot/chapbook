@@ -2,44 +2,82 @@ import {h, Component} from 'preact';
 import Panel from '../panel';
 import event from '../../event';
 import {history, rewindTo} from './recorder';
+import './index.scss';
 
-function HistoryItem({change, state, index}) {
-	let type, detail;
+function parseHistory(history) {
+	// Group the history items by passage navigation.
 
-	if (change.name === 'trail') {
-		type = 'Go to passage';
-		detail = change.value[change.value.length - 1];
-	} else {
-		type = 'Set variable';
-		detail = `${change.name} &larr; ${JSON.stringify(change.value)}`;
+	const result = [];
+	let current = {vars: []};
+
+	history.forEach(({change}) => {
+		if (change.name === 'trail') {
+			if (current.passage) {
+				result.push(current);
+			}
+
+			current = {
+				passage: change.value[change.value.length - 1],
+				vars: []
+			};
+		} else {
+			// We need to create separate entries instead of just an object,
+			// so that if a variable changes multiple times under one
+			// passage, we see that.
+
+			current.vars.push({name: change.name, value: change.value});
+		}
+	});
+
+	if (current.vars.length > 0 || current.passage) {
+		result.push(current);
 	}
 
-	return (
+	return result;
+}
+
+function historyRows({passage, vars, index}) {
+	// This is a function, not a stateless component, because we have to return
+	// multiple <tr>s without anything enclosing them.
+
+	const result = [
 		<tr>
-			<td>{type}</td>
-			<td>{detail}</td>
-			<td style="width: 2em">
-				<button
-					onClick={() => rewindTo(index)}
-					title="Rewind state to here"
-				>
-					&#x21a9;
-				</button>
+			<td class="actions" rowspan={vars.length + 1}>
+				<button onClick={() => rewindTo(index)}>&#x21aa;</button>
+			</td>
+			<td
+				class="go"
+				rowspan={vars.length + 1}
+				colspan={vars.length > 0 ? 1 : 2}
+			>
+				Go to &ldquo;{passage}&rdquo;
 			</td>
 		</tr>
-	);
+	];
+
+	vars.forEach(v => {
+		result.push(
+			<tr>
+				<td>
+					{v.name} &larr; {v.value}
+				</td>
+			</tr>
+		);
+	});
+
+	return result;
 }
 
 export default class History extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {history: history};
+		this.state = {history: parseHistory(history)};
 		this.updateBound = () => this.update();
 	}
 
 	update() {
-		this.setState({history});
+		this.setState({history: parseHistory(history)});
 	}
 
 	render() {
@@ -47,11 +85,11 @@ export default class History extends Component {
 
 		if (this.state.history.length > 0) {
 			content = (
-				<table>
-					{this.state.history.map((hist, index) => (
-						<HistoryItem change={hist.change} index={index} />
-					))}
-				</table>
+				<div>
+					<table class="history">
+						{this.state.history.map(historyRows)}
+					</table>
+				</div>
 			);
 		} else {
 			content = (
