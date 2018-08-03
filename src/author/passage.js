@@ -1,17 +1,22 @@
 // Author functions for working with passages.
 
-import factoryFor from '../util/class-factory';
 import {passages} from '../story';
 import {render} from '../template';
 
-export class Passage {
-	constructor(name) {
-		Object.assign(this, passages.find(p => p.name === name));
-	}
-
-	toString() {
-		return render(this.source);
-	}
+function retrievePassage(name) {
+	return passages.find(p => p.name === name);
 }
 
-export default factoryFor(Passage);
+export default {
+	render(name) {
+		return render(passage.source(name));
+	},
+
+	source(name) {
+		return retrievePassage(name).source;
+	},
+
+	tags(name) {
+		return retrievePassage(name).tags;
+	}
+};
