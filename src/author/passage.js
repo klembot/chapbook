@@ -1,4 +1,8 @@
-// Author functions for working with passages.
+// Author functions for working with passages. These are functions to make it
+// explicit that the values are read-only, because changes could not be
+// persisted-- we'd have to store the entire story in state, which is cumbersome
+// and impossible for especially large stories, given that state is always
+// persisted to local storage.
 
 import {passages} from '../story';
 import {render} from '../template';

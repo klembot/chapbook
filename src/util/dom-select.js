@@ -1,4 +1,4 @@
-/* Shorthands for querySelector() and friends. */
+// Shorthands for querySelector() and friends.
 
 export function select(el, selector) {
 	return el.querySelector(selector);
