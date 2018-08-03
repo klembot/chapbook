@@ -34,7 +34,7 @@ export const defaults = {
 	'config.header.transition.duration': '500ms',
 	'config.footer.left': '_`story.name()`_',
 	'config.footer.center': '',
-	'config.footer.right': "`link('Restart').restart()`",
+	'config.footer.right': '`link.thatRestarts()`',
 	'config.footer.transition.name': 'crossfade',
 	'config.footer.transition.duration': '500ms'
 };

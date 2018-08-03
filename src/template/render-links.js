@@ -37,9 +37,7 @@ export default function renderLinks(source) {
 			}
 		}
 
-		return link(label)
-			.to(target)
-			.toString();
+		return link.to(target, label);
 	});
 
 	return result;

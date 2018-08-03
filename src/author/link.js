@@ -1,57 +1,55 @@
 // Author functions for creating links.
 
-import factoryFor from '../util/class-factory';
 import {get} from '../state';
-import {Input} from './input';
 
-export class Link {
-	constructor(label) {
-		this.el = document.createElement('a');
+function createLink(label, attrs, data) {
+	const result = document.createElement('a');
 
-		if (label) {
-			this.labelled(label);
-		}
+	result.appendChild(document.createTextNode(label));
+
+	if (attrs) {
+		Object.keys(attrs).forEach(k => result.setAttribute(k, attrs[k]));
 	}
 
-	labelled(label) {
-		this.el.innerHTML = '';
-		this.el.appendChild(document.createTextNode(label));
-		return this;
+	if (data) {
+		Object.keys(data).forEach(k => (result.dataset[k] = data[k]));
 	}
 
-	to(target) {
-		/* Does this look like an external link? */
-
-		if (/^\w+:\/\/\/?\w/i.test(target)) {
-			this.el.setAttribute('href', target);
-			this.el.dataset.cbGo = undefined;
-		} else {
-			this.el.setAttribute('href', `javascript:void(0)`);
-			this.el.dataset.cbGo = target;
-		}
-
-		return this;
-	}
-
-	back(count = 1) {
-		const trail = get('trail');
-
-		if (count < trail.length - 1) {
-			return this.to(trail[trail.length - count]);
-		}
-
-		return this.to(trail[0]);
-	}
-
-	restart() {
-		this.el.setAttribute('href', 'javascript:void(0)');
-		this.el.dataset.cbRestart = '';
-		return this;
-	}
-
-	toString() {
-		return this.el.outerHTML;
-	}
+	return result.outerHTML;
 }
 
-export default factoryFor(Link);
+export default {
+	to(target, label) {
+		// If the target is a negative number, then go back that many steps in
+		// the trail.
+
+		if (target < 0) {
+			const trail = get('trail');
+			const passage = trail[Math.max(trail.length + target, 0)];
+
+			return createLink(
+				label || passage,
+				{href: 'javascript:void(0)'},
+				{cbGo: passage}
+			);
+		}
+
+		// Does the target look like an external link?
+
+		if (/^\w+:\/\/\/?\w/i.test(target)) {
+			return createLink(label || target, {href: target});
+		}
+
+		// We'll treat it as an internal one if not.
+
+		return createLink(
+			label || target,
+			{href: 'javascript:void(0)'},
+			{cbGo: target}
+		);
+	},
+
+	thatRestarts(label = 'Restart') {
+		return createLink(label, {href: 'javascript:void(0)'}, {cbRestart: ''});
+	}
+};
