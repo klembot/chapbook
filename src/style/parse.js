@@ -58,7 +58,7 @@ export function parseFont(source) {
 		result['font-style'] = 'italic';
 	}
 
-	function applyRoman(result) {
+	function applyRegular(result) {
 		result['font-style'] = 'none';
 		result['font-weight'] = 'normal';
 		result['letter-spacing'] = 'normal';
@@ -104,7 +104,7 @@ export function parseFont(source) {
 
 		const modifiers = source.substr(sizeMatch.index);
 
-		if (/\broman\b/i.test(modifiers)) {
+		if (/\bregular\b/i.test(modifiers)) {
 			result['font-style'] = 'none';
 			result['font-weight'] = 'normal';
 			result['letter-spacing'] = 'normal';
@@ -134,11 +134,11 @@ export function parseFont(source) {
 		let modMatch;
 		let trimmedSource = source;
 
-		// Because of fonts like Times New Roman, we have to be case-sensitive
-		// when searching for modifiers.
+		// Because font names might include these words, we have to be
+		// case-sensitive when searching for modifiers.
 
 		while (
-			(modMatch = /(bold|italics?|roman|small caps|underlined?)$/.exec(
+			(modMatch = /(bold|italics?|regular|small caps|underlined?)$/.exec(
 				trimmedSource
 			))
 		) {
@@ -152,8 +152,8 @@ export function parseFont(source) {
 					applyItalic(result);
 					break;
 
-				case 'roman':
-					applyRoman(result);
+				case 'regular':
+					applyRegular(result);
 					break;
 
 				case 'small caps':
