@@ -12,12 +12,10 @@ export function parseColor(source) {
 	let result = {color: 'inherit', 'background-color': 'inherit'};
 	const bits = source.split(/ on /i);
 
-	result.color = color(bits[0].trim().toLowerCase()).toString();
+	result.color = color.format(bits[0].trim().toLowerCase());
 
 	if (bits.length === 2) {
-		result['background-color'] = color(
-			bits[1].trim().toLowerCase()
-		).toString();
+		result['background-color'] = color.format(bits[1].trim().toLowerCase());
 	}
 
 	return result;

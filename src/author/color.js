@@ -10,6 +10,10 @@ import parseColor from 'pure-color/parse';
 import rgbToHsl from 'pure-color/convert/rgb2hsl';
 
 function parse(value) {
+	if (typeof value !== 'string') {
+		throw new Error('Only strings can be parsed as colors.');
+	}
+
 	// If we matched only one part of an Open Color keyword, check to see if
 	// there's a range. There are also Open Colors named 'black' and 'white'
 	// which obviously don't have a range.
@@ -28,14 +32,12 @@ function parse(value) {
 		value = openColors[colorLookup[1]][colorLookup[2]];
 	}
 
-	const hsla = rgbToHsl(parseColor(value));
+	const rgba = parseColor(value);
+	const hsla = rgbToHsl(rgba);
 
-	// Pure Color doesn't force an alpha value.
+	// Pure Color doesn't force an alpha value, and doesn't preserve alpha in conversions.
 
-	if (!hsla[3]) {
-		hsla[3] = 1;
-	}
-
+	hsla[3] = rgba[3] !== undefined ? rgba[3] : 1;
 	return hsla;
 }
 
