@@ -27,8 +27,4 @@ describe('custom Markdown renderer', () => {
 		result = renderer.code("\nwrite('hello'); write(' world');\n");
 		expect(result).toBe('hello world');
 	});
-
-	test('interpolates JavaScript values inside backticks', () => {
-		expect(renderer.codespan('2 + 2')).toBe('4');
-	});
 });

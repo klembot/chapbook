@@ -41,28 +41,6 @@ Object.assign(renderer, {
 		}
 	},
 
-	codespan(src) {
-		// Evaluate code spans, and if they end up having a non-null or
-		// undefined result, output it.
-
-		try {
-			const func = new Function(`return (${unescape(src)})`);
-			const result = func.apply(window);
-
-			if (result !== null && result !== undefined) {
-				return result.toString();
-			}
-		} catch (e) {
-			if (get('config.testing')) {
-				return `<span class="error">An error occurred evaluating <code>${src}</code>: ${
-					e.message
-				}</span>`;
-			} else {
-				throw e;
-			}
-		}
-	},
-
 	del(src) {
 		// Use ~~tildes~~ to denote small caps instead of strikethroughs.
 
