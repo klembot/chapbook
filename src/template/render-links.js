@@ -1,13 +1,34 @@
 // Renders all Twine link formats into HTML links.
 
-import link from '../author/link';
+import htmlify from '../util/htmlify';
+
+export function renderLink(target, label) {
+	// Does the target look like an external link?
+
+	if (/^\w+:\/\/\/?\w/i.test(target)) {
+		return htmlify(
+			'a',
+			{
+				href: target
+			},
+			[label || target]
+		);
+	}
+
+	// We'll treat it as an internal one if not.
+
+	return htmlify(
+		'a',
+		{
+			href: 'javascript:void(0)',
+			'data-cb-go': target
+		},
+		[label || target]
+	);
+}
 
 export default function renderLinks(source) {
-	let result = source;
-
-	// [[links]]
-
-	result = result.replace(/\[\[(.*?)\]\]/g, (match, target) => {
+	return source.replace(/\[\[(.*?)\]\]/g, (_, target) => {
 		let label = target;
 
 		// display|target format
@@ -37,8 +58,6 @@ export default function renderLinks(source) {
 			}
 		}
 
-		return link.to(target, label);
+		return renderLink(target, label || target);
 	});
-
-	return result;
 }

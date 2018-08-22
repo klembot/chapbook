@@ -1,11 +1,11 @@
 :: Start
-Your favorite color is `input('color').cyclingLink('red', 'green', 'blue')`.
+Your favorite color is {cycling link: ['red', 'green', 'blue'], set: 'color'}.
 
-Your favorite food is `input('food').menu('pizza', 'sushi', 'tacos')`.
+Your favorite food is: {dropdown menu for: 'food', choices: ['pizza', 'sushi', 'tacos']}
 
-Your name is `input('name')`.
+Your name is: {text input for: 'name'}
 
 [[Check those]]
 
 :: Check those
-Hey, `name`, I bet you'd enjoy `color` `food`!
+Hey, {name}, I bet you'd enjoy {color} {food}!

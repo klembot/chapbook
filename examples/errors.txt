@@ -1,13 +1,8 @@
 :: Start
 testing: true
 --
-* [[Test a codespan JS error]]
 * [[Test a code fence JS error]]
 * [[Test a missing modifier]]
-
-
-:: Test a codespan JS error
-Everything was going great until `xyzzy()` showed up.
 
 
 :: Test a code fence JS error

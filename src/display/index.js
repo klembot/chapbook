@@ -1,19 +1,23 @@
-// Manages keeping the DOM in sync with state, and manages bridging events in
-// the DOM with the engine.
-//
-// This supports hooks via the following attributes:
-// - `data-cb-go`: calls go() on the passage in the attribute when the element
-//   is clicked.
-// - `data-cb-restart: calls restart() when the element is clicked.
-// - `data-cb-cycle`: cycles the inner text of the element between the values
-//   listed in the attribute when the element is clicked. The attribute must be
-//   a JSON-encoded array.
+/*
+Manages keeping the DOM in sync with state, and manages bridging events in the
+DOM with the engine.
+
+This supports hooks via the following attributes:
+-   `data-cb-cycle`: cycles the inner text of the element between the values
+    listed in the attribute when the element is clicked. The attribute must be a
+    JSON-encoded array.
+-   `data-cb-go`: calls go() on the passage in the attribute when the element is
+    clicked.
+-   `data-cb-restart`: calls restart() when the element is clicked.
+-   'data-cb-set': calls set() on the variable name in the attribute with either
+	the value of the element (if it is an `<input type="text">`), the value of the selected option of the element (if it is a `<select>`), or the inner text of the element (if it is an `<a>`).
+*/
 
 import closest from 'closest';
 import coalesceCalls from '../util/coalesce-calls';
 import event from '../event';
 import {crossfade, fadeInOut, none} from './transitions';
-import {get} from '../state';
+import {get, set} from '../state';
 import {go, restart} from '../author/actions';
 import {init as initCrash} from './crash';
 import {passageNamed} from '../story';
@@ -32,9 +36,9 @@ export const defaults = {
 	'config.header.right': '',
 	'config.header.transition.name': 'crossfade',
 	'config.header.transition.duration': '500ms',
-	'config.footer.left': '_`story.name()`_',
+	'config.footer.left': '_{story name}_',
 	'config.footer.center': '',
-	'config.footer.right': '`link.thatRestarts()`',
+	'config.footer.right': '{restart link}',
 	'config.footer.transition.name': 'crossfade',
 	'config.footer.transition.duration': '500ms'
 };
@@ -47,7 +51,7 @@ function attachDomListeners(el) {
 		const cycleLink = closest(e.target, '[data-cb-cycle]', true);
 
 		if (cycleLink) {
-			const choices = JSON.parse(cycleLink.dataset.cycle);
+			const choices = JSON.parse(cycleLink.dataset.cbCycle);
 			let index = choices.indexOf(cycleLink.textContent) + 1;
 
 			if (index === choices.length) {
@@ -55,6 +59,12 @@ function attachDomListeners(el) {
 			}
 
 			cycleLink.textContent = choices[index];
+		}
+
+		const setLink = closest(e.target, 'a[data-cb-set]', true);
+
+		if (setLink) {
+			set(setLink.dataset.cbSet, setLink.textContent);
 		}
 
 		const goLink = closest(e.target, '[data-cb-go]', true);
@@ -67,6 +77,22 @@ function attachDomListeners(el) {
 
 		if (restartLink) {
 			restart();
+		}
+	});
+
+	el.addEventListener('change', e => {
+		const setInput = closest(e.target, '[data-cb-set]', true);
+
+		if (setInput) {
+			if (setInput.nodeName === 'INPUT') {
+				set(setInput.dataset.cbSet, setInput.value);
+			} else if (setInput.nodeName === 'SELECT') {
+				set(
+					setInput.dataset.cbSet,
+					setInput.querySelectorAll('option')[setInput.selectedIndex]
+						.value
+				);
+			}
 		}
 	});
 }

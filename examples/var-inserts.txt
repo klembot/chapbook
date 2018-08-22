@@ -1,0 +1,8 @@
+:: Start
+myColor: 'red'
+veryRed: true
+pennies: 50
+--
+My favorite color is {myColor}. Is it very red? {veryRed}
+
+I have {pennies} pennies in my pocket.

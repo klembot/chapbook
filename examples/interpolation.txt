@@ -1,9 +1,0 @@
-:: Start
-2 + 2 = `2 + 2`
-
-```
-console.log('This is a code block talking to you.');
-foo = 'red';
-```
-
-This should say red: `foo`

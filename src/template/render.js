@@ -5,7 +5,9 @@
 import marked from 'marked';
 import logger from '../logger';
 import markdownRenderer from './markdown-renderer';
+import renderInserts from './render-inserts';
 import renderLinks from './render-links';
+import {set} from '../state';
 
 const {log, warn} = logger('render');
 
@@ -14,12 +16,7 @@ export const markedOptions = {
 	smartypants: true
 };
 
-export default function render(
-	parsed,
-	modifiers,
-	varSetter,
-	ignoreVars = false
-) {
+export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 	if (!parsed.vars) {
 		throw new Error(
 			'The renderer was given an object with no vars property.'
@@ -41,7 +38,7 @@ export default function render(
 
 		Object.keys(parsed.vars).forEach(name => {
 			log(`Setting var "${name}"`);
-			varSetter(name, parsed.vars[name]());
+			set(name, parsed.vars[name]());
 		});
 	}
 
@@ -58,7 +55,7 @@ export default function render(
 				// original text intact.
 
 				let blockOutput = {
-					text: renderLinks(block.content),
+					text: renderInserts(renderLinks(block.content), inserts),
 					beforeText: '\n\n',
 					afterText: ''
 				};

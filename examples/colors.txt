@@ -14,7 +14,7 @@ window.swatch = (color, label = '') => {
 	write(`<p>${name}</p><p>`);
 	
 	for (let i = 0; i < 10; i++) {
-		write(swatch(color(`${name}-${i}`), i));
+		write(swatch(color.format(`${name}-${i}`), i));
 	}
 
 	write('</p>');
