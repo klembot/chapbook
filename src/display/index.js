@@ -18,7 +18,7 @@ import coalesceCalls from '../util/coalesce-calls';
 import event from '../event';
 import {crossfade, fadeInOut, none} from './transitions';
 import {get, set} from '../state';
-import {go, restart} from '../author/actions';
+import {go, restart} from '../actions';
 import {init as initCrash} from './crash';
 import {passageNamed} from '../story';
 import {render} from '../template';
@@ -36,7 +36,7 @@ export const defaults = {
 	'config.header.right': '',
 	'config.header.transition.name': 'crossfade',
 	'config.header.transition.duration': '500ms',
-	'config.footer.left': '_{story name}_',
+	'config.footer.left': '_{story.name}_',
 	'config.footer.center': '',
 	'config.footer.right': '{restart link}',
 	'config.footer.transition.name': 'crossfade',

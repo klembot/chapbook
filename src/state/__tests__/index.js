@@ -37,6 +37,14 @@ describe('state', () => {
 		expect(state.get('color')).toBe('red');
 	});
 
+	it('adds computed variables', () => {
+		state.setComputed('test', () => {
+			return 'test passed';
+		});
+
+		expect(state.get('test')).toBe('test passed');
+	});
+
 	it('generates state-change events when setting a variable', () => {
 		const spy = jest.fn();
 		const name = 'a' + Math.round(Math.random() * 1000);

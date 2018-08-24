@@ -1,4 +1,7 @@
 import render from '../render';
+import {set} from '../../state';
+
+jest.mock('../../state');
 
 const modifierInput = {
 	blocks: [
@@ -8,27 +11,29 @@ const modifierInput = {
 	vars: []
 };
 
+beforeEach(() => {
+	set.mockClear();
+});
+
 describe('render()', () => {
 	test('sets vars', () => {
-		let set = jest.fn();
 		const input = {
 			vars: {foo: () => 'hello'},
 			blocks: []
 		};
 
-		render(input, [], set);
+		render(input, [], []);
 		expect(set).toHaveBeenCalledTimes(1);
 		expect(set).toHaveBeenCalledWith('foo', 'hello');
 	});
 
 	test('handles var names with dots', () => {
-		let set = jest.fn();
 		const input = {
 			vars: {'foo.bar.baz': () => 'hello'},
 			blocks: []
 		};
 
-		render(input, [], set);
+		render(input, [], []);
 		expect(set).toHaveBeenCalledTimes(1);
 		expect(set).toHaveBeenCalledWith('foo.bar.baz', 'hello');
 	});
@@ -68,7 +73,7 @@ describe('render()', () => {
 	test("passes text through a modifier's process method", () => {
 		const spyModifier = {match: /^test/, process: jest.fn()};
 
-		render(modifierInput, [spyModifier]);
+		render(modifierInput, [], [spyModifier]);
 		expect(spyModifier.process).toHaveBeenCalledTimes(1);
 		expect(spyModifier.process).toHaveBeenCalledWith(
 			{afterText: '', beforeText: '\n\n', text: 'Hello world'},
@@ -77,16 +82,20 @@ describe('render()', () => {
 	});
 
 	test('persists changes made to the text by a modifier', () => {
-		const result = render(modifierInput, [
-			{
-				match: /^test/,
-				process(src) {
-					src.beforeText = '-test-start-';
-					src.text = src.text.toUpperCase();
-					src.afterText = '-test-end-';
+		const result = render(
+			modifierInput,
+			[],
+			[
+				{
+					match: /^test/,
+					process(src) {
+						src.beforeText = '-test-start-';
+						src.text = src.text.toUpperCase();
+						src.afterText = '-test-end-';
+					}
 				}
-			}
-		]);
+			]
+		);
 
 		expect(result.trim()).toBe('<p>-test-start-HELLO WORLD-test-end-</p>');
 	});
@@ -106,6 +115,7 @@ describe('render()', () => {
 				],
 				vars: []
 			},
+			[],
 			[spyModifier]
 		);
 		expect(spyModifier.process.mock.calls.length).toBe(1);

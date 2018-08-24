@@ -1,9 +1,11 @@
-// Top-level actions that will be globally exposed.
+/*
+Top-level actions that will be globally exposed.
+*/
 
-import {get, reset, set} from '../state';
-import {log as _log} from '../logger';
-import {passageNamed} from '../story';
-import {transferToState as transferInputsToState} from '../display/inputs';
+import {get, reset, set} from './state';
+import {log as _log} from './logger';
+import {passageNamed} from './story';
+import {transferToState as transferInputsToState} from './display/inputs';
 
 function log(message) {
 	_log('actions', message);
@@ -28,8 +30,10 @@ export function restart() {
 	log('Restarting');
 	reset();
 
-	// We need to reload the window so that any JavaScript in story code is
-	// removed.
+	/*
+	We need to reload the window so that any JavaScript in story code is
+	removed.
+	*/
 
 	window.location.reload();
 }

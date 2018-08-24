@@ -18,6 +18,7 @@ describe('conditional modifiers', () => {
 				],
 				vars: []
 			},
+			[],
 			[conditionals]
 		);
 
@@ -32,6 +33,7 @@ describe('conditional modifiers', () => {
 				],
 				vars: []
 			},
+			[],
 			[conditionals]
 		);
 
@@ -48,6 +50,7 @@ describe('conditional modifiers', () => {
 				],
 				vars: []
 			},
+			[],
 			[conditionals]
 		);
 
@@ -62,6 +65,7 @@ describe('conditional modifiers', () => {
 				],
 				vars: []
 			},
+			[],
 			[conditionals]
 		);
 
@@ -80,6 +84,7 @@ describe('conditional modifiers', () => {
 				],
 				vars: []
 			},
+			[],
 			[conditionals]
 		);
 
@@ -96,6 +101,7 @@ describe('conditional modifiers', () => {
 				],
 				vars: []
 			},
+			[],
 			[conditionals]
 		);
 
@@ -116,6 +122,7 @@ describe('conditional modifiers', () => {
 				],
 				vars: []
 			},
+			[],
 			[conditionals]
 		);
 		expect(output.trim()).toBe('<p>Hello</p>\n<p>there</p>');

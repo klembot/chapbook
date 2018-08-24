@@ -1,4 +1,4 @@
-import color from '../author/color';
+import {format} from './color';
 
 export function autopx(value) {
 	if (typeof value === 'number') {
@@ -12,10 +12,10 @@ export function parseColor(source) {
 	let result = {color: 'inherit', 'background-color': 'inherit'};
 	const bits = source.split(/ on /i);
 
-	result.color = color.format(bits[0].trim().toLowerCase());
+	result.color = format(bits[0].trim().toLowerCase());
 
 	if (bits.length === 2) {
-		result['background-color'] = color.format(bits[1].trim().toLowerCase());
+		result['background-color'] = format(bits[1].trim().toLowerCase());
 	}
 
 	return result;

@@ -6,7 +6,6 @@ import EmbedUnsplash from './embed-unsplash-image';
 import Link from './link';
 import Menu from './menu';
 import RestartLink from './restart-link';
-import StoryName from './story-name';
 import TextInput from './text-input';
 
 export default [
@@ -18,6 +17,5 @@ export default [
 	Link,
 	Menu,
 	RestartLink,
-	StoryName,
 	TextInput
 ];

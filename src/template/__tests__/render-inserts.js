@@ -1,6 +1,9 @@
 import render from '../render-inserts';
+import * as state from '../../state';
 
-function varGetter(value) {
+jest.mock('../../state');
+
+state.get = jest.fn(value => {
 	switch (value) {
 		case 'color':
 			return 'red';
@@ -8,7 +11,11 @@ function varGetter(value) {
 		case 'a.nested.variable':
 			return 'success';
 	}
-}
+});
+
+afterAll(() => {
+	state.get.mockRestore();
+});
 
 const inserts = [
 	{
@@ -21,24 +28,22 @@ const inserts = [
 
 describe('insert renderer', () => {
 	test('interpolates variables', () => {
-		expect(render('{color}', [], varGetter)).toBe('red');
-		expect(render('{ color }', [], varGetter)).toBe('red');
-		expect(render('The sky was {color}.', [], varGetter)).toBe(
-			'The sky was red.'
-		);
-		expect(render('{color} -- {color}', [], varGetter)).toBe('red -- red');
-		expect(render('{color}\n\n{color}', [], varGetter)).toBe('red\n\nred');
+		expect(render('{color}', [], [])).toBe('red');
+		expect(render('{ color }', [], [])).toBe('red');
+		expect(render('The sky was {color}.', [], [])).toBe('The sky was red.');
+		expect(render('{color} -- {color}', [], [])).toBe('red -- red');
+		expect(render('{color}\n\n{color}', [], [])).toBe('red\n\nred');
 
-		expect(render('{a.nested.variable}', [], varGetter)).toBe('success');
-		expect(render('{ a.nested.variable }', [], varGetter)).toBe('success');
+		expect(render('{a.nested.variable}', [], [])).toBe('success');
+		expect(render('{ a.nested.variable }', [], [])).toBe('success');
+		expect(render('The test was a {a.nested.variable}.', [], [])).toBe(
+			'The test was a success.'
+		);
 		expect(
-			render('The test was a {a.nested.variable}.', [], varGetter)
-		).toBe('The test was a success.');
-		expect(
-			render('{a.nested.variable} -- {a.nested.variable}', [], varGetter)
+			render('{a.nested.variable} -- {a.nested.variable}', [], [])
 		).toBe('success -- success');
 		expect(
-			render('{a.nested.variable}\n\n{a.nested.variable}', [], varGetter)
+			render('{a.nested.variable}\n\n{a.nested.variable}', [], [])
 		).toBe('success\n\nsuccess');
 	});
 
@@ -55,7 +60,7 @@ describe('insert renderer', () => {
 	});
 
 	test('leaves unparseable inserts alone', () => {
-		expect(render('{???}', [], varGetter)).toBe('{???}');
-		expect(render('{??? ???}', [], varGetter)).toBe('{??? ???}');
+		expect(render('{???}', [], [])).toBe('{???}');
+		expect(render('{??? ???}', [], [])).toBe('{??? ???}');
 	});
 });

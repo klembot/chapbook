@@ -83,7 +83,6 @@ export default function render(src, inserts) {
 			// This can only be a variable.
 
 			const value = get(invocation);
-			console.log(invocation, value);
 
 			if (value !== undefined) {
 				return value;

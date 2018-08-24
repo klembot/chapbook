@@ -12,6 +12,7 @@ describe('append modifier', () => {
 				],
 				vars: []
 			},
+			[],
 			[append]
 		);
 
