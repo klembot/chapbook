@@ -28,6 +28,14 @@ It doesn't matter whether you use asterisks or underscores, so long as you're co
 | -------------------------------------- | ------------------------------------ |
 | `**"I'll _murder_ you,"** she hissed.` | **"I'll _murder_ you,"** she hissed. |
 
+## Monospaced Type
+
+To set text in a monospaced typeface, `like this`, type backticks (<code>`</code>) around it.
+
+| Typed                                    | Displayed                   |
+| ---------------------------------------- | --------------------------- |
+| <code>\`Beep boop,\` HAL commented.</code> | `Beep boop,` HAL commented. |
+
 ## Small Caps
 
 If you'd like to set some text in small caps--another type of emphasis sometimes used for text characters see in a story--type `~~` (two tildes) around it.
@@ -68,17 +76,17 @@ To created a bulleted list (or, in the parlance of the web, an unordered list), 
 <table>
 	<thead><tr><th>Typed</th><th>Displayed</th></tr></thead>
 	<tbody>
-	<tr><td><code>* Red<br>* Green<br>* Blue</code></td><td><ul><li>Red</li><li>Green</li><li>Blue</li></ul></td></tr>
+	<tr><td><code>* Red</code><br><code>* Green</code><br><code>* Blue</code></td><td><ul><li>Red</li><li>Green</li><li>Blue</li></ul></td></tr>
 	</tbody>
 </table>
 
 To create a numbered list (also known as an ordered list), start each line either with a number and a period, or just a `#`. The numbering you use doesn't actually matter--you can have two items starting with `2.` and the list will still be numbered correctly.
 
 <table>
-	<thead><tr><th>Typed</th><th>Displayed</th></tr></thead>
+	<thead><tr><th>Typed2</th><th>Displayed</th></tr></thead>
 	<tbody>
-	<tr><td><code># Red<br># Green<br># Blue</code></td><td><ol><li>Red</li><li>Green</li><li>Blue</li></ol></td></tr>
-	<tr><td><code>1. Red<br>2. Green<br>3. Blue</code></td><td><ol><li>Red</li><li>Green</li><li>Blue</li></ol></td></tr>
+	<tr><td><code># Red</code><br><code># Green</code><br><code># Blue</code></td><td><ol><li>Red</li><li>Green</li><li>Blue</li></ol></td></tr>
+	<tr><td><code>1. Red</code><br><code>2. Green</code><br><code>3. Blue</code></td><td><ol><li>Red</li><li>Green</li><li>Blue</li></ol></td></tr>
 	</tbody>
 </table>
 
@@ -100,18 +108,22 @@ Markdown has a quirk where if you enter Markdown code inside of an inline elemen
 
 ## Code Blocks Don't Behave As You Might Expect
 
-If you're already familiar with Markdown, you might know that you can normally put backticks (<code>`</code>) around text to put it in a monospaced font,`like this`. However, you'll find that if you do this in Chapbook, the text you enter won't display at all. This is because Chapbook interprets these blocks as special instructions. See **TBD** for more information on this.
+There's a popular extension to Markdown that allows entry of long stretches of monospaced text, often computer code, by placing three backticks (<code>```</code>) on a line by itself, then text, the another set of three backticks. Chapbook uses this convention to allow embedding JavaScript code into a passage. This is discussed in more detail in *TBD*, but for now, remember that Markdown code blocks do not display as you might expect.
 
-In the meantime, just be aware that if you are looking for text to appear as though it's been typed, put `<code>` and `</code>` around it.
+If you would like to display a long stretch of monospaced text, put `<code>` and `</code>` around it:
 
-| Typed                       | Displayed      |
-| --------------------------- | -------------- |
-| `<code>echo "hello"</code>` | `echo "hello"` |
+| Typed                       | Displayed                 |
+| --------------------------- | ------------------------- |
+| <code>Onscreen it read:</code><br><br><code>&lt;code&gt;</code><br><code>10 PRINT "HELLO"</code><br><code>20 GOTO 10</code><br><code>&lt;/code&gt;</code> | Onscreen it read:<br><br><code>10 PRINT HELLO</code><br><code>20 GOTO 10</code> |
 
-[^1]:
-
-    Underscores as italics have a tangled history behind them; they resemble underlines, which were more-or-less invented as a workaround for typewriters being unable to italicize words.
+[^1]: Underscores as italics have a tangled history behind them; they resemble underlines, which were more-or-less invented as a workaround for typewriters being unable to italicize words.
 
 [markdown]: https://daringfireball.net/markdown
 [dingus]: https://daringfireball.net/projects/markdown/dingus
 [smallcaps]: https://practicaltypography.com/small-caps.html
+
+<style>
+tr, td {
+	width: 50%;
+}
+</style>

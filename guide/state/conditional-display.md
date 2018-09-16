@@ -24,13 +24,10 @@ You could try [[unlocking it]] with the key you found.
 You consider [[turning back]].
 ```
 
-Only if the player had found the key earlier do they see "You could try unlocking it with the key you found," but in all cases they see "You consider turning back." There are two new modifiers used in this example.
-
-- `if` only displays the text below it if the expression in the modifier evaluates to true. As with backticks, you can enter anything that eventually evaluates to a boolean[^1]. Some more examples:
+Only if the player had found the key earlier do they see "You could try unlocking it with the key you found," but in all cases they see "You consider turning back." The `if` modifier only displays the text below it if the expression in the modifier evaluates to true. You can enter anything that eventually evaluates to a boolean[^1]. Some more examples:
   - `[if stringVariable === 'red']`
   - `[if dollarsInPocket > 5]`
   - `[if 2 + 2 === 4]`
-- `continue` clears all active modifiers. This in fact applies to all active modifiers, but it's most often used with `if` and its cousins. You can abbreviate `continue` as `cont'd`, `cont`, or elongate it as `continued`. Regardless of which one you choose, it has the same effect.
 
 ## Unless Conditions
 
@@ -77,7 +74,7 @@ Would, if `hasKey` is false and `monsterDistance` is 1, only display:
 
 This is because modifiers only affect the text directly following them. They do not affect modifiers before or after them in the text, or any other text.
 
-Chapbook doesn't allow direct nesting in order to ensure that passage logic is easy to follow. That said, there are several ways to get around this limitation if need be. The easiest, and the one recommended until you've gotten further in this guide, is to simply repeat the condition.
+Chapbook doesn't allow direct nesting in order to ensure that passage logic is easy to follow. That said, there are several ways to get around this limitation if need be. The easiest is to simply repeat the condition.
 
 ```
 [if hasKey]
@@ -86,6 +83,28 @@ You could [[open the door]]...
 [if hasKey && monsterDistance < 2]
 ... and it might be your best chance for survival.
 ```
+
+An alternate method is to move the additional logic to a separate passage and [embed it](embed-passage).
+
+```
+[if hasKey]
+{embed passage: 'key obtained'}
+```
+
+And then, in another passage named "key obtained":
+
+```
+You could [[open the door]]...
+
+[if monsterDistance < 2]
+... and it might be your best chance for survival.
+
+[else]
+... though you don't have a pressing reason to.
+```
+
+Which approach is best to take depends on the situation. It's not a good id
+
 
 ## Disabling Conditions For Testing
 
@@ -107,3 +126,4 @@ TODO discussion of whether to make conditional display explicit to players
 
 [^1]: Truthfully, it is also possible to write `[if stringVariable]` or `[if 2 + 2]`. In these cases, any non-empty string (e.g. not `''`) is treated as true, and any non-zero number is treated as true. It's best to be explicit, however, and write `[if stringVariable !== '']` and `[if 2 + 2 !== 0]`.
 [comments]: ../text-and-links/comments.html
+[embed-passage]: ../text-and-links/embedding-passages.html

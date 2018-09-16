@@ -6,14 +6,29 @@
     -   [Comments](text-and-links/comments.md)
     -   [Simple Links](text-and-links/simple-links.md)
     -   [Ways to Link](text-and-links/ways-to-link.md)
-    -   [Modifiers and Delayed Text](text-and-links/modifiers-and-delayed-text.md)
+    -   [Introducing Backstage](text-and-links/backstage.md)
+-   Inserts and Modifiers
+    -   [Link Inserts](inserts-and-modifiers/link-inserts.md)
+    -   [Embedding Passages](inserts-and-modifiers/embedding-passages.md)
+    -   [Modifiers and Delayed Text](inserts-and-modifiers/modifiers-and-delayed-text.md)
 -   Adding State to Stories
     -   [What is State?](state/what-is-state.md)
     -   [The Vars Section](state/the-vars-section.md)
     -   [Displaying Variables](state/displaying-variables.md)
     -   [Conditional Display](state/conditional-display.md)
     -   [Continuity Between Sessions](state/continuity.md)
+    -   [Objects and Lookup Variables](state/objects-and-lookups.md)
+    -   [Randomness](state/randomness.md)
 -   Customization
-    -   [Nesting Variables](customization/nesting-variables.md)
+    -   [Fonts and Colors](customization/fonts-and-colors.md)
+    -   [External Web Fonts](customization/external-fonts.md)
+    -   [Page Style](customization/page-style.md)
+    -   [Design Considerations](customization/design-considerations.md)
+-   Multimedia
+    -   [Images](multimedia/images.md)
+-   Player Input
+    -   [Text Input](player-input/text-input.md)
+    -   [Dropdown Menus and Cycling Links](player-input/dropdown-menus-cycling-links.md)
+    -   [Live Inputs](player-input/live-inputs.md)
 -   References
     -   [The Chapbook Lifecycle](reference/lifecycle.md)

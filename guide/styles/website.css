@@ -4,6 +4,17 @@
 	-webkit-font-smoothing: auto;
 }
 
+/* Set the heading at the top of a page in small caps. */
+
+.book-header h1 a,
+.book-header h1 a:hover {
+	font-family: 'Iowan Old Style', 'Calisto MT', Georgia, serif;
+	font-weight: normal;
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+}
+
 /* Force line wrapping in code examples. */
 
 .markdown-section pre > code {
@@ -30,11 +41,17 @@
 	border-top: 1px solid #333;
 }
 
-/* Use Courier for code. */
+/* Don't put a background around code. */
 
 .markdown-section code {
-	font-family: Courier, 'Courier New', monospace;
+	font-size: 90%;
 	background: none;
+	padding: 0;
+}
+
+.markdown-section code::before,
+.markdown-section code::after {
+	display: none;
 }
 
 /* Hide font selector. */
@@ -57,7 +74,7 @@ accommodate it.
 */
 
 .book.font-family-1 {
-	font-family: Palatino, 'Palatino Linotype', Georgia, serif;
+	font-family: 'Iowan Old Style', 'Calisto MT', Georgia, serif;
 }
 
 /* &nbsp; shows up larger than a regular space with our font. */
