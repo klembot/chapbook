@@ -31,7 +31,9 @@ describe('insert renderer', () => {
 		expect(render('{color}', [], [])).toBe('red');
 		expect(render('{ color }', [], [])).toBe('red');
 		expect(render('The sky was {color}.', [], [])).toBe('The sky was red.');
-		expect(render('{color} -- {color}', [], [])).toBe('red -- red');
+		expect(render('AA {color} -- {color} ZZ', [], [])).toBe(
+			'AA red -- red ZZ'
+		);
 		expect(render('{color}\n\n{color}', [], [])).toBe('red\n\nred');
 
 		expect(render('{a.nested.variable}', [], [])).toBe('success');
@@ -57,6 +59,12 @@ describe('insert renderer', () => {
 		);
 
 		expect(render('{test insert}', inserts)).toBe('null#{}#test insert');
+	});
+
+	test('invokes functional inserts that contain }', () => {
+		expect(render('{test insert: "hello }"}', inserts)).toBe(
+			'hello }#{}#test insert: "hello }"'
+		);
 	});
 
 	test('leaves unparseable inserts alone', () => {

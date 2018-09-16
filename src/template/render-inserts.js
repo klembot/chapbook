@@ -36,61 +36,160 @@ If an insert can't be parsed successfully, it is left as-is.
 
 import {get} from '../state';
 
-export default function render(src, inserts) {
-	return src.replace(/\{\s*(.+?)\s*\}/gm, (original, invocation) => {
-		if (/\s/.test(invocation)) {
-			// This can only be a function call.
+/*
+Tries to render a single insert surrounded with { and }. If this can't be done,
+it returns the text as-is.
+*/
 
-			const keyword = invocation.match(/^[^:,]+/)[0];
-			const insert = inserts.find(i => i.match.test(keyword));
+function renderInsert(src, inserts) {
+	/*
+	When we pass the raw invocation to inserts, we remove the brackets to make
+	parsing easier on the insert side.
+	*/
 
-			if (insert) {
-				// Parse out the arguments.
+	const invocation = src.substr(1, src.length - 2).trim();
 
-				const args = invocation.replace(keyword, '');
+	if (/\s/.test(invocation)) {
+		/* This can only be a functional insert. */
 
-				if (args[0] === ':') {
-					/*
-					We're looking at a `{keyword that can have spaces: value,
-					foo: value, bar: value}` invocation. We need to massage it
-					so that the entire string can be parsed as a JavaScript
-					object. Note restriction above about named args not having
-					the same name as the initial invocation, e.g. {foo: 'bar',
-					foo: 'baz'} is not a valid insert syntax in source code.
-					*/
+		const keyword = invocation.match(/^[^:,]+/)[0];
+		const insert = inserts.find(i => i.match.test(keyword));
 
-					const props = new Function(
-						`return {"${keyword}" ${args}}`
-					)();
+		if (insert) {
+			/* Parse out the arguments. */
 
-					const firstArg = props[keyword];
+			const args = invocation.replace(keyword, '');
 
-					delete props[keyword];
-					return insert.render(firstArg, props, invocation);
-				} else if (args[0] === ',') {
-					// This is a `{keyword, foo: value, bar: value}` invocation.
+			if (args[0] === ':') {
+				/*
+				We're looking at a `{keyword that can have spaces: value,
+				foo: value, bar: value}` invocation. We need to massage it
+				so that the entire string can be parsed as a JavaScript
+				object. Note restriction above about named args not having
+				the same name as the initial invocation, e.g. {foo: 'bar',
+				foo: 'baz'} is not a valid insert syntax in source code.
+				*/
 
-					const props = new Function(`return {${args.substr(1)}}`)();
+				const props = new Function(`return {"${keyword}" ${args}}`)();
+				const firstArg = props[keyword];
 
-					return insert.render(null, props, invocation);
-				} else if (args === '') {
-					// This is a `{keyword}` invocation.
+				delete props[keyword];
+				return insert.render(firstArg, props, invocation);
+			} else if (args[0] === ',') {
+				/* This is a `{keyword, foo: value, bar: value}` invocation. */
 
-					return insert.render(null, {}, invocation);
-				}
-			}
-		} else {
-			// This can only be a variable.
+				const props = new Function(`return {${args.substr(1)}}`)();
 
-			const value = get(invocation);
+				return insert.render(null, props, invocation);
+			} else if (args === '') {
+				/* This is a `{keyword}` invocation. */
 
-			if (value !== undefined) {
-				return value;
+				return insert.render(null, {}, invocation);
+			} else {
+				/*
+				This looks garbled, so do nothing-- further down, we return src
+				as-is.
+				*/
 			}
 		}
+	} else {
+		/* This can only be a variable. */
 
-		// We weren't able to parse it-- return it as-is.
+		const value = get(invocation);
 
-		return original;
-	});
+		if (value !== undefined) {
+			return value;
+		}
+	}
+
+	/* We weren't able to parse it-- return it as-is. */
+
+	return src;
+}
+
+/*
+Returns a string with all inserts passed applied to it.
+*/
+
+export default function render(src, inserts) {
+	let result = '';
+
+	/*
+	startText is the index of the text before the first curly bracket;
+	startCurly is the index of the bracket.
+	*/
+
+	let startText = 0;
+	let startCurly = src.indexOf('{');
+
+	if (startCurly === -1) {
+		return src;
+	}
+
+	/*
+	Scan forward until we reach:
+	-   another '{', indicating that the original '{' isn't the start of an
+	    insert
+	-   a single or double quote, indicating the start of a string value
+	-   a '}' that isn't inside a string, indicating the end of a possible
+	    insert
+	*/
+
+	let inString = false;
+	let stringDelimiter;
+
+	for (let i = startCurly + 1; i < src.length; i++) {
+		switch (src[i]) {
+			case '{':
+				/* Reset start variables for the next match. */
+
+				startCurly = i;
+				inString = false;
+				break;
+
+			case '"':
+			case "'":
+				/* Toggle inString status as needed. */
+
+				if (!inString) {
+					inString = true;
+					stringDelimiter = src[i];
+				} else if (inString && stringDelimiter === src[i]) {
+					inString = false;
+				}
+				break;
+
+			case '}':
+				if (!inString) {
+					result +=
+						src.substring(startText, startCurly) +
+						renderInsert(src.substring(startCurly, i + 1), inserts);
+
+					/*
+					Advance start variables for the next match.
+					*/
+
+					startText = i + 1;
+					startCurly = src.indexOf('{', startText);
+
+					if (startCurly === -1) {
+						/*
+						There are no more open curly brackets left to examine.
+						Short-circuit the for loop to bring it to an end.
+						*/
+
+						i = src.index;
+					}
+				}
+				break;
+
+			/* Take no action on normal characters. */
+		}
+	}
+
+	/*
+	Any remaining text in src must be plain text, not an insert.
+	*/
+
+	return result + src.substring(startText);
 }
