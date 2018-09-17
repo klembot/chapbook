@@ -10,7 +10,8 @@ const {log} = createLoggers('style');
 export const defaults = {
 	'config.style.backdrop': 'gray-0',
 	'config.style.pageStyle': 'shadow',
-	'config.style.page.font': 'Palatino/Palatino Linotype/Georgia/serif 18',
+	'config.style.page.font':
+		'Iowan Old Style/Goudy Old Style/Constantia/Georgia/serif 18',
 	'config.style.page.color': 'gray-9 on white',
 	'config.style.page.link.color': 'gray-9',
 	'config.style.page.link.lineColor': 'red-5',
