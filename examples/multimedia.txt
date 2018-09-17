@@ -6,3 +6,7 @@ I wonder what's going on on that island? Let's take a closer look...
 {embed flickr image: '<a data-flickr-embed="true"  href="https://www.flickr.com/photos/pfly/30624522710/in/photolist-NEbFEf-oNooaJ-77tpcG-qx9f4Q-854S5A-nKjazz-4s6CpT-uoknK1-aPTC8p-aPTz9V-aPT6dc-8N1jP2-aPTvwP-aPSjzx-aPSwi2-CVg8K-aPUaTK-aPT15Z-e3bk2i-5rNzWh-4mChDr-64foU6-4HRLp-5UJdqm-AC7fF-6Ev6j-9uGbh2-dJdGmP-6kkdhk-4pZCNS-bsi6RJ-YBwNtQ-dsSuC-8ezeHd-LMpyk-2TSRo6-9XhnvW-9iXz3E-4D5uZj-5a92u4-9XhnqS-5aBYiV-e1dqcm-5Ynn8F-Wo7eGe-fJ71Go-oR2jFe-bhK8Ut-qoSXNi-YvPMHR" title="Lava"><img src="https://farm6.staticflickr.com/5708/30624522710_87e6d73783_k.jpg" width="2048" height="1703" alt="Lava"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>'}
 
 Oh...
+
+Here's a nice video.
+
+{embed youtube video: 'https://www.youtube.com/watch?v=ZwfRUsgvy18', autoplay: true}

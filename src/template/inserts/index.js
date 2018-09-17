@@ -3,6 +3,7 @@ import CyclingLink from './cycling-link';
 import EmbedFlickr from './embed-flickr-image';
 import EmbedPassage from './embed-passage';
 import EmbedUnsplash from './embed-unsplash-image';
+import EmbedYouTube from './embed-youtube-video';
 import Link from './link';
 import Menu from './menu';
 import RestartLink from './restart-link';
@@ -14,6 +15,7 @@ export default [
 	EmbedFlickr,
 	EmbedPassage,
 	EmbedUnsplash,
+	EmbedYouTube,
 	Link,
 	Menu,
 	RestartLink,
