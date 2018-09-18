@@ -14,7 +14,7 @@ Typed | Displayed
 
 The easiest way to remember this is to think of the arrow pointing to the passage you're linking to. It doesn't matter which direction the arrow points; use the syntax that feels most comfortable to you.
 
-You cannot use [Markdown or other formatting characters](formatting) inside a simple link. If you'd like to italicize a certain link, for example, put the formatting around the link instead, i.e. `_[[a friend of a friend]]_`. See *TBD* for how to create a link that has formatting inside it, like <a href="javascript:void(0)">a man with <em>particular</em> skills</a>.
+You cannot use [Markdown or other formatting characters](formatting) inside a simple link. If you'd like to italicize a certain link, for example, put the formatting around the link instead, i.e. `_[[a friend of a friend]]_`. See [Link Inserts](../modifiers-and-inserts/link-inserts.md) for how to create a link that has formatting inside it, like <a href="javascript:void(0)">a man with <em>particular</em> skills</a>.
 
 ## External Links
 To link to another web page, enter a URL instead of a passage name. You can use any link syntax you'd like, though the arrow syntax makes your text more readable in most cases:

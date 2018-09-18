@@ -14,6 +14,6 @@ Use the &#x21b3; button beside an entry in the table to rewind the story to that
 
 ## The Notes Tab
 
-This tab can be used to record notes on the passage you're currently viewing--noting misspellings, or any other thoughts you'd like to record. Unlike [comments](comments.md), these notes are stored separately from the story itself, so that if you are collaborating with other people on a story, each of you can keep separate notes. The notes you enter are saved automatically as you type.
+This tab can be used to record notes on the passage you're currently viewing--noting misspellings, or any other thoughts you'd like to record. These notes are stored separately from the story itself, so that if you are collaborating with other people on a story, each of you can keep separate notes. The notes you enter are saved automatically as you type.
 
 *TODO import/export*

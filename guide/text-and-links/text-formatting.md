@@ -38,7 +38,7 @@ To set text in a monospaced typeface, `like this`, type backticks (<code>`</code
 
 ## Small Caps
 
-If you'd like to set some text in small caps--another type of emphasis sometimes used for text characters see in a story--type `~~` (two tildes) around it.
+If you'd like to set some text in small caps, type `~~` (two tildes) around it.
 
 | Typed                                           | Displayed                                                                                                                        |
 | ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |

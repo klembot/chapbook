@@ -1,6 +1,8 @@
 # Design Considerations
 
-Players will spend quite a lot of time with your story simply reading its text, so they deserve. 
+Players will spend quite a lot of time with your story simply reading its text, so they deserve a comfortable experience.
+
+TODO
 
 Buttrick's Practical Typography
 

@@ -3,14 +3,15 @@
 -   [Introduction](README.md)
 -   Text and Links
     -   [Text Formatting](text-and-links/text-formatting.md)
-    -   [Comments](text-and-links/comments.md)
     -   [Simple Links](text-and-links/simple-links.md)
     -   [Ways to Link](text-and-links/ways-to-link.md)
     -   [Introducing Backstage](text-and-links/backstage.md)
--   Inserts and Modifiers
-    -   [Link Inserts](inserts-and-modifiers/link-inserts.md)
-    -   [Embedding Passages](inserts-and-modifiers/embedding-passages.md)
-    -   [Modifiers and Delayed Text](inserts-and-modifiers/modifiers-and-delayed-text.md)
+-   Modifiers and Inserts
+    -   [Modifiers and Text Alignment](modifiers-and-inserts/modifiers-and-text-alignment.md)
+    -   [Delayed Text](modifiers-and-inserts/delayed-text.md)
+    -   [Notes](modifiers-and-inserts/notes.md)
+    -   [Link Inserts](modifiers-and-inserts/link-inserts.md)
+    -   [Embedding Passages](modifiers-and-inserts/embedding-passages.md)
 -   Adding State to Stories
     -   [What is State?](state/what-is-state.md)
     -   [The Vars Section](state/the-vars-section.md)
@@ -19,13 +20,15 @@
     -   [Continuity Between Sessions](state/continuity.md)
     -   [Objects and Lookup Variables](state/objects-and-lookups.md)
     -   [Randomness](state/randomness.md)
--   Customization
-    -   [Fonts and Colors](customization/fonts-and-colors.md)
-    -   [External Web Fonts](customization/external-fonts.md)
-    -   [Page Style](customization/page-style.md)
-    -   [Design Considerations](customization/design-considerations.md)
 -   Multimedia
     -   [Images](multimedia/images.md)
+    -   [Audio](multimedia/audio.md)
+    -   [Video](multimedia/video.md)
+-   Customization
+    -   [Fonts and Colors](customization/fonts-and-colors.md)
+    -   [External Web Fonts](customization/external-web-fonts.md)
+    -   [Page Style](customization/page-style.md)
+    -   [Design Considerations](customization/design-considerations.md)
 -   Player Input
     -   [Text Input](player-input/text-input.md)
     -   [Dropdown Menus and Cycling Links](player-input/dropdown-menus-cycling-links.md)

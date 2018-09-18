@@ -39,7 +39,7 @@ Palatino/serif 18
 
 Slashes separate alternate typefaces in what is called a _font stack_. Before the advent of web fonts, font stacks were a crucial part of web design. At that time, web browsers were only capable of displaying fonts installed in the operating system, so designers had to specify alternate typefaces in order to create a consistent appearance across different operating systems.
 
-In our current times, font stacks affect more what a page looks like at first glance--typically, text appears immediately in a system font, then in a web font after it finishes loading. But there are players who will have disabled web fonts, either out of personal preference or a need to save network bandwidth, and it's good practice to design your story to accommodate that.
+In our current times, font stacks affect more what a page looks like at first glance--typically, text appears immediately in a system font, then in a web font after it finishes loading. (See [External Web Fonts](external-web-fonts.md) for details on how to use a web font with Chapbook.) But there are players who will have disabled web fonts, either out of personal preference or a need to save network bandwidth, and it's good practice to design your story to accommodate that.
 
 The example above indicates that if a typeface named Palatino isn't available to the player's web browser, `serif` signals it should fall back to a generic serif font.[^3] If you'd like to set your story in Helvetica, you might use:
 
@@ -266,8 +266,6 @@ As above, to use a particular shade, enter the name in its box, e.g. `yellow-6`.
 When setting colors in `config`, often you can specify both a background and foreground. For instance, you can set `config.style.page.color` to `'orange-9 on orange-0'`. However, when specifying a border color, for instance `config.style.page.link.lineColor`, only the foreground is used.
 
 As with fonts, you can omit parts of a color declaration. Setting `config.style.page.link.color` to `'on blue-4'` causes links to use the page's foreground color, whatever it may be, but use a medium blue as background.
-
-It is also possible to dynamically specify a color; see **TBD** for details.
 
 <style>
 .swatch-row {
