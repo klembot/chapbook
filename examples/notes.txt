@@ -1,0 +1,5 @@
+:: Start
+I think you're great.
+
+[note]
+And if I didn't, I would still say that.
