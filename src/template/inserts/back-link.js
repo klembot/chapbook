@@ -11,7 +11,7 @@ export default {
 		const trail = get('trail');
 
 		return renderLink(
-			trail.length > 1 ? trail[trail.length - 1] : trail[0],
+			trail.length > 1 ? trail[trail.length - 2] : trail[0],
 			props.label || 'Back'
 		);
 	}
