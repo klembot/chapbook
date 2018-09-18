@@ -53,6 +53,10 @@
 
 		&.has-content {
 			border-bottom: 1px solid black;
+
+			& + article > div > p:first-child {
+				margin-top: 1em;
+			}
 		}
 	}
 
