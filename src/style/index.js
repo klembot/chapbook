@@ -23,7 +23,9 @@ export const defaults = {
 };
 
 const rules = {};
-const el = document.createElement('style');
+const styleEl = document.createElement('style');
+const googleFontEl = document.createElement('div');
+const typekitFontEl = document.createElement('div');
 
 export function style(selector, selectorRules) {
 	rules[selector] = rules[selector] || {};
@@ -63,14 +65,17 @@ function update() {
 		);
 	}
 
-	el.innerHTML = Object.keys(rules).reduce(
+	styleEl.innerHTML = Object.keys(rules).reduce(
 		(result, rule) => result + cssify(rule, rules[rule]),
 		''
 	);
 }
 
 export function init() {
-	document.head.appendChild(el);
+	document.head.appendChild(styleEl);
+	document.body.appendChild(googleFontEl);
+	document.body.appendChild(typekitFontEl);
+
 	event.on('state-change', ({name, value}) => {
 		/* Special-case properties. */
 
@@ -80,6 +85,16 @@ export function init() {
 				style('#backdrop', {
 					'background-color': parseColor(value).color
 				});
+				return;
+
+			case 'config.style.googleFont':
+				log('Adding Google Font');
+				googleFontEl.innerHTML = value;
+				return;
+
+			case 'config.style.typekitFont':
+				log('Adding Typekit Font');
+				typekitFontEl.innerHTML = value;
 				return;
 
 			case 'config.style.pageStyle':
