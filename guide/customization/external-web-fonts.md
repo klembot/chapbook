@@ -20,12 +20,23 @@ Welcome aboard the U.S.S. Hood.
 
 Note that because `config.style.googleFont` is a string, you must put single quotes around its value. (It's much easier to type single quotes here, since the embed code has double quotes in it.)
 
-## Using Typekit Fonts
+## Using Adobe Typekit Fonts
 
-TODO
+Adobe Typekit serves a similar purpose to Google Fonts, but most of its collection requires an Adobe Creative Cloud subscription to use. That said, it does permit free use of some of its font families.
 
-## Adding Your Own Fonts
+Once you've assembled a kit--Adobe's terminology for one or more font families you plan to use--find its embed code in Typekit. Copy the default code, i.e. `<link rel="stylesheet" href="https://use.typekit.net/fnw3sdq.css">`, and set the variable `config.style.typekitFont` to it in your first passage. As with Google Fonts, you can then use the font name anywhere in the rest of `config.style`.
 
-TODO
+```
+config.style.typekitFont: '<link rel="stylesheet" href="https://use.typekit.net/fnw3sdq.css">'
+config.style.page.font: 'Open Sans/sans-serif 18'
+--
+Welcome aboard the U.S.S. Hood.
+```
+
+## Other Web Fonts
+
+{% hint style='working' %}
+It is possible to embed web fonts you have purchased or obtained outside these services--this will be documented in a later version of this guide.
+{% endhint %}
 
 [google-fonts]: https://fonts.google.com

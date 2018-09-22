@@ -8,11 +8,17 @@
 
 .book-header h1 a,
 .book-header h1 a:hover {
-	font-family: 'Iowan Old Style', 'Calisto MT', Georgia, serif;
+	font-family: 'Iowan Old Style', Constantia, Georgia, serif;
 	font-weight: normal;
 	font-size: 13px;
 	text-transform: uppercase;
 	letter-spacing: 0.075em;
+}
+
+.markdown-section img.lead-in {
+	float: left;
+	margin-right: 2em;
+	margin-bottom: 2em;
 }
 
 /* Force line wrapping in code examples. */
@@ -74,7 +80,7 @@ accommodate it.
 */
 
 .book.font-family-1 {
-	font-family: 'Iowan Old Style', 'Calisto MT', Georgia, serif;
+	font-family: 'Iowan Old Style', Constantia, Georgia, serif;
 }
 
 /* &nbsp; shows up larger than a regular space with our font. */
@@ -106,6 +112,12 @@ span.widont {
 	letter-spacing: 0.08em;
 	font-size: 0.7em;
 	margin-bottom: 0.4em;
+}
+
+/* Give some additional space around tables. */
+
+.markdown-section table {
+	margin: 2em 0;
 }
 
 /* Use small caps for table headings. */

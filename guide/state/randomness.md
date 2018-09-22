@@ -99,15 +99,8 @@ The pseudorandom number generator will always generate the same values when usin
 
 Why would you want to change the pseudorandom seed, though? It can help with testing--for example, if someone reports a problem with your story, you can set your seed value to theirs and be able to replay things exactly as they experienced them. You can also set a seed value manually in a version of your story you give to others to test, so that you can ensure everyone has a consistent experience.
 
-## The Uses of Randomness
-
-https://web.archive.org/web/20130331035210/http://playthisthing.com/randomness-blight-or-bane overview of randomness in games throughout history
-
-
 [^1]: Which is to say it is possible, as demonstrated in _[Rosencrantz and Guildenstern Are Dead](rosencrantz)_, that `random.coinFlip` holds the same value after it is read. 
 [^2]: This example uses an underscore in its variable name to signal a temporary variable, but remember that this is merely a convention.
 
-
 [lookups]: objects-and-lookups.html
-[aleatoric]: https://en.wikipedia.org/wiki/Aleatoric_music
 [rosencrantz]: https://en.wikipedia.org/wiki/Rosencrantz_and_Guildenstern_Are_Dead#Act_One

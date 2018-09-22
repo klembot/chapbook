@@ -52,6 +52,7 @@
 		"examples": "node scripts/build-examples.js",
 		"guide": "gitbook serve guide",
 		"guide:init": "cd guide && gitbook install && cd ..",
+		"guide:release": "cd guide && gitbook build",
 		"lint": "eslint src/",
 		"test": "jest",
 		"test:watch": "jest --watch",

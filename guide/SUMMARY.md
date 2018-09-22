@@ -17,6 +17,7 @@
     -   [The Vars Section](state/the-vars-section.md)
     -   [Displaying Variables](state/displaying-variables.md)
     -   [Conditional Display](state/conditional-display.md)
+    -   [Conditions and Variables](state/conditions-and-variables.md)
     -   [Continuity Between Sessions](state/continuity.md)
     -   [Objects and Lookup Variables](state/objects-and-lookups.md)
     -   [Randomness](state/randomness.md)

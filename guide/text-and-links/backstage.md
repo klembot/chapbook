@@ -10,10 +10,14 @@ As you visit passages in your story, the History tab will show them in a tabular
 
 [screenshot]
 
+You may see some additional rows next to each passage name. These are explained in *TODO*, but for now you can ignore them.
+
 Use the &#x21b3; button beside an entry in the table to rewind the story to that passage.
 
 ## The Notes Tab
 
 This tab can be used to record notes on the passage you're currently viewing--noting misspellings, or any other thoughts you'd like to record. These notes are stored separately from the story itself, so that if you are collaborating with other people on a story, each of you can keep separate notes. The notes you enter are saved automatically as you type.
 
-*TODO import/export*
+{% hint style='working' %}
+Chapbook will eventually allow you to export these notes, and also allow you to import a collaborator's notes.
+{% endhint %}

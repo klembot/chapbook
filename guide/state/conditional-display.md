@@ -84,7 +84,7 @@ You could [[open the door]]...
 ... and it might be your best chance for survival.
 ```
 
-An alternate method is to move the additional logic to a separate passage and [embed it](embed-passage).
+Creating temporary variables to hold these values can help avoid repetition. An alternate method is to move the additional logic to a separate passage and [embed it](embed-passage).
 
 ```
 [if hasKey]
@@ -103,27 +103,15 @@ You could [[open the door]]...
 ... though you don't have a pressing reason to.
 ```
 
-Which approach is best to take depends on the situation. It's not a good id
-
+Which approach is best to take depends on the situation. It's not a good idea to embed passages more than one level deep.
 
 ## Disabling Conditions For Testing
 
-It can be useful to override a conditional modifier so that it always or never displays, regardless of circumstances. You can use [comments] to temporarily override the logic you've set up.
+It can be useful to override a conditional modifier so that it always or never displays, regardless of circumstances.
 
-```
-<!--[if hasKey]-->
-This text is now always shown.
-
-<!--
-[if hasKey]
-This text is now never shown.
--->
-```
-
-Be careful of `else` modifiers, however. You'll need to disable them as well with a comment if you disable the `if` they are connected to.
-
-TODO discussion of whether to make conditional display explicit to players
+{% hint style='working' %}
+Chapbook will eventually allow you to temporarily override a condition during testing, perhaps by changing [if] to [ifalways] or [ifnever], but the actual implementation of this idea may change.
+{% endhint %}
 
 [^1]: Truthfully, it is also possible to write `[if stringVariable]` or `[if 2 + 2]`. In these cases, any non-empty string (e.g. not `''`) is treated as true, and any non-zero number is treated as true. It's best to be explicit, however, and write `[if stringVariable !== '']` and `[if 2 + 2 !== 0]`.
-[comments]: ../text-and-links/comments.html
 [embed-passage]: ../text-and-links/embedding-passages.html
