@@ -1,4 +1,4 @@
-// Sets all user-visible styles.
+/* Sets all user-visible styles. */
 
 import createLoggers from '../logger';
 import event from '../event';
@@ -10,8 +10,7 @@ const {log} = createLoggers('style');
 export const defaults = {
 	'config.style.backdrop': 'gray-0',
 	'config.style.pageStyle': 'shadow',
-	'config.style.page.font':
-		'Iowan Old Style/Goudy Old Style/Constantia/Georgia/serif 18',
+	'config.style.page.font': 'Iowan Old Style/Constantia/Georgia/serif 18',
 	'config.style.page.color': 'gray-9 on white',
 	'config.style.page.link.color': 'gray-9',
 	'config.style.page.link.lineColor': 'red-5',
@@ -33,16 +32,17 @@ export function style(selector, selectorRules) {
 }
 
 function update() {
-	// TODO: throttle this somehow so that multiple calls in one loop don't waste time
+	/* TODO: throttle this somehow so that multiple calls in one loop don't waste time */
 
-	// The sort() is necessary because of how some browser parse
-	// `text-decoration` and `text-decoration-color`. Google Chrome, for
-	// example, will treat `text-decoration` as overriding
-	// `text-decoration-color`; however, Internet Explorer doesn't understand
-	// `text-decoration-color` and needs `text-decoration` to be set for any
-	// styling at all to appear. Sorting guarantees that `text-decoration-color`
-	// appears after `text-decoration` in the declarations, preventing the two
-	// from stepping on each other.
+	/*
+	The sort() is necessary because of how some browser parse `text-decoration`
+	and `text-decoration-color`. Google Chrome, for example, will treat
+	`text-decoration` as overriding `text-decoration-color`; however, Internet
+	Explorer doesn't understand `text-decoration-color` and needs
+	`text-decoration` to be set for any styling at all to appear. Sorting
+	guarantees that `text-decoration-color` appears after `text-decoration` in
+	the declarations, preventing the two from stepping on each other.
+	*/
 
 	function cssify(selector, props) {
 		return (
@@ -72,7 +72,7 @@ function update() {
 export function init() {
 	document.head.appendChild(el);
 	event.on('state-change', ({name, value}) => {
-		// Special-case properties.
+		/* Special-case properties. */
 
 		switch (name) {
 			case 'config.style.backdrop':
@@ -121,7 +121,7 @@ export function init() {
 				return;
 		}
 
-		// Font and color properties.
+		/* Font and color properties. */
 
 		if (/^config\.style\.page\./i.test(name)) {
 			let selector = '#page';
@@ -130,8 +130,10 @@ export function init() {
 				.replace(/^config\.style\.page\./i, '')
 				.split('.');
 
-			// Drill down to a font, color, or lineColor property. To prevent
-			// weird scenarios, we only allow drilling down in specificity.
+			/*
+			Drill down to a font, color, or lineColor property. To prevent
+			weird scenarios, we only allow drilling down in specificity.
+			*/
 
 			if (props[0].toLowerCase() === 'header') {
 				selector += ' header';
@@ -151,9 +153,11 @@ export function init() {
 				props.shift();
 			}
 
-			// We should either be at either a color, font, or lineColor
-			// property. If we aren't, we do nothing-- this property must either
-			// have some other purpose or it's a mistake by the author.
+			/*
+			We should either be at either a color, font, or lineColor property.
+			If we aren't, we do nothing-- this property must either have some
+			other purpose or it's a mistake by the author.
+			*/
 
 			switch (props[0].toLowerCase()) {
 				case 'color':
