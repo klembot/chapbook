@@ -1,5 +1,5 @@
 import {autopx, parseColor, parseFont} from '../parse';
-import color from '../../author/color';
+import {format as formatColor} from '../color';
 
 describe('autopx()', () => {
 	test('converts integers to px', () => {
@@ -14,21 +14,21 @@ describe('autopx()', () => {
 
 describe('parseColor()', () => {
 	test('parses single colors as foregrounds', () => {
-		expect(parseColor('#ff0000').color).toBe(color.format('#ff0000'));
+		expect(parseColor('#ff0000').color).toBe(formatColor('#ff0000'));
 	});
 
 	test('parses Open Color keywords as foregrounds', () => {
-		expect(parseColor('red-5').color).toBe(color.format('red-5'));
+		expect(parseColor('red-5').color).toBe(formatColor('red-5'));
 	});
 
 	test('parses "x on y" format as foreground and background', () => {
 		expect(parseColor('#ff0000 on #00ff00')).toEqual({
-			'background-color': color.format('#00ff00'),
-			color: color.format('#ff0000')
+			'background-color': formatColor('#00ff00'),
+			color: formatColor('#ff0000')
 		});
 		expect(parseColor('#ff0000 ON #00ff00')).toEqual({
-			'background-color': color.format('#00ff00'),
-			color: color.format('#ff0000')
+			'background-color': formatColor('#00ff00'),
+			color: formatColor('#ff0000')
 		});
 	});
 });

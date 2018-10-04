@@ -39,7 +39,7 @@ Palatino/serif 18
 
 Slashes separate alternate typefaces in what is called a _font stack_. Before the advent of web fonts, font stacks were a crucial part of web design. At that time, web browsers were only capable of displaying fonts installed in the operating system, so designers had to specify alternate typefaces in order to create a consistent appearance across different operating systems.
 
-In our current times, font stacks affect more what a page looks like at first glance--typically, text appears immediately in a system font, then in a web font after it finishes loading. (See [External Web Fonts](external-web-fonts.md) for details on how to use a web font with Chapbook.) But there are players who will have disabled web fonts, either out of personal preference or a need to save network bandwidth, and it's good practice to design your story to accommodate that.
+In our current times, font stacks affect more what a page looks like at first glance--typically, text appears immediately in a system font, then in a web font after it finishes loading. (See [External Web Fonts][external-web-fonts.md] for details on how to use a web font with Chapbook.) But there are players who will have disabled web fonts, either out of personal preference or a need to save network bandwidth, and it's good practice to design your story to accommodate that.
 
 The example above indicates that if a typeface named Palatino isn't available to the player's web browser, `serif` signals it should fall back to a generic serif font.[^3] If you'd like to set your story in Helvetica, you might use:
 
@@ -47,7 +47,7 @@ The example above indicates that if a typeface named Palatino isn't available to
 Helvetica/Arial/sans-serif 14
 ```
 
-Many people viewing your story using a Windows computer won't have Helvetica available, but they almost certainly will have Arial, Microsoft's [Helvetica competitor](helvetica-vs-arial), and if for some reason they have neither, the story will use whatever sans serif font is available.
+Many people viewing your story using a Windows computer won't have Helvetica available, but they almost certainly will have Arial, Microsoft's [Helvetica competitor][helvetica-vs-arial], and if for some reason they have neither, the story will use whatever sans serif font is available.
 
 When specifying typefaces that have spaces in their name, you don't need to do anything special:
 
@@ -88,7 +88,7 @@ Applies to:
 - `config.style.page.link.active.lineColor`
 {% endhint %}
 
-Although you don't have to use it, Chapbook has a built-in color palette called [Open Color](open-color). It has a versatile range of hues that are designed to harmonize with each other.
+Although you don't have to use it, Chapbook has a built-in color palette called [Open Color][open-color]. It has a versatile range of hues that are designed to harmonize with each other.
 
 Besides `black` and `white`, Open Color has 13 base hues:
 
@@ -261,7 +261,7 @@ To use them, enter the appropriate name. Open Color also offers 10 shades per hu
 <div class="swatch" style="background: #d9480f">orange-9</div>
 </div>
 
-As above, to use a particular shade, enter the name in its box, e.g. `yellow-6`. You can also use [any other color notation](color-notation) that web browsers understand, from the traditional hex triplet notation (e.g. `#0b7285`) to more modern ones, such as `hsla(0%, 65%, 48%, 0.75)`.
+As above, to use a particular shade, enter the name in its box, e.g. `yellow-6`. You can also use [any other color notation][color-notation] that web browsers understand, from the traditional hex triplet notation (e.g. `#0b7285`) to more modern ones, such as `hsla(0%, 65%, 48%, 0.75)`.
 
 When setting colors in `config`, often you can specify both a background and foreground. For instance, you can set `config.style.page.color` to `'orange-9 on orange-0'`. However, when specifying a border color, for instance `config.style.page.link.lineColor`, only the foreground is used.
 
@@ -293,7 +293,7 @@ As with fonts, you can omit parts of a color declaration. Setting `config.style.
 
 [^1]: To review, launching your story with Twine's **Test** button will cause the backstage view to appear, including the **Style** tab.
 
-[^2]: If you are familiar with [CSS units](css-units), you can also use them, e.g. `Palatino 1rem` or `Palatino 25%`.
+[^2]: If you are familiar with [CSS units][css-units], you can also use them, e.g. `Palatino 1rem` or `Palatino 25%`.
 
 [^3]: What's a serif? [Wikipedia](https://en.wikipedia.org/wiki/Serif) aptly answers.
 

@@ -23,3 +23,7 @@ Below is a list of lookups that Chapbook maintains for you:
 | Variable Name | Description                                      | Example            |
 | ------------- | ------------------------------------------------ | ------------------ |
 | `story.name`  | The name of the story as set in the Twine editor | `'Untitled Story'` |
+
+{% hint style='working' %}
+More lookups will be added to Chapbook.
+{% endhint %}

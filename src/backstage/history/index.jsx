@@ -5,7 +5,9 @@ import {history, rewindTo} from './recorder';
 import './index.scss';
 
 function parseHistory(history) {
-	// Group the history items by passage navigation.
+	/*
+	Group the history items by passage navigation.
+	*/
 
 	const result = [];
 	let current = {vars: []};
@@ -21,9 +23,11 @@ function parseHistory(history) {
 				vars: []
 			};
 		} else {
-			// We need to create separate entries instead of just an object,
-			// so that if a variable changes multiple times under one
-			// passage, we see that.
+			/*
+			We need to create separate entries instead of just an object, so
+			that if a variable changes multiple times under one passage, we see
+			that.
+			*/
 
 			current.vars.push({name: change.name, value: change.value});
 		}
@@ -37,8 +41,10 @@ function parseHistory(history) {
 }
 
 function historyRows({passage, vars, index}) {
-	// This is a function, not a stateless component, because we have to return
-	// multiple <tr>s without anything enclosing them.
+	/*
+	This is a function, not a stateless component, because we have to return
+	multiple <tr>s without anything enclosing them.
+	*/
 
 	const result = [
 		<tr>
@@ -50,7 +56,9 @@ function historyRows({passage, vars, index}) {
 				rowspan={vars.length + 1}
 				colspan={vars.length > 0 ? 1 : 2}
 			>
-				Go to &ldquo;{passage}&rdquo;
+				Go to &ldquo;
+				{passage}
+				&rdquo;
 			</td>
 		</tr>
 	];
@@ -59,7 +67,7 @@ function historyRows({passage, vars, index}) {
 		result.push(
 			<tr>
 				<td>
-					{v.name} &larr; {v.value}
+					{v.name} &larr; {JSON.stringify(v.value)}
 				</td>
 			</tr>
 		);

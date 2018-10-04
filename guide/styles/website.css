@@ -15,10 +15,69 @@
 	letter-spacing: 0.075em;
 }
 
-.markdown-section img.lead-in {
-	float: left;
-	margin-right: 2em;
-	margin-bottom: 2em;
+.markdown-section .intro {
+	background-color: gray;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 66vh;
+	position: relative;
+	margin-bottom: 1em;
+}
+
+.markdown-section .intro.intro-path {
+	background-image: url('../path.jpeg');
+	background-position: bottom center;
+}
+
+.markdown-section .intro.links {
+	background-image: url('../text-and-links/links.jpeg');
+}
+
+.markdown-section .intro.modifiers-inserts {
+	background-image: url('../modifiers-and-inserts/letterblocks.jpeg');
+}
+
+.markdown-section .intro.state {
+	background-image: url('../state/chess.jpeg');
+	background-position: bottom;
+}
+
+.markdown-section .intro.multimedia {
+	background-image: url('../multimedia/slides.jpeg');
+}
+
+.markdown-section .intro.customization {
+	background-image: url('../customization/clothes.jpeg');
+}
+
+.markdown-section .intro.input {
+	background-image: url('../player-input/microphone.jpeg');
+}
+
+.markdown-section .intro.advanced {
+	background-image: url('../advanced/controls.jpeg');
+}
+
+.markdown-section .intro.references {
+	background-image: url('../references/books.jpeg');
+}
+
+.markdown-section .intro h1 {
+	margin: 0;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	text-align: right;
+	padding: 0.2em;
+	font-size: 1.8em;
+	color: white;
+	background: black;
+}
+
+.markdown-section .intro.path {
+	background-image: url('../path.jpeg');
+	background-position: bottom center;
 }
 
 /* Force line wrapping in code examples. */

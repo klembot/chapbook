@@ -84,7 +84,7 @@ You could [[open the door]]...
 ... and it might be your best chance for survival.
 ```
 
-Creating temporary variables to hold these values can help avoid repetition. An alternate method is to move the additional logic to a separate passage and [embed it](embed-passage).
+Creating temporary variables to hold these values can help avoid repetition. An alternate method is to move the additional logic to a separate passage and [embed it][embed-passage].
 
 ```
 [if hasKey]

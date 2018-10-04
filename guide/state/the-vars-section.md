@@ -36,7 +36,7 @@ Sadly, you can't use spaces in your variable names. Because of this, a common pr
 Another common practice is to put an underscore in front of variable names when the value will only be used in the current passage. This practice is just a hint to yourself; Chapbook does not enforce this usage.[^2]
 
 {% hint style='info' %}
-A variable name can contain periods (`.`), but they carry a special meaning. Until you've read [Nesting Variables With Objects](nesting-vars), it's best to leave them out of variable names.
+A variable name can contain periods (`.`), but they carry a special meaning. Until you've read [Nesting Variables With Objects][nesting-vars], it's best to leave them out of variable names.
 {% endhint %}
 
 {% hint style='working' %}

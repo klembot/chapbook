@@ -103,7 +103,7 @@ The third example demonstrates one use of manual link inserts: although they are
 
 ## Cycling Links
 
-Chapbook has an insert for cycling links--that is, links that do not move the player anywhere, but change their label. See [Menus and Cycling Links](cycling) for more information.
+Chapbook has an insert for cycling links--that is, links that do not move the player anywhere, but change their label. See [Menus and Cycling Links][cycling] for more information.
 
 [vars-section]: ../state/the-vars-section.html
 [cycling]: ../player-input/menus-cycling-links.md

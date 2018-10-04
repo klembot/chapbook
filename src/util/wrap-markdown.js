@@ -21,7 +21,5 @@ export default (markdown, attributes = {}) => {
 	/* Move <span>s after any setext-style headers. */
 
 	output = output.replace(/(<span.*?>)\s*(#+)/gi, '$2 $1');
-
-	console.log(output);
 	return output;
 };

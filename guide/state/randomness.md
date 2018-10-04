@@ -2,7 +2,7 @@
 
 Randomness is a powerful tool for creating interactive experiences. It can assist with simulation--to decide whether actions of a character succeed, as in tabletop role-playing games--but it can also be used for aesthetic purposes, from altering phrasings in text to creating an entirely randomized narrative.
 
-The main way to make use of randomness with Chapbook is through [lookup variables](lookup variables) in the `random` object. For instance:
+The main way to make use of randomness with Chapbook is through [lookup variables][lookup variables] in the `random` object. For instance:
 
 ```
 [if random.coinFlip]
@@ -99,7 +99,7 @@ The pseudorandom number generator will always generate the same values when usin
 
 Why would you want to change the pseudorandom seed, though? It can help with testing--for example, if someone reports a problem with your story, you can set your seed value to theirs and be able to replay things exactly as they experienced them. You can also set a seed value manually in a version of your story you give to others to test, so that you can ensure everyone has a consistent experience.
 
-[^1]: Which is to say it is possible, as demonstrated in _[Rosencrantz and Guildenstern Are Dead](rosencrantz)_, that `random.coinFlip` holds the same value after it is read. 
+[^1]: Which is to say it is possible, as demonstrated in _[Rosencrantz and Guildenstern Are Dead][rosencrantz]_, that `random.coinFlip` holds the same value after it is read. 
 [^2]: This example uses an underscore in its variable name to signal a temporary variable, but remember that this is merely a convention.
 
 [lookups]: objects-and-lookups.html

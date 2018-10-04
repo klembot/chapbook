@@ -4,7 +4,7 @@ Creating a good font stack is difficult because there are very few typefaces you
 
 ## Using Google Fonts
 
-Google provides a wide variety of freely-usable fonts through their [Google Fonts](google-fonts) service. To use Google Fonts in your story, first find the embed code for the families you wish to use:
+Google provides a wide variety of freely-usable fonts through their [Google Fonts][google-fonts] service. To use Google Fonts in your story, first find the embed code for the families you wish to use:
 
 <p style="text-align: center">
 <img src="google-font.png" width="300" height="198" alt="Google Fonts screenshot">

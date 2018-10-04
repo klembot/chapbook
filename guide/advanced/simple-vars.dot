@@ -1,8 +1,0 @@
-digraph {
-	1 [label="'a dark, spherical bit of metal with a fuse'" shape="none"];
-	2 [label="'a dark, spherical bit of metal with a fuse'" shape="none"];
-	bombDesc [shape="none"];
-	murderWeaponDesc [shape="none"];
-	bombDesc -> 1;
-	murderWeaponDesc -> 2;
-}

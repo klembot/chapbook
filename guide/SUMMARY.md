@@ -1,38 +1,45 @@
 # Summary
 
 -   [Introduction](README.md)
--   Text and Links
+-   [Acknowledgments](acknowledgments.md)
+-   [Text and Links](text-and-links/index.md)
     -   [Text Formatting](text-and-links/text-formatting.md)
     -   [Simple Links](text-and-links/simple-links.md)
     -   [Ways to Link](text-and-links/ways-to-link.md)
     -   [Introducing Backstage](text-and-links/backstage.md)
--   Modifiers and Inserts
+-   [Modifiers and Inserts](modifiers-and-inserts/index.md)
     -   [Modifiers and Text Alignment](modifiers-and-inserts/modifiers-and-text-alignment.md)
     -   [Delayed Text](modifiers-and-inserts/delayed-text.md)
     -   [Notes](modifiers-and-inserts/notes.md)
     -   [Link Inserts](modifiers-and-inserts/link-inserts.md)
     -   [Embedding Passages](modifiers-and-inserts/embedding-passages.md)
--   Adding State to Stories
+-   [Adding State to Stories](state/index.md)
     -   [What is State?](state/what-is-state.md)
     -   [The Vars Section](state/the-vars-section.md)
     -   [Displaying Variables](state/displaying-variables.md)
     -   [Conditional Display](state/conditional-display.md)
     -   [Conditions and Variables](state/conditions-and-variables.md)
     -   [Continuity Between Sessions](state/continuity.md)
+    -   [State Backstage](state/backstage.md)
     -   [Objects and Lookup Variables](state/objects-and-lookups.md)
     -   [Randomness](state/randomness.md)
--   Multimedia
+-   [Multimedia](multimedia/index.md)
+    -   [Publishing Models](multimedia/publishing-models.md)
     -   [Images](multimedia/images.md)
     -   [Audio](multimedia/audio.md)
     -   [Video](multimedia/video.md)
--   Customization
+-   [Customization](customization/index.md)
     -   [Fonts and Colors](customization/fonts-and-colors.md)
     -   [External Web Fonts](customization/external-web-fonts.md)
     -   [Page Style](customization/page-style.md)
     -   [Design Considerations](customization/design-considerations.md)
--   Player Input
+-   [Player Input](player-input/index.md)
     -   [Text Input](player-input/text-input.md)
     -   [Dropdown Menus and Cycling Links](player-input/dropdown-menus-cycling-links.md)
     -   [Live Inputs](player-input/live-inputs.md)
--   References
-    -   [The Chapbook Lifecycle](reference/lifecycle.md)
+-   [Advanced Topics](advanced/index.md)
+    -   [Using JavaScript in Passages](advanced/using-javascript-in-passages.md)
+-   [References](references/index.md)
+    -   [Inserts](references/inserts.md)
+    -   [Modifiers](references/modifiers.md)
+    -   [The Chapbook Lifecycle](references/lifecycle.md)

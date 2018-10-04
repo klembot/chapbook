@@ -1,6 +1,6 @@
 # Introducing Backstage
 
-When you launch your story from Twine using the **Test** button in the editor toolbar, Chapbook enables its *backstage view*: a panel that sits beside your story and allows you to peek into its workings and tinker with them while you interact with it as players will. This section discusses the **History** and **Notes** tabs in the backstage view. The other tabs, **State** and **Style**, are discussed later in this guide in *TODO*.
+When you launch your story from Twine using the **Test** button in the editor toolbar, Chapbook enables its *backstage view*: a panel that sits beside your story and allows you to peek into its workings and tinker with them while you interact with it as players will. This section discusses the **History** and **Notes** tabs in the backstage view. The other tabs, **State** and **Style**, are discussed later in this guide in [State Backstage][state-backstage] and [Page Style][page-style] respectively.
 
 If you would like to temporarily hide the backstage view, use the arrow button to its left, which toggles the view's visibility.
 
@@ -21,3 +21,6 @@ This tab can be used to record notes on the passage you're currently viewing--no
 {% hint style='working' %}
 Chapbook will eventually allow you to export these notes, and also allow you to import a collaborator's notes.
 {% endhint %}
+
+[state-backstage]: ../state/backstage.md
+[page-style]: ../customization/page-style.md

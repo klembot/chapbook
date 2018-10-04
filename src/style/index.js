@@ -9,7 +9,7 @@ const {log} = createLoggers('style');
 
 export const defaults = {
 	'config.style.backdrop': 'gray-0',
-	'config.style.pageStyle': 'shadow',
+	'config.style.page.style': 'shadow',
 	'config.style.page.font': 'Iowan Old Style/Constantia/Georgia/serif 18',
 	'config.style.page.color': 'gray-9 on white',
 	'config.style.page.link.color': 'gray-9',
@@ -97,10 +97,10 @@ export function init() {
 				typekitFontEl.innerHTML = value;
 				return;
 
-			case 'config.style.pageStyle':
-			case 'config.style.pageStyle.color':
+			case 'config.style.page.style':
+			case 'config.style.page.style.borderColor':
 				log('Setting page style');
-				switch (get('config.style.pageStyle')) {
+				switch (get('config.style.page.style')) {
 					case 'none':
 						style('#page', {border: 'none', 'box-shadow': 'none'});
 						break;
@@ -115,8 +115,9 @@ export function init() {
 					case 'thick-line':
 						style('#page', {
 							border: `4px solid ${
-								parseColor(get('config.style.pageBorderColor'))
-									.color
+								parseColor(
+									get('config.style.page.style.borderColor')
+								).color
 							}`,
 							'box-shadow': 'none'
 						});
@@ -125,8 +126,9 @@ export function init() {
 					case 'thin-line':
 						style('#page', {
 							border: `1px solid ${
-								parseColor(get('config.style.pageBorderColor'))
-									.color
+								parseColor(
+									get('config.style.page.style.borderColor')
+								).color
 							}`,
 							'box-shadow': 'none'
 						});

@@ -1,6 +1,7 @@
 import BackLink from './back-link';
 import CyclingLink from './cycling-link';
 import EmbedFlickr from './embed-flickr-image';
+import EmbedImage from './embed-image';
 import EmbedPassage from './embed-passage';
 import EmbedUnsplash from './embed-unsplash-image';
 import EmbedYouTube from './embed-youtube-video';
@@ -13,6 +14,7 @@ export default [
 	BackLink,
 	CyclingLink,
 	EmbedFlickr,
+	EmbedImage,
 	EmbedPassage,
 	EmbedUnsplash,
 	EmbedYouTube,

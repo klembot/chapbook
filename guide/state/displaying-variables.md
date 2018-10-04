@@ -12,7 +12,7 @@ name: 'Chris'
 
 Will display as: `"Hi, Chris," your guide greets you.` This example is a little silly, since you could just as easily write `Chris` where <code>`name`</code> is. But the advantage of storing it in a variable is that you could keep using <code>`name`</code> later in your story. You could also use this, for example, to allow the player to choose a gender (or lack thereof) and then use the correct pronouns throughout the story.
 
-Variable inserts do not allow any parameters, as introduced in [Link Inserts](link-inserts); the name of the variable acts as the insert name.[^1]
+Variable inserts do not allow any parameters, as introduced in [Link Inserts][link-inserts]; the name of the variable acts as the insert name.[^1]
 
 ## You Cannot Put Expressions In An Insert
 

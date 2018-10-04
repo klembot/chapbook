@@ -22,7 +22,7 @@ When the story shows a new passage, it creates a transition between text based o
 
 Chapbook's default transition is `'crossfade'`.
 
-If you use `'crossfade'` or `'fadeInOut'`, you can control how long the transition takes by setting `config.page.transition.duration`, which should be a string in the same format that the [after modifer](after) accepts. Remember that it doesn't understand decimals, so if you'd like a transition to take half a second, set `config.page.transition.duration` to `'500ms'`. Also keep in mind that the duration is the duration of the complete transition-- a `'crossfade'` and `'fadeInOut'` transition with the same duration might look as though they last different amounts of time, as the `'fadeInOut'` has two steps.
+If you use `'crossfade'` or `'fadeInOut'`, you can control how long the transition takes by setting `config.page.transition.duration`, which should be a string in the same format that the [after modifer][after] accepts. Remember that it doesn't understand decimals, so if you'd like a transition to take half a second, set `config.page.transition.duration` to `'500ms'`. Also keep in mind that the duration is the duration of the complete transition-- a `'crossfade'` and `'fadeInOut'` transition with the same duration might look as though they last different amounts of time, as the `'fadeInOut'` has two steps.
 
 [color]: fonts-and-colors.html#colors
 [after]: ../text-and-links/modifiers-and-delayed-text.html

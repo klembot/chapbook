@@ -2,7 +2,7 @@
 
 import {defaults as displayDefaults} from '../display';
 import {defaults as loggerDefaults} from '../logger';
-import {defaults as randomDefaults} from './computed/random';
+import {defaults as randomDefaults} from './lookups/random';
 import {defaults as stateDefaults, setDefault} from './index';
 import {defaults as styleDefaults} from '../style';
 import {defaults as templateDefaults} from '../template';

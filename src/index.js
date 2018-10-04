@@ -1,7 +1,7 @@
 import {go, restart} from './actions';
 import {init as initBackstage} from './backstage';
 import {canRestoreFromStorage, get, restoreFromStorage} from './state';
-import initComputed from './state/computed';
+import initLookups from './state/lookups';
 import initDefaults from './state/defaults';
 import {init as initDisplay} from './display';
 import {
@@ -17,7 +17,7 @@ loadFromData(document.querySelector('tw-storydata'));
 Object.assign(window, {go, restart});
 initStyle();
 initDefaults();
-initComputed();
+initLookups();
 initDisplay();
 initStory();
 
