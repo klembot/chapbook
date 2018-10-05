@@ -67,7 +67,7 @@ body.backstage-visible {
 		border: 1px solid $backstage-input-border;
 
 		&:hover {
-			background: $oc-gray-3;
+			background: $oc-gray-2;
 		}
 	}
 
@@ -175,6 +175,7 @@ body.backstage-visible {
 		button {
 			border-left: none;
 			border-radius: 0;
+			margin: 0;
 			flex-grow: 1;
 
 			&:first-child {
