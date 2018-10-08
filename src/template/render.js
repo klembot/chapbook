@@ -1,6 +1,8 @@
-// This "renders" a template as parsed by the `parser` module. It actually does
-// more than render it to HTML, as templates have side effects (e.g. changing
-// variables).
+/*
+This "renders" a template as parsed by the `parser` module. It actually does
+more than render it to HTML, as templates have side effects (e.g. changing
+variables).
+*/
 
 import marked from 'marked';
 import logger from '../logger';
@@ -9,7 +11,7 @@ import renderInserts from './render-inserts';
 import renderLinks from './render-links';
 import {set} from '../state';
 
-const {log, warn} = logger('render');
+const {log} = logger('render');
 
 export const markedOptions = {
 	renderer: markdownRenderer,
@@ -31,7 +33,7 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 
 	let markdown = '';
 
-	// Dispatch variable changes as denoted by properties.
+	/* Dispatch variable changes as denoted by properties. */
 
 	if (!ignoreVars) {
 		log(`Setting vars (${Object.keys(parsed.vars).length})`);
@@ -42,7 +44,7 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 		});
 	}
 
-	// Parse the blocks in sequence.
+	/* Parse the blocks in sequence. */
 
 	let activeModifiers = [];
 	const modifierState = {};
@@ -50,9 +52,11 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 	parsed.blocks.forEach(block => {
 		switch (block.type) {
 			case 'text': {
-				// We allow modifiers to change the text, as well as add text
-				// before or after it. We allow this separation to keep the
-				// original text intact.
+				/*
+				We allow modifiers to change the text, as well as add text
+				before or after it. We allow this separation to keep the
+				original text intact.
+				*/
 
 				let blockOutput = {
 					text: renderInserts(renderLinks(block.content), inserts),
@@ -60,7 +64,7 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 					afterText: ''
 				};
 
-				// Allow all active modifiers to alter the text.
+				/* Allow all active modifiers to alter the text. */
 
 				log(
 					`Running ${activeModifiers.length} modifiers on text block`
@@ -80,15 +84,17 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 
 				log(`Output after modifiers: ${JSON.stringify(blockOutput)}`);
 
-				// Clear modifiers so that the next set will start with a clean
-				// slate.
+				/*
+				Clear modifiers so that the next set will start with a clean
+				slate.
+				*/
 
 				activeModifiers = [];
 				break;
 			}
 
 			case 'modifier': {
-				// Find all modifiers whose regexp matches this one's.
+				/* Find all modifiers whose regexp matches this one's. */
 
 				const mods = modifiers.filter(m => m.match.test(block.content));
 
@@ -127,7 +133,7 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 		}
 	});
 
-	// Finally, render the Markdown to HTML.
+	/* Finally, render the Markdown to HTML. */
 
 	marked.setOptions(markedOptions);
 	return marked(markdown);
