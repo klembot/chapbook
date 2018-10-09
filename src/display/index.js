@@ -34,12 +34,12 @@ export const defaults = {
 	'config.header.left': '',
 	'config.header.center': '',
 	'config.header.right': '',
-	'config.header.transition.name': 'crossfade',
+	'config.header.transition.name': 'none',
 	'config.header.transition.duration': '500ms',
 	'config.footer.left': '_{story.name}_',
 	'config.footer.center': '',
 	'config.footer.right': '{restart link}',
-	'config.footer.transition.name': 'crossfade',
+	'config.footer.transition.name': 'none',
 	'config.footer.transition.duration': '500ms'
 };
 

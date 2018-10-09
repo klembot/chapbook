@@ -8,7 +8,7 @@ function forceNewStackingContext(el) {
 }
 
 function shallowCloneContents(el) {
-	const result = document.createElement('div');
+	const result = document.createElement(el.nodeName.toLowerCase());
 
 	result.innerHTML = el.innerHTML;
 	result.style.width = el.clientWidth + 'px';
@@ -32,7 +32,7 @@ export function fadeInOut(el, html, duration) {
 
 		const stepDuration = timestring(duration, 's') / 2;
 
-		// Add the new content, but keep it hidden at first.
+		/* Add the new content, but keep it hidden at first. */
 
 		const inEl = document.createElement('div');
 
@@ -47,7 +47,7 @@ export function fadeInOut(el, html, duration) {
 			resolve();
 		});
 
-		// Fade out existing content if any is present.
+		/* Fade out existing content if any is present. */
 
 		if (el.innerHTML.trim() !== '') {
 			const outEl = shallowCloneContents(el);
@@ -68,7 +68,7 @@ export function fadeInOut(el, html, duration) {
 			el.appendChild(inEl);
 			el.appendChild(outEl);
 		} else {
-			// There's no outgoing content, so our fade is twice as slow.
+			/* There's no outgoing content, so our fade is twice as slow. */
 
 			inEl.className = 'fade-in';
 			inEl.animationDuration = stepDuration * 2;
@@ -85,7 +85,7 @@ export function crossfade(el, html, duration) {
 
 		const stepDuration = timestring(duration, 's');
 
-		// Add the new content.
+		/* Add the new content. */
 
 		const inEl = document.createElement('div');
 
@@ -100,7 +100,7 @@ export function crossfade(el, html, duration) {
 			resolve();
 		});
 
-		// Fade out existing content if any is present.
+		/* Fade out existing content if any is present. */
 
 		if (el.innerHTML.trim() !== '') {
 			const outEl = shallowCloneContents(el);
@@ -108,10 +108,17 @@ export function crossfade(el, html, duration) {
 			outEl.style.position = 'absolute';
 			outEl.style.top = '0';
 			outEl.style.left = '0';
+
+			/*
+			FIXME: this doesn't properly handle an element that is centered and
+			is changing width.
+			*/
+
 			outEl.className = 'fade-out';
 			outEl.style.animationDuration = stepDuration + 's';
 			outEl.addEventListener('animationend', function removeOut() {
 				outEl.removeEventListener('animationend', removeOut);
+				outEl.style.opacity = 0.5;
 				outEl.parentNode.removeChild(outEl);
 			});
 
