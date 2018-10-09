@@ -1,7 +1,7 @@
 :: Start
-location: ''
+room: ''
 hasCloak: true
-config.header.center: '{location}'
+config.header.center: '{room}'
 --
 [align center]
 # Cloak of Darkness
@@ -15,7 +15,7 @@ _photo by [[Alessia Cocconi->https://unsplash.com/photos/rF1OwUp065Q]]_
 
 
 :: Outside
-location: 'Outside'
+room: 'Outside'
 --
 Hurrying through the rainswept November night, you're glad to see the bright lights of the [[Opera House->Foyer]]. It's surprising that there aren't more people about but, hey, what do you expect in a cheap demo game...?
 
@@ -28,11 +28,11 @@ A handsome cloak, of velvet trimmed with satin, and slightly spattered with rain
 
 
 :: Foyer
-_previousLocation: location
-location: 'Foyer of the Opera House'
+_previousRoom: room
+room: 'Foyer of the Opera House'
 outside: false
 --
-[if _previousLocation === 'Outside']
+[if _previousRoom === 'Outside']
 Shaking the rain from your [[cloak->Cloak]], you step gratefully inside.
 
 [cont'd]
@@ -40,7 +40,7 @@ You are standing in a spacious hall, splendidly decorated in red and gold, with 
 
 
 :: Cloakroom
-location: 'Cloakroom'
+room: 'Cloakroom'
 --
 The walls of this small room were clearly once lined with hooks, though now [[only one remains->Cloakroom Hook]].
 
@@ -65,7 +65,7 @@ hasCloak: false
 
 
 :: Bar
-location: 'Bar'
+room: 'Bar'
 --
 [if hasCloak]
 {embed passage: 'Darkness'}
@@ -82,7 +82,7 @@ _You have won_
 
 
 :: Darkness
-location: 'Darkness'
+room: 'Darkness'
 --
 You can't see a thing! Not even the door you entered by--was it [[north->Foyer]], [[south->Darkness 2]], [[east->Darkness 2]] or [[west->Darkness 2]]?
 
