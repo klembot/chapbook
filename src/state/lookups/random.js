@@ -19,15 +19,27 @@ guaranteed to stay consistent over multiple sessions. They are:
 This also adds two regular variables: `config.random.seed`, which is the seed
 the random number generator (RNG) uses, and `config.random.privateState`, which
 ensures that the RNG behaves deterministically across sessions.
+
+When a lookup occurs, this saves private state to `config.random.privateState`.
+This does this *once per tick, at the end of the execution context.* This is for one very important reason:
+
+-   At init time, this prevents state restoration from local storage from being
+	overwritten mid-load
+
+This practice also:
+
+-   Speeds up execution during play, so every time you read from a random
+    lookup, it doesn't cause state to be saved to local storage
 */
 
 import seedrandom from 'seedrandom';
+import coalesceCalls from '../../util/coalesce-calls';
 import event from '../../event';
 import {set} from '..';
 import {story} from '../../story';
 
 export const defaults = {
-	'config.random.seed': () => story.name,
+	'config.random.seed': () => new Date(),
 	'config.random.privateState': null
 };
 
@@ -49,26 +61,26 @@ function saveRngState() {
 	set('config.random.privateState', rng.state());
 }
 
-export default function(setComputed) {
-	setComputed('random.coinFlip', () => {
+export default function(setLookup) {
+	setLookup('random.coinFlip', () => {
 		const value = rng();
 
-		saveRngState();
+		coalesceCalls(saveRngState);
 		return value > 0.5;
 	});
 
-	setComputed('random.fraction', () => {
+	setLookup('random.fraction', () => {
 		const value = rng();
 
-		saveRngState();
+		coalesceCalls(saveRngState);
 		return value;
 	});
 
 	[4, 5, 6, 8, 10, 12, 20, 25, 50, 100, 1000].forEach(i => {
-		setComputed(`random.d${i}`, () => {
+		setLookup(`random.d${i}`, () => {
 			const value = 1 + Math.round(rng() * (i - 1));
 
-			saveRngState();
+			coalesceCalls(saveRngState);
 			return value;
 		});
 	});

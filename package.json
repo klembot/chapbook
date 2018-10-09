@@ -15,6 +15,7 @@
 		"gitbook-cli": "^2.3.2",
 		"html-webpack-plugin": "^3.2.0",
 		"jest": "^23.3.0",
+		"jest-localstorage-mock": "^2.2.0",
 		"jsdoc": "^3.5.5",
 		"mini-css-extract-plugin": "^0.4.0",
 		"mkdirp": "^0.5.1",
@@ -57,5 +58,10 @@
 		"test": "jest",
 		"test:watch": "jest --watch",
 		"test:coverage": "jest --coverage"
+	},
+	"jest": {
+		"setupFiles": [
+			"jest-localstorage-mock"
+		]
 	}
 }

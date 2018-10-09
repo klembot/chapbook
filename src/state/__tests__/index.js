@@ -37,8 +37,8 @@ describe('state', () => {
 		expect(state.get('color')).toBe('red');
 	});
 
-	it('adds computed variables', () => {
-		state.setComputed('test', () => {
+	it('adds lookup variables', () => {
+		state.setLookup('test', () => {
 			return 'test passed';
 		});
 
@@ -76,5 +76,27 @@ describe('state', () => {
 		expect(state.get('foo')).toBe(undefined);
 		expect(state.get('bar')).toBe('a');
 		expect(state.get('baz')).toBe(undefined);
+	});
+
+	it('saves and restores to objects', () => {
+		state.set('color', 'blue');
+
+		const saved = state.saveToObject();
+
+		state.reset();
+		state.restoreFromObject(saved);
+		expect(state.get('color')).toBe('blue');
+	});
+
+	it('saves and restores to local storage', () => {
+		state.set('color', 'purple');
+		state.saveToStorage();
+		state.restoreFromStorage();
+		expect(state.get('color')).toBe('purple');
+	});
+
+	it('does not persist lookup variables', () => {
+		state.setLookup('test', () => 'test passed');
+		expect(state.saveToObject().test).toBe(undefined);
 	});
 });

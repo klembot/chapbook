@@ -5,6 +5,6 @@ read-only.
 
 import {story} from '../../story';
 
-export default function init(setComputed) {
-	setComputed('story.name', () => story.name);
+export default function init(setLookup) {
+	setLookup('story.name', () => story.name);
 }
