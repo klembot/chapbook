@@ -54,7 +54,13 @@
 		&.has-content {
 			border-bottom: 1px solid black;
 
-			& + article > div > p:first-child {
+			/*
+			Repeated to catch cloned elements created as part of page
+			transitions.
+			*/
+
+			& + article > div > p:first-child,
+			& + article > article > div > p:first-child {
 				margin-top: 1em;
 			}
 		}
