@@ -8,7 +8,7 @@ Chapbook doesn't yet support embedding your own video, but it will.
 
 ## Embedding a YouTube Video
 
-You've heard of [YouTube][youtube], right? To embed a YouTube video, use its URL with 
+You've heard of [YouTube][youtube], right? To embed a YouTube video, use its URL with the `{embed YouTube video}` insert:
 
 ```
 Tell me if you've seen this one before.

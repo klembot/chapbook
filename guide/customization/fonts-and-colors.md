@@ -8,7 +8,11 @@ Doing so will cause the appropriate variables to be set when your story first be
 
 The other panels in the **Style** tab, **Page**, **Header**, and **Footer**, all have the same fields. As you might guess, **Page** sets the base style of your story and **Header** and **Footer** govern the areas above and below the main text. By default, Chapbook stories don't have a header.
 
-[screenshot]
+<div class="page-diagram">
+	<div class="header">header</div>
+	<div class="content">main content</div>
+	<div class="footer">footer</div>
+</div>
 
 The values you set for page, header, and footer styles inherit from each other. That means that if a header or footer style value isn't set, it will use the corresponding page value instead. If a page value isn't set either, Chapbook's default style will be used instead.
 
@@ -268,6 +272,32 @@ When setting colors in `config`, often you can specify both a background and for
 As with fonts, you can omit parts of a color declaration. Setting `config.style.page.link.color` to `'on blue-4'` causes links to use the page's foreground color, whatever it may be, but use a medium blue as background.
 
 <style>
+.page-diagram {
+	width: 20vw;
+	height: 50vh;
+	border: 1px solid black;
+	margin: 1em auto;
+	font-style: italic;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+}
+
+.page-diagram .header {
+	border-bottom: 1px solid black;
+}
+
+.page-diagram .content {
+	flex-grow: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.page-diagram .footer {
+	border-top: 1px solid black;
+}
+
 .swatch-row {
 	display: flex;
 	height: 50px;

@@ -26,7 +26,7 @@ There are two reasons to record state separately: first, for convenience's sake.
 
 [^2]: To pick apart just one thing in the _D&D_ paradigm: there are many different types of intelligence, and the concept of assigning numeric scores to intelligence in people has a [dark history](https://www.theatlantic.com/national/archive/2013/05/why-people-keep-misunderstanding-the-connection-between-race-and-iq/275876/).
 
-[^3]: For more on incorporating randomness into your story, see _TBD_.
+[^3]: For more on incorporating randomness into your story, see [Randomness](randomness.md).
 
 [cyoa]: https://en.wikipedia.org/wiki/Choose_Your_Own_Adventure
 [sherlock]: https://gamebooks.org/Series/389

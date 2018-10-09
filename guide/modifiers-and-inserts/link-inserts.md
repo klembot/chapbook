@@ -99,7 +99,7 @@ You notice that there is a {link to: 'narrow alleyway'} off to one side.
 A {link to: 'Bryan Mills', label: 'A man with *certain* skills'} is just who's needed.
 ```
 
-The third example demonstrates one use of manual link inserts: although they are more verbose than simple links, they do allow you to enter Markdown formatting into the link label. Passage links also have other uses; see *TBD* (using variables as insert args).
+The third example demonstrates one use of manual link inserts: although they are more verbose than simple links, they do allow you to enter Markdown formatting into the link label. Passage links also have other uses; see [The Vars Section][vars-in-inserts] for how you can change the destination of a link dynamically.
 
 ## Cycling Links
 
@@ -107,6 +107,7 @@ Chapbook has an insert for cycling links--that is, links that do not move the pl
 
 [vars-section]: ../state/the-vars-section.html
 [cycling]: ../player-input/menus-cycling-links.md
+[vars-in-inserts]: ../state/the-vars-section.html#expressions-can-be-used-in%20inserts
 
 [^1]: If you need to use a single or double quote inside a text value set off with the same punctuation mark, put a backslash (`\`) in front of it, like so: `{back link, label: '"I couldn\'t possibly comment," he replied.'}`
 

@@ -22,22 +22,18 @@ digraph {
 	checkRequired -> blockNav[label="no"]
 	blockNav -> idle
 
-	goFuncCalled[shape="box", label="Story code calls go()"]
-
-	idle -> goFuncCalled -> setInputs
-
 	setInputs[shape="box", label="State set with contents of inputs"]
 	addPassage[shape="box", label="New passage appended to trail"]
 
 	checkRequired -> setInputs[label="yes"]
 	setInputs -> addPassage -> setPassageVars
 
-	restart[shape="box", label="Story code calls restart()"]
+	restart[shape="box", label="Player clicks a restart link"]
 	unsetAll[shape="box", label="All set variables are cleared,\nincluding trail"]
 
 	idle -> restart -> unsetAll -> setPassageVars
 
-	changeLiveInput[shape="box", label="Player changes a live input\nor story code calls refresh()"]
+	changeLiveInput[shape="box", label="Player changes a live input"]
 	setLiveInputs[shape="box", label="State set with contents of all inputs"]
 
 	idle -> changeLiveInput -> setLiveInputs -> displayPassage

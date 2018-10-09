@@ -108,7 +108,7 @@ Markdown has a quirk where if you enter Markdown code inside of an inline elemen
 
 ## Code Blocks Don't Behave As You Might Expect
 
-There's a popular extension to Markdown that allows entry of long stretches of monospaced text, often computer code, by placing three backticks (<code>```</code>) on a line by itself, then text, the another set of three backticks. Chapbook uses this convention to allow embedding JavaScript code into a passage. This is discussed in more detail in *TBD*, but for now, remember that Markdown code blocks do not display as you might expect.
+There's a popular extension to Markdown that allows entry of long stretches of monospaced text, often computer code, by placing three backticks (<code>```</code>) on a line by itself, then text, the another set of three backticks. Chapbook uses this convention to allow embedding JavaScript code into a passage. This is discussed in more detail in [Using JavaScript in Passages][js-in-passages], but for now, remember that Markdown code blocks do not display as you might expect.
 
 If you would like to display a long stretch of monospaced text, put `<code>` and `</code>` around it:
 
@@ -121,6 +121,7 @@ If you would like to display a long stretch of monospaced text, put `<code>` and
 [markdown]: https://daringfireball.net/markdown
 [dingus]: https://daringfireball.net/projects/markdown/dingus
 [smallcaps]: https://practicaltypography.com/small-caps.html
+[js-in-passages]: ../advanced/using-javascript-in-passages.md
 
 <style>
 tr, td {

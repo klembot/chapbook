@@ -8,9 +8,7 @@ If you would like to temporarily hide the backstage view, use the arrow button t
 
 As you visit passages in your story, the History tab will show them in a tabular list, with the oldest at the top and the most recent at the bottom.
 
-[screenshot]
-
-You may see some additional rows next to each passage name. These are explained in *TODO*, but for now you can ignore them.
+You may see some additional rows next to each passage name. These are explained in [State Backstage][state-backstage], but for now you can ignore them.
 
 Use the &#x21b3; button beside an entry in the table to rewind the story to that passage.
 
