@@ -16,6 +16,7 @@ export const defaults = {
 	'config.style.page.link.lineColor': 'red-8',
 	'config.style.page.link.font': 'underline',
 	'config.style.page.link.active.color': 'red-8 on red-0',
+	'config.style.page.verticalAlign': 'center',
 	'config.style.page.header.font': '16',
 	'config.style.page.header.link.font': 'small caps',
 	'config.style.page.footer.font': '16',
@@ -135,6 +136,23 @@ export function init() {
 						break;
 				}
 
+				return;
+
+			case 'config.style.page.verticalAlign':
+				log('Setting page vertical alignment');
+				switch (get('config.style.page.verticalAlign')) {
+					case 'top':
+						style('#page article', {'align-items': 'flex-start'});
+						break;
+
+					case 'center':
+						style('#page article', {'align-items': 'center'});
+						break;
+
+					case 'bottom':
+						style('#page article', {'align-items': 'flex-end'});
+						break;
+				}
 				return;
 		}
 
