@@ -212,3 +212,14 @@ span.widont {
 .markdown-section table tr:nth-child(2n) {
 	background: none;
 }
+
+/* Don't bold definition lists. */
+
+.markdown-section dl dt {
+	font-weight: normal;
+	font-style: normal;
+}
+
+.markdown-section dl dd {
+	padding: 0 0 0 2em;
+}

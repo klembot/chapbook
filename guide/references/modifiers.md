@@ -13,15 +13,15 @@ Causes the text to appear after a certain amount of time has passed after the pa
 </dd>
 
 <dt>
-`[align center]`, `[align left]`, `[align right]`
+<code>[align center]</code>, <code>[align left]</code>, <code>[align right]</code>
 </dt>
 
 <dd>
-Causes the text to be aligned a particular way. Aligning left isn't needed under normal circumstances, but is included for compeleteness's sake--use `[continue]` instead.
+Causes the text to be aligned a particular way. Aligning left isn't needed under normal circumstances, but is included for compeleteness's sake--use <code>[continue]</code> instead.
 </dd>
 
 <dt>
-`[append]`
+<code>[append]</code>
 </dt>
 
 <dd>
@@ -29,7 +29,7 @@ Used in conjunction with another modifier to have text immediately follow the te
 </dd>
 
 <dt>
-`[continue]`, `[cont'd]`, `[cont]`
+<code>[continue]</code>, <code>[cont'd]</code>, <code>[cont]</code>
 </dt>
 
 <dd>
@@ -37,11 +37,11 @@ Clears all previously active modifiers.
 </dd>
 
 <dt>
-`[else]`
+<code>[else]</code>
 </dt>
 
 <dd>
-Only dispalys the text if the previous `[if]` condition was not met. If no previous `[if]` appeared in the passage's source code, an error occurs.
+Only dispalys the text if the previous <code>[if]</code> condition was not met. If no previous <code>[if]</code> appeared in the passage's source code, an error occurs.
 </dd>
 
 <dt>
@@ -49,11 +49,11 @@ Only dispalys the text if the previous `[if]` condition was not met. If no previ
 </dt>
 
 <dd>
-Only displays the text if _expression_ evaluates to true, or a truthy ([as defined by Javascript][truthy]) value.
+Only displays the text if <i>expression</i> evaluates to true, or a truthy (<a href="https://developer.mozilla.org/en-US/docs/Glossary/Truthy">as defined by Javascript</a>) value.
 </dd>
 
 <dt>
-`[note to self]`, `[note]`, `[todo]`, `[fixme]`
+<code>[note to self]</code>, <code>[note]</code>, <code>[todo]</code>, <code>[fixme]</code>
 </dt>
 
 <dd>
@@ -61,15 +61,13 @@ Causes the text to never be visible to the player. This is useful for leaving no
 </dd>
 
 <dt>
-`[unless _expression_]`
+<code>[unless <i>expression</i>]</code>
 </dt>
 
 <dd>
-Only displays the text if _expression_ evaluates to false, or a falsy ([as defined by Javascript][falsy]) value.
+Only displays the text if <i>expression</i> evaluates to false, or a falsy (<a href="https://developer.mozilla.org/en-US/docs/Glossary">as defined by Javascript</a>) value.
 </dd>
 
 </dl>
 
 [mods-inserts]: ../modifiers-and-inserts/index.md
-[truthy]: https://developer.mozilla.org/en-US/docs/Glossary/Truthy
-[falsy]: https://developer.mozilla.org/en-US/docs/Glossary/Falsy
