@@ -19,7 +19,9 @@ makeDir('docs')
 	.then(() => makeDir('docs/examples'))
 	.then(() => cpy('examples/cloak-of-darkness.*', 'docs/examples'))
 	.then(() => makeDir('docs/guide'))
-	.then(() => cpy('guide/_book/**', 'docs/guide'))
+	.then(() =>
+		cpy('**', '../../docs/guide', {cwd: 'guide/_book/', parents: true})
+	)
 	.then(() => makeDir(`docs/use/${pkg.version}`))
 	.then(() =>
 		cpy(

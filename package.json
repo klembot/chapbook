@@ -59,7 +59,6 @@
 		"guide": "gitbook serve guide",
 		"guide:init": "cd guide && gitbook install && cd ..",
 		"guide:release": "cd guide && gitbook build",
-		"homepage": "pug -O package.json -o docs homepage && cpy \"homepage/*{.css,.jpeg}\" docs",
 		"lint": "eslint src/",
 		"release": "run-s -l build examples guide:release website",
 		"test": "jest",
