@@ -1,0 +1,850 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>What is State? · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="the-vars-section.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../acknowledgments.html">
+            
+                <a href="../acknowledgments.html">
+            
+                    
+                    Acknowledgments
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../text-and-links/">
+            
+                <a href="../text-and-links/">
+            
+                    
+                    Text and Links
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../text-and-links/text-formatting.html">
+            
+                <a href="../text-and-links/text-formatting.html">
+            
+                    
+                    Text Formatting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../text-and-links/simple-links.html">
+            
+                <a href="../text-and-links/simple-links.html">
+            
+                    
+                    Simple Links
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../text-and-links/ways-to-link.html">
+            
+                <a href="../text-and-links/ways-to-link.html">
+            
+                    
+                    Ways to Link
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../text-and-links/backstage.html">
+            
+                <a href="../text-and-links/backstage.html">
+            
+                    
+                    Introducing Backstage
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../modifiers-and-inserts/">
+            
+                <a href="../modifiers-and-inserts/">
+            
+                    
+                    Modifiers and Inserts
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../modifiers-and-inserts/modifiers-and-text-alignment.html">
+            
+                <a href="../modifiers-and-inserts/modifiers-and-text-alignment.html">
+            
+                    
+                    Modifiers and Text Alignment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../modifiers-and-inserts/delayed-text.html">
+            
+                <a href="../modifiers-and-inserts/delayed-text.html">
+            
+                    
+                    Delayed Text
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../modifiers-and-inserts/notes.html">
+            
+                <a href="../modifiers-and-inserts/notes.html">
+            
+                    
+                    Notes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../modifiers-and-inserts/link-inserts.html">
+            
+                <a href="../modifiers-and-inserts/link-inserts.html">
+            
+                    
+                    Link Inserts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../modifiers-and-inserts/embedding-passages.html">
+            
+                <a href="../modifiers-and-inserts/embedding-passages.html">
+            
+                    
+                    Embedding Passages
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Adding State to Stories
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.5.1" data-path="what-is-state.html">
+            
+                <a href="what-is-state.html">
+            
+                    
+                    What is State?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="the-vars-section.html">
+            
+                <a href="the-vars-section.html">
+            
+                    
+                    The Vars Section
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="displaying-variables.html">
+            
+                <a href="displaying-variables.html">
+            
+                    
+                    Displaying Variables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="conditional-display.html">
+            
+                <a href="conditional-display.html">
+            
+                    
+                    Conditional Display
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="conditions-and-variables.html">
+            
+                <a href="conditions-and-variables.html">
+            
+                    
+                    Conditions and Variables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="continuity.html">
+            
+                <a href="continuity.html">
+            
+                    
+                    Continuity Between Sessions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="backstage.html">
+            
+                <a href="backstage.html">
+            
+                    
+                    State Backstage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="objects-and-lookups.html">
+            
+                <a href="objects-and-lookups.html">
+            
+                    
+                    Objects and Lookup Variables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="randomness.html">
+            
+                <a href="randomness.html">
+            
+                    
+                    Randomness
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../multimedia/">
+            
+                <a href="../multimedia/">
+            
+                    
+                    Multimedia
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../multimedia/publishing-models.html">
+            
+                <a href="../multimedia/publishing-models.html">
+            
+                    
+                    Publishing Models
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../multimedia/images.html">
+            
+                <a href="../multimedia/images.html">
+            
+                    
+                    Images
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../multimedia/audio.html">
+            
+                <a href="../multimedia/audio.html">
+            
+                    
+                    Audio
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../multimedia/video.html">
+            
+                <a href="../multimedia/video.html">
+            
+                    
+                    Video
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../customization/">
+            
+                <a href="../customization/">
+            
+                    
+                    Customization
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../customization/fonts-and-colors.html">
+            
+                <a href="../customization/fonts-and-colors.html">
+            
+                    
+                    Fonts and Colors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../customization/external-web-fonts.html">
+            
+                <a href="../customization/external-web-fonts.html">
+            
+                    
+                    External Web Fonts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../customization/page-style.html">
+            
+                <a href="../customization/page-style.html">
+            
+                    
+                    Page Style
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../customization/design-considerations.html">
+            
+                <a href="../customization/design-considerations.html">
+            
+                    
+                    Design Considerations
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../player-input/">
+            
+                <a href="../player-input/">
+            
+                    
+                    Player Input
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../player-input/text-input.html">
+            
+                <a href="../player-input/text-input.html">
+            
+                    
+                    Text Input
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../player-input/dropdown-menus-cycling-links.html">
+            
+                <a href="../player-input/dropdown-menus-cycling-links.html">
+            
+                    
+                    Dropdown Menus and Cycling Links
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../player-input/live-inputs.html">
+            
+                <a href="../player-input/live-inputs.html">
+            
+                    
+                    Live Inputs
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../advanced/">
+            
+                <a href="../advanced/">
+            
+                    
+                    Advanced Topics
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../advanced/using-javascript-in-passages.html">
+            
+                <a href="../advanced/using-javascript-in-passages.html">
+            
+                    
+                    Using JavaScript in Passages
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../references/">
+            
+                <a href="../references/">
+            
+                    
+                    References
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../references/inserts.html">
+            
+                <a href="../references/inserts.html">
+            
+                    
+                    Inserts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../references/modifiers.html">
+            
+                <a href="../references/modifiers.html">
+            
+                    
+                    Modifiers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../references/lifecycle.html">
+            
+                <a href="../references/lifecycle.html">
+            
+                    
+                    The Chapbook Lifecycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >What is State?</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="what-is-state">What is State?</h1>
+<p>You can create a compelling story with just the techniques outlined in the previous section. The <a href="https://en.wikipedia.org/wiki/Choose_Your_Own_Adventure" target="_blank"><em>Choose Your Own Adventure</em> book series</a> that has been part of Western pop culture since it exploded in popularity in the 1980s did just that. Turning to a particular page in the book is the equivalent of following a link in a digital medium, of<span class="widont">&#xA0;</span>course.</p>
+<p>But in the wake of <em><span class="caps">CYOA</span></em>&apos;s popularity came another wave of interactive books written by people familiar with tabletop role-playing games like <em>Dungeons <span class="amp">&amp;</span> Dragons</em>.<sup><a href="#fn_1" id="reffn_1">1</a></sup> They thought the format could be adapted to provide similar experiences to a live <span class="caps">RPG</span> session, but without the trouble of having to round up three or four other people to play with. They began to incorporate the trappings of RPGs&#x2013;in particular, the character<span class="widont">&#xA0;</span>sheet.</p>
+<p>If you&apos;ve never seen a character sheet, they resemble a spreadsheet, but instead of a household budget or a corporate profit and loss statement, they describe a character numerically. A very smart D&amp;D character has an intelligence of 17, but an average strength of 7. A character might start with 20 hit points, but after taking a nasty fall into a mountain crevasse only have 8<span class="widont">&#xA0;</span>left.</p>
+<p>With character sheets came the concept of <em>state</em>: that is, two readers could reach the same page of a gamebook, but one could be doing very well for themselves, but the other on death&apos;s door. The essential quality of state is that it varies between sessions; hence, it contains <em>variables</em>. Variables may be independent (strength and intelligence) or dependent (a weakened character, for example, may be able to carry less weight than<span class="widont">&#xA0;</span>usual).</p>
+<p>The other popular use of state has been to record whether an event has happened and enable or disable links based on that. The <a href="https://gamebooks.org/Series/389" target="_blank"><em>Sherlock Holmes Solo Mysteries</em></a> series, for example, asks the reader to check Clue A or Clue Q on their character sheet after making a discovery, and then later only allow the protagonist to solve the mystery if they had uncovered all the necessary clues along the<span class="widont">&#xA0;</span>way.</p>
+<p>Later, the Storyspace hypertext system would incorporate the concept of state with its guard fields. Similar to checking off clues, stories created with Storyspace can choose to show certain links only to players who satisfy the conditions of their guard<span class="widont">&#xA0;</span>fields.</p>
+<p>The Choice of Games series uses a system well-suited to long narratives that its designers named fairmath. Fairmath averages variable changes so that each time a variable increases or decreases, it does so at a diminishing rate. The effect is similar to the experience-point system of D&amp;D, where it takes increasingly longer for a skill to improve as a character becomes better at it&#x2013; though fairmath allows a variable to both increase and decrease, whereas D&amp;D players almost always simply accumulate experience<span class="widont">&#xA0;</span>points.</p>
+<p>Although state in hypertext may have its roots in the number crunching of RPGs, there&apos;s no reason it needs to be so clinical or reductionist.<sup><a href="#fn_2" id="reffn_2">2</a></sup> Tom McHenry&apos;s <a href="https://tommchenry.itch.io/horse-master" target="_blank"><em>Horse Master</em></a> shows a player numerous variables about their horse, including Uncanny and Realness, but it never explains their purpose directly. Porpentine&apos;s <a href="http://slimedaughter.com/games/twine/begscape/" target="_blank"><em>Begscape</em></a> uses precious few variables&#x2013;most apparent to the player are coins and health&#x2013;but uses them<span class="widont">&#xA0;</span>cruelly.</p>
+<h2 id="is-state-separate-from-the-players&#xA0;path">Is State Separate From The Player&apos;s<span class="widont">&#xA0;</span>Path?</h2>
+<p>From a certain point of view, though, isn&apos;t state simply a side effect of the choices the player makes? That is&#x2013;do we really need to record anything but what links the player followed? If the outcome of a story hinges on whether the player found Clue M, then surely all we really need to track is what passages they visited. There&apos;s no need for this extra<span class="widont">&#xA0;</span>bookkeeping.</p>
+<p>There are two reasons to record state separately: first, for convenience&apos;s sake. It&apos;s tedious to type out the code equivalent of &#x201C;if the player has visited this passage but not this other one&#x201D; or &#x201C;if the player has visited any one of these four passages&#x201D; repeatedly. Secondly, a story might incorporate elements of randomness, such that multiple playthroughs following the same links may yield different results.<sup><a href="#fn_3" id="reffn_3">3</a></sup></p>
+<blockquote id="fn_1">
+<sup>1</sup>. <a href="https://www.librarything.com/work/15900828" target="_blank"><em>You Are The Hero</em></a>, a retrospective of the <em>Fighting Fantasy</em> book series, offers an intriguing peek into the history of one of these <span class="caps">RPG</span>-influenced gamebook series. And if you&apos;ve never tried the genre, <a href="https://www.projectaon.org/" target="_blank">Project Aon</a> hosts nearly all of the works of Joe Dever, who was perhaps the most prolific <span class="caps">RPG</span> gamebook author, in a format that can be played in a web browser for free.<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. To pick apart just one thing in the <em>D&amp;D</em> paradigm: there are many different types of intelligence, and the concept of assigning numeric scores to intelligence in people has a <a href="https://www.theatlantic.com/national/archive/2013/05/why-people-keep-misunderstanding-the-connection-between-race-and-iq/275876/" target="_blank">dark history</a>.<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#x21A9;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. For more on incorporating randomness into your story, see <a href="randomness.html">Randomness</a>.<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#x21A9;</a>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Adding State to Stories">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="the-vars-section.html" class="navigation navigation-next " aria-label="Next page: The Vars Section">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"What is State?","level":"1.5.1","depth":2,"next":{"title":"The Vars Section","level":"1.5.2","depth":2,"path":"state/the-vars-section.md","ref":"state/the-vars-section.md","articles":[]},"previous":{"title":"Adding State to Stories","level":"1.5","depth":1,"path":"state/index.md","ref":"state/index.md","articles":[{"title":"What is State?","level":"1.5.1","depth":2,"path":"state/what-is-state.md","ref":"state/what-is-state.md","articles":[]},{"title":"The Vars Section","level":"1.5.2","depth":2,"path":"state/the-vars-section.md","ref":"state/the-vars-section.md","articles":[]},{"title":"Displaying Variables","level":"1.5.3","depth":2,"path":"state/displaying-variables.md","ref":"state/displaying-variables.md","articles":[]},{"title":"Conditional Display","level":"1.5.4","depth":2,"path":"state/conditional-display.md","ref":"state/conditional-display.md","articles":[]},{"title":"Conditions and Variables","level":"1.5.5","depth":2,"path":"state/conditions-and-variables.md","ref":"state/conditions-and-variables.md","articles":[]},{"title":"Continuity Between Sessions","level":"1.5.6","depth":2,"path":"state/continuity.md","ref":"state/continuity.md","articles":[]},{"title":"State Backstage","level":"1.5.7","depth":2,"path":"state/backstage.md","ref":"state/backstage.md","articles":[]},{"title":"Objects and Lookup Variables","level":"1.5.8","depth":2,"path":"state/objects-and-lookups.md","ref":"state/objects-and-lookups.md","articles":[]},{"title":"Randomness","level":"1.5.9","depth":2,"path":"state/randomness.md","ref":"state/randomness.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"state/what-is-state.md","mtime":"2018-10-09T16:18:03.275Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-14T17:55:22.521Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
