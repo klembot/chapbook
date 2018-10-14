@@ -16,8 +16,10 @@ fs.readdir(path.resolve('examples')).then(files => {
 		const src = path.join('examples', f);
 		const output = src.replace('.txt', '.html');
 
-		console.log(path.basename(f));
-
-		exec(`entwine --format dist/${pkg.name.toLowerCase()}-${pkg.version}/format.js --start Start ${src} --name "${name}" > ${output}`);
+		exec(
+			`entwine --format dist/${pkg.name.toLowerCase()}-${
+				pkg.version
+			}/format.js --start Start ${src} --name "${name}" > ${output}`
+		);
 	});
 });

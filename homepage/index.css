@@ -1,0 +1,102 @@
+body {
+	background: #f8f9fa; /* gray-0 */
+	color: #212529; /* gray-9 */
+	font-family: 'Iowan Old Style', Constantia, Georgia, serif;
+}
+
+a {
+	color: #212529; /* gray-9 */
+	text-decoration-color: #e03131; /* red-8 */
+	-webkit-text-decoration-color: #e03131; /* red-8 */
+}
+
+a:hover {
+	color: #e03131; /* red-8 */
+	background: #fff5f5; /* red-0 */
+}
+
+h1,
+h2 {
+	font-weight: normal;
+}
+
+h1 {
+	font-size: 36px;
+	text-align: center;
+	margin-bottom: 0;
+}
+
+h1 + p {
+	text-align: center;
+	margin-top: 0.5em;
+}
+
+h1 + p + p {
+	margin-top: 4em;
+}
+
+h2 {
+	position: relative;
+	padding-top: 150px;
+	font-size: 18px;
+	font-style: italic;
+}
+
+h2 em {
+	font-style: normal;
+}
+
+h2::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 150px;
+	background-color: gray;
+	background-size: cover;
+}
+
+h2#learn-about-chapbook::before {
+	background-image: url('path.jpeg');
+	background-position: bottom;
+}
+
+h2#_cloak-of-darkness_-a-sample-story::before {
+	background-image: url('cloak.jpeg');
+}
+
+h2#report-a-bug-or-suggest-a-feature::before {
+	background-image: url('mail.jpeg');
+}
+
+h2#support-chapbook-development::before {
+	background-image: url('coins.jpeg');
+}
+
+article,
+footer {
+	max-width: 40em;
+	margin: 1em auto;
+}
+
+footer {
+	text-align: center;
+	font-size: 90%;
+}
+
+ul {
+	list-style-type: none;
+	margin-left: 0;
+	margin-top: 4em;
+	padding-left: 0;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+li {
+	width: calc(50% - 1em);
+}
+
+li:nth-child(odd) {
+	margin-right: 2em;
+}
