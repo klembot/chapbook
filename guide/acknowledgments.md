@@ -4,7 +4,9 @@ Chapbook is a confluence of ideas rather than one, wholly original one. Its vars
 
 You may not be able to tell it by looking at the syntax, but the named hooks of Leon Arnott's [Harlowe story format][harlowe] inspired many of the thoughts that Chapbook is based upon. What I found so appealing about named hooks is the idea of keeping code separate from the text it affects; that logic could be kept, if only at arm's length, separate from prose.
 
-Chapbook’s default aesthetics owe a lot to the style of the interactive fiction engine [Undum][undum], by Ian Millington, as well as Liza Daly's works _[Stone Harbor][stone-harbor]_ and _[Harmonia][harmonia]_. I hope you find Chapbook's appearance half as graceful as these examples. Or if not--I hope I've left you enough hooks to customize it away into something better.
+Chapbook's default aesthetics owe a lot to the style of the interactive fiction engine [Undum][undum], by Ian Millington, as well as Liza Daly's works _[Stone Harbor][stone-harbor]_ and _[Harmonia][harmonia]_. I hope you find Chapbook's appearance half as graceful as these examples. Or if not--I hope I've left you enough hooks to customize it away into something better.
+
+The notes feature of Chapbook's backstage view was inspired by [Illume][illume], which is an excellent way to review a Twine story before release.
 
 If you take a look at the [Twine Cookbook][cookbook], you’ll see more than a few similarities between its table of contents and this guide's. This is no accident. One of my design goals with Chapbook was to make common use cases easy--and the Twine Cookbook has been a wonderful signpost as to what people wanted to achieve with Twine.
 
@@ -34,6 +36,7 @@ The photos found in this guide come from a combination of [Pixabay][pixabay] and
 [stone-harbor]: https://stoneharborgame.com
 [harmonia]: https://lizadaly.com/pages/harmonia/
 [cookbook]: https://twinery.org/cookbook/
+[illume]: http://www.maximumverbosity.net/twine/Illume/
 [dm6]: https://inform-fiction.org/manual/
 [pixabay]: https://pixabay.com
 [unsplash]: https://unplash.com
