@@ -1,20 +1,24 @@
-// Handles errors that occur during play in release mode (e.g. not testing). If
-// we're in test mode, then errors and warnings are shown inline in the page.
-//
-// The goals here are to:
-//
-// - notify the player that things have gone wrong
-// - give them some options to get things back on track if possible
-//
-// Because other modules may have gotten in a bad state, this module needs to be
-// as self-sufficient as possible.
+/*
+Handles errors that occur during play in release mode (e.g. not testing). If
+we're in test mode, then errors and warnings are shown inline in the page.
+
+The goals here are to:
+
+- notify the player that things have gone wrong
+- give them some options to get things back on track if possible
+
+Because other modules may have gotten in a bad state, this module needs to be
+as self-sufficient as possible.
+*/
 
 import closest from 'closest';
-import {get, set} from '../state';
+import {get, set, saveKey} from '../state';
 
 function handleError(e) {
-	// Marked will blame itself if rendering has problems, but it probably is
-	// our fault, so remove that pointer.
+	/*
+	Marked will blame itself if rendering has problems, but it probably is our
+	fault, so remove that pointer.
+	*/
 
 	const markedError =
 		'\nPlease report this to https://github.com/chjj/marked.';
@@ -72,7 +76,7 @@ function handleError(e) {
 			);
 
 			if (restartLink) {
-				window.localStorage.clear();
+				window.localStorage.removeItem(saveKey);
 				window.location.reload();
 			}
 		});
@@ -80,7 +84,7 @@ function handleError(e) {
 		container.innerHTML = '';
 		container.appendChild(display);
 	} catch (e) {
-		// Things have gotten really screwy-- at least log the error.
+		/* Things have gotten really screwy-- at least log the error. */
 
 		console.log(e);
 	}
@@ -89,7 +93,9 @@ function handleError(e) {
 export function init() {
 	window.addEventListener('error', handleError);
 
-	// Only a few browsers currently support this event, but we may as well try.
+	/*
+	Only a few browsers currently support this event, but we may as well try.
+	*/
 
 	window.addEventListener('unhandledrejection', handleError);
 }
