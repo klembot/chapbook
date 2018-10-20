@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Images · GitBook</title>
+        <title>Version History · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -63,10 +63,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="audio.html" />
+    <link rel="next" href="lifecycle.html" />
     
     
-    <link rel="prev" href="publishing-models.html" />
+    <link rel="prev" href="modifiers.html" />
     
 
     </head>
@@ -412,9 +412,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="./">
+        <li class="chapter " data-level="1.6" data-path="../multimedia/">
             
-                <a href="./">
+                <a href="../multimedia/">
             
                     
                     Multimedia
@@ -426,9 +426,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="publishing-models.html">
+        <li class="chapter " data-level="1.6.1" data-path="../multimedia/publishing-models.html">
             
-                <a href="publishing-models.html">
+                <a href="../multimedia/publishing-models.html">
             
                     
                     Publishing Models
@@ -439,9 +439,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6.2" data-path="images.html">
+        <li class="chapter " data-level="1.6.2" data-path="../multimedia/images.html">
             
-                <a href="images.html">
+                <a href="../multimedia/images.html">
             
                     
                     Images
@@ -452,9 +452,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.3" data-path="audio.html">
+        <li class="chapter " data-level="1.6.3" data-path="../multimedia/audio.html">
             
-                <a href="audio.html">
+                <a href="../multimedia/audio.html">
             
                     
                     Audio
@@ -465,9 +465,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.4" data-path="video.html">
+        <li class="chapter " data-level="1.6.4" data-path="../multimedia/video.html">
             
-                <a href="video.html">
+                <a href="../multimedia/video.html">
             
                     
                     Video
@@ -644,9 +644,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10" data-path="../references/">
+        <li class="chapter " data-level="1.10" data-path="./">
             
-                <a href="../references/">
+                <a href="./">
             
                     
                     References
@@ -658,9 +658,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.10.1" data-path="../references/inserts.html">
+        <li class="chapter " data-level="1.10.1" data-path="inserts.html">
             
-                <a href="../references/inserts.html">
+                <a href="inserts.html">
             
                     
                     Inserts
@@ -671,9 +671,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.2" data-path="../references/modifiers.html">
+        <li class="chapter " data-level="1.10.2" data-path="modifiers.html">
             
-                <a href="../references/modifiers.html">
+                <a href="modifiers.html">
             
                     
                     Modifiers
@@ -684,9 +684,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.3" data-path="../references/version-history.html">
+        <li class="chapter active" data-level="1.10.3" data-path="version-history.html">
             
-                <a href="../references/version-history.html">
+                <a href="version-history.html">
             
                     
                     Version History
@@ -697,9 +697,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.4" data-path="../references/lifecycle.html">
+        <li class="chapter " data-level="1.10.4" data-path="lifecycle.html">
             
-                <a href="../references/lifecycle.html">
+                <a href="lifecycle.html">
             
                     
                     The Chapbook Lifecycle
@@ -745,7 +745,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Images</a>
+        <a href=".." >Version History</a>
     </h1>
 </div>
 
@@ -760,35 +760,16 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="images">Images</h1>
-<h2 id="embedding-your-own&#xA0;images">Embedding Your Own<span class="widont">&#xA0;</span>Images</h2>
-<p>To display an image in a passage, use the <code>{embed image}</code> insert:</p>
-<pre><code>For all you know, not a single person has entered this cave in a thousand years. The cave entrance is covered in moss and leaves.
-
-{embed image: &apos;cave.jpeg&apos;, alt: &apos;Cave entrance&apos;}
-</code></pre><p>The <code>alt</code> property is explained below under &#x201C;Alternate<span class="widont">&#xA0;</span>Text.&#x201D;</p>
-<h2 id="embedding-images-from&#xA0;flickr">Embedding Images from<span class="widont">&#xA0;</span>Flickr</h2>
-<p><a href="https://flickr.com" target="_blank">Flickr</a> is a venerable photography service that allows people to mark their uploaded photos as embeddable. If a photo can be embedded, you will see an icon that looks a bit like an arrow in the lower right of the photo. Selecting that option will display the embed code to use, which is rather lengthy. Make sure to use the code found in the Embed tab, not the Share or BBCode ones. Once you have the code, use the <code>{embed Flickr image}</code> insert as<span class="widont">&#xA0;</span>below.</p>
-<pre><code>The night sky is alive:
-
-{embed Flickr image: &apos;&lt;a data-flickr-embed=&quot;true&quot;  href=&quot;https://www.flickr.com/photos/kees-scherer/43929816675/in/photolist-29VVN1k-MxBBfR-Mxmaoa-2abPdAf-28uxzXE-MsR1ev-MqbA18-P2bWEY-29LvwHZ-P1DPQ7-2b3znq5-28jiA4E-2b4qGd6-29QQrVa-2a4C5X3-MhDEFV-2b3tVwa-MfPdhz-2aZTken-2aTGEx1-2aVbrLg-NLVUU7-289o89h-288U1wq-2aN6BuN-NH87Jm-2aQH3Ta-NDwgPd-NB3Mym-2aHjvXP-29jgSN2-29zFLg5-27TFbQw-Nw3iLs-2aD2Dfn-27SXWGo-29f84mZ-LRdL8r-2aVtHgk-2awe7hj-29ux7nq-LPVrYk-2avhxQJ-2azf7ct-2ayX3mM-2aygKz8-27Nwi91-27NmmvS-NqvSME-2axAzDV&quot; title=&quot;The Andromeda Galaxy, Messier 31&quot;&gt;&lt;img src=&quot;https://farm2.staticflickr.com/1857/43929816675_07357e53b0_m.jpg&quot; width=&quot;240&quot; height=&quot;185&quot; alt=&quot;The Andromeda Galaxy, Messier 31&quot;&gt;&lt;/a&gt;&lt;script async src=&quot;//embedr.flickr.com/assets/client-code.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;&apos;, alt: &apos;the Andromeda galaxy&apos;}
-</code></pre><p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>Just because Flickr allows you to embed an image does not mean you have the <em>right</em> to use it in your story freely. Check the image&apos;s page for the license the photo&apos;s uploader is using. Some may not be allowed to be used in commercial projects, while others may not allow usage at<span class="widont">&#xA0;</span>all.</p>
-</div></div></p>
-<h2 id="embedding-images-from&#xA0;unsplash">Embedding Images from<span class="widont">&#xA0;</span>Unsplash</h2>
-<p><a href="https://unsplash.com" target="_blank">Unsplash</a> is a stock photography service that hosts photos that can embedded into a story royalty-free. To use an image from Unsplash, combine the <code>{embed Unsplash image}</code> insert with the image&apos;s <span class="caps">URL</span> on unsplash.com. No embed code is<span class="widont">&#xA0;</span>required.</p>
-<pre><code>{embed Unsplash image: &apos;https://unsplash.com/photos/Na0BbqKbfAo&apos;, alt: &apos;the moon&apos;}
-
-What a horrible night to have to study for exams.
-</code></pre><p><div class="alert alert-warning hints-alert"><div class="hints-icon"><i class="fa fa-wrench"></i></div><div class="hints-container"><p>Other types of image embeds are being considered for implementation, as well as more flexibility in layout&#x2013;e.g. having an image appear to the left or right of the<span class="widont">&#xA0;</span>text.</p>
-</div></div></p>
-<h2 id="alternate-text">Alternate Text</h2>
-<p>Regardless of where your image comes from, you must give it <em>alternate text</em>. This is so that players who have a visual disability are able to have an equivalent experience to those who don&apos;t. <a href="https://webaim.org/techniques/alttext/" target="_blank">WebAIM</a> has an excellent in-depth treatment of alternative text, but the gist is that it should contain a brief description of what the image depicts, that would work well for someone reading your story out loud. Because, for players with a visual disability, they often in fact will have your story read out loud by screen reader<span class="widont">&#xA0;</span>software.</p>
-<p>When writing alternate text, avoid phrases like &#x201C;image of Abraham Lincoln&#x201D; or &#x201C;Boston Harbor photo&#x201D;&#x2013; just write &#x201C;Abraham Lincoln&#x201D; or &#x201C;Boston<span class="widont">&#xA0;</span>Harbor.&#x201D;</p>
-<p>If your image is purely decorative&#x2013;say, a fancy border&#x2013;then it should have empty alternative text, so that screen readers will skip over it: This doesn&apos;t mean omitting <code>alt</code> entirely, but setting it to an empty string, as<span class="widont">&#xA0;</span>below.</p>
-<pre><code>{embed image: &apos;asterisk.jpeg&apos;, alt:&apos;&apos;}
-</code></pre><blockquote id="fn_1">
-<sup>1</sup>. Although several browsers, Safari most prominent among them, hide the full <span class="caps">URL</span> from you unless uo specifically ask for it.<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
-</blockquote>
+                                <h1 id="version-history">Version History</h1>
+<h2 id="002-19-october&#xA0;2018">0.0.2, 19 October<span class="widont">&#xA0;</span>2018</h2>
+<ul>
+<li>Fixes a bug where hard restarts in stories deleted the entire local storage
+object, which could trash, among other things, the Twine story library if
+you&apos;re using the web version (yikes). Thanks to Brendan Hennessy for
+identifying this<span class="widont">&#xA0;</span>early.</li>
+</ul>
+<h2 id="001-14-october&#xA0;2018">0.0.1, 14 October<span class="widont">&#xA0;</span>2018</h2>
+<p>Initial public prerelease.</p>
 
                                 
                                 </section>
@@ -816,12 +797,12 @@ What a horrible night to have to study for exams.
 
             
                 
-                <a href="publishing-models.html" class="navigation navigation-prev " aria-label="Previous page: Publishing Models">
+                <a href="modifiers.html" class="navigation navigation-prev " aria-label="Previous page: Modifiers">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="audio.html" class="navigation navigation-next " aria-label="Next page: Audio">
+                <a href="lifecycle.html" class="navigation navigation-next " aria-label="Next page: The Chapbook Lifecycle">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -832,7 +813,7 @@ What a horrible night to have to study for exams.
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Images","level":"1.6.2","depth":2,"next":{"title":"Audio","level":"1.6.3","depth":2,"path":"multimedia/audio.md","ref":"multimedia/audio.md","articles":[]},"previous":{"title":"Publishing Models","level":"1.6.1","depth":2,"path":"multimedia/publishing-models.md","ref":"multimedia/publishing-models.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"multimedia/images.md","mtime":"2018-10-03T23:38:03.875Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-20T00:22:59.048Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Version History","level":"1.10.3","depth":2,"next":{"title":"The Chapbook Lifecycle","level":"1.10.4","depth":2,"path":"references/lifecycle.md","ref":"references/lifecycle.md","articles":[]},"previous":{"title":"Modifiers","level":"1.10.2","depth":2,"path":"references/modifiers.md","ref":"references/modifiers.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"references/version-history.md","mtime":"2018-10-20T00:18:37.947Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-20T00:22:59.048Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

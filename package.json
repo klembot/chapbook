@@ -1,7 +1,7 @@
 {
 	"name": "Chapbook",
 	"author": "Chris Klimas <chris@twinery.org>",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"main": "index.js",
 	"license": "MIT",
 	"devDependencies": {
