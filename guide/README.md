@@ -10,12 +10,27 @@ This guide does not assume you have any programming knowledge; however, it doesn
 
 This guide does assume, however, that you're familiar with the Twine 2 editor itself. If you're new to Twine, the [Twine 2 guide](http://twinery.org/wiki/twine2:guide) is an excellent place to start. There are also numerous tutorials on the web that can be helpful.
 
+## Licensing
+
+Chapbook is released under the [MIT license](mit-license). Broadly speaking, it can be used to create free and commercial works alike without royalty payment of any kind. Mentioning Chapbook and Twine in the credits of your work isn't required, but it is appreciated.
+
+Because Chapbook is open source, its ongoing development and maintenance is supported by [Patreon supporters](https://patreon.com/klembot) like:
+
+<div class="patreon-supporters">
+    <ul>
+        <li><a href="http://bphennessy.com/">Brendan Hennessy</a></li>
+        <li><a href="https://danq.me/">Dan Q</a></li>
+    </ul>
+</div>
+
+Supporters at particular tiers receive access to devlogs, livestreams where Chapbook and Twine development are discussed, and recognition in this guide. If you use Chapbook, please consider [supporting the project on Patreon](https://patreon.com/klembot).
+
 ## How to Use Chapbook
 
 For now, Chapbook must be added to the Twine editor by hand. To do this, choose the **Formats** button from the story list page you see when you first start up Twine, then the **Add a New Format** tab at the top of the dialog that appears. Paste the following address into the field and select the **Go** button:
 
 ```
-https://klembot.github.io/chapbook/use/0.0.1/format.js
+https://klembot.github.io/chapbook/use/0.0.2/format.js
 ```
 
 Once you do that, you must set the story you're working with to publish using Chapbook. Edit one of your stories, then choose **Change Story Format** from the story menu at the bottom of the editor. Choose Chapbook here. Once you do, selecting the **Play** button or publishing your story to a file will use Chapbook format.
@@ -76,3 +91,24 @@ There's been some debate as to whether Twine produces games or merely stories: t
 
 [^1]: Chapbook, sadly, cannot be used with Twine 1 for now.
 [^2]: If you have programming experience, this idea may immediately cause some alarm--how can you possibly write anything serious without this functionality? [Conditional Display](state/conditional-display.md) discusses this subject, but it may be a bit hard to follow if you skip ahead immediately.
+
+[mit-license]: https://en.wikipedia.org/wiki/MIT_License
+
+<style>
+.patreon-supporters {
+    background: #f7f7f7;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.patreon-supporters ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.patreon-supporters li {
+    text-align: center;
+}
+
+</style>

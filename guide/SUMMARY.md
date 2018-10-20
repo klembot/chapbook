@@ -42,4 +42,5 @@
 -   [References](references/index.md)
     -   [Inserts](references/inserts.md)
     -   [Modifiers](references/modifiers.md)
+    -   [Version History](references/version-history.md)
     -   [The Chapbook Lifecycle](references/lifecycle.md)
