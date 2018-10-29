@@ -19,6 +19,7 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
 <div class="patreon-supporters">
     <ul>
         <li><a href="http://bphennessy.com/">Brendan Hennessy</a></li>
+        <li><a href="http://inurashii.xyz/">Caelyn Sandel</a></li>
         <li><a href="https://danq.me/">Dan Q</a></li>
     </ul>
 </div>
