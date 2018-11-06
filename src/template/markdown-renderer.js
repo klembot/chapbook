@@ -1,6 +1,8 @@
 /*
-A custom renderer for Marked that, instead of outputting code blocks,
-evaluates them, and outputs small caps instead of strikethrough text.
+A custom renderer for Marked that:
+-	Instead of outputting code blocks, evaluates them
+-	Renders a div#fork instead of a blockquote character
+-	Outputs small caps instead of strikethrough text
 */
 
 import marked from 'marked';
@@ -10,6 +12,10 @@ import {get} from '../state';
 let renderer = new marked.Renderer();
 
 Object.assign(renderer, {
+	blockquote(src) {
+		return `<div class="fork">${src}</div>`;
+	},
+
 	code(src) {
 		/*
 		Evaluate code blocks without outputting anything normally. The code can
