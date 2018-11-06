@@ -12,7 +12,7 @@ export const defaults = {
 	'config.style.page.style': 'shadow',
 	'config.style.page.font': 'Iowan Old Style/Constantia/Georgia/serif 18',
 	'config.style.page.color': 'gray-9 on white',
-	'config.style.page.fork.divider.color': 'gray-5',
+	'config.style.page.fork.divider.color': 'gray-3',
 	'config.style.page.fork.divider.style': 'dashed',
 	'config.style.page.fork.divider.size': 1,
 	'config.style.page.link.color': 'gray-9',
