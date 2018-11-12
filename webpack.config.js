@@ -67,7 +67,7 @@ const config = {
 					)
 				);
 
-				story.attributes.name = 'Hello World';
+				story.attributes.name = args.example;
 				story.setStartByName('Start');
 
 				return {storyData: story.toHtml(), inline: false};

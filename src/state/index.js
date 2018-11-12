@@ -13,10 +13,10 @@ import deepSet from 'set-value';
 import deepUnset from 'unset-value';
 import event from '../event';
 import logger from '../logger';
-import {story} from '../story';
+import {name} from '../story';
 
 const {log} = logger('state');
-const saveKey = `chapbook-state-${story.name}`;
+let saveKey;
 let vars = {};
 let defaults = {};
 let computed = {};
@@ -58,6 +58,21 @@ function addGlobalProxy(target, name) {
 
 function removeGlobalProxy(target, name) {
 	deepUnset(target, name);
+}
+
+/*
+Does basic initialization of the state. This must be called before any other
+calls, and must occur after the story is loaded from the DOM.
+*/
+
+export function init() {
+	const storyName = name();
+
+	if (storyName === undefined) {
+		throw new Error('Cannot set up state: the story has no name');
+	}
+
+	saveKey = `chapbook-state-${storyName}`;
 }
 
 /*
@@ -237,6 +252,28 @@ export function restoreFromStorage() {
 	log('Restoring variables from local storage');
 	restoreFromObject(JSON.parse(window.localStorage.getItem(saveKey)));
 	log('Restore complete');
+}
+
+/*
+Deletes the state from local storage. This should only be used in emergencies,
+when something has gone very wrong; see `display/crash.js`. Under normal
+circumstances, call `reset()` instead.
+
+This has a `quiet` option which does not try to log any messages-- this is so
+that the function does the minimum necessary, again if we suspect the state of
+affairs is badly broken.
+*/
+
+export function purgeFromStorage(quiet) {
+	if (!quiet) {
+		log('Purging variables from local storage');
+	}
+
+	restoreFromObject(JSON.parse(window.localStorage.getItem(saveKey)));
+
+	if (!quiet) {
+		log('Purge complete');
+	}
 }
 
 /*
