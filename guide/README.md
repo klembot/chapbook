@@ -20,6 +20,7 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
     <ul>
         <li><a href="http://bphennessy.com/">Brendan Hennessy</a></li>
         <li><a href="https://danq.me/">Dan Q</a></li>
+        <li>José Dias</li>
     </ul>
 </div>
 
