@@ -1,3 +1,4 @@
+import initBrowser from './browser';
 import initNow from './now';
 import initRandom from './random';
 import initStoryName from './story-name';

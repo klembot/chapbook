@@ -22,6 +22,9 @@ Below is a list of lookups that Chapbook maintains for you:
 
 | Variable Name     | Description                                                                        | Example            |
 | ----------------- | ---------------------------------------------------------------------------------- | ------------------ |
+| `browser.height`  | The height of the browser window in pixels.                                        | `768`              |
+| `browser.online`  | Whether the browser currently has a network connection.                            | `true`             |
+| `browser.width`   | The width of the browser window in pixels.                                         | `1024`             |
 | `now.datestamp`   | A short human-readable description of the date right now.                          | `'2/15/2011'`      |
 | `now.day`         | The current day of the month, 1-31.                                                | `15`               |
 | `now.hour`        | The hour of the time right now, where midnight is 0 and 11:00 PM is 23.            | `18`               |
