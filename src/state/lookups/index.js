@@ -5,6 +5,7 @@ import initStoryName from './story-name';
 import {setLookup} from '../index';
 
 export default function init() {
+	initBrowser(setLookup);
 	initNow(setLookup);
 	initRandom(setLookup);
 	initStoryName(setLookup);
