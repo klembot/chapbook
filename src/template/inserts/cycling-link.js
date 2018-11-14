@@ -3,6 +3,7 @@ Renders a cycling link, optionally saving the selected value to a variable.
 */
 
 import {get, set} from '../../state';
+import event from '../../event';
 import htmlify from '../../util/htmlify';
 
 export default {
@@ -24,10 +25,28 @@ export default {
 		return htmlify(
 			'a',
 			{
-				'data-cb-set': props.set,
-				'data-cb-cycle': JSON.stringify(choices)
+				href: 'javascript:void(0)',
+				'data-cb-cycle-set': props.set,
+				'data-cb-cycle-choices': JSON.stringify(choices)
 			},
 			[current]
 		);
 	}
 };
+
+event.on('dom-click', el => {
+	if (el.dataset.cbCycleChoices) {
+		const choices = JSON.parse(el.dataset.cbCycleChoices);
+		let index = choices.indexOf(el.textContent) + 1;
+
+		if (index === choices.length) {
+			index = 0;
+		}
+
+		el.textContent = choices[index];
+
+		if (el.dataset.cbCycleSet) {
+			set(el.dataset.cbCycleSet, choices[index]);
+		}
+	}
+});
