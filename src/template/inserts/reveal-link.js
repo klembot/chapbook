@@ -2,6 +2,7 @@
 A reveal link shows either text or a passage's contents when selected.
 */
 
+import {changeBody} from '../../display';
 import event from '../../event';
 import htmlify from '../../util/htmlify';
 import {passageNamed} from '../../story';
@@ -48,35 +49,37 @@ event.on('dom-click', el => {
 
 		output.innerHTML = render(source);
 
-		/*
-		If the first node of the output is a <p>, substitute it inline for the
-		link.
-		*/
+		changeBody(() => {
+			/*
+			If the first node of the output is a <p>, substitute it inline for the
+			link.
+			*/
 
-		if (output.firstChild.nodeName === 'P') {
-			const text = document.createElement('span');
+			if (output.firstChild.nodeName === 'P') {
+				const text = document.createElement('span');
 
-			text.innerHTML = output.firstChild.innerHTML;
-			el.parentNode.insertBefore(text, el.nextSibling);
-			output.removeChild(output.firstChild);
-		}
+				text.innerHTML = output.firstChild.innerHTML;
+				el.parentNode.insertBefore(text, el.nextSibling);
+				output.removeChild(output.firstChild);
+			}
 
-		/*
-		Append the rest of the output after the node that the link resides in--
-		in most cases, after the paragraph that the link is in.
-		*/
+			/*
+			Append the rest of the output after the node that the link resides in--
+			in most cases, after the paragraph that the link is in.
+			*/
 
-		while (output.firstChild) {
-			el.parentNode.parentNode.insertBefore(
-				output.firstChild,
-				el.parentNode.nextSibling
-			);
-		}
+			while (output.firstChild) {
+				el.parentNode.parentNode.insertBefore(
+					output.firstChild,
+					el.parentNode.nextSibling
+				);
+			}
 
-		/*
-		Remove the original link from the DOM.
-		*/
+			/*
+			Remove the original link from the DOM.
+			*/
 
-		el.parentNode.removeChild(el);
+			el.parentNode.removeChild(el);
+		});
 	}
 });
