@@ -13,6 +13,7 @@
     -   [Delayed Text](modifiers-and-inserts/delayed-text.md)
     -   [Notes](modifiers-and-inserts/notes.md)
     -   [Link Inserts](modifiers-and-inserts/link-inserts.md)
+    -   [Reveal Links](modifiers-and-inserts/reveal-links.md)
     -   [Embedding Passages](modifiers-and-inserts/embedding-passages.md)
 -   [Adding State to Stories](state/index.md)
     -   [What is State?](state/what-is-state.md)
