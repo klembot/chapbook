@@ -161,7 +161,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="../text-and-links/ways-to-link.html">
+        <li class="chapter " data-level="1.3.3" data-path="../text-and-links/forks.html">
+            
+                <a href="../text-and-links/forks.html">
+            
+                    
+                    Forks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../text-and-links/ways-to-link.html">
             
                 <a href="../text-and-links/ways-to-link.html">
             
@@ -174,7 +187,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.4" data-path="../text-and-links/backstage.html">
+        <li class="chapter " data-level="1.3.5" data-path="../text-and-links/backstage.html">
             
                 <a href="../text-and-links/backstage.html">
             
@@ -258,7 +271,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.5" data-path="../modifiers-and-inserts/embedding-passages.html">
+        <li class="chapter " data-level="1.4.5" data-path="../modifiers-and-inserts/reveal-links.html">
+            
+                <a href="../modifiers-and-inserts/reveal-links.html">
+            
+                    
+                    Reveal Links
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../modifiers-and-inserts/embedding-passages.html">
             
                 <a href="../modifiers-and-inserts/embedding-passages.html">
             
@@ -536,7 +562,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.4" data-path="../customization/design-considerations.html">
+        <li class="chapter " data-level="1.7.4" data-path="../customization/fork-style.html">
+            
+                <a href="../customization/fork-style.html">
+            
+                    
+                    Fork Style
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../customization/design-considerations.html">
             
                 <a href="../customization/design-considerations.html">
             
@@ -780,12 +819,83 @@
 </thead>
 <tbody>
 <tr>
+<td><code>browser.height</code></td>
+<td>The height of the browser window in pixels.</td>
+<td><code>768</code></td>
+</tr>
+<tr>
+<td><code>browser.online</code></td>
+<td>Whether the browser currently has a network connection.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>browser.width</code></td>
+<td>The width of the browser window in pixels.</td>
+<td><code>1024</code></td>
+</tr>
+<tr>
+<td><code>now.datestamp</code></td>
+<td>A short human-readable description of the date right now.</td>
+<td><code>&apos;2/15/2011&apos;</code></td>
+</tr>
+<tr>
+<td><code>now.day</code></td>
+<td>The current day of the month, 1-31.</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>now.hour</code></td>
+<td>The hour of the time right now, where midnight is 0 and 11:00 <span class="caps">PM</span> is 23.</td>
+<td><code>18</code></td>
+</tr>
+<tr>
+<td><code>now.minute</code></td>
+<td>The minute of the time right now, 0-59.</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>now.month</code></td>
+<td>The current month, 1-12.</td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>now.monthName</code></td>
+<td>The name of the current month.</td>
+<td><code>&apos;February&apos;</code></td>
+</tr>
+<tr>
+<td><code>now.second</code></td>
+<td>The second of the time right now, 0-59.</td>
+<td><code>45</code></td>
+</tr>
+<tr>
+<td><code>now.timestamp</code></td>
+<td>A short human-readable description of the time right now.</td>
+<td><code>&apos;6:18:15 PM&apos;</code></td>
+</tr>
+<tr>
+<td><code>now.weekday</code></td>
+<td>The current day of the week, where Sunday is 1, Wednesday is 4, and Saturday is 7.</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>now.weekdayName</code></td>
+<td>The name of the current day of the week.</td>
+<td><code>&apos;Tuesday&apos;</code></td>
+</tr>
+<tr>
+<td><code>now.year</code></td>
+<td>The current four-digit year.</td>
+<td><code>2011</code></td>
+</tr>
+<tr>
 <td><code>story.name</code></td>
-<td>The name of the story as set in the Twine editor</td>
+<td>The name of the story as set in the Twine editor.</td>
 <td><code>&apos;Untitled Story&apos;</code></td>
 </tr>
 </tbody>
 </table>
+<p>Note that <code>now</code> lookup values reflect when they were last accessed, which is usually when a passage is navigated to. String values like <code>now.monthName</code> will vary by the language the player has set as default in their browser&#x2013; a French person will see <code>Ao&#xFB;t</code> where an American sees <code>August</code>, for example, and similarly the French will see <code>now.datestamp</code> as <code>&apos;15/2/2011&apos;</code> where Americans see it as <code>&apos;2/15/2011&apos;</code>.</p>
 <p><div class="alert alert-warning hints-alert"><div class="hints-icon"><i class="fa fa-wrench"></i></div><div class="hints-container"><p>More lookups will be added to<span class="widont">&#xA0;</span>Chapbook.</p>
 </div></div></p>
 
@@ -831,7 +941,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Objects and Lookup Variables","level":"1.5.8","depth":2,"next":{"title":"Randomness","level":"1.5.9","depth":2,"path":"state/randomness.md","ref":"state/randomness.md","articles":[]},"previous":{"title":"State Backstage","level":"1.5.7","depth":2,"path":"state/backstage.md","ref":"state/backstage.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"state/objects-and-lookups.md","mtime":"2018-09-22T18:54:59.088Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-29T01:00:54.474Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Objects and Lookup Variables","level":"1.5.8","depth":2,"next":{"title":"Randomness","level":"1.5.9","depth":2,"path":"state/randomness.md","ref":"state/randomness.md","articles":[]},"previous":{"title":"State Backstage","level":"1.5.7","depth":2,"path":"state/backstage.md","ref":"state/backstage.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"state/objects-and-lookups.md","mtime":"2018-11-19T03:44:28.688Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-19T03:50:51.211Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
