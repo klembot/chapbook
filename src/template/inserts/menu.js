@@ -2,6 +2,7 @@
 Renders a dropdown menu that sets a variable.
 */
 
+import event from '../../event';
 import {get, set} from '../../state';
 import htmlify, {domify} from '../../util/htmlify';
 
@@ -17,7 +18,7 @@ export default {
 
 		return htmlify(
 			'select',
-			{'data-cb-set': varName},
+			{'data-cb-menu-set': varName},
 			props.choices.map(choice =>
 				domify(
 					'option',
@@ -31,3 +32,12 @@ export default {
 		);
 	}
 };
+
+event.on('dom-change', el => {
+	if (el.dataset.cbMenuSet) {
+		set(
+			el.dataset.cbMenuSet,
+			el.querySelectorAll('option')[el.selectedIndex].value
+		);
+	}
+});

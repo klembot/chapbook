@@ -65,9 +65,6 @@ To add a section break to your text, type `---` (three dashes) on a line by itse
 
 To indent a long quotation, put `>` (a greater-than symbol) in front of each line.
 
-| Typed                                                                                                                                                                                                                                                | Displayed                                                                                                                                                                                                                                                   |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <code>&gt; Call me Ishmael. Some years ago--never mind how long precisely--having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.</code> | <blockquote>Call me Ishmael. Some years ago--never mind how long precisely--having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.</blockquote> |
 
 ## Lists
 
@@ -106,9 +103,17 @@ You can also enter HTML into a passage without any extra code surrounding it. It
 
 Markdown has a quirk where if you enter Markdown code inside of an inline element such as `<b>` or `<span>`, it will convert it to HTML. But in block elements such as `<p>` or `<div>`, it won't.
 
-## Code Blocks Don't Behave As You Might Expect
+## Blockquotes and Code Blocks Don't Behave As You Might Expect
 
-There's a popular extension to Markdown that allows entry of long stretches of monospaced text, often computer code, by placing three backticks (<code>```</code>) on a line by itself, then text, the another set of three backticks. Chapbook uses this convention to allow embedding JavaScript code into a passage. This is discussed in more detail in [Using JavaScript in Passages][js-in-passages], but for now, remember that Markdown code blocks do not display as you might expect.
+There are two ways that Chapbook formatting differs from standard Markdown that will be covered in later sections.
+
+The first is the use of `>` at the start of a line, which in standard Markdown marks a section of text as a block quotation. In typographic tradition, block quotations are indented to indicate that they aren't part of the main text. Chapbook uses the `>` to mark text as part of a [fork][forks]instead. If you'd like to display a block quotation, put `<blockquote>` and `</blockquote>` around it.
+
+| Typed                                                                                                                                                                                                                                                | Displayed                                                                                                                                                                                                                                                   |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <code>&lt;blockquote&gt;Call me Ishmael. Some years ago--never mind how long precisely--having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.&lt;/blockquote&gt;</code> | <blockquote>Call me Ishmael. Some years ago--never mind how long precisely--having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.</blockquote> |
+
+Secondly, there's a popular extension to Markdown that allows entry of long stretches of monospaced text, often computer code, by placing three backticks (<code>```</code>) on a line by itself, then text, the another set of three backticks. Chapbook uses this convention to allow embedding JavaScript code into a passage. This is discussed in more detail in [Using JavaScript in Passages][js-in-passages], but for now, remember that Markdown code blocks do not display as you might expect.
 
 If you would like to display a long stretch of monospaced text, put `<code>` and `</code>` around it:
 
@@ -121,6 +126,7 @@ If you would like to display a long stretch of monospaced text, put `<code>` and
 [markdown]: https://daringfireball.net/markdown
 [dingus]: https://daringfireball.net/projects/markdown/dingus
 [smallcaps]: https://practicaltypography.com/small-caps.html
+[forks]: forks.md
 [js-in-passages]: ../advanced/using-javascript-in-passages.md
 
 <style>

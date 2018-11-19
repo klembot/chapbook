@@ -1,31 +1,18 @@
 /*
 Manages keeping the DOM in sync with state, and manages bridging events in the
 DOM with the engine.
-
-This supports hooks via the following attributes:
--   `data-cb-cycle`: cycles the inner text of the element between the values
-    listed in the attribute when the element is clicked. The attribute must be a
-    JSON-encoded array.
--   `data-cb-go`: calls go() on the passage in the attribute when the element is
-    clicked.
--   `data-cb-restart`: calls restart() when the element is clicked.
--   'data-cb-set': calls set() on the variable name in the attribute with either
-	the value of the element (if it is an `<input type="text">`), the value of the selected option of the element (if it is a `<select>`), or the inner text of the element (if it is an `<a>`).
 */
 
-import closest from 'closest';
 import coalesceCalls from '../util/coalesce-calls';
 import event from '../event';
 import {crossfade, fadeInOut, none} from './transitions';
-import {get, set} from '../state';
-import {go, restart} from '../actions';
+import {get} from '../state';
 import {init as initCrash} from './crash';
 import {passageNamed} from '../story';
 import {render} from '../template';
-import {validate} from './inputs';
 import './index.scss';
 
-let mainContent, marginals;
+let bodyContentEl, marginalEls;
 const transitions = {crossfade, fadeInOut, none};
 
 export const defaults = {
@@ -43,78 +30,33 @@ export const defaults = {
 	'config.footer.transition.duration': '500ms'
 };
 
-function attachDomListeners(el) {
-	el.addEventListener('click', e => {
-		// Order is important below, so that if an element both cycles and goes,
-		// the value it sets before leaving the passage is accurate.
+/* Runs a transition on a DOM element. */
 
-		const cycleLink = closest(e.target, '[data-cb-cycle]', true);
-
-		if (cycleLink) {
-			const choices = JSON.parse(cycleLink.dataset.cbCycle);
-			let index = choices.indexOf(cycleLink.textContent) + 1;
-
-			if (index === choices.length) {
-				index = 0;
-			}
-
-			cycleLink.textContent = choices[index];
-		}
-
-		const setLink = closest(e.target, 'a[data-cb-set]', true);
-
-		if (setLink) {
-			set(setLink.dataset.cbSet, setLink.textContent);
-		}
-
-		const goLink = closest(e.target, '[data-cb-go]', true);
-
-		if (goLink) {
-			validate().then(() => go(goLink.dataset.cbGo));
-		}
-
-		const restartLink = closest(e.target, '[data-cb-restart]', true);
-
-		if (restartLink) {
-			restart();
-		}
-	});
-
-	el.addEventListener('change', e => {
-		const setInput = closest(e.target, '[data-cb-set]', true);
-
-		if (setInput) {
-			if (setInput.nodeName === 'INPUT') {
-				set(setInput.dataset.cbSet, setInput.value);
-			} else if (setInput.nodeName === 'SELECT') {
-				set(
-					setInput.dataset.cbSet,
-					setInput.querySelectorAll('option')[setInput.selectedIndex]
-						.value
-				);
-			}
-		}
-	});
+function transitionContent(el, html, transition, duration) {
+	if (transitions[transition]) {
+		transitions[transition](el, html, duration);
+	} else {
+		transitions.none(el, html);
+	}
 }
 
 const updateDom = coalesceCalls(function update(calls) {
-	// Update the trail if we were ever passed a `true` argument.
+	/*
+	Update the body content if we were ever passed a `true` argument, meaning
+	the trail has changed.
+	*/
 
 	if (calls.some(c => c[0])) {
 		const trail = get('trail');
-		const bodyTransition = get('config.body.transition.name');
 		const passage = passageNamed(trail[trail.length - 1]);
 
 		if (passage) {
-			if (transitions[bodyTransition]) {
-				transitions[bodyTransition](
-					mainContent,
-					render(passage.source),
-					get('config.body.transition.duration')
-				);
-			} else {
-				transitions.none(mainContent, render(passage.source));
-			}
+			transitionContent(
+				bodyContentEl,
+				render(passage.source),
+				get('config.body.transition.name'),
+				get('config.body.transition.duration')
+			);
 		} else {
 			throw new Error(
 				`There is no passage named "${trail[trail.length - 1]}".`
@@ -122,46 +64,109 @@ const updateDom = coalesceCalls(function update(calls) {
 		}
 	}
 
-	// Always update header and footer, because we don't know what their
-	// contents may depend on.
+	/*
+	Always update header and footer, because we don't know what their contents
+	may depend on.
+	*/
 
 	['header', 'footer'].forEach(m => {
-		marginals[m].container.classList.remove('has-content');
+		marginalEls[m].container.classList.remove('has-content');
 
 		['left', 'center', 'right'].forEach(part => {
 			const html = render(get(`config.${m}.${part}`));
 
 			if (html !== '') {
-				marginals[m].container.classList.add('has-content');
+				marginalEls[m].container.classList.add('has-content');
 			}
 
-			const marginalTransition = get(`config.${m}.transition.name`);
-
-			if (transitions[marginalTransition]) {
-				transitions[marginalTransition](
-					marginals[m][part],
-					html,
-					get(`config.${m}.transition.duration`)
-				);
-			} else {
-				transitions.none(marginals[m][part], html);
-			}
+			transitionContent(
+				marginalEls[m][part],
+				html,
+				get(`config.${m}.transition.name`),
+				get(`config.${m}.transition.duration`)
+			);
 		});
 	});
 });
 
 export function init() {
 	initCrash();
-	mainContent = document.querySelector('#page article');
-	marginals = {};
+	bodyContentEl = document.querySelector('#page article');
+	marginalEls = {};
 
 	['header', 'footer'].forEach(m => {
-		marginals[m] = {container: document.querySelector(`#page ${m}`)};
+		marginalEls[m] = {container: document.querySelector(`#page ${m}`)};
 		['left', 'center', 'right'].forEach(part => {
-			marginals[m][part] = document.querySelector(`#page ${m} .${part}`);
+			marginalEls[m][part] = document.querySelector(
+				`#page ${m} .${part}`
+			);
 		});
 	});
 
-	attachDomListeners(document.body);
 	event.on('state-change', ({name, value}) => updateDom(name === 'trail'));
+
+	/*
+	Dispatch dom-change and dom-click events on elements with an attribute that
+	starts with data-cb, e.g. <a href="javascript:void(0)" data-cb-go="My
+	Passage">.
+	*/
+
+	['change', 'click'].forEach(eventType => {
+		document.body.addEventListener(eventType, e => {
+			let target = e.target;
+
+			while (target) {
+				if (
+					target.dataset &&
+					Object.keys(target.dataset).some(key =>
+						/^cb[A-Z]/.test(key)
+					)
+				) {
+					event.emit(`dom-${e.type}`, target);
+				}
+
+				target = target.parentNode;
+			}
+		});
+	});
+}
+
+/*
+Applies a function to the current body content shown in the DOM using a
+transition as specified in `config.body.transition`. This is provided so that we
+can make live changes in the DOM that incorporate transitions, separate from a
+passage being displayed.
+
+Although this function works with DOM elements, the resulting output will be
+coerced to HTML source code, meaning that any event handlers attached to
+elements will be lost. Use `dom-change` and `dom-click` events instead.
+*/
+
+export function changeBody(callback) {
+	/*
+	Clone the current DOM node, but hand off the original to the callback. This
+	is so that if the callback is processing something based on an event, it is
+	able to find that event's target in what it's given.
+	*/
+
+	const originalScroll = {x: window.scrollX, y: window.scrollY};
+	const originalHtml = bodyContentEl.innerHTML;
+	const workingEl = document.createElement('div');
+
+	while (bodyContentEl.firstChild) {
+		workingEl.insertBefore(bodyContentEl.firstChild, workingEl.firstChild);
+	}
+
+	bodyContentEl.innerHTML = originalHtml;
+	callback(workingEl);
+
+	window.scrollX = originalScroll.x;
+	window.scrollY = originalScroll.y;
+
+	transitionContent(
+		bodyContentEl,
+		workingEl.innerHTML,
+		get('config.body.transition.name'),
+		get('config.body.transition.duration')
+	);
 }

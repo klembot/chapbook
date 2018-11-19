@@ -12,7 +12,7 @@ as self-sufficient as possible.
 */
 
 import closest from 'closest';
-import {get, set, saveKey} from '../state';
+import {get, set, purgeFromStorage} from '../state';
 
 function handleError(e) {
 	/*
@@ -76,7 +76,7 @@ function handleError(e) {
 			);
 
 			if (restartLink) {
-				window.localStorage.removeItem(saveKey);
+				purgeFromStorage(true);
 				window.location.reload();
 			}
 		});

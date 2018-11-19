@@ -24,8 +24,9 @@
 		flex-grow: 1;
 		display: flex;
 
-		:first-child {
+		> :first-child {
 			margin-top: 0;
+			width: 100%;
 		}
 	}
 
@@ -107,6 +108,19 @@
 
 		a {
 			color: $oc-red-9;
+		}
+	}
+
+	.fork p {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+		a {
+			display: block;
+			flex-grow: 1;
+			text-align: center;
+			padding: 0.5em;
 		}
 	}
 }

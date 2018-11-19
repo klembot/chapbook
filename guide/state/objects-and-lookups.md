@@ -20,9 +20,25 @@ Chapbook will create each object variable (e.g. `my` and `favorite`) for you if 
 
 Below is a list of lookups that Chapbook maintains for you:
 
-| Variable Name | Description                                      | Example            |
-| ------------- | ------------------------------------------------ | ------------------ |
-| `story.name`  | The name of the story as set in the Twine editor | `'Untitled Story'` |
+| Variable Name     | Description                                                                        | Example            |
+| ----------------- | ---------------------------------------------------------------------------------- | ------------------ |
+| `browser.height`  | The height of the browser window in pixels.                                        | `768`              |
+| `browser.online`  | Whether the browser currently has a network connection.                            | `true`             |
+| `browser.width`   | The width of the browser window in pixels.                                         | `1024`             |
+| `now.datestamp`   | A short human-readable description of the date right now.                          | `'2/15/2011'`      |
+| `now.day`         | The current day of the month, 1-31.                                                | `15`               |
+| `now.hour`        | The hour of the time right now, where midnight is 0 and 11:00 PM is 23.            | `18`               |
+| `now.minute`      | The minute of the time right now, 0-59.                                            | `15`               |
+| `now.month`       | The current month, 1-12.                                                           | `2`                |
+| `now.monthName`   | The name of the current month.                                                     | `'February'`       |
+| `now.second`      | The second of the time right now, 0-59.                                            | `45`               |
+| `now.timestamp`   | A short human-readable description of the time right now.                          | `'6:18:15 PM'`     |
+| `now.weekday`     | The current day of the week, where Sunday is 1, Wednesday is 4, and Saturday is 7. | `3`                |
+| `now.weekdayName` | The name of the current day of the week.                                           | `'Tuesday'`        |
+| `now.year`        | The current four-digit year.                                                       | `2011`             |
+| `story.name`      | The name of the story as set in the Twine editor.                                  | `'Untitled Story'` |
+
+Note that `now` lookup values reflect when they were last accessed, which is usually when a passage is navigated to. String values like `now.monthName` will vary by the language the player has set as default in their browser-- a French person will see `Août` where an American sees `August`, for example, and similarly the French will see `now.datestamp` as `'15/2/2011'` where Americans see it as `'2/15/2011'`.
 
 {% hint style='working' %}
 More lookups will be added to Chapbook.

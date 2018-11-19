@@ -12,6 +12,9 @@ export const defaults = {
 	'config.style.page.style': 'shadow',
 	'config.style.page.font': 'Iowan Old Style/Constantia/Georgia/serif 18',
 	'config.style.page.color': 'gray-9 on white',
+	'config.style.page.fork.divider.color': 'gray-3',
+	'config.style.page.fork.divider.style': 'dashed',
+	'config.style.page.fork.divider.size': 1,
 	'config.style.page.link.color': 'gray-9',
 	'config.style.page.link.lineColor': 'red-8',
 	'config.style.page.link.font': 'underline',
@@ -96,6 +99,27 @@ export function init() {
 			case 'config.style.typekitFont':
 				log('Adding Typekit Font');
 				typekitFontEl.innerHTML = value;
+				return;
+
+			case 'config.style.page.fork.divider.color':
+				log('Setting fork divider color');
+				style('#page .fork p a + a', {
+					'border-top-color': parseColor(value).color
+				});
+				return;
+
+			case 'config.style.page.fork.divider.size':
+				log('Setting fork divider size');
+				style('#page .fork p a + a', {
+					'border-top-width': `${value}px`
+				});
+				return;
+
+			case 'config.style.page.fork.divider.style':
+				log('Setting fork divider style');
+				style('#page .fork p a + a', {
+					'border-top-style': value
+				});
 				return;
 
 			case 'config.style.page.style':

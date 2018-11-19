@@ -1,7 +1,9 @@
-// Manages converting story data, encoded into HTML elements, into JavaScript
-// objects. This intentionally does not affect anything in state except for
-// `trail`; putting the entire story into state would waste space and behave
-// unpredictably, as change events would not necessarily trigger correctly.
+/*
+Manages converting story data, encoded into HTML elements, into JavaScript
+objects. This intentionally does not affect anything in state except for
+`trail`; putting the entire story into state would waste space and behave
+unpredictably, as change events would not necessarily trigger correctly.
+*/
 
 import createLogger from './logger';
 import {selectAll} from './util/dom-select';
@@ -9,24 +11,25 @@ import {setDefault} from './state';
 
 const logger = createLogger('story');
 
-export const story = {
-	name: 'Untitled Story',
+const story = {
 	customScripts: [],
 	customStyles: []
 };
-export let passages = [];
+
+let loaded = false;
+let passages = [];
 
 export function loadFromData(el) {
 	['name', 'creator', 'ifid', 'options'].forEach(
 		attr => (story[attr] = el.getAttribute(attr))
 	);
 
-	// Camel-case creator version and start node.
+	/* Camel-case creator version and start node. */
 
 	story.startNode = parseInt(el.getAttribute('startnode'));
 	story.creatorVersion = el.getAttribute('creator-version');
 
-	// Custom script and style.
+	/* Custom script and style. */
 
 	const elsToContents = els => els.map(el => el.textContent);
 
@@ -37,7 +40,7 @@ export function loadFromData(el) {
 		selectAll(el, '[type="text/twine-css"]')
 	);
 
-	// Create passages.
+	/* Create passages. */
 
 	passages = selectAll(el, 'tw-passagedata').map(p => {
 		let passage = {
@@ -54,6 +57,8 @@ export function loadFromData(el) {
 
 		return passage;
 	});
+
+	loaded = true;
 }
 
 export function init() {
@@ -84,6 +89,10 @@ export function addCustomStyles() {
 		styleEl.innerHTML = s;
 		document.head.appendChild(styleEl);
 	});
+}
+
+export function name() {
+	return story.name;
 }
 
 export function startPassage() {

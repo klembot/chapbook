@@ -1,0 +1,7 @@
+:: Start
+I was eating {reveal link: 'my favorite dinner', text: '_pizza_'} last night. It was {reveal link: 'an interesting experience.', passage: 'a bad time'}
+
+:: a bad time
+a bad time. I should not have had anchovies before bed... I always have bad dreams.
+
+There was an odd creature that was out to get me, I remember, and it took on the appearance of a pig, raccoon, and crocodile mixed together.

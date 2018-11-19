@@ -8,6 +8,7 @@ import EmbedYouTube from './embed-youtube-video';
 import Link from './link';
 import Menu from './menu';
 import RestartLink from './restart-link';
+import RevealLink from './reveal-link';
 import TextInput from './text-input';
 
 export default [
@@ -21,5 +22,6 @@ export default [
 	Link,
 	Menu,
 	RestartLink,
+	RevealLink,
 	TextInput
 ];
