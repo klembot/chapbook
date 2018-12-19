@@ -1,0 +1,13 @@
+:: Start
+sound.effect.beep.url: "examples/263126__pan14__tone-beep-lower-slower.mp3"
+sound.effect.beep.description: "A short beep"
+--
+[[Hear a sound effect]]
+
+
+:: Hear a sound effect
+{sound effect: "beep"}
+
+This sound effect comes from [[Freesound->https://freesound.org/people/pan14/sounds/263126/]].
+
+[[Start Over->Start]]

@@ -6,6 +6,7 @@ import {
 	init as initState,
 	restoreFromStorage
 } from './state';
+import {init as initSound} from './sound';
 import initLookups from './state/lookups';
 import initDefaults from './state/defaults';
 import {init as initDisplay} from './display';
@@ -25,6 +26,7 @@ initStyle();
 initDefaults();
 initLookups();
 initDisplay();
+initSound();
 initStory();
 
 if (get('config.testing')) {

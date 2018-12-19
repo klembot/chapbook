@@ -9,6 +9,7 @@ import Link from './link';
 import Menu from './menu';
 import RestartLink from './restart-link';
 import RevealLink from './reveal-link';
+import SoundEffect from './sound-effect';
 import TextInput from './text-input';
 
 export default [
@@ -23,5 +24,6 @@ export default [
 	Menu,
 	RestartLink,
 	RevealLink,
+	SoundEffect,
 	TextInput
 ];

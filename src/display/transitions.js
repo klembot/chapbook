@@ -1,4 +1,5 @@
 import timestring from 'timestring';
+import {selectAll} from '../util/dom-select';
 import './transitions.scss';
 
 function forceNewStackingContext(el) {
@@ -15,6 +16,10 @@ function shallowCloneContents(el) {
 	result.style.height = el.clientHeight + 'px';
 	result.setAttribute('aria-hidden', true);
 	result.style.pointerEvents = 'none';
+
+	/* Remove <audio> elements so they don't play. */
+
+	selectAll(result, 'audio').forEach(el => el.parentNode.removeChild(el));
 
 	return result;
 }
