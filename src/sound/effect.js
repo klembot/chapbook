@@ -22,14 +22,14 @@ import event from '../event';
 import {get} from '../state';
 
 const {log, warn} = createLoggers('sound');
-let bank = {};
-let bankDom = document.createElement('div');
+let preloads = {};
+const preloadEl = document.createElement('div');
 
-bankDom.setAttribute('hidden', true);
+preloadEl.setAttribute('hidden', true);
 
 /* We don't use this attribute-- it's here for hacking purposes. */
 
-bankDom.dataset.cbAudioPreload = '';
+preloadEl.dataset.cbAudioPreload = '';
 
 function preload(name) {
 	/*
@@ -37,18 +37,18 @@ function preload(name) {
 	exist.
 	*/
 
-	if (!bank[name]) {
-		bank[name] = document.createElement('audio');
-		bank[name].setAttribute('preload', 'auto');
-		bankDom.appendChild(bank[name]);
+	if (!preloads[name]) {
+		preloads[name] = document.createElement('audio');
+		preloads[name].setAttribute('preload', 'auto');
+		preloadEl.appendChild(preloads[name]);
 		log(`Added new <audio> element to bank for "${name}"`);
 	}
 
-	bank[name].setAttribute('src', get(`sound.effect.${name}.url`));
+	preloads[name].setAttribute('src', get(`sound.effect.${name}.url`));
 }
 
 export function init() {
-	document.body.appendChild(bankDom);
+	document.body.appendChild(preloadEl);
 
 	event.on('state-change', ({name}) => {
 		/*
