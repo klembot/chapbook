@@ -31,31 +31,42 @@ bankDom.setAttribute('hidden', true);
 
 bankDom.dataset.cbAudioPreload = '';
 
+function preload(name) {
+	/*
+	Create a DOM <audio> element for this effect if it doesn't already
+	exist.
+	*/
+
+	if (!bank[name]) {
+		bank[name] = document.createElement('audio');
+		bank[name].setAttribute('preload', 'auto');
+		bankDom.appendChild(bank[name]);
+		log(`Added new <audio> element to bank for "${name}"`);
+	}
+
+	bank[name].setAttribute('src', get(`sound.effect.${name}.url`));
+}
+
 export function init() {
 	document.body.appendChild(bankDom);
 
 	event.on('state-change', ({name}) => {
-		/* Extract the sound name. */
+		/*
+		If either `sound` or `sound.effect` was set wholesale, preload
+		everything. This typically occurs when state is restored.
+		*/
 
-		const effectMatch = /^sound\.effect\.([^\.]+)/.exec(name);
+		if (name === 'sound' || name === 'sound.effect') {
+			Object.keys(get('sound.effect')).forEach(preload);
+		}
+
+		/* If an effect URL was just set, preload it. */
+
+		const effectMatch = /^sound\.effect\.([^\.]+)\.url$/.exec(name);
 
 		if (effectMatch && effectMatch[1]) {
-			const effectName = effectMatch[1];
-			const effect = get(`sound.effect.${effectName}`);
-
-			/*
-			Create a DOM <audio> element for this effect if it doesn't already
-			exist.
-			*/
-
-			if (!bank[effectName]) {
-				bank[effectName] = document.createElement('audio');
-				bank[effectName].setAttribute('preload', 'auto');
-				bankDom.appendChild(bank[effectName]);
-				log(`Added new <audio> element to bank for "${effectName}"`);
-			}
-
-			bank[effectName].setAttribute('src', effect.url);
+			preload(effectMatch[1]);
+			return;
 		}
 	});
 }
