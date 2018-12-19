@@ -122,7 +122,6 @@ previous value.
 export function set(name, value) {
 	const previous = get(name);
 
-	//log(`Setting "${name}" to ${JSON.stringify(value)}`);
 	deepSet(vars, name, value);
 	addGlobalProxy(window, name);
 
