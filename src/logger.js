@@ -5,13 +5,14 @@ import {get} from './state';
 export const defaults = {
 	'config.logger.show.parse': false,
 	'config.logger.show.render': false,
+	'config.logger.show.sound': true,
 	'config.logger.show.state': true,
 	'config.logger.show.story': true,
 	'config.logger.show.style': true
 };
 
 function prefix(text) {
-	return leftPad(text, 10) + ' \u2502 ';
+	return leftPad(text, 8) + ' \u2502 ';
 }
 
 export function log(source, message) {
