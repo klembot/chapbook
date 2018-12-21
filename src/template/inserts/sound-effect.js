@@ -4,7 +4,7 @@ import {effectHtml} from '../../sound/effect';
 
 export default {
 	match: /^sound\s+effect/i,
-	render(name) {
-		return effectHtml(name);
+	render(name, props) {
+		return effectHtml(name, props.volume || 1);
 	}
 };

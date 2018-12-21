@@ -21,7 +21,7 @@ import createLoggers from '../logger';
 import event from '../event';
 import {get} from '../state';
 
-const {log, warn} = createLoggers('sound');
+const {log} = createLoggers('sound');
 let preloads = {};
 const preloadEl = document.createElement('div');
 
@@ -75,9 +75,9 @@ export function init() {
 Returns HTML to play a sound effect.
 */
 
-export function effectHtml(name) {
+export function effectHtml(name, volume) {
 	const url = get(`sound.effect.${name}.url`);
 	const description = get(`sound.effect.${name}.description`);
 
-	return `<audio src="${url}" autoplay="yes">${description}</audio>`;
+	return `<audio src="${url}" autoplay="yes" data-cb-sound-base-volume="${volume}">${description}</audio>`;
 }

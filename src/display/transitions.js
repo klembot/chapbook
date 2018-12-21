@@ -1,3 +1,4 @@
+import event from '../event';
 import timestring from 'timestring';
 import {selectAll} from '../util/dom-select';
 import './transitions.scss';
@@ -27,6 +28,7 @@ function shallowCloneContents(el) {
 export function none(el, html) {
 	return new Promise(resolve => {
 		el.innerHTML = html;
+		event.emit('dom-mount', el);
 		resolve();
 	});
 }
@@ -71,6 +73,7 @@ export function fadeInOut(el, html, duration) {
 
 			el.innerHTML = '';
 			el.appendChild(inEl);
+			event.emit('dom-mount', inEl);
 			el.appendChild(outEl);
 		} else {
 			/* There's no outgoing content, so our fade is twice as slow. */
@@ -80,6 +83,7 @@ export function fadeInOut(el, html, duration) {
 			inEl.style.visibility = 'visible';
 			inEl.className = 'fade-in';
 			el.appendChild(inEl);
+			event.emit('dom-mount', inEl);
 		}
 	});
 }
@@ -129,10 +133,12 @@ export function crossfade(el, html, duration) {
 
 			el.innerHTML = '';
 			el.appendChild(inEl);
+			event.emit('dom-mount', inEl);
 			el.appendChild(outEl);
 		} else {
 			el.innerHTML = '';
 			el.appendChild(inEl);
+			event.emit('dom-mount', inEl);
 		}
 	});
 }
