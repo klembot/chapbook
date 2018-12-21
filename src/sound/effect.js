@@ -73,6 +73,8 @@ export function init() {
 
 /*
 Returns HTML to play a sound effect.
+
+FIXME this is wrong... it will cause the effect to get cut off if you navigate away from the passage before it finishes playing. Need a functional call instead. Can we drop dom-mount event?
 */
 
 export function effectHtml(name, volume) {
