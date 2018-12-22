@@ -13,6 +13,9 @@ const args = require('yargs')
 	.alias('e', 'example').argv;
 
 const config = {
+	devServer: {
+		stats: 'minimal'
+	},
 	mode: isRelease ? 'production' : 'development',
 	module: {
 		rules: [
@@ -76,11 +79,6 @@ const config = {
 	],
 	resolve: {
 		extensions: ['.js', '.jsx']
-	},
-	serve: {
-		dev: {
-			stats: 'minimal'
-		}
 	}
 };
 
