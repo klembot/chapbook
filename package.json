@@ -31,9 +31,9 @@
 		"sass-loader": "^7.0.3",
 		"title-case": "^2.1.1",
 		"twine-utils": "^1.2.6",
-		"webpack": "^4.12.0",
-		"webpack-command": "^0.2.1",
-		"webpack-serve": "^1.0.4",
+		"webpack": "^4.28.2",
+		"webpack-command": "^0.4.2",
+		"webpack-serve": "^2.0.3",
 		"yargs": "^11.0.0"
 	},
 	"dependencies": {
@@ -54,7 +54,7 @@
 	},
 	"scripts": {
 		"start": "webpack-serve",
-		"build": "NODE_ENV=production webpack && node scripts/build-format.js",
+		"build": "NODE_ENV=production wp && node scripts/build-format.js",
 		"examples": "node scripts/build-examples.js",
 		"guide": "gitbook serve guide",
 		"guide:init": "cd guide && gitbook install && cd ..",
