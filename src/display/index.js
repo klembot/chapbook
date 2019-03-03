@@ -1,12 +1,9 @@
 /*
 Manages keeping the DOM in sync with state, and manages bridging events in the
-DOM with the engine. This indirectly emits `dom-mount` events, which occur when
-new content is mounted into the DOM. See `transitions.js` for where this occurs;
-because it happens at different stages in different transitions, it has to be
-done individually there.
+DOM with the engine.
 
-This module also emits `dom-change` and `dom-click` events on any DOM element
-that is changed (i.e. inputs) or clicked with any `data-cb-*` attribute.
+This module emits `dom-change` and `dom-click` events on any DOM element that is
+changed (i.e. inputs) or clicked with any `data-cb-*` attribute.
 */
 
 import coalesceCalls from '../util/coalesce-calls';

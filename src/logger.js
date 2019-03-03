@@ -6,9 +6,9 @@ export const defaults = {
 	'config.logger.show.parse': false,
 	'config.logger.show.render': false,
 	'config.logger.show.sound': true,
-	'config.logger.show.state': true,
-	'config.logger.show.story': true,
-	'config.logger.show.style': true
+	'config.logger.show.state': false,
+	'config.logger.show.story': false,
+	'config.logger.show.style': false
 };
 
 function prefix(text) {

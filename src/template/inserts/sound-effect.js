@@ -1,10 +1,17 @@
 /* Plays a sound effect. */
 
-import {effectHtml} from '../../sound/effect';
+import {get, set} from '../../state';
 
 export default {
 	match: /^sound\s+effect/i,
 	render(name, props) {
-		return effectHtml(name, props.volume || 1);
+		const description = get(`sound.effect.${name}.description`) || '';
+
+		if (props.volume) {
+			set(`sound.effect.${name}.volume`, props.volume);
+		}
+
+		set(`sound.effect.${name}.playing`, true);
+		return `<audio>${description}</audio>`;
 	}
 };

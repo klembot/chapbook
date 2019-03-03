@@ -14,6 +14,7 @@ const args = require('yargs')
 
 const config = {
 	devServer: {
+		disableHostCheck: true,
 		stats: 'minimal'
 	},
 	mode: isRelease ? 'production' : 'development',
