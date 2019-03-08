@@ -29,8 +29,10 @@ have difficulty hearing.
 See also: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
 */
 
+import timestring from 'timestring';
 import createLoggers from '../logger';
 import event from '../event';
+import fade from './fade';
 import {get, set} from '../state';
 
 const {log, warn} = createLoggers('sound');
@@ -39,7 +41,8 @@ let soundBankEl;
 
 export const defaults = {
 	'sound.mute': false,
-	'sound.volume': 1
+	'sound.volume': 1,
+	'sound.transitionDuration': '1s'
 };
 
 export function init() {
@@ -154,12 +157,33 @@ export function init() {
 			case 'playing':
 				if (value) {
 					if (nameBits[1] === 'ambient') {
-						play(nameBits[2], true);
+						play(
+							nameBits[2],
+							true,
+							timestring(
+								get(`${nameBits[2]}.transitionDuration`) ||
+									get('sound.transitionDuration') ||
+									'0s',
+								'ms'
+							)
+						);
 					} else {
 						play(nameBits[2], false).then(() => set(name, false));
 					}
 				} else {
-					stop(nameBits[2]);
+					if (nameBits[1] === 'ambient') {
+						stop(
+							nameBits[2],
+							timestring(
+								get(`${nameBits[2]}.transitionDuration`) ||
+									get('sound.transitionDuration') ||
+									'0s',
+								'ms'
+							)
+						);
+					} else {
+						stop(nameBits[2]);
+					}
 				}
 				break;
 
@@ -215,12 +239,17 @@ returns nothing. If there is an error with playback (e.g. the sound requested
 doesn't exist in the bank), this throws an error. 
 */
 
-function play(name, loop) {
+function play(name, loop, fadeInDuration = 0) {
 	if (!soundBank[name]) {
 		throw new Error(`There is no sound loaded named ${name}.`);
 	}
 
 	log(`Playing sound "${name}" (looping: ${loop})`);
+
+	if (fadeInDuration > 0) {
+		soundBank[name].volume = 0;
+		fade(soundBank[name], 1, fadeInDuration);
+	}
 
 	if (loop) {
 		soundBank[name].loop = true;
@@ -247,13 +276,23 @@ Stops sound playing in the sound bank. If the sound is not playing, this does
 nothing. If the sound requested doesn't exist in the bank, this throws an error.
 */
 
-function stop(name) {
+function stop(name, fadeOutDuration = 0) {
 	if (!soundBank[name]) {
 		throw new Error(`There is no sound loaded named ${name}.`);
 	}
 
-	soundBank[name].pause();
-	soundBank[name].currentTime = 0;
+	if (fadeOutDuration <= 0) {
+		soundBank[name].pause();
+		soundBank[name].currentTime = 0;
+	} else {
+		const oldVolume = soundBank[name].volume;
+
+		fade(soundBank[name], 0, fadeOutDuration).then(() => {
+			soundBank[name].pause();
+			soundBank[name].volume = oldVolume;
+			soundBank[name].currentTime = 0;
+		});
+	}
 }
 
 /*
