@@ -5,6 +5,14 @@ All of the below cause text or other types of content to appear in your passage.
 <dl>
 
 <dt>
+<code>{ambient sound: 'sound name'<i>, volume: 0.5</i>}</code>
+</dt>
+
+<dd>
+Begins playing a [previously-defined ambient sound][sound]. <code>volume</code> can be omitted; by default, the ambient sound is played at full volume.
+</dd>
+
+<dt>
 <code>{back link<i>, label: 'Back'</i>}</code>
 </dt>
 
@@ -94,6 +102,14 @@ Renders a link that restarts the story. <code>label</code> may be omitted; Chapb
 </dd>
 
 <dt>
+<code>{sound effect: 'sound name'<i>, volume: 0.5</i>}</code>
+</dt>
+
+<dd>
+Begins playing a [previously-defined sound effect][sound]. <code>volume</code> can be omitted; by default, the ambient sound is played at full volume.
+</dd>
+
+<dt>
 <code>{text input<i> for 'variable name'</i>, <i>required: false</i>}</code>
 </td>
 
@@ -103,4 +119,5 @@ Renders a text field, saving the text entered to the variable named. <code>for '
 
 </dl>
 
+[sounds]: ../multimedia/audio.md
 [mods-inserts]: ../modifiers-and-inserts/
