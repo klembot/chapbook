@@ -1,5 +1,17 @@
 :: Start
+* [[Test CSS]]
 * [[Test JavaScript]]
+
+
+:: Test CSS
+This should be in green, but only this text.
+
+[[Back->Start]]
+
+[css]
+article p {
+	color: green;
+}
 
 
 :: Test JavaScript
@@ -11,4 +23,5 @@ for (let i = 1; i <= 10; i++) {
 	write(i + '\n\n');
 }
 
+[cont'd]
 [[Back->Start]]
