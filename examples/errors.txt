@@ -1,14 +1,7 @@
 :: Start
 testing: true
 --
-* [[Test a code fence JS error]]
 * [[Test a missing modifier]]
-
-
-:: Test a code fence JS error
-```
-xyzzy()
-```
 
 
 :: Test a missing modifier
