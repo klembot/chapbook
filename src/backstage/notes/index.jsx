@@ -1,5 +1,6 @@
 // The Notes tab of backstage.
 
+import escape from 'lodash.escape';
 import {h, Component} from 'preact';
 import event from '../../event';
 import {get} from '../../state';
@@ -19,7 +20,6 @@ export default class Notes extends Component {
 	sync({name, value}) {
 		if (name === 'trail') {
 			this.setState({currentPassage: value[value.length - 1]});
-			console.log(`Changing notes view`);
 		}
 	}
 
@@ -48,6 +48,24 @@ export default class Notes extends Component {
 		this.save();
 	}
 
+	export() {
+		const exportWindow = window.open('', '_blank');
+		const noteHtml = Object.keys(this.state.notes).reduce(
+			(result, current) =>
+				result +
+				`<li>${escape(current)}<pre>${escape(
+					this.state.notes[current]
+				)}</pre></li>`,
+			''
+		);
+
+		exportWindow.document.write(
+			`<style>body {font-family: sans-serif}</style><h1>Notes for &ldquo;${escape(
+				get('story.name')
+			)}&rdquo;</h1><p>Save this page to a file to import in another browser.</p><ul>${noteHtml}</ul>`
+		);
+	}
+
 	render() {
 		return (
 			<div>
@@ -66,6 +84,11 @@ export default class Notes extends Component {
 							)
 						}
 					/>
+				</p>
+				<p>
+					<button onClick={() => this.export()}>
+						Export All Notes
+					</button>
 				</p>
 			</div>
 		);
