@@ -66,6 +66,17 @@ export default class Notes extends Component {
 		);
 	}
 
+	deleteAll() {
+		if (
+			window.confirm(
+				'Are you sure? This will delete all text entered in the Notes panel of Backstage, and cannot be undone.'
+			)
+		) {
+			this.setState({notes: {}});
+			this.save();
+		}
+	}
+
 	render() {
 		return (
 			<div>
@@ -88,6 +99,9 @@ export default class Notes extends Component {
 				<p>
 					<button onClick={() => this.export()}>
 						Export All Notes
+					</button>
+					<button onClick={() => this.deleteAll()}>
+						Delete All Notes
 					</button>
 				</p>
 			</div>
