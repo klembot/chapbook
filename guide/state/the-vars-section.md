@@ -25,10 +25,6 @@ Vars sections never display anything to the player; this is so that, for example
 If a passage is embedded in another using the `{embed passage}` modifier, its vars section will also take effect.
 {% endhint %}
 
-{% hint style='danger' %}
-Remember that three dashes creates a visible section break in passage text. Use only two to create vars sections.
-{% endhint %}
-
 You may only have one vars section in each passage, but then there's really only ever need for one. The name of state variables must follow a few rules, too. They must start with a letter (upper or lowercase), underscore (`_`), or dollar sign (`$`); after the first character can come any combination of the preceding kinds of characters as well as digits.[^1]
 
 Sadly, you can't use spaces in your variable names. Because of this, a common practice called _camel casing_ (because of the camel-like humps in the resulting word) glues phrases together using capital letters, like the `doomedToDieInFiveMinutes` example above. Another school of thought, _snake casing_, prefers to use underscores instead; e.g. `doomed_to_die_in_five_minutes`. Either's perfectly fine. Use whichever feels most comfortable to you.

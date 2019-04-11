@@ -59,7 +59,7 @@ A convention sometimes used in publishing to indicate a new scene, or a new line
 > <p style="text-align: center">* &nbsp; * &nbsp; *</p>
 > The following morning was no better than the day before.
 
-To add a section break to your text, type `---` (three dashes) on a line by itself.
+To add a section break to your text, type `***` (three asterisks) on a line by itself.
 
 ## Block Quotations
 
