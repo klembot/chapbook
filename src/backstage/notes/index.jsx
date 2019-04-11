@@ -53,7 +53,7 @@ export default class Notes extends Component {
 		const noteHtml = Object.keys(this.state.notes).reduce(
 			(result, current) =>
 				result +
-				`<li>${escape(current)}<pre>${escape(
+				`<li class="note">${escape(current)}<pre>${escape(
 					this.state.notes[current]
 				)}</pre></li>`,
 			''
