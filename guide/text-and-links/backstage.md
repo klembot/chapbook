@@ -16,9 +16,7 @@ Use the &#x21b3; button beside an entry in the table to rewind the story to that
 
 This tab can be used to record notes on the passage you're currently viewing--noting misspellings, or any other thoughts you'd like to record. These notes are stored separately from the story itself, so that if you are collaborating with other people on a story, each of you can keep separate notes. The notes you enter are saved automatically as you type.
 
-{% hint style='working' %}
-Chapbook will eventually allow you to export these notes, and also allow you to import a collaborator's notes.
-{% endhint %}
+You can export notes you've entered using the **Export Notes** button, and import them into someone else's browser using the **Import Notes** button. If any notes already exist for a passage, the notes you import will appear below what was previously entered. If you'd like to reset your notes, use the **Delete All Notes** button.
 
 [state-backstage]: ../state/backstage.md
 [page-style]: ../customization/page-style.md
