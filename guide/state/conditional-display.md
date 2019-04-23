@@ -147,11 +147,14 @@ Which approach is best to take depends on the situation. It's not a good idea to
 
 ## Disabling Conditions For Testing
 
-It can be useful to override a conditional modifier so that it always or never displays, regardless of circumstances.
+It can be useful to override a conditional modifier so that it always or never displays, regardless of circumstances. To do this, change `[if]` to either `[ifalways]` or `[ifnever]`.
 
-{% hint style='working' %}
-Chapbook will eventually allow you to temporarily override a condition during testing, perhaps by changing [if] to [ifalways] or [ifnever], but the actual implementation of this idea may change.
-{% endhint %}
+```
+[ifnever 1 + 1 === 2]
+This would have been shown with a regular [if], but isn't.
+```
+
+This affects any `[else]` modifiers that follow it.
 
 [^1]: Truthfully, it is also possible to write `[if stringVariable]` or `[if 2 + 2]`. In these cases, any non-empty string (e.g. not `''`) is treated as true, and any non-zero number is treated as true. It's best to be explicit, however, and write `[if stringVariable !== '']` and `[if 2 + 2 !== 0]`.
 [embed-passage]: ../text-and-links/embedding-passages.html

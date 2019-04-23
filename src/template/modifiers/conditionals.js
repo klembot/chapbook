@@ -1,7 +1,7 @@
 // Handles if, unless, and else modifiers.
 
 export default {
-	match: /^if\s|else$|unless\s/i,
+	match: /^if(always|never)?\s|else$|unless\s/i,
 	process(output, {invocation, state}) {
 		const type = invocation.replace(/\s.*/, '').toLowerCase();
 		let condition;
@@ -15,6 +15,14 @@ export default {
 		switch (type) {
 			case 'if':
 				state.conditionEval = condition.apply(window);
+				break;
+
+			case 'ifalways':
+				state.conditionEval = true;
+				break;
+
+			case 'ifnever':
+				state.conditionEval = false;
 				break;
 
 			case 'unless':
