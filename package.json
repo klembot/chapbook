@@ -16,7 +16,7 @@
 		"eslint": "^4.14.0",
 		"gitbook-cli": "^2.3.2",
 		"html-webpack-plugin": "^3.2.0",
-		"jest": "^23.3.0",
+		"jest": "^24.7.1",
 		"jest-localstorage-mock": "^2.2.0",
 		"jsdoc": "^3.5.5",
 		"jstransformer-marked": "^1.0.3",
