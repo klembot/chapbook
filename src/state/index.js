@@ -115,6 +115,26 @@ export function reset() {
 }
 
 /*
+Returns whether two variable names belong to the same object. If two identical
+variable names are passed, this returns true--this helps when listening to state
+changes when a parent key is changed, e.g. if you want to listen to changes to
+foo.bar, you should also listen to changes on foo.
+*/
+
+export function sameObject(a, b) {
+	const aParts = a.split('.');
+	const bParts = b.split('.');
+
+	for (let i = 0; i < aParts.length && i < bParts.length; i++) {
+		if (aParts[i] !== bParts[i]) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+/*
 Sets a state variable, triggering a `state-change` event if it is changing a
 previous value.
 */

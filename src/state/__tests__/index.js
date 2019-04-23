@@ -31,6 +31,20 @@ describe('state', () => {
 		expect(state.get('color')).toBe('green');
 	});
 
+	it('tests variable names with sameObject()', () => {
+		expect(state.sameObject('foo', 'foo')).toBe(true);
+		expect(state.sameObject('foo', 'oo')).toBe(false);
+		expect(state.sameObject('foo.bar', 'foo')).toBe(true);
+		expect(state.sameObject('foo.bar', 'bar')).toBe(false);
+		expect(state.sameObject('foo.bar', 'o.bar')).toBe(false);
+		expect(state.sameObject('foo.bar', '.bar')).toBe(false);
+		expect(state.sameObject('foo.bar', 'foo.bar')).toBe(true);
+		expect(state.sameObject('foo.bar.baz', 'bar')).toBe(false);
+		expect(state.sameObject('foo.bar.baz', 'foo.bar')).toBe(true);
+		expect(state.sameObject('foo.bar.baz', 'bar.baz')).toBe(false);
+		expect(state.sameObject('foo.bar.baz', 'foo.bar.baz')).toBe(true);
+	});
+
 	it('defaults variables', () => {
 		expect(state.get('color')).toBe(undefined);
 		state.setDefault('color', 'red');

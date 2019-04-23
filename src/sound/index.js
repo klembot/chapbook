@@ -33,7 +33,7 @@ import timestring from 'timestring';
 import createLoggers from '../logger';
 import event from '../event';
 import fade from './fade';
-import {get, set} from '../state';
+import {get, sameObject, set} from '../state';
 
 const {log, warn} = createLoggers('sound');
 let soundBank = {};
@@ -64,79 +64,78 @@ export function init() {
 		wholesale. This usually happens when state is restored.
 		*/
 
-		if (
-			name === 'sound' ||
-			name === 'sound.ambient' ||
-			name === 'sound.effect'
-		) {
-			if (name === 'sound.ambient' || name === 'sound') {
-				const ambient = get('sound.ambient');
+		const setAllAmbient = sameObject(name, 'sound.ambient');
+		const setAllEffects = sameObject(name, 'sound.effect');
 
-				if (ambient) {
-					Object.keys(ambient).forEach(name => {
-						if (ambient[name].url) {
-							load(name, ambient[name].url, false);
-						}
+		if (setAllAmbient) {
+			const ambient = get('sound.ambient');
 
-						if (ambient[name].volume) {
-							setVolume(name, ambient[name].volume);
-						}
+			if (ambient) {
+				Object.keys(ambient).forEach(name => {
+					if (ambient[name].url) {
+						load(name, ambient[name].url, false);
+					}
 
-						if (ambient[name].muted !== undefined) {
-							setMute(name, ambient[name].muted);
-						}
+					if (ambient[name].volume) {
+						setVolume(name, ambient[name].volume);
+					}
 
-						if (ambient[name].playing) {
-							/* This may fail due to browser autoplay policy. */
+					if (ambient[name].muted !== undefined) {
+						setMute(name, ambient[name].muted);
+					}
 
-							play(name, true).catch(e =>
+					if (ambient[name].playing) {
+						/* This may fail due to browser autoplay policy. */
+
+						play(name, true).catch(e =>
+							warn(
+								`Could not resume playing ambient sound "${name}" (${
+									e.message
+								})`
+							)
+						);
+					}
+				});
+			}
+		}
+
+		if (setAllEffects) {
+			const effect = get('sound.effect');
+
+			if (effect) {
+				Object.keys(effect).forEach(name => {
+					if (effect[name].url) {
+						load(name, effect[name].url, true);
+					}
+
+					if (effect[name].volume) {
+						setVolume(name, effect[name].volume);
+					}
+
+					if (effect[name].muted !== undefined) {
+						setMute(name, effect[name].muted);
+					}
+
+					if (effect[name].playing) {
+						play(name, false)
+							.then(() =>
+								set(`sound.effect.${name}.playing`, false)
+							)
+							.catch(e =>
 								warn(
-									`Could not resume playing ambient sound "${name}" (${
+									`Could not resume playing sound effect "${name}" (${
 										e.message
-									})`
+									}`
 								)
 							);
-						}
-					});
-				}
+					}
+				});
 			}
+		}
 
-			if (name === 'sound.effect' || name === 'sound') {
-				const effect = get('sound.effect');
+		/* Stop processing here. */
 
-				if (effect) {
-					Object.keys(effect).forEach(name => {
-						if (effect[name].url) {
-							load(name, effect[name].url, true);
-						}
-
-						if (effect[name].volume) {
-							setVolume(name, effect[name].volume);
-						}
-
-						if (effect[name].muted !== undefined) {
-							setMute(name, effect[name].muted);
-						}
-
-						if (effect[name].playing) {
-							play(name, false)
-								.then(() =>
-									set(`sound.effect.${name}.playing`, false)
-								)
-								.catch(e =>
-									warn(
-										`Could not resume playing sound effect "${name}" (${
-											e.message
-										}`
-									)
-								);
-						}
-					});
-				}
-			}
-
-			/* Stop processing here. */
-
+		if (setAllAmbient || setAllEffects) {
 			return;
 		}
 
