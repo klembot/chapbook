@@ -40,7 +40,3 @@ Below is a list of lookups that Chapbook maintains for you:
 | `story.name`      | The name of the story as set in the Twine editor.                                  | `'Untitled Story'` |
 
 Note that `now` lookup values reflect when they were last accessed, which is usually when a passage is navigated to. String values like `now.monthName` will vary by the language the player has set as default in their browser-- a French person will see `Août` where an American sees `August`, for example, and similarly the French will see `now.datestamp` as `'15/2/2011'` where Americans see it as `'2/15/2011'`.
-
-{% hint style='working' %}
-More lookups will be added to Chapbook.
-{% endhint %}

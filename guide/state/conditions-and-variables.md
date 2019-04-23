@@ -43,10 +43,6 @@ transportation: kilometers > 300 ? 'airplane' : kilometers > 5 ? 'car' : 'walk'
 You'll need to take a {transportation} to get there.
 ```
 
-{% hint style='working' %}
-A more graceful way of setting variables to more than two values conditionally is being considered.
-{% endhint %}
-
 [^1]: Truthfully, it is also possible to write `[if stringVariable]` or `[if 2 + 2]`. In these cases, any non-empty string (e.g. not `''`) is treated as true, and any non-zero number is treated as true. It's best to be explicit, however, and write `[if stringVariable !== '']` and `[if 2 + 2 !== 0]`.
 [embed-passage]: ../text-and-links/embedding-passages.html
 

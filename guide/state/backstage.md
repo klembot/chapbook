@@ -15,7 +15,7 @@ Beneath the variables table is the Snapshots heading. Snapshots allow you to qui
 Use the &times; button at the end of a snapshot button to remove it. Snapshots are saved to your web browser only.
 
 {% hint style='working' %}
-Exporting snapshots for use by other people working on your story may be possible in the future.
+Exporting snapshots for use by other people working on your story may come in a future version of Chapbook.
 {% endhint %}
 
 ## State in History
