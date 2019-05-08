@@ -13,9 +13,10 @@ import {get} from '../state';
 import {init as initCrash} from './crash';
 import {passageNamed} from '../story';
 import {render} from '../template';
+import startSkipAnimation from './skip-animation';
 import './index.scss';
 
-let bodyContentEl, marginalEls;
+let bodyContentEl, marginalEls, spinnerEl;
 const transitions = {crossfade, fadeInOut, none};
 
 export const defaults = {
@@ -60,6 +61,8 @@ const updateDom = coalesceCalls(function update(calls) {
 				get('config.body.transition.name'),
 				get('config.body.transition.duration')
 			);
+
+			startSkipAnimation(bodyContentEl, spinnerEl);
 		} else {
 			throw new Error(
 				`There is no passage named "${trail[trail.length - 1]}".`
@@ -95,6 +98,7 @@ const updateDom = coalesceCalls(function update(calls) {
 export function init() {
 	initCrash();
 	bodyContentEl = document.querySelector('#page article');
+	spinnerEl = document.querySelector('#page #spinner');
 	marginalEls = {};
 
 	['header', 'footer'].forEach(m => {

@@ -27,9 +27,7 @@ The `after` modifier only allows round numbers. Instead of writing `1.5 seconds`
 
 The `after` modifier should be used sparingly, and the delays should be specified keeping in mind that everyone reads a different pace. One minute may not seem very long, but it's an eternity for fast players.
 
-{% hint style='working' %}
-Chapbook will eventually show a progress spinner as an indication to players that the text will change on its own, and allow players to bypass the delay.
-{% endhint %}
+Chapbook signals that more text will be coming by displaying an animated watch in the lower-right corner of the page, and impatient players can click the mouse or press a key to skip over the delay. This functionality cannot be disabled.
 
 ## Modifiers Normally Create Paragraphs
 Modifiers normally cause the text that follows them to be in a separate paragraph from the text before it. There are cases, though, where you want text to appear with the preceding paragraph instead. The `append` modifier makes this happen.

@@ -36,6 +36,10 @@ const config = {
 					{loader: 'css-loader', options: {minimize: isRelease}},
 					'sass-loader'
 				]
+			},
+			{
+				test: /\.svg$/,
+				use: ['url-loader']
 			}
 		]
 	},
