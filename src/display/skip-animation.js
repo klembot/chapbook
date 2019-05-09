@@ -21,6 +21,10 @@ export default function startSkipAnimation(el, spinEl) {
 		}))
 		.sort((a, b) => a.delay - b.delay);
 
+	if (list.length === 0) {
+		return;
+	}
+
 	function skip() {
 		const elapsed = Date.now() - start;
 
