@@ -7,10 +7,6 @@ import timestring from 'timestring';
 import {selectAll} from '../util/dom-select';
 
 export default function startSkipAnimation(el, spinEl) {
-	// TODO: add module for skipping CSS animations, compute max delay, make
-	// spinner go away after that apply .skip-animation class when click or
-	// keypress occurs
-
 	let start = Date.now();
 	let finishTimeout;
 
