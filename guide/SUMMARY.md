@@ -31,6 +31,7 @@
     -   [Audio](multimedia/audio.md)
     -   [Video](multimedia/video.md)
 -   [Customization](customization/index.md)
+    -   [The Header and Footer](customization/header-and-footer.md)
     -   [Fonts and Colors](customization/fonts-and-colors.md)
     -   [External Web Fonts](customization/external-web-fonts.md)
     -   [Page Style](customization/page-style.md)
