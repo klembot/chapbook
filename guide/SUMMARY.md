@@ -40,7 +40,6 @@
 -   [Player Input](player-input/index.md)
     -   [Text Input](player-input/text-input.md)
     -   [Dropdown Menus and Cycling Links](player-input/dropdown-menus-cycling-links.md)
-    -   [Live Inputs](player-input/live-inputs.md)
 -   [Advanced Topics](advanced/index.md)
     -   [Using JavaScript in Passages](advanced/using-javascript-in-passages.md)
     -   [Using CSS in Passages](advanced/using-css-in-passages.md)
