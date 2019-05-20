@@ -1,4 +1,3 @@
-import leftPad from 'left-pad';
 import event from './event';
 import {get} from './state';
 
@@ -12,7 +11,7 @@ export const defaults = {
 };
 
 function prefix(text) {
-	return leftPad(text, 8) + ' \u2502 ';
+	return text + ': ';
 }
 
 export function log(source, message) {

@@ -41,7 +41,6 @@
 	"dependencies": {
 		"closest": "^0.0.1",
 		"get-value": "^3.0.1",
-		"left-pad": "^1.3.0",
 		"lodash.unescape": "^4.0.1",
 		"marked": "^0.6.2",
 		"nanobus": "^4.3.3",
