@@ -32,11 +32,20 @@ Sadly, you can't use spaces in your variable names. Because of this, a common pr
 Another common practice is to put an underscore in front of variable names when the value will only be used in the current passage. This practice is just a hint to yourself; Chapbook does not enforce this usage.[^2]
 
 {% hint style='info' %}
-A variable name can contain periods (`.`), but they carry a special meaning. Until you've read [Nesting Variables With Objects][nesting-vars], it's best to leave them out of variable names.
+A variable name can contain periods (`.`), but they carry a special meaning. Until you've read [Objects and Lookup Values](objects-and-lookups.md), it's best to leave them out of variable names.
 {% endhint %}
 
-{% hint style='working' %}
-Chapbook as well as the player's web browser, reserves certain variable names for its own use. They will eventually be detailed here.
+{% hint style='danger' %}
+Chapbook and web browsers reserve certain variable names for their own use. If you try to use a variable whose name overlaps them, unpredictable things may happen, so you should avoid them. Chapbook reserves the following names:
+
+- `browser`
+- `engine`
+- `now`
+- `passage`
+- `random`
+- `story`
+
+The browser reserves quite a few (over two hundred at time of writing), but you're unlikely to want to use most of them, like `ondeviceorientation`. See [the exhaustive list](https://developer.mozilla.org/en-US/docs/Web/API/Window#Properties) for more details.
 {% endhint %}
 
 The only time variable names are shown to a player is if an error occurs in your story while they are playing it, so choose names that are easy to remember and descriptive. There's no need for a `clueF` variable when you can have `sawFootprintsInVault` instead.
@@ -163,5 +172,3 @@ Will display the contents of the passage 'catWalk'.
 [^2]: The SugarCube story format popularized this practice, and in fact does discard variables whose name starts with an underscore after the player navigates to another passage. 
 [^3]: The final authority on ordering characters in a string is the Unicode standard. Characters are compared by their Unicode code points; a higher numeric code point means that a character is greater than another.
 [^4]: In case you're curious, `!true || false` evaluates to false. The not operator takes precedent over the or.
-
-[nesting-vars]: ../customization/nesting-variables.html
