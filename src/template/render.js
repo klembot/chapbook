@@ -136,5 +136,6 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 	/* Finally, render the Markdown to HTML. */
 
 	marked.setOptions(markedOptions);
+	log(`Final Markdown:\n${markdown}`);
 	return marked(markdown);
 }
