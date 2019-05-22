@@ -8,27 +8,48 @@ describe('parse()', () => {
 		expect(typeof result.vars).toBe('object');
 	});
 
+	test('parses var names', () => {
+		const result = parse("foo: 2\nbar: 'red'\nBAZ: true\n--\n");
+
+		expect(result.vars[0].name).toEqual('foo');
+		expect(result.vars[1].name).toEqual('bar');
+		expect(result.vars[2].name).toEqual('BAZ');
+	});
+
+	test('allows setting the same variable multiple times', () => {
+		const result = parse("foo: 2\nfoo: 'red'\n--\n");
+
+		expect(result.vars[0].name).toEqual('foo');
+		expect(result.vars[1].name).toEqual('foo');
+	});
+
 	test('creates functions for vars', () => {
 		const result = parse("foo: 2\nbar: 'red'\nbaz: true\n--\n");
 
-		expect(typeof result.vars.foo).toBe('function');
-		expect(typeof result.vars.bar).toBe('function');
-		expect(typeof result.vars.baz).toBe('function');
+		expect(result.vars.length).toBe(3);
+
+		result.vars.forEach(v => {
+			expect(typeof v.value).toBe('function');
+		});
+	});
+
+	test('parses var conditions', () => {
+		const result = parse(
+			"foo: 2\nbar(true): 'red'\nbaz (1 + 1 === 2 && 'a' < 'b') : true\n--\n"
+		);
+
+		expect(result.vars[0].name).toBe('foo');
+		expect(result.vars[0].condition).toBe(undefined);
+		expect(result.vars[1].name).toBe('bar');
+		expect(typeof result.vars[1].condition).toBe('function');
+		expect(result.vars[2].name).toBe('baz');
+		expect(typeof result.vars[2].condition).toBe('function');
 	});
 
 	test('ignores empty lines in the vars section', () => {
 		const result = parse('foo: 2\n  \n\t\nbar: 3\n--\n');
 
-		expect(typeof result.vars.foo).toBe('function');
-		expect(typeof result.vars.bar).toBe('function');
-	});
-
-	test.skip('warns about repeated vars', () => {
-		const result = parse('foo: 2\n foo: 3\n--\n');
-
-		expect(result.warnings.length).toBe(1);
-		expect(result.warnings[0]).toMatch(/defined more than once/);
-		expect(result.vars.foo).toBe('3');
+		expect(result.vars.length).toBe(2);
 	});
 
 	test.skip('warns about malformed lines in vars', () => {
@@ -99,8 +120,10 @@ describe('parse()', () => {
 			"foo: 1\nbar: 'red'\n--\nThis is a text block.\n[hello]\nAnd another block.\n\n[hello again]\nFinally..."
 		);
 
-		expect(typeof result.vars.foo).toBe('function');
-		expect(typeof result.vars.bar).toBe('function');
+		expect(result.vars[0].name).toBe('foo');
+		expect(typeof result.vars[0].value).toBe('function');
+		expect(result.vars[1].name).toBe('bar');
+		expect(typeof result.vars[1].value).toBe('function');
 		expect(result.blocks).toEqual([
 			{type: 'text', content: 'This is a text block.'},
 			{type: 'modifier', content: 'hello'},
