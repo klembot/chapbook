@@ -17,65 +17,36 @@ largeFamily: cousins > 10
 You sit back in your chair and consider everyone you'll need to invite to the reunion.
 ```
 
-This passage sets the variable `largeFamily` to either `true` or `false`, depending on what value the variable `cousins` has. However, you may want to set variables to other types of values besides booleans. You can use a _ternary operator_ to set a variable based on a condition. A ternary operator sounds complex, but its format is simple:
+This passage sets the variable `largeFamily` to either `true` or `false`, depending on what value the variable `cousins` has. However, you may want to set variables to other types of values besides booleans. To do this, add a condition to the assignment:
 
 ```
-transportation: kilometers > 300 ? 'airplane' : 'car' 
+transportation: 'car'
+transportation (kilometers > 1000): 'plane' 
 --
 You'll need to take a {transportation} to get there.
 ```
 
-The syntax a ternary operator uses is:
+This example demonstrates two new things about vars sections:
 
-<p class="ternary-example">
-	<span class="condition">condition</span>
-	<span class="punc">?</span>
-	<span class="true">value when condition is true</span>
-	<span class="punc">:</span>
-  <span class="false">value when condition is false</span>
-</p>
+- You may change a variable more than once in a single vars section. Chapbook changes the variables in the order they are written, top to bottom.
+- If you write an expression inside parentheses before the colon (`:`) that tells Chapbook what value to set, that particular line will only take effect if the expression evaluates to `true`.
 
-It is possible, though quickly confusing, to nest ternary operators:
+So first `transportation` is set to `'car'`, and then, if `kilometers` is greater than `1000`, the value of `transportation` is immediately changed to `'plane'`. Chapbook runs through each variable assignment in sequence, doing nothing else in between, so the two assignments effectively work as one.
+
+Here's a more complex example showing how multiple assignments and conditions go hand in hand.
 
 ```
-transportation: kilometers > 300 ? 'airplane' : kilometers > 5 ? 'car' : 'walk'
+language: 'an unknown language'
+language (country === 'Brazil'): 'Portuguese' 
+language (country === 'China'): 'Mandarin' 
+language (country === 'Ethiopia'): 'Amharic'
+language (country === 'Russia'): 'Russian'
+language (country === 'Australia' || country === 'United States'): 'English'
 --
-You'll need to take a {transportation} to get there.
+The official language of {country} is {language}.
 ```
+
+Although Chapbook sets variables in the order you write them, often times it won't matter much, as you'll usually want to write conditions that are mutually exclusive of each other--that is, only one line ever takes effect.
 
 [^1]: Truthfully, it is also possible to write `[if stringVariable]` or `[if 2 + 2]`. In these cases, any non-empty string (e.g. not `''`) is treated as true, and any non-zero number is treated as true. It's best to be explicit, however, and write `[if stringVariable !== '']` and `[if 2 + 2 !== 0]`.
 [embed-passage]: ../text-and-links/embedding-passages.html
-
-<style>
-.ternary-example {
-	font-size: 120%;
-	text-align: center;
-	display: flex;
-	justify-content: center;
-}
-
-.ternary-example span {
-	display: flex;
-}
-
-.ternary-example .punc {
-	padding: 0 0.2em;
-	color: #868e96; /* gray-6 */
-	background-color: #f1f3f5; /* gray-1 */
-}
-
-.ternary-example .condition {
-	padding: 0 0.2em;
-	background-color: #d0ebff; /* blue-1 */
-}
-
-.ternary-example .true {
-	padding: 0 0.2em;
-	background-color: #d3f9d8; /* green-1 */
-}
-
-.ternary-example .false {
-	padding: 0 0.2em;
-	background-color: #ffe3e3; /* red-1 */
-}
-</style>
