@@ -4,7 +4,7 @@ import {get} from './state';
 export const defaults = {
 	'config.logger.show.parse': false,
 	'config.logger.show.render': false,
-	'config.logger.show.sound': true,
+	'config.logger.show.sound': false,
 	'config.logger.show.state': false,
 	'config.logger.show.story': false,
 	'config.logger.show.style': false
