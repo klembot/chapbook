@@ -18,7 +18,7 @@ Below is an example showing how `write()` works:
 Before you lose your temper, you count to yourself:
 
 [JavaScript]
-for (let i = 1; i &lt;= 10; i++) {
+for (let i = 1; i <= 10; i++) {
 	write(i + '... ');
 }
 ```

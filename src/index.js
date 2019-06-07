@@ -1,5 +1,6 @@
 import {go, restart} from './actions';
 import {init as initBackstage} from './backstage';
+import initExtensibility from './extensibility';
 import {
 	canRestoreFromStorage,
 	get,
@@ -20,6 +21,7 @@ import {init as initStyle} from './style';
 import './index.scss';
 
 loadFromData(document.querySelector('tw-storydata'));
+initExtensibility();
 initState();
 Object.assign(window, {go, restart});
 initStyle();

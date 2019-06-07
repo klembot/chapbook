@@ -1,0 +1,9 @@
+:: Start
+[JavaScript]
+engine.extend('0.0.0', () => {
+	console.log('This code can extend Chapbook.');
+});
+
+engine.extend('9999.0.0.0', () => {
+	console.log('This code will never run, because the requested version is too high.');
+});

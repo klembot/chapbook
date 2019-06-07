@@ -43,6 +43,8 @@
 -   [Advanced Topics](advanced/index.md)
     -   [Using JavaScript in Passages](advanced/using-javascript-in-passages.md)
     -   [Using CSS in Passages](advanced/using-css-in-passages.md)
+    -   [Adding Custom Inserts](advanced/adding-custom-inserts.md)
+    -   [Adding Custom Modifiers](advanced/adding-custom-modifiers.md)
 -   [References](references/index.md)
     -   [Inserts](references/inserts.md)
     -   [Modifiers](references/modifiers.md)
