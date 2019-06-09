@@ -38,7 +38,7 @@ event.on('dom-click', el => {
 			index = 0;
 		}
 
-		el.textContent = choices[index];
+		changeBody(() => (el.textContent = choices[index]));
 
 		if (el.dataset.cbCycleSet) {
 			set(el.dataset.cbCycleSet, choices[index]);

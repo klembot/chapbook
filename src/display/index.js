@@ -149,7 +149,28 @@ coerced to HTML source code, meaning that any event handlers attached to
 elements will be lost. Use `dom-change` and `dom-click` events instead.
 */
 
+import {selectAll} from '../util/dom-select';
+
 export function changeBody(callback) {
+	/*
+	Explicitly set all <input> and <select> values so that are reflected in
+	innerHTML.
+	*/
+
+	selectAll(bodyContentEl, 'input').forEach(el => {
+		el.setAttribute('value', el.value);
+	});
+
+	selectAll(bodyContentEl, 'select').forEach(el => {
+		for (let i = 0; i < el.options.length; i++) {
+			if (i === el.options.selectedIndex) {
+				el.options[i].setAttribute('selected', '');
+			} else {
+				el.options[i].removeAttribute('selected');
+			}
+		}
+	});
+
 	/*
 	Clone the current DOM node, but hand off the original to the callback. This
 	is so that if the callback is processing something based on an event, it is

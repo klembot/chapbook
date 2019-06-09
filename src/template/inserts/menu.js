@@ -19,16 +19,15 @@ export default {
 		return htmlify(
 			'select',
 			{'data-cb-menu-set': varName},
-			props.choices.map(choice =>
-				domify(
-					'option',
-					{
-						value: choice,
-						selected: current === choice ? 'selected' : undefined
-					},
-					[choice]
-				)
-			)
+			props.choices.map(choice => {
+				const opts = {value: choice};
+
+				if (current === choice) {
+					opts.selected = '';
+				}
+
+				return domify('option', opts, [choice]);
+			})
 		);
 	}
 };
