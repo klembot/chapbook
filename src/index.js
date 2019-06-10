@@ -35,7 +35,9 @@ if (get('config.testing')) {
 	initBackstage();
 }
 
-if (canRestoreFromStorage()) {
+/* If we are in debug mode, then don't try to restore the session. */
+
+if (!get('config.testing') && canRestoreFromStorage()) {
 	restoreFromStorage();
 }
 
