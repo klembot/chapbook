@@ -1,6 +1,6 @@
 # Chapbook, a story format for Twine 2
 
-![][logo.svg]
+![](logo.svg)
 
 _by Chris Klimas_
 
