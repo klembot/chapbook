@@ -25,10 +25,6 @@ Vars sections never display anything to the player; this is so that, for example
 If a passage is embedded in another using the `{embed passage}` modifier, its vars section will also take effect.
 {% endhint %}
 
-{% hint style='danger' %}
-Remember that three dashes creates a visible section break in passage text. Use only two to create vars sections.
-{% endhint %}
-
 You may only have one vars section in each passage, but then there's really only ever need for one. The name of state variables must follow a few rules, too. They must start with a letter (upper or lowercase), underscore (`_`), or dollar sign (`$`); after the first character can come any combination of the preceding kinds of characters as well as digits.[^1]
 
 Sadly, you can't use spaces in your variable names. Because of this, a common practice called _camel casing_ (because of the camel-like humps in the resulting word) glues phrases together using capital letters, like the `doomedToDieInFiveMinutes` example above. Another school of thought, _snake casing_, prefers to use underscores instead; e.g. `doomed_to_die_in_five_minutes`. Either's perfectly fine. Use whichever feels most comfortable to you.
@@ -36,11 +32,20 @@ Sadly, you can't use spaces in your variable names. Because of this, a common pr
 Another common practice is to put an underscore in front of variable names when the value will only be used in the current passage. This practice is just a hint to yourself; Chapbook does not enforce this usage.[^2]
 
 {% hint style='info' %}
-A variable name can contain periods (`.`), but they carry a special meaning. Until you've read [Nesting Variables With Objects][nesting-vars], it's best to leave them out of variable names.
+A variable name can contain periods (`.`), but they carry a special meaning. Until you've read [Objects and Lookup Values](objects-and-lookups.md), it's best to leave them out of variable names.
 {% endhint %}
 
-{% hint style='working' %}
-Chapbook as well as the player's web browser, reserves certain variable names for its own use. They will eventually be detailed here.
+{% hint style='danger' %}
+Chapbook and web browsers reserve certain variable names for their own use. If you try to use a variable whose name overlaps them, unpredictable things may happen, so you should avoid them. Chapbook reserves the following names:
+
+- `browser`
+- `engine`
+- `now`
+- `passage`
+- `random`
+- `story`
+
+The browser reserves quite a few (over two hundred at time of writing), but you're unlikely to want to use most of them, like `ondeviceorientation`. See [the exhaustive list](https://developer.mozilla.org/en-US/docs/Web/API/Window#Properties) for more details.
 {% endhint %}
 
 The only time variable names are shown to a player is if an error occurs in your story while they are playing it, so choose names that are easy to remember and descriptive. There's no need for a `clueF` variable when you can have `sawFootprintsInVault` instead.
@@ -167,5 +172,3 @@ Will display the contents of the passage 'catWalk'.
 [^2]: The SugarCube story format popularized this practice, and in fact does discard variables whose name starts with an underscore after the player navigates to another passage. 
 [^3]: The final authority on ordering characters in a string is the Unicode standard. Characters are compared by their Unicode code points; a higher numeric code point means that a character is greater than another.
 [^4]: In case you're curious, `!true || false` evaluates to false. The not operator takes precedent over the or.
-
-[nesting-vars]: ../customization/nesting-variables.html

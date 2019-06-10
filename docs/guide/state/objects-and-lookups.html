@@ -523,7 +523,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="../customization/fonts-and-colors.html">
+        <li class="chapter " data-level="1.7.1" data-path="../customization/header-and-footer.html">
+            
+                <a href="../customization/header-and-footer.html">
+            
+                    
+                    The Header and Footer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../customization/fonts-and-colors.html">
             
                 <a href="../customization/fonts-and-colors.html">
             
@@ -536,7 +549,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2" data-path="../customization/external-web-fonts.html">
+        <li class="chapter " data-level="1.7.3" data-path="../customization/external-web-fonts.html">
             
                 <a href="../customization/external-web-fonts.html">
             
@@ -549,7 +562,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.3" data-path="../customization/page-style.html">
+        <li class="chapter " data-level="1.7.4" data-path="../customization/page-style.html">
             
                 <a href="../customization/page-style.html">
             
@@ -562,7 +575,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.4" data-path="../customization/fork-style.html">
+        <li class="chapter " data-level="1.7.5" data-path="../customization/fork-style.html">
             
                 <a href="../customization/fork-style.html">
             
@@ -575,7 +588,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.5" data-path="../customization/design-considerations.html">
+        <li class="chapter " data-level="1.7.6" data-path="../customization/design-considerations.html">
             
                 <a href="../customization/design-considerations.html">
             
@@ -633,19 +646,6 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.3" data-path="../player-input/live-inputs.html">
-            
-                <a href="../player-input/live-inputs.html">
-            
-                    
-                    Live Inputs
-            
-                </a>
-            
-
-            
-        </li>
-    
 
             </ul>
             
@@ -671,6 +671,45 @@
             
                     
                     Using JavaScript in Passages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../advanced/using-css-in-passages.html">
+            
+                <a href="../advanced/using-css-in-passages.html">
+            
+                    
+                    Using CSS in Passages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../advanced/adding-custom-inserts.html">
+            
+                <a href="../advanced/adding-custom-inserts.html">
+            
+                    
+                    Adding Custom Inserts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../advanced/adding-custom-modifiers.html">
+            
+                <a href="../advanced/adding-custom-modifiers.html">
+            
+                    
+                    Adding Custom Modifiers
             
                 </a>
             
@@ -834,6 +873,11 @@
 <td><code>1024</code></td>
 </tr>
 <tr>
+<td><code>engine.version</code></td>
+<td>The version of Chapbook currently running, as a string.</td>
+<td><code>&apos;1.0.0&apos;</code></td>
+</tr>
+<tr>
 <td><code>now.datestamp</code></td>
 <td>A short human-readable description of the date right now.</td>
 <td><code>&apos;2/15/2011&apos;</code></td>
@@ -889,6 +933,16 @@
 <td><code>2011</code></td>
 </tr>
 <tr>
+<td><code>passage.name</code></td>
+<td>The name of the current passage as set in the Twine editor.</td>
+<td><code>&apos;Untitled Passage&apos;</code></td>
+</tr>
+<tr>
+<td><code>passage.visits</code></td>
+<td>The number of times the player has seen the current passage, including the current time. That is, the first time the player sees a passage, this lookup&apos;s value is 1.</td>
+<td>1</td>
+</tr>
+<tr>
 <td><code>story.name</code></td>
 <td>The name of the story as set in the Twine editor.</td>
 <td><code>&apos;Untitled Story&apos;</code></td>
@@ -896,8 +950,6 @@
 </tbody>
 </table>
 <p>Note that <code>now</code> lookup values reflect when they were last accessed, which is usually when a passage is navigated to. String values like <code>now.monthName</code> will vary by the language the player has set as default in their browser&#x2013; a French person will see <code>Ao&#xFB;t</code> where an American sees <code>August</code>, for example, and similarly the French will see <code>now.datestamp</code> as <code>&apos;15/2/2011&apos;</code> where Americans see it as <code>&apos;2/15/2011&apos;</code>.</p>
-<p><div class="alert alert-warning hints-alert"><div class="hints-icon"><i class="fa fa-wrench"></i></div><div class="hints-container"><p>More lookups will be added to<span class="widont">&#xA0;</span>Chapbook.</p>
-</div></div></p>
 
                                 
                                 </section>
@@ -941,7 +993,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Objects and Lookup Variables","level":"1.5.8","depth":2,"next":{"title":"Randomness","level":"1.5.9","depth":2,"path":"state/randomness.md","ref":"state/randomness.md","articles":[]},"previous":{"title":"State Backstage","level":"1.5.7","depth":2,"path":"state/backstage.md","ref":"state/backstage.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"state/objects-and-lookups.md","mtime":"2018-11-19T03:44:28.688Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-19T03:50:51.211Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Objects and Lookup Variables","level":"1.5.8","depth":2,"next":{"title":"Randomness","level":"1.5.9","depth":2,"path":"state/randomness.md","ref":"state/randomness.md","articles":[]},"previous":{"title":"State Backstage","level":"1.5.7","depth":2,"path":"state/backstage.md","ref":"state/backstage.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"state/objects-and-lookups.md","mtime":"2019-05-10T22:54:37.730Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-10T22:03:06.593Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

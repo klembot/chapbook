@@ -40,7 +40,7 @@ function parseHistory(history) {
 	return result;
 }
 
-function historyRows({passage, vars, index}) {
+function historyRows({passage, vars}, index) {
 	/*
 	This is a function, not a stateless component, because we have to return
 	multiple <tr>s without anything enclosing them.

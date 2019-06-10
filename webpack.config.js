@@ -13,6 +13,10 @@ const args = require('yargs')
 	.alias('e', 'example').argv;
 
 const config = {
+	devServer: {
+		disableHostCheck: true,
+		stats: 'minimal'
+	},
 	mode: isRelease ? 'production' : 'development',
 	module: {
 		rules: [
@@ -32,6 +36,10 @@ const config = {
 					{loader: 'css-loader', options: {minimize: isRelease}},
 					'sass-loader'
 				]
+			},
+			{
+				test: /\.svg$/,
+				use: ['url-loader']
 			}
 		]
 	},
@@ -76,11 +84,6 @@ const config = {
 	],
 	resolve: {
 		extensions: ['.js', '.jsx']
-	},
-	serve: {
-		dev: {
-			stats: 'minimal'
-		}
 	}
 };
 

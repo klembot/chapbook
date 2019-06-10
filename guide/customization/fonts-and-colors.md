@@ -323,11 +323,10 @@ As with fonts, you can omit parts of a color declaration. Setting `config.style.
 
 [^1]: To review, launching your story with Twine's **Test** button will cause the backstage view to appear, including the **Style** tab.
 
-[^2]: If you are familiar with [CSS units][css-units], you can also use them, e.g. `Palatino 1rem` or `Palatino 25%`.
+[^2]: If you are familiar with [CSS units](https://developer.mozilla.org/en-US/docs/Web/CSS/length), you can also use them, e.g. `Palatino 1rem` or `Palatino 25%`.
 
 [^3]: What's a serif? [Wikipedia](https://en.wikipedia.org/wiki/Serif) aptly answers.
 
 [open-color]: https://yeun.github.io/open-color/
-[color-notation: https://developer.mozilla.org/en-US/docs/Web/HTML/Applying_color#How_to_describe_a_color
-[css-units]: https://developer.mozilla.org/en-US/docs/Web/CSS/length
+[color-notation]: https://developer.mozilla.org/en-US/docs/Web/HTML/Applying_color#How_to_describe_a_color
 [helvetica-vs-arial]: https://ilovetypography.com/2007/10/06/arial-versus-helvetica/

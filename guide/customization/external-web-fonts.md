@@ -43,8 +43,18 @@ Welcome aboard the U.S.S. Hood.
 
 ## Other Web Fonts
 
-{% hint style='working' %}
-It is possible to embed web fonts you have purchased or obtained outside these services--this will be documented in a later version of this guide.
-{% endhint %}
+You can also use web fonts separately from a cloud service. Please make sure to check the license for the font; it's not uncommon, for example, to be required to pay a certain fee to use a font for personal use, but a different for use on the web, or in an app.
+
+To include a font directly by URL, add two properties to `config.style.fonts`:
+
+```
+config.style.fonts.leagueSpartan.url: 'league-spartan.woff2'
+config.style.fonts.leagueSpartan.name: 'League Spartan'
+config.style.page.font: 'League Spartan/sans-serif 16'
+--
+It is the year 1969, and you are walking on the moon.
+```
+
+Chapbook can't infer the name of the font from the `url` property, so you must tell it what it is.
 
 [google-fonts]: https://fonts.google.com

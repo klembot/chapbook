@@ -37,7 +37,7 @@ What a horrible night to have to study for exams.
 ```
 
 {% hint style='working' %}
-Other types of image embeds are being considered for implementation, as well as more flexibility in layout--e.g. having an image appear to the left or right of the text.
+Other types of image embeds may come in a future version of Chapbook, as well as more flexibility in layout--e.g. having an image appear to the left or right of the text.
 {% endhint %}
 
 ## Alternate Text

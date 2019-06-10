@@ -1,6 +1,9 @@
 /*
 Manages keeping the DOM in sync with state, and manages bridging events in the
 DOM with the engine.
+
+This module emits `dom-change` and `dom-click` events on any DOM element that is
+changed (i.e. inputs) or clicked with any `data-cb-*` attribute.
 */
 
 import coalesceCalls from '../util/coalesce-calls';
@@ -10,9 +13,10 @@ import {get} from '../state';
 import {init as initCrash} from './crash';
 import {passageNamed} from '../story';
 import {render} from '../template';
+import startSkipAnimation from './skip-animation';
 import './index.scss';
 
-let bodyContentEl, marginalEls;
+let bodyContentEl, marginalEls, spinnerEl;
 const transitions = {crossfade, fadeInOut, none};
 
 export const defaults = {
@@ -57,6 +61,8 @@ const updateDom = coalesceCalls(function update(calls) {
 				get('config.body.transition.name'),
 				get('config.body.transition.duration')
 			);
+
+			startSkipAnimation(bodyContentEl, spinnerEl);
 		} else {
 			throw new Error(
 				`There is no passage named "${trail[trail.length - 1]}".`
@@ -92,6 +98,7 @@ const updateDom = coalesceCalls(function update(calls) {
 export function init() {
 	initCrash();
 	bodyContentEl = document.querySelector('#page article');
+	spinnerEl = document.querySelector('#page #spinner');
 	marginalEls = {};
 
 	['header', 'footer'].forEach(m => {
@@ -142,7 +149,28 @@ coerced to HTML source code, meaning that any event handlers attached to
 elements will be lost. Use `dom-change` and `dom-click` events instead.
 */
 
+import {selectAll} from '../util/dom-select';
+
 export function changeBody(callback) {
+	/*
+	Explicitly set all <input> and <select> values so that are reflected in
+	innerHTML.
+	*/
+
+	selectAll(bodyContentEl, 'input').forEach(el => {
+		el.setAttribute('value', el.value);
+	});
+
+	selectAll(bodyContentEl, 'select').forEach(el => {
+		for (let i = 0; i < el.options.length; i++) {
+			if (i === el.options.selectedIndex) {
+				el.options[i].setAttribute('selected', '');
+			} else {
+				el.options[i].removeAttribute('selected');
+			}
+		}
+	});
+
 	/*
 	Clone the current DOM node, but hand off the original to the callback. This
 	is so that if the callback is processing something based on an event, it is

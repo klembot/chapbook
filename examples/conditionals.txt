@@ -12,6 +12,8 @@ Okay, what would you like to test?
 * [[An if modifier]]
 * [[An unless modifier]]
 * [[An if/else modifier combination]]
+* [[An ifalways modifier]]
+* [[An ifnever modifier]]
 
 
 :: Blue
@@ -21,6 +23,8 @@ Okay, what would you like to test?
 * [[An if modifier]]
 * [[An unless modifier]]
 * [[An if/else modifier combination]]
+* [[An ifalways modifier]]
+* [[An ifnever modifier]]
 
 :: An if modifier
 Let me see...
@@ -55,3 +59,13 @@ You picked something other than red.
 
 [continue]
 This text appears no matter what.
+
+:: An ifalways modifier
+[ifalways false]
+This text appears no matter what.
+
+:: An ifnever modifier
+Nothing should appear after this.
+
+[ifnever true]
+Nothing to see here.

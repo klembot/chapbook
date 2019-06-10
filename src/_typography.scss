@@ -8,6 +8,10 @@
 	letter-spacing: 0.075em;
 }
 
+.small-caps {
+	@include small-caps;
+}
+
 @mixin system-font {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
 		Oxygen-Sans, Ubuntu Cantarell, 'Helvetica Neue', sans-serif;

@@ -33,14 +33,27 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 
 	let markdown = '';
 
-	/* Dispatch variable changes as denoted by properties. */
+	/* Dispatch variable changes. */
 
 	if (!ignoreVars) {
-		log(`Setting vars (${Object.keys(parsed.vars).length})`);
+		log(`Setting vars (${parsed.vars.length})`);
 
-		Object.keys(parsed.vars).forEach(name => {
-			log(`Setting var "${name}"`);
-			set(name, parsed.vars[name]());
+		parsed.vars.forEach(v => {
+			if (v.condition) {
+				const condition = v.condition();
+
+				if (condition) {
+					log(`Setting var "${name}" (condition is currently true)`);
+					set(v.name, v.value());
+				} else {
+					log(
+						`Not setting var "${name}" (condition is currently false)`
+					);
+				}
+			} else {
+				log(`Setting var "${name}"`);
+				set(v.name, v.value());
+			}
 		});
 	}
 
@@ -136,5 +149,6 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 	/* Finally, render the Markdown to HTML. */
 
 	marked.setOptions(markedOptions);
+	log(`Final Markdown:\n${markdown}`);
 	return marked(markdown);
 }

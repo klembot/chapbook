@@ -1,14 +1,10 @@
-const pify = require('pify');
 const cpy = require('cpy');
-const fs = pify(require('fs'));
-const makeDir = require('make-dir');
+const fs = require('fs-extra');
 const pug = require('pug');
 
 const pkg = require('../package.json');
 
-const encoding = {encoding: 'utf8'};
-
-makeDir('docs')
+fs.mkdirp('docs')
 	.then(() =>
 		fs.writeFile(
 			'docs/index.html',
@@ -16,13 +12,13 @@ makeDir('docs')
 		)
 	)
 	.then(() => cpy('homepage/*{.css,.jpeg}', 'docs'))
-	.then(() => makeDir('docs/examples'))
+	.then(() => fs.mkdirp('docs/examples'))
 	.then(() => cpy('examples/cloak-of-darkness.*', 'docs/examples'))
-	.then(() => makeDir('docs/guide'))
+	.then(() => fs.mkdirp('docs/guide'))
 	.then(() =>
 		cpy('**', '../../docs/guide', {cwd: 'guide/_book/', parents: true})
 	)
-	.then(() => makeDir(`docs/use/${pkg.version}`))
+	.then(() => fs.mkdirp(`docs/use/${pkg.version}`))
 	.then(() =>
 		cpy(
 			`dist/chapbook-${pkg.version}/format.js`,

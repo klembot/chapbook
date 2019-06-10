@@ -15,7 +15,6 @@ This displays a text field after the first paragraph that, once the player moves
 ```
 petType: 'cat'
 --
-
 What would you like to name your loyal {petType} companion?
 
 {text input for: petType}

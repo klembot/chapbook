@@ -523,7 +523,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="../customization/fonts-and-colors.html">
+        <li class="chapter " data-level="1.7.1" data-path="../customization/header-and-footer.html">
+            
+                <a href="../customization/header-and-footer.html">
+            
+                    
+                    The Header and Footer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../customization/fonts-and-colors.html">
             
                 <a href="../customization/fonts-and-colors.html">
             
@@ -536,7 +549,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2" data-path="../customization/external-web-fonts.html">
+        <li class="chapter " data-level="1.7.3" data-path="../customization/external-web-fonts.html">
             
                 <a href="../customization/external-web-fonts.html">
             
@@ -549,7 +562,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.3" data-path="../customization/page-style.html">
+        <li class="chapter " data-level="1.7.4" data-path="../customization/page-style.html">
             
                 <a href="../customization/page-style.html">
             
@@ -562,7 +575,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.4" data-path="../customization/fork-style.html">
+        <li class="chapter " data-level="1.7.5" data-path="../customization/fork-style.html">
             
                 <a href="../customization/fork-style.html">
             
@@ -575,7 +588,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.5" data-path="../customization/design-considerations.html">
+        <li class="chapter " data-level="1.7.6" data-path="../customization/design-considerations.html">
             
                 <a href="../customization/design-considerations.html">
             
@@ -633,19 +646,6 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.3" data-path="../player-input/live-inputs.html">
-            
-                <a href="../player-input/live-inputs.html">
-            
-                    
-                    Live Inputs
-            
-                </a>
-            
-
-            
-        </li>
-    
 
             </ul>
             
@@ -671,6 +671,45 @@
             
                     
                     Using JavaScript in Passages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../advanced/using-css-in-passages.html">
+            
+                <a href="../advanced/using-css-in-passages.html">
+            
+                    
+                    Using CSS in Passages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../advanced/adding-custom-inserts.html">
+            
+                <a href="../advanced/adding-custom-inserts.html">
+            
+                    
+                    Adding Custom Inserts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../advanced/adding-custom-modifiers.html">
+            
+                <a href="../advanced/adding-custom-modifiers.html">
+            
+                    
+                    Adding Custom Modifiers
             
                 </a>
             
@@ -800,8 +839,77 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="audio">Audio</h1>
-<p><div class="alert alert-warning hints-alert"><div class="hints-icon"><i class="fa fa-wrench"></i></div><div class="hints-container"><p>Audio functionality isn&apos;t yet implemented in Chapbook, but it will<span class="widont">&#xA0;</span>be.</p>
-</div></div></p>
+<p>Chapbook supports two types of audio: <em>ambient sound</em> and <em>sound effects</em>. Ambient sounds are long-running audio, such as music or background noise, that automatically loop when playback completes. Sound effects are one-off sounds, like the sound of a door opening or an<span class="widont">&#xA0;</span>explosion.</p>
+<p>There are two other differences between sound effects and ambient<span class="widont">&#xA0;</span>audio:</p>
+<ul>
+<li>There can only be one ambient sound playing at a time under normal<span class="widont">&#xA0;</span>circumstances.</li>
+<li>Sound effects are preloaded when your story begins. This is so that when you ask for an effect to be played in your story, there will be as little delay as possible before it begins playback. However, this means that you should be careful about the file size of the sound effects you use. The preloading process takes place in the background as players interact with your story, so large sound effects will not delay the start of your story. But it&apos;s still wasteful to load large<span class="widont">&#xA0;</span>files.</li>
+</ul>
+<p>You should also make sure that all your sounds are in <span class="caps">MP3</span> format. There are other types of audio formats, such as Ogg Theora or <span class="caps">WAV</span>, but browser support varies for each of these. <span class="caps">MP3</span> is as universal a format as possible. There are many applications, including the open-source <a href="https://www.audacityteam.org/" target="_blank">Audacity</a>, that can convert audio files into <span class="caps">MP3</span> format for<span class="widont">&#xA0;</span>you.</p>
+<h2 id="sound-effects">Sound Effects</h2>
+<p>Before playing a sound effect, you must first define it in your story state. Below is an example of how you would define a sound<span class="widont">&#xA0;</span>effect:</p>
+<pre><code>sound.effect.explosion.url: &apos;boom.mp3&apos;
+sound.effect.explosion.description: &apos;a large explosion&apos;
+--
+The timer reads 0:00...
+</code></pre><p>The <code>explosion</code> keyword defines the name of the ambient sound, which you&apos;ll use later. The <code>url</code> property defines the address to load the sound from, and the <code>description</code> provides a textual description of the contents of the sound. This is so that players who have difficulty hearing, or who have muted your story, can receive an alternate version of the<span class="widont">&#xA0;</span>sound.</p>
+<p>Once you&apos;ve defined your sound effect, you can play it in a passage using the <code>{sound effect}</code> insert.</p>
+<pre><code>sound.effect.explosion.url: &apos;boom.mp3&apos;
+sound.effect.explosion.description: &apos;a large explosion&apos;
+--
+The timer reads 0:00...
+
+{sound effect: &apos;explosion&apos;}
+</code></pre><p>The exact place you put the insert matters. If a player has disabled sound, or is unable to hear your sound, they will see the text of the <code>description</code> property instead where you enter the<span class="widont">&#xA0;</span>insert.</p>
+<p>If you insert multiple different sound effects in a single passage, they will play simultaneously. If you insert a sound effect in another passage the player reaches while the effect is stil playing, the second insert will have no<span class="widont">&#xA0;</span>effect.</p>
+<p>If you need to play a sound effect repeatedly, define it multiple times. You can assign the entire object to save time. For<span class="widont">&#xA0;</span>example:</p>
+<pre><code>sound.effect.explosion.url: &apos;boom.mp3&apos;
+sound.effect.explosion.description: &apos;a large explosion&apos;
+sound.effect.explosion2: sound.effect.explosion
+--
+The timer reads 0:00...
+
+{sound effect: &apos;explosion&apos;}
+
+[[Oof.]]
+</code></pre><p>(Note the lack of quotation marks around <code>sound.effect.explosion</code> in the line that sets <code>sound.effect.explosion2</code>.)</p>
+<p>Assigning the <code>sound.effect.explosion2</code> <a href="../state/objects-and-lookups.html">object</a> wholesale, instead of setting it property-by-property, causes it to be a copy of <code>sound.effect.explosion</code>. If you ever change a property of <code>sound.effect.explosion</code>, <code>sound.effect.explosion2</code> will change<span class="widont">&#xA0;</span>too.</p>
+<p>And then, in the passage named <code>Oof.</code>, you&apos;d write:</p>
+<pre><code>That wasn&apos;t so bad. Wait...
+
+{sound effect: &apos;explosion2&apos;}
+</code></pre><h2 id="ambient-sound">Ambient Sound</h2>
+<p>The process of defining an ambient sound is very similar to defining a sound<span class="widont">&#xA0;</span>effect.</p>
+<pre><code>sound.ambient.forest.url: &apos;forest.mp3&apos;
+sound.ambient.forest.description: &apos;midday forest sounds&apos;
+--
+It&apos;s a beautiful day.
+</code></pre><p>Similarly, you begin playing an ambient sound with an<span class="widont">&#xA0;</span>insert:</p>
+<pre><code>sound.ambient.forest.url: &apos;forest.mp3&apos;
+sound.ambient.forest.description: &apos;midday forest sounds&apos;
+--
+{ambient sound: &apos;forest&apos;}
+
+It&apos;s a beautiful day.
+</code></pre><p>The only difference here is that the sound will fade in, and if there was already an ambient sound playing, the two will crossfade. The exact length of the fade is determined by the state variable <code>sound.transitionDuration</code>. It is a string in the same format that the <a href="../modifiers-and-inserts/delayed-text.html">after modifier</a><span class="widont">&#xA0;</span>accepts.</p>
+<h2 id="controlling-sound-volume">Controlling Sound Volume</h2>
+<p>To set the master sound volume for your story, change the state variable <code>sound.volume</code> to a decimal between 0 and 1. 0 is muted, and 1 is full volume. You can also temporarily mute all sound by setting <code>sound.mute</code> (note the lack of a D at the end) to <code>true</code>. The advantage of using <code>sound.mute</code> is that it allows you to toggle between no sound and a previously-set<span class="widont">&#xA0;</span>volume.</p>
+<p>You can also set a sound&apos;s volume when playing it using an insert. Both of the inserts below begin playing a sound at half normal<span class="widont">&#xA0;</span>volume.</p>
+<pre><code>{sound effect: &apos;explosion&apos;, volume: 0.5}
+{ambient sound: &apos;forest&apos;, volume: 0.5}
+</code></pre><h2 id="browser-autoplay-problems">Browser Autoplay Problems</h2>
+<p>Chapbook makes every effort to resume sound playback between play sessions, so that if you begin playing an ambient sound, it resumes whenever the player comes back to your story. However, this runs afoul of strict restrictions most browsers have regarding sound that immediately plays when a web page is loaded. Some browsers have a blanket ban on this, while others take into account a player&apos;s behavior on the web site hosting your story&#x2013;if a player has previously interacted a lot with the site, it may allow it, but the exact criteria for allowing it is often<span class="widont">&#xA0;</span>unclear.</p>
+<p>Playing sound after a player has followed a link or otherwise clicked or tapped a link in your story should always work, whatever a browser&apos;s autoplay policy<span class="widont">&#xA0;</span>is.</p>
+<h2 id="manually-controlling-sound">Manually Controlling Sound</h2>
+<p>You may also manually play sounds, either sound effects or ambient sound, by setting their <code>playing</code> property to <code>true</code>. This property automatically becomes <code>false</code> once an effect finishes playing, but will never change for ambient sound unless you use an <code>{ambient sound}</code> insert or set its <code>playing</code> property to <code>false</code> again.</p>
+<p>You can use this for more complex effects, such as layering ambient sounds; however, you <em>must</em> make sure to include appropriate descriptions for people who are unable to hear your audio. To do this, enclose the description inside <code>&lt;audio&gt;</code> and <code>&lt;/audio&gt;</code> like so:</p>
+<pre><code>sound.ambient.forest.playing: true
+sound.ambient.rain.playing: true
+--
+You walk outside.
+
+&lt;audio&gt;Rainy forest background sound&lt;/audio&gt;
+</code></pre><p>The text inside the will not be displayed<span class="widont">&#xA0;</span>ordinarily.</p>
 
                                 
                                 </section>
@@ -845,7 +953,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Audio","level":"1.6.3","depth":2,"next":{"title":"Video","level":"1.6.4","depth":2,"path":"multimedia/video.md","ref":"multimedia/video.md","articles":[]},"previous":{"title":"Images","level":"1.6.2","depth":2,"path":"multimedia/images.md","ref":"multimedia/images.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"multimedia/audio.md","mtime":"2018-09-17T02:16:45.878Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-19T03:50:51.211Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Audio","level":"1.6.3","depth":2,"next":{"title":"Video","level":"1.6.4","depth":2,"path":"multimedia/video.md","ref":"multimedia/video.md","articles":[]},"previous":{"title":"Images","level":"1.6.2","depth":2,"path":"multimedia/images.md","ref":"multimedia/images.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"multimedia/audio.md","mtime":"2019-03-12T02:39:32.230Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-10T22:03:06.593Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

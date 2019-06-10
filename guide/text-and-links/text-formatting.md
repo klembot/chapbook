@@ -59,12 +59,7 @@ A convention sometimes used in publishing to indicate a new scene, or a new line
 > <p style="text-align: center">* &nbsp; * &nbsp; *</p>
 > The following morning was no better than the day before.
 
-To add a section break to your text, type `---` (three dashes) on a line by itself.
-
-## Block Quotations
-
-To indent a long quotation, put `>` (a greater-than symbol) in front of each line.
-
+To add a section break to your text, type `***` (three asterisks) on a line by itself.
 
 ## Lists
 
@@ -80,7 +75,7 @@ To created a bulleted list (or, in the parlance of the web, an unordered list), 
 To create a numbered list (also known as an ordered list), start each line either with a number and a period, or just a `#`. The numbering you use doesn't actually matter--you can have two items starting with `2.` and the list will still be numbered correctly.
 
 <table>
-	<thead><tr><th>Typed2</th><th>Displayed</th></tr></thead>
+	<thead><tr><th>Typed</th><th>Displayed</th></tr></thead>
 	<tbody>
 	<tr><td><code># Red</code><br><code># Green</code><br><code># Blue</code></td><td><ol><li>Red</li><li>Green</li><li>Blue</li></ol></td></tr>
 	<tr><td><code>1. Red</code><br><code>2. Green</code><br><code>3. Blue</code></td><td><ol><li>Red</li><li>Green</li><li>Blue</li></ol></td></tr>
@@ -103,23 +98,13 @@ You can also enter HTML into a passage without any extra code surrounding it. It
 
 Markdown has a quirk where if you enter Markdown code inside of an inline element such as `<b>` or `<span>`, it will convert it to HTML. But in block elements such as `<p>` or `<div>`, it won't.
 
-## Blockquotes and Code Blocks Don't Behave As You Might Expect
+## Blockquotes Don't Behave As You Might Expect
 
-There are two ways that Chapbook formatting differs from standard Markdown that will be covered in later sections.
-
-The first is the use of `>` at the start of a line, which in standard Markdown marks a section of text as a block quotation. In typographic tradition, block quotations are indented to indicate that they aren't part of the main text. Chapbook uses the `>` to mark text as part of a [fork][forks]instead. If you'd like to display a block quotation, put `<blockquote>` and `</blockquote>` around it.
+Chapbook formatting differs from standard Markdown in how it displays blockquotes--that is, a long stretch of text, often multiple paragraphs, that is indented to indicate it isn't part of the main text. Mardkown uses `>` at the start of a line to indicate this. However, Chapbook uses the `>` to mark text as part of a [fork][forks] instead. If you'd like to display a block quotation, put `<blockquote>` and `</blockquote>` around it.
 
 | Typed                                                                                                                                                                                                                                                | Displayed                                                                                                                                                                                                                                                   |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <code>&lt;blockquote&gt;Call me Ishmael. Some years ago--never mind how long precisely--having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.&lt;/blockquote&gt;</code> | <blockquote>Call me Ishmael. Some years ago--never mind how long precisely--having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.</blockquote> |
-
-Secondly, there's a popular extension to Markdown that allows entry of long stretches of monospaced text, often computer code, by placing three backticks (<code>```</code>) on a line by itself, then text, the another set of three backticks. Chapbook uses this convention to allow embedding JavaScript code into a passage. This is discussed in more detail in [Using JavaScript in Passages][js-in-passages], but for now, remember that Markdown code blocks do not display as you might expect.
-
-If you would like to display a long stretch of monospaced text, put `<code>` and `</code>` around it:
-
-| Typed                       | Displayed                 |
-| --------------------------- | ------------------------- |
-| <code>Onscreen it read:</code><br><br><code>&lt;code&gt;</code><br><code>10 PRINT "HELLO"</code><br><code>20 GOTO 10</code><br><code>&lt;/code&gt;</code> | Onscreen it read:<br><br><code>10 PRINT HELLO</code><br><code>20 GOTO 10</code> |
 
 [^1]: Underscores as italics have a tangled history behind them; they resemble underlines, which were more-or-less invented as a workaround for typewriters being unable to italicize words.
 

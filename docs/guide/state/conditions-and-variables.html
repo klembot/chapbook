@@ -523,7 +523,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="../customization/fonts-and-colors.html">
+        <li class="chapter " data-level="1.7.1" data-path="../customization/header-and-footer.html">
+            
+                <a href="../customization/header-and-footer.html">
+            
+                    
+                    The Header and Footer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../customization/fonts-and-colors.html">
             
                 <a href="../customization/fonts-and-colors.html">
             
@@ -536,7 +549,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2" data-path="../customization/external-web-fonts.html">
+        <li class="chapter " data-level="1.7.3" data-path="../customization/external-web-fonts.html">
             
                 <a href="../customization/external-web-fonts.html">
             
@@ -549,7 +562,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.3" data-path="../customization/page-style.html">
+        <li class="chapter " data-level="1.7.4" data-path="../customization/page-style.html">
             
                 <a href="../customization/page-style.html">
             
@@ -562,7 +575,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.4" data-path="../customization/fork-style.html">
+        <li class="chapter " data-level="1.7.5" data-path="../customization/fork-style.html">
             
                 <a href="../customization/fork-style.html">
             
@@ -575,7 +588,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.5" data-path="../customization/design-considerations.html">
+        <li class="chapter " data-level="1.7.6" data-path="../customization/design-considerations.html">
             
                 <a href="../customization/design-considerations.html">
             
@@ -633,19 +646,6 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.3" data-path="../player-input/live-inputs.html">
-            
-                <a href="../player-input/live-inputs.html">
-            
-                    
-                    Live Inputs
-            
-                </a>
-            
-
-            
-        </li>
-    
 
             </ul>
             
@@ -671,6 +671,45 @@
             
                     
                     Using JavaScript in Passages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../advanced/using-css-in-passages.html">
+            
+                <a href="../advanced/using-css-in-passages.html">
+            
+                    
+                    Using CSS in Passages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../advanced/adding-custom-inserts.html">
+            
+                <a href="../advanced/adding-custom-inserts.html">
+            
+                    
+                    Adding Custom Inserts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../advanced/adding-custom-modifiers.html">
+            
+                <a href="../advanced/adding-custom-modifiers.html">
+            
+                    
+                    Adding Custom Modifiers
             
                 </a>
             
@@ -809,61 +848,31 @@ You sit back in your chair and consider everyone you&apos;ll need to invite to t
 <pre><code>largeFamily: cousins &gt; 10
 --
 You sit back in your chair and consider everyone you&apos;ll need to invite to the reunion.
-</code></pre><p>This passage sets the variable <code>largeFamily</code> to either <code>true</code> or <code>false</code>, depending on what value the variable <code>cousins</code> has. However, you may want to set variables to other types of values besides booleans. You can use a <em>ternary operator</em> to set a variable based on a condition. A ternary operator sounds complex, but its format is<span class="widont">&#xA0;</span>simple:</p>
-<pre><code>transportation: kilometers &gt; 300 ? &apos;airplane&apos; : &apos;car&apos; 
+</code></pre><p>This passage sets the variable <code>largeFamily</code> to either <code>true</code> or <code>false</code>, depending on what value the variable <code>cousins</code> has. However, you may want to set variables to other types of values besides booleans. To do this, add a condition to the<span class="widont">&#xA0;</span>assignment:</p>
+<pre><code>transportation: &apos;car&apos;
+transportation (kilometers &gt; 1000): &apos;plane&apos; 
 --
 You&apos;ll need to take a {transportation} to get there.
-</code></pre><p>The syntax a ternary operator uses<span class="widont">&#xA0;</span>is:</p>
-<p class="ternary-example">
-    <span class="condition">condition</span>
-    <span class="punc">?</span>
-    <span class="true">value when condition is true</span>
-    <span class="punc">:</span>
-  <span class="false">value when condition is<span class="widont">&#xA0;</span>false</span>
-</p>
-
-<p>It is possible, though quickly confusing, to nest ternary<span class="widont">&#xA0;</span>operators:</p>
-<pre><code>transportation: kilometers &gt; 300 ? &apos;airplane&apos; : kilometers &gt; 5 ? &apos;car&apos; : &apos;walk&apos;
+</code></pre><p>This example demonstrates two new things about vars<span class="widont">&#xA0;</span>sections:</p>
+<ul>
+<li>You may change a variable more than once in a single vars section. Chapbook changes the variables in the order they are written, top to<span class="widont">&#xA0;</span>bottom.</li>
+<li>If you write an expression inside parentheses before the colon (<code>:</code>) that tells Chapbook what value to set, that particular line will only take effect if the expression evaluates to <code>true</code>.</li>
+</ul>
+<p>So first <code>transportation</code> is set to <code>&apos;car&apos;</code>, and then, if <code>kilometers</code> is greater than <code>1000</code>, the value of <code>transportation</code> is immediately changed to <code>&apos;plane&apos;</code>. Chapbook runs through each variable assignment in sequence, doing nothing else in between, so the two assignments effectively work as<span class="widont">&#xA0;</span>one.</p>
+<p>Here&apos;s a more complex example showing how multiple assignments and conditions go hand in<span class="widont">&#xA0;</span>hand.</p>
+<pre><code>language: &apos;an unknown language&apos;
+language (country === &apos;Brazil&apos;): &apos;Portuguese&apos; 
+language (country === &apos;China&apos;): &apos;Mandarin&apos; 
+language (country === &apos;Ethiopia&apos;): &apos;Amharic&apos;
+language (country === &apos;Russia&apos;): &apos;Russian&apos;
+language (country === &apos;Australia&apos; || country === &apos;United States&apos;): &apos;English&apos;
 --
-You&apos;ll need to take a {transportation} to get there.
-</code></pre><p><div class="alert alert-warning hints-alert"><div class="hints-icon"><i class="fa fa-wrench"></i></div><div class="hints-container"><p>A more graceful way of setting variables to more than two values conditionally is being<span class="widont">&#xA0;</span>considered.</p>
-</div></div></p>
+The official language of {country} is {language}.
+</code></pre><p>Although Chapbook sets variables in the order you write them, often times it won&apos;t matter much, as you&apos;ll usually want to write conditions that are mutually exclusive of each other&#x2013;that is, only one line ever takes<span class="widont">&#xA0;</span>effect.</p>
 <blockquote id="fn_1">
 <sup>1</sup>. Truthfully, it is also possible to write <code>[if stringVariable]</code> or <code>[if 2 + 2]</code>. In these cases, any non-empty string (e.g. not <code>&apos;&apos;</code>) is treated as true, and any non-zero number is treated as true. It&apos;s best to be explicit, however, and write <code>[if stringVariable !== &apos;&apos;]</code> and <code>[if 2 + 2 !== 0]</code>.<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
 </blockquote>
-<style>
-.ternary-example {
-    font-size: 120%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-}
 
-.ternary-example span {
-    display: flex;
-}
-
-.ternary-example .punc {
-    padding: 0 0.2em;
-    color: #868e96; /* gray-6 */
-    background-color: #f1f3f5; /* gray-1 */
-}
-
-.ternary-example .condition {
-    padding: 0 0.2em;
-    background-color: #d0ebff; /* blue-1 */
-}
-
-.ternary-example .true {
-    padding: 0 0.2em;
-    background-color: #d3f9d8; /* green-1 */
-}
-
-.ternary-example .false {
-    padding: 0 0.2em;
-    background-color: #ffe3e3; /* red-1 */
-}
-</style>
                                 
                                 </section>
                             
@@ -906,7 +915,7 @@ You&apos;ll need to take a {transportation} to get there.
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Conditions and Variables","level":"1.5.5","depth":2,"next":{"title":"Continuity Between Sessions","level":"1.5.6","depth":2,"path":"state/continuity.md","ref":"state/continuity.md","articles":[]},"previous":{"title":"Conditional Display","level":"1.5.4","depth":2,"path":"state/conditional-display.md","ref":"state/conditional-display.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"state/conditions-and-variables.md","mtime":"2018-09-22T02:12:09.321Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-19T03:50:51.211Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Conditions and Variables","level":"1.5.5","depth":2,"next":{"title":"Continuity Between Sessions","level":"1.5.6","depth":2,"path":"state/continuity.md","ref":"state/continuity.md","articles":[]},"previous":{"title":"Conditional Display","level":"1.5.4","depth":2,"path":"state/conditional-display.md","ref":"state/conditional-display.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"state/conditions-and-variables.md","mtime":"2019-05-22T01:10:14.021Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-10T22:03:06.593Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

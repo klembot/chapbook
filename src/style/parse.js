@@ -1,4 +1,6 @@
-import {format} from './color';
+import openColors from 'open-color/open-color.json';
+import parseColorString from 'pure-color/parse';
+import rgbToHsl from 'pure-color/convert/rgb2hsl';
 
 export function autopx(value) {
 	if (typeof value === 'number') {
@@ -8,14 +10,57 @@ export function autopx(value) {
 	return value;
 }
 
+function parseColorValue(value) {
+	if (typeof value !== 'string') {
+		throw new Error('Only strings can be parsed as color values.');
+	}
+
+	/*
+	If we matched only one part of an Open Color keyword, check to see if
+	there's a range. There are also Open Colors named 'black' and 'white'
+	which obviously don't have a range.
+	*/
+
+	if (openColors[value]) {
+		if (Array.isArray(openColors[value])) {
+			value = openColors[value][openColors[value].length - 1];
+		} else {
+			value = openColors[value];
+		}
+	}
+
+	const colorLookup = /^(\w+)-(\d)$/.exec(value);
+
+	if (colorLookup && openColors[colorLookup[1]]) {
+		value = openColors[colorLookup[1]][colorLookup[2]];
+	}
+
+	const rgba = parseColorString(value);
+	const hsla = rgbToHsl(rgba);
+
+	/*
+	Pure Color doesn't force an alpha value, and doesn't preserve alpha in
+	conversions.
+	*/
+
+	hsla[3] = rgba[3] !== undefined ? rgba[3] : 1;
+	return `hsla(${hsla[0]}, ${hsla[1]}%, ${hsla[2]}%, ${hsla[3]})`;
+}
+
 export function parseColor(source) {
+	if (typeof source !== 'string') {
+		throw new Error('Only strings can be parsed as colors.');
+	}
+
 	let result = {color: 'inherit', 'background-color': 'inherit'};
 	const bits = source.split(/ on /i);
 
-	result.color = format(bits[0].trim().toLowerCase());
+	result.color = parseColorValue(bits[0].trim().toLowerCase());
 
 	if (bits.length === 2) {
-		result['background-color'] = format(bits[1].trim().toLowerCase());
+		result['background-color'] = parseColorValue(
+			bits[1].trim().toLowerCase()
+		);
 	}
 
 	return result;

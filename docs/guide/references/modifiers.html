@@ -523,7 +523,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="../customization/fonts-and-colors.html">
+        <li class="chapter " data-level="1.7.1" data-path="../customization/header-and-footer.html">
+            
+                <a href="../customization/header-and-footer.html">
+            
+                    
+                    The Header and Footer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../customization/fonts-and-colors.html">
             
                 <a href="../customization/fonts-and-colors.html">
             
@@ -536,7 +549,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2" data-path="../customization/external-web-fonts.html">
+        <li class="chapter " data-level="1.7.3" data-path="../customization/external-web-fonts.html">
             
                 <a href="../customization/external-web-fonts.html">
             
@@ -549,7 +562,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.3" data-path="../customization/page-style.html">
+        <li class="chapter " data-level="1.7.4" data-path="../customization/page-style.html">
             
                 <a href="../customization/page-style.html">
             
@@ -562,7 +575,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.4" data-path="../customization/fork-style.html">
+        <li class="chapter " data-level="1.7.5" data-path="../customization/fork-style.html">
             
                 <a href="../customization/fork-style.html">
             
@@ -575,7 +588,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.5" data-path="../customization/design-considerations.html">
+        <li class="chapter " data-level="1.7.6" data-path="../customization/design-considerations.html">
             
                 <a href="../customization/design-considerations.html">
             
@@ -633,19 +646,6 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.3" data-path="../player-input/live-inputs.html">
-            
-                <a href="../player-input/live-inputs.html">
-            
-                    
-                    Live Inputs
-            
-                </a>
-            
-
-            
-        </li>
-    
 
             </ul>
             
@@ -671,6 +671,45 @@
             
                     
                     Using JavaScript in Passages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../advanced/using-css-in-passages.html">
+            
+                <a href="../advanced/using-css-in-passages.html">
+            
+                    
+                    Using CSS in Passages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../advanced/adding-custom-inserts.html">
+            
+                <a href="../advanced/adding-custom-inserts.html">
+            
+                    
+                    Adding Custom Inserts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../advanced/adding-custom-modifiers.html">
+            
+                <a href="../advanced/adding-custom-modifiers.html">
+            
+                    
+                    Adding Custom Modifiers
             
                 </a>
             
@@ -836,11 +875,19 @@ Clears all previously active<span class="widont">&#xA0;</span>modifiers.
 </dd>
 
 <dt>
+<code>[CSS]</code>
+</dt>
+
+<dd>
+Acts like a <code>&lt;style&gt;</code> tag in the passage; the contents of the text will be interpreted as <span class="caps">CSS</span> rules instead of normal<span class="widont">&#xA0;</span>text.
+</dd>
+
+<dt>
 <code>[else]</code>
 </dt>
 
 <dd>
-Only dispalys the text if the previous <code>[if]</code> condition was not met. If no previous <code>[if]</code> appeared in the passage&#x2019;s source code, an error<span class="widont">&#xA0;</span>occurs.
+Only displays the text if the previous <code>[if]</code> condition was not met. If no previous <code>[if]</code> appeared in the passage&#x2019;s source code, an error<span class="widont">&#xA0;</span>occurs.
 </dd>
 
 <dt>
@@ -849,6 +896,30 @@ Only dispalys the text if the previous <code>[if]</code> condition was not met. 
 
 <dd>
 Only displays the text if <i>expression</i> evaluates to true, or a truthy (<a href="https://developer.mozilla.org/en-US/docs/Glossary/Truthy" target="_blank">as defined by Javascript</a>) value.
+</dd>
+
+<dt>
+<code>[ifalways expression]</code>
+</dt>
+
+<dd>
+Acts like the <code>[if]</code> modifier, except that it always displays the text it affects, regardless of the condition. This can be useful for quick<span class="widont">&#xA0;</span>testing.
+</dd>
+
+<dt>
+<code>[ifnever expression]</code>
+</dt>
+
+<dd>
+Acts like the <code>[if]</code> modifier, except that it never displays the text it affects, regardless of the condition. This can be useful for quick<span class="widont">&#xA0;</span>testing.
+</dd>
+
+<dt>
+<code>[JavaScript]</code>
+</dt>
+
+<dd>
+Acts like a <code>&lt;script&gt;</code> tag in the passage; the contents of the text will be interpreted as JavaScript code instead of normal text. To write output from inside the text, use the function<span class="widont">&#xA0;</span>`write()`.
 </dd>
 
 <dt>
@@ -912,7 +983,7 @@ Only displays the text if <i>expression</i> evaluates to false, or a falsy (<a h
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Modifiers","level":"1.10.2","depth":2,"next":{"title":"Version History","level":"1.10.3","depth":2,"path":"references/version-history.md","ref":"references/version-history.md","articles":[]},"previous":{"title":"Inserts","level":"1.10.1","depth":2,"path":"references/inserts.md","ref":"references/inserts.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"references/modifiers.md","mtime":"2018-10-10T00:12:45.750Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-19T03:50:51.211Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Modifiers","level":"1.10.2","depth":2,"next":{"title":"Version History","level":"1.10.3","depth":2,"path":"references/version-history.md","ref":"references/version-history.md","articles":[]},"previous":{"title":"Inserts","level":"1.10.1","depth":2,"path":"references/inserts.md","ref":"references/inserts.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"references/modifiers.md","mtime":"2019-06-10T16:31:04.221Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-10T22:03:06.593Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

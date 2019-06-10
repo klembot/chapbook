@@ -1,0 +1,978 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Adding Custom Modifiers · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../references/" />
+    
+    
+    <link rel="prev" href="adding-custom-inserts.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../acknowledgments.html">
+            
+                <a href="../acknowledgments.html">
+            
+                    
+                    Acknowledgments
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../text-and-links/">
+            
+                <a href="../text-and-links/">
+            
+                    
+                    Text and Links
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../text-and-links/text-formatting.html">
+            
+                <a href="../text-and-links/text-formatting.html">
+            
+                    
+                    Text Formatting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../text-and-links/simple-links.html">
+            
+                <a href="../text-and-links/simple-links.html">
+            
+                    
+                    Simple Links
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../text-and-links/forks.html">
+            
+                <a href="../text-and-links/forks.html">
+            
+                    
+                    Forks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../text-and-links/ways-to-link.html">
+            
+                <a href="../text-and-links/ways-to-link.html">
+            
+                    
+                    Ways to Link
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../text-and-links/backstage.html">
+            
+                <a href="../text-and-links/backstage.html">
+            
+                    
+                    Introducing Backstage
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../modifiers-and-inserts/">
+            
+                <a href="../modifiers-and-inserts/">
+            
+                    
+                    Modifiers and Inserts
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../modifiers-and-inserts/modifiers-and-text-alignment.html">
+            
+                <a href="../modifiers-and-inserts/modifiers-and-text-alignment.html">
+            
+                    
+                    Modifiers and Text Alignment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../modifiers-and-inserts/delayed-text.html">
+            
+                <a href="../modifiers-and-inserts/delayed-text.html">
+            
+                    
+                    Delayed Text
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../modifiers-and-inserts/notes.html">
+            
+                <a href="../modifiers-and-inserts/notes.html">
+            
+                    
+                    Notes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../modifiers-and-inserts/link-inserts.html">
+            
+                <a href="../modifiers-and-inserts/link-inserts.html">
+            
+                    
+                    Link Inserts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../modifiers-and-inserts/reveal-links.html">
+            
+                <a href="../modifiers-and-inserts/reveal-links.html">
+            
+                    
+                    Reveal Links
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../modifiers-and-inserts/embedding-passages.html">
+            
+                <a href="../modifiers-and-inserts/embedding-passages.html">
+            
+                    
+                    Embedding Passages
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../state/">
+            
+                <a href="../state/">
+            
+                    
+                    Adding State to Stories
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../state/what-is-state.html">
+            
+                <a href="../state/what-is-state.html">
+            
+                    
+                    What is State?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../state/the-vars-section.html">
+            
+                <a href="../state/the-vars-section.html">
+            
+                    
+                    The Vars Section
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../state/displaying-variables.html">
+            
+                <a href="../state/displaying-variables.html">
+            
+                    
+                    Displaying Variables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../state/conditional-display.html">
+            
+                <a href="../state/conditional-display.html">
+            
+                    
+                    Conditional Display
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../state/conditions-and-variables.html">
+            
+                <a href="../state/conditions-and-variables.html">
+            
+                    
+                    Conditions and Variables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../state/continuity.html">
+            
+                <a href="../state/continuity.html">
+            
+                    
+                    Continuity Between Sessions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../state/backstage.html">
+            
+                <a href="../state/backstage.html">
+            
+                    
+                    State Backstage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../state/objects-and-lookups.html">
+            
+                <a href="../state/objects-and-lookups.html">
+            
+                    
+                    Objects and Lookup Variables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../state/randomness.html">
+            
+                <a href="../state/randomness.html">
+            
+                    
+                    Randomness
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../multimedia/">
+            
+                <a href="../multimedia/">
+            
+                    
+                    Multimedia
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../multimedia/publishing-models.html">
+            
+                <a href="../multimedia/publishing-models.html">
+            
+                    
+                    Publishing Models
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../multimedia/images.html">
+            
+                <a href="../multimedia/images.html">
+            
+                    
+                    Images
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../multimedia/audio.html">
+            
+                <a href="../multimedia/audio.html">
+            
+                    
+                    Audio
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../multimedia/video.html">
+            
+                <a href="../multimedia/video.html">
+            
+                    
+                    Video
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../customization/">
+            
+                <a href="../customization/">
+            
+                    
+                    Customization
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../customization/header-and-footer.html">
+            
+                <a href="../customization/header-and-footer.html">
+            
+                    
+                    The Header and Footer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../customization/fonts-and-colors.html">
+            
+                <a href="../customization/fonts-and-colors.html">
+            
+                    
+                    Fonts and Colors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../customization/external-web-fonts.html">
+            
+                <a href="../customization/external-web-fonts.html">
+            
+                    
+                    External Web Fonts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../customization/page-style.html">
+            
+                <a href="../customization/page-style.html">
+            
+                    
+                    Page Style
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../customization/fork-style.html">
+            
+                <a href="../customization/fork-style.html">
+            
+                    
+                    Fork Style
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../customization/design-considerations.html">
+            
+                <a href="../customization/design-considerations.html">
+            
+                    
+                    Design Considerations
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../player-input/">
+            
+                <a href="../player-input/">
+            
+                    
+                    Player Input
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../player-input/text-input.html">
+            
+                <a href="../player-input/text-input.html">
+            
+                    
+                    Text Input
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../player-input/dropdown-menus-cycling-links.html">
+            
+                <a href="../player-input/dropdown-menus-cycling-links.html">
+            
+                    
+                    Dropdown Menus and Cycling Links
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Advanced Topics
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="using-javascript-in-passages.html">
+            
+                <a href="using-javascript-in-passages.html">
+            
+                    
+                    Using JavaScript in Passages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="using-css-in-passages.html">
+            
+                <a href="using-css-in-passages.html">
+            
+                    
+                    Using CSS in Passages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="adding-custom-inserts.html">
+            
+                <a href="adding-custom-inserts.html">
+            
+                    
+                    Adding Custom Inserts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9.4" data-path="adding-custom-modifiers.html">
+            
+                <a href="adding-custom-modifiers.html">
+            
+                    
+                    Adding Custom Modifiers
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../references/">
+            
+                <a href="../references/">
+            
+                    
+                    References
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../references/inserts.html">
+            
+                <a href="../references/inserts.html">
+            
+                    
+                    Inserts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../references/modifiers.html">
+            
+                <a href="../references/modifiers.html">
+            
+                    
+                    Modifiers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../references/version-history.html">
+            
+                <a href="../references/version-history.html">
+            
+                    
+                    Version History
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../references/lifecycle.html">
+            
+                <a href="../references/lifecycle.html">
+            
+                    
+                    The Chapbook Lifecycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Adding Custom Modifiers</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="adding-custom-modifiers">Adding Custom Modifiers</h1>
+<p>Chapbook can also be extended with custom modifiers. Below is code that adds a modifier that turns its text<span class="widont">&#xA0;</span>uppercase:</p>
+<pre><code>[JavaScript]
+engine.extend(&apos;1.0.0&apos;, () =&gt; {
+    config.template.modifiers = [{
+        match: /^uppercase$/i,
+        process(output) {
+            output.text = output.text.toUpperCase();
+        }
+    }, ...config.template.modifiers];
+});
+</code></pre><p>You can also place code like this into your story&apos;s JavaScript in Twine&#x2013;this uses the <code>[JavaScript]</code> modifier for<span class="widont">&#xA0;</span>clarity.</p>
+<p>See <a href="adding-custom-inserts.html">the first part of Adding Custom Inserts</a> for an explanation of the <code>engine.extend()</code> function call, and how <code>config.template.modifiers</code> is changed. The <code>match</code> property works the same way as the <code>match</code> property for an insert; Chapbook compares possible modifier text with <code>match</code> properties until it finds a<span class="widont">&#xA0;</span>match.</p>
+<p>The <code>process()</code> property is where the work of a modifier occurs. The <code>output</code> argument it is passed has three properties. Each one is Markdown source code, <em>not</em> <span class="caps">HTML</span> as it will be finally<span class="widont">&#xA0;</span>rendered.</p>
+<ul>
+<li><code>text</code>, the main text that the modifier is being applied<span class="widont">&#xA0;</span>to.</li>
+<li><code>beforeText</code>, a string that will be placed before the main text before it is rendered as Markdown. By default, this is an empty<span class="widont">&#xA0;</span>string.</li>
+<li><code>afterText</code>, a string that will be placed after the main text. By default, this is <code>&apos;\n\n&apos;</code> (e.g. two newlines), creating a new paragraph between this block of text and the<span class="widont">&#xA0;</span>next.</li>
+</ul>
+<p><code>beforeText</code> and <code>afterText</code> were created so that multiple modifiers could prepend and append text without affecting the main<span class="widont">&#xA0;</span>text.</p>
+<p>Modifiers also receive two other arguments which the example above didn&apos;t<span class="widont">&#xA0;</span>show:</p>
+<ul>
+<li><code>state</code>, a private state object that is carried over invocations of a modifier in a single<span class="widont">&#xA0;</span>passage</li>
+<li><code>invocation</code>, the exact text that was typed in the modifier, without the square brackets surrounding<span class="widont">&#xA0;</span>it</li>
+</ul>
+<p>Below is an example showing how <code>state</code> and <code>invocation</code> can be used to remove more and more letters from a<span class="widont">&#xA0;</span>passage.</p>
+<pre><code>[JavaScript]
+engine.extend(&apos;1.0.0&apos;, () =&gt; {
+    config.template.modifiers = [{
+        match: /^(also\b)?remove\b/i,
+        process(output, state, invocation) {
+            const invokeLetters = invocation.replace(/^(also\b)?remove/, &apos;&apos;).split(&apos;&apos;);
+
+            state.letters = (state.letters || []).concat(invokeLetter);
+            state.letters.forEach(letter =&gt; {
+                output.text = output.text.replace(new RegExp(letter, &apos;gi&apos;), &apos;X&apos;);
+            });
+        }
+    }, ...config.template.modifiers];
+});
+</code></pre><p>So that the following passage (from Kurt Vonnegut&apos;s <em>Slaughterhouse Five</em>)&#x2026;</p>
+<pre><code>[remove aeiou]
+American planes, full of holes and wounded men and corpses took off backwards from an airfield in England. Over France a few German fighter planes flew at them backwards, sucked bullets and shell fragments from some of the planes and crewmen. They did the same for wrecked American bombers on the ground, and those planes flew up backwards to join the formation.
+
+[also remove shrdlu]
+The formation flew backwards over a German city that was in flames. The bombers opened their bomb bay doors, exerted a miraculous magnetism which shrunk the fires, gathered them into cylindrical steel containers, and lifted the containers into the bellies of the planes. The containers were stored neatly in racks. The Germans below had miraculous devices of their own, which were long steel tubes. They used them to suck more fragments from the crewmen and planes. But there were still a few wounded Americans, though, and some of the bombers were in bad repair. Over France, though, German fighters came up again, made everything and everybody as good as new.
+
+[also remove t]
+When the bombers got back to their base, the steel cylinders were taken from the racks and shipped back to the United States of America, where factories were operating night and day, dismantling the cylinders, separating the dangerous contents into minerals. Touchingly, it was mainly women who did this work. The minerals were then shipped to specialists in remote areas. It was their business to put them into the ground, to hide them cleverly, so they would never hurt anybody ever again.
+</code></pre><p>&#x2026; Would display<span class="widont">&#xA0;</span>as:</p>
+<pre><code>[remove aeiou]
+XmXrXcXn plXnXs, fXll Xf hXlXs Xnd wXXndXd mXn Xnd cXrpsXs tXXk Xff bXckwXrds frXm Xn XXrfXXld Xn XnglXnd. XvXr FrXncX X fXw GXrmXn fXghtXr plXnXs flXw Xt thXm bXckwXrds, sXckXd bXllXts Xnd shXll frXgmXnts frXm sXmX Xf thX plXnXs Xnd crXwmXn. ThXy dXd thX sXmX fXr wrXckXd XmXrXcXn bXmbXrs Xn thX grXXnd, Xnd thXsX plXnXs flXw Xp bXckwXrds tX jXXn thX fXrmXtXXn.
+
+[also remove shrdl]
+TXX fXXmXtXXn fXXw bXckwXXXX XvXX X GXXmXn cXty tXXt wXX Xn fXXmXX. TXX bXmbXXX XpXnXX tXXXX bXmb bXy XXXXX, XxXXtXX X mXXXcXXXXX mXgnXtXXm wXXcX XXXXnk tXX fXXXX, gXtXXXXX tXXm XntX cyXXnXXXcXX XtXXX cXntXXnXXX, XnX XXftXX tXX cXntXXnXXX XntX tXX bXXXXXX Xf tXX pXXnXX. TXX cXntXXnXXX wXXX XtXXXX nXXtXy Xn XXckX. TXX GXXmXnX bXXXw XXX mXXXcXXXXX XXvXcXX Xf tXXXX Xwn, wXXcX wXXX XXng XtXXX tXbXX. TXXy XXXX tXXm tX XXck mXXX fXXgmXntX fXXm tXX cXXwmXn XnX pXXnXX. BXt tXXXX wXXX XtXXX X fXw wXXnXXX XmXXXcXnX, tXXXgX, XnX XXmX Xf tXX bXmbXXX wXXX Xn bXX XXpXXX. XvXX FXXncX, tXXXgX, GXXmXn fXgXtXXX cXmX Xp XgXXn, mXXX XvXXytXXng XnX XvXXybXXy XX gXXX XX nXw.
+
+[also remove t]
+WXXn XXX bXmbXXX gXX bXck XX XXXXX bXXX, XXX XXXXX cyXXnXXXX wXXX XXkXn fXXm XXX XXckX XnX XXXppXX bXck XX XXX XnXXXX XXXXXX Xf XmXXXcX, wXXXX fXcXXXXXX wXXX XpXXXXXng nXgXX XnX XXy, XXXmXnXXXng XXX cyXXnXXXX, XXpXXXXXng XXX XXngXXXXX cXnXXnXX XnXX mXnXXXXX. XXXcXXngXy, XX wXX mXXnXy wXmXn wXX XXX XXXX wXXk. XXX mXnXXXXX wXXX XXXn XXXppXX XX XpXcXXXXXXX Xn XXmXXX XXXXX. XX wXX XXXXX bXXXnXXX XX pXX XXXm XnXX XXX gXXXnX, XX XXXX XXXm cXXvXXXy, XX XXXy wXXXX nXvXX XXXX XnybXXy XvXX XgXXn.
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="adding-custom-inserts.html" class="navigation navigation-prev " aria-label="Previous page: Adding Custom Inserts">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../references/" class="navigation navigation-next " aria-label="Next page: References">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Adding Custom Modifiers","level":"1.9.4","depth":2,"next":{"title":"References","level":"1.10","depth":1,"path":"references/index.md","ref":"references/index.md","articles":[{"title":"Inserts","level":"1.10.1","depth":2,"path":"references/inserts.md","ref":"references/inserts.md","articles":[]},{"title":"Modifiers","level":"1.10.2","depth":2,"path":"references/modifiers.md","ref":"references/modifiers.md","articles":[]},{"title":"Version History","level":"1.10.3","depth":2,"path":"references/version-history.md","ref":"references/version-history.md","articles":[]},{"title":"The Chapbook Lifecycle","level":"1.10.4","depth":2,"path":"references/lifecycle.md","ref":"references/lifecycle.md","articles":[]}]},"previous":{"title":"Adding Custom Inserts","level":"1.9.3","depth":2,"path":"advanced/adding-custom-inserts.md","ref":"advanced/adding-custom-inserts.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"advanced/adding-custom-modifiers.md","mtime":"2019-06-10T16:20:38.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-10T22:03:06.593Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

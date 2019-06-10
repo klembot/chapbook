@@ -523,7 +523,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="../customization/fonts-and-colors.html">
+        <li class="chapter " data-level="1.7.1" data-path="../customization/header-and-footer.html">
+            
+                <a href="../customization/header-and-footer.html">
+            
+                    
+                    The Header and Footer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../customization/fonts-and-colors.html">
             
                 <a href="../customization/fonts-and-colors.html">
             
@@ -536,7 +549,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2" data-path="../customization/external-web-fonts.html">
+        <li class="chapter " data-level="1.7.3" data-path="../customization/external-web-fonts.html">
             
                 <a href="../customization/external-web-fonts.html">
             
@@ -549,7 +562,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.3" data-path="../customization/page-style.html">
+        <li class="chapter " data-level="1.7.4" data-path="../customization/page-style.html">
             
                 <a href="../customization/page-style.html">
             
@@ -562,7 +575,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.4" data-path="../customization/fork-style.html">
+        <li class="chapter " data-level="1.7.5" data-path="../customization/fork-style.html">
             
                 <a href="../customization/fork-style.html">
             
@@ -575,7 +588,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.5" data-path="../customization/design-considerations.html">
+        <li class="chapter " data-level="1.7.6" data-path="../customization/design-considerations.html">
             
                 <a href="../customization/design-considerations.html">
             
@@ -633,19 +646,6 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.3" data-path="../player-input/live-inputs.html">
-            
-                <a href="../player-input/live-inputs.html">
-            
-                    
-                    Live Inputs
-            
-                </a>
-            
-
-            
-        </li>
-    
 
             </ul>
             
@@ -671,6 +671,45 @@
             
                     
                     Using JavaScript in Passages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../advanced/using-css-in-passages.html">
+            
+                <a href="../advanced/using-css-in-passages.html">
+            
+                    
+                    Using CSS in Passages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../advanced/adding-custom-inserts.html">
+            
+                <a href="../advanced/adding-custom-inserts.html">
+            
+                    
+                    Adding Custom Inserts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../advanced/adding-custom-modifiers.html">
+            
+                <a href="../advanced/adding-custom-modifiers.html">
+            
+                    
+                    Adding Custom Modifiers
             
                 </a>
             
@@ -843,29 +882,66 @@ You could [[open the door]]...
 ... and it might be your best chance for survival.
 </code></pre><p>Would, if <code>hasKey</code> is false and <code>monsterDistance</code> is 1, only<span class="widont">&#xA0;</span>display:</p>
 <pre><code>... and it might be your best chance for survival.
-</code></pre><p>This is because modifiers only affect the text directly following them. They do not affect modifiers before or after them in the text, or any other<span class="widont">&#xA0;</span>text.</p>
-<p>Chapbook doesn&apos;t allow direct nesting in order to ensure that passage logic is easy to follow. That said, there are several ways to get around this limitation if need be. The easiest is to simply repeat the<span class="widont">&#xA0;</span>condition.</p>
+</code></pre><p>This is because modifiers only affect the text directly following them. They do not affect modifiers before or after them in the text, or any other text. You should instead<span class="widont">&#xA0;</span>write:</p>
 <pre><code>[if hasKey]
 You could [[open the door]]...
 
 [if hasKey &amp;&amp; monsterDistance &lt; 2]
 ... and it might be your best chance for survival.
-</code></pre><p>Creating temporary variables to hold these values can help avoid repetition. An alternate method is to move the additional logic to a separate passage and <a href="../text-and-links/embedding-passages.html">embed<span class="widont">&#xA0;</span>it</a>.</p>
-<pre><code>[if hasKey]
-{embed passage: &apos;key obtained&apos;}
-</code></pre><p>And then, in another passage named &#x201C;key<span class="widont">&#xA0;</span>obtained&#x201D;:</p>
-<pre><code>You could [[open the door]]...
+</code></pre><p>Let&apos;s take a more complicated<span class="widont">&#xA0;</span>example:</p>
+<ul>
+<li>The player must have first found a certain secret door by<span class="widont">&#xA0;</span>looking.</li>
+<li>Once found, the door can only be unlocked with a key they previously<span class="widont">&#xA0;</span>found.</li>
+<li>Once unlocked, the door remains<span class="widont">&#xA0;</span>open.</li>
+</ul>
+<p>This might be written in the popular SugarCube story format<span class="widont">&#xA0;</span>as:</p>
+<pre><code>&lt;&lt;if $doorFound&gt;&gt;
+&lt;&lt;if $doorUnlocked&gt;&gt;
+The door stands open and unlocked, ready for you to [[enter it]].
+&lt;&lt;else&gt;&gt;
+You&apos;ve found a door here, &lt;&lt;if $hasKey&gt;&gt;ready to be [[unlocked]]&lt;&lt;else&gt;&gt;but you haven&apos;t found a key yet that will open it.
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;
+There seems to be nothing of note here, but perhaps [[a search would turn up something]].
+&lt;&lt;/if&gt;&gt;
+</code></pre><p>(This example omits, for brevity&apos;s sake, the other passages where <code>$doorFound</code> and <code>$hasKey</code> would be<span class="widont">&#xA0;</span>set.)</p>
+<p>In Chapbook, you could instead use temporary variables to simplify some of the logic of the passage, and<span class="widont">&#xA0;</span>write:</p>
+<pre><code>_doorOpen: doorFound &amp;&amp; doorUnlocked
+_doorLocked: doorFound &amp;&amp; !doorUnlocked
+--
+[if _doorOpen]
+The door stands open and unlocked, ready for you to [[enter it]].
 
-[if monsterDistance &lt; 2]
-... and it might be your best chance for survival.
+[if _doorLocked]
+You&apos;ve found a door here,
 
-[else]
-... though you don&apos;t have a pressing reason to.
+[if _doorLocked &amp;&amp; hasKey; append]
+ready to be [[unlocked]].
+
+[if _doorLocked &amp;&amp; !hasKey; append]
+but you haven&apos;t found a key yet that will open it.
+
+[if !doorFound]
+There seems to be nothing of note here, but perhaps [[a search would turn up something]].
+</code></pre><p>Remember that <code>doorFound</code>, <code>doorUnlocked</code>, and <code>hasKey</code> are set in other passages. And beware&#x2013;you cannot use an <code>[else]</code> in front of <code>but you haven&apos;t found a key yet that will open it.</code> The <code>else</code> will display in all cases that the <code>[if]</code> does not, even when <code>doorFound</code> is <code>false</code>.</p>
+<p>An alternate method is to move parts of your logic to a separate passage and <a href="../text-and-links/embedding-passages.html">embed it</a>:</p>
+<pre><code>_doorOpen: doorFound &amp;&amp; doorUnlocked
+_doorLocked: doorFound &amp;&amp; !doorUnlocked
+--
+[if doorFound &amp;&amp; doorUnlocked]
+The door stands open and unlocked, ready for you to [[enter it]].
+
+[if doorFound &amp;&amp; !doorUnlocked]
+{embed passage: &apos;locked door logic&apos;}
+
+[if !doorFound]
+There seems to be nothing of note here, but perhaps [[a search would turn up something]].
 </code></pre><p>Which approach is best to take depends on the situation. It&apos;s not a good idea to embed passages more than one level<span class="widont">&#xA0;</span>deep.</p>
 <h2 id="disabling-conditions-for&#xA0;testing">Disabling Conditions For<span class="widont">&#xA0;</span>Testing</h2>
-<p>It can be useful to override a conditional modifier so that it always or never displays, regardless of<span class="widont">&#xA0;</span>circumstances.</p>
-<p><div class="alert alert-warning hints-alert"><div class="hints-icon"><i class="fa fa-wrench"></i></div><div class="hints-container"><p>Chapbook will eventually allow you to temporarily override a condition during testing, perhaps by changing [if] to [ifalways] or [ifnever], but the actual implementation of this idea may<span class="widont">&#xA0;</span>change.</p>
-</div></div></p>
+<p>It can be useful to override a conditional modifier so that it always or never displays, regardless of circumstances. To do this, change <code>[if]</code> to either <code>[ifalways]</code> or <code>[ifnever]</code>.</p>
+<pre><code>[ifnever 1 + 1 === 2]
+This would have been shown with a regular [if], but isn&apos;t.
+</code></pre><p>This affects any <code>[else]</code> modifiers that follow<span class="widont">&#xA0;</span>it.</p>
 <blockquote id="fn_1">
 <sup>1</sup>. Truthfully, it is also possible to write <code>[if stringVariable]</code> or <code>[if 2 + 2]</code>. In these cases, any non-empty string (e.g. not <code>&apos;&apos;</code>) is treated as true, and any non-zero number is treated as true. It&apos;s best to be explicit, however, and write <code>[if stringVariable !== &apos;&apos;]</code> and <code>[if 2 + 2 !== 0]</code>.<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
 </blockquote>
@@ -912,7 +988,7 @@ You could [[open the door]]...
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Conditional Display","level":"1.5.4","depth":2,"next":{"title":"Conditions and Variables","level":"1.5.5","depth":2,"path":"state/conditions-and-variables.md","ref":"state/conditions-and-variables.md","articles":[]},"previous":{"title":"Displaying Variables","level":"1.5.3","depth":2,"path":"state/displaying-variables.md","ref":"state/displaying-variables.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"state/conditional-display.md","mtime":"2018-10-03T23:41:43.506Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-19T03:50:51.211Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Conditional Display","level":"1.5.4","depth":2,"next":{"title":"Conditions and Variables","level":"1.5.5","depth":2,"path":"state/conditions-and-variables.md","ref":"state/conditions-and-variables.md","articles":[]},"previous":{"title":"Displaying Variables","level":"1.5.3","depth":2,"path":"state/displaying-variables.md","ref":"state/displaying-variables.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"state/conditional-display.md","mtime":"2019-04-23T23:55:02.214Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-10T22:03:06.593Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

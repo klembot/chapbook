@@ -1,23 +1,29 @@
-// This is a template parser that processes text in a specific format:
-//
-// 1. An optional vars section that looks like this:
-//
-//    prop: value
-//    prop: value
-//    --
-//
-// 2. Then, a series of a mixture of plain text blocks and modifiers. Modifiers
-//    exist on a single line that begins and ends with [ and ]. They affect the
-//    following text block *only*. Text blocks are all other text.
-//
-//    Modifiers can be joined on a single line by placing a semicolon between
-//    them, e.g. [modifier 1; modifier 2]
-//
-// This returns an object with two properties:
-//
-// - vars: a key => function structure, where the function evaluates to the
-//   value the variable should set to
-// - blocks: an array of {type, content} blocks
+/*
+This is a template parser that processes text in a specific format:
+
+1. An optional vars section that looks like this:
+
+   var1: value
+   var2: value
+   var2 (condition): value
+   --
+
+   Variable names may be repeated in the vars section.
+
+2. Then, a series of a mixture of plain text blocks and modifiers. Modifiers
+   exist on a single line that begins and ends with [ and ]. They affect the
+   following text block *only*. Text blocks are all other text.
+
+   Modifiers can be joined on a single line by placing a semicolon between
+   them, e.g. [modifier 1; modifier 2]
+
+This returns an object with two properties:
+
+- vars: a array of {name, condition, value} structures, where both condition and
+  value are functions. The condition evaluates to whether the value should be
+  set at all, and the value property evaluates to the value to set.
+- blocks: an array of {type, content} blocks
+*/
 
 import splitLines from 'split-lines';
 import logger from '../logger';
@@ -34,7 +40,7 @@ const defaultOpts = {
 
 export default function parse(src, opts = defaultOpts) {
 	let result = {
-		vars: {},
+		vars: [],
 		blocks: []
 	};
 
@@ -57,18 +63,40 @@ export default function parse(src, opts = defaultOpts) {
 			if (firstColon !== -1) {
 				const name = line.substr(0, firstColon).trim();
 				const value = line.substr(firstColon + 1).trim();
+				const thisVar = {
+					name,
+					value: new Function(`return (${value})`)
+				};
 
-				if (result.vars[name] !== undefined) {
-					warn(
-						`The property "${name}" was defined more than once; using the last value.`
+				/* Look for a (condition) in the name. */
+
+				const condMatch = name.match(/\(.+\)/);
+
+				if (condMatch) {
+					thisVar.condition = new Function(
+						`return (${condMatch[0]})`
+					);
+					thisVar.name = (
+						thisVar.name.substr(0, condMatch.index) +
+						thisVar.name.substr(
+							condMatch.index + condMatch[0].length
+						)
+					).trim();
+					log(
+						`Setting variable "${
+							thisVar.name
+						}" to "${value}" with condition (${condMatch[0]})`
+					);
+				} else {
+					log(
+						`Setting variable "${name}" to "${value}" without condition`
 					);
 				}
 
-				log(`Setting prop "${name}" to "${value}"`);
-				result.vars[name] = new Function(`return (${value})`);
+				result.vars.push(thisVar);
 			} else {
 				warn(
-					`The line "${line}" in the properties section is missing a colon. It was ignored.`
+					`The line "${line}" in the vars section is missing a colon. It was ignored.`
 				);
 			}
 		});
@@ -77,9 +105,11 @@ export default function parse(src, opts = defaultOpts) {
 		text = varsBits[0];
 	}
 
-	// Scan the text for modifiers. They always begin immediately with a
-	// bracket. Because of the /g flag on the modifier pattern, successive
-	// runs of exec() match each instance.
+	/*
+	Scan the text for modifiers. They always begin immediately with a bracket.
+	Because of the /g flag on the modifier pattern, successive runs of exec()
+	match each instance.
+	*/
 
 	const addBlock = (type, content) => {
 		const trimmedContent = content.trim();
@@ -99,9 +129,11 @@ export default function parse(src, opts = defaultOpts) {
 	while (modifierMatch) {
 		addBlock('text', text.substring(searchIndex, modifierMatch.index));
 
-		// Scan the modifier content for semicolons not inside quotation marks.
-		// We cannot allow single quotes here because we allow modifiers such
-		// as "cont'd".
+		/*
+		Scan the modifier content for semicolons not inside quotation marks.
+		We cannot allow single quotes here because we allow modifiers such
+		as "cont'd".
+		*/
 
 		const modifierSrc = modifierMatch[1];
 		let modifier = '';
@@ -109,7 +141,7 @@ export default function parse(src, opts = defaultOpts) {
 		for (let i = 0; i < modifierSrc.length; i++) {
 			switch (modifierSrc[i]) {
 				case '"':
-					// Scan ahead.
+					/* Scan ahead. */
 
 					modifier += '"';
 

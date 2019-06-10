@@ -6,8 +6,7 @@
 body.backstage-visible {
 	#backdrop {
 		justify-content: flex-start;
-		max-width: calc(100vw - 30rem);
-		padding-right: calc(30px - #{$pageMargin});
+		max-width: 67vw;
 	}
 }
 
@@ -16,7 +15,7 @@ body.backstage-visible {
 	top: 0;
 	right: 0;
 	bottom: 0;
-	width: 30rem;
+	width: 33vw;
 	max-height: 100vh;
 	font-size: 18px;
 	background: $backstage-bg;
@@ -34,6 +33,10 @@ body.backstage-visible {
 		height: 50px;
 		width: 4px;
 		background: $backstage-bg;
+	}
+
+	@media screen and (max-width: 425px) {
+		width: calc(100vw - 25px);
 	}
 
 	&.open {

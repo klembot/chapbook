@@ -2,7 +2,8 @@
 
 import createLoggers from '../logger';
 import event from '../event';
-import {get} from '../state';
+import {get, sameObject} from '../state';
+import {init as initExternalFonts} from './external-fonts';
 import {parseColor, parseFont} from './parse';
 
 const {log} = createLoggers('style');
@@ -10,6 +11,7 @@ const {log} = createLoggers('style');
 export const defaults = {
 	'config.style.backdrop': 'gray-0',
 	'config.style.page.style': 'shadow',
+	'config.style.page.style.borderColor': 'gray-2',
 	'config.style.page.font': 'Iowan Old Style/Constantia/Georgia/serif 18',
 	'config.style.page.color': 'gray-9 on white',
 	'config.style.page.fork.divider.color': 'gray-3',
@@ -28,8 +30,6 @@ export const defaults = {
 
 const rules = {};
 const styleEl = document.createElement('style');
-const googleFontEl = document.createElement('div');
-const typekitFontEl = document.createElement('div');
 
 export function style(selector, selectorRules) {
 	rules[selector] = rules[selector] || {};
@@ -56,15 +56,19 @@ function update() {
 			'{' +
 			Object.keys(props)
 				.sort()
-				.reduce(
-					(result, current) =>
-						result +
-						current +
-						':' +
-						props[current].toString() +
-						';',
-					''
-				) +
+				.reduce((result, current) => {
+					if (props[current]) {
+						return (
+							result +
+							current +
+							':' +
+							props[current].toString() +
+							';'
+						);
+					}
+
+					return result;
+				}, '') +
 			'}'
 		);
 	}
@@ -75,177 +79,211 @@ function update() {
 	);
 }
 
+function styleColorOrFont(varName, value) {
+	let selector = '#page';
+
+	const props = varName.replace(/^config\.style\.page\./i, '').split('.');
+
+	/*
+	Drill down to a font, color, or lineColor property. To prevent
+	weird scenarios, we only allow drilling down in specificity.
+	*/
+
+	if (props[0].toLowerCase() === 'header') {
+		selector += ' header';
+		props.shift();
+	} else if (props[0].toLowerCase() === 'footer') {
+		selector += ' footer';
+		props.shift();
+	}
+
+	if (props[0].toLowerCase() === 'link') {
+		selector += ' a';
+		props.shift();
+	}
+
+	if (props[0].toLowerCase() === 'active') {
+		selector = `${selector}:hover, ${selector}:active`;
+		props.shift();
+	}
+
+	/*
+	We should either be at either a color, font, or lineColor property.
+	If we aren't, we do nothing-- this property must either have some
+	other purpose or it's a mistake by the author.
+	*/
+
+	switch (props[0].toLowerCase()) {
+		case 'color':
+			log(`Setting color for ${selector}`);
+			style(selector, parseColor(value));
+			break;
+
+		case 'linecolor': {
+			log(`Setting line color for ${selector}`);
+			const colorValue = parseColor(value).color;
+
+			style(selector, {
+				'text-decoration-color': colorValue,
+				'-webkit-text-decoration-color': colorValue
+			});
+			break;
+		}
+
+		case 'font':
+			log(`Setting font for ${selector}`);
+			style(selector, parseFont(value));
+			break;
+	}
+}
+
 export function init() {
+	initExternalFonts();
+	styleEl.dataset.cbAuthorStyles = '';
 	document.head.appendChild(styleEl);
-	document.body.appendChild(googleFontEl);
-	document.body.appendChild(typekitFontEl);
 
 	event.on('state-change', ({name, value}) => {
 		/* Special-case properties. */
 
-		switch (name) {
-			case 'config.style.backdrop':
-				log('Setting backdrop color');
-				style('#backdrop', {
-					'background-color': parseColor(value).color
-				});
-				return;
-
-			case 'config.style.googleFont':
-				log('Adding Google Font');
-				googleFontEl.innerHTML = value;
-				return;
-
-			case 'config.style.typekitFont':
-				log('Adding Typekit Font');
-				typekitFontEl.innerHTML = value;
-				return;
-
-			case 'config.style.page.fork.divider.color':
-				log('Setting fork divider color');
-				style('#page .fork p a + a', {
-					'border-top-color': parseColor(value).color
-				});
-				return;
-
-			case 'config.style.page.fork.divider.size':
-				log('Setting fork divider size');
-				style('#page .fork p a + a', {
-					'border-top-width': `${value}px`
-				});
-				return;
-
-			case 'config.style.page.fork.divider.style':
-				log('Setting fork divider style');
-				style('#page .fork p a + a', {
-					'border-top-style': value
-				});
-				return;
-
-			case 'config.style.page.style':
-			case 'config.style.page.style.borderColor':
-				log('Setting page style');
-				switch (get('config.style.page.style')) {
-					case 'none':
-						style('#page', {border: 'none', 'box-shadow': 'none'});
-						break;
-
-					case 'shadow':
-						style('#page', {
-							border: 'none',
-							'box-shadow': '0 4px 8px hsla(0, 0%, 0%, 0.25)'
-						});
-						break;
-
-					case 'thick-line':
-						style('#page', {
-							border: `4px solid ${
-								parseColor(
-									get('config.style.page.style.borderColor')
-								).color
-							}`,
-							'box-shadow': 'none'
-						});
-						break;
-
-					case 'thin-line':
-						style('#page', {
-							border: `1px solid ${
-								parseColor(
-									get('config.style.page.style.borderColor')
-								).color
-							}`,
-							'box-shadow': 'none'
-						});
-						break;
-				}
-
-				return;
-
-			case 'config.style.page.verticalAlign':
-				log('Setting page vertical alignment');
-				switch (get('config.style.page.verticalAlign')) {
-					case 'top':
-						style('#page article', {'align-items': 'flex-start'});
-						break;
-
-					case 'center':
-						style('#page article', {'align-items': 'center'});
-						break;
-
-					case 'bottom':
-						style('#page article', {'align-items': 'flex-end'});
-						break;
-				}
-				return;
+		if (sameObject(name, 'config.style.backdrop')) {
+			log('Setting backdrop color');
+			style('#backdrop', {
+				'background-color': parseColor(get('config.style.backdrop'))
+					.color
+			});
 		}
 
-		/* Font and color properties. */
+		if (sameObject(name, 'config.style.page.fork.divider.color')) {
+			log('Setting fork divider color');
+			style('#page .fork p a + a', {
+				'border-top-color': parseColor(
+					get('config.style.page.fork.divider.color')
+				).color
+			});
+		}
 
-		if (/^config\.style\.page\./i.test(name)) {
-			let selector = '#page';
+		if (sameObject(name, 'config.style.page.fork.divider.size')) {
+			log('Setting fork divider size');
+			style('#page .fork p a + a', {
+				'border-top-width': `${get(
+					'config.style.page.fork.divider.size'
+				)}px`
+			});
+		}
 
-			const props = name
-				.replace(/^config\.style\.page\./i, '')
-				.split('.');
+		if (sameObject(name, 'config.style.page.fork.divider.style')) {
+			log('Setting fork divider style');
+			style('#page .fork p a + a', {
+				'border-top-style': get('config.style.page.fork.divider.style')
+			});
+		}
 
-			/*
-			Drill down to a font, color, or lineColor property. To prevent
-			weird scenarios, we only allow drilling down in specificity.
-			*/
+		if (
+			sameObject(name, 'config.style.page.style') ||
+			sameObject(name, 'config.style.page.style.borderColor')
+		) {
+			log('Setting page style');
 
-			if (props[0].toLowerCase() === 'header') {
-				selector += ' header';
-				props.shift();
-			} else if (props[0].toLowerCase() === 'footer') {
-				selector += ' footer';
-				props.shift();
-			}
-
-			if (props[0].toLowerCase() === 'link') {
-				selector += ' a';
-				props.shift();
-			}
-
-			if (props[0].toLowerCase() === 'active') {
-				selector = `${selector}:hover, ${selector}:active`;
-				props.shift();
-			}
-
-			/*
-			We should either be at either a color, font, or lineColor property.
-			If we aren't, we do nothing-- this property must either have some
-			other purpose or it's a mistake by the author.
-			*/
-
-			switch (props[0].toLowerCase()) {
-				case 'color':
-					log(`Setting color for ${selector}`);
-					style(selector, parseColor(value));
+			switch (get('config.style.page.style')) {
+				case 'none':
+					style('#page', {border: 'none', 'box-shadow': 'none'});
 					break;
 
-				case 'linecolor': {
-					log(`Setting line color for ${selector}`);
-					const colorValue = parseColor(value).color;
-
-					style(selector, {
-						'text-decoration-color': colorValue,
-						'-webkit-text-decoration-color': colorValue
+				case 'shadow':
+					style('#page', {
+						border: 'none',
+						'box-shadow': '0 4px 8px hsla(0, 0%, 0%, 0.25)'
 					});
 					break;
-				}
 
-				case 'font':
-					log(`Setting font for ${selector}`);
-					style(selector, parseFont(value));
+				case 'thick-line':
+					style('#page', {
+						border: `4px solid ${
+							parseColor(
+								get('config.style.page.style.borderColor')
+							).color
+						}`,
+						'box-shadow': 'none'
+					});
+					break;
+
+				case 'thin-line':
+					style('#page', {
+						border: `1px solid ${
+							parseColor(
+								get('config.style.page.style.borderColor')
+							).color
+						}`,
+						'box-shadow': 'none'
+					});
 					break;
 			}
+		}
 
-			if (props[0].toLowerCase() === 'font') {
-				// TODO
-			} else if (props[0].toLowerCase() === 'color') {
-				// TODO
+		if (sameObject(name, 'config.style.page.verticalAlign')) {
+			log('Setting page vertical alignment');
+
+			switch (get('config.style.page.verticalAlign')) {
+				case 'top':
+					style('#page article', {'align-items': 'flex-start'});
+					break;
+
+				case 'center':
+					style('#page article', {'align-items': 'center'});
+					break;
+
+				case 'bottom':
+					style('#page article', {'align-items': 'flex-end'});
+					break;
 			}
+		}
+
+		/* Font, color, or line color properties. */
+
+		const fontColorPattern = /^config\.style\.page\..*\.((line)?color|font)$/i;
+
+		if (fontColorPattern.test(name)) {
+			styleColorOrFont(name, value);
+		}
+
+		if (sameObject(name, 'config.style.page')) {
+			/*
+			The entire object has been set-- we need to scan it for fonts,
+			colors, and line colors.
+			*/
+
+			function scan(name, obj) {
+				['color', 'font', 'lineColor'].forEach(s => {
+					if (obj[s]) {
+						styleColorOrFont(`${name}.${s}`, obj[s]);
+					}
+
+					if (obj.link) {
+						if (obj.link[s]) {
+							styleColorOrFont(`${name}.link.${s}`, obj.link[s]);
+						}
+
+						if (obj.link.active && obj.link.active[s]) {
+							styleColorOrFont(
+								`${name}.link.active.${s}`,
+								obj.link.active[s]
+							);
+						}
+					}
+				});
+			}
+
+			[
+				'config.style.page',
+				'config.style.page.header',
+				'config.style.page.footer'
+			].forEach(varName => {
+				const obj = get(varName);
+
+				if (obj) {
+					scan(varName, obj);
+				}
+			});
 		}
 	});
 }

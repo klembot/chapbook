@@ -9,6 +9,7 @@ export default {
 		const delay = timestring(invocation.replace(/^after\s/i, ''), 'ms');
 
 		output.text = wrap(output.text, {
+			'data-cb-skippable': '',
 			class: 'fade-in',
 			style: `animation-delay: ${delay}ms`
 		});

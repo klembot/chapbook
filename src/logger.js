@@ -1,17 +1,17 @@
-import leftPad from 'left-pad';
 import event from './event';
 import {get} from './state';
 
 export const defaults = {
 	'config.logger.show.parse': false,
 	'config.logger.show.render': false,
-	'config.logger.show.state': true,
-	'config.logger.show.story': true,
-	'config.logger.show.style': true
+	'config.logger.show.sound': false,
+	'config.logger.show.state': false,
+	'config.logger.show.story': false,
+	'config.logger.show.style': false
 };
 
 function prefix(text) {
-	return leftPad(text, 10) + ' \u2502 ';
+	return text + ': ';
 }
 
 export function log(source, message) {

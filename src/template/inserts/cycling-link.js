@@ -9,26 +9,26 @@ import htmlify from '../../util/htmlify';
 
 export default {
 	match: /^cycling\s+link(\s+for)?/i,
-	render(choices, props) {
+	render(varName, props) {
 		let current;
 
-		if (props.set) {
-			current = get(props.set);
+		if (varName) {
+			current = get(varName);
 
 			if (current === undefined) {
-				set(props.set, choices[0]);
-				current = choices[0];
+				set(varName, props.choices[0]);
+				current = props.choices[0];
 			}
 		} else {
-			current = choices[0];
+			current = props.choices[0];
 		}
 
 		return htmlify(
 			'a',
 			{
 				href: 'javascript:void(0)',
-				'data-cb-cycle-set': props.set,
-				'data-cb-cycle-choices': JSON.stringify(choices)
+				'data-cb-cycle-set': varName,
+				'data-cb-cycle-choices': JSON.stringify(props.choices)
 			},
 			[current]
 		);
@@ -44,9 +44,7 @@ event.on('dom-click', el => {
 			index = 0;
 		}
 
-		changeBody(() => {
-			el.textContent = choices[index];
-		});
+		changeBody(() => (el.textContent = choices[index]));
 
 		if (el.dataset.cbCycleSet) {
 			set(el.dataset.cbCycleSet, choices[index]);

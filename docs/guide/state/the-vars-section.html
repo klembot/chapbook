@@ -523,7 +523,20 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="../customization/fonts-and-colors.html">
+        <li class="chapter " data-level="1.7.1" data-path="../customization/header-and-footer.html">
+            
+                <a href="../customization/header-and-footer.html">
+            
+                    
+                    The Header and Footer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../customization/fonts-and-colors.html">
             
                 <a href="../customization/fonts-and-colors.html">
             
@@ -536,7 +549,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2" data-path="../customization/external-web-fonts.html">
+        <li class="chapter " data-level="1.7.3" data-path="../customization/external-web-fonts.html">
             
                 <a href="../customization/external-web-fonts.html">
             
@@ -549,7 +562,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.3" data-path="../customization/page-style.html">
+        <li class="chapter " data-level="1.7.4" data-path="../customization/page-style.html">
             
                 <a href="../customization/page-style.html">
             
@@ -562,7 +575,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.4" data-path="../customization/fork-style.html">
+        <li class="chapter " data-level="1.7.5" data-path="../customization/fork-style.html">
             
                 <a href="../customization/fork-style.html">
             
@@ -575,7 +588,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.5" data-path="../customization/design-considerations.html">
+        <li class="chapter " data-level="1.7.6" data-path="../customization/design-considerations.html">
             
                 <a href="../customization/design-considerations.html">
             
@@ -633,19 +646,6 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.3" data-path="../player-input/live-inputs.html">
-            
-                <a href="../player-input/live-inputs.html">
-            
-                    
-                    Live Inputs
-            
-                </a>
-            
-
-            
-        </li>
-    
 
             </ul>
             
@@ -671,6 +671,45 @@
             
                     
                     Using JavaScript in Passages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../advanced/using-css-in-passages.html">
+            
+                <a href="../advanced/using-css-in-passages.html">
+            
+                    
+                    Using CSS in Passages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../advanced/adding-custom-inserts.html">
+            
+                <a href="../advanced/adding-custom-inserts.html">
+            
+                    
+                    Adding Custom Inserts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../advanced/adding-custom-modifiers.html">
+            
+                <a href="../advanced/adding-custom-modifiers.html">
+            
+                    
+                    Adding Custom Modifiers
             
                 </a>
             
@@ -816,14 +855,21 @@ clear destination in mind.
 <p>Vars sections never display anything to the player; this is so that, for example, you can set a variable named <code>doomedToDieInFiveMinutes</code> and the player will be none the wiser unless you wish<span class="widont">&#xA0;</span>it.</p>
 <p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>If a passage is embedded in another using the <code>{embed passage}</code> modifier, its vars section will also take<span class="widont">&#xA0;</span>effect.</p>
 </div></div></p>
-<p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>Remember that three dashes creates a visible section break in passage text. Use only two to create vars<span class="widont">&#xA0;</span>sections.</p>
-</div></div></p>
 <p>You may only have one vars section in each passage, but then there&apos;s really only ever need for one. The name of state variables must follow a few rules, too. They must start with a letter (upper or lowercase), underscore (<code>_</code>), or dollar sign (<code>$</code>); after the first character can come any combination of the preceding kinds of characters as well as digits.<sup><a href="#fn_1" id="reffn_1">1</a></sup></p>
 <p>Sadly, you can&apos;t use spaces in your variable names. Because of this, a common practice called <em>camel casing</em> (because of the camel-like humps in the resulting word) glues phrases together using capital letters, like the <code>doomedToDieInFiveMinutes</code> example above. Another school of thought, <em>snake casing</em>, prefers to use underscores instead; e.g. <code>doomed_to_die_in_five_minutes</code>. Either&apos;s perfectly fine. Use whichever feels most comfortable to<span class="widont">&#xA0;</span>you.</p>
 <p>Another common practice is to put an underscore in front of variable names when the value will only be used in the current passage. This practice is just a hint to yourself; Chapbook does not enforce this usage.<sup><a href="#fn_2" id="reffn_2">2</a></sup></p>
-<p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>A variable name can contain periods (<code>.</code>), but they carry a special meaning. Until you&apos;ve read [Nesting Variables With Objects][nesting-vars], it&apos;s best to leave them out of variable<span class="widont">&#xA0;</span>names.</p>
+<p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>A variable name can contain periods (<code>.</code>), but they carry a special meaning. Until you&apos;ve read <a href="objects-and-lookups.html">Objects and Lookup Values</a>, it&apos;s best to leave them out of variable<span class="widont">&#xA0;</span>names.</p>
 </div></div></p>
-<p><div class="alert alert-warning hints-alert"><div class="hints-icon"><i class="fa fa-wrench"></i></div><div class="hints-container"><p>Chapbook as well as the player&apos;s web browser, reserves certain variable names for its own use. They will eventually be detailed<span class="widont">&#xA0;</span>here.</p>
+<p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>Chapbook and web browsers reserve certain variable names for their own use. If you try to use a variable whose name overlaps them, unpredictable things may happen, so you should avoid them. Chapbook reserves the following<span class="widont">&#xA0;</span>names:</p>
+<ul>
+<li><code>browser</code></li>
+<li><code>engine</code></li>
+<li><code>now</code></li>
+<li><code>passage</code></li>
+<li><code>random</code></li>
+<li><code>story</code></li>
+</ul>
+<p>The browser reserves quite a few (over two hundred at time of writing), but you&apos;re unlikely to want to use most of them, like <code>ondeviceorientation</code>. See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window#Properties" target="_blank">the exhaustive list</a> for more<span class="widont">&#xA0;</span>details.</p>
 </div></div></p>
 <p>The only time variable names are shown to a player is if an error occurs in your story while they are playing it, so choose names that are easy to remember and descriptive. There&apos;s no need for a <code>clueF</code> variable when you can have <code>sawFootprintsInVault</code> instead.</p>
 <h2 id="variables-have-types">Variables Have Types</h2>
@@ -951,7 +997,7 @@ activity: &apos;Walk&apos;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"The Vars Section","level":"1.5.2","depth":2,"next":{"title":"Displaying Variables","level":"1.5.3","depth":2,"path":"state/displaying-variables.md","ref":"state/displaying-variables.md","articles":[]},"previous":{"title":"What is State?","level":"1.5.1","depth":2,"path":"state/what-is-state.md","ref":"state/what-is-state.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"state/the-vars-section.md","mtime":"2018-10-03T23:43:03.029Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-19T03:50:51.211Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"The Vars Section","level":"1.5.2","depth":2,"next":{"title":"Displaying Variables","level":"1.5.3","depth":2,"path":"state/displaying-variables.md","ref":"state/displaying-variables.md","articles":[]},"previous":{"title":"What is State?","level":"1.5.1","depth":2,"path":"state/what-is-state.md","ref":"state/what-is-state.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"state/the-vars-section.md","mtime":"2019-05-10T23:07:03.313Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-10T22:03:06.593Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
