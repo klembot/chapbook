@@ -1,7 +1,7 @@
 {
 	"name": "Chapbook",
 	"author": "Chris Klimas <chris@twinery.org>",
-	"version": "0.0.2",
+	"version": "1.0.0-beta1",
 	"main": "index.js",
 	"license": "MIT",
 	"devDependencies": {
@@ -12,6 +12,7 @@
 		"child-process-promise": "^2.2.1",
 		"cpy": "^7.0.1",
 		"cpy-cli": "^2.0.0",
+		"cross-env": "^5.2.0",
 		"css-loader": "^0.28.11",
 		"eslint": "^4.14.0",
 		"gitbook-cli": "^2.3.2",
@@ -55,7 +56,7 @@
 	},
 	"scripts": {
 		"start": "webpack-dev-server",
-		"build": "NODE_ENV=production webpack && node scripts/build-format.js",
+		"build": "cross-env NODE_ENV=production webpack && node scripts/build-format.js",
 		"examples": "node scripts/build-examples.js",
 		"guide": "gitbook serve guide",
 		"guide:init": "cd guide && gitbook install && cd ..",
