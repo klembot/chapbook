@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Modifiers and Text Alignment · GitBook</title>
+        <title>Reveal Links · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -63,10 +63,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="delayed-text.html" />
+    <link rel="next" href="embedding-passages.html" />
     
     
-    <link rel="prev" href="./" />
+    <link rel="prev" href="link-inserts.html" />
     
 
     </head>
@@ -219,7 +219,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.4.1" data-path="modifiers-and-text-alignment.html">
+        <li class="chapter " data-level="1.4.1" data-path="modifiers-and-text-alignment.html">
             
                 <a href="modifiers-and-text-alignment.html">
             
@@ -271,7 +271,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.5" data-path="reveal-links.html">
+        <li class="chapter active" data-level="1.4.5" data-path="reveal-links.html">
             
                 <a href="reveal-links.html">
             
@@ -823,7 +823,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Modifiers and Text Alignment</a>
+        <a href=".." >Reveal Links</a>
     </h1>
 </div>
 
@@ -838,30 +838,18 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="modifiers-and-text&#xA0;alignment">Modifiers and Text<span class="widont">&#xA0;</span>Alignment</h1>
-<p>One thing not mentioned in the previous section is how you would center text, or even right-align it. Alignment was never part of the original version of Markdown, and so various dialects of Markdown use their own notation for it.<sup><a href="#fn_1" id="reffn_1">1</a></sup></p>
-<p>Chapbook uses a general-purpose notation called a <em>modifier</em> to apply special handling to blocks of text. Modifiers are always single lines that begin and end with square brackets<sup><a href="#fn_2" id="reffn_2">2</a></sup>, like so:</p>
-<pre><code>Above the cave mouth, someone has carved:
-
-[align center]
-_Lasciate ogne speranza, voi ch&apos;intrate_
-</code></pre><p>The text <code>[align center]</code> is never shown to the player. Instead, Chapbook centers the text following it. As you might have guessed, you can also write <code>[align right]</code> and <code>[align left]</code>.</p>
-<h2 id="the-continue-modifier">The <code>continue</code> modifier</h2>
-<p>Modifiers apply to all the text that follow them, until either the end of the passage or another modifier appears in the source text. To cancel all active modifiers, use <code>[continue]</code> like so:</p>
-<pre><code>Above the cave mouth, someone has carved:
-
-[align center]
-_Lasciate ogne speranza, voi ch&apos;intrate_
-
-[continue]
-You feel a little less confident in your plan.
-</code></pre><p><code>[continue]</code> simply cancels all active modifiers. You can abbreviate it as <code>[cont&apos;d]</code> or <code>[cont]</code>.</p>
-<blockquote id="fn_1">
-<sup>1</sup>. Twine 2&apos;s default format, Harlowe, for instance, uses punctuation like <code>=&gt;&lt;=</code> on the preceding line to indicate centered text, while other Markdown dialects put arrows around centered text, like <code>-&gt;SALE TODAY&lt;-</code>.<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
-</blockquote>
-<blockquote id="fn_2">
-<sup>2</sup>. If you&apos;d like to show players a line of text with brackets in it, enter a single backslash (<code>\</code>) at the start of the line. Chapbook will display the text as-is without the backslash you entered.<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#x21A9;</a>
-</blockquote>
+                                <h1 id="reveal-links">Reveal Links</h1>
+<p>A link can also reveal more text in your passage instead of displaying an entirely different one. Liza Daly uses this effect in <em><a href="https://stoneharborgame.com/" target="_blank">Stone Harbor</a></em> (a story she created using another authoring system called <a href="https://github.com/lizadaly/windrift" target="_blank">Windrift</a>) to give the story a novelistic<span class="widont">&#xA0;</span>feel.</p>
+<p>Chapbook calls these <em>reveal links</em>, and they can either display more text or the contents of an entire<span class="widont">&#xA0;</span>passage.</p>
+<p>To display more text,<span class="widont">&#xA0;</span>write:</p>
+<pre><code>I was driving home late one night when {reveal link: &apos;something odd occurred&apos;, text: &apos;I saw five deer staring at me from one side of the road, all in a line&apos;}.
+</code></pre><p>This will first display &#x201C;I was driving home late one night when something odd occurred,&#x201D; and then when the player selected &#x201C;something odd occurred,&#x201D; it will change to &#x201C;I was driving home late one night when I saw five deer staring at me from one side of the road, all in a<span class="widont">&#xA0;</span>line.&#x201D;</p>
+<p>The text you enter in either part of the insert will be interpreted as source code, so you can use <a href="../text-and-links/text-formatting.html">formatting</a> to further customize its<span class="widont">&#xA0;</span>appearance.</p>
+<p>Revealing text works well for short substitutions, but writing long stretches of text can be awkward. In these instances, try revealing a<span class="widont">&#xA0;</span>passage:</p>
+<pre><code>I was driving home late one night when {reveal link: &apos;something odd occurred&apos;, passage: &apos;A Dangerous Incident&apos;}.
+</code></pre><p>This will work the same way as the previous example, only it will show the contents of the passage named &apos;A Dangerous<span class="widont">&#xA0;</span>Incident&apos;.</p>
+<p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>A passage shown by a reveal link will not be recorded in a session&apos;s<span class="widont">&#xA0;</span>history.</p>
+</div></div></p>
 
                                 
                                 </section>
@@ -889,12 +877,12 @@ You feel a little less confident in your plan.
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Modifiers and Inserts">
+                <a href="link-inserts.html" class="navigation navigation-prev " aria-label="Previous page: Link Inserts">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="delayed-text.html" class="navigation navigation-next " aria-label="Next page: Delayed Text">
+                <a href="embedding-passages.html" class="navigation navigation-next " aria-label="Next page: Embedding Passages">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -905,7 +893,7 @@ You feel a little less confident in your plan.
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Modifiers and Text Alignment","level":"1.4.1","depth":2,"next":{"title":"Delayed Text","level":"1.4.2","depth":2,"path":"modifiers-and-inserts/delayed-text.md","ref":"modifiers-and-inserts/delayed-text.md","articles":[]},"previous":{"title":"Modifiers and Inserts","level":"1.4","depth":1,"path":"modifiers-and-inserts/index.md","ref":"modifiers-and-inserts/index.md","articles":[{"title":"Modifiers and Text Alignment","level":"1.4.1","depth":2,"path":"modifiers-and-inserts/modifiers-and-text-alignment.md","ref":"modifiers-and-inserts/modifiers-and-text-alignment.md","articles":[]},{"title":"Delayed Text","level":"1.4.2","depth":2,"path":"modifiers-and-inserts/delayed-text.md","ref":"modifiers-and-inserts/delayed-text.md","articles":[]},{"title":"Notes","level":"1.4.3","depth":2,"path":"modifiers-and-inserts/notes.md","ref":"modifiers-and-inserts/notes.md","articles":[]},{"title":"Link Inserts","level":"1.4.4","depth":2,"path":"modifiers-and-inserts/link-inserts.md","ref":"modifiers-and-inserts/link-inserts.md","articles":[]},{"title":"Reveal Links","level":"1.4.5","depth":2,"path":"modifiers-and-inserts/reveal-links.md","ref":"modifiers-and-inserts/reveal-links.md","articles":[]},{"title":"Embedding Passages","level":"1.4.6","depth":2,"path":"modifiers-and-inserts/embedding-passages.md","ref":"modifiers-and-inserts/embedding-passages.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr","livereload"],"pluginsConfig":{"livereload":{},"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"typogr":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"modifiers-and-inserts/modifiers-and-text-alignment.md","mtime":"2018-10-09T16:13:08.246Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-07T23:19:06.777Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Reveal Links","level":"1.4.5","depth":2,"next":{"title":"Embedding Passages","level":"1.4.6","depth":2,"path":"modifiers-and-inserts/embedding-passages.md","ref":"modifiers-and-inserts/embedding-passages.md","articles":[]},"previous":{"title":"Link Inserts","level":"1.4.4","depth":2,"path":"modifiers-and-inserts/link-inserts.md","ref":"modifiers-and-inserts/link-inserts.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr","livereload"],"pluginsConfig":{"livereload":{},"search":{},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"typogr":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"modifiers-and-inserts/reveal-links.md","mtime":"2018-11-19T03:44:28.686Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-07T23:19:06.777Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

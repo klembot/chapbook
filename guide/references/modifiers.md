@@ -37,11 +37,19 @@ Clears all previously active modifiers.
 </dd>
 
 <dt>
+<code>[CSS]</code>
+</dt>
+
+<dd>
+Acts like a <code>&lt;style&gt;</code> tag in the passage; the contents of the text will be interpreted as CSS rules instead of normal text.
+</dd>
+
+<dt>
 <code>[else]</code>
 </dt>
 
 <dd>
-Only dispalys the text if the previous <code>[if]</code> condition was not met. If no previous <code>[if]</code> appeared in the passage's source code, an error occurs.
+Only displays the text if the previous <code>[if]</code> condition was not met. If no previous <code>[if]</code> appeared in the passage's source code, an error occurs.
 </dd>
 
 <dt>
@@ -50,6 +58,30 @@ Only dispalys the text if the previous <code>[if]</code> condition was not met. 
 
 <dd>
 Only displays the text if <i>expression</i> evaluates to true, or a truthy (<a href="https://developer.mozilla.org/en-US/docs/Glossary/Truthy">as defined by Javascript</a>) value.
+</dd>
+
+<dt>
+<code>[ifalways <i>expression</i>]</code>
+</dt>
+
+<dd>
+Acts like the <code>[if]</code> modifier, except that it always displays the text it affects, regardless of the condition. This can be useful for quick testing.
+</dd>
+
+<dt>
+<code>[ifnever <i>expression</i>]</code>
+</dt>
+
+<dd>
+Acts like the <code>[if]</code> modifier, except that it never displays the text it affects, regardless of the condition. This can be useful for quick testing.
+</dd>
+
+<dt>
+<code>[JavaScript]</code>
+</dt>
+
+<dd>
+Acts like a <code>&lt;script&gt;</code> tag in the passage; the contents of the text will be interpreted as JavaScript code instead of normal text. To write output from inside the text, use the function `write()`.
 </dd>
 
 <dt>

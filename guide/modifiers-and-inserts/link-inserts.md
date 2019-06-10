@@ -77,7 +77,7 @@ You cannot nest inserts inside each other.
 
 ## Restarting the Story
 
-There's another insert very similar to `{back link}` that's named `{restart link}`. Instead of going to a previous passage, it takes the player back to the very beginning of the story. You could of course link back to the first passage by name, but for now, consider this a handy shortcut. `{restart link}` also resets other aspects of Chapbook's operation, as you'll learn in *TBD* (state).
+There's another insert very similar to `{back link}` that's named `{restart link}`. Instead of going to a previous passage, it takes the player back to the very beginning of the story. You could of course link back to the first passage by name, but for now, consider this a handy shortcut. `{restart link}` also resets other aspects of Chapbook's operation, as you'll learn in [Continuity Between Sessions](../state/continuity.md).
 
 As with `{back link}`, `{restart link}` allows you to specify a label:
 

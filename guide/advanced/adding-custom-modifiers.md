@@ -1,9 +1,5 @@
 # Adding Custom Modifiers
 
-{% hint style='info' %}
-This section requires knowledge of JavaScript, including ES6 syntax, and regular expressions.
-{% endhint %}
-
 Chapbook can also be extended with custom modifiers. Below is code that adds a modifier that turns its text uppercase:
 
 ```

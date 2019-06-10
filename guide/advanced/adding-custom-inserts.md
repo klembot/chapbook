@@ -1,9 +1,5 @@
 # Adding Custom Inserts
 
-{% hint style='info' %}
-This section requires knowledge of JavaScript, including ES6 syntax, and regular expressions.
-{% endhint %}
-
 Chapbook can be extended with custom inserts. Below is code that adds a `{smiley face}` insert that displays a 😀 emoji.
 
 ```

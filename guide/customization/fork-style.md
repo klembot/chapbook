@@ -10,6 +10,6 @@ First, `config.style.page.fork.divider.style` sets the style of the dividing lin
 -	`solid`
 -	`none`, which hides the dividers completely
 
-`config.style.page.fork.divider.size` sets the thickness of hte dividing line, and `config.style.page.fork.divider.color` sets its color.
+`config.style.page.fork.divider.size` sets the thickness of the dividing line, and `config.style.page.fork.divider.color` sets its color.
 
 [forks]: ../text-and-links/forks.md

@@ -9,7 +9,7 @@ All of the below cause text or other types of content to appear in your passage.
 </dt>
 
 <dd>
-Begins playing a [previously-defined ambient sound][sound]. <code>volume</code> can be omitted; by default, the ambient sound is played at full volume.
+Begins playing a <a href="../multimedia/audio.html">previously-defined ambient sound</a>. <code>volume</code> can be omitted; by default, the ambient sound is played at full volume.
 </dd>
 
 <dt>
@@ -102,6 +102,22 @@ Renders a link that restarts the story. <code>label</code> may be omitted; Chapb
 </dd>
 
 <dt>
+<code>{reveal link: 'label', text: 'revealed text'}</code>
+</dt>
+
+<dd>
+Renders a link that expands to show the <code>text</code> property when clicked or tapped.
+</dd>
+
+<dt>
+<code>{reveal link: 'label', passage: 'passage name'}</code>
+</dt>
+
+<dd>
+Renders a link that expands to show the contents of the passage that has the name specified by the <code>passage</code> property when clicked or tapped.
+</dd>
+
+<dt>
 <code>{sound effect: 'sound name'<i>, volume: 0.5</i>}</code>
 </dt>
 
@@ -119,5 +135,5 @@ Renders a text field, saving the text entered to the variable named. <code>for '
 
 </dl>
 
-[sounds]: ../multimedia/audio.md
+[sound]: ../multimedia/audio.md
 [mods-inserts]: ../modifiers-and-inserts/

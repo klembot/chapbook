@@ -18,9 +18,21 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
 
 <div class="patreon-supporters">
     <ul>
-        <li><a href="http://bphennessy.com/">Brendan Hennessy</a></li>
-        <li><a href="https://danq.me/">Dan Q</a></li>
+        <li>John Bruce</li>
+        <li>Kendall Buchanan</li>
+        <li>Jherek Carnelian</li>
+        <li>John Chumak</li>
+        <li>Gabriel Cornish</li>
+        <li>Duy-Anh Dang</li>
+        <li>GGMR</li>
         <li>José Dias</li>
+        <li><a href="http://bphennessy.com/">Brendan Hennessy</a></li>
+        <li><a href="https://twitter.com/chostett">Chelsea Hostetter</a></li>
+        <li>Marisa Parham</li>
+        <li><a href="https://danq.me/">Dan Q</a></li>
+        <li>Caelyn Sandel</li>
+        <li>Steven Schutz</li>
+        <li><a href="http://www.taptaptap.co/">Tap by Wattpad</a></li>
     </ul>
 </div>
 
@@ -31,7 +43,7 @@ Supporters at particular tiers receive access to devlogs, livestreams where Chap
 For now, Chapbook must be added to the Twine editor by hand. To do this, choose the **Formats** button from the story list page you see when you first start up Twine, then the **Add a New Format** tab at the top of the dialog that appears. Paste the following address into the field and select the **Go** button:
 
 ```
-https://klembot.github.io/chapbook/use/0.0.2/format.js
+https://klembot.github.io/chapbook/use/1.0.0-beta1/format.js
 ```
 
 Once you do that, you must set the story you're working with to publish using Chapbook. Edit one of your stories, then choose **Change Story Format** from the story menu at the bottom of the editor. Choose Chapbook here. Once you do, selecting the **Play** button or publishing your story to a file will use Chapbook format.

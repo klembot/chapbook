@@ -1,12 +1,10 @@
-const pify = require('pify');
-const fs = pify(require('fs'));
-const mkdirp = pify(require('mkdirp'));
+const fs = require('fs-extra');
 const pkg = require('../package.json');
 
 fs.readFile('dist/index.html', {encoding: 'utf8'}).then(data => {
 	const formatPath = `dist/${pkg.name.toLowerCase()}-${pkg.version}`;
 
-	mkdirp(formatPath)
+	fs.mkdirp(formatPath)
 		.then(() =>
 			fs.writeFile(
 				`${formatPath}/format.js`,
@@ -23,5 +21,7 @@ fs.readFile('dist/index.html', {encoding: 'utf8'}).then(data => {
 					');'
 			)
 		)
-		.then(() => console.log(`Wrote ${formatPath}/format.js.`));
+		.then(() => console.log(`Wrote ${formatPath}/format.js.`))
+		.then(() => fs.copy('logo.svg', `${formatPath}/logo.svg`))
+		.then(() => console.log(`Copied ${formatPath}/logo.svg.`));
 });
