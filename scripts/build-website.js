@@ -25,4 +25,5 @@ fs.mkdirp('docs')
 			`docs/use/${pkg.version}/`
 		)
 	)
+	.then(() => cpy(`logo.svg`, `docs/use/${pkg.version}/`))
 	.then(() => console.log('Wrote files to docs/.'));
