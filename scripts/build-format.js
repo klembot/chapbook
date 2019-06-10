@@ -12,6 +12,7 @@ fs.readFile('dist/index.html', {encoding: 'utf8'}).then(data => {
 					JSON.stringify({
 						author: pkg.author.replace(/ <.*>/, ''),
 						description: pkg.description,
+						image: 'logo.svg',
 						name: pkg.name,
 						proofing: false,
 						source: data,
