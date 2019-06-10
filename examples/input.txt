@@ -1,11 +1,13 @@
 :: Start
-Your favorite color is {cycling link: ['red', 'green', 'blue'], set: 'color'}.
+Your favorite color is {cycling link for: 'color', choices: ['red', 'green', 'blue']}.
 
 Your favorite food is: {dropdown menu for: 'food', choices: ['pizza', 'sushi', 'tacos']}
 
 Your name is: {text input for: 'name'}
 
 [[Check those]]
+
+A cycling link that doesn't save: {cycling link, choices: ['winter', 'spring', 'summer', 'fall']}
 
 :: Check those
 Hey, {name}, I bet you'd enjoy {color} {food}!

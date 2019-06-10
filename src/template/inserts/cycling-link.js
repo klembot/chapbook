@@ -10,10 +10,16 @@ import htmlify from '../../util/htmlify';
 export default {
 	match: /^cycling\s+link(\s+for)?/i,
 	render(varName, props) {
-		let current = get(varName);
+		let current;
 
-		if (current === undefined) {
-			set(varName, props.choices[0]);
+		if (varName) {
+			current = get(varName);
+
+			if (current === undefined) {
+				set(varName, props.choices[0]);
+				current = props.choices[0];
+			}
+		} else {
 			current = props.choices[0];
 		}
 
