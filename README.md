@@ -1,5 +1,7 @@
 # Chapbook, a story format for Twine 2
 
+![][logo.svg]
+
 _by Chris Klimas_
 
 Chapbook is a story format for Twine 2, which means that it plays stories created in Twine in a web browser. To use it, add this URL as a story format:
