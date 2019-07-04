@@ -9,5 +9,9 @@ Your name is: {text input for: 'name'}
 
 A cycling link that doesn't save: {cycling link, choices: ['winter', 'spring', 'summer', 'fall']}
 
+A dropdown menu that doesn't save: {dropdown menu, choices: ['Linux', 'macOS', 'Windows']}
+
+A text input that doesn't save: {text input}
+
 :: Check those
 Hey, {name}, I bet you'd enjoy {color} {food}!
