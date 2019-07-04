@@ -2,10 +2,24 @@
 testing: true
 --
 * [[Test a missing modifier]]
-
+* [[Test a missing insert]]
+* [[Test inserting a variable that is undefined]]
+* [[Test setting a variable badly]]
+* [[Test visiting a passage that doesn't exist]]
 
 :: Test a missing modifier
 This is regular text...
 
 [xyzzy]
 And some more text.
+
+:: Test a missing insert
+This is {not an insert}.
+
+:: Test inserting a variable that is undefined
+This is {notAVariable}.
+
+:: Test setting a variable badly
+a: 1 + undefinedVariable
+--
+This is regular text.

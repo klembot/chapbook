@@ -35,6 +35,9 @@ If an insert can't be parsed successfully, it is left as-is.
 */
 
 import {get} from '../state';
+import createLoggers from '../logger';
+
+const {warn} = createLoggers('render');
 
 /*
 Tries to render a single insert surrounded with { and }. If this can't be done,
@@ -161,9 +164,27 @@ export default function render(src, inserts) {
 
 			case '}':
 				if (!inString) {
+					const renderSrc = src.substring(startCurly, i + 1);
+					let insertResult = '';
+
+					try {
+						insertResult = renderInsert(renderSrc, inserts);
+					} catch (e) {
+						console.warn(
+							`An error occurred while rendering "${renderSrc}": ${
+								e.message
+							}`
+						);
+
+						insertResult = renderSrc;
+					}
+
+					if (insertResult === undefined) {
+						insertResult = '';
+					}
+
 					result +=
-						src.substring(startText, startCurly) +
-						renderInsert(src.substring(startCurly, i + 1), inserts);
+						src.substring(startText, startCurly) + insertResult;
 
 					/*
 					Advance start variables for the next match.

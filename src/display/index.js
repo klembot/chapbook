@@ -11,6 +11,7 @@ import event from '../event';
 import {crossfade, fadeInOut, none} from './transitions';
 import {get} from '../state';
 import {init as initCrash} from './crash';
+import {init as initWarnings} from './warnings';
 import {passageNamed} from '../story';
 import {render} from '../template';
 import startSkipAnimation from './skip-animation';
@@ -97,6 +98,7 @@ const updateDom = coalesceCalls(function update(calls) {
 
 export function init() {
 	initCrash();
+	initWarnings();
 	bodyContentEl = document.querySelector('#page article');
 	spinnerEl = document.querySelector('#page #spinner');
 	marginalEls = {};
