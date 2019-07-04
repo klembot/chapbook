@@ -4,6 +4,10 @@ When you launch your story from Twine using the **Test** button in the editor to
 
 If you would like to temporarily hide the backstage view, use the arrow button to its left, which toggles the view's visibility.
 
+{% hint %}
+While testing your story in Twine, it's best to use the **Test** button instead of **Play**. If you use the **Play** button instead, Chapbook will try to resume play where you last left off. Usually, you'd like to start from the beginning, which Chapbook does in test mode.
+{% endhint %}
+
 ## The History Tab
 
 As you visit passages in your story, the History tab will show them in a tabular list, with the oldest at the top and the most recent at the bottom.
