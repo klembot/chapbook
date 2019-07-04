@@ -10,7 +10,12 @@ export function autopx(value) {
 	return value;
 }
 
-function parseColorValue(value) {
+/*
+Exported for testing purposes only. Use parseColor() instead; this parses a
+single color value, not a color declaration that an author would use.
+*/
+
+export function parseColorValue(value) {
 	if (typeof value !== 'string') {
 		throw new Error('Only strings can be parsed as color values.');
 	}
