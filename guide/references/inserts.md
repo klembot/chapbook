@@ -21,7 +21,7 @@ Renders a link to the previous passage. <code>label</code> can be omitted; Chapb
 </dd>
 
 <dt>
-<code>{cycling link<i> for 'variable name'</i>, choices: ['one', 'two', 'three', ]}</code>
+<code>{cycling link<i> for 'variableName'</i>, choices: ['one', 'two', 'three']}</code>
 </td>
 
 <dd>
@@ -29,7 +29,7 @@ Renders a cycling link that runs through the options listed in <code>choices</co
 </dd>
 
 <dt>
-<code>{dropdown menu<i> for 'variable name'</i>, choices: ['one', 'two', 'three', ]}</code>
+<code>{dropdown menu<i> for 'variableName'</i>, choices: ['one', 'two', 'three']}</code>
 </td>
 
 <dd>
