@@ -36,6 +36,7 @@ function handleError(error) {
 
 		const display = document.createElement('div');
 		const container = document.querySelector('#page article');
+		const trail = get('trail');
 
 		display.className = 'error';
 		display.innerHTML = `
@@ -45,7 +46,9 @@ function handleError(error) {
 			<pre>${get('config.testing') ? detail : ''}</pre>
 			<ul>
 				<li>
-					<a href="javascript:void(0)" data-cb-back>Go back</a> to the previous passage.
+					<a href="javascript:void(0)" ${
+						trail.length > 1 ? 'data-cb-back' : 'data-cb-refresh'
+					}>Go back</a> to the previous passage.
 				</li>
 				<li>
 					<a href="javascript:void(0)" data-cb-hard-restart>Hard restart</a>, clearing all progress and beginning from the start.
@@ -67,6 +70,13 @@ function handleError(error) {
 					);
 				}
 
+				return;
+			}
+
+			const refreshLink = closest(e.target, '[data-cb-refresh]', true);
+
+			if (refreshLink) {
+				set('trail', [...get('trail')]);
 				return;
 			}
 
