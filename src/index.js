@@ -1,5 +1,5 @@
 import {go, restart} from './actions';
-import backstage from './backstage';
+import * as backstage from './backstage';
 import initExtensibility from './extensibility';
 import {
 	canRestoreFromStorage,
