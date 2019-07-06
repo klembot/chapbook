@@ -27,7 +27,7 @@ export default {
 			'a',
 			{
 				href: 'javascript:void(0)',
-				'data-cb-cycle-set': varName,
+				'data-cb-cycle-set': varName || undefined,
 				'data-cb-cycle-choices': JSON.stringify(props.choices)
 			},
 			[current]
