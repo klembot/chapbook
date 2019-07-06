@@ -88,7 +88,8 @@
 		}
 	}
 
-	.error {
+	.error,
+	.warning {
 		@include system-font;
 
 		background: $oc-red-0;
@@ -109,6 +110,15 @@
 
 		a {
 			color: $oc-red-9;
+		}
+	}
+
+	.warning {
+		background: $oc-yellow-0;
+		color: $oc-yellow-9;
+
+		a {
+			color: $oc-yellow-9;
 		}
 	}
 

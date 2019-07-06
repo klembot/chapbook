@@ -1,10 +1,11 @@
 const fs = require('fs');
-const cssPlugin = require('mini-css-extract-plugin');
-const htmlPlugin = require('html-webpack-plugin');
+const CssPlugin = require('mini-css-extract-plugin');
+const HtmlPlugin = require('html-webpack-plugin');
 const path = require('path');
 const TwineStory = require('twine-utils/story');
 
 const isRelease = process.env.NODE_ENV === 'production';
+const isMicro = process.env.CHAPBOOK_MICRO === 'y';
 const browserSupport = ['iOS > 9', 'IE 11', '>10%'];
 const htmlMinifyOptions = {collapseWhitespace: true};
 
@@ -32,7 +33,7 @@ const config = {
 			{
 				test: /\.scss$/,
 				use: [
-					cssPlugin.loader,
+					CssPlugin.loader,
 					{loader: 'css-loader', options: {minimize: isRelease}},
 					'sass-loader'
 				]
@@ -43,9 +44,12 @@ const config = {
 			}
 		]
 	},
+	output: {
+		path: path.resolve(__dirname, `dist/${isMicro ? 'micro' : 'full'}`)
+	},
 	plugins: [
-		new cssPlugin({filename: '[name].css'}),
-		new htmlPlugin({
+		new CssPlugin({filename: '[name].css'}),
+		new HtmlPlugin({
 			inject: !isRelease,
 			minify: isRelease && htmlMinifyOptions,
 			template: 'src/index.ejs',
@@ -86,6 +90,12 @@ const config = {
 		extensions: ['.js', '.jsx']
 	}
 };
+
+if (isMicro) {
+	config.externals = {
+		'./backstage': 'undefined'
+	};
+}
 
 if (isRelease) {
 	config.module.rules.push({

@@ -126,13 +126,18 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 						invocation: block.content
 					});
 				} else if (mods.length === 0) {
-					markdown += `<p class="error">No modifiers matched "[${
-						block.content
-					}]". It was ignored.</p>`;
+					/*
+					No modifier matched; output the source as-is, as it might be
+					something the author intended to display.
+					*/
+
+					markdown += `\n\n[${block.content}]\n\n`;
 				} else {
-					markdown += `<p class="error">More than one modifier matched "[${
-						block.content
-					}]". It was ignored.</p>`;
+					console.warn(
+						`More than one modifier matched "[${block.content}]".`
+					);
+
+					markdown += `\n\n[${block.content}]\n\n`;
 				}
 				break;
 			}

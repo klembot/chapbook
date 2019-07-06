@@ -1,6 +1,6 @@
 /*
-Handles errors that occur during play in release mode (e.g. not testing). If
-we're in test mode, then errors and warnings are shown inline in the page.
+Handles errors that occur during play in release mode (e.g. not testing). If in
+test mode, this displays error detail.
 
 The goals here are to:
 
@@ -14,7 +14,7 @@ as self-sufficient as possible.
 import closest from 'closest';
 import {get, set, purgeFromStorage} from '../state';
 
-function handleError(e) {
+function handleError(error) {
 	/*
 	Marked will blame itself if rendering has problems, but it probably is our
 	fault, so remove that pointer.
@@ -26,25 +26,29 @@ function handleError(e) {
 	try {
 		let detail = '';
 
-		if (e.error && e.error.stack) {
-			detail = e.message + '\n\nStack trace:\n' + e.error.stack;
+		if (error.error && error.error.stack) {
+			detail = error.message + '\n\nStack trace:\n' + error.error.stack;
 		} else {
-			detail = e.message + '\n\n[No stack trace available]';
+			detail = error.message + '\n\n[No stack trace available]';
 		}
 
 		detail = detail.replace(markedError, '');
 
 		const display = document.createElement('div');
 		const container = document.querySelector('#page article');
+		const trail = get('trail');
 
 		display.className = 'error';
 		display.innerHTML = `
 			<p>
 			An unexpected error has occurred.
 			</p>
+			<pre>${get('config.testing') ? detail : ''}</pre>
 			<ul>
 				<li>
-					<a href="javascript:void(0)" data-cb-back>Go back</a> to the previous passage.
+					<a href="javascript:void(0)" ${
+						trail.length > 1 ? 'data-cb-back' : 'data-cb-refresh'
+					}>Go back</a> to the previous passage.
 				</li>
 				<li>
 					<a href="javascript:void(0)" data-cb-hard-restart>Hard restart</a>, clearing all progress and beginning from the start.
@@ -66,6 +70,13 @@ function handleError(e) {
 					);
 				}
 
+				return;
+			}
+
+			const refreshLink = closest(e.target, '[data-cb-refresh]', true);
+
+			if (refreshLink) {
+				set('trail', [...get('trail')]);
 				return;
 			}
 
@@ -97,5 +108,7 @@ export function init() {
 	Only a few browsers currently support this event, but we may as well try.
 	*/
 
-	window.addEventListener('unhandledrejection', handleError);
+	window.addEventListener('unhandledrejection', err =>
+		handleError(err.reason)
+	);
 }

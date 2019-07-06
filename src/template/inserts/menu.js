@@ -9,20 +9,24 @@ import htmlify, {domify} from '../../util/htmlify';
 export default {
 	match: /^dropdown menu(\s+for)?/i,
 	render(varName, props) {
-		let current = get(varName);
+		let current;
 
-		if (current === undefined) {
-			set(varName, props.choices[0]);
-			current = props.choices[0];
+		if (varName) {
+			current = get(varName);
+
+			if (current === undefined) {
+				set(varName, props.choices[0]);
+				current = props.choices[0];
+			}
 		}
 
 		return htmlify(
 			'select',
-			{'data-cb-menu-set': varName},
+			{'data-cb-menu-set': varName || undefined},
 			props.choices.map(choice => {
 				const opts = {value: choice};
 
-				if (current === choice) {
+				if (varName && current === choice) {
 					opts.selected = '';
 				}
 

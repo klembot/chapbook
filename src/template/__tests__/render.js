@@ -18,7 +18,7 @@ beforeEach(() => {
 describe('render()', () => {
 	test('sets vars', () => {
 		const input = {
-			vars: {foo: () => 'hello'},
+			vars: [{name: 'foo', value: () => 'hello'}],
 			blocks: []
 		};
 
@@ -29,7 +29,7 @@ describe('render()', () => {
 
 	test('handles var names with dots', () => {
 		const input = {
-			vars: {'foo.bar.baz': () => 'hello'},
+			vars: [{name: 'foo.bar.baz', value: () => 'hello'}],
 			blocks: []
 		};
 
@@ -40,6 +40,22 @@ describe('render()', () => {
 
 	test('throws an error when given no vars', () => {
 		expect(() => render({blocks: []})).toThrow();
+	});
+
+	test('throws an error when given a var whose value function throws', () => {
+		expect(() =>
+			render({
+				blocks: [],
+				vars: [
+					{
+						name: 'foo',
+						value: () => {
+							throw new Error('Test');
+						}
+					}
+				]
+			})
+		).toThrow();
 	});
 
 	test('throws an error when given no blocks', () => {

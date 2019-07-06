@@ -1,6 +1,15 @@
 import parse from '../parse';
 
 describe('parse()', () => {
+	let warnSpy;
+
+	beforeEach(() => {
+		warnSpy = jest.spyOn(global.console, 'warn');
+		warnSpy.mockImplementation(() => {});
+	});
+
+	afterEach(() => warnSpy.mockRestore());
+
 	test('returns an object with vars and blocks properties', () => {
 		const result = parse('hello');
 
@@ -52,11 +61,11 @@ describe('parse()', () => {
 		expect(result.vars.length).toBe(2);
 	});
 
-	test.skip('warns about malformed lines in vars', () => {
+	test('warns about malformed lines in vars', () => {
 		const result = parse('hello there\n--\n');
 
-		expect(result.warnings.length).toBe(1);
-		expect(result.warnings[0]).toMatch(/missing a colon/);
+		expect(warnSpy.mock.calls.length).toBe(1);
+		expect(warnSpy.mock.calls[0][0]).toMatch(/missing a colon/);
 	});
 
 	test('parses a bare text block correctly', () => {

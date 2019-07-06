@@ -1,5 +1,5 @@
 import {go, restart} from './actions';
-import {init as initBackstage} from './backstage';
+import * as backstage from './backstage';
 import initExtensibility from './extensibility';
 import {
 	canRestoreFromStorage,
@@ -31,8 +31,10 @@ initDisplay();
 initSound();
 initStory();
 
-if (get('config.testing')) {
-	initBackstage();
+/* If we are the micro build, backstage will be undefined by Webpack. */
+
+if (backstage && get('config.testing')) {
+	backstage.init();
 }
 
 /* If we are in debug mode, then don't try to restore the session. */

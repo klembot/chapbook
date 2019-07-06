@@ -11,9 +11,9 @@ export default {
 	render(varName, props) {
 		return htmlify('input', {
 			type: 'text',
-			value: get(varName) || '',
-			'data-cb-text-field-set': varName,
-			required: props.required ? '' : undefined
+			value: varName ? get(varName) : '',
+			'data-cb-text-field-set': varName || undefined,
+			required: props.required !== false ? '' : undefined
 		});
 	}
 };

@@ -94,15 +94,16 @@ There is a relative embarassment of riches when it comes to selecting a Twine 2 
     Chapbook uses are fairly set in stone.
 
 -   You've invested significant time already in learning another story format.
-    There's nothing that Chapbook can do that other formats can't. It may be a
-    bit more readable, depending on your point of view, but if you've already
-    spent the time to learn how to write for another story format, there's 
+    There's nothing that Chapbook can do that other formats can't. It may be
+    easier to write with, depending on your point of view, but if you've already
+    spent the time to learn how to write for another story format, it may not be
+    worth the time investment.
 
 ## An Aside on Names
 
 There's been some debate as to whether Twine produces games or merely stories: the truth is, with Twine you can make games, you can make interactive stories, and you can also make things that nobody can quite pin down. Keeping in the spirit of vexing formalists who prefer clear boundaries, this guide calls the things you'll create with Chapbook _stories_ and the people who you share them with _players_, but you shouldn't infer anything from this usage. Please make strange things with Twine and Chapbook.
 
-[^1]: Chapbook, sadly, cannot be used with Twine 1 for now.
+[^1]: Chapbook, sadly, cannot be used with Twine 1.
 [^2]: If you have programming experience, this idea may immediately cause some alarm--how can you possibly write anything serious without this functionality? [Conditional Display](state/conditional-display.md) discusses this subject, but it may be a bit hard to follow if you skip ahead immediately.
 
 [mit-license]: https://en.wikipedia.org/wiki/MIT_License
