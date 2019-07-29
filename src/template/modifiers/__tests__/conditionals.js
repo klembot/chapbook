@@ -129,5 +129,27 @@ describe('conditional modifiers', () => {
 		expect(window.testCall).toHaveBeenCalledTimes(1);
 	});
 
+	test('does not let contents be rendered at all if the condition is false', () => {
+		const spyInsert = {
+			match: /spy insert/i,
+			render: jest.fn()
+		};
+
+		const output = render(
+			{
+				blocks: [
+					{type: 'modifier', content: 'if false'},
+					{type: 'text', content: '{spy insert}'}
+				],
+				vars: []
+			},
+			[spyInsert],
+			[conditionals]
+		);
+
+		expect(output).toBe('');
+		expect(spyInsert.render).toHaveBeenCalledTimes(0);
+	});
+
 	// TODO: signals an error if else is used without a matching if'
 });

@@ -65,37 +65,75 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 	parsed.blocks.forEach(block => {
 		switch (block.type) {
 			case 'text': {
-				/*
-				We allow modifiers to change the text, as well as add text
-				before or after it. We allow this separation to keep the
-				original text intact.
-				*/
-
 				let blockOutput = {
-					text: renderInserts(renderLinks(block.content), inserts),
-					beforeText: '\n\n',
-					afterText: ''
+					text: block.content,
+					startsNewParagraph: true
 				};
 
-				/* Allow all active modifiers to alter the text. */
+				/* Allow active modifiers to process the raw source. */
 
-				log(
-					`Running ${activeModifiers.length} modifiers on text block`
+				const rawModifiers = activeModifiers.filter(
+					m => !!m.mod.processRaw
 				);
 
-				activeModifiers.forEach(m =>
+				log(
+					`Running ${
+						rawModifiers.length
+					} modifiers on raw source block`
+				);
+
+				rawModifiers.forEach(m => {
+					m.mod.processRaw(blockOutput, {
+						state: modifierState[m.mod],
+						invocation: m.invocation
+					});
+				});
+
+				/* Render inserts and links. */
+
+				blockOutput.text = renderInserts(
+					renderLinks(blockOutput.text),
+					inserts
+				);
+
+				/*
+				Allow active modifiers to process the source with inserts
+				rendered. This is usually where modifiers do their work.
+				*/
+
+				const processedModifiers = activeModifiers.filter(
+					m => !!m.mod.process
+				);
+
+				log(
+					`Running ${
+						processedModifiers.length
+					} modifiers on source block`
+				);
+
+				processedModifiers.forEach(m =>
 					m.mod.process(blockOutput, {
 						state: modifierState[m.mod],
 						invocation: m.invocation
 					})
 				);
 
-				markdown +=
-					blockOutput.beforeText +
-					blockOutput.text +
-					blockOutput.afterText;
-
 				log(`Output after modifiers: ${JSON.stringify(blockOutput)}`);
+
+				if (blockOutput.text.trim() !== '') {
+					/*
+					If we are appending to existing Markdown source, use the
+					appropriate separator.
+					*/
+
+					if (markdown !== '') {
+						markdown += blockOutput.startsNewParagraph
+							? '\n\n'
+							: ' ';
+					}
+
+					markdown += blockOutput.text;
+				}
 
 				/*
 				Clear modifiers so that the next set will start with a clean

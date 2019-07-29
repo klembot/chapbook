@@ -92,7 +92,7 @@ describe('render()', () => {
 		render(modifierInput, [], [spyModifier]);
 		expect(spyModifier.process).toHaveBeenCalledTimes(1);
 		expect(spyModifier.process).toHaveBeenCalledWith(
-			{afterText: '', beforeText: '\n\n', text: 'Hello world'},
+			{text: 'Hello world', startsNewParagraph: true},
 			{invocation: 'test', state: {}}
 		);
 	});
@@ -105,15 +105,14 @@ describe('render()', () => {
 				{
 					match: /^test/,
 					process(src) {
-						src.beforeText = '-test-start-';
 						src.text = src.text.toUpperCase();
-						src.afterText = '-test-end-';
+						src.startsNewParagraph = false;
 					}
 				}
 			]
 		);
 
-		expect(result.trim()).toBe('<p>-test-start-HELLO WORLD-test-end-</p>');
+		expect(result.trim()).toBe('<p>HELLO WORLD</p>');
 	});
 
 	test('resets modifiers after a text block', () => {

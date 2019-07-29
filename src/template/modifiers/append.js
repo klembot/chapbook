@@ -3,6 +3,6 @@
 export default {
 	match: /^append$/i,
 	process(output) {
-		output.beforeText = ' ';
+		output.startsNewParagraph = false;
 	}
 };

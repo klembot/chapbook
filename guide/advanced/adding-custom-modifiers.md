@@ -20,11 +20,8 @@ See [the first part of Adding Custom Inserts](adding-custom-inserts.md) for an e
 
 The `process()` property is where the work of a modifier occurs. The `output` argument it is passed has three properties. Each one is Markdown source code, _not_ HTML as it will be finally rendered.
 
--   `text`, the main text that the modifier is being applied to.
--   `beforeText`, a string that will be placed before the main text before it is rendered as Markdown. By default, this is an empty string.
--   `afterText`, a string that will be placed after the main text. By default, this is `'\n\n'` (e.g. two newlines), creating a new paragraph between this block of text and the next.
-
-`beforeText` and `afterText` were created so that multiple modifiers could prepend and append text without affecting the main text.
+-   `text`, the text that the modifier is being applied to.
+-	`startsNewParagraph`, a Boolean value indicating whether this block of text should begin a new paragraph. (The [append modifier], for example, sets this to `false`.)
 
 Modifiers also receive two other arguments which the example above didn't show:
 
@@ -65,11 +62,12 @@ When the bombers got back to their base, the steel cylinders were taken from the
 
 ... Would display as:
 
-	[remove aeiou]
 	XmXrXcXn plXnXs, fXll Xf hXlXs Xnd wXXndXd mXn Xnd cXrpsXs tXXk Xff bXckwXrds frXm Xn XXrfXXld Xn XnglXnd. XvXr FrXncX X fXw GXrmXn fXghtXr plXnXs flXw Xt thXm bXckwXrds, sXckXd bXllXts Xnd shXll frXgmXnts frXm sXmX Xf thX plXnXs Xnd crXwmXn. ThXy dXd thX sXmX fXr wrXckXd XmXrXcXn bXmbXrs Xn thX grXXnd, Xnd thXsX plXnXs flXw Xp bXckwXrds tX jXXn thX fXrmXtXXn.
 
-	[also remove shrdl]
 	TXX fXXmXtXXn fXXw bXckwXXXX XvXX X GXXmXn cXty tXXt wXX Xn fXXmXX. TXX bXmbXXX XpXnXX tXXXX bXmb bXy XXXXX, XxXXtXX X mXXXcXXXXX mXgnXtXXm wXXcX XXXXnk tXX fXXXX, gXtXXXXX tXXm XntX cyXXnXXXcXX XtXXX cXntXXnXXX, XnX XXftXX tXX cXntXXnXXX XntX tXX bXXXXXX Xf tXX pXXnXX. TXX cXntXXnXXX wXXX XtXXXX nXXtXy Xn XXckX. TXX GXXmXnX bXXXw XXX mXXXcXXXXX XXvXcXX Xf tXXXX Xwn, wXXcX wXXX XXng XtXXX tXbXX. TXXy XXXX tXXm tX XXck mXXX fXXgmXntX fXXm tXX cXXwmXn XnX pXXnXX. BXt tXXXX wXXX XtXXX X fXw wXXnXXX XmXXXcXnX, tXXXgX, XnX XXmX Xf tXX bXmbXXX wXXX Xn bXX XXpXXX. XvXX FXXncX, tXXXgX, GXXmXn fXgXtXXX cXmX Xp XgXXn, mXXX XvXXytXXng XnX XvXXybXXy XX gXXX XX nXw.
 
-	[also remove t]
 	WXXn XXX bXmbXXX gXX bXck XX XXXXX bXXX, XXX XXXXX cyXXnXXXX wXXX XXkXn fXXm XXX XXckX XnX XXXppXX bXck XX XXX XnXXXX XXXXXX Xf XmXXXcX, wXXXX fXcXXXXXX wXXX XpXXXXXng nXgXX XnX XXy, XXXmXnXXXng XXX cyXXnXXXX, XXpXXXXXng XXX XXngXXXXX cXnXXnXX XnXX mXnXXXXX. XXXcXXngXy, XX wXX mXXnXy wXmXn wXX XXX XXXX wXXk. XXX mXnXXXXX wXXX XXXn XXXppXX XX XpXcXXXXXXX Xn XXmXXX XXXXX. XX wXX XXXXX bXXXnXXX XX pXX XXXm XnXX XXX gXXXnX, XX XXXX XXXm cXXvXXXy, XX XXXy wXXXX nXvXX XXXX XnybXXy XvXX XgXXn.
+
+Finally, in some cases, you may want a modifier to modify the source text as it was exactly entered by the author, before inserts and links are transformed into Markdown/HTML equivalents. To do this, write a `processRaw()` function instead of `process`. It takes the same exact arguments that `process()` does.
+
+[append modifier]: ../modifiers-and-inserts/delayed-text.md
