@@ -94,9 +94,7 @@ Occasionally you'll want to use Markdown formatting characters as-is, without th
 
 ## Other Custom Styling
 
-You can also enter HTML into a passage without any extra code surrounding it. It will be displayed exactly as you type it in.
-
-Markdown has a quirk where if you enter Markdown code inside of an inline element such as `<b>` or `<span>`, it will convert it to HTML. But in block elements such as `<p>` or `<div>`, it won't.
+You can also enter HTML into a passage without any extra code surrounding it. It will be displayed exactly as you type it in. The library that Chapbook uses to render Markdown is sometimes inconsistent about how it treats HTML, however. It will always let HTML tags pass through as-is, but whether it interprets the contents of these tags as Markdown or HTML can depend on the exact situation. Unfortunately, the best way to test this is to experiment.
 
 ## Blockquotes Don't Behave As You Might Expect
 
