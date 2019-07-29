@@ -14,9 +14,7 @@ function parseHistory(history) {
 
 	history.forEach(({change}) => {
 		if (change.name === 'trail') {
-			if (current.passage) {
-				result.push(current);
-			}
+			result.push(current);
 
 			current = {
 				passage: change.value[change.value.length - 1],
@@ -37,6 +35,7 @@ function parseHistory(history) {
 		result.push(current);
 	}
 
+	console.log('Parsed', history, result);
 	return result;
 }
 
@@ -56,9 +55,7 @@ function historyRows({passage, vars}, index) {
 				rowspan={vars.length + 1}
 				colspan={vars.length > 0 ? 1 : 2}
 			>
-				Go to &ldquo;
-				{passage}
-				&rdquo;
+				{passage ? `Go to "${passage}"` : 'Startup'}
 			</td>
 		</tr>
 	];
