@@ -2,6 +2,7 @@ import {h, Component} from 'preact';
 import Panel from '../panel';
 import event from '../../event';
 import {history, rewindTo} from './recorder';
+import {reset} from '../../state';
 import './index.scss';
 
 function parseHistory(history) {
@@ -51,7 +52,13 @@ function historyRows({historyIndex, passage, varChanges}) {
 	const result = [
 		<tr>
 			<td class="actions" rowspan={varChanges.length + 1}>
-				<button onClick={() => rewindTo(historyIndex)}>&#x21aa;</button>
+				<button
+					onClick={
+						historyIndex >= 0 ? () => rewindTo(historyIndex) : reset
+					}
+				>
+					&#x21aa;
+				</button>
 			</td>
 			<td
 				class="go"
@@ -93,17 +100,20 @@ export default class History extends Component {
 
 		if (this.state.history.length > 0) {
 			content = (
-				<div>
-					<table class="history">
-						{this.state.history.map(historyRows)}
-					</table>
-				</div>
+				<table class="history">
+					{this.state.history.map(historyRows)}
+				</table>
 			);
 		} else {
 			content = (
-				<p>
-					<em>No history has been recorded yet.</em>
-				</p>
+				<table class="history">
+					<tr>
+						<td class="actions">
+							<button onClick={reset}>&#x21aa;</button>
+						</td>
+						<td class="go">Startup</td>
+					</tr>
+				</table>
 			);
 		}
 
@@ -111,10 +121,13 @@ export default class History extends Component {
 	}
 
 	componentDidMount() {
-		event.on('state-change', this.updateBound);
+		event.on('backstage-recorder-update', this.updateBound);
 	}
 
 	componentDidUnmount() {
-		event.removeEventListener('state-change', this.updateBound);
+		event.removeEventListener(
+			'backstage-recorder-update',
+			this.updateBound
+		);
 	}
 }

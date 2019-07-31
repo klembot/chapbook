@@ -10,17 +10,28 @@ export const defaults = {
 };
 
 export let history = [];
+let recording = true;
 
 function clear() {
+	if (!recording) {
+		return;
+	}
+
 	history = [];
+	event.emit('backstage-recorder-update');
 }
 
 function add({name, value}) {
+	if (!recording) {
+		return;
+	}
+
 	if (history.length === get('config.backstage.trail.maxLength')) {
 		history.shift();
 	}
 
 	history.push({change: {name, value}, state: saveToObject()});
+	event.emit('backstage-recorder-update');
 }
 
 export function rewindTo(index) {
@@ -28,7 +39,11 @@ export function rewindTo(index) {
 		throw new Error(`There is no history at index ${index} to rewind to.`);
 	}
 
+	recording = false;
 	restoreFromObject(history[index].state);
+	history.length = index + 1;
+	recording = true;
+	event.emit('backstage-recorder-update');
 }
 
 export function init() {
