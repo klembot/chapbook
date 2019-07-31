@@ -14,7 +14,7 @@ If you use `'thin-line'` or `'thick-line'`, you can specify the color of the lin
 
 The variable `config.backdrop` sets the [color] of the area around the text content. On smaller browser windows (especially mobile devices), this area is not visible, however.
 
-When the story shows a new passage, it creates a transition between text based on what is set in the `config.page.transition.name` variable:
+When the story shows a new passage, it creates a transition between text based on what is set in the `config.body.transition.name` variable:
 
 - `'crossfade'` causes the old text to fade out at the same time that the new text fades in
 - `'fadeInOut'` causes the old text to fade out, then the new text to fade in
@@ -22,7 +22,14 @@ When the story shows a new passage, it creates a transition between text based o
 
 Chapbook's default transition is `'crossfade'`.
 
-If you use `'crossfade'` or `'fadeInOut'`, you can control how long the transition takes by setting `config.page.transition.duration`, which should be a string in the same format that the [after modifer][after] accepts. Remember that it doesn't understand decimals, so if you'd like a transition to take half a second, set `config.page.transition.duration` to `'500ms'`. Also keep in mind that the duration is the duration of the complete transition-- a `'crossfade'` and `'fadeInOut'` transition with the same duration might look as though they last different amounts of time, as the `'fadeInOut'` has two steps.
+If you use `'crossfade'` or `'fadeInOut'`, you can control how long the transition takes by setting `config.body.transition.duration`, which should be a string in the same format that the [after modifer][after] accepts. Remember that it doesn't understand decimals, so if you'd like a transition to take half a second, set `config.page.transition.duration` to `'500ms'`. Also keep in mind that the duration is the duration of the complete transition-- a `'crossfade'` and `'fadeInOut'` transition with the same duration might look as though they last different amounts of time, as the `'fadeInOut'` has two steps.
+
+You can also set how the header and footer content update using the following variables. They take the same values as their `body` counterparts.
+
+- `config.header.transition.name`
+- `config.header.transition.duration`
+- `config.footer.transition.name`
+- `config.footer.transition.duration`
 
 [color]: fonts-and-colors.html#colors
 [after]: ../text-and-links/modifiers-and-delayed-text.html
