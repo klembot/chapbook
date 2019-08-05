@@ -14,7 +14,7 @@ engine.extend('1.0.0', () => {
 });
 ```
 
-You can also place code like this into your story's JavaScript in Twine--this uses the `[JavaScript]` modifier for clarity.
+You can also place code like this into your story's JavaScript in Twine--this uses the `[JavaScript]` modifier for clarity.[^1]
 
 See [the first part of Adding Custom Inserts](adding-custom-inserts.md) for an explanation of the `engine.extend()` function call, and how `config.template.modifiers` is changed. The `match` property works the same way as the `match` property for an insert; Chapbook compares possible modifier text with `match` properties until it finds a match.
 
@@ -70,4 +70,5 @@ When the bombers got back to their base, the steel cylinders were taken from the
 
 Finally, in some cases, you may want a modifier to modify the source text as it was exactly entered by the author, before inserts and links are transformed into Markdown/HTML equivalents. To do this, write a `processRaw()` function instead of `process`. It takes the same exact arguments that `process()` does.
 
+[^1]: Word of warning--you cannot define a modifier in the same passage that you use it in.
 [append modifier]: ../modifiers-and-inserts/delayed-text.md
