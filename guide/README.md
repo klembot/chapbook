@@ -25,11 +25,13 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
         <li>Gabriel Cornish</li>
         <li>Duy-Anh Dang</li>
         <li>GGMR</li>
+		<li><a href="http://taskboy.com">Joe Johnston</a></li>
         <li>José Dias</li>
         <li><a href="http://bphennessy.com/">Brendan Hennessy</a></li>
         <li><a href="https://twitter.com/chostett">Chelsea Hostetter</a></li>
         <li>Marisa Parham</li>
         <li><a href="https://danq.me/">Dan Q</a></li>
+		<li><a href="https://anastasiasalter.net">Anastasia Salter</a></li>
         <li>Caelyn Sandel</li>
         <li>Steven Schutz</li>
         <li><a href="http://www.taptaptap.co/">Tap by Wattpad</a></li>
