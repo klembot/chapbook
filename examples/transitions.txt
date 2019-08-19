@@ -1,0 +1,21 @@
+:: Start
+
+* [[Crossfade]]
+* [[Fade in/out]]
+* [[No transition]]
+
+:: Crossfade
+config.body.transition.name: 'crossfade'
+--
+It's a crossfade! {back link}
+
+:: Fade in/out
+config.body.transition.name: 'fadeInOut'
+--
+It's a fade in/out! {back link}
+
+:: No transition
+config.body.transition.name: 'none'
+--
+No transition! {back link}
+

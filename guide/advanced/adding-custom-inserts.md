@@ -12,7 +12,7 @@ engine.extend('1.0.0', () => {
 });
 ```
 
-You can also place code like this into your story's JavaScript in Twine--this uses the `[JavaScript]` modifier for clarity.
+You can also place code like this into your story's JavaScript in Twine--this uses the `[JavaScript]` modifier for clarity.[^1]
 
 First, any extension of the Chapbook engine must be wrapped in a `engine.extend()` function call. The first argument is the minimum version of Chapbook required to make your insert work; this is so that if you share your customization, anyone plugging it into a Chapbook version it won't work in will receive a harmless warning, instead of the engine crashing with an error. Chapbook follows [semantic versioning] to assist with this.
 
@@ -83,5 +83,6 @@ Below are some examples as to how these arguments work in practice.
 | `{smiley face, size: 'large'}`          | `null`    | `{size: 'large'}` | `smiley face, size: 'large'`          |
 | `{smiley face: 'happy', size: 'large'}` | `'happy'` | `{size: 'large'}` | `smiley face: 'happy', size: 'large'` |
 
+[^1]: Word of warning--you cannot define an insert in the same passage that you use it in.
 [semantic versioning]: https://semver.org/
 [array spread syntax]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_array_literals

@@ -102,6 +102,15 @@ describe('state', () => {
 		expect(state.get('color')).toBe('blue');
 	});
 
+	it('saves to separate objects each time', () => {
+		state.set('color', 'blue');
+
+		const saved1 = state.saveToObject();
+		const saved2 = state.saveToObject();
+
+		expect(saved1 === saved2).toBe(false);
+	});
+
 	it('saves and restores to local storage', () => {
 		state.set('color', 'purple');
 		state.saveToStorage();

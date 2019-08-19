@@ -2,7 +2,7 @@
 
 export default {
 	match: /^if(always|never)?\s|else$|unless\s/i,
-	process(output, {invocation, state}) {
+	processRaw(output, {invocation, state}) {
 		const type = invocation.replace(/\s.*/, '').toLowerCase();
 		let condition;
 
@@ -42,8 +42,6 @@ export default {
 
 		if (!state.conditionEval) {
 			output.text = '';
-			output.beforeText = '';
-			output.afterText = '';
 		}
 	}
 };

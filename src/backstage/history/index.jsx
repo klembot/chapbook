@@ -2,26 +2,31 @@ import {h, Component} from 'preact';
 import Panel from '../panel';
 import event from '../../event';
 import {history, rewindTo} from './recorder';
+import {reset} from '../../state';
 import './index.scss';
 
 function parseHistory(history) {
+	if (history.length === 0) {
+		return [];
+	}
+
 	/*
 	Group the history items by passage navigation.
 	*/
 
 	const result = [];
-	let current = {vars: []};
+	let varChanges = [];
+	let passage;
 
-	history.forEach(({change}) => {
+	history.forEach(({change}, index) => {
 		if (change.name === 'trail') {
-			if (current.passage) {
-				result.push(current);
-			}
-
-			current = {
-				passage: change.value[change.value.length - 1],
-				vars: []
-			};
+			result.push({
+				historyIndex: index - 1,
+				passage,
+				varChanges
+			});
+			varChanges = [];
+			passage = change.value[change.value.length - 1];
 		} else {
 			/*
 			We need to create separate entries instead of just an object, so
@@ -29,18 +34,16 @@ function parseHistory(history) {
 			that.
 			*/
 
-			current.vars.push({name: change.name, value: change.value});
+			varChanges.push({name: change.name, value: change.value});
 		}
 	});
 
-	if (current.vars.length > 0 || current.passage) {
-		result.push(current);
-	}
-
+	result.push({historyIndex: history.length - 1, passage, varChanges});
+	console.log('Parsed', history, result);
 	return result;
 }
 
-function historyRows({passage, vars}, index) {
+function historyRows({historyIndex, passage, varChanges}) {
 	/*
 	This is a function, not a stateless component, because we have to return
 	multiple <tr>s without anything enclosing them.
@@ -48,22 +51,26 @@ function historyRows({passage, vars}, index) {
 
 	const result = [
 		<tr>
-			<td class="actions" rowspan={vars.length + 1}>
-				<button onClick={() => rewindTo(index)}>&#x21aa;</button>
+			<td class="actions" rowspan={varChanges.length + 1}>
+				<button
+					onClick={
+						historyIndex >= 0 ? () => rewindTo(historyIndex) : reset
+					}
+				>
+					&#x21aa;
+				</button>
 			</td>
 			<td
 				class="go"
-				rowspan={vars.length + 1}
-				colspan={vars.length > 0 ? 1 : 2}
+				rowspan={varChanges.length + 1}
+				colspan={varChanges.length > 0 ? 1 : 2}
 			>
-				Go to &ldquo;
-				{passage}
-				&rdquo;
+				{passage ? `Go to "${passage}"` : 'Startup'}
 			</td>
 		</tr>
 	];
 
-	vars.forEach(v => {
+	varChanges.forEach(v => {
 		result.push(
 			<tr>
 				<td>
@@ -93,17 +100,20 @@ export default class History extends Component {
 
 		if (this.state.history.length > 0) {
 			content = (
-				<div>
-					<table class="history">
-						{this.state.history.map(historyRows)}
-					</table>
-				</div>
+				<table class="history">
+					{this.state.history.map(historyRows)}
+				</table>
 			);
 		} else {
 			content = (
-				<p>
-					<em>No history has been recorded yet.</em>
-				</p>
+				<table class="history">
+					<tr>
+						<td class="actions">
+							<button onClick={reset}>&#x21aa;</button>
+						</td>
+						<td class="go">Startup</td>
+					</tr>
+				</table>
 			);
 		}
 
@@ -111,10 +121,13 @@ export default class History extends Component {
 	}
 
 	componentDidMount() {
-		event.on('state-change', this.updateBound);
+		event.on('backstage-recorder-update', this.updateBound);
 	}
 
 	componentDidUnmount() {
-		event.removeEventListener('state-change', this.updateBound);
+		event.removeEventListener(
+			'backstage-recorder-update',
+			this.updateBound
+		);
 	}
 }
