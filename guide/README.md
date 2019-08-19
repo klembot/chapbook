@@ -45,7 +45,7 @@ Supporters at particular tiers receive access to devlogs, livestreams where Chap
 For now, Chapbook must be added to the Twine editor by hand. To do this, choose the **Formats** button from the story list page you see when you first start up Twine, then the **Add a New Format** tab at the top of the dialog that appears. Paste the following address into the field and select the **Go** button:
 
 ```
-https://klembot.github.io/chapbook/use/1.0.0-beta1/format.js
+https://klembot.github.io/chapbook/use/1.0.0/format.js
 ```
 
 Once you do that, you must set the story you're working with to publish using Chapbook. Edit one of your stories, then choose **Change Story Format** from the story menu at the bottom of the editor. Choose Chapbook here. Once you do, selecting the **Play** button or publishing your story to a file will use Chapbook format.
@@ -88,12 +88,6 @@ There is a relative embarassment of riches when it comes to selecting a Twine 2 
     scarce compared to the many tutorials you'll find related to the venerable
     formats SugarCube and Harlowe. And there will be fewer people to turn to if
     you have a question or encounter a problem.
-
--   Chapbook is an unfinished work. You will find many sections in this guide
-    with a yellow background, indicating functionality that hasn't yet been
-    added but is planned. It is also possible that functionality will change
-    significantly before the 1.0.0 release, though the major concepts that
-    Chapbook uses are fairly set in stone.
 
 -   You've invested significant time already in learning another story format.
     There's nothing that Chapbook can do that other formats can't. It may be
