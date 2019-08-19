@@ -33,8 +33,8 @@ digraph {
 
 	idle -> restart -> unsetAll -> setPassageVars
 
-	changeLiveInput[shape="box", label="Player changes a live input"]
-	setLiveInputs[shape="box", label="State set with contents of all inputs"]
+	// changeLiveInput[shape="box", label="Player changes a live input"]
+	// setLiveInputs[shape="box", label="State set with contents of all inputs"]
 
-	idle -> changeLiveInput -> setLiveInputs -> displayPassage
+	// idle -> changeLiveInput -> setLiveInputs -> displayPassage
 }

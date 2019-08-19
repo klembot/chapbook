@@ -839,13 +839,13 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="using-javascript-in&#xA0;passages">Using JavaScript in<span class="widont">&#xA0;</span>Passages</h1>
-<p>As a last resort, Chapbook allows you to mix JavaScript into the text of your passage. To do this, use a <code>[JavaScript]</code> modifier</p>
+<p>As a last resort, Chapbook allows you to mix JavaScript into the text of your passage. To do this, use a <code>[JavaScript]</code> modifier:</p>
 <pre><code>[JavaScript]
 document.title = &apos;A Sticky Pickle&apos;;
 
 [continued]
 &quot;Oh dear,&quot; you think to yourself. &quot;That stain will never come out.&quot;
-</code></pre><p>The JavaScript modifier normally do not output anything in Chapbook; however, if you would like to output text, the modifier provides a function <code>write()</code>&#x2013;just plain <code>write()</code>, not <code>document.write()</code>&#x2013;that will output <span class="caps">HTML</span> source code. Text output via <code>write()</code> <em>will</em> be processed for links and<span class="widont">&#xA0;</span>Markdown.</p>
+</code></pre><p>The JavaScript modifier normally does not output anything in Chapbook; however, if you would like to output text, the modifier provides a function <code>write()</code>&#x2013;just plain <code>write()</code>, not <code>document.write()</code>&#x2013;that will output <span class="caps">HTML</span> source code. Text output via <code>write()</code> <em>will</em> be processed for links and<span class="widont">&#xA0;</span>Markdown.</p>
 <p>Below is an example showing how <code>write()</code> works:</p>
 <pre><code>Before you lose your temper, you count to yourself:
 
@@ -853,7 +853,24 @@ document.title = &apos;A Sticky Pickle&apos;;
 for (let i = 1; i &lt;= 10; i++) {
     write(i + &apos;... &apos;);
 }
-</code></pre>
+</code></pre><p>You can refer to variables defined in vars sections as you would expect in JavaScript. Changing them in JavaScript will persist changes as you&apos;d expect, as<span class="widont">&#xA0;</span>well.</p>
+<pre><code>color: &apos;red
+--
+[JavaScript]
+write(`The sky is ${color}.`);
+</code></pre><p>As a result, if you would like your JavaScript code to communicate back with the rest of your story, the easiest way to do this is to set the variable to an initial value in a vars section. If you absolutely need to create new variables in JavaScript, you can call <code>engine.state.set()</code> as below. This usage may change in future versions of Chapbook, though, whereas setting a variable initially in a vars section will always<span class="widont">&#xA0;</span>work.</p>
+<pre><code>[JavaScript]
+let color = &apos;red&apos;;
+engine.state.set(&apos;weather&apos;, &apos;sunny&apos;);
+
+[continued]
+It was a {weather} day. The sky was {color}.
+</code></pre><p>This would display:</p>
+<blockquote>
+<p>It was a sunny day. The sky was<span class="widont">&#xA0;</span>{color}.</p>
+</blockquote>
+<p><code>{color}</code> is displayed as-is because if Chapbook cannot find a matching insert or variable name, it displays the source text as it was entered. Any variables declared using <code>let</code> or <code>const</code> will <em>not</em> be visible to other Chapbook code, and will not be persisted across browser<span class="widont">&#xA0;</span>sessions.</p>
+
                                 
                                 </section>
                             
@@ -896,7 +913,7 @@ for (let i = 1; i &lt;= 10; i++) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Using JavaScript in Passages","level":"1.9.1","depth":2,"next":{"title":"Using CSS in Passages","level":"1.9.2","depth":2,"path":"advanced/using-css-in-passages.md","ref":"advanced/using-css-in-passages.md","articles":[]},"previous":{"title":"Advanced Topics","level":"1.9","depth":1,"path":"advanced/index.md","ref":"advanced/index.md","articles":[{"title":"Using JavaScript in Passages","level":"1.9.1","depth":2,"path":"advanced/using-javascript-in-passages.md","ref":"advanced/using-javascript-in-passages.md","articles":[]},{"title":"Using CSS in Passages","level":"1.9.2","depth":2,"path":"advanced/using-css-in-passages.md","ref":"advanced/using-css-in-passages.md","articles":[]},{"title":"Adding Custom Inserts","level":"1.9.3","depth":2,"path":"advanced/adding-custom-inserts.md","ref":"advanced/adding-custom-inserts.md","articles":[]},{"title":"Adding Custom Modifiers","level":"1.9.4","depth":2,"path":"advanced/adding-custom-modifiers.md","ref":"advanced/adding-custom-modifiers.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"advanced/using-javascript-in-passages.md","mtime":"2019-06-10T22:04:04.423Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-06T17:57:01.913Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Using JavaScript in Passages","level":"1.9.1","depth":2,"next":{"title":"Using CSS in Passages","level":"1.9.2","depth":2,"path":"advanced/using-css-in-passages.md","ref":"advanced/using-css-in-passages.md","articles":[]},"previous":{"title":"Advanced Topics","level":"1.9","depth":1,"path":"advanced/index.md","ref":"advanced/index.md","articles":[{"title":"Using JavaScript in Passages","level":"1.9.1","depth":2,"path":"advanced/using-javascript-in-passages.md","ref":"advanced/using-javascript-in-passages.md","articles":[]},{"title":"Using CSS in Passages","level":"1.9.2","depth":2,"path":"advanced/using-css-in-passages.md","ref":"advanced/using-css-in-passages.md","articles":[]},{"title":"Adding Custom Inserts","level":"1.9.3","depth":2,"path":"advanced/adding-custom-inserts.md","ref":"advanced/adding-custom-inserts.md","articles":[]},{"title":"Adding Custom Modifiers","level":"1.9.4","depth":2,"path":"advanced/adding-custom-modifiers.md","ref":"advanced/adding-custom-modifiers.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["hints","typogr"],"pluginsConfig":{"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"typogr":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"advanced/using-javascript-in-passages.md","mtime":"2019-08-19T01:10:09.331Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-19T01:11:46.226Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
