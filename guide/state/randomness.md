@@ -2,7 +2,7 @@
 
 Randomness is a powerful tool for creating interactive experiences. It can assist with simulation--to decide whether actions of a character succeed, as in tabletop role-playing games--but it can also be used for aesthetic purposes, from altering phrasings in text to creating an entirely randomized narrative.
 
-The main way to make use of randomness with Chapbook is through [lookup variables][lookup variables] in the `random` object. For instance:
+The main way to make use of randomness with Chapbook is through [lookup variables][lookups] in the `random` object. For instance:
 
 ```
 [if random.coinFlip]
