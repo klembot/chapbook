@@ -19,13 +19,13 @@ digraph {
 	blockNav[shape="box", label="Navigation is blocked\nand browser shows error"]
 
 	idle -> navRequested -> checkRequired
-	checkRequired -> blockNav[label="no"]
+	checkRequired -> blockNav[label="yes"]
 	blockNav -> idle
 
 	setInputs[shape="box", label="State set with contents of inputs"]
 	addPassage[shape="box", label="New passage appended to trail"]
 
-	checkRequired -> setInputs[label="yes"]
+	checkRequired -> setInputs[label="no"]
 	setInputs -> addPassage -> setPassageVars
 
 	restart[shape="box", label="Player clicks a restart link"]
