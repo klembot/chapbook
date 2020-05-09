@@ -26,7 +26,7 @@ function shallowCloneContents(el) {
 
 export function none(el, html) {
 	return new Promise(resolve => {
-		el.innerHTML = html;
+		el.innerHTML = `<div>${html}</div>`;
 		resolve();
 	});
 }
