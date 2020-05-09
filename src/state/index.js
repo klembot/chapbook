@@ -25,40 +25,44 @@ const stateDefaults = {'config.state.autosave': true};
 
 export {stateDefaults as defaults};
 
-function addGlobalProxy(target, name) {
+function addProxy(target, property) {
 	/* If the property already exists on the target, do nothing. */
 
-	if (deepGet(target, name)) {
+	if (target[property]) {
 		return;
-	}
-
-	/* Navigate through any nested object properties. */
-
-	const dottedProps = name.split('.');
-	const targetName = dottedProps[dottedProps.length - 1];
-
-	for (let i = 0; i < dottedProps.length - 1; i++) {
-		target[dottedProps[i]] = target[dottedProps[i]] || {};
-		target = target[dottedProps[i]];
 	}
 
 	/* Set up the proxy. */
 
-	Object.defineProperty(target, targetName, {
+	Object.defineProperty(target, property, {
 		get() {
-			return get(name);
+			return get(property);
 		},
 		set(value) {
-			set(name, value);
+			set(property, value);
 		},
 
 		/* Allow overwriting. */
 		configurable: true,
 	});
+
+	/*
+	If there are dots in the property, walk upwards. Doing this in ascending
+	order does *not* cause problems with the existence check at the top of this
+	function, because defining a 'foo.bar' property on an object does not
+	automatically create a 'foo' property.
+	*/
+
+	const dottedProps = property.split('.');
+
+	if (dottedProps.length > 1) {
+		dottedProps.pop();
+		addProxy(target, dottedProps.join('.'));
+	}
 }
 
-function removeGlobalProxy(target, name) {
-	deepUnset(target, name);
+function removeProxy(target, property) {
+	deepUnset(target, property);
 }
 
 /*
@@ -97,7 +101,7 @@ export function reset() {
 				const previous = obj[k];
 
 				delete obj[k];
-				removeGlobalProxy(window, objName);
+				removeProxy(window, objName);
 				event.emit('state-change', {
 					name: keyName,
 					value: get(keyName),
@@ -144,12 +148,10 @@ export function set(name, value) {
 	const previous = get(name);
 
 	deepSet(vars, name, value);
-	addGlobalProxy(window, name);
+	addProxy(window, name);
 
-	const now = get(name);
-
-	if (now !== previous) {
-		event.emit('state-change', {name, value: get(name), previous});
+	if (value !== previous) {
+		event.emit('state-change', {name, previous, value});
 	}
 
 	if (get('config.state.autosave')) {
@@ -167,7 +169,7 @@ export function setDefault(name, value) {
 
 	log(`Defaulting "${name}" to ${JSON.stringify(value)}`);
 	deepSet(defaults, name, value);
-	addGlobalProxy(window, name);
+	addProxy(window, name);
 
 	if (previous === null || previous === undefined) {
 		event.emit('state-change', {name, value, previous});
@@ -187,7 +189,7 @@ export function setLookup(name, callback) {
 
 	log(`Adding lookup variable ${name}`);
 	deepSet(computed, name, callback);
-	addGlobalProxy(window, name);
+	addProxy(window, name);
 
 	if (previous === null || previous === undefined) {
 		event.emit('state-change', {name, value: get(name), previous});
@@ -201,7 +203,7 @@ Gets the value of a variable.
 export function get(name) {
 	const computedCallback = deepGet(computed, name);
 
-	if (computedCallback) {
+	if (typeof computedCallback === 'function') {
 		return computedCallback(get, set);
 	}
 
