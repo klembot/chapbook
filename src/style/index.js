@@ -25,7 +25,7 @@ export const defaults = {
 	'config.style.page.header.font': '16',
 	'config.style.page.header.link.font': 'small caps',
 	'config.style.page.footer.font': '16',
-	'config.style.page.footer.link.font': 'small caps'
+	'config.style.page.footer.link.font': 'small caps',
 };
 
 const rules = {};
@@ -38,7 +38,10 @@ export function style(selector, selectorRules) {
 }
 
 function update() {
-	/* TODO: throttle this somehow so that multiple calls in one loop don't waste time */
+	/*
+	TODO: throttle this somehow so that multiple calls in one loop don't waste
+	time
+	*/
 
 	/*
 	The sort() is necessary because of how some browser parse `text-decoration`
@@ -58,13 +61,7 @@ function update() {
 				.sort()
 				.reduce((result, current) => {
 					if (props[current]) {
-						return (
-							result +
-							current +
-							':' +
-							props[current].toString() +
-							';'
-						);
+						return result + current + ':' + props[current].toString() + ';';
 					}
 
 					return result;
@@ -125,7 +122,7 @@ function styleColorOrFont(varName, value) {
 
 			style(selector, {
 				'text-decoration-color': colorValue,
-				'-webkit-text-decoration-color': colorValue
+				'-webkit-text-decoration-color': colorValue,
 			});
 			break;
 		}
@@ -148,8 +145,7 @@ export function init() {
 		if (sameObject(name, 'config.style.backdrop')) {
 			log('Setting backdrop color');
 			style('#backdrop', {
-				'background-color': parseColor(get('config.style.backdrop'))
-					.color
+				'background-color': parseColor(get('config.style.backdrop')).color,
 			});
 		}
 
@@ -158,23 +154,21 @@ export function init() {
 			style('#page .fork p a + a', {
 				'border-top-color': parseColor(
 					get('config.style.page.fork.divider.color')
-				).color
+				).color,
 			});
 		}
 
 		if (sameObject(name, 'config.style.page.fork.divider.size')) {
 			log('Setting fork divider size');
 			style('#page .fork p a + a', {
-				'border-top-width': `${get(
-					'config.style.page.fork.divider.size'
-				)}px`
+				'border-top-width': `${get('config.style.page.fork.divider.size')}px`,
 			});
 		}
 
 		if (sameObject(name, 'config.style.page.fork.divider.style')) {
 			log('Setting fork divider style');
 			style('#page .fork p a + a', {
-				'border-top-style': get('config.style.page.fork.divider.style')
+				'border-top-style': get('config.style.page.fork.divider.style'),
 			});
 		}
 
@@ -192,29 +186,25 @@ export function init() {
 				case 'shadow':
 					style('#page', {
 						border: 'none',
-						'box-shadow': '0 4px 8px hsla(0, 0%, 0%, 0.25)'
+						'box-shadow': '0 4px 8px hsla(0, 0%, 0%, 0.25)',
 					});
 					break;
 
 				case 'thick-line':
 					style('#page', {
 						border: `4px solid ${
-							parseColor(
-								get('config.style.page.style.borderColor')
-							).color
+							parseColor(get('config.style.page.style.borderColor')).color
 						}`,
-						'box-shadow': 'none'
+						'box-shadow': 'none',
 					});
 					break;
 
 				case 'thin-line':
 					style('#page', {
 						border: `1px solid ${
-							parseColor(
-								get('config.style.page.style.borderColor')
-							).color
+							parseColor(get('config.style.page.style.borderColor')).color
 						}`,
-						'box-shadow': 'none'
+						'box-shadow': 'none',
 					});
 					break;
 			}
@@ -252,7 +242,7 @@ export function init() {
 			colors, and line colors.
 			*/
 
-			function scan(name, obj) {
+			const scan = (name, obj) => {
 				['color', 'font', 'lineColor'].forEach(s => {
 					if (obj[s]) {
 						styleColorOrFont(`${name}.${s}`, obj[s]);
@@ -264,19 +254,16 @@ export function init() {
 						}
 
 						if (obj.link.active && obj.link.active[s]) {
-							styleColorOrFont(
-								`${name}.link.active.${s}`,
-								obj.link.active[s]
-							);
+							styleColorOrFont(`${name}.link.active.${s}`, obj.link.active[s]);
 						}
 					}
 				});
-			}
+			};
 
 			[
 				'config.style.page',
 				'config.style.page.header',
-				'config.style.page.footer'
+				'config.style.page.footer',
 			].forEach(varName => {
 				const obj = get(varName);
 

@@ -32,7 +32,7 @@ export const defaults = {
 	'config.footer.center': '',
 	'config.footer.right': '{restart link}',
 	'config.footer.transition.name': 'none',
-	'config.footer.transition.duration': '500ms'
+	'config.footer.transition.duration': '500ms',
 };
 
 /* Runs a transition on a DOM element. */
@@ -106,13 +106,11 @@ export function init() {
 	['header', 'footer'].forEach(m => {
 		marginalEls[m] = {container: document.querySelector(`#page ${m}`)};
 		['left', 'center', 'right'].forEach(part => {
-			marginalEls[m][part] = document.querySelector(
-				`#page ${m} .${part}`
-			);
+			marginalEls[m][part] = document.querySelector(`#page ${m} .${part}`);
 		});
 	});
 
-	event.on('state-change', ({name, value}) => updateDom(name === 'trail'));
+	event.on('state-change', ({name}) => updateDom(name === 'trail'));
 
 	/*
 	Dispatch dom-change and dom-click events on elements with an attribute that
@@ -127,9 +125,7 @@ export function init() {
 			while (target) {
 				if (
 					target.dataset &&
-					Object.keys(target.dataset).some(key =>
-						/^cb[A-Z]/.test(key)
-					)
+					Object.keys(target.dataset).some(key => /^cb[A-Z]/.test(key))
 				) {
 					event.emit(`dom-${e.type}`, target);
 				}

@@ -8,7 +8,7 @@ export default {
 		const align = invocation.replace(/^align\s+/i, '');
 
 		output.text = wrap(output.text, {
-			style: `display: block; text-align: ${align}`
+			style: `display: block; text-align: ${align}`,
 		});
-	}
+	},
 };

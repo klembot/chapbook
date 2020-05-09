@@ -14,5 +14,5 @@ export default {
 			trail.length > 1 ? trail[trail.length - 2] : trail[0],
 			props.label || 'Back'
 		);
-	}
+	},
 };

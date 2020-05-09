@@ -9,5 +9,5 @@ export default {
 	match: /^embed\s+passage(\s+named)?/i,
 	render(passageName) {
 		return mainRender(passageNamed(passageName).source);
-	}
+	},
 };

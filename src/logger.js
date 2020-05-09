@@ -7,7 +7,7 @@ export const defaults = {
 	'config.logger.show.sound': false,
 	'config.logger.show.state': false,
 	'config.logger.show.story': false,
-	'config.logger.show.style': false
+	'config.logger.show.style': false,
 };
 
 function prefix(text) {
@@ -16,6 +16,7 @@ function prefix(text) {
 
 export function log(source, message) {
 	if (get(`config.logger.show.${source}`)) {
+		// eslint-disable-next-line no-console
 		console.log(prefix(source) + message);
 	}
 
@@ -35,7 +36,7 @@ export default function createLoggers(sourceName) {
 
 		warn(message) {
 			warn(sourceName, message);
-		}
+		},
 	};
 }
 

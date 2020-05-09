@@ -11,7 +11,7 @@ export default {
 		output.text = wrap(output.text, {
 			'data-cb-skippable': '',
 			class: 'fade-in',
-			style: `animation-delay: ${delay}ms`
+			style: `animation-delay: ${delay}ms`,
 		});
-	}
+	},
 };

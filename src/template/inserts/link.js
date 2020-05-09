@@ -8,5 +8,5 @@ export default {
 	match: /^link\s+to/i,
 	render(target, props) {
 		return renderLink(target, props.label);
-	}
+	},
 };

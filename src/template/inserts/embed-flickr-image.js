@@ -11,8 +11,8 @@ export default {
 		return htmlify(
 			'img',
 			Object.assign({}, props, {
-				src: /img src="(.+?)"/.exec(embedCode)[1]
+				src: /img src="(.+?)"/.exec(embedCode)[1],
 			})
 		);
-	}
+	},
 };

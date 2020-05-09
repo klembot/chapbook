@@ -21,8 +21,7 @@ export default function init(setLookup) {
 
 		if (trail) {
 			return trail.reduce(
-				(result, current) =>
-					current === passageName ? result + 1 : result,
+				(result, current) => (current === passageName ? result + 1 : result),
 				0
 			);
 		}

@@ -33,7 +33,7 @@ export default {
 				return domify('option', opts, [choice]);
 			})
 		);
-	}
+	},
 };
 
 event.on('dom-change', el => {

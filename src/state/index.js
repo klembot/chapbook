@@ -22,6 +22,7 @@ let defaults = {};
 let computed = {};
 
 const stateDefaults = {'config.state.autosave': true};
+
 export {stateDefaults as defaults};
 
 function addGlobalProxy(target, name) {
@@ -52,7 +53,7 @@ function addGlobalProxy(target, name) {
 		},
 
 		/* Allow overwriting. */
-		configurable: true
+		configurable: true,
 	});
 }
 
@@ -100,7 +101,7 @@ export function reset() {
 				event.emit('state-change', {
 					name: keyName,
 					value: get(keyName),
-					previous
+					previous,
 				});
 			}
 		});
@@ -302,11 +303,7 @@ Returns all variable names currently set.
 export function varNames(includeDefaults) {
 	function catalog(obj, prefix, result = []) {
 		return Object.keys(obj).reduce((out, k) => {
-			if (
-				typeof obj[k] === 'object' &&
-				obj[k] &&
-				!Array.isArray(obj[k])
-			) {
+			if (typeof obj[k] === 'object' && obj[k] && !Array.isArray(obj[k])) {
 				catalog(obj[k], prefix ? prefix + '.' + k : k, out);
 			} else {
 				let varName = prefix ? prefix + '.' + k : k;

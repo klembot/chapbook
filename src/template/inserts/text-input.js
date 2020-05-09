@@ -13,9 +13,9 @@ export default {
 			type: 'text',
 			value: varName ? get(varName) : '',
 			'data-cb-text-field-set': varName || undefined,
-			required: props.required !== false ? '' : undefined
+			required: props.required !== false ? '' : undefined,
 		});
-	}
+	},
 };
 
 event.on('dom-change', el => {

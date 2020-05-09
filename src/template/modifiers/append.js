@@ -4,5 +4,5 @@ export default {
 	match: /^append$/i,
 	process(output) {
 		output.startsNewParagraph = false;
-	}
+	},
 };

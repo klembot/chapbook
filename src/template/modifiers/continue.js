@@ -2,5 +2,5 @@
 
 export default {
 	match: /^continued?|cont('d)?$/i,
-	process() {}
+	process() {},
 };

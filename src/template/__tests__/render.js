@@ -6,9 +6,9 @@ jest.mock('../../state');
 const modifierInput = {
 	blocks: [
 		{type: 'modifier', content: 'test'},
-		{type: 'text', content: 'Hello world'}
+		{type: 'text', content: 'Hello world'},
 	],
-	vars: []
+	vars: [],
 };
 
 beforeEach(() => {
@@ -19,7 +19,7 @@ describe('render()', () => {
 	test('sets vars', () => {
 		const input = {
 			vars: [{name: 'foo', value: () => 'hello'}],
-			blocks: []
+			blocks: [],
 		};
 
 		render(input, [], []);
@@ -30,7 +30,7 @@ describe('render()', () => {
 	test('handles var names with dots', () => {
 		const input = {
 			vars: [{name: 'foo.bar.baz', value: () => 'hello'}],
-			blocks: []
+			blocks: [],
 		};
 
 		render(input, [], []);
@@ -51,9 +51,9 @@ describe('render()', () => {
 						name: 'foo',
 						value: () => {
 							throw new Error('Test');
-						}
-					}
-				]
+						},
+					},
+				],
 			})
 		).toThrow();
 	});
@@ -65,7 +65,7 @@ describe('render()', () => {
 	test('renders text blocks to HTML', () => {
 		const result = render({
 			blocks: [{type: 'text', content: 'Hello world.\n\nThis is me.'}],
-			vars: []
+			vars: [],
 		});
 
 		expect(result.trim()).toBe('<p>Hello world.</p>\n<p>This is me.</p>');
@@ -75,9 +75,9 @@ describe('render()', () => {
 		const result = render({
 			blocks: [
 				{type: 'text', content: 'Hello world.'},
-				{type: 'text', content: 'This is me.'}
+				{type: 'text', content: 'This is me.'},
 			],
-			vars: []
+			vars: [],
 		});
 
 		expect(result.trim()).toBe('<p>Hello world.</p>\n<p>This is me.</p>');
@@ -107,8 +107,8 @@ describe('render()', () => {
 					process(src) {
 						src.text = src.text.toUpperCase();
 						src.startsNewParagraph = false;
-					}
-				}
+					},
+				},
 			]
 		);
 
@@ -118,7 +118,7 @@ describe('render()', () => {
 	test('resets modifiers after a text block', () => {
 		const spyModifier = {
 			match: /^test/,
-			process: jest.fn()
+			process: jest.fn(),
 		};
 
 		render(
@@ -126,9 +126,9 @@ describe('render()', () => {
 				blocks: [
 					{type: 'modifier', content: 'test'},
 					{type: 'text', content: 'Hello world'},
-					{type: 'text', content: 'Hello world again'}
+					{type: 'text', content: 'Hello world again'},
 				],
-				vars: []
+				vars: [],
 			},
 			[],
 			[spyModifier]

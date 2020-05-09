@@ -13,10 +13,9 @@ const logger = createLogger('story');
 
 const story = {
 	customScripts: [],
-	customStyles: []
+	customStyles: [],
 };
 
-let loaded = false;
 let passages = [];
 
 export function loadFromData(el) {
@@ -36,9 +35,7 @@ export function loadFromData(el) {
 	story.customScripts = elsToContents(
 		selectAll(el, '[type="text/twine-javascript"]')
 	);
-	story.customStyles = elsToContents(
-		selectAll(el, '[type="text/twine-css"]')
-	);
+	story.customStyles = elsToContents(selectAll(el, '[type="text/twine-css"]'));
 
 	/* Create passages. */
 
@@ -46,7 +43,7 @@ export function loadFromData(el) {
 		let passage = {
 			id: parseInt(p.getAttribute('pid')),
 			name: p.getAttribute('name'),
-			source: p.textContent
+			source: p.textContent,
 		};
 
 		const tagAttr = p.getAttribute('tags');
@@ -57,8 +54,6 @@ export function loadFromData(el) {
 
 		return passage;
 	});
-
-	loaded = true;
 }
 
 export function init() {

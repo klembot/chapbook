@@ -13,7 +13,7 @@ export default function startSkipAnimation(el, spinEl) {
 	const list = selectAll(el, '[data-cb-skippable]')
 		.map(e => ({
 			el: e,
-			delay: timestring(window.getComputedStyle(e).animationDelay) * 1000
+			delay: timestring(window.getComputedStyle(e).animationDelay) * 1000,
 		}))
 		.sort((a, b) => a.delay - b.delay);
 

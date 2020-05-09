@@ -10,8 +10,8 @@ export default {
 		return htmlify(
 			'img',
 			Object.assign({}, props, {
-				src: url
+				src: url,
 			})
 		);
-	}
+	},
 };

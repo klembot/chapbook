@@ -8,17 +8,13 @@ export function validate() {
 	return new Promise((resolve, reject) => {
 		const failureListener = () => {
 			form.removeEventListener('submit', successListener);
-			inputs.forEach(i =>
-				i.removeEventListener('invalid', failureListener)
-			);
+			inputs.forEach(i => i.removeEventListener('invalid', failureListener));
 			reject();
 		};
 
 		const successListener = () => {
 			form.removeEventListener('submit', successListener);
-			inputs.forEach(i =>
-				i.removeEventListener('invalid', failureListener)
-			);
+			inputs.forEach(i => i.removeEventListener('invalid', failureListener));
 
 			resolve();
 		};

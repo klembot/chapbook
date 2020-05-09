@@ -8,9 +8,9 @@ describe('append modifier', () => {
 				blocks: [
 					{type: 'text', content: 'Hello'},
 					{type: 'modifier', content: 'append'},
-					{type: 'text', content: 'there'}
+					{type: 'text', content: 'there'},
 				],
-				vars: []
+				vars: [],
 			},
 			[],
 			[append]

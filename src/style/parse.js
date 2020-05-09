@@ -63,9 +63,7 @@ export function parseColor(source) {
 	result.color = parseColorValue(bits[0].trim().toLowerCase());
 
 	if (bits.length === 2) {
-		result['background-color'] = parseColorValue(
-			bits[1].trim().toLowerCase()
-		);
+		result['background-color'] = parseColorValue(bits[1].trim().toLowerCase());
 	}
 
 	return result;
@@ -79,7 +77,7 @@ export function parseFont(source) {
 		'font-weight': 'inherit',
 		'letter-spacing': 'inherit',
 		'text-decoration': 'inherit',
-		'text-transform': 'inherit'
+		'text-transform': 'inherit',
 	};
 
 	function applyFonts(result, fontSrc) {
@@ -87,6 +85,7 @@ export function parseFont(source) {
 			.split('/')
 			.map(font => {
 				let out = font;
+
 				if (out[0] !== '"') {
 					out = '"' + out;
 				}

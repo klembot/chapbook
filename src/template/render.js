@@ -15,14 +15,12 @@ const {log} = logger('render');
 
 export const markedOptions = {
 	renderer: markdownRenderer,
-	smartypants: true
+	smartypants: true,
 };
 
 export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 	if (!parsed.vars) {
-		throw new Error(
-			'The renderer was given an object with no vars property.'
-		);
+		throw new Error('The renderer was given an object with no vars property.');
 	}
 
 	if (!parsed.blocks) {
@@ -46,9 +44,7 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 					log(`Setting var "${name}" (condition is currently true)`);
 					set(v.name, v.value());
 				} else {
-					log(
-						`Not setting var "${name}" (condition is currently false)`
-					);
+					log(`Not setting var "${name}" (condition is currently false)`);
 				}
 			} else {
 				log(`Setting var "${name}"`);
@@ -67,25 +63,19 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 			case 'text': {
 				let blockOutput = {
 					text: block.content,
-					startsNewParagraph: true
+					startsNewParagraph: true,
 				};
 
 				/* Allow active modifiers to process the raw source. */
 
-				const rawModifiers = activeModifiers.filter(
-					m => !!m.mod.processRaw
-				);
+				const rawModifiers = activeModifiers.filter(m => !!m.mod.processRaw);
 
-				log(
-					`Running ${
-						rawModifiers.length
-					} modifiers on raw source block`
-				);
+				log(`Running ${rawModifiers.length} modifiers on raw source block`);
 
 				rawModifiers.forEach(m => {
 					m.mod.processRaw(blockOutput, {
 						state: modifierState[m.mod],
-						invocation: m.invocation
+						invocation: m.invocation,
 					});
 				});
 
@@ -101,20 +91,14 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 				rendered. This is usually where modifiers do their work.
 				*/
 
-				const processedModifiers = activeModifiers.filter(
-					m => !!m.mod.process
-				);
+				const processedModifiers = activeModifiers.filter(m => !!m.mod.process);
 
-				log(
-					`Running ${
-						processedModifiers.length
-					} modifiers on source block`
-				);
+				log(`Running ${processedModifiers.length} modifiers on source block`);
 
 				processedModifiers.forEach(m =>
 					m.mod.process(blockOutput, {
 						state: modifierState[m.mod],
-						invocation: m.invocation
+						invocation: m.invocation,
 					})
 				);
 
@@ -127,9 +111,7 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 					*/
 
 					if (markdown !== '') {
-						markdown += blockOutput.startsNewParagraph
-							? '\n\n'
-							: ' ';
+						markdown += blockOutput.startsNewParagraph ? '\n\n' : ' ';
 					}
 
 					markdown += blockOutput.text;
@@ -152,16 +134,12 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 				if (mods.length === 1) {
 					const mod = mods[0];
 
-					log(
-						`Activated "${mod.name}" modifier matching [${
-							block.content
-						}]`
-					);
+					log(`Activated "${mod.name}" modifier matching [${block.content}]`);
 
 					modifierState[mod] = modifierState[mod] || {};
 					activeModifiers.push({
 						mod,
-						invocation: block.content
+						invocation: block.content,
 					});
 				} else if (mods.length === 0) {
 					/*
@@ -171,9 +149,7 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 
 					markdown += `\n\n[${block.content}]\n\n`;
 				} else {
-					console.warn(
-						`More than one modifier matched "[${block.content}]".`
-					);
+					console.warn(`More than one modifier matched "[${block.content}]".`);
 
 					markdown += `\n\n[${block.content}]\n\n`;
 				}
@@ -182,9 +158,7 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 
 			default:
 				throw new Error(
-					`Don't know how to render a block with type "${
-						block.type
-					}".`
+					`Don't know how to render a block with type "${block.type}".`
 				);
 		}
 	});

@@ -27,5 +27,5 @@ export default [
 	RestartLink,
 	RevealLink,
 	SoundEffect,
-	TextInput
+	TextInput,
 ];

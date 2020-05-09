@@ -28,11 +28,11 @@ export default {
 			{
 				href: 'javascript:void(0)',
 				'data-cb-cycle-set': varName || undefined,
-				'data-cb-cycle-choices': JSON.stringify(props.choices)
+				'data-cb-cycle-choices': JSON.stringify(props.choices),
 			},
 			[current]
 		);
-	}
+	},
 };
 
 event.on('dom-click', el => {

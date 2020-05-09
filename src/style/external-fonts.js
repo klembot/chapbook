@@ -32,7 +32,9 @@ function loadFontByUrl(varName, url, name) {
 }
 
 export function init() {
-	/* We don't use these attributes -- they're just a locator for story code. */
+	/*
+	We don't use these attributes -- they're just a locator for story code.
+	*/
 
 	googleFontEl.dataset.cbGoogleFontLoader = '';
 	googleFontEl.setAttribute('hidden', true);
@@ -45,7 +47,7 @@ export function init() {
 	document.body.appendChild(typekitFontEl);
 	document.body.appendChild(urlFontEl);
 
-	event.on('state-change', ({name, value}) => {
+	event.on('state-change', ({name}) => {
 		const parentSet =
 			name === 'config' ||
 			name === 'config.style' ||
@@ -67,9 +69,7 @@ export function init() {
 				}
 			});
 		} else {
-			const directFontMatch = name.match(
-				/^config\.style\.fonts\.([^\.]+)/i
-			);
+			const directFontMatch = name.match(/^config\.style\.fonts\.([^.]+)/i);
 
 			if (directFontMatch) {
 				const fontVar = directFontMatch[1];

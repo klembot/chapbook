@@ -11,14 +11,12 @@ import {render} from '../index';
 export default {
 	match: /^reveal\s+link/i,
 	render(label, props) {
-		let current;
-
 		if (props.text) {
 			return htmlify(
 				'a',
 				{
 					href: 'javascript:void(0)',
-					'data-cb-reveal-text': props.text
+					'data-cb-reveal-text': props.text,
 				},
 				[label]
 			);
@@ -29,12 +27,12 @@ export default {
 				'a',
 				{
 					href: 'javascript:void(0)',
-					'data-cb-reveal-passage': props.passage
+					'data-cb-reveal-passage': props.passage,
 				},
 				[label]
 			);
 		}
-	}
+	},
 };
 
 event.on('dom-click', el => {
@@ -51,8 +49,8 @@ event.on('dom-click', el => {
 
 		changeBody(() => {
 			/*
-			If the first node of the output is a <p>, substitute it inline for the
-			link.
+			If the first node of the output is a <p>, substitute it inline for
+			the link.
 			*/
 
 			if (output.firstChild.nodeName === 'P') {
@@ -64,8 +62,8 @@ event.on('dom-click', el => {
 			}
 
 			/*
-			Append the rest of the output after the node that the link resides in--
-			in most cases, after the paragraph that the link is in.
+			Append the rest of the output after the node that the link resides
+			in-- in most cases, after the paragraph that the link is in.
 			*/
 
 			while (output.firstChild) {

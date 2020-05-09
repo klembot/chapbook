@@ -14,9 +14,9 @@ describe('conditional modifiers', () => {
 				blocks: [
 					{type: 'text', content: 'Hello'},
 					{type: 'modifier', content: 'if true'},
-					{type: 'text', content: 'there'}
+					{type: 'text', content: 'there'},
 				],
-				vars: []
+				vars: [],
 			},
 			[],
 			[conditionals]
@@ -29,9 +29,9 @@ describe('conditional modifiers', () => {
 				blocks: [
 					{type: 'text', content: 'Hello'},
 					{type: 'modifier', content: 'if false'},
-					{type: 'text', content: 'there'}
+					{type: 'text', content: 'there'},
 				],
-				vars: []
+				vars: [],
 			},
 			[],
 			[conditionals]
@@ -46,9 +46,9 @@ describe('conditional modifiers', () => {
 				blocks: [
 					{type: 'text', content: 'Hello'},
 					{type: 'modifier', content: 'unless true'},
-					{type: 'text', content: 'there'}
+					{type: 'text', content: 'there'},
 				],
-				vars: []
+				vars: [],
 			},
 			[],
 			[conditionals]
@@ -61,9 +61,9 @@ describe('conditional modifiers', () => {
 				blocks: [
 					{type: 'text', content: 'Hello'},
 					{type: 'modifier', content: 'unless false'},
-					{type: 'text', content: 'there'}
+					{type: 'text', content: 'there'},
 				],
-				vars: []
+				vars: [],
 			},
 			[],
 			[conditionals]
@@ -80,9 +80,9 @@ describe('conditional modifiers', () => {
 					{type: 'modifier', content: 'if true'},
 					{type: 'text', content: 'there'},
 					{type: 'modifier', content: 'else'},
-					{type: 'text', content: 'never seen'}
+					{type: 'text', content: 'never seen'},
 				],
-				vars: []
+				vars: [],
 			},
 			[],
 			[conditionals]
@@ -97,9 +97,9 @@ describe('conditional modifiers', () => {
 					{type: 'modifier', content: 'if false'},
 					{type: 'text', content: 'never seen'},
 					{type: 'modifier', content: 'else'},
-					{type: 'text', content: 'there'}
+					{type: 'text', content: 'there'},
 				],
-				vars: []
+				vars: [],
 			},
 			[],
 			[conditionals]
@@ -118,13 +118,14 @@ describe('conditional modifiers', () => {
 					{type: 'modifier', content: 'if window.testCall()'},
 					{type: 'text', content: 'there'},
 					{type: 'modifier', content: 'else'},
-					{type: 'text', content: 'never seen'}
+					{type: 'text', content: 'never seen'},
 				],
-				vars: []
+				vars: [],
 			},
 			[],
 			[conditionals]
 		);
+
 		expect(output.trim()).toBe('<p>Hello</p>\n<p>there</p>');
 		expect(window.testCall).toHaveBeenCalledTimes(1);
 	});
@@ -132,16 +133,16 @@ describe('conditional modifiers', () => {
 	test('does not let contents be rendered at all if the condition is false', () => {
 		const spyInsert = {
 			match: /spy insert/i,
-			render: jest.fn()
+			render: jest.fn(),
 		};
 
 		const output = render(
 			{
 				blocks: [
 					{type: 'modifier', content: 'if false'},
-					{type: 'text', content: '{spy insert}'}
+					{type: 'text', content: '{spy insert}'},
 				],
-				vars: []
+				vars: [],
 			},
 			[spyInsert],
 			[conditionals]
