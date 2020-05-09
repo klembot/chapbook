@@ -21,14 +21,17 @@ describe('state', () => {
 		expect(state.get('foo.bar')).toEqual({one: 'red', two: 'green'});
 	});
 
-	// FIXME
-	// Not clear why it isn't working in Jest, but it does work in a browser.
-
-	it.skip('adds global proxies for variables', () => {
+	it('adds global proxies for variables', () => {
 		state.set('color', 'red');
 		expect(window.color).toBe('red');
 		window.color = 'green';
 		expect(state.get('color')).toBe('green');
+	});
+
+	it('sets nested global proxies for variables', () => {
+		state.set('foo.bar', 'red');
+		expect(window.foo.bar).toBe('red');
+		expect(window.foo).toEqual({bar: 'red'});
 	});
 
 	it('tests variable names with sameObject()', () => {
