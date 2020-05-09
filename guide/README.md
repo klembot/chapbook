@@ -38,7 +38,11 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
     </ul>
 </div>
 
-Supporters at particular tiers receive access to devlogs, livestreams where Chapbook and Twine development are discussed, and recognition in this guide. If you use Chapbook, please consider [supporting the project on Patreon](https://patreon.com/klembot).
+Supporters at particular tiers receive access to devlogs and other rewards. If you use Chapbook, please consider [supporting the project on Patreon](https://patreon.com/klembot).
+
+## Browser Support
+
+Chapbook supports the `defaults` set of web browsers set by [the browserslist project](https://github.com/browserslist/browserslist). You can view what that entails in detail [on browserl.ist](https://browserl.ist/).
 
 ## How to Use Chapbook
 

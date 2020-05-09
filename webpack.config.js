@@ -6,7 +6,7 @@ const TwineStory = require('twine-utils/story');
 
 const isRelease = process.env.NODE_ENV === 'production';
 const isMicro = process.env.CHAPBOOK_MICRO === 'y';
-const browserSupport = ['iOS > 9', 'IE 11', '>10%'];
+const browserSupport = ['defaults'];
 const htmlMinifyOptions = {collapseWhitespace: true};
 
 const args = require('yargs')
@@ -16,7 +16,7 @@ const args = require('yargs')
 const config = {
 	devServer: {
 		disableHostCheck: true,
-		stats: 'minimal'
+		stats: 'minimal',
 	},
 	mode: isRelease ? 'production' : 'development',
 	module: {
@@ -26,26 +26,26 @@ const config = {
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: [['preact']]
-					}
-				}
+						presets: [['preact']],
+					},
+				},
 			},
 			{
 				test: /\.scss$/,
 				use: [
 					CssPlugin.loader,
 					{loader: 'css-loader', options: {minimize: isRelease}},
-					'sass-loader'
-				]
+					'sass-loader',
+				],
 			},
 			{
 				test: /\.svg$/,
-				use: ['url-loader']
-			}
-		]
+				use: ['url-loader'],
+			},
+		],
 	},
 	output: {
-		path: path.resolve(__dirname, `dist/${isMicro ? 'micro' : 'full'}`)
+		path: path.resolve(__dirname, `dist/${isMicro ? 'micro' : 'full'}`),
 	},
 	plugins: [
 		new CssPlugin({filename: '[name].css'}),
@@ -61,7 +61,7 @@ const config = {
 						inline: true,
 						assets,
 						compilation,
-						options
+						options,
 					};
 				}
 
@@ -69,12 +69,9 @@ const config = {
 
 				story.mergeTwee(
 					fs.readFileSync(
-						path.resolve(
-							__dirname,
-							`./examples/${args.example}.txt`
-						),
+						path.resolve(__dirname, `./examples/${args.example}.txt`),
 						{
-							encoding: 'utf8'
+							encoding: 'utf8',
 						}
 					)
 				);
@@ -83,17 +80,17 @@ const config = {
 				story.setStartByName('Start');
 
 				return {storyData: story.toHtml(), inline: false};
-			}
-		})
+			},
+		}),
 	],
 	resolve: {
-		extensions: ['.js', '.jsx']
-	}
+		extensions: ['.js', '.jsx'],
+	},
 };
 
 if (isMicro) {
 	config.externals = {
-		'./backstage': 'undefined'
+		'./backstage': 'undefined',
 	};
 }
 
@@ -104,9 +101,9 @@ if (isRelease) {
 		use: {
 			loader: 'babel-loader',
 			options: {
-				presets: [['env', {targets: {browsers: browserSupport}}]]
-			}
-		}
+				presets: [['env', {targets: {browsers: browserSupport}}]],
+			},
+		},
 	});
 }
 
