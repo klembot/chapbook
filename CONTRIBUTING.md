@@ -28,7 +28,10 @@ an issue--this lays out the context in which feature requests will be evaluated.
 
 ## Opening a Pull Request
 
-**Pull requests will begin being accepted once Chapbook's 1.0.0 release is finalized.**
+Commits in your PR must follow [Conventional
+Commit](https://www.conventionalcommits.org/en/) format. This ensures that
+Chapbook follows semantic versioning properly. There is a
+[Husky](https://github.com/typicode/husky#readme) hook set up to enforce this.
 
 Pull requests should be test-coverage neutral at worst. Ideally, they improve
 coverage. You can check this by running `npm run test:coverage`.

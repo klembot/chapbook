@@ -6,6 +6,8 @@
 	"main": "index.js",
 	"license": "MIT",
 	"devDependencies": {
+		"@commitlint/cli": "^8.3.5",
+		"@commitlint/config-conventional": "^8.3.4",
 		"babel-core": "^6.26.0",
 		"babel-loader": "^7.1.4",
 		"babel-preset-env": "^1.6.1",
@@ -18,6 +20,7 @@
 		"eslint": "^4.14.0",
 		"gitbook-cli": "^2.3.2",
 		"html-webpack-plugin": "^3.2.0",
+		"husky": "^4.2.5",
 		"jest": "^24.7.1",
 		"jest-localstorage-mock": "^2.2.0",
 		"jsdoc": "^3.6.2",
@@ -71,6 +74,16 @@
 		"test:watch": "jest --watch",
 		"test:coverage": "jest --coverage",
 		"website": "node scripts/build-website.js"
+	},
+	"config": {
+		"commitizen": {
+			"path": "cz-conventional-changelog"
+		}
+	},
+	"husky": {
+		"hooks": {
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+		}
 	},
 	"jest": {
 		"setupFiles": [
