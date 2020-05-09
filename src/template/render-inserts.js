@@ -147,13 +147,17 @@ export default function render(src, inserts) {
 
 			case '"':
 			case "'":
-				/* Toggle inString status as needed. */
+				/* Ignore backslashed quotes. */
 
-				if (!inString) {
-					inString = true;
-					stringDelimiter = src[i];
-				} else if (inString && stringDelimiter === src[i]) {
-					inString = false;
+				if (i > 0 && src[i - 1] !== '\\') {
+					/* Toggle inString status as needed. */
+
+					if (!inString) {
+						inString = true;
+						stringDelimiter = src[i];
+					} else if (inString && stringDelimiter === src[i]) {
+						inString = false;
+					}
 				}
 				break;
 
