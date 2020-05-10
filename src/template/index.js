@@ -4,7 +4,7 @@ import inserts from './inserts';
 import modifiers from './modifiers';
 import parse from './parse';
 import renderParsed from './render';
-import {get, set} from '../state';
+import {get} from '../state';
 
 export const defaults = {
 	'config.template.inserts': inserts,

@@ -62,7 +62,7 @@ describe('parse()', () => {
 	});
 
 	test('warns about malformed lines in vars', () => {
-		const result = parse('hello there\n--\n');
+		parse('hello there\n--\n');
 
 		expect(warnSpy.mock.calls.length).toBe(1);
 		expect(warnSpy.mock.calls[0][0]).toMatch(/missing a colon/);
@@ -90,9 +90,7 @@ describe('parse()', () => {
 	test('parses a modifier correctly', () => {
 		const result = parse('[hello world]');
 
-		expect(result.blocks).toEqual([
-			{type: 'modifier', content: 'hello world'}
-		]);
+		expect(result.blocks).toEqual([{type: 'modifier', content: 'hello world'}]);
 	});
 
 	test('ignores bracketed phrases inside text blocks', () => {

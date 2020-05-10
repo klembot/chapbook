@@ -20,8 +20,7 @@ function handleError(error) {
 	fault, so remove that pointer.
 	*/
 
-	const markedError =
-		'\nPlease report this to https://github.com/chjj/marked.';
+	const markedError = '\nPlease report this to https://github.com/chjj/marked.';
 
 	try {
 		let detail = '';
@@ -39,6 +38,7 @@ function handleError(error) {
 		const trail = get('trail');
 
 		display.className = 'error';
+		/* eslint-disable indent */
 		display.innerHTML = `
 			<p>
 			An unexpected error has occurred.
@@ -55,6 +55,7 @@ function handleError(error) {
 				</li>
 			</ul>
 		`;
+		/* eslint-enable indent */
 
 		display.addEventListener('click', e => {
 			const backLink = closest(e.target, '[data-cb-back]', true);
@@ -80,11 +81,7 @@ function handleError(error) {
 				return;
 			}
 
-			const restartLink = closest(
-				e.target,
-				'[data-cb-hard-restart]',
-				true
-			);
+			const restartLink = closest(e.target, '[data-cb-hard-restart]', true);
 
 			if (restartLink) {
 				purgeFromStorage(true);
@@ -97,7 +94,8 @@ function handleError(error) {
 	} catch (e) {
 		/* Things have gotten really screwy-- at least log the error. */
 
-		console.log(e);
+		// eslint-disable-next-line no-console
+		console.error(e);
 	}
 }
 
@@ -108,7 +106,5 @@ export function init() {
 	Only a few browsers currently support this event, but we may as well try.
 	*/
 
-	window.addEventListener('unhandledrejection', err =>
-		handleError(err.reason)
-	);
+	window.addEventListener('unhandledrejection', err => handleError(err.reason));
 }

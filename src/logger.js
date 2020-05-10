@@ -16,6 +16,7 @@ function prefix(text) {
 
 export function log(source, message) {
 	if (get(`config.logger.show.${source}`)) {
+		// eslint-disable-next-line no-console
 		console.log(prefix(source) + message);
 	}
 

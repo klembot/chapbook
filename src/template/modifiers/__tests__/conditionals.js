@@ -125,6 +125,7 @@ describe('conditional modifiers', () => {
 			[],
 			[conditionals]
 		);
+
 		expect(output.trim()).toBe('<p>Hello</p>\n<p>there</p>');
 		expect(window.testCall).toHaveBeenCalledTimes(1);
 	});

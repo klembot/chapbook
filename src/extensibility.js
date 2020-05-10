@@ -43,10 +43,7 @@ export default function init() {
 					);
 				}
 
-				if (
-					version[1] === minVersion[1] &&
-					version[2] < minVersion[2]
-				) {
+				if (version[1] === minVersion[1] && version[2] < minVersion[2]) {
 					extendWarn(
 						`The current engine version (${versionString}) has a lower patch version than requested (${minimumEngineVersion}); running code but you may encounter problems`
 					);

@@ -9,8 +9,7 @@ export default (markdown, attributes = {}) => {
 	const tag =
 		'<span' +
 		Object.keys(attributes).reduce(
-			(result, current) =>
-				result + ` ${current}="${attributes[current]}"`,
+			(result, current) => result + ` ${current}="${attributes[current]}"`,
 			''
 		) +
 		'>';

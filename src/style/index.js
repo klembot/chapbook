@@ -38,7 +38,10 @@ export function style(selector, selectorRules) {
 }
 
 function update() {
-	/* TODO: throttle this somehow so that multiple calls in one loop don't waste time */
+	/*
+	TODO: throttle this somehow so that multiple calls in one loop don't waste
+	time
+	*/
 
 	/*
 	The sort() is necessary because of how some browser parse `text-decoration`
@@ -58,13 +61,7 @@ function update() {
 				.sort()
 				.reduce((result, current) => {
 					if (props[current]) {
-						return (
-							result +
-							current +
-							':' +
-							props[current].toString() +
-							';'
-						);
+						return result + current + ':' + props[current].toString() + ';';
 					}
 
 					return result;
@@ -148,8 +145,7 @@ export function init() {
 		if (sameObject(name, 'config.style.backdrop')) {
 			log('Setting backdrop color');
 			style('#backdrop', {
-				'background-color': parseColor(get('config.style.backdrop'))
-					.color
+				'background-color': parseColor(get('config.style.backdrop')).color
 			});
 		}
 
@@ -165,9 +161,7 @@ export function init() {
 		if (sameObject(name, 'config.style.page.fork.divider.size')) {
 			log('Setting fork divider size');
 			style('#page .fork p a + a', {
-				'border-top-width': `${get(
-					'config.style.page.fork.divider.size'
-				)}px`
+				'border-top-width': `${get('config.style.page.fork.divider.size')}px`
 			});
 		}
 
@@ -199,9 +193,7 @@ export function init() {
 				case 'thick-line':
 					style('#page', {
 						border: `4px solid ${
-							parseColor(
-								get('config.style.page.style.borderColor')
-							).color
+							parseColor(get('config.style.page.style.borderColor')).color
 						}`,
 						'box-shadow': 'none'
 					});
@@ -210,9 +202,7 @@ export function init() {
 				case 'thin-line':
 					style('#page', {
 						border: `1px solid ${
-							parseColor(
-								get('config.style.page.style.borderColor')
-							).color
+							parseColor(get('config.style.page.style.borderColor')).color
 						}`,
 						'box-shadow': 'none'
 					});
@@ -252,7 +242,7 @@ export function init() {
 			colors, and line colors.
 			*/
 
-			function scan(name, obj) {
+			const scan = (name, obj) => {
 				['color', 'font', 'lineColor'].forEach(s => {
 					if (obj[s]) {
 						styleColorOrFont(`${name}.${s}`, obj[s]);
@@ -264,14 +254,11 @@ export function init() {
 						}
 
 						if (obj.link.active && obj.link.active[s]) {
-							styleColorOrFont(
-								`${name}.link.active.${s}`,
-								obj.link.active[s]
-							);
+							styleColorOrFont(`${name}.link.active.${s}`, obj.link.active[s]);
 						}
 					}
 				});
-			}
+			};
 
 			[
 				'config.style.page',

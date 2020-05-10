@@ -30,9 +30,7 @@ export default {
 					detail = e.message + '\n[No stack trace available]';
 				}
 
-				output.text = `<div class="error">An error occured evaluating:<pre>${
-					output.text
-				}</pre><p><pre>${detail}</pre></p></div>`;
+				output.text = `<div class="error">An error occured evaluating:<pre>${output.text}</pre><p><pre>${detail}</pre></p></div>`;
 			} else {
 				throw e;
 			}

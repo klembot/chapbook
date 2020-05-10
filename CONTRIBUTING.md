@@ -28,13 +28,20 @@ an issue--this lays out the context in which feature requests will be evaluated.
 
 ## Opening a Pull Request
 
-**Pull requests will begin being accepted once Chapbook's 1.0.0 release is finalized.**
+Please open an issue to discuss a new feature before putting in the work of
+implementing it. It's much better to collaboratively come up with a solution
+than to have to hash it out in a PR and have to rewrite a lot of code.
+
+Code should be formatted using [Prettier](https://prettier.io/). If you don't
+have prettier already installed in your editor, you can run `npm run prettier`
+to format your code for you.
+
+Commits in your PR must follow [Conventional
+Commit](https://www.conventionalcommits.org/en/) format. This ensures that
+Chapbook follows semantic versioning properly. There is a
+[Husky](https://github.com/typicode/husky#readme) hook set up to enforce this.
 
 Pull requests should be test-coverage neutral at worst. Ideally, they improve
 coverage. You can check this by running `npm run test:coverage`.
 
 PRs should always be against the develop branch, not master.
-
-Please open an issue to discuss a new feature before putting in the work of
-implementing it. It's much better to collaboratively come up with a solution
-than to have to hash it out in a PR and have to rewrite a lot of code.

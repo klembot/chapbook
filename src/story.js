@@ -16,7 +16,6 @@ const story = {
 	customStyles: []
 };
 
-let loaded = false;
 let passages = [];
 
 export function loadFromData(el) {
@@ -36,9 +35,7 @@ export function loadFromData(el) {
 	story.customScripts = elsToContents(
 		selectAll(el, '[type="text/twine-javascript"]')
 	);
-	story.customStyles = elsToContents(
-		selectAll(el, '[type="text/twine-css"]')
-	);
+	story.customStyles = elsToContents(selectAll(el, '[type="text/twine-css"]'));
 
 	/* Create passages. */
 
@@ -57,8 +54,6 @@ export function loadFromData(el) {
 
 		return passage;
 	});
-
-	loaded = true;
 }
 
 export function init() {

@@ -73,24 +73,16 @@ export default function parse(src, opts = defaultOpts) {
 				const condMatch = name.match(/\(.+\)/);
 
 				if (condMatch) {
-					thisVar.condition = new Function(
-						`return (${condMatch[0]})`
-					);
+					thisVar.condition = new Function(`return (${condMatch[0]})`);
 					thisVar.name = (
 						thisVar.name.substr(0, condMatch.index) +
-						thisVar.name.substr(
-							condMatch.index + condMatch[0].length
-						)
+						thisVar.name.substr(condMatch.index + condMatch[0].length)
 					).trim();
 					log(
-						`Setting variable "${
-							thisVar.name
-						}" to "${value}" with condition (${condMatch[0]})`
+						`Setting variable "${thisVar.name}" to "${value}" with condition (${condMatch[0]})`
 					);
 				} else {
-					log(
-						`Setting variable "${name}" to "${value}" without condition`
-					);
+					log(`Setting variable "${name}" to "${value}" without condition`);
 				}
 
 				result.vars.push(thisVar);
@@ -148,10 +140,7 @@ export default function parse(src, opts = defaultOpts) {
 					for (i = i + 1; i < modifierSrc.length; i++) {
 						modifier += modifierSrc[i];
 
-						if (
-							modifierSrc[i] === '"' &&
-							modifierSrc[i - 1] !== '\\'
-						) {
+						if (modifierSrc[i] === '"' && modifierSrc[i - 1] !== '\\') {
 							break;
 						}
 					}

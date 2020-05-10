@@ -84,6 +84,12 @@ describe('insert renderer', () => {
 		);
 	});
 
+	test('invokes functional inserts that contain quotation marks', () => {
+		expect(render(`{test insert: '"hello m\\'dear"'}`, inserts)).toBe(
+			`"hello m'dear"#{}#test insert: '"hello m\\'dear"'`
+		);
+	});
+
 	test('leaves unparseable inserts alone', () => {
 		expect(render('{???}', [])).toBe('{???}');
 		expect(render('{??? ???}', [])).toBe('{??? ???}');

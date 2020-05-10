@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import renderer from '../markdown-renderer';
 
 beforeEach(() => {

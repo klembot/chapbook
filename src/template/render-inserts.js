@@ -4,26 +4,24 @@ variable interpolation and template helpers marked off by curly braces.
 
 The simplest insert is a variable name:
 
-My favorite color is {color}. => My favorite color is red.
-(assuming that color is a defined variable)
+My favorite color is {color}. => My favorite color is red. (assuming that color
+is a defined variable)
 
 Inserts can also be syntax sugar for function calls:
 
-{restart link}
-{link to: "From the Top"}
-{link to: "From the Top", hidden: true}
+{restart link} {link to: "From the Top"} {link to: "From the Top", hidden: true}
 
 Any number of extra arguments can be passed in `key: value` format. Keys must be
 be able to be parsed as valid JavaScript object keys without being quoted, and
 they may not be the same as the initial keyword (`restart` or `link to` in the
 examples above). Inserts are set in the renderer as objects with two keys:
 
--	`match`: a regular expression matching the inital invocation, e.g.
-	/^restart\s+link/. A match _must_ include whitespace so it can never conflict
-	with a variable insert.
+-   `match`: a regular expression matching the inital invocation, e.g.
+    /^restart\s+link/. A match _must_ include whitespace so it can never
+    conflict with a variable insert.
 -   `render`: a function that takes a single argument, then props and raw
     contents of the insert; and returns string output. Some examples:
-	-	`{restart link}` calls `render(null, {}, 'restart link')`
+    -   `{restart link}` calls `render(null, {}, 'restart link')`
     -   `{restart link, label: 'Try Again'}` calls `render(null, {label: 'Try
         Again}, "restart link, label: 'Try Again'")`
     -   `{link to: 'Secret Room'}` calls `render('Secret Room', {}, "link to:
@@ -35,9 +33,6 @@ If an insert can't be parsed successfully, it is left as-is.
 */
 
 import {get} from '../state';
-import createLoggers from '../logger';
-
-const {warn} = createLoggers('render');
 
 /*
 Tries to render a single insert surrounded with { and }. If this can't be done,
@@ -152,13 +147,17 @@ export default function render(src, inserts) {
 
 			case '"':
 			case "'":
-				/* Toggle inString status as needed. */
+				/* Ignore backslashed quotes. */
 
-				if (!inString) {
-					inString = true;
-					stringDelimiter = src[i];
-				} else if (inString && stringDelimiter === src[i]) {
-					inString = false;
+				if (i > 0 && src[i - 1] !== '\\') {
+					/* Toggle inString status as needed. */
+
+					if (!inString) {
+						inString = true;
+						stringDelimiter = src[i];
+					} else if (inString && stringDelimiter === src[i]) {
+						inString = false;
+					}
 				}
 				break;
 
@@ -171,9 +170,7 @@ export default function render(src, inserts) {
 						insertResult = renderInsert(renderSrc, inserts);
 					} catch (e) {
 						console.warn(
-							`An error occurred while rendering "${renderSrc}": ${
-								e.message
-							}`
+							`An error occurred while rendering "${renderSrc}": ${e.message}`
 						);
 
 						insertResult = renderSrc;
@@ -183,8 +180,7 @@ export default function render(src, inserts) {
 						insertResult = '';
 					}
 
-					result +=
-						src.substring(startText, startCurly) + insertResult;
+					result += src.substring(startText, startCurly) + insertResult;
 
 					/*
 					Advance start variables for the next match.

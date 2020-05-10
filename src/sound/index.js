@@ -89,9 +89,7 @@ export function init() {
 
 						play(name, true).catch(e =>
 							warn(
-								`Could not resume playing ambient sound "${name}" (${
-									e.message
-								})`
+								`Could not resume playing ambient sound "${name}" (${e.message})`
 							)
 						);
 					}
@@ -118,14 +116,10 @@ export function init() {
 
 					if (effect[name].playing) {
 						play(name, false)
-							.then(() =>
-								set(`sound.effect.${name}.playing`, false)
-							)
+							.then(() => set(`sound.effect.${name}.playing`, false))
 							.catch(e =>
 								warn(
-									`Could not resume playing sound effect "${name}" (${
-										e.message
-									}`
+									`Could not resume playing sound effect "${name}" (${e.message}`
 								)
 							);
 					}
@@ -225,9 +219,7 @@ function load(name, url, preload) {
 			soundBank[name].removeAttribute('preload');
 		}
 
-		log(
-			`Updated <audio> element in sound bank for "${name}" to use ${url}`
-		);
+		log(`Updated <audio> element in sound bank for "${name}" to use ${url}`);
 	}
 }
 
@@ -235,7 +227,7 @@ function load(name, url, preload) {
 Plays a sound from the bank, optionally looping it. If `loop` is false, this
 returns a promise that resolves when the sound finishes playing. Otherwise, it
 returns nothing. If there is an error with playback (e.g. the sound requested
-doesn't exist in the bank), this throws an error. 
+doesn't exist in the bank), this throws an error.
 */
 
 function play(name, loop, fadeInDuration = 0) {

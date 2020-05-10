@@ -63,9 +63,7 @@ export function parseColor(source) {
 	result.color = parseColorValue(bits[0].trim().toLowerCase());
 
 	if (bits.length === 2) {
-		result['background-color'] = parseColorValue(
-			bits[1].trim().toLowerCase()
-		);
+		result['background-color'] = parseColorValue(bits[1].trim().toLowerCase());
 	}
 
 	return result;
@@ -87,6 +85,7 @@ export function parseFont(source) {
 			.split('/')
 			.map(font => {
 				let out = font;
+
 				if (out[0] !== '"') {
 					out = '"' + out;
 				}
@@ -129,7 +128,7 @@ export function parseFont(source) {
 		result['text-decoration'] = 'underline';
 	}
 
-	const sizeMatch = /\b\d+(ch|cm|ex|in|mm|pc|pt|px|r?em|vh|vmax|vmin|vw|%)?/i.exec(
+	const sizeMatch = /\b\d+(?:\.\d+)?(ch|cm|ex|in|mm|pc|pt|px|r?em|vh|vmax|vmin|vw|%)?/i.exec(
 		source
 	);
 

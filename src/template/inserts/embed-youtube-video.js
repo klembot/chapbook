@@ -1,5 +1,6 @@
 /*
-Embeds a YouTube video. This assumes the video is 16:9, but this can be specified.
+Embeds a YouTube video. This assumes the video is 16:9, but this can be
+specified.
 */
 
 import htmlify, {domify} from '../../util/htmlify';
@@ -22,7 +23,7 @@ export default {
 
 		/*
 		Fluid iframe container
-		See https://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php 
+		See https://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php
 		*/
 
 		return htmlify(

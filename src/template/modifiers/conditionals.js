@@ -7,9 +7,7 @@ export default {
 		let condition;
 
 		if (type !== 'else') {
-			condition = new Function(
-				'return ' + invocation.replace(/.*?\s/, '')
-			);
+			condition = new Function('return ' + invocation.replace(/.*?\s/, ''));
 		}
 
 		switch (type) {
