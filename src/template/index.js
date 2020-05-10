@@ -8,7 +8,7 @@ import {get} from '../state';
 
 export const defaults = {
 	'config.template.inserts': inserts,
-	'config.template.modifiers': modifiers,
+	'config.template.modifiers': modifiers
 };
 
 export function render(source, ignoreVars = false) {

@@ -25,7 +25,7 @@ export const defaults = {
 	'config.style.page.header.font': '16',
 	'config.style.page.header.link.font': 'small caps',
 	'config.style.page.footer.font': '16',
-	'config.style.page.footer.link.font': 'small caps',
+	'config.style.page.footer.link.font': 'small caps'
 };
 
 const rules = {};
@@ -122,7 +122,7 @@ function styleColorOrFont(varName, value) {
 
 			style(selector, {
 				'text-decoration-color': colorValue,
-				'-webkit-text-decoration-color': colorValue,
+				'-webkit-text-decoration-color': colorValue
 			});
 			break;
 		}
@@ -145,7 +145,7 @@ export function init() {
 		if (sameObject(name, 'config.style.backdrop')) {
 			log('Setting backdrop color');
 			style('#backdrop', {
-				'background-color': parseColor(get('config.style.backdrop')).color,
+				'background-color': parseColor(get('config.style.backdrop')).color
 			});
 		}
 
@@ -154,21 +154,21 @@ export function init() {
 			style('#page .fork p a + a', {
 				'border-top-color': parseColor(
 					get('config.style.page.fork.divider.color')
-				).color,
+				).color
 			});
 		}
 
 		if (sameObject(name, 'config.style.page.fork.divider.size')) {
 			log('Setting fork divider size');
 			style('#page .fork p a + a', {
-				'border-top-width': `${get('config.style.page.fork.divider.size')}px`,
+				'border-top-width': `${get('config.style.page.fork.divider.size')}px`
 			});
 		}
 
 		if (sameObject(name, 'config.style.page.fork.divider.style')) {
 			log('Setting fork divider style');
 			style('#page .fork p a + a', {
-				'border-top-style': get('config.style.page.fork.divider.style'),
+				'border-top-style': get('config.style.page.fork.divider.style')
 			});
 		}
 
@@ -186,7 +186,7 @@ export function init() {
 				case 'shadow':
 					style('#page', {
 						border: 'none',
-						'box-shadow': '0 4px 8px hsla(0, 0%, 0%, 0.25)',
+						'box-shadow': '0 4px 8px hsla(0, 0%, 0%, 0.25)'
 					});
 					break;
 
@@ -195,7 +195,7 @@ export function init() {
 						border: `4px solid ${
 							parseColor(get('config.style.page.style.borderColor')).color
 						}`,
-						'box-shadow': 'none',
+						'box-shadow': 'none'
 					});
 					break;
 
@@ -204,7 +204,7 @@ export function init() {
 						border: `1px solid ${
 							parseColor(get('config.style.page.style.borderColor')).color
 						}`,
-						'box-shadow': 'none',
+						'box-shadow': 'none'
 					});
 					break;
 			}
@@ -263,7 +263,7 @@ export function init() {
 			[
 				'config.style.page',
 				'config.style.page.header',
-				'config.style.page.footer',
+				'config.style.page.footer'
 			].forEach(varName => {
 				const obj = get(varName);
 

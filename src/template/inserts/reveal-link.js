@@ -16,7 +16,7 @@ export default {
 				'a',
 				{
 					href: 'javascript:void(0)',
-					'data-cb-reveal-text': props.text,
+					'data-cb-reveal-text': props.text
 				},
 				[label]
 			);
@@ -27,40 +27,13 @@ export default {
 				'a',
 				{
 					href: 'javascript:void(0)',
-					'data-cb-reveal-passage': props.passage,
+					'data-cb-reveal-passage': props.passage
 				},
 				[label]
 			);
 		}
-	},
-};
-
-/*
-Finds the first parent of an element that has block styling. If none exists,
-this returns null.
-*/
-
-function findBlockParent(el) {
-	let parent = el.parentNode;
-
-	while (parent) {
-		let display = window.getComputedStyle(parent).display;
-
-		if (
-			display === 'block' ||
-			display === 'flex' ||
-			display === 'inline-block' ||
-			display === 'table' ||
-			display === 'list-item'
-		) {
-			return parent;
-		}
-
-		parent = parent.parentNode;
 	}
-
-	return null;
-}
+};
 
 event.on('dom-click', el => {
 	let source = el.dataset.cbRevealText;
@@ -127,10 +100,7 @@ event.on('dom-click', el => {
 					content won't be preserved.
 					*/
 
-					console.log(lastInsert, lastInsert.innerHTML);
-
 					while (el.nextSibling) {
-						console.log('moving', el.nextSibling);
 						lastInsert.insertBefore(el.nextSibling, null);
 					}
 				}

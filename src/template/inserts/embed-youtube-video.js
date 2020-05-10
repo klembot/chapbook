@@ -30,16 +30,16 @@ export default {
 			'div',
 			{
 				style:
-					'position: relative; height: 0; padding-bottom: 56.25%; margin-bottom: 1em',
+					'position: relative; height: 0; padding-bottom: 56.25%; margin-bottom: 1em'
 			},
 			[
 				domify('iframe', {
 					src: embedUrl,
 					frameBorder: 0,
 					style:
-						'position: absolute; top: 0; left: 0; width: 100%; height: 100%',
-				}),
+						'position: absolute; top: 0; left: 0; width: 100%; height: 100%'
+				})
 			]
 		);
-	},
+	}
 };

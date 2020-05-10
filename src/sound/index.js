@@ -42,7 +42,7 @@ let soundBankEl;
 export const defaults = {
 	'sound.mute': false,
 	'sound.volume': 1,
-	'sound.transitionDuration': '1s',
+	'sound.transitionDuration': '1s'
 };
 
 export function init() {

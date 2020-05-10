@@ -13,7 +13,7 @@ const logger = createLogger('story');
 
 const story = {
 	customScripts: [],
-	customStyles: [],
+	customStyles: []
 };
 
 let passages = [];
@@ -43,7 +43,7 @@ export function loadFromData(el) {
 		let passage = {
 			id: parseInt(p.getAttribute('pid')),
 			name: p.getAttribute('name'),
-			source: p.textContent,
+			source: p.textContent
 		};
 
 		const tagAttr = p.getAttribute('tags');

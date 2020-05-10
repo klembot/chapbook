@@ -18,7 +18,7 @@ Object.assign(renderer, {
 		*/
 
 		return `<span class="small-caps">${src}</span>`;
-	},
+	}
 });
 
 export default renderer;

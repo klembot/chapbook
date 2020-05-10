@@ -31,18 +31,18 @@ const inserts = [
 		match: /^test insert/i,
 		render(first, props, invocation) {
 			return first + '#' + JSON.stringify(props) + '#' + invocation;
-		},
+		}
 	},
 	{
 		match: /^insert that throws/i,
 		render() {
 			throw new Error('Test');
-		},
+		}
 	},
 	{
 		match: /^insert without return/i,
-		render() {},
-	},
+		render() {}
+	}
 ];
 
 describe('insert renderer', () => {

@@ -5,7 +5,7 @@ import {
 	canRestoreFromStorage,
 	get,
 	init as initState,
-	restoreFromStorage,
+	restoreFromStorage
 } from './state';
 import {init as initSound} from './sound';
 import initLookups from './state/lookups';
@@ -15,7 +15,7 @@ import {
 	init as initStory,
 	loadFromData,
 	runCustomScripts,
-	addCustomStyles,
+	addCustomStyles
 } from './story';
 import {init as initStyle} from './style';
 import './index.scss';

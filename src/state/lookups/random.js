@@ -40,7 +40,7 @@ import {set} from '..';
 
 export const defaults = {
 	'config.random.seed': () => new Date(),
-	'config.random.privateState': null,
+	'config.random.privateState': null
 };
 
 /*

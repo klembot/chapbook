@@ -13,5 +13,5 @@ export default {
 
 		set(`sound.effect.${name}.playing`, true);
 		return `<audio>${description}</audio>`;
-	},
+	}
 };

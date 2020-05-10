@@ -32,7 +32,7 @@ export const defaults = {
 	'config.footer.center': '',
 	'config.footer.right': '{restart link}',
 	'config.footer.transition.name': 'none',
-	'config.footer.transition.duration': '500ms',
+	'config.footer.transition.duration': '500ms'
 };
 
 /* Runs a transition on a DOM element. */

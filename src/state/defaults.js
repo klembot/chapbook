@@ -16,7 +16,7 @@ export default function init() {
 		soundDefaults,
 		stateDefaults,
 		styleDefaults,
-		templateDefaults,
+		templateDefaults
 	].forEach(defs =>
 		Object.keys(defs).forEach(k => {
 			if (typeof defs[k] === 'function') {

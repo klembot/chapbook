@@ -7,5 +7,5 @@ export default {
 	match: /^(note(\s+to\s+self)?|n?b?|todo|fixme)$/i,
 	process(output) {
 		output.text = '';
-	},
+	}
 };

@@ -6,7 +6,7 @@ import event from '../../event';
 import {get, restoreFromObject, saveToObject} from '../../state';
 
 export const defaults = {
-	'config.backstage.trail.maxLength': 100,
+	'config.backstage.trail.maxLength': 100
 };
 
 export let history = [];

@@ -20,5 +20,5 @@ export default {
 
 		set(`sound.ambient.${name}.playing`, true);
 		return `<audio>${description}</audio>`;
-	},
+	}
 };

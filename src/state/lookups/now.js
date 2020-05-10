@@ -43,7 +43,7 @@ export default function init(setLookup) {
 		return new Date().toLocaleString(navigator.language, {
 			hour: 'numeric',
 			minute: 'numeric',
-			second: 'numeric',
+			second: 'numeric'
 		});
 	});
 }

@@ -118,7 +118,7 @@ describe('parse()', () => {
 			{type: 'modifier', content: 'hello'},
 			{type: 'text', content: 'And another block.'},
 			{type: 'modifier', content: 'hello again'},
-			{type: 'text', content: 'Finally...'},
+			{type: 'text', content: 'Finally...'}
 		]);
 	});
 
@@ -136,7 +136,7 @@ describe('parse()', () => {
 			{type: 'modifier', content: 'hello'},
 			{type: 'text', content: 'And another block.'},
 			{type: 'modifier', content: 'hello again'},
-			{type: 'text', content: 'Finally...'},
+			{type: 'text', content: 'Finally...'}
 		]);
 	});
 
@@ -149,7 +149,7 @@ describe('parse()', () => {
 			{type: 'text', content: 'This is a text block.'},
 			{type: 'modifier', content: 'hello'},
 			{type: 'modifier', content: 'hello'},
-			{type: 'text', content: 'And another block.'},
+			{type: 'text', content: 'And another block.'}
 		]);
 	});
 
@@ -162,7 +162,7 @@ describe('parse()', () => {
 			{type: 'text', content: 'This is a text block.'},
 			{type: 'modifier', content: 'hello "I wonder;"'},
 			{type: 'modifier', content: 'hello'},
-			{type: 'text', content: 'And another block.'},
+			{type: 'text', content: 'And another block.'}
 		]);
 	});
 
@@ -175,7 +175,7 @@ describe('parse()', () => {
 			{type: 'text', content: 'This is a text block.'},
 			{type: 'modifier', content: 'hello "I \\"wonder\\";"'},
 			{type: 'modifier', content: 'hello'},
-			{type: 'text', content: 'And another block.'},
+			{type: 'text', content: 'And another block.'}
 		]);
 	});
 

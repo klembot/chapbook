@@ -57,6 +57,6 @@ export default function init() {
 		render,
 		state,
 		story,
-		warn,
+		warn
 	};
 }

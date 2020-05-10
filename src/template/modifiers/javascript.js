@@ -35,5 +35,5 @@ export default {
 				throw e;
 			}
 		}
-	},
+	}
 };

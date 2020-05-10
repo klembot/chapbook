@@ -12,8 +12,8 @@ export default {
 			Object.assign({}, props, {
 				src: `https://source.unsplash.com/${url.replace(/.*\//, '')}/${
 					props.width
-				}x${props.height}`,
+				}x${props.height}`
 			})
 		);
-	},
+	}
 };

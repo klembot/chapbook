@@ -15,5 +15,5 @@ export default [
 	Continue,
 	Css,
 	JavaScript,
-	Note,
+	Note
 ];

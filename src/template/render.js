@@ -15,7 +15,7 @@ const {log} = logger('render');
 
 export const markedOptions = {
 	renderer: markdownRenderer,
-	smartypants: true,
+	smartypants: true
 };
 
 export default function render(parsed, inserts, modifiers, ignoreVars = false) {
@@ -63,7 +63,7 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 			case 'text': {
 				let blockOutput = {
 					text: block.content,
-					startsNewParagraph: true,
+					startsNewParagraph: true
 				};
 
 				/* Allow active modifiers to process the raw source. */
@@ -75,7 +75,7 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 				rawModifiers.forEach(m => {
 					m.mod.processRaw(blockOutput, {
 						state: modifierState[m.mod],
-						invocation: m.invocation,
+						invocation: m.invocation
 					});
 				});
 
@@ -98,7 +98,7 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 				processedModifiers.forEach(m =>
 					m.mod.process(blockOutput, {
 						state: modifierState[m.mod],
-						invocation: m.invocation,
+						invocation: m.invocation
 					})
 				);
 
@@ -139,7 +139,7 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 					modifierState[mod] = modifierState[mod] || {};
 					activeModifiers.push({
 						mod,
-						invocation: block.content,
+						invocation: block.content
 					});
 				} else if (mods.length === 0) {
 					/*

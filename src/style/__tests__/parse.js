@@ -23,11 +23,11 @@ describe('parseColor()', () => {
 	test('parses "x on y" format as foreground and background', () => {
 		expect(parseColor('#ff0000 on #00ff00')).toEqual({
 			'background-color': parseColorValue('#00ff00'),
-			color: parseColorValue('#ff0000'),
+			color: parseColorValue('#ff0000')
 		});
 		expect(parseColor('#ff0000 ON #00ff00')).toEqual({
 			'background-color': parseColorValue('#00ff00'),
-			color: parseColorValue('#ff0000'),
+			color: parseColorValue('#ff0000')
 		});
 	});
 });

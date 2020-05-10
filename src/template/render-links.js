@@ -9,7 +9,7 @@ export function renderLink(target, label) {
 		return htmlify(
 			'a',
 			{
-				href: target,
+				href: target
 			},
 			[label || target]
 		);
@@ -21,7 +21,7 @@ export function renderLink(target, label) {
 		'a',
 		{
 			href: 'javascript:void(0)',
-			'data-cb-go': target,
+			'data-cb-go': target
 		},
 		[label || target]
 	);

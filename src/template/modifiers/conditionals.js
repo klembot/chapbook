@@ -41,5 +41,5 @@ export default {
 		if (!state.conditionEval) {
 			output.text = '';
 		}
-	},
+	}
 };

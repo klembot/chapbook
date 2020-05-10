@@ -77,7 +77,7 @@ export function parseFont(source) {
 		'font-weight': 'inherit',
 		'letter-spacing': 'inherit',
 		'text-decoration': 'inherit',
-		'text-transform': 'inherit',
+		'text-transform': 'inherit'
 	};
 
 	function applyFonts(result, fontSrc) {

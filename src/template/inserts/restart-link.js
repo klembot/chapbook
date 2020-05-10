@@ -11,9 +11,9 @@ export default {
 			'a',
 			{
 				href: 'javascript:void(0)',
-				'data-cb-restart': true,
+				'data-cb-restart': true
 			},
 			[props.label || 'Restart']
 		);
-	},
+	}
 };

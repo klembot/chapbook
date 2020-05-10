@@ -43,7 +43,7 @@ function addProxy(target, property) {
 		},
 
 		/* Allow overwriting. */
-		configurable: true,
+		configurable: true
 	});
 
 	/*
@@ -105,7 +105,7 @@ export function reset() {
 				event.emit('state-change', {
 					name: keyName,
 					value: get(keyName),
-					previous,
+					previous
 				});
 			}
 		});

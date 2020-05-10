@@ -35,13 +35,13 @@ const defaultOpts = {
 	varsSep: /^--$/m,
 
 	// The regexp matching a modifier block.
-	modifierPattern: /^\[([^[].+[^\]])\]$/gm,
+	modifierPattern: /^\[([^[].+[^\]])\]$/gm
 };
 
 export default function parse(src, opts = defaultOpts) {
 	let result = {
 		vars: [],
-		blocks: [],
+		blocks: []
 	};
 
 	// Does the source start with a vars section?
@@ -65,7 +65,7 @@ export default function parse(src, opts = defaultOpts) {
 				const value = line.substr(firstColon + 1).trim();
 				const thisVar = {
 					name,
-					value: new Function(`return (${value})`),
+					value: new Function(`return (${value})`)
 				};
 
 				/* Look for a (condition) in the name. */
