@@ -88,6 +88,8 @@ It's a beautiful day.
 
 The only difference here is that the sound will fade in, and if there was already an ambient sound playing, the two will crossfade. The exact length of the fade is determined by the state variable `sound.transitionDuration`. It is a string in the same format that the [after modifier] accepts.
 
+To stop playing all ambient sound, write `{no ambient sound}`.
+
 ## Controlling Sound Volume
 
 To set the master sound volume for your story, change the state variable `sound.volume` to a decimal between 0 and 1. 0 is muted, and 1 is full volume. You can also temporarily mute all sound by setting `sound.mute` (note the lack of a D at the end) to `true`. The advantage of using `sound.mute` is that it allows you to toggle between no sound and a previously-set volume.

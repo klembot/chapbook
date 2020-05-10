@@ -10,6 +10,7 @@ sound.ambient.forest.description: "Daytime forest"
 - [[Hear a soft sound effect]]
 - [[Coffeehouse ambience]]
 - [[Forest ambience]]
+- [[No ambience]]
 
 
 :: Hear a sound effect
@@ -40,5 +41,11 @@ This audio comes from [[Freesound->https://freesound.org/people/Tineidae/sounds/
 {ambient sound: "forest"}
 
 This audio comes from [[Freesound->https://freesound.org/people/bajko/sounds/385280/]].
+
+[[Start Over->Start]]
+
+
+:: No ambience
+{ambient sound: null}
 
 [[Start Over->Start]]

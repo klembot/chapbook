@@ -3,9 +3,8 @@
 import {get, set} from '../../state';
 
 export default {
-	match: /^ambient\s+sound/i,
+	match: /^(no )?ambient\s+sound/i,
 	render(name, props) {
-		const description = get(`sound.ambient.${name}.description`) || '';
 		const ambients = get('sound.ambient');
 
 		Object.keys(ambients).forEach(ambientName => {
@@ -13,6 +12,12 @@ export default {
 				set(`sound.ambient.${ambientName}.playing`, false);
 			}
 		});
+
+		if (!name) {
+			return;
+		}
+
+		const description = get(`sound.ambient.${name}.description`) || '';
 
 		if (props.volume) {
 			set(`sound.ambient.${name}.volume`, props.volume);
