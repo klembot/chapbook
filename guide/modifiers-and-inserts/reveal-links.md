@@ -26,6 +26,33 @@ This will work the same way as the previous example, only it will show the conte
 A passage shown by a reveal link will not be recorded in a session's history.
 {% endhint %}
 
+When using a reveal link with a passage containing multiple paragraphs, Chapbook inserts the paragraphs in such a way that the surrounding text's order is maintained.
+
+For example, if you have a passage named 'Shopping List':
+
+```
+Apples
+
+Bananas
+
+Carrots
+```
+
+and then a passage with this:
+
+```
+I went to buy {reveal link: 'groceries', passage: 'Shopping List'}. It was a rainy day.
+```
+
+The player will see this after they click the link:
+
+> I went to buy Apples
+>
+> Bananas
+>
+> Carrots. It was a rainy day.
+
+Notice how the period after the link insert is moved to the end, after Carrots, but not on a line by itself, and the rest of the paragraph continues.
 
 [stone harbor]: https://stoneharborgame.com/
 [windrift]: https://github.com/lizadaly/windrift

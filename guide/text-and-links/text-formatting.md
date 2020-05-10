@@ -50,6 +50,17 @@ This convention, though not a part of original recipe Markdown, conflicts with s
 | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `At the bottom of the page, nearly completely covered by the government censor's pen, was that same code name you had seen before: <del>S-5900</del>.` | At the bottom of the page, nearly completely covered by the government censor's pen, was that same code name you had seen before: <del>S-5900</del>. |
 
+## Line Breaks
+
+If you'd like to insert a single line break, leave two spaces at the end of a line, or put a backslash (`\`) at the end of a line.
+
+<table>
+	<thead><tr><th>Typed</th><th>Displayed</th></tr></thead>
+	<tbody>
+	<tr><td><code>After the final no there comes a yes \</code><br><code>And on that yes the future world depends.</code></td><td>After the final no there comes a yes<br>And on that yes the future world depends.</td></tr>
+	</tbody>
+</table>
+
 ## Section Breaks
 
 A convention sometimes used in publishing to indicate a new scene, or a new line of thought is to separate the text using a series of asterisks, like this:
