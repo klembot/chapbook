@@ -4,6 +4,10 @@
 	-webkit-font-smoothing: auto;
 }
 
+.book-summary {
+	font: 14px 'Iowan Old Style', Constantia, Georgia, serif;
+}
+
 /* Set the heading at the top of a page in small caps. */
 
 .book-header h1 a,

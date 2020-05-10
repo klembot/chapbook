@@ -1,7 +1,5 @@
 # Chapbook, a story format for Twine 2
 
-![][logo.svg]
-
 _by Chris Klimas_
 
 version 1.1.0

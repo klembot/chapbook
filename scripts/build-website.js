@@ -19,10 +19,13 @@ fs.mkdirp('docs')
 		cpy('**', '../../docs/guide', {cwd: 'guide/_book/', parents: true})
 	)
 	.then(() => fs.mkdirp(`docs/use/${pkg.version}`))
+	.then(() => cpy(`dist/chapbook-${pkg.version}`, `docs/use/${pkg.version}/`))
 	.then(() =>
 		cpy(
-			`dist/chapbook-${pkg.version}/format.js`,
-			`docs/use/${pkg.version}/`
+			`dist/chapbook-${pkg.version}-micro`,
+			`docs/use/${pkg.version}-micro/`
 		)
 	)
+	.then(() => cpy(`logo.svg`, `docs/use/${pkg.version}/`))
+	.then(() => cpy(`logo.svg`, 'docs/'))
 	.then(() => console.log('Wrote files to docs/.'));

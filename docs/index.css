@@ -61,7 +61,7 @@ h2#learn-about-chapbook::before {
 	background-position: bottom;
 }
 
-h2#_cloak-of-darkness_-a-sample-story::before {
+h2#cloak-of-darkness-a-sample-story::before {
 	background-image: url('cloak.jpeg');
 }
 
@@ -71,6 +71,11 @@ h2#report-a-bug-or-suggest-a-feature::before {
 
 h2#support-chapbook-development::before {
 	background-image: url('coins.jpeg');
+}
+
+img#large-logo {
+	display: block;
+	margin: 4em auto 0 auto;
 }
 
 article,
