@@ -33,9 +33,11 @@ export function none(el, html) {
 
 export function fadeInOut(el, html, duration) {
 	return new Promise(resolve => {
-		forceNewStackingContext(el);
-
+		const oldPointerEvents = el.style.pointerEvents;
 		const stepDuration = timestring(duration, 's') / 2;
+
+		forceNewStackingContext(el);
+		el.style.pointerEvents = 'none';
 
 		/* Add the new content, but keep it hidden at first. */
 
@@ -49,6 +51,7 @@ export function fadeInOut(el, html, duration) {
 			inEl.removeEventListener('animationend', complete);
 			inEl.className = '';
 			inEl.style.animationDuration = stepDuration + 's';
+			el.style.pointerEvents = oldPointerEvents;
 			resolve();
 		});
 
@@ -86,9 +89,11 @@ export function fadeInOut(el, html, duration) {
 
 export function crossfade(el, html, duration) {
 	return new Promise(resolve => {
-		forceNewStackingContext(el);
-
+		const oldPointerEvents = el.style.pointerEvents;
 		const stepDuration = timestring(duration, 's');
+
+		forceNewStackingContext(el);
+		el.style.pointerEvents = 'none';
 
 		/* Add the new content. */
 
@@ -102,6 +107,7 @@ export function crossfade(el, html, duration) {
 			inEl.removeEventListener('animationend', complete);
 			inEl.style.animationDuration = null;
 			inEl.className = '';
+			el.style.pointerEvents = oldPointerEvents;
 			resolve();
 		});
 
