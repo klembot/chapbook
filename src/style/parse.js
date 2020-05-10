@@ -128,7 +128,7 @@ export function parseFont(source) {
 		result['text-decoration'] = 'underline';
 	}
 
-	const sizeMatch = /\b\d+(ch|cm|ex|in|mm|pc|pt|px|r?em|vh|vmax|vmin|vw|%)?/i.exec(
+	const sizeMatch = /\b\d+(?:\.\d+)?(ch|cm|ex|in|mm|pc|pt|px|r?em|vh|vmax|vmin|vw|%)?/i.exec(
 		source
 	);
 

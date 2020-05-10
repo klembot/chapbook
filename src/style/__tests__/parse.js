@@ -8,6 +8,7 @@ describe('autopx()', () => {
 	test('leaves strings alone', () => {
 		expect(autopx('12')).toBe('12');
 		expect(autopx('1em')).toBe('1em');
+		expect(autopx('1.25em')).toBe('1.25em');
 	});
 });
 
@@ -35,6 +36,8 @@ describe('parseColor()', () => {
 describe('parseFont()', () => {
 	test('parses a single number as a font size', () => {
 		expect(parseFont('12')['font-size']).toBe('12px');
+		expect(parseFont('12px')['font-size']).toBe('12px');
+		expect(parseFont('1.25rem')['font-size']).toBe('1.25rem');
 	});
 
 	test('parses a word as a font', () => {
