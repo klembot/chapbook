@@ -57,12 +57,18 @@ It's just a small brass hook, screwed to the wall.
 [if hasCloak]
 You could [[hang->hang cloak]] your [[cloak->Cloak]] here.
 
+[else]
+You could [[pick up your cloak and wear it]], if you like, or simply turn back to the [[cloak room->Cloakroom]].
 
 :: hang cloak
 hasCloak: false
 --
 {embed passage: 'Cloakroom'}
 
+:: pick up your cloak and wear it
+hasCloak: true
+--
+{embed passage: 'Cloakroom'}
 
 :: Bar
 room: 'Bar'
