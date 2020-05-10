@@ -3,7 +3,7 @@
 import {get, set} from '../../state';
 
 export default {
-	match: /^ambient\s+sound/i,
+	match: /^(no )?ambient\s+sound/i,
 	render(name, props) {
 		const ambients = get('sound.ambient');
 
