@@ -71,7 +71,8 @@ function addLookupProxy(target, property) {
 	/*
 	Unlike state proxies, we walk downward, creating empty objects as need be.
 	This is because lookups aren't composable: that is, the lookup `foo` may
-	return a completely different value than `foo.bar`.
+	return a completely different value than `foo.bar`, instead of `{bar: 'some
+	value'}`.
 	*/
 
 	const dottedProps = property.split('.');
@@ -86,7 +87,7 @@ function addLookupProxy(target, property) {
 
 	Object.defineProperty(target, targetName, {
 		get() {
-			return get(name);
+			return get(property);
 		},
 		set() {
 			throw new Error('Chapbook lookup variables may only be read.');
@@ -118,7 +119,8 @@ export function init() {
 
 /*
 Resets all set variables, but not defaults. (If you want to do that, default a
-key to undefined.) This emits `state-change` events as it works.
+key to undefined.) This also has no effect on lookups. This emits `state-change`
+events as it works.
 */
 
 export function reset() {
