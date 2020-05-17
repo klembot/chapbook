@@ -25,7 +25,7 @@ const stateDefaults = {'config.state.autosave': true};
 
 export {stateDefaults as defaults};
 
-function addProxy(target, property) {
+function addStateProxy(target, property) {
 	/* If the property already exists on the target, do nothing. */
 
 	if (target[property]) {
@@ -57,8 +57,44 @@ function addProxy(target, property) {
 
 	if (dottedProps.length > 1) {
 		dottedProps.pop();
-		addProxy(target, dottedProps.join('.'));
+		addStateProxy(target, dottedProps.join('.'));
 	}
+}
+
+function addLookupProxy(target, property) {
+	/* If the property already exists on the target, do nothing. */
+
+	if (target[property]) {
+		return;
+	}
+
+	/*
+	Unlike state proxies, we walk downward, creating empty objects as need be.
+	This is because lookups aren't composable: that is, the lookup `foo` may
+	return a completely different value than `foo.bar`.
+	*/
+
+	const dottedProps = property.split('.');
+	const targetName = dottedProps[dottedProps.length - 1];
+
+	for (let i = 0; i < dottedProps.length - 1; i++) {
+		target[dottedProps[i]] = target[dottedProps[i]] || {};
+		target = target[dottedProps[i]];
+	}
+
+	/* Set up the proxy. */
+
+	Object.defineProperty(target, targetName, {
+		get() {
+			return get(name);
+		},
+		set() {
+			throw new Error('Chapbook lookup variables may only be read.');
+		},
+
+		/* Allow overwriting. */
+		configurable: true
+	});
 }
 
 function removeProxy(target, property) {
@@ -148,7 +184,7 @@ export function set(name, value) {
 	const previous = get(name);
 
 	deepSet(vars, name, value);
-	addProxy(window, name);
+	addStateProxy(window, name);
 
 	if (value !== previous) {
 		event.emit('state-change', {name, previous, value});
@@ -169,7 +205,7 @@ export function setDefault(name, value) {
 
 	log(`Defaulting "${name}" to ${JSON.stringify(value)}`);
 	deepSet(defaults, name, value);
-	addProxy(window, name);
+	addStateProxy(window, name);
 
 	if (previous === null || previous === undefined) {
 		event.emit('state-change', {name, value, previous});
@@ -189,7 +225,7 @@ export function setLookup(name, callback) {
 
 	log(`Adding lookup variable ${name}`);
 	deepSet(computed, name, callback);
-	addProxy(window, name);
+	addLookupProxy(window, name);
 
 	if (previous === null || previous === undefined) {
 		event.emit('state-change', {name, value: get(name), previous});

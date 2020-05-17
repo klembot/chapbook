@@ -55,11 +55,24 @@ describe('state', () => {
 	});
 
 	it('adds lookup variables', () => {
-		state.setLookup('test', () => {
+		state.setLookup('foo', () => {
 			return 'test passed';
 		});
 
-		expect(state.get('test')).toBe('test passed');
+		expect(state.get('foo')).toBe('test passed');
+	});
+
+	it.only('sets global proxies for lookup variables', () => {
+		state.setLookup('foo', () => {
+			return 'test passed';
+		});
+
+		state.setLookup('foo.bar', () => {
+			return 'nested test passed';
+		});
+
+		expect(window.foo).toBe('test passed');
+		expect(window.foo.bar).toBe('nested test passed');
 	});
 
 	it('generates state-change events when setting a variable', () => {
