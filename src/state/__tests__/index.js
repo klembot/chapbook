@@ -62,7 +62,7 @@ describe('state', () => {
 		expect(state.get('foo')).toBe('test passed');
 	});
 
-	it.only('sets global proxies for lookup variables', () => {
+	it('sets global proxies for lookup variables', () => {
 		state.setLookup('foo', () => {
 			return 'test passed';
 		});
