@@ -54,10 +54,10 @@ Chapbook supports the `defaults` set of web browsers set by [the browserslist pr
 
 ## How to Use Chapbook
 
-For now, Chapbook must be added to the Twine editor by hand. To do this, choose the **Formats** button from the story list page you see when you first start up Twine, then the **Add a New Format** tab at the top of the dialog that appears. Paste the following address into the field and select the **Go** button:
+Chapbook is bundled as part of the Twine 2 editor now, though releases of Twine sometimes lag behind Chapbook. If you would like to use it separately, or update by hand, choose the **Formats** button from the story list page you see when you first start up Twine, then the **Add a New Format** tab at the top of the dialog that appears. Paste the following address into the field and select the **Go** button:
 
 ```
-https://klembot.github.io/chapbook/use/1.1.0/format.js
+https://klembot.github.io/chapbook/use/1.1.1/format.js
 ```
 
 Once you do that, you must set the story you're working with to publish using Chapbook. Edit one of your stories, then choose **Change Story Format** from the story menu at the bottom of the editor. Choose Chapbook here. Once you do, selecting the **Play** button or publishing your story to a file will use Chapbook format.
@@ -65,7 +65,7 @@ Once you do that, you must set the story you're working with to publish using Ch
 To use the micro version of Chapbook, which removes all debugging-related code, add this address instead:
 
 ```
-https://klembot.github.io/chapbook/use/1.1.0-micro/format.js
+https://klembot.github.io/chapbook/use/1.1.1-micro/format.js
 ```
 
 ## Why To Use Chapbook

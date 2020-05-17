@@ -2,8 +2,6 @@
 
 _by Chris Klimas_
 
-version 1.1.0
-
 Chapbook is a story format for Twine 2, which means that it plays stories created in Twine in a web browser. It is now part of the official Twine 2 distribution, but you may also use it from this URL:
 
 `https://klembot.github.io/chapbook/use/1.1.0/format.js`

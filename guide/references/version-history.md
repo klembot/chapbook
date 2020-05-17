@@ -1,5 +1,10 @@
 # Version History
 
+## 1.1.1, 17 May 2020
+
+- Fixes a bug introduced in 1.1.0 where nested lookup variables (like
+  `random.coinFlip`) did not work--which is to say, all of them.
+
 ## 1.1.0, 10 May 2020
 
 - Adds a new insert, `{no ambient sound}`, which stops any existing ambient sound.
