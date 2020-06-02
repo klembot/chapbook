@@ -28,4 +28,14 @@ export default function init(setLookup) {
 
 		return undefined;
 	});
+
+	setLookup('passage.previous', () => {
+		const trail = get('trail');
+
+		if (trail) {
+			return trail[trail.length - 2];
+		}
+
+		return undefined;
+	});
 }
