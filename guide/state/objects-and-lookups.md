@@ -38,6 +38,7 @@ Below is a list of lookups that Chapbook maintains for you:
 | `now.weekdayName` | The name of the current day of the week.                                                                                                                              | `'Tuesday'`          |
 | `now.year`        | The current four-digit year.                                                                                                                                          | `2011`               |
 | `passage.name`    | The name of the current passage as set in the Twine editor.                                                                                                           | `'Untitled Passage'` |
+| `passage.previous`| The name of the previous passage as set in the Twine editor, if at least two passages have been visited.                                                              | `'Untitled Passage'` |
 | `passage.visits`  | The number of times the player has seen the current passage, including the current time. That is, the first time the player sees a passage, this lookup's value is 1. | 1                    |
 | `story.name`      | The name of the story as set in the Twine editor.                                                                                                                     | `'Untitled Story'`   |
 
