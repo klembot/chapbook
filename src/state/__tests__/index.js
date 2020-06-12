@@ -1,37 +1,48 @@
 import * as state from '../index';
 import event from '../../event';
 
+/*
+These tests pollute the window variable, and in general require some care
+because they run in parallel. They use different state variable names so that
+they don't interfere with each other.
+*/
+
 afterEach(() => {
 	state.reset();
-	delete window.color;
+	delete window.lookup;
+	delete window.state;
+	delete window.nestedLookup;
+	delete window.nestedState;
 	event.removeAllListeners('state-change');
 });
 
 describe('state', () => {
 	it('sets variables', () => {
-		state.set('color', 'red');
-		expect(state.get('color')).toBe('red');
+		state.set('state', 'red');
+		expect(state.get('state')).toBe('red');
 	});
 
 	it('allows nested variables', () => {
-		state.set('foo.bar.one', 'red');
-		state.set('foo.bar.two', 'green');
-		expect(state.get('foo.bar.one')).toBe('red');
-		expect(state.get('foo.bar.two')).toBe('green');
-		expect(state.get('foo.bar')).toEqual({one: 'red', two: 'green'});
+		state.set('nestedState.foo.one', 'red');
+		state.set('nestedState.foo.two', 'green');
+		expect(state.get('nestedState.foo.one')).toBe('red');
+		expect(state.get('nestedState.foo.two')).toBe('green');
+		expect(state.get('nestedState.foo')).toEqual({one: 'red', two: 'green'});
 	});
 
 	it('adds global proxies for variables', () => {
-		state.set('color', 'red');
-		expect(window.color).toBe('red');
-		window.color = 'green';
-		expect(state.get('color')).toBe('green');
+		expect(window.state).toBeUndefined();
+		state.set('state', 'red');
+		expect(window.state).toBe('red');
+		window.state = 'green';
+		expect(state.get('state')).toBe('green');
 	});
 
 	it('sets nested global proxies for variables', () => {
-		state.set('foo.bar', 'red');
-		expect(window.foo.bar).toBe('red');
-		expect(window.foo).toEqual({bar: 'red'});
+		expect(window.nestedState).toBeUndefined();
+		state.set('nestedState.foo', 'red');
+		expect(window.nestedState.foo).toBe('red');
+		expect(window.nestedState).toEqual({foo: 'red'});
 	});
 
 	it('tests variable names with sameObject()', () => {
@@ -55,11 +66,17 @@ describe('state', () => {
 	});
 
 	it('adds lookup variables', () => {
-		state.setLookup('test', () => {
-			return 'test passed';
-		});
+		state.setLookup('lookup', () => 'red');
+		expect(state.get('lookup')).toBe('red');
+	});
 
-		expect(state.get('test')).toBe('test passed');
+	it('sets global proxies for lookup variables', () => {
+		expect(window.lookup).toBeUndefined();
+		expect(window.nestedLookup).toBeUndefined();
+		state.setLookup('lookup', () => 'green');
+		state.setLookup('nestedLookup.foo', () => 'blue');
+		expect(window.lookup).toBe('green');
+		expect(window.nestedLookup.foo).toBe('blue');
 	});
 
 	it('generates state-change events when setting a variable', () => {

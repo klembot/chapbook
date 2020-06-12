@@ -1,8 +1,8 @@
 {
 	"name": "Chapbook",
 	"author": "Chris Klimas <chris@twinery.org>",
-	"description": "A Twine story format emphasizing ease of authoring, multimedia, and playability on many different types of devices. Visit <a href=\"https://klembot.github.io/chapbook/guide/\">guide</a> for more information.",
-	"version": "1.1.0",
+	"description": "A Twine story format emphasizing ease of authoring, multimedia, and playability on many different types of devices. Visit the <a href=\"https://klembot.github.io/chapbook/guide/\">guide</a> for more information.",
+	"version": "1.1.1",
 	"main": "index.js",
 	"license": "MIT",
 	"devDependencies": {
@@ -29,7 +29,7 @@
 		"lodash.escape": "^4.0.1",
 		"mini-css-extract-plugin": "^0.4.0",
 		"mock-local-storage": "^1.0.5",
-		"node-sass": "^4.9.0",
+		"node-sass": "^4.12.0",
 		"npm-run-all": "^4.1.3",
 		"prettier": "^2.0.5",
 		"pug": "^2.0.3",
