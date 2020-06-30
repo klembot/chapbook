@@ -56,6 +56,8 @@ const updateDom = coalesceCalls(function update(calls) {
 		const passage = passageNamed(trail[trail.length - 1]);
 
 		if (passage) {
+			window.scrollTo(0, 0);
+
 			transitionContent(
 				bodyContentEl,
 				render(passage.source),
