@@ -7,11 +7,13 @@ export default {
 	render(name, props) {
 		const ambients = get('sound.ambient');
 
-		Object.keys(ambients).forEach(ambientName => {
-			if (ambientName !== name && ambients[ambientName].playing) {
-				set(`sound.ambient.${ambientName}.playing`, false);
-			}
-		});
+		if (ambients) {
+			Object.keys(ambients).forEach(ambientName => {
+				if (ambientName !== name && ambients[ambientName].playing) {
+					set(`sound.ambient.${ambientName}.playing`, false);
+				}
+			});
+		}
 
 		if (!name) {
 			return;

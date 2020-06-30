@@ -11,6 +11,7 @@ sound.ambient.forest.description: "Daytime forest"
 - [[Coffeehouse ambience]]
 - [[Forest ambience]]
 - [[No ambience]]
+- [[Test no ambient sound when none are defined]]
 
 
 :: Hear a sound effect
@@ -46,6 +47,14 @@ This audio comes from [[Freesound->https://freesound.org/people/bajko/sounds/385
 
 
 :: No ambience
-{ambient sound: null}
+{no ambient sound}
+
+[[Start Over->Start]]
+
+:: Test no ambient sound when none are defined
+sound.ambient: undefined
+--
+{no ambient sound}
+This should not trigger an error, but it shouldn't do anything, either.
 
 [[Start Over->Start]]
