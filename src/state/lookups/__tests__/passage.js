@@ -2,45 +2,113 @@ import * as state from '../../index';
 import event from '../../../event';
 import initPassage from '../passage';
 
-/*
-These tests pollute the window variable, and in general require some care
-because they run in parallel.
-*/
+jest.mock('../../index');
 
-beforeAll(() => {
-	initPassage(state.setLookup);
+let lookups;
+
+const lookup = (name) => lookups[name]();
+
+const setLookup = (name, callback) => {
+	lookups[name] = callback;
+};
+
+beforeEach(() => {
+	lookups = {};
 });
 
 afterEach(() => {
-	state.reset();
-	delete window.lookup;
-	delete window.state;
-	delete window.nestedLookup;
-	delete window.nestedState;
-	event.removeAllListeners('state-change');
+	state.get.mockReset();
 });
 
 describe('passage.name', () => {
-	it('is the last item in `trail`', () => {
-		state.set('trail', ['First', 'Second', 'Third']);
-		expect(state.get('passage.name')).toBe('Third');
+	it('is the last item in `trail` (length 1)', () => {
+		state.get.mockImplementation((property) => {
+			return {
+				'trail': ['a']
+			}[property];
+		});
+		initPassage(setLookup);
+		expect(lookup('passage.name')).toBe('a');
+	});
+	it('is the last item in `trail` (length 2)', () => {
+		state.get.mockImplementation((property) => {
+			return {
+				'trail': ['a', 'b']
+			}[property];
+		});
+		initPassage(setLookup);
+		expect(lookup('passage.name')).toBe('b');
+	});
+	it('is the last item in `trail` (length 3)', () => {
+		state.get.mockImplementation((property) => {
+			return {
+				'trail': ['a', 'b', 'c']
+			}[property];
+		});
+		initPassage(setLookup);
+		expect(lookup('passage.name')).toBe('c');
 	});
 });
 
 describe('passage.visits', () => {
-	it('is the number of occurrences of `passage.name` in `trail`', () => {
-		state.set('trail', ['First', 'Second', 'Third']);
-		expect(state.get('passage.visits')).toBe(1);
+	it('is the number of occurrences (1) of `passage.name` in `trail`', () => {
+		state.get.mockImplementation((property) => {
+			return {
+				'passage.name': 'a',
+				'trail': ['a', 'b', 'c']
+			}[property];
+		});
+		initPassage(setLookup);
+		expect(lookup('passage.visits')).toBe(1);
+	});
+	it('is the number of occurrences (2) of `passage.name` in `trail`', () => {
+		state.get.mockImplementation((property) => {
+			return {
+				'passage.name': 'a',
+				'trail': ['a', 'b', 'a']
+			}[property];
+		});
+		initPassage(setLookup);
+		expect(lookup('passage.visits')).toBe(2);
+	});
+	it('is the number of occurrences (0) of `passage.name` in `trail`', () => {
+		state.get.mockImplementation((property) => {
+			return {
+				'passage.name': 'a',
+				'trail': ['c', 'b', 'c']
+			}[property];
+		});
+		initPassage(setLookup);
+		expect(lookup('passage.visits')).toBe(0);
 	});
 });
 
 describe('passage.previous', () => {
-	it('is the next-to-last item in `trail`', () => {
-		state.set('trail', ['First', 'Second', 'Third']);
-		expect(state.get('passage.previous')).toBe('Second');
+	it('is the next-to-last item in `trail` (length 2)', () => {
+		state.get.mockImplementation((property) => {
+			return {
+				'trail': ['a', 'b']
+			}[property];
+		});
+		initPassage(setLookup);
+		expect(lookup('passage.previous')).toBe('a');
+	});
+	it('is the next-to-last item in `trail` (length 3)', () => {
+		state.get.mockImplementation((property) => {
+			return {
+				'trail': ['a', 'b', 'c']
+			}[property];
+		});
+		initPassage(setLookup);
+		expect(lookup('passage.previous')).toBe('b');
 	});
 	it('is undefined when `trail` length is less than 2', () => {
-		state.set('trail', ['First']);
-		expect(state.get('passage.previous')).toBe(undefined);
+		state.get.mockImplementation((property) => {
+			return {
+				'trail': ['a']
+			}[property];
+		});
+		initPassage(setLookup);
+		expect(lookup('passage.previous')).toBe(undefined);
 	});
 });
