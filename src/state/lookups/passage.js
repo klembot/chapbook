@@ -47,7 +47,7 @@ export default function init(setLookup) {
 				return 0;
 			}
 
-			const prevPassageName = trail[trail.length - 1];
+			const prevPassageName = trail[trail.length - 2];
 
 			return trail.reduce(
 				(result, current) => (current === prevPassageName ? result + 1 : result),
