@@ -1,5 +1,4 @@
 import * as state from '../../index';
-import event from '../../../event';
 import initPassage from '../passage';
 
 jest.mock('../../index');
