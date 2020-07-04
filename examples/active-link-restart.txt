@@ -1,0 +1,6 @@
+:: Start
+config.style.page.link.active.font: 'sans-serif'
+--
+This is a reproduction of GitHub issue #45. The font should always change to `sans-serif` when hovering a link like the one below, and restarting should maintain this behavior.
+
+{restart link}

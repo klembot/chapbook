@@ -1,11 +1,11 @@
 import {autopx, parseColor, parseColorValue, parseFont} from '../parse';
 
 describe('autopx()', () => {
-	test('converts integers to px', () => {
+	it('converts integers to px', () => {
 		expect(autopx(12)).toBe('12px');
 	});
 
-	test('leaves strings alone', () => {
+	it('leaves strings alone', () => {
 		expect(autopx('12')).toBe('12');
 		expect(autopx('1em')).toBe('1em');
 		expect(autopx('1.25em')).toBe('1.25em');
@@ -13,15 +13,15 @@ describe('autopx()', () => {
 });
 
 describe('parseColor()', () => {
-	test('parses single colors as foregrounds', () => {
+	it('parses single colors as foregrounds', () => {
 		expect(parseColor('#ff0000').color).toBe(parseColorValue('#ff0000'));
 	});
 
-	test('parses Open Color keywords as foregrounds', () => {
+	it('parses Open Color keywords as foregrounds', () => {
 		expect(parseColor('red-5').color).toBe(parseColorValue('red-5'));
 	});
 
-	test('parses "x on y" format as foreground and background', () => {
+	it('parses "x on y" format as foreground and background', () => {
 		expect(parseColor('#ff0000 on #00ff00')).toEqual({
 			'background-color': parseColorValue('#00ff00'),
 			color: parseColorValue('#ff0000')
@@ -31,20 +31,32 @@ describe('parseColor()', () => {
 			color: parseColorValue('#ff0000')
 		});
 	});
+
+	it('parses undefined as inheriting colors', () => {
+		expect(parseColor()).toEqual({
+			'background-color': 'inherit',
+			color: 'inherit'
+		});
+	});
+
+	it('it throws an error when given something other than a string', () => {
+		expect(() => parseColor(null)).toThrow();
+		expect(() => parseColor(0)).toThrow();
+	});
 });
 
 describe('parseFont()', () => {
-	test('parses a single number as a font size', () => {
+	it('parses a single number as a font size', () => {
 		expect(parseFont('12')['font-size']).toBe('12px');
 		expect(parseFont('12px')['font-size']).toBe('12px');
 		expect(parseFont('1.25rem')['font-size']).toBe('1.25rem');
 	});
 
-	test('parses a word as a font', () => {
+	it('parses a word as a font', () => {
 		expect(parseFont('Palatino')['font-family']).toBe('"Palatino"');
 	});
 
-	test('parses modifiers on their own', () => {
+	it('parses modifiers on their own', () => {
 		let result = parseFont('bold italic');
 
 		expect(result['font-family']).toBe('inherit');
@@ -56,19 +68,19 @@ describe('parseFont()', () => {
 		expect(result['font-size']).toBe('70%');
 	});
 
-	test('automatically adds quotes to font family names', () => {
+	it('automatically adds quotes to font family names', () => {
 		expect(parseFont('Times New Roman')['font-family']).toBe(
 			'"Times New Roman"'
 		);
 	});
 
-	test('interprets slashes in font names as alternatives', () => {
+	it('interprets slashes in font names as alternatives', () => {
 		expect(parseFont('Palatino/Times New Roman')['font-family']).toBe(
 			'"Palatino","Times New Roman"'
 		);
 	});
 
-	test('parses [font family] [font size]', () => {
+	it('parses [font family] [font size]', () => {
 		let result = parseFont('Palatino 12');
 
 		expect(result['font-family']).toBe('"Palatino"');
@@ -80,7 +92,7 @@ describe('parseFont()', () => {
 		expect(result['font-size']).toBe('12px');
 	});
 
-	test('parses [font family] [font size] [bold|italic|underline|small caps]', () => {
+	it('parses [font family] [font size] [bold|italic|underline|small caps]', () => {
 		let result = parseFont('Palatino 12 bold');
 
 		expect(result['font-family']).toBe('"Palatino"');
@@ -98,5 +110,24 @@ describe('parseFont()', () => {
 		expect(result['font-family']).toBe('"Palatino"');
 		expect(result['font-size']).toBe('12px');
 		expect(result['text-decoration']).toBe('underline');
+	});
+
+	it('parses undefined values as inherit', () => {
+		const result = parseFont();
+
+		expect(result).toEqual({
+			'font-family': 'inherit',
+			'font-size': 'inherit',
+			'font-style': 'inherit',
+			'font-weight': 'inherit',
+			'letter-spacing': 'inherit',
+			'text-decoration': 'inherit',
+			'text-transform': 'inherit'
+		});
+	});
+
+	it('it throws an error when given a value other than a string', () => {
+		expect(() => parseFont(null)).toThrow();
+		expect(() => parseFont(0)).toThrow();
 	});
 });
