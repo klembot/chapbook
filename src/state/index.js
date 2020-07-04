@@ -13,7 +13,7 @@ import deepSet from 'set-value';
 import deepUnset from 'unset-value';
 import event from '../event';
 import logger from '../logger';
-import {name} from '../story';
+import {ifid, name} from '../story';
 
 const {log} = logger('state');
 let saveKey;
@@ -108,13 +108,14 @@ calls, and must occur after the story is loaded from the DOM.
 */
 
 export function init() {
+	const storyIfid = ifid();
 	const storyName = name();
 
 	if (storyName === undefined) {
 		throw new Error('Cannot set up state: the story has no name');
 	}
 
-	saveKey = `chapbook-state-${storyName}`;
+	saveKey = `chapbook-state-${storyName}-${storyIfid}`;
 }
 
 /*

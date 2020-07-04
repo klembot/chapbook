@@ -50,6 +50,8 @@ export function loadFromData(el) {
 
 		if (tagAttr) {
 			passage.tags = tagAttr.split(' ');
+		} else {
+			passage.tags = [];
 		}
 
 		return passage;
@@ -84,6 +86,10 @@ export function addCustomStyles() {
 		styleEl.innerHTML = s;
 		document.head.appendChild(styleEl);
 	});
+}
+
+export function ifid() {
+	return story.ifid;
 }
 
 export function name() {
