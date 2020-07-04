@@ -96,6 +96,12 @@ export function name() {
 	return story.name;
 }
 
+export function exportedPassages() {
+	return passages;
+}
+
+export {exportedPassages as passages};
+
 export function startPassage() {
 	return passages.find(p => p.id === story.startNode);
 }
