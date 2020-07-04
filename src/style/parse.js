@@ -53,6 +53,17 @@ export function parseColorValue(value) {
 }
 
 export function parseColor(source) {
+	/*
+	This should only occur during a state reset.
+	*/
+
+	if (source === undefined) {
+		return {
+			'background-color': 'inherit',
+			color: 'inherit'
+		};
+	}
+
 	if (typeof source !== 'string') {
 		throw new Error('Only strings can be parsed as colors.');
 	}
@@ -79,6 +90,18 @@ export function parseFont(source) {
 		'text-decoration': 'inherit',
 		'text-transform': 'inherit'
 	};
+
+	/*
+	This should only occur during a state reset.
+	*/
+
+	if (source === undefined) {
+		return result;
+	}
+
+	if (typeof source !== 'string') {
+		throw new Error('Only strings can be parsed as fonts.');
+	}
 
 	function applyFonts(result, fontSrc) {
 		result['font-family'] = fontSrc
