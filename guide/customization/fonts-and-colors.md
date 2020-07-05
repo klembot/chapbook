@@ -24,9 +24,9 @@ Applies to:
 - `config.style.page.font`
 - `config.style.page.link.font`
 - `config.style.page.link.active.font`
-- `config.style.header.font`
-- `config.style.header.link.font`
-- `config.style.header.link.active.font`
+- `config.style.page.header.font`
+- `config.style.page.header.link.font`
+- `config.style.page.header.link.active.font`
 {% endhint %}
 
 Chapbook uses a concise notation for specifying text style. Below is a simple example:
