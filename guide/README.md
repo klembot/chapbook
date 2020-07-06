@@ -18,31 +18,39 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
 
 <div class="patreon-supporters">
     <ul>
-		<li>Keith Alt</li>
-		<li>Ben</li>
-		<li>Eli Berg-Maas</li>
-        <li>John Bruce</li>
-        <li>Kendall Buchanan</li>
-		<li>Matt Campbell</li>
-        <li>Michael Chumak</li>
-		<li>CJ</li>
-		<li>Chris D'lorio</li>
-		<li>Christian</li>
-		<li>Dene Grigar</li>
-		<li>Kyle Haas</li>
-		<li>Matthew Hall</li>
-		<li>Jakob</li>
-		<li>Molly Jameson</li>
-        <li>José Dias</li>
-        <li><a href="http://bphennessy.com/">Brendan Hennessy</a></li>
+		<li>Adia Alderson</li>
+		<li>Alex Shapiro</li>
+		<li>Anastasia Salter</li>
+		<li>Andrew Smith</li>
+		<li>Ben </li>
+		<li>Brendan Hennessy</li>
+		<li>Caelyn Sandel</li>
+		<li>Cathie LeBlanc</li>
+		<li>Chris D'Iorio</li>
 		<li>Chris Martens</li>
-        <li>Marisa Parham</li>
-        <li><a href="https://danq.me/">Dan Q</a></li>
-		<li><a href="https://anastasiasalter.net">Anastasia Salter</a></li>
-        <li>Caelyn Sandel</li>
-        <li>Steven Schutz</li>
-		<li>Jason Swisher</li>
+		<li>Chris Power</li>
+		<li>Christian</li>
+		<li>Dan Q</li>
+		<li>Dene Grigar</li>
+		<li>Eli Berg-Maas</li>
 		<li>Emily Short</li>
+		<li>Jan Štěpánek</li>
+		<li>Jigme Yli-Rasku</li>
+		<li>John Boyland</li>
+		<li>John Bruce</li>
+		<li>José Dias</li>
+		<li>Keith Alt</li>
+		<li>Kendall Buchanan</li>
+		<li>Kyle Haas</li>
+		<li>Marisa Parham</li>
+		<li>Matt Campbell</li>
+		<li>Michael Chumak</li>
+		<li>Molly Jameson</li>
+		<li>Neil Bickford</li>
+		<li>Stephen Schutz</li>
+		<li>Steven Greenwood</li>
+		<li>Tim Thompson</li>
+		<li>weeb-lord</li>
     </ul>
 </div>
 
