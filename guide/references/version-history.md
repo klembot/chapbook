@@ -1,5 +1,27 @@
 # Version History
 
+## 1.2.0, 6 July 2020
+
+**This introduces a change in how story progress is saved in players' browsers.
+If you re-publish a story with this version of Chapbook that had been published
+with an earlier one, players will lose their progress.**
+
+- Adds a `passages()` function to `engine.story`, currently undocumented, for
+  use by author scripts. This provides access to all passages in the story.
+- Player progress is now saved using a combination of the story name and its
+  IFID. This is prevent collisions, e.g. if authors ever named two different
+  stories `Test`, saved progress would collide.
+- Now, when a player navigates to a new passage, the browser will always return
+  to the top. In the past, the scroll position on a sufficiently long passage
+  would remain the same.
+- Fixes a bug where changing style (via certain variables like
+  `config.style.page.font`) would cause an error message when restarting a
+  story.
+- Fixes a bug where the copy-and-paste section of the Style tab of Backstage did
+  not update when changes were made.
+- Corrects documentation about styling the header and footer (thanks,
+  [Gospodin](https://github.com/klembot/chapbook/pull/77)).
+
 ## 1.1.1, 17 May 2020
 
 - Fixes a bug introduced in 1.1.0 where nested lookup variables (like
