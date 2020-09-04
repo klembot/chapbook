@@ -48,7 +48,7 @@
 		"closest": "^0.0.1",
 		"get-value": "^3.0.1",
 		"lodash.unescape": "^4.0.1",
-		"marked": "^0.6.2",
+		"marked": "^0.7.0",
 		"nanobus": "^4.3.3",
 		"open-color": "^1.6.3",
 		"preact": "^8.2.9",
