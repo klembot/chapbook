@@ -163,6 +163,13 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 		}
 	});
 
+	/*
+	Close any whitespace between list items or forks. This can be a side effect of
+	modifiers running.
+	*/
+
+	markdown = markdown.replace(/^((>|-|\*).*$)\n+\2/gm, '$1\n$2');
+
 	/* Finally, render the Markdown to HTML. */
 
 	marked.setOptions(markedOptions);
