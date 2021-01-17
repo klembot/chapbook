@@ -1,5 +1,13 @@
 # Version History
 
+## 1.2.1, 17 January 2021
+
+- If a variable is set to an array, it can now be dereferenced using an insert,
+  e.g. `{myArray[1]}`.
+- Mixing conditional modifiers with forks now behaves correctly.
+- Updated the Markdown renderer library used, Marked, to version 1.2.7.
+- Fixed typos in the guide.
+
 ## 1.2.0, 6 July 2020
 
 **This introduces a change in how story progress is saved in players' browsers.
