@@ -126,7 +126,7 @@ Begins playing a [previously-defined sound effect][sound]. <code>volume</code> c
 </dd>
 
 <dt>
-<code>{text input<i> for 'variable name'</i>, <i>required: false</i>}</code>
+<code>{text input<i> for: 'variable name'</i>, <i>required: false</i>}</code>
 </td>
 
 <dd>
