@@ -18,37 +18,42 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
 
 <div class="patreon-supporters">
     <ul>
+		<li>301 West</li>
 		<li>Adia Alderson</li>
-		<li>Alex Shapiro</li>
 		<li>Anastasia Salter</li>
 		<li>Andrew Smith</li>
-		<li>Ben </li>
 		<li>Brendan Hennessy</li>
+		<li>Brynn Mountain</li>
 		<li>Caelyn Sandel</li>
+		<li>Cai, Longen</li>
 		<li>Cathie LeBlanc</li>
-		<li>Chris D'Iorio</li>
+		<li>Chad Briggs</li>
 		<li>Chris Martens</li>
 		<li>Chris Power</li>
 		<li>Christian</li>
 		<li>Dan Q</li>
-		<li>Dene Grigar</li>
-		<li>Eli Berg-Maas</li>
+		<li>Dave Chua</li>
+		<li>David Ball</li>
 		<li>Emily Short</li>
 		<li>Jan Štěpánek</li>
-		<li>Jigme Yli-Rasku</li>
 		<li>John Boyland</li>
 		<li>John Bruce</li>
+		<li>John Chapman</li>
+		<li>John McDaid</li>
+		<li>Jonathan Huston</li>
 		<li>José Dias</li>
+		<li>jwalt5</li>
 		<li>Keith Alt</li>
-		<li>Kendall Buchanan</li>
-		<li>Kyle Haas</li>
-		<li>Marisa Parham</li>
+		<li>Luo Bai</li>
 		<li>Matt Campbell</li>
-		<li>Michael Chumak</li>
+		<li>Michael Rader</li>
 		<li>Molly Jameson</li>
-		<li>Neil Bickford</li>
-		<li>Stephen Schutz</li>
+		<li>Roger Kinyon</li>
 		<li>Steven Greenwood</li>
+		<li>Stuart Moulthrop</li>
+		<li>Steven Greenwood</li>
+		<li>Thandle2</li>
+		<li>Thomas Wyatt</li>
 		<li>Tim Thompson</li>
 		<li>weeb-lord</li>
     </ul>

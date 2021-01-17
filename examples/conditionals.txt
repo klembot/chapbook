@@ -4,6 +4,13 @@ Pick a color:
 * [[Red]]
 * [[Blue]]
 
+A fork with conditionals mixed in:
+
+[if true]
+> [[Red]]
+[if true]
+> [[Blue]]
+
 
 :: Red
 col: 'red'

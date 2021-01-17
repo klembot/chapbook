@@ -2,7 +2,7 @@
 	"name": "Chapbook",
 	"author": "Chris Klimas <chris@twinery.org>",
 	"description": "A Twine story format emphasizing ease of authoring, multimedia, and playability on many different types of devices. Visit the <a href=\"https://klembot.github.io/chapbook/guide/\">guide</a> for more information.",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"main": "index.js",
 	"license": "MIT",
 	"devDependencies": {
@@ -48,7 +48,7 @@
 		"closest": "^0.0.1",
 		"get-value": "^3.0.1",
 		"lodash.unescape": "^4.0.1",
-		"marked": "^0.6.2",
+		"marked": "^1.2.7",
 		"nanobus": "^4.3.3",
 		"open-color": "^1.6.3",
 		"preact": "^8.2.9",

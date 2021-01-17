@@ -10,6 +10,12 @@ state.get = jest.fn(value => {
 
 		case 'a.nested.variable':
 			return 'success';
+
+		case 'anArray':
+			return ['success1', 'success2'];
+
+		case 'a.nested.array':
+			return ['success1', 'success2'];
 	}
 });
 
@@ -64,6 +70,12 @@ describe('insert renderer', () => {
 		expect(render('{a.nested.variable}\n\n{a.nested.variable}', [])).toBe(
 			'success\n\nsuccess'
 		);
+		expect(render('{anArray}', [])).toBe('success1,success2');
+		expect(render('{anArray[0]}', [])).toBe('success1');
+		expect(render('{anArray[1]}', [])).toBe('success2');
+		expect(render('{a.nested.array}', [])).toBe('success1,success2');
+		expect(render('{a.nested.array[0]}', [])).toBe('success1');
+		expect(render('{a.nested.array[1]}', [])).toBe('success2');
 	});
 
 	test('invokes functional inserts', () => {

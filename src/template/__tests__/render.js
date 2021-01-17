@@ -135,4 +135,28 @@ describe('render()', () => {
 		);
 		expect(spyModifier.process.mock.calls.length).toBe(1);
 	});
+
+	test('removes whitespace between list items', () => {
+		expect(
+			render({
+				blocks: [{type: 'text', content: '- one\n\n\n- two'}],
+				vars: []
+			}).trim()
+		).toBe('<ul>\n<li>one</li>\n<li>two</li>\n</ul>');
+
+		expect(
+			render({
+				blocks: [{type: 'text', content: '* one\n\n\n* two'}],
+				vars: []
+			}).trim()
+		).toBe('<ul>\n<li>one</li>\n<li>two</li>\n</ul>');
+	});
+
+	test('removes whitespace between forks', () =>
+		expect(
+			render({
+				blocks: [{type: 'text', content: '> one\n\n\n> two'}],
+				vars: []
+			}).trim()
+		).toBe('<div class="fork"><p>one\ntwo</p>\n</div>'));
 });
