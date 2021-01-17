@@ -91,9 +91,19 @@ function renderInsert(src, inserts) {
 			}
 		}
 	} else {
-		/* This can only be a variable. */
+		/*
+		This can only be a variable. We allow dereferencing array items at the end
+		of the invocation only, e.g. `myVar[2]` but not `myVar[0].color`.
+		*/
 
-		const value = get(invocation);
+		const dereferenceMatch = /(.+)\[(.+)\]$/.exec(invocation);
+		let value;
+
+		if (dereferenceMatch) {
+			value = get(dereferenceMatch[1])[dereferenceMatch[2]];
+		} else {
+			value = get(invocation);
+		}
 
 		if (value !== undefined) {
 			return value;
