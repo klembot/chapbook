@@ -18,44 +18,42 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
 
 <div class="patreon-supporters">
     <ul>
-		<li>301 West</li>
 		<li>Adia Alderson</li>
+		<li>Albert Gyulgazyan</li>
 		<li>Anastasia Salter</li>
 		<li>Andrew Smith</li>
 		<li>Brendan Hennessy</li>
 		<li>Brynn Mountain</li>
 		<li>Caelyn Sandel</li>
-		<li>Cai, Longen</li>
 		<li>Cathie LeBlanc</li>
-		<li>Chad Briggs</li>
 		<li>Chris Martens</li>
-		<li>Chris Power</li>
 		<li>Christian</li>
 		<li>Dan Q</li>
-		<li>Dave Chua</li>
+		<li>Daniel</li>
 		<li>David Ball</li>
 		<li>Emily Short</li>
+		<li>Ian</li>
 		<li>Jan Štěpánek</li>
 		<li>John Boyland</li>
-		<li>John Bruce</li>
 		<li>John Chapman</li>
 		<li>John McDaid</li>
 		<li>Jonathan Huston</li>
 		<li>José Dias</li>
-		<li>jwalt5</li>
-		<li>Keith Alt</li>
-		<li>Luo Bai</li>
+		<li>Joshua Wright</li>
+		<li>Keith Crawford</li>
+		<li>Laura Gibbs</li>
+		<li>Ludogram</li>
+		<li>Martin Omander</li>
 		<li>Matt Campbell</li>
 		<li>Michael Rader</li>
 		<li>Molly Jameson</li>
-		<li>Roger Kinyon</li>
-		<li>Steven Greenwood</li>
+		<li>Robot Parking</li>
+		<li>Sarah Choukah</li>
+		<li>Stephen Wardle</li>
 		<li>Stuart Moulthrop</li>
-		<li>Steven Greenwood</li>
 		<li>Thandle2</li>
-		<li>Thomas Wyatt</li>
 		<li>Tim Thompson</li>
-		<li>weeb-lord</li>
+		<li>Venceremos</li>
     </ul>
 </div>
 
