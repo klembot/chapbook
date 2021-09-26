@@ -29,5 +29,10 @@ You feel a little less confident in your plan.
 
 `[continue]` simply cancels all active modifiers. You can abbreviate it as `[cont'd]` or `[cont]`.
 
+## Vertical text alignment
+
+If you'd like to change how text is aligned vertically inside the page
+container, see the [Page Style](../customization/page-style.html) section.
+
 [^1]: Twine 2's default format, Harlowe, for instance, uses punctuation like ` =><= ` on the preceding line to indicate centered text, while other Markdown dialects put arrows around centered text, like `->SALE TODAY<-`.
 [^2]: If you'd like to show players a line of text with brackets in it, enter a single backslash (`\`) at the start of the line. Chapbook will display the text as-is without the backslash you entered.

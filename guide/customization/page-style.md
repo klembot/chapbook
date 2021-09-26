@@ -31,5 +31,7 @@ You can also set how the header and footer content update using the following va
 - `config.footer.transition.name`
 - `config.footer.transition.duration`
 
+Finally, Chapbook vertically centers text inside the page by default. To change this, set `config.style.page.verticalAlign` to either `'top'`, `'center'`, or `'bottom'`.
+
 [color]: fonts-and-colors.html#colors
 [after]: ../text-and-links/modifiers-and-delayed-text.html
