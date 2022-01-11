@@ -3,7 +3,7 @@ import Panel from '../panel';
 import event from '../../event';
 import {history, rewindTo} from './recorder';
 import {reset} from '../../state';
-import './index.scss';
+import './index.css';
 
 function parseHistory(history) {
 	if (history.length === 0) {

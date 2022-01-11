@@ -1,14 +1,12 @@
 import {h, Component} from 'preact';
-import './index.scss';
+import './index.css';
 
 export default class Panel extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			open:
-				this.props.initiallyOpen !== undefined
-					? this.props.initiallyOpen
-					: true
+				this.props.initiallyOpen !== undefined ? this.props.initiallyOpen : true
 		};
 	}
 
@@ -20,13 +18,11 @@ export default class Panel extends Component {
 		return (
 			<div class={'panel' + (this.state.open ? ' open' : '')}>
 				<h2>
-					<button onClick={() => this.toggle()}>
+					<button className="small-caps" onClick={() => this.toggle()}>
 						{this.props.title}
 					</button>
 				</h2>
-				{this.state.open && (
-					<div class="content">{this.props.children}</div>
-				)}
+				{this.state.open && <div class="content">{this.props.children}</div>}
 			</div>
 		);
 	}

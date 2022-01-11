@@ -18,7 +18,7 @@ import {
 	addCustomStyles
 } from './story';
 import {init as initStyle} from './style';
-import './index.scss';
+import './index.css';
 
 loadFromData(document.querySelector('tw-storydata'));
 initExtensibility();

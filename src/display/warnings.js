@@ -6,7 +6,7 @@ passage.
 import escape from 'lodash.escape';
 import {get} from '../state';
 import event from '../event';
-import './warnings.scss';
+import './warnings.css';
 
 export function init() {
 	const nativeWarn = window.console.warn;

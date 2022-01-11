@@ -1,5 +1,5 @@
 import {h, Component} from 'preact';
-import './index.scss';
+import './index.css';
 
 export default class Tabs extends Component {
 	constructor(props) {

@@ -15,7 +15,7 @@ import {init as initWarnings} from './warnings';
 import {passageNamed} from '../story';
 import {render} from '../template';
 import startSkipAnimation from './skip-animation';
-import './index.scss';
+import './index.css';
 
 let bodyContentEl, marginalEls, spinnerEl;
 const transitions = {crossfade, fadeInOut, none};

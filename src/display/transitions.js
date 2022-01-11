@@ -1,6 +1,6 @@
 import timestring from 'timestring';
 import {selectAll} from '../util/dom-select';
-import './transitions.scss';
+import './transitions.css';
 
 function forceNewStackingContext(el) {
 	if (window.getComputedStyle(el).position === 'static') {

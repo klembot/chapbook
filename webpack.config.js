@@ -16,36 +16,32 @@ const args = require('yargs')
 const config = {
 	devServer: {
 		disableHostCheck: true,
-		stats: 'minimal',
+		stats: 'minimal'
 	},
 	mode: isRelease ? 'production' : 'development',
 	module: {
 		rules: [
 			{
+				test: /\.css$/,
+				use: [CssPlugin.loader, 'css-loader']
+			},
+			{
 				test: /\.jsx$/,
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: [['preact']],
-					},
-				},
-			},
-			{
-				test: /\.scss$/,
-				use: [
-					CssPlugin.loader,
-					{loader: 'css-loader', options: {minimize: isRelease}},
-					'sass-loader',
-				],
+						presets: [['preact']]
+					}
+				}
 			},
 			{
 				test: /\.svg$/,
-				use: ['url-loader'],
-			},
-		],
+				use: ['url-loader']
+			}
+		]
 	},
 	output: {
-		path: path.resolve(__dirname, `dist/${isMicro ? 'micro' : 'full'}`),
+		path: path.resolve(__dirname, `dist/${isMicro ? 'micro' : 'full'}`)
 	},
 	plugins: [
 		new CssPlugin({filename: '[name].css'}),
@@ -61,7 +57,7 @@ const config = {
 						inline: true,
 						assets,
 						compilation,
-						options,
+						options
 					};
 				}
 
@@ -71,7 +67,7 @@ const config = {
 					fs.readFileSync(
 						path.resolve(__dirname, `./examples/${args.example}.txt`),
 						{
-							encoding: 'utf8',
+							encoding: 'utf8'
 						}
 					)
 				);
@@ -80,12 +76,12 @@ const config = {
 				story.setStartByName('Start');
 
 				return {storyData: story.toHtml(), inline: false};
-			},
-		}),
+			}
+		})
 	],
 	resolve: {
-		extensions: ['.js', '.jsx'],
-	},
+		extensions: ['.js', '.jsx']
+	}
 };
 
 if (isMicro) {

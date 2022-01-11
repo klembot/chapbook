@@ -5,7 +5,7 @@ import Notes from './notes';
 import State from './state';
 import Style from './style';
 import Tabs from './tabs';
-import './index.scss';
+import './index.css';
 
 export class Backstage extends Component {
 	constructor(props) {
