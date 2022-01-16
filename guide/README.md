@@ -22,30 +22,32 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
 		<li>Albert Gyulgazyan</li>
 		<li>Anastasia Salter</li>
 		<li>Andrew Smith</li>
+		<li>Antonio Garcia</li>
+		<li>Ben McKenzie</li>
 		<li>Brendan Hennessy</li>
-		<li>Brynn Mountain</li>
 		<li>Caelyn Sandel</li>
+		<li>Catherine Mary Darensbourg</li>
 		<li>Cathie LeBlanc</li>
 		<li>Chris Martens</li>
 		<li>Christian</li>
+		<li>Clive Henrick</li>
 		<li>Dan Q</li>
-		<li>Daniel</li>
+		<li>Dan Steward</li>
 		<li>David Ball</li>
+		<li>Duane Johnson</li>
 		<li>Emily Short</li>
 		<li>Ian</li>
-		<li>Jan Štěpánek</li>
 		<li>John Boyland</li>
 		<li>John Chapman</li>
 		<li>John McDaid</li>
 		<li>Jonathan Huston</li>
-		<li>José Dias</li>
 		<li>Joshua Wright</li>
+		<li>José Dias</li>
 		<li>Keith Crawford</li>
 		<li>Laura Gibbs</li>
 		<li>Ludogram</li>
 		<li>Martin Omander</li>
 		<li>Matt Campbell</li>
-		<li>Michael Rader</li>
 		<li>Molly Jameson</li>
 		<li>Robot Parking</li>
 		<li>Sarah Choukah</li>
@@ -53,6 +55,8 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
 		<li>Stuart Moulthrop</li>
 		<li>Thandle2</li>
 		<li>Tim Thompson</li>
+		<li>Tom</li>
+		<li>Toma400</li>
 		<li>Venceremos</li>
     </ul>
 </div>
