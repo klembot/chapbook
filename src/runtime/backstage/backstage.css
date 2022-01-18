@@ -1,4 +1,4 @@
-@import '~open-color/open-color.css';
+@import 'open-color/open-color.css';
 
 #backstage {
 	--backstage-ui-padding: 8px;

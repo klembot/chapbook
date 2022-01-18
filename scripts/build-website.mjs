@@ -5,7 +5,10 @@ import pkg from '../package.json';
 
 async function run() {
 	await fs.mkdirp('docs');
-	await fs.writeFile('docs/index.html', pug.renderFile('homepage/index.pug', pkg);
+	await fs.writeFile(
+		'docs/index.html',
+		pug.renderFile('homepage/index.pug', pkg)
+	);
 	await cpy('homepage/*{.css,.jpeg}', 'docs');
 	await fs.mkdirp('docs/examples');
 	await cpy('examples/cloak-of-darkness.*', 'docs/examples');

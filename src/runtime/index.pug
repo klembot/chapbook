@@ -1,0 +1,36 @@
+doctype html
+html
+  head
+    title {{STORY_NAME}}
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    if inlineAssets
+      style !{rollup.bundle['index.css'].source.toString()}
+    else
+      link(rel="stylesheet", href="index.css")
+  body
+  html
+  head
+  body
+    form#cb-validation(action='javascript:void(0)')
+      button#cb-validation-tester(hidden='')
+      button#cb-block-enter-key(hidden='')
+      #backdrop
+        #page(aria-live='polite')
+          header
+            .left
+            .center
+            .right
+          article
+          ul.warnings
+          footer
+            .left
+            .center
+            .right
+          #spinner
+            include spinner.svg
+    | !{storyData}
+    if inlineAssets
+      script !{rollup.bundle['index.js'].code}
+    else
+      script(src="index.js")
