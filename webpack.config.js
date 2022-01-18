@@ -14,6 +14,7 @@ const args = require('yargs')
 	.alias('e', 'example').argv;
 
 const config = {
+	entry: './src/runtime/index.js',
 	mode: isRelease ? 'production' : 'development',
 	module: {
 		rules: [
@@ -44,7 +45,7 @@ const config = {
 		new HtmlPlugin({
 			inject: !isRelease,
 			minify: isRelease && htmlMinifyOptions,
-			template: 'src/index.ejs',
+			template: 'src/runtime/index.ejs',
 
 			templateParameters(compilation, assets, options) {
 				if (isRelease) {
