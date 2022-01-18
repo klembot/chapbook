@@ -135,7 +135,8 @@ There's been some debate as to whether Twine produces games or merely stories: t
 
 <style>
 .patreon-supporters {
-    background: #f7f7f7;
+		border: 1px solid var(--fg);
+		border-radius: 2px;
     padding: 1em;
     margin-bottom: 1em;
 }

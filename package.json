@@ -19,7 +19,6 @@
 		"css-loader": "^6.5.1",
 		"eslint": "^4.14.0",
 		"eslint-config-prettier": "^6.11.0",
-		"gitbook-cli": "^2.3.2",
 		"html-webpack-plugin": "^5.5.0",
 		"husky": "^4.2.5",
 		"jest": "^24.7.1",
@@ -64,16 +63,15 @@
 		"build:micro": "cross-env NODE_ENV=production CHAPBOOK_MICRO=y webpack",
 		"clean": "rimraf dist/full; rimraf dist/micro",
 		"examples": "node scripts/build-examples.js",
-		"guide": "gitbook serve guide",
-		"guide:init": "cd guide && gitbook install && cd ..",
-		"guide:release": "cd guide && gitbook build",
+		"guide": "cd guide && mdbook serve",
+		"guide:release": "cd guide && mdbook build",
 		"lint": "eslint src/",
-		"prettier": "prettier --write \"src/**/*.{js,scss}\"",
+		"prettier": "prettier --write \"src/**/*.{js,css}\"",
 		"release": "run-s -l build examples guide:release website",
 		"test": "jest",
 		"test:watch": "jest --watch",
 		"test:coverage": "jest --coverage",
-		"website": "node scripts/build-website.js"
+		"website": "node scripts/build-website.mjs"
 	},
 	"config": {
 		"commitizen": {

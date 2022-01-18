@@ -1,0 +1,151 @@
+/* Use default font rendering. */
+
+* {
+	-webkit-font-smoothing: auto;
+}
+
+.content, .sidebar {
+	font-family: 'Iowan Old Style', Constantia, Georgia, serif;
+}
+
+.content code {
+	font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;
+}
+
+/* Header images. */
+
+.content .intro {
+	background-color: gray;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 66vh;
+	margin-bottom: 1em;
+	position: relative;
+}
+
+.content .intro.intro-path {
+	background-image: url('../path.jpeg');
+	background-position: bottom center;
+}
+
+.content .intro.links {
+	background-image: url('../text-and-links/links.jpeg');
+}
+
+.content .intro.modifiers-inserts {
+	background-image: url('../modifiers-and-inserts/letterblocks.jpeg');
+}
+
+.content .intro.state {
+	background-image: url('../state/chess.jpeg');
+	background-position: bottom;
+}
+
+.content .intro.multimedia {
+	background-image: url('../multimedia/slides.jpeg');
+}
+
+.content .intro.customization {
+	background-image: url('../customization/clothes.jpeg');
+}
+
+.content .intro.input {
+	background-image: url('../player-input/microphone.jpeg');
+}
+
+.content .intro.advanced {
+	background-image: url('../advanced/controls.jpeg');
+}
+
+.content .intro.references {
+	background-image: url('../references/books.jpeg');
+}
+
+.content .intro h1 {
+	margin: 0;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	text-align: right;
+	padding: 0.2em;
+	font-size: 1.8em;
+	background: black;
+}
+
+.content .intro h1 a.header {
+	color: white;
+}
+
+.content .intro.path {
+	background-image: url('../path.jpeg');
+	background-position: bottom center;
+}
+
+/* Force line wrapping in code examples. */
+
+.content pre > code {
+	white-space: pre-wrap;
+}
+
+/* Make superscripts smaller. */
+
+.content sup {
+	font-size: 75%;
+}
+
+/* Tighten leading. */
+
+.content {
+	line-height: 1.4;
+}
+
+/* Avoid boldface for headings. */
+
+.content h1,
+.content h2,
+.content h3 {
+	font-weight: normal;
+}
+
+.content h1 {
+	font-size: 1.8em;
+}
+
+.content h2 {
+	font-style: italic;
+	font-size: 1.2em;
+}
+
+.content h3 {
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	font-size: 0.7em;
+	margin-bottom: 0.4em;
+}
+
+/* Give some additional space around tables. */
+
+.content table {
+	margin: 2em 0;
+}
+
+/* Use small caps for table headings. */
+
+.content table th {
+	font-weight: normal;
+	text-transform: uppercase;
+	font-size: 70%;
+	letter-spacing: 0.08em;
+}
+
+/* Don't bold definition lists. */
+
+.content dl dt {
+	font-weight: normal;
+	font-style: normal;
+}
+
+.content dl dd {
+	margin-bottom: 1em;
+}
