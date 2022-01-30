@@ -66,13 +66,16 @@ async function run() {
 	]);
 
 	const mainRuntimeSource = await fs.readFile(
-		path.resolve(__dirname, '../dist/full/index.html')
+		path.resolve(__dirname, '../dist/full/index.html'),
+		'utf8'
 	);
 	const microRuntimeSource = await fs.readFile(
-		path.resolve(__dirname, '../dist/micro/index.html')
+		path.resolve(__dirname, '../dist/micro/index.html'),
+		'utf8'
 	);
 	const hydrateSource = await fs.readFile(
-		path.resolve(__dirname, '../dist/editor-extensions/index.js')
+		path.resolve(__dirname, '../dist/editor-extensions/index.js'),
+		'utf8'
 	);
 	const formatPath = `${pkg.name.toLowerCase()}-${pkg.version}`;
 
@@ -91,7 +94,7 @@ async function run() {
 			console.log(`Wrote dist/${formatPath}/format.js.`);
 			await cpy(
 				path.resolve(__dirname, '../src/logo.svg'),
-				path.resolve(__dirname, `..dist/${formatPath}`)
+				path.resolve(__dirname, `../dist/${formatPath}`)
 			);
 			console.log(`Copied src/logo.svg to dist/${formatPath}/logo.svg.`);
 		})(),
@@ -105,7 +108,7 @@ async function run() {
 			console.log(`Wrote dist/${formatPath}-micro/format.js.`);
 			await cpy(
 				path.resolve(__dirname, '../src/logo.svg'),
-				path.resolve(__dirname, `..dist/${formatPath}-micro`)
+				path.resolve(__dirname, `../dist/${formatPath}-micro`)
 			);
 			console.log(`Copied src/logo.svg to dist/${formatPath}-micro/logo.svg.`);
 		})()
