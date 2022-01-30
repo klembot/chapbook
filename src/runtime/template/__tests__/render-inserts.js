@@ -3,6 +3,7 @@ import * as state from '../../state';
 
 jest.mock('../../state');
 
+// eslint-disable-next-line no-import-assign
 state.get = jest.fn(value => {
 	switch (value) {
 		case 'color':
