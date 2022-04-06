@@ -13,7 +13,6 @@ export default function (editor, environment) {
 		{
 			type: 'menu',
 			icon: brushIcon.replace(/currentColor/g, environment.foregroundColor),
-			iconOnly: true,
 			label: 'Style',
 			items: [
 				{
