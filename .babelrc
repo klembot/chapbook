@@ -1,3 +1,3 @@
 // This is used by testing only. See webpack.config.js for actual build settings.
 
-{"presets": [["env", {"targets": {"node": "current"}}]]}
+{"presets": [["@babel/preset-env", {"targets": {"node": "current"}}]]}

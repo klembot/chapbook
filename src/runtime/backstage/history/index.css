@@ -1,0 +1,9 @@
+@import '../backstage.css';
+
+#backstage table.history td.actions {
+  width: 2.5em;
+}
+
+#backstage table.history td.go {
+  border-right: 1px solid var(--backstage-fg);
+}

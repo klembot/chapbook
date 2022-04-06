@@ -1,0 +1,13 @@
+@import 'open-color/open-color.css';
+
+#backstage {
+	--backstage-ui-padding: 8px;
+	--backstage-bg: var(--oc-gray-3);
+	--backstage-fg: black;
+	--backstage-input-bg: transparent;
+	--backstage-input-fg: var(--backstage-fg);
+	--backstage-input-border: var(--backstage-fg);
+	--backstage-table-border: var(--backstage-fg);
+	--backstage-font-size: 12px;
+	--backstage-tab-height: 28px;
+}
