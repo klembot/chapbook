@@ -146,7 +146,7 @@
 <p>Chapbook will create each object variable (e.g. <code>my</code> and <code>favorite</code>) for you if it doesn't already exist.</p>
 <h2 id="built-in-lookup-variables"><a class="header" href="#built-in-lookup-variables">Built-In Lookup Variables</a></h2>
 <p>Below is a list of lookups that Chapbook maintains for you:</p>
-<table><thead><tr><th>Variable Name</th><th>Description</th><th>Example</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Variable Name</th><th>Description</th><th>Example</th></tr></thead><tbody>
 <tr><td><code>browser.height</code></td><td>The height of the browser window in pixels.</td><td><code>768</code></td></tr>
 <tr><td><code>browser.online</code></td><td>Whether the browser currently has a network connection.</td><td><code>true</code></td></tr>
 <tr><td><code>browser.width</code></td><td>The width of the browser window in pixels.</td><td><code>1024</code></td></tr>
@@ -166,6 +166,7 @@
 <tr><td><code>passage.visits</code></td><td>The number of times the player has seen the current passage, including the current time. That is, the first time the player sees a passage, this lookup's value is 1.</td><td>1</td></tr>
 <tr><td><code>story.name</code></td><td>The name of the story as set in the Twine editor.</td><td><code>'Untitled Story'</code></td></tr>
 </tbody></table>
+</div>
 <p>Note that <code>now</code> lookup values reflect when they were last accessed, which is usually when a passage is navigated to. String values like <code>now.monthName</code> will vary by the language the player has set as default in their browser-- a French person will see <code>Août</code> where an American sees <code>August</code>, for example, and similarly the French will see <code>now.datestamp</code> as <code>'15/2/2011'</code> where Americans see it as <code>'2/15/2011'</code>.</p>
 
                     </main>
@@ -194,20 +195,6 @@
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3000/__livereload");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>

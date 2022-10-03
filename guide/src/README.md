@@ -20,18 +20,16 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
     <ul>
 		<li>Adia Alderson</li>
 		<li>Albert Gyulgazyan</li>
-		<li>Alexander Owen</li>
 		<li>Aly Albansky</li>
 		<li>Anastasia Salter</li>
 		<li>Andrew Smith</li>
 		<li>Antonio Garcia</li>
 		<li>Ben McKenzie</li>
+		<li>Ben Sawyer</li>
 		<li>Brendan Hennessy</li>
 		<li>Caelyn Sandel</li>
-		<li>Catherine Mary Darensbourg</li>
 		<li>Cathie LeBlanc</li>
 		<li>Chris Martens</li>
-		<li>Christian</li>
 		<li>Clive Henrick</li>
 		<li>Dan Q</li>
 		<li>Dan Steward</li>
@@ -39,28 +37,26 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
 		<li>Duane Johnson</li>
 		<li>Emily Short</li>
 		<li>Ian</li>
+		<li>Jim Graziano</li>
 		<li>Joe Nobody</li>
 		<li>John Boyland</li>
 		<li>John Chapman</li>
 		<li>John McDaid</li>
 		<li>Jonathan Huston</li>
-		<li>Joshua Wright</li>
 		<li>José Dias</li>
+		<li>JRUndercover</li>
 		<li>Laura Gibbs</li>
 		<li>Leanne Taylor-Giles</li>
-		<li>Ludogram</li>
-		<li>Martin Omander</li>
+		<li>Luc Schurgers</li>
 		<li>Matt Campbell</li>
 		<li>Molly Jameson</li>
-		<li>Robert Giacinto</li>
+		<li>Richard Holeton</li>
 		<li>Robot Parking</li>
-		<li>Sarah Choukah</li>
 		<li>Soliriok</li>
 		<li>Stephen Sun</li>
 		<li>Stephen Wardle</li>
 		<li>Stuart Moulthrop</li>
 		<li>Thandle2</li>
-		<li>The Oxford Observer</li>
 		<li>Tim Thompson</li>
 		<li>Tom</li>
 		<li>Venceremos</li>

@@ -141,33 +141,39 @@
 <p>If you've never used Markdown before, try using the <a href="https://daringfireball.net/projects/markdown/dingus">dingus</a> as you read this section. It's an online playground with a funny name that not only allows you to quickly see how text will be rendered, but also has a cheatsheet that summarizes the different formatting available to you. Bear in mind, however, that Chapbook has a few extra formatting options available to you above and beyond the standard Markdown set.</p>
 <h2 id="italics-and-boldface"><a class="header" href="#italics-and-boldface">Italics and Boldface</a></h2>
 <p>To italicize a a phrase, type <code>*</code> or <code>_</code> (a single underscore)<sup class="footnote-reference"><a href="#1">1</a></sup> around it.</p>
-<table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
 <tr><td><code>_Unconventional_ tastes</code></td><td><em>Unconventional</em> tastes</td></tr>
 <tr><td><code>*Unconventional* tastes</code></td><td><em>Unconventional</em> tastes</td></tr>
 </tbody></table>
+</div>
 <p>To make a phrase boldface, type <code>**</code> or <code>__</code> (two underscores) around it.</p>
-<table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
 <tr><td><code>__Unconventional__ tastes</code></td><td><strong>Unconventional</strong> tastes</td></tr>
 <tr><td><code>**Unconventional** tastes</code></td><td><strong>Unconventional</strong> tastes</td></tr>
 </tbody></table>
+</div>
 <p>It doesn't matter whether you use asterisks or underscores, so long as you're consistent in a single usage, and you can mix and match them in your text.</p>
-<table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
 <tr><td><code>**&quot;I'll _murder_ you,&quot;** she hissed.</code></td><td><strong>&quot;I'll <em>murder</em> you,&quot;</strong> she hissed.</td></tr>
 </tbody></table>
+</div>
 <h2 id="monospaced-type"><a class="header" href="#monospaced-type">Monospaced Type</a></h2>
 <p>To set text in a monospaced typeface, <code>like this</code>, type backticks (<code>`</code>) around it.</p>
-<table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
 <tr><td><code>`Beep boop,` HAL commented.</code></td><td><code>Beep boop,</code> HAL commented.</td></tr>
 </tbody></table>
+</div>
 <h2 id="small-caps"><a class="header" href="#small-caps">Small Caps</a></h2>
 <p>If you'd like to set some text in small caps, type <code>~~</code> (two tildes) around it.</p>
-<table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
 <tr><td><code>Above the door was a ~~NO TRESPASSING~~ sign.</code></td><td>Above the door was a <span style="font-size: 70%; text-transform: uppercase; letter-spacing: 0.08em">NO TRESPASSING</span> sign.</td></tr>
 </tbody></table>
+</div>
 <p>This convention, though not a part of original recipe Markdown, conflicts with some other Markdown dialects, which use <code>~~</code> for struck-out text, <del>like so</del>. To do this, type <code>&lt;del&gt;</code> and <code>&lt;/del&gt;</code> around your text:</p>
-<table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
 <tr><td><code>At the bottom of the page, nearly completely covered by the government censor's pen, was that same code name you had seen before: &lt;del&gt;S-5900&lt;/del&gt;.</code></td><td>At the bottom of the page, nearly completely covered by the government censor's pen, was that same code name you had seen before: <del>S-5900</del>.</td></tr>
 </tbody></table>
+</div>
 <h2 id="line-breaks"><a class="header" href="#line-breaks">Line Breaks</a></h2>
 <p>If you'd like to insert a single line break, leave two spaces at the end of a line, or put a backslash (<code>\</code>) at the end of a line.</p>
 <table>
@@ -203,16 +209,18 @@ The following morning was no better than the day before.
 <p>Why bother to specially format a numbered list? Just like in word processors, using this format will cause each item to be nicely indented, so that the second line of text of each item appears to the right of the initial number.</p>
 <h2 id="ignoring-formatting-characters"><a class="header" href="#ignoring-formatting-characters">Ignoring Formatting Characters</a></h2>
 <p>Occasionally you'll want to use Markdown formatting characters as-is, without them initiating formatting. The simplest way to do this is to put a <code>\</code> (backslash) in front of them.</p>
-<table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
 <tr><td><code>\*\* PLEASE EXIT NOW \*\*</code></td><td>** PLEASE EXIT NOW **</td></tr>
 </tbody></table>
+</div>
 <h2 id="other-custom-styling"><a class="header" href="#other-custom-styling">Other Custom Styling</a></h2>
 <p>You can also enter HTML into a passage without any extra code surrounding it. It will be displayed exactly as you type it in. The library that Chapbook uses to render Markdown is sometimes inconsistent about how it treats HTML, however. It will always let HTML tags pass through as-is, but whether it interprets the contents of these tags as Markdown or HTML can depend on the exact situation. Unfortunately, the best way to test this is to experiment.</p>
 <h2 id="blockquotes-dont-behave-as-you-might-expect"><a class="header" href="#blockquotes-dont-behave-as-you-might-expect">Blockquotes Don't Behave As You Might Expect</a></h2>
 <p>Chapbook formatting differs from standard Markdown in how it displays blockquotes--that is, a long stretch of text, often multiple paragraphs, that is indented to indicate it isn't part of the main text. Markdown uses <code>&gt;</code> at the start of a line to indicate this. However, Chapbook uses the <code>&gt;</code> to mark text as part of a <a href="forks.html">fork</a> instead. If you'd like to display a block quotation, put <code>&lt;blockquote&gt;</code> and <code>&lt;/blockquote&gt;</code> around it.</p>
-<table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
 <tr><td><code>&lt;blockquote&gt;Call me Ishmael. Some years ago--never mind how long precisely--having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.&lt;/blockquote&gt;</code></td><td><blockquote>Call me Ishmael. Some years ago--never mind how long precisely--having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.</blockquote></td></tr>
 </tbody></table>
+</div>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>Underscores as italics have a tangled history behind them; they resemble underlines, which were more-or-less invented as a workaround for typewriters being unable to italicize words.</p>
 </div>
@@ -248,20 +256,6 @@ tr, td {
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3000/__livereload");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>

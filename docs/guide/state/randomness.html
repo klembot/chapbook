@@ -146,7 +146,7 @@ Tails!
 </code></pre>
 <p>... will display &quot;Heads!&quot; half of the time the story is played and &quot;Tails!&quot; the other half. The value of <code>random.coinFlip</code> potentially changes every time its value is used.<sup class="footnote-reference"><a href="#1">1</a></sup></p>
 <p>For more fine-grained randomness, you can use lookup variables such as <code>random.d100</code>, which is a random whole number between 1 to 100. The full list is:</p>
-<table><thead><tr><th>Lookup</th><th>Range</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Lookup</th><th>Range</th></tr></thead><tbody>
 <tr><td><code>random.fraction</code></td><td>0-1</td></tr>
 <tr><td><code>random.d4</code></td><td>1-4</td></tr>
 <tr><td><code>random.d5</code></td><td>1-5</td></tr>
@@ -159,6 +159,7 @@ Tails!
 <tr><td><code>random.d50</code></td><td>1-50</td></tr>
 <tr><td><code>random.d100</code></td><td>1-100</td></tr>
 </tbody></table>
+</div>
 <p>All of the lookups listed above are always whole numbers, except <code>random.fraction</code>, which is a decimal between 0 and 1.</p>
 <p>One easy mistake that can be made with these lookup variables is to forget that their values change every time they are used. For instance:</p>
 <pre><code>[if random.d4 === 1]
@@ -242,20 +243,6 @@ Four.
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3000/__livereload");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>

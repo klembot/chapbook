@@ -139,18 +139,20 @@
 <p>At the heart of every Twine story are links. Chapbook follows the Twine conventions for typing links, which is to say, it steals shamelessly from the syntax used by wikis everywhere.</p>
 <p>The simplest link notation surrounds a name of a passage with double square brackets: <code>[[A tiny door]]</code>. This displays the title of the passage directly in the text.</p>
 <p>Sometimes it makes sense to obscure the name of the destination in the text--perhaps because your passage is named <code>A Grisly End</code>, or the title of the passage is capitalized but you'd like to link it in the middle of a sentence. You can do this in two different, but equivalent ways.</p>
-<table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
 <tr><td><code>You [[open the door-&gt;A Grisly End]] with great confidence.</code></td><td>You <a href="javascript:void(0)">open the door</a> with great confidence.</td></tr>
 <tr><td><code>The [[Miss Scarlet&lt;-young lady]] seated in the chaise seems inexplicably guilty to you.</code></td><td>The <a href="javascript:void(0)">young lady</a> seated in the chaise seems inexplicably guilty to you.</td></tr>
 </tbody></table>
+</div>
 <p>(The links don't lead anywhere in the examples above, of course.)</p>
 <p>The easiest way to remember this is to think of the arrow pointing to the passage you're linking to. It doesn't matter which direction the arrow points; use the syntax that feels most comfortable to you.</p>
 <p>You cannot use <a href="text-formatting.html">Markdown or other formatting characters</a> inside a simple link. If you'd like to italicize a certain link, for example, put the formatting around the link instead, i.e. <code>_[[a friend of a friend]]_</code>. See <a href="../modifiers-and-inserts/link-inserts.html">Link Inserts</a> for how to create a link that has formatting inside it, like <a href="javascript:void(0)">a man with <em>particular</em> skills</a>.</p>
 <h2 id="external-links"><a class="header" href="#external-links">External Links</a></h2>
 <p>To link to another web page, enter a URL instead of a passage name. You can use any link syntax you'd like, though the arrow syntax makes your text more readable in most cases:</p>
-<table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
 <tr><td><code>You [[open Twine-&gt;https://twinery.org]] on your computer.</code></td><td>You <a href="https://twinery.org">open Twine</a> on your computer.</td></tr>
 </tbody></table>
+</div>
 <h2 id="older-link-syntax"><a class="header" href="#older-link-syntax">Older Link Syntax</a></h2>
 <p>Chapbook also supports the link syntax from Twine 1 that used a vertical bar (or pipe character):</p>
 <table>
@@ -203,20 +205,6 @@ tr, td {
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3000/__livereload");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>

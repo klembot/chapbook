@@ -187,7 +187,7 @@ engine.extend('1.0.0', () =&gt; {
 });
 </code></pre>
 <p>This has the following effect:</p>
-<table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
 <tr><td><code>{icon of: 'wizard'}</code></td><td>🧙</td></tr>
 <tr><td><code>{icon of: 'wizard', mood: 'anger'}</code></td><td>🧙💥</td></tr>
 <tr><td><code>{icon of: 'wizard', mood: 'love'}</code></td><td>🧙❤️</td></tr>
@@ -195,15 +195,17 @@ engine.extend('1.0.0', () =&gt; {
 <tr><td><code>{icon of: 'vampire', mood: 'anger'}</code></td><td>🧛💥</td></tr>
 <tr><td><code>{icon of: 'vampire', mood: 'love'}</code></td><td>🧛❤️</td></tr>
 </tbody></table>
+</div>
 <p>First, notice that the <code>match</code> property doesn't try to match the entire insert; it just needs to be able to distinguish this insert from any other entered. Also, remember that the first part of the insert needed to be two words, <code>icon of</code>, to distinguish it from a variable insert.</p>
 <p>Then, the <code>render()</code> property takes three new arguments, <code>firstArg</code>, <code>props</code>, and <code>invocation</code>. <code>firstArg</code> is the parameter given to the first part of the insert, and <code>props</code> is an object listing out all other parameters given in the insert. The names of properties are case-sensitive, so <code>{icon of: 'wizard', Mood: 'anger'}</code> would only display 🧙. The final argument, <code>invocation</code>, is the entire text of the insert exactly as it was typed, except for the surrounding curly braces. This is provided so that if neither <code>firstArg</code> or <code>props</code> is enough to achieve the effect you're looking for, you can look at <code>invocation</code> directly.</p>
 <p>Below are some examples as to how these arguments work in practice.</p>
-<table><thead><tr><th>Typed</th><th>firstArg</th><th>props</th><th>invocation</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Typed</th><th>firstArg</th><th>props</th><th>invocation</th></tr></thead><tbody>
 <tr><td><code>{smiley face}</code></td><td><code>null</code></td><td><code>{}</code></td><td><code>smiley face</code></td></tr>
 <tr><td><code>{smiley face: 'happy'}</code></td><td><code>'happy'</code></td><td><code>{}</code></td><td><code>smiley face: 'happy'</code></td></tr>
 <tr><td><code>{smiley face, size: 'large'}</code></td><td><code>null</code></td><td><code>{size: 'large'}</code></td><td><code>smiley face, size: 'large'</code></td></tr>
 <tr><td><code>{smiley face: 'happy', size: 'large'}</code></td><td><code>'happy'</code></td><td><code>{size: 'large'}</code></td><td><code>smiley face: 'happy', size: 'large'</code></td></tr>
 </tbody></table>
+</div>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>Word of warning--you cannot define an insert in the same passage that you use it in.
 [semantic versioning]: https://semver.org/
@@ -236,20 +238,6 @@ engine.extend('1.0.0', () =&gt; {
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3000/__livereload");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
