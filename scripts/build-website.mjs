@@ -1,7 +1,9 @@
 import cpy from 'cpy';
 import fs from 'fs-extra';
+import path from 'path';
 import pug from 'pug';
-import pkg from '../package.json';
+import { fileURLToPath } from 'url';
+import pkg from '../package.json' assert { type: 'json' };
 
 // TODO use dirname
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
