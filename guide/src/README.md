@@ -20,12 +20,12 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
     <ul>
 		<li>Adia Alderson</li>
 		<li>Albert Gyulgazyan</li>
-		<li>Aly Albansky</li>
 		<li>Anastasia Salter</li>
 		<li>Andrew Smith</li>
 		<li>Antonio Garcia</li>
 		<li>Ben McKenzie</li>
 		<li>Ben Sawyer</li>
+		<li>Bouncy Monad</li>
 		<li>Brendan Hennessy</li>
 		<li>Caelyn Sandel</li>
 		<li>Cathie LeBlanc</li>
@@ -39,10 +39,8 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
 		<li>Ian</li>
 		<li>Jim Graziano</li>
 		<li>Joe Nobody</li>
-		<li>John Boyland</li>
 		<li>John Chapman</li>
 		<li>John McDaid</li>
-		<li>Jonathan Huston</li>
 		<li>José Dias</li>
 		<li>JRUndercover</li>
 		<li>Laura Gibbs</li>
@@ -50,16 +48,17 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
 		<li>Luc Schurgers</li>
 		<li>Matt Campbell</li>
 		<li>Molly Jameson</li>
-		<li>Richard Holeton</li>
+		<li>Robert Giacinto</li>
 		<li>Robot Parking</li>
+		<li>Sarah Choukah</li>
 		<li>Soliriok</li>
-		<li>Stephen Sun</li>
 		<li>Stephen Wardle</li>
 		<li>Stuart Moulthrop</li>
 		<li>Thandle2</li>
 		<li>Tim Thompson</li>
 		<li>Tom</li>
 		<li>Venceremos</li>
+		<li>Whisper</li>
     </ul>
 </div>
 
