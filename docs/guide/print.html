@@ -34,6 +34,7 @@
 
     </head>
     <body>
+    <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "";
@@ -203,11 +204,11 @@
 <p>Chapbook supports the <code>defaults</code> set of web browsers set by <a href="https://github.com/browserslist/browserslist">the browserslist project</a>. You can view what that entails in detail <a href="https://browserl.ist/">on browserl.ist</a>.</p>
 <h2 id="how-to-use-chapbook"><a class="header" href="#how-to-use-chapbook">How to Use Chapbook</a></h2>
 <p>Chapbook is bundled as part of the Twine 2 editor now, though releases of Twine sometimes lag behind Chapbook. If you would like to use it separately, or update by hand, choose the <strong>Formats</strong> button from the story list page you see when you first start up Twine, then the <strong>Add a New Format</strong> tab at the top of the dialog that appears. Paste the following address into the field and select the <strong>Go</strong> button:</p>
-<pre><code>https://klembot.github.io/chapbook/use/1.2.0/format.js
+<pre><code>https://klembot.github.io/chapbook/use/1.2.2/format.js
 </code></pre>
 <p>Once you do that, you must set the story you're working with to publish using Chapbook. Edit one of your stories, then choose <strong>Change Story Format</strong> from the story menu at the bottom of the editor. Choose Chapbook here. Once you do, selecting the <strong>Play</strong> button or publishing your story to a file will use Chapbook format.</p>
 <p>To use the micro version of Chapbook, which removes all debugging-related code, add this address instead:</p>
-<pre><code>https://klembot.github.io/chapbook/use/1.2.0-micro/format.js
+<pre><code>https://klembot.github.io/chapbook/use/1.2.2-micro/format.js
 </code></pre>
 <h2 id="why-to-use-chapbook"><a class="header" href="#why-to-use-chapbook">Why To Use Chapbook</a></h2>
 <p>There is a relative embarassment of riches when it comes to selecting a Twine 2 story format. What are Chapbook's advantages?</p>
@@ -2326,6 +2327,10 @@ Only displays the text if <i>expression</i> evaluates to false, or a falsy (<a h
 </dd>
 </dl>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="version-history"><a class="header" href="#version-history">Version History</a></h1>
+<h2 id="122-5-april-2022"><a class="header" href="#122-5-april-2022">1.2.2, 5 April 2022</a></h2>
+<ul>
+<li>Added Twine editor extensions.</li>
+</ul>
 <h2 id="121-17-january-2021"><a class="header" href="#121-17-january-2021">1.2.1, 17 January 2021</a></h2>
 <ul>
 <li>If a variable is set to an array, it can now be dereferenced using an insert,
@@ -2429,5 +2434,6 @@ identifying this early.</li>
         });
         </script>
 
+    </div>
     </body>
 </html>

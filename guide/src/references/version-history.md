@@ -1,5 +1,9 @@
 # Version History
 
+## 1.2.2, 5 April 2022
+
+- Added Twine editor extensions.
+
 ## 1.2.1, 17 January 2021
 
 - If a variable is set to an array, it can now be dereferenced using an insert,
