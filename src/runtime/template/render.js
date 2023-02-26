@@ -36,21 +36,21 @@ export default function render(parsed, inserts, modifiers, ignoreVars = false) {
 	if (!ignoreVars) {
 		log(`Setting vars (${parsed.vars.length})`);
 
-		parsed.vars.forEach(v => {
-			if (v.condition) {
-				const condition = v.condition();
+		for (const variable of parsed.vars) {
+			if (variable.condition) {
+				const condition = variable.condition();
 
 				if (condition) {
-					log(`Setting var "${name}" (condition is currently true)`);
-					set(v.name, v.value());
+					log(`Setting var "${variable.name}" (condition is currently true)`);
+					set(variable.name, variable.value());
 				} else {
-					log(`Not setting var "${name}" (condition is currently false)`);
+					log(`Not setting var "${variable.name}" (condition is currently false)`);
 				}
 			} else {
-				log(`Setting var "${name}"`);
-				set(v.name, v.value());
+				log(`Setting var "${variable.name}"`);
+				set(variable.name, variable.value());
 			}
-		});
+		}
 	}
 
 	/* Parse the blocks in sequence. */
