@@ -18,13 +18,18 @@ beforeEach(() => {
 describe('render()', () => {
 	test('sets vars', () => {
 		const input = {
-			vars: [{name: 'foo', value: () => 'hello'}],
+			vars: [
+				{name: 'foo', value: () => 'hello'},
+				{condition: () => true, name: 'bar', value: () => 'world'},
+				{condition: () => false, name: 'bar', value: () => 'wrong'}
+			],
 			blocks: []
 		};
 
 		render(input, [], []);
-		expect(set).toHaveBeenCalledTimes(1);
+		expect(set).toHaveBeenCalledTimes(2);
 		expect(set).toHaveBeenCalledWith('foo', 'hello');
+		expect(set).toHaveBeenCalledWith('bar', 'world');
 	});
 
 	test('handles var names with dots', () => {
