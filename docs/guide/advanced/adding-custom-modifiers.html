@@ -155,12 +155,15 @@ engine.extend('1.0.0', () =&gt; {
 	}, ...config.template.modifiers];
 });
 </code></pre>
-<p>You can also place code like this into your story's JavaScript in Twine--this uses the <code>[JavaScript]</code> modifier for clarity.<sup class="footnote-reference"><a href="#1">1</a></sup></p>
+<p>You can also place code like this into your story's JavaScript in Twine--this uses the <code>[JavaScript]</code> modifier for clarity.</p>
+<aside data-hint="danger">
+You cannot define a modifier in the same passage that you use it in.
+</aside>
 <p>See <a href="adding-custom-inserts.html">the first part of Adding Custom Inserts</a> for an explanation of the <code>engine.extend()</code> function call, and how <code>config.template.modifiers</code> is changed. The <code>match</code> property works the same way as the <code>match</code> property for an insert; Chapbook compares possible modifier text with <code>match</code> properties until it finds a match.</p>
 <p>The <code>process()</code> property is where the work of a modifier occurs. The <code>output</code> argument it is passed has three properties. Each one is Markdown source code, <em>not</em> HTML as it will be finally rendered.</p>
 <ul>
 <li><code>text</code>, the text that the modifier is being applied to.</li>
-<li><code>startsNewParagraph</code>, a Boolean value indicating whether this block of text should begin a new paragraph. (The [append modifier], for example, sets this to <code>false</code>.)</li>
+<li><code>startsNewParagraph</code>, a Boolean value indicating whether this block of text should begin a new paragraph. (The <a href="../modifiers-and-inserts/delayed-text.html">append modifier</a>, for example, sets this to <code>false</code>.)</li>
 </ul>
 <p>Modifiers also receive two other arguments which the example above didn't show:</p>
 <ul>
@@ -201,10 +204,6 @@ TXX fXXmXtXXn fXXw bXckwXXXX XvXX X GXXmXn cXty tXXt wXX Xn fXXmXX. TXX bXmbXXX 
 WXXn XXX bXmbXXX gXX bXck XX XXXXX bXXX, XXX XXXXX cyXXnXXXX wXXX XXkXn fXXm XXX XXckX XnX XXXppXX bXck XX XXX XnXXXX XXXXXX Xf XmXXXcX, wXXXX fXcXXXXXX wXXX XpXXXXXng nXgXX XnX XXy, XXXmXnXXXng XXX cyXXnXXXX, XXpXXXXXng XXX XXngXXXXX cXnXXnXX XnXX mXnXXXXX. XXXcXXngXy, XX wXX mXXnXy wXmXn wXX XXX XXXX wXXk. XXX mXnXXXXX wXXX XXXn XXXppXX XX XpXcXXXXXXX Xn XXmXXX XXXXX. XX wXX XXXXX bXXXnXXX XX pXX XXXm XnXX XXX gXXXnX, XX XXXX XXXm cXXvXXXy, XX XXXy wXXXX nXvXX XXXX XnybXXy XvXX XgXXn.
 </code></pre>
 <p>Finally, in some cases, you may want a modifier to modify the source text as it was exactly entered by the author, before inserts and links are transformed into Markdown/HTML equivalents. To do this, write a <code>processRaw()</code> function instead of <code>process</code>. It takes the same exact arguments that <code>process()</code> does.</p>
-<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>Word of warning--you cannot define a modifier in the same passage that you use it in.
-[append modifier]: ../modifiers-and-inserts/delayed-text.md</p>
-</div>
 
                     </main>
 

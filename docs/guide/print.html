@@ -204,11 +204,11 @@
 <p>Chapbook supports the <code>defaults</code> set of web browsers set by <a href="https://github.com/browserslist/browserslist">the browserslist project</a>. You can view what that entails in detail <a href="https://browserl.ist/">on browserl.ist</a>.</p>
 <h2 id="how-to-use-chapbook"><a class="header" href="#how-to-use-chapbook">How to Use Chapbook</a></h2>
 <p>Chapbook is bundled as part of the Twine 2 editor now, though releases of Twine sometimes lag behind Chapbook. If you would like to use it separately, or update by hand, choose the <strong>Formats</strong> button from the story list page you see when you first start up Twine, then the <strong>Add a New Format</strong> tab at the top of the dialog that appears. Paste the following address into the field and select the <strong>Go</strong> button:</p>
-<pre><code>https://klembot.github.io/chapbook/use/1.2.2/format.js
+<pre><code>https://klembot.github.io/chapbook/use/1.2.3/format.js
 </code></pre>
 <p>Once you do that, you must set the story you're working with to publish using Chapbook. Edit one of your stories, then choose <strong>Change Story Format</strong> from the story menu at the bottom of the editor. Choose Chapbook here. Once you do, selecting the <strong>Play</strong> button or publishing your story to a file will use Chapbook format.</p>
 <p>To use the micro version of Chapbook, which removes all debugging-related code, add this address instead:</p>
-<pre><code>https://klembot.github.io/chapbook/use/1.2.2-micro/format.js
+<pre><code>https://klembot.github.io/chapbook/use/1.2.3-micro/format.js
 </code></pre>
 <h2 id="why-to-use-chapbook"><a class="header" href="#why-to-use-chapbook">Why To Use Chapbook</a></h2>
 <p>There is a relative embarassment of riches when it comes to selecting a Twine 2 story format. What are Chapbook's advantages?</p>
@@ -310,7 +310,7 @@ worth the time investment.</p>
 <p>This section begins with an explanation of how to add text formatting, such as boldface or small caps, to text in your story, and create links between passages. Once you've finished it, you'll be able to create the digital equivalent of books like the <em>Choose Your Own Adventure</em> series.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="text-formatting"><a class="header" href="#text-formatting">Text Formatting</a></h1>
 <p>Of course, you can type paragraphs into a Twine passage in Chapbook and it will display them as you would expect. But for other kinds of formatting, such as bold or italics, Chapbook follows the syntax of a popular markup language called <a href="https://daringfireball.net/markdown">Markdown</a>.</p>
-<p>The term 'markup language' might sound complex, but in reality it's just a set of conventions of how to represent formatting in plain text. For example, to make part of your text italicized when displayed, you simply type asterisks around it, <code>*like so*</code>.</p>
+<p>The term 'markup language' might sound complex, but in reality it's just a set of conventions of how to represent formatting in plain text. For example, to make part of your text italicized when displayed, you type asterisks around it, <code>*like so*</code>.</p>
 <p>If you've never used Markdown before, try using the <a href="https://daringfireball.net/projects/markdown/dingus">dingus</a> as you read this section. It's an online playground with a funny name that not only allows you to quickly see how text will be rendered, but also has a cheatsheet that summarizes the different formatting available to you. Bear in mind, however, that Chapbook has a few extra formatting options available to you above and beyond the standard Markdown set.</p>
 <h2 id="italics-and-boldface"><a class="header" href="#italics-and-boldface">Italics and Boldface</a></h2>
 <p>To italicize a a phrase, type <code>*</code> or <code>_</code> (a single underscore)<sup class="footnote-reference"><a href="#1">1</a></sup> around it.</p>
@@ -328,6 +328,13 @@ worth the time investment.</p>
 <p>It doesn't matter whether you use asterisks or underscores, so long as you're consistent in a single usage, and you can mix and match them in your text.</p>
 <div class="table-wrapper"><table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
 <tr><td><code>**&quot;I'll _murder_ you,&quot;** she hissed.</code></td><td><strong>&quot;I'll <em>murder</em> you,&quot;</strong> she hissed.</td></tr>
+</tbody></table>
+</div>
+<h2 id="underlined-text"><a class="header" href="#underlined-text">Underlined text</a></h2>
+<p>Underlined text is often avoided on the web because underlining is used as a convention to mark text as a hyperlink, and in many case, italicizing text is preferable to underlining it.<sup class="footnote-reference"><a href="#2">2</a></sup> However, if you'd like to underline plain text, it can be done by writing <code>&lt;span style=&quot;text-decoration:underline&quot;&gt;</code> and <code>&lt;/span&gt;</code> around it.</p>
+<p>(There is also a <code>&lt;u&gt;</code> HTML tag that originally was a signal to underline text, and still does so in many web browsers. But its meaning has changed to &quot;text that is annotated in some way&quot;; for example, underlined because it's misspelled.)</p>
+<div class="table-wrapper"><table><thead><tr><th>Typed</th><th>Displayed</th></tr></thead><tbody>
+<tr><td><code>This isn't a &lt;span style=&quot;text-decoration:underline&quot;&gt;link&lt;/span&gt; but it feels like it should be.</code></td><td>This isn't a <span style="text-decoration:underline">link</span> but it feels like it should be.</td></tr>
 </tbody></table>
 </div>
 <h2 id="monospaced-type"><a class="header" href="#monospaced-type">Monospaced Type</a></h2>
@@ -395,7 +402,8 @@ The following morning was no better than the day before.
 </tbody></table>
 </div>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>Underscores as italics have a tangled history behind them; they resemble underlines, which were more-or-less invented as a workaround for typewriters being unable to italicize words.</p>
+<p>Underscores as italics have a tangled history behind them; they resemble underlines, which were more-or-less invented as a workaround for typewriters being unable to italicize words.
+<sup class="footnote-reference"><a href="#2">2</a></sup>: Underlines were originally a proofreading convention to tell typesetters to italicize the text, in fact.</p>
 </div>
 <style>
 tr, td {
@@ -474,9 +482,9 @@ tr, td {
 <div style="break-before: page; page-break-before: always;"></div><h1 id="introducing-backstage"><a class="header" href="#introducing-backstage">Introducing Backstage</a></h1>
 <p>When you launch your story from Twine using the <strong>Test</strong> button in the editor toolbar, Chapbook enables its <em>backstage view</em>: a panel that sits beside your story and allows you to peek into its workings and tinker with them while you interact with it as players will. This section discusses the <strong>History</strong> and <strong>Notes</strong> tabs in the backstage view. The other tabs, <strong>State</strong> and <strong>Style</strong>, are discussed later in this guide in <a href="text-and-links/../state/backstage.html">State Backstage</a> and <a href="text-and-links/../customization/page-style.html">Page Style</a> respectively.</p>
 <p>If you would like to temporarily hide the backstage view, use the arrow button to its left, which toggles the view's visibility.</p>
-<p>{% hint %}
-While testing your story in Twine, it's best to use the <strong>Test</strong> button instead of <strong>Play</strong>. If you use the <strong>Play</strong> button instead, Chapbook will try to resume play where you last left off. Usually, you'd like to start from the beginning, which Chapbook does in test mode.
-</aside></p>
+<aside data-hint="info">
+While testing your story in Twine, it's best to use the <strong>Test</strong> button instead of <strong>Play</strong>. If you use the  <strong>Play</strong> button instead, Chapbook will try to resume play where you last left off. Usually, you'd like to start from the beginning, which Chapbook does in test mode.
+</aside>
 <h2 id="the-history-tab"><a class="header" href="#the-history-tab">The History Tab</a></h2>
 <p>As you visit passages in your story, the History tab will show them in a tabular list, with the oldest at the top and the most recent at the bottom.</p>
 <p>You may see some additional rows next to each passage name. These are explained in <a href="text-and-links/../state/backstage.html">State Backstage</a>, but for now you can ignore them.</p>
@@ -571,9 +579,9 @@ Maybe have the screen flash?
 And you felt quite depressed.
 </code></pre>
 <p>These notes are stored separately from what is entered in the <a href="modifiers-and-inserts/../text-and-links/backstage.html">Notes backstage tab</a>, unfortunately.</p>
-<p>{% hint style=&quot;danger&quot; %}
+<aside data-hint="danger">
 Unlike backstage comments, notes are still visible to anyone who knows how to use their web browser's development tools. Don't put anything you need to keep secret in a note.
-</aside></p>
+</aside>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>Short for <em>nota bene</em>, which is a fancy way to write <em>pay attention to this</em>.</p>
 </div>
@@ -635,9 +643,9 @@ such as numbers, must not have quotation marks around them. </li>
 </p>
 <p>You can also leave off the <code>label</code> property and just write <code>{back link}</code>: in this case, Chapbook will assume you'd like it to use the word 'Back' as the link label.</p>
 <p>If Chapbook is unable to understand the contents of an insert, it displays it as-is. This is so that you can otherwise use curly brackets in your text.</p>
-<p><aside data-hint="danger">
+<aside data-hint="danger">
 You cannot nest inserts inside each other.
-</aside></p>
+</aside>
 <h2 id="restarting-the-story"><a class="header" href="#restarting-the-story">Restarting the Story</a></h2>
 <p>There's another insert very similar to <code>{back link}</code> that's named <code>{restart link}</code>. Instead of going to a previous passage, it takes the player back to the very beginning of the story. You could of course link back to the first passage by name, but for now, consider this a handy shortcut. <code>{restart link}</code> also resets other aspects of Chapbook's operation, as you'll learn in <a href="modifiers-and-inserts/../state/continuity.html">Continuity Between Sessions</a>.</p>
 <p>As with <code>{back link}</code>, <code>{restart link}</code> allows you to specify a label:</p>
@@ -703,8 +711,8 @@ A {link to: 'Bryan Mills', label: 'A man with *certain* skills'} is just who's n
 </code></pre>
 <p>This will work the same way as the previous example, only it will show the contents of the passage named 'A Dangerous Incident'.</p>
 <p>{% hint style='info' %}
-A passage shown by a reveal link will not be recorded in a session's history.
-</aside></p>
+A passage shown by a reveal link will not be recorded in a session's history.</p>
+</aside>
 <p>When using a reveal link with a passage containing multiple paragraphs, Chapbook inserts the paragraphs in such a way that the surrounding text's order is maintained.</p>
 <p>For example, if you have a passage named 'Shopping List':</p>
 <pre><code>Apples
@@ -782,17 +790,19 @@ clear destination in mind.
 </code></pre>
 <p>When the player visits this passage, Chapbook will add six variables to the story's state: <code>strength</code>, <code>dexterity</code>, <code>constitution</code>, and so on, and sets them to the numbers listed.</p>
 <p>Vars sections never display anything to the player; this is so that, for example, you can set a variable named <code>doomedToDieInFiveMinutes</code> and the player will be none the wiser unless you wish it.</p>
-<p>{% hint style='info' %}
+<aside data-hint="info">
 If a passage is embedded in another using the <code>{embed passage}</code> modifier, its vars section will also take effect.
-</aside></p>
+</aside>
 <p>You may only have one vars section in each passage, but then there's really only ever need for one. The name of state variables must follow a few rules, too. They must start with a letter (upper or lowercase), underscore (<code>_</code>), or dollar sign (<code>$</code>); after the first character can come any combination of the preceding kinds of characters as well as digits.<sup class="footnote-reference"><a href="#1">1</a></sup></p>
 <p>Sadly, you can't use spaces in your variable names. Because of this, a common practice called <em>camel casing</em> (because of the camel-like humps in the resulting word) glues phrases together using capital letters, like the <code>doomedToDieInFiveMinutes</code> example above. Another school of thought, <em>snake casing</em>, prefers to use underscores instead; e.g. <code>doomed_to_die_in_five_minutes</code>. Either's perfectly fine. Use whichever feels most comfortable to you.</p>
 <p>Another common practice is to put an underscore in front of variable names when the value will only be used in the current passage. This practice is just a hint to yourself; Chapbook does not enforce this usage.<sup class="footnote-reference"><a href="#2">2</a></sup></p>
-<p>{% hint style='info' %}
+<aside data-hint="info">
 A variable name can contain periods (<code>.</code>), but they carry a special meaning. Until you've read <a href="state/objects-and-lookups.html">Objects and Lookup Values</a>, it's best to leave them out of variable names.
-</aside></p>
-<p><aside data-hint="danger">
-Chapbook and web browsers reserve certain variable names for their own use. If you try to use a variable whose name overlaps them, unpredictable things may happen, so you should avoid them. Chapbook reserves the following names:</p>
+</aside>
+<aside data-hint="danger">
+<p>
+Chapbook and web browsers reserve certain variable names for their own use. If you try to use a variable whose name overlaps them, unpredictable things may happen, so you should avoid them. Chapbook reserves the following names:
+</p>
 <ul>
 <li><code>browser</code></li>
 <li><code>engine</code></li>
@@ -801,8 +811,10 @@ Chapbook and web browsers reserve certain variable names for their own use. If y
 <li><code>random</code></li>
 <li><code>story</code></li>
 </ul>
-<p>The browser reserves quite a few (over two hundred at time of writing), but you're unlikely to want to use most of them, like <code>ondeviceorientation</code>. See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window#Properties">the exhaustive list</a> for more details.
-</aside></p>
+<p>
+The browser reserves quite a few (over two hundred at time of writing), but you're unlikely to want to use most of them, like <code>ondeviceorientation</code>. See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window#Properties">the exhaustive list</a> for more details.
+</p>
+</aside>
 <p>The only time variable names are shown to a player is if an error occurs in your story while they are playing it, so choose names that are easy to remember and descriptive. There's no need for a <code>clueF</code> variable when you can have <code>sawFootprintsInVault</code> instead.</p>
 <h2 id="variables-have-types"><a class="header" href="#variables-have-types">Variables Have Types</a></h2>
 <p>The example at the start of this section assigned numbers to variables, but variables can hold other types of values.</p>
@@ -862,9 +874,9 @@ True only if both sides are true.</p>
 True if one or both sides are true.</p>
 </li>
 </ul>
-<p><aside data-hint="danger">
+<aside data-hint="danger">
 You cannot use inserts or modifiers in vars sections. They only work inside the displayed text of your passage.
-</aside></p>
+</aside>
 <h2 id="clarifying-expressions-with-parentheses"><a class="header" href="#clarifying-expressions-with-parentheses">Clarifying Expressions With Parentheses</a></h2>
 <p>Often expressions are complex. For example, in a simple role-playing scenario, you might decide a character armed with a hammer does <code>strength * 2 + 4</code> damage. But if <code>strength</code> is 12, does that mean that the expression evaluates to 28 (multiply 12 by 2, then add 4) or 72 (add 2 to 4, then multiply by 12)?</p>
 <p>You may remember from algebra class that mathematical operators have rules relating to precedence; specifically, multiplication occurs before addition. But you probably have never been taught what the rules are for boolean logic--e.g. what does <code>!true || false</code> evaluate to?<sup class="footnote-reference"><a href="#4">4</a></sup>--and even if you do know the rules, it can be tricky to correctly apply them in a complex expression.</p>
@@ -1086,7 +1098,7 @@ The official language of {country} is {language}.
 <div style="break-before: page; page-break-before: always;"></div><h1 id="continuity-between-sessions"><a class="header" href="#continuity-between-sessions">Continuity Between Sessions</a></h1>
 <p>Chapbook is designed so that players don't need to manually save their progress, as is often typical in digital games. Instead, it silently saves the state of play every time the player navigates to a new passage.</p>
 <p>This is partly by necessity and partly by design. It's necessary to continually save progress because browsers, especially those on mobile devices, are extremely stingy with resources. If a player begins your story but decides to check social media in another browser tab and then gets lost in a series of adorable cat pictures, the browser may decide to put your story's tab into the equivalent of hibernation. When the player returns to your story, the browser essentially reloads the story<sup class="footnote-reference"><a href="#1">1</a></sup>, which causes any unsaved progress to be lost. Thus, progress needs to be continually saved.</p>
-<p>It also discourages a habit in players that is nicknamed <em>[save scumming]</em>, where players constantly save and reload their progress in an effort to find what they believe is the most optimal outcome. </p>
+<p>It also discourages a habit in players that is nicknamed <em><a href="https://tvtropes.org/pmwiki/pmwiki.php/Main/SaveScumming">save scumming</a></em>, where players constantly save and reload their progress in an effort to find what they believe is the most optimal outcome. </p>
 <p>Chapbook saves state by using a feature of web browsers called <em>local storage</em>. If you are familiar with browser cookies, local storage works similarly to them, though local storage allows for storing much more data than a cookie. You don't need to know what either technology is to use Chapbook successfully, but it is important to understand two things:</p>
 <ol>
 <li>
@@ -1096,26 +1108,24 @@ The official language of {country} is {language}.
 <p>If a player clears their browsing history, they'll lose their progress in your story.</p>
 </li>
 </ol>
-<p>Because state is retained across sessions, you <em>must</em> use the [<code>{restart link}</code> insert][restart-insert] in order to start the story fresh once you begin using state in your stories. If you only link back to the first passage, variables will remain in the state they were at the end of play--which is likely to produce weird results.</p>
-<p><aside data-hint="working">
+<p>Because state is retained across sessions, you <em>must</em> use the <a href="state/../text-and-links/link-inserts.html#restarting-the-story"><code>{restart link}</code> insert</a> in order to start the story fresh once you begin using state in your stories. If you only link back to the first passage, variables will remain in the state they were at the end of play--which is likely to produce weird results.</p>
+<aside data-hint="working">
 Additional functionality related to saving progress, such as being able to share saved states between browsers or devices, or allowing players on a device the ability to have more than one save, may come in a future version of Chapbook.
-</aside></p>
+</aside>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>In fact, you'll often see a loading indicator briefly when this occurs, instead of the page reappearing instantly.
-[save scumming]: http://tvtropes.org/pmwiki/pmwiki.php/Main/SaveScumming
-[restart-insert]: ../text-and-links/link-inserts.html#restarting-the-story</p>
+<p>In fact, you'll often see a loading indicator briefly when this occurs, instead of the page reappearing instantly.</p>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="state-backstage"><a class="header" href="#state-backstage">State Backstage</a></h1>
 <p>State can be very slippery to work with, as it's not normally directly visible in your story--you can only infer from its side effects. Chapbook provides tools to track and even change state as you test your story.</p>
 <h2 id="the-state-tab"><a class="header" href="#the-state-tab">The State Tab</a></h2>
 <p>Under the State tab, you'll find a Variables heading. This shows the current state of your story as you play. You can also select a value on the right side of the variables table and enter a new one--press the Return or Enter key when you're done to set the variable. You may only enter values in the variables table, not expressions.</p>
-<p>If the Show Defaults checkbox is ticked, Chapbook will show various built-in variables--mainly related to Chapbook's configuration. See <a href="state/../customization/index.html">Customization</a> for more details.</p>
+<p>If the Show Defaults checkbox is ticked, Chapbook will show various built-in variables--mainly related to Chapbook's configuration. See [Customization][../customization/index.md] for more details.</p>
 <h2 id="state-snaphots"><a class="header" href="#state-snaphots">State Snaphots</a></h2>
 <p>Beneath the variables table is the Snapshots heading. Snapshots allow you to quickly save and restore the state of your story at any point. For example, if you'd like to skip the prologue or test a specific scene, play through your story as usual. When you've reached the point you'd like to skip to, use the Add Snapshot button. After giving your snapshot a name, it will appear under the Snapshots heading as a button. Using this button will immediately set the state of your story, including the passage you were viewing, to what it was.</p>
 <p>Use the × button at the end of a snapshot button to remove it. Snapshots are saved to your web browser only.</p>
-<p><aside data-hint="working">
+<aside data-hint="working">
 Exporting snapshots for use by other people working on your story may come in a future version of Chapbook.
-</aside></p>
+</aside>
 <h2 id="state-in-history"><a class="header" href="#state-in-history">State in History</a></h2>
 <p>The History tab also shows changes to state as you navigate through a story. If a passage changes a variable, you'll see a separate row in the history table showing that change. This is informational only--you cannot change variables from the History tab.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="objects-and-lookup-variables"><a class="header" href="#objects-and-lookup-variables">Objects and Lookup Variables</a></h1>
@@ -1323,18 +1333,18 @@ ul.directory-listing li.directory {
 
 {embed Flickr image: '&lt;a data-flickr-embed=&quot;true&quot;  href=&quot;https://www.flickr.com/photos/kees-scherer/43929816675/in/photolist-29VVN1k-MxBBfR-Mxmaoa-2abPdAf-28uxzXE-MsR1ev-MqbA18-P2bWEY-29LvwHZ-P1DPQ7-2b3znq5-28jiA4E-2b4qGd6-29QQrVa-2a4C5X3-MhDEFV-2b3tVwa-MfPdhz-2aZTken-2aTGEx1-2aVbrLg-NLVUU7-289o89h-288U1wq-2aN6BuN-NH87Jm-2aQH3Ta-NDwgPd-NB3Mym-2aHjvXP-29jgSN2-29zFLg5-27TFbQw-Nw3iLs-2aD2Dfn-27SXWGo-29f84mZ-LRdL8r-2aVtHgk-2awe7hj-29ux7nq-LPVrYk-2avhxQJ-2azf7ct-2ayX3mM-2aygKz8-27Nwi91-27NmmvS-NqvSME-2axAzDV&quot; title=&quot;The Andromeda Galaxy, Messier 31&quot;&gt;&lt;img src=&quot;https://farm2.staticflickr.com/1857/43929816675_07357e53b0_m.jpg&quot; width=&quot;240&quot; height=&quot;185&quot; alt=&quot;The Andromeda Galaxy, Messier 31&quot;&gt;&lt;/a&gt;&lt;script async src=&quot;//embedr.flickr.com/assets/client-code.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;', alt: 'the Andromeda galaxy'}
 </code></pre>
-<p><aside data-hint="danger">
+<aside data-hint="danger">
 Just because Flickr allows you to embed an image does not mean you have the <em>right</em> to use it in your story freely. Check the image's page for the license the photo's uploader is using. Some may not be allowed to be used in commercial projects, while others may not allow usage at all.
-</aside></p>
+</aside>
 <h2 id="embedding-images-from-unsplash"><a class="header" href="#embedding-images-from-unsplash">Embedding Images from Unsplash</a></h2>
 <p><a href="https://unsplash.com">Unsplash</a> is a stock photography service that hosts photos that can embedded into a story royalty-free. To use an image from Unsplash, combine the <code>{embed Unsplash image}</code> insert with the image's URL on unsplash.com. No embed code is required.</p>
 <pre><code>{embed Unsplash image: 'https://unsplash.com/photos/Na0BbqKbfAo', alt: 'the moon'}
 
 What a horrible night to have to study for exams.
 </code></pre>
-<p><aside data-hint="working">
+<aside data-hint="working">
 Other types of image embeds may come in a future version of Chapbook, as well as more flexibility in layout--e.g. having an image appear to the left or right of the text.
-</aside></p>
+</aside>
 <h2 id="alternate-text"><a class="header" href="#alternate-text">Alternate Text</a></h2>
 <p>Regardless of where your image comes from, you must give it <em>alternate text</em>. This is so that players who have a visual disability are able to have an equivalent experience to those who don't. <a href="https://webaim.org/techniques/alttext/">WebAIM</a> has an excellent in-depth treatment of alternative text, but the gist is that it should contain a brief description of what the image depicts, that would work well for someone reading your story out loud. Because, for players with a visual disability, they often in fact will have your story read out loud by screen reader software.</p>
 <p>When writing alternate text, avoid phrases like &quot;image of Abraham Lincoln&quot; or &quot;Boston Harbor photo&quot;-- just write &quot;Abraham Lincoln&quot; or &quot;Boston Harbor.&quot;</p>
@@ -1351,7 +1361,7 @@ Other types of image embeds may come in a future version of Chapbook, as well as
 <li>There can only be one ambient sound playing at a time under normal circumstances.</li>
 <li>Sound effects are preloaded when your story begins. This is so that when you ask for an effect to be played in your story, there will be as little delay as possible before it begins playback. However, this means that you should be careful about the file size of the sound effects you use. The preloading process takes place in the background as players interact with your story, so large sound effects will not delay the start of your story. But it's still wasteful to load large files.</li>
 </ul>
-<p>You should also make sure that all your sounds are in MP3 format. There are other types of audio formats, such as Ogg Theora or WAV, but browser support varies for each of these. MP3 is as universal a format as possible. There are many applications, including the open-source <a href="https://www.audacityteam.org/">Audacity</a>, that can convert audio files into MP3 format for you.</p>
+<p>You should also make sure that all your sounds are in MP3 format. There are other types of audio formats, such as Ogg Vorbis or WAV, but browser support varies for each of these. MP3 is as universal a format as possible. There are many applications, including the open-source <a href="https://www.audacityteam.org/">Audacity</a>, that can convert audio files into MP3 format for you.</p>
 <h2 id="sound-effects"><a class="header" href="#sound-effects">Sound Effects</a></h2>
 <p>Before playing a sound effect, you must first define it in your story state. Below is an example of how you would define a sound effect:</p>
 <pre><code>sound.effect.explosion.url: 'boom.mp3'
@@ -1428,21 +1438,21 @@ You walk outside.
 <p>The text inside the will not be displayed ordinarily.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="video"><a class="header" href="#video">Video</a></h1>
 <h2 id="embedding-your-own-video"><a class="header" href="#embedding-your-own-video">Embedding Your Own Video</a></h2>
-<p><aside data-hint="working">
+<aside data-hint="working">
 Chapbook doesn't yet support embedding your own video, but it will.
-</aside></p>
+</aside>
 <h2 id="embedding-a-youtube-video"><a class="header" href="#embedding-a-youtube-video">Embedding a YouTube Video</a></h2>
 <p>You've heard of <a href="https://youtube.com">YouTube</a>, right? To embed a YouTube video, use its URL with the <code>{embed YouTube video}</code> insert:</p>
 <pre><code>Tell me if you've seen this one before.
 
 {embed YouTube video: 'https://www.youtube.com/watch?v=9bZkp7q19f0'}
 </code></pre>
-<p><aside data-hint="working">
+<aside data-hint="working">
 For now, it's not possible to have a YouTube video start when a passage displays. The player will need to begin playback.
-</aside></p>
-<p><aside data-hint="working">
+</aside>
+<aside data-hint="working">
 Accessibility features for video will be added to a future release of Chapbook.
-</aside></p>
+</aside>
 <div style="break-before: page; page-break-before: always;"></div><div class="intro customization">
     <h1 id="customization"><a class="header" href="#customization">Customization</a></h1>
 </div>
@@ -1488,17 +1498,16 @@ config.footer.center: &quot;[[Other stories in this anthology]]&quot;
 </div>
 <p>The values you set for page, header, and footer styles inherit from each other. That means that if a header or footer style value isn't set, it will use the corresponding page value instead. If a page value isn't set either, Chapbook's default style will be used instead.</p>
 <h2 id="setting-text-style"><a class="header" href="#setting-text-style">Setting Text Style</a></h2>
-<p>{% hint style=&quot;info&quot; %}
-Applies to:</p>
+<aside data-hint="info">
+Applies to:
 <ul>
 <li><code>config.style.page.font</code></li>
 <li><code>config.style.page.link.font</code></li>
 <li><code>config.style.page.link.active.font</code></li>
 <li><code>config.style.page.header.font</code></li>
 <li><code>config.style.page.header.link.font</code></li>
-<li><code>config.style.page.header.link.active.font</code>
-</aside></li>
-</ul>
+<li><code>config.style.page.header.link.active.font</code></li>
+</aside>
 <p>Chapbook uses a concise notation for specifying text style. Below is a simple example:</p>
 <pre><code>Palatino 18
 </code></pre>
@@ -1527,8 +1536,8 @@ Applies to:</p>
 </ul>
 <p>The omitted parts are inherited as described above.</p>
 <h2 id="colors"><a class="header" href="#colors">Colors</a></h2>
-<p>{% hint style=&quot;info&quot; %}
-Applies to: </p>
+<aside data-hint="info">
+Applies to:
 <ul>
 <li><code>config.style.backdrop</code></li>
 <li><code>config.style.page.color</code></li>
@@ -1540,9 +1549,8 @@ Applies to: </p>
 <li><code>config.style.page.link.color</code></li>
 <li><code>config.style.page.link.lineColor</code></li>
 <li><code>config.style.page.link.active.color</code></li>
-<li><code>config.style.page.link.active.lineColor</code>
-</aside></li>
-</ul>
+<li><code>config.style.page.link.active.lineColor</code></li>
+</aside>
 <p>Although you don't have to use it, Chapbook has a built-in color palette called <a href="https://yeun.github.io/open-color/">Open Color</a>. It has a versatile range of hues that are designed to harmonize with each other.</p>
 <p>Besides <code>black</code> and <code>white</code>, Open Color has 13 base hues:</p>
 <div class="swatch-row last">
@@ -1928,8 +1936,8 @@ What would you like to name your loyal canine companion?
 </code></pre>
 <p>Note that as above, the variable name should be quoted, but <code>false</code> should not.</p>
 <p>{% hint style='info' %}
-The restriction on navigation only applies to player-initiated navigation. A required text input will not block navigation initiated by the story itself, or the player choosing to restart the story.
-</aside></p>
+The restriction on navigation only applies to player-initiated navigation. A required text input will not block navigation initiated by the story itself, or the player choosing to restart the story.</p>
+</aside>
 <p>You also do not have to save a text input's value to a variable, if for some reason you won't need the value later. To do this, write <code>{text input}</code> or <code>{text input, required: true}</code>. </p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="dropdown-menus-and-cycling-links"><a class="header" href="#dropdown-menus-and-cycling-links">Dropdown Menus and Cycling Links</a></h1>
 <p>Instead of allowing any kind of input at all from a player, you may want to contrain them to a specific set of choices. Chapbook has two mechanisms for this that look different to the player, but behave identically behind the scenes: menus and cycling links.</p>
@@ -2016,15 +2024,15 @@ engine.extend('1.0.0', () =&gt; {
 });
 </code></pre>
 <p>You can also place code like this into your story's JavaScript in Twine--this uses the <code>[JavaScript]</code> modifier for clarity.<sup class="footnote-reference"><a href="#1">1</a></sup></p>
-<p>First, any extension of the Chapbook engine must be wrapped in a <code>engine.extend()</code> function call. The first argument is the minimum version of Chapbook required to make your insert work; this is so that if you share your customization, anyone plugging it into a Chapbook version it won't work in will receive a harmless warning, instead of the engine crashing with an error. Chapbook follows [semantic versioning] to assist with this.</p>
-<p>The second argument to <code>engine.extend()</code> is the customization code you'd like to run. In this function, we add a new insert to <code>config.template.inserts</code> using [array spread syntax]. Every item in <code>config.template.inserts</code> must be an object with two properties:</p>
+<p>First, any extension of the Chapbook engine must be wrapped in a <code>engine.extend()</code> function call. The first argument is the minimum version of Chapbook required to make your insert work; this is so that if you share your customization, anyone plugging it into a Chapbook version it won't work in will receive a harmless warning, instead of the engine crashing with an error. Chapbook follows <a href="https://semver.org/">semantic versioning</a> to assist with this.</p>
+<p>The second argument to <code>engine.extend()</code> is the customization code you'd like to run. In this function, we add a new insert to <code>config.template.inserts</code> using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_array_literals">array spread syntax</a>. Every item in <code>config.template.inserts</code> must be an object with two properties:</p>
 <ul>
 <li><code>match</code>: a regular expression that the template engine will look for to render your insert. Leave out the curly braces; the template engine will take care of this for you. Inserts must always have at least one space in their <code>match</code> property, so that they can never be mistaken for a variable insert.</li>
 <li><code>render</code>: a function that returns a string for what should be displayed. The returned value will be eventually rendered as Markdown.</li>
 </ul>
-<p><aside data-hint="danger">
+<aside data-hint="danger">
 Do not mutate <code>config.template.inserts</code> directly, e.g. with <code>config.template.inserts.push()</code> or direct assignment. Doing so may cause incorrect behavior.
-</aside></p>
+</aside>
 <p>You may remember that inserts <a href="advanced/../modifiers-and-inserts/link-inserts.html">can take multiple parameters</a>. Here's a more complex example that demonstrates this:</p>
 <pre><code>[JavaScript]
 engine.extend('1.0.0', () =&gt; {
@@ -2077,9 +2085,7 @@ engine.extend('1.0.0', () =&gt; {
 </tbody></table>
 </div>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>Word of warning--you cannot define an insert in the same passage that you use it in.
-[semantic versioning]: https://semver.org/
-[array spread syntax]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_array_literals</p>
+<p>Word of warning--you cannot define an insert in the same passage that you use it in.</p>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="adding-custom-modifiers"><a class="header" href="#adding-custom-modifiers">Adding Custom Modifiers</a></h1>
 <p>Chapbook can also be extended with custom modifiers. Below is code that adds a modifier that turns its text uppercase:</p>
@@ -2093,12 +2099,15 @@ engine.extend('1.0.0', () =&gt; {
 	}, ...config.template.modifiers];
 });
 </code></pre>
-<p>You can also place code like this into your story's JavaScript in Twine--this uses the <code>[JavaScript]</code> modifier for clarity.<sup class="footnote-reference"><a href="#1">1</a></sup></p>
+<p>You can also place code like this into your story's JavaScript in Twine--this uses the <code>[JavaScript]</code> modifier for clarity.</p>
+<aside data-hint="danger">
+You cannot define a modifier in the same passage that you use it in.
+</aside>
 <p>See <a href="advanced/adding-custom-inserts.html">the first part of Adding Custom Inserts</a> for an explanation of the <code>engine.extend()</code> function call, and how <code>config.template.modifiers</code> is changed. The <code>match</code> property works the same way as the <code>match</code> property for an insert; Chapbook compares possible modifier text with <code>match</code> properties until it finds a match.</p>
 <p>The <code>process()</code> property is where the work of a modifier occurs. The <code>output</code> argument it is passed has three properties. Each one is Markdown source code, <em>not</em> HTML as it will be finally rendered.</p>
 <ul>
 <li><code>text</code>, the text that the modifier is being applied to.</li>
-<li><code>startsNewParagraph</code>, a Boolean value indicating whether this block of text should begin a new paragraph. (The [append modifier], for example, sets this to <code>false</code>.)</li>
+<li><code>startsNewParagraph</code>, a Boolean value indicating whether this block of text should begin a new paragraph. (The <a href="advanced/../modifiers-and-inserts/delayed-text.html">append modifier</a>, for example, sets this to <code>false</code>.)</li>
 </ul>
 <p>Modifiers also receive two other arguments which the example above didn't show:</p>
 <ul>
@@ -2139,10 +2148,6 @@ TXX fXXmXtXXn fXXw bXckwXXXX XvXX X GXXmXn cXty tXXt wXX Xn fXXmXX. TXX bXmbXXX 
 WXXn XXX bXmbXXX gXX bXck XX XXXXX bXXX, XXX XXXXX cyXXnXXXX wXXX XXkXn fXXm XXX XXckX XnX XXXppXX bXck XX XXX XnXXXX XXXXXX Xf XmXXXcX, wXXXX fXcXXXXXX wXXX XpXXXXXng nXgXX XnX XXy, XXXmXnXXXng XXX cyXXnXXXX, XXpXXXXXng XXX XXngXXXXX cXnXXnXX XnXX mXnXXXXX. XXXcXXngXy, XX wXX mXXnXy wXmXn wXX XXX XXXX wXXk. XXX mXnXXXXX wXXX XXXn XXXppXX XX XpXcXXXXXXX Xn XXmXXX XXXXX. XX wXX XXXXX bXXXnXXX XX pXX XXXm XnXX XXX gXXXnX, XX XXXX XXXm cXXvXXXy, XX XXXy wXXXX nXvXX XXXX XnybXXy XvXX XgXXn.
 </code></pre>
 <p>Finally, in some cases, you may want a modifier to modify the source text as it was exactly entered by the author, before inserts and links are transformed into Markdown/HTML equivalents. To do this, write a <code>processRaw()</code> function instead of <code>process</code>. It takes the same exact arguments that <code>process()</code> does.</p>
-<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>Word of warning--you cannot define a modifier in the same passage that you use it in.
-[append modifier]: ../modifiers-and-inserts/delayed-text.md</p>
-</div>
 <div style="break-before: page; page-break-before: always;"></div><div class="intro references">
     <h1 id="references"><a class="header" href="#references">References</a></h1>
 </div>
@@ -2327,6 +2332,13 @@ Only displays the text if <i>expression</i> evaluates to false, or a falsy (<a h
 </dd>
 </dl>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="version-history"><a class="header" href="#version-history">Version History</a></h1>
+<h2 id="123-26-february-2023"><a class="header" href="#123-26-february-2023">1.2.3, 26 February 2023</a></h2>
+<ul>
+<li>The <code>{cycling link}</code> and <code>{dropdown menu}</code> inserts now handle numeric choices
+correctly.</li>
+<li>Fixed a bug where the watch icon that appears when using the <code>[after timespan]</code> modifier would not appear correctly in Firefox.</li>
+<li>Fixed the reveal link and text input Twine editor toolbar buttons.</li>
+</ul>
 <h2 id="122-5-april-2022"><a class="header" href="#122-5-april-2022">1.2.2, 5 April 2022</a></h2>
 <ul>
 <li>Added Twine editor extensions.</li>

@@ -1,13 +1,11 @@
-/*
-This script will only work when run by npm/yarn because it relies on entwine
-being available in the path.
-*/
+// This script will only work when run by npm/yarn because it relies on entwine
+// being available in the path.
 
-const exec = require('child-process-promise').exec;
-const fs = require('fs-extra');
-const path = require('path');
-const titleCase = require('title-case');
-const pkg = require('../package.json');
+import {execaCommand} from 'execa';
+import fs from 'fs-extra';
+import path from 'path';
+import titleCase from 'title-case';
+import pkg from '../package.json' assert { type: 'json' };
 
 fs.readdir(path.resolve('examples')).then(files => {
 	files
@@ -17,7 +15,7 @@ fs.readdir(path.resolve('examples')).then(files => {
 			const src = path.join('examples', f);
 			const output = src.replace('.txt', '.html');
 
-			exec(
+			execaCommand(
 				`entwine --format dist/${pkg.name.toLowerCase()}-${
 					pkg.version
 				}/format.js --start Start ${src} --name "${name}" > ${output}`

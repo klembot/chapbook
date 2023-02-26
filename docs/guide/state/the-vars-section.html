@@ -159,17 +159,19 @@ clear destination in mind.
 </code></pre>
 <p>When the player visits this passage, Chapbook will add six variables to the story's state: <code>strength</code>, <code>dexterity</code>, <code>constitution</code>, and so on, and sets them to the numbers listed.</p>
 <p>Vars sections never display anything to the player; this is so that, for example, you can set a variable named <code>doomedToDieInFiveMinutes</code> and the player will be none the wiser unless you wish it.</p>
-<p>{% hint style='info' %}
+<aside data-hint="info">
 If a passage is embedded in another using the <code>{embed passage}</code> modifier, its vars section will also take effect.
-</aside></p>
+</aside>
 <p>You may only have one vars section in each passage, but then there's really only ever need for one. The name of state variables must follow a few rules, too. They must start with a letter (upper or lowercase), underscore (<code>_</code>), or dollar sign (<code>$</code>); after the first character can come any combination of the preceding kinds of characters as well as digits.<sup class="footnote-reference"><a href="#1">1</a></sup></p>
 <p>Sadly, you can't use spaces in your variable names. Because of this, a common practice called <em>camel casing</em> (because of the camel-like humps in the resulting word) glues phrases together using capital letters, like the <code>doomedToDieInFiveMinutes</code> example above. Another school of thought, <em>snake casing</em>, prefers to use underscores instead; e.g. <code>doomed_to_die_in_five_minutes</code>. Either's perfectly fine. Use whichever feels most comfortable to you.</p>
 <p>Another common practice is to put an underscore in front of variable names when the value will only be used in the current passage. This practice is just a hint to yourself; Chapbook does not enforce this usage.<sup class="footnote-reference"><a href="#2">2</a></sup></p>
-<p>{% hint style='info' %}
+<aside data-hint="info">
 A variable name can contain periods (<code>.</code>), but they carry a special meaning. Until you've read <a href="objects-and-lookups.html">Objects and Lookup Values</a>, it's best to leave them out of variable names.
-</aside></p>
-<p><aside data-hint="danger">
-Chapbook and web browsers reserve certain variable names for their own use. If you try to use a variable whose name overlaps them, unpredictable things may happen, so you should avoid them. Chapbook reserves the following names:</p>
+</aside>
+<aside data-hint="danger">
+<p>
+Chapbook and web browsers reserve certain variable names for their own use. If you try to use a variable whose name overlaps them, unpredictable things may happen, so you should avoid them. Chapbook reserves the following names:
+</p>
 <ul>
 <li><code>browser</code></li>
 <li><code>engine</code></li>
@@ -178,8 +180,10 @@ Chapbook and web browsers reserve certain variable names for their own use. If y
 <li><code>random</code></li>
 <li><code>story</code></li>
 </ul>
-<p>The browser reserves quite a few (over two hundred at time of writing), but you're unlikely to want to use most of them, like <code>ondeviceorientation</code>. See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window#Properties">the exhaustive list</a> for more details.
-</aside></p>
+<p>
+The browser reserves quite a few (over two hundred at time of writing), but you're unlikely to want to use most of them, like <code>ondeviceorientation</code>. See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window#Properties">the exhaustive list</a> for more details.
+</p>
+</aside>
 <p>The only time variable names are shown to a player is if an error occurs in your story while they are playing it, so choose names that are easy to remember and descriptive. There's no need for a <code>clueF</code> variable when you can have <code>sawFootprintsInVault</code> instead.</p>
 <h2 id="variables-have-types"><a class="header" href="#variables-have-types">Variables Have Types</a></h2>
 <p>The example at the start of this section assigned numbers to variables, but variables can hold other types of values.</p>
@@ -239,9 +243,9 @@ True only if both sides are true.</p>
 True if one or both sides are true.</p>
 </li>
 </ul>
-<p><aside data-hint="danger">
+<aside data-hint="danger">
 You cannot use inserts or modifiers in vars sections. They only work inside the displayed text of your passage.
-</aside></p>
+</aside>
 <h2 id="clarifying-expressions-with-parentheses"><a class="header" href="#clarifying-expressions-with-parentheses">Clarifying Expressions With Parentheses</a></h2>
 <p>Often expressions are complex. For example, in a simple role-playing scenario, you might decide a character armed with a hammer does <code>strength * 2 + 4</code> damage. But if <code>strength</code> is 12, does that mean that the expression evaluates to 28 (multiply 12 by 2, then add 4) or 72 (add 2 to 4, then multiply by 12)?</p>
 <p>You may remember from algebra class that mathematical operators have rules relating to precedence; specifically, multiplication occurs before addition. But you probably have never been taught what the rules are for boolean logic--e.g. what does <code>!true || false</code> evaluate to?<sup class="footnote-reference"><a href="#4">4</a></sup>--and even if you do know the rules, it can be tricky to correctly apply them in a complex expression.</p>

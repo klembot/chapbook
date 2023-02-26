@@ -154,15 +154,15 @@ engine.extend('1.0.0', () =&gt; {
 });
 </code></pre>
 <p>You can also place code like this into your story's JavaScript in Twine--this uses the <code>[JavaScript]</code> modifier for clarity.<sup class="footnote-reference"><a href="#1">1</a></sup></p>
-<p>First, any extension of the Chapbook engine must be wrapped in a <code>engine.extend()</code> function call. The first argument is the minimum version of Chapbook required to make your insert work; this is so that if you share your customization, anyone plugging it into a Chapbook version it won't work in will receive a harmless warning, instead of the engine crashing with an error. Chapbook follows [semantic versioning] to assist with this.</p>
-<p>The second argument to <code>engine.extend()</code> is the customization code you'd like to run. In this function, we add a new insert to <code>config.template.inserts</code> using [array spread syntax]. Every item in <code>config.template.inserts</code> must be an object with two properties:</p>
+<p>First, any extension of the Chapbook engine must be wrapped in a <code>engine.extend()</code> function call. The first argument is the minimum version of Chapbook required to make your insert work; this is so that if you share your customization, anyone plugging it into a Chapbook version it won't work in will receive a harmless warning, instead of the engine crashing with an error. Chapbook follows <a href="https://semver.org/">semantic versioning</a> to assist with this.</p>
+<p>The second argument to <code>engine.extend()</code> is the customization code you'd like to run. In this function, we add a new insert to <code>config.template.inserts</code> using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_array_literals">array spread syntax</a>. Every item in <code>config.template.inserts</code> must be an object with two properties:</p>
 <ul>
 <li><code>match</code>: a regular expression that the template engine will look for to render your insert. Leave out the curly braces; the template engine will take care of this for you. Inserts must always have at least one space in their <code>match</code> property, so that they can never be mistaken for a variable insert.</li>
 <li><code>render</code>: a function that returns a string for what should be displayed. The returned value will be eventually rendered as Markdown.</li>
 </ul>
-<p><aside data-hint="danger">
+<aside data-hint="danger">
 Do not mutate <code>config.template.inserts</code> directly, e.g. with <code>config.template.inserts.push()</code> or direct assignment. Doing so may cause incorrect behavior.
-</aside></p>
+</aside>
 <p>You may remember that inserts <a href="../modifiers-and-inserts/link-inserts.html">can take multiple parameters</a>. Here's a more complex example that demonstrates this:</p>
 <pre><code>[JavaScript]
 engine.extend('1.0.0', () =&gt; {
@@ -215,9 +215,7 @@ engine.extend('1.0.0', () =&gt; {
 </tbody></table>
 </div>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>Word of warning--you cannot define an insert in the same passage that you use it in.
-[semantic versioning]: https://semver.org/
-[array spread syntax]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_array_literals</p>
+<p>Word of warning--you cannot define an insert in the same passage that you use it in.</p>
 </div>
 
                     </main>

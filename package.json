@@ -67,7 +67,7 @@
 		"start": "rollup --config rollup.config.runtime.js --watch",
 		"start:extensions": "rollup --config rollup.config.editor-extensions.js --watch",
 		"build": "node scripts/build-format.mjs",
-		"examples": "node scripts/build-examples.js",
+		"examples": "node scripts/build-examples.mjs",
 		"guide": "cd guide && mdbook serve",
 		"guide:release": "cd guide && mdbook build",
 		"lint": "eslint src/",
