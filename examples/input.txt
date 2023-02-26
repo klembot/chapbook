@@ -1,13 +1,19 @@
 :: Start
 Your favorite color is {cycling link for: 'color', choices: ['red', 'green', 'blue']}.
 
+Your favorite number is {cycling link for: 'favoriteNumber', choices: [1, 2, 3]}.
+
 Your favorite food is: {dropdown menu for: 'food', choices: ['pizza', 'sushi', 'tacos']}
+
+Your other favorite number is {dropdown menu for: 'otherFavoriteNumber', choices: [1, 2, 3]}.
 
 Your name is: {text input for: 'name'}
 
 [[Check those]]
 
 A cycling link that doesn't save: {cycling link, choices: ['winter', 'spring', 'summer', 'fall']}
+
+A cycling link that doesn't save: {cycling link, choices: [1, 2, 3]}
 
 A dropdown menu that doesn't save: {dropdown menu, choices: ['Linux', 'macOS', 'Windows']}
 

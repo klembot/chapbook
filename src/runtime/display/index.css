@@ -151,12 +151,14 @@
 }
 
 #spinner {
+	height: auto;
 	position: absolute;
 	bottom: 0;
 	right: 0;
 	opacity: 0;
 	transition: 0.25s ease-in-out opacity;
 	pointer-events: none;
+	width: 50px;
 }
 
 #spinner.visible {

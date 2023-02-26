@@ -71,9 +71,9 @@ You can also leave off the `label` property and just write `{back link}`: in thi
 
 If Chapbook is unable to understand the contents of an insert, it displays it as-is. This is so that you can otherwise use curly brackets in your text.
 
-{% hint style='danger' %}
+<aside data-hint="danger">
 You cannot nest inserts inside each other.
-{% endhint %}
+</aside>
 
 ## Restarting the Story
 

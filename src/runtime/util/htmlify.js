@@ -3,19 +3,19 @@
 export function domify(tagName, attrs, children = []) {
 	const result = document.createElement(tagName);
 
-	Object.keys(attrs).forEach(a => {
-		if (attrs[a] !== undefined) {
-			result.setAttribute(a, attrs[a]);
+	for (const attr of Object.keys(attrs)) {
+		if (attrs[attr] !== undefined) {
+			result.setAttribute(attr, attrs[attr]);
 		}
-	});
+	}
 
-	children.forEach(c => {
-		if (typeof c === 'string') {
-			result.appendChild(document.createTextNode(c));
+	for (const child of children) {
+		if (typeof child === 'string' || typeof child === 'number') {
+			result.appendChild(document.createTextNode(child.toString()));
 		} else {
-			result.appendChild(c);
+			result.appendChild(child);
 		}
-	});
+	}
 
 	return result;
 }

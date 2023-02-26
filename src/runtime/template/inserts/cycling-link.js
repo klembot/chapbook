@@ -27,7 +27,7 @@ export default {
 			'a',
 			{
 				href: 'javascript:void(0)',
-				'data-cb-cycle-set': varName || undefined,
+				'data-cb-cycle-set': varName ?? undefined,
 				'data-cb-cycle-choices': JSON.stringify(props.choices)
 			},
 			[current]
@@ -38,7 +38,16 @@ export default {
 event.on('dom-click', el => {
 	if (el.dataset.cbCycleChoices) {
 		const choices = JSON.parse(el.dataset.cbCycleChoices);
-		let index = choices.indexOf(el.textContent) + 1;
+
+		// Coerce choices here to strings because the value in the DOM will have
+		// been converted to one.
+
+		let index =
+			choices
+				.map(choice =>
+					typeof choice === 'string' ? choice : choice.toString()
+				)
+				.indexOf(el.textContent) + 1;
 
 		if (index === choices.length) {
 			index = 0;

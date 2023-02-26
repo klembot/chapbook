@@ -1,5 +1,13 @@
 # Version History
 
+## 1.2.3, 26 February 2023
+
+- The `{cycling link}` and `{dropdown menu}` inserts now handle numeric choices
+  correctly.
+- Fixed a bug where the watch icon that appears when using the `[after
+  timespan]` modifier would not appear correctly in Firefox.
+- Fixed the reveal link and text input Twine editor toolbar buttons.
+
 ## 1.2.2, 5 April 2022
 
 - Added Twine editor extensions.

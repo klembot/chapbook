@@ -11,7 +11,6 @@ Because other modules may have gotten in a bad state, this module needs to be
 as self-sufficient as possible.
 */
 
-import closest from 'closest';
 import {get, set, purgeFromStorage} from '../state';
 
 function handleError(error) {
@@ -58,7 +57,7 @@ function handleError(error) {
 		/* eslint-enable indent */
 
 		display.addEventListener('click', e => {
-			const backLink = closest(e.target, '[data-cb-back]', true);
+			const backLink = e.target.closest('[data-cb-back]');
 
 			if (backLink) {
 				const trail = get('trail');
@@ -74,14 +73,14 @@ function handleError(error) {
 				return;
 			}
 
-			const refreshLink = closest(e.target, '[data-cb-refresh]', true);
+			const refreshLink = e.target.closest('[data-cb-refresh]');
 
 			if (refreshLink) {
 				set('trail', [...get('trail')]);
 				return;
 			}
 
-			const restartLink = closest(e.target, '[data-cb-hard-restart]', true);
+			const restartLink = e.target.closest('[data-cb-hard-restart]');
 
 			if (restartLink) {
 				purgeFromStorage(true);

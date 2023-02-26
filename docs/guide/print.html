@@ -476,7 +476,7 @@ tr, td {
 <p>If you would like to temporarily hide the backstage view, use the arrow button to its left, which toggles the view's visibility.</p>
 <p>{% hint %}
 While testing your story in Twine, it's best to use the <strong>Test</strong> button instead of <strong>Play</strong>. If you use the <strong>Play</strong> button instead, Chapbook will try to resume play where you last left off. Usually, you'd like to start from the beginning, which Chapbook does in test mode.
-{% endhint %}</p>
+</aside></p>
 <h2 id="the-history-tab"><a class="header" href="#the-history-tab">The History Tab</a></h2>
 <p>As you visit passages in your story, the History tab will show them in a tabular list, with the oldest at the top and the most recent at the bottom.</p>
 <p>You may see some additional rows next to each passage name. These are explained in <a href="text-and-links/../state/backstage.html">State Backstage</a>, but for now you can ignore them.</p>
@@ -573,7 +573,7 @@ And you felt quite depressed.
 <p>These notes are stored separately from what is entered in the <a href="modifiers-and-inserts/../text-and-links/backstage.html">Notes backstage tab</a>, unfortunately.</p>
 <p>{% hint style=&quot;danger&quot; %}
 Unlike backstage comments, notes are still visible to anyone who knows how to use their web browser's development tools. Don't put anything you need to keep secret in a note.
-{% endhint %}</p>
+</aside></p>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>Short for <em>nota bene</em>, which is a fancy way to write <em>pay attention to this</em>.</p>
 </div>
@@ -635,9 +635,9 @@ such as numbers, must not have quotation marks around them. </li>
 </p>
 <p>You can also leave off the <code>label</code> property and just write <code>{back link}</code>: in this case, Chapbook will assume you'd like it to use the word 'Back' as the link label.</p>
 <p>If Chapbook is unable to understand the contents of an insert, it displays it as-is. This is so that you can otherwise use curly brackets in your text.</p>
-<p>{% hint style='danger' %}
+<p><aside data-hint="danger">
 You cannot nest inserts inside each other.
-{% endhint %}</p>
+</aside></p>
 <h2 id="restarting-the-story"><a class="header" href="#restarting-the-story">Restarting the Story</a></h2>
 <p>There's another insert very similar to <code>{back link}</code> that's named <code>{restart link}</code>. Instead of going to a previous passage, it takes the player back to the very beginning of the story. You could of course link back to the first passage by name, but for now, consider this a handy shortcut. <code>{restart link}</code> also resets other aspects of Chapbook's operation, as you'll learn in <a href="modifiers-and-inserts/../state/continuity.html">Continuity Between Sessions</a>.</p>
 <p>As with <code>{back link}</code>, <code>{restart link}</code> allows you to specify a label:</p>
@@ -704,7 +704,7 @@ A {link to: 'Bryan Mills', label: 'A man with *certain* skills'} is just who's n
 <p>This will work the same way as the previous example, only it will show the contents of the passage named 'A Dangerous Incident'.</p>
 <p>{% hint style='info' %}
 A passage shown by a reveal link will not be recorded in a session's history.
-{% endhint %}</p>
+</aside></p>
 <p>When using a reveal link with a passage containing multiple paragraphs, Chapbook inserts the paragraphs in such a way that the surrounding text's order is maintained.</p>
 <p>For example, if you have a passage named 'Shopping List':</p>
 <pre><code>Apples
@@ -784,14 +784,14 @@ clear destination in mind.
 <p>Vars sections never display anything to the player; this is so that, for example, you can set a variable named <code>doomedToDieInFiveMinutes</code> and the player will be none the wiser unless you wish it.</p>
 <p>{% hint style='info' %}
 If a passage is embedded in another using the <code>{embed passage}</code> modifier, its vars section will also take effect.
-{% endhint %}</p>
+</aside></p>
 <p>You may only have one vars section in each passage, but then there's really only ever need for one. The name of state variables must follow a few rules, too. They must start with a letter (upper or lowercase), underscore (<code>_</code>), or dollar sign (<code>$</code>); after the first character can come any combination of the preceding kinds of characters as well as digits.<sup class="footnote-reference"><a href="#1">1</a></sup></p>
 <p>Sadly, you can't use spaces in your variable names. Because of this, a common practice called <em>camel casing</em> (because of the camel-like humps in the resulting word) glues phrases together using capital letters, like the <code>doomedToDieInFiveMinutes</code> example above. Another school of thought, <em>snake casing</em>, prefers to use underscores instead; e.g. <code>doomed_to_die_in_five_minutes</code>. Either's perfectly fine. Use whichever feels most comfortable to you.</p>
 <p>Another common practice is to put an underscore in front of variable names when the value will only be used in the current passage. This practice is just a hint to yourself; Chapbook does not enforce this usage.<sup class="footnote-reference"><a href="#2">2</a></sup></p>
 <p>{% hint style='info' %}
 A variable name can contain periods (<code>.</code>), but they carry a special meaning. Until you've read <a href="state/objects-and-lookups.html">Objects and Lookup Values</a>, it's best to leave them out of variable names.
-{% endhint %}</p>
-<p>{% hint style='danger' %}
+</aside></p>
+<p><aside data-hint="danger">
 Chapbook and web browsers reserve certain variable names for their own use. If you try to use a variable whose name overlaps them, unpredictable things may happen, so you should avoid them. Chapbook reserves the following names:</p>
 <ul>
 <li><code>browser</code></li>
@@ -802,7 +802,7 @@ Chapbook and web browsers reserve certain variable names for their own use. If y
 <li><code>story</code></li>
 </ul>
 <p>The browser reserves quite a few (over two hundred at time of writing), but you're unlikely to want to use most of them, like <code>ondeviceorientation</code>. See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window#Properties">the exhaustive list</a> for more details.
-{% endhint %}</p>
+</aside></p>
 <p>The only time variable names are shown to a player is if an error occurs in your story while they are playing it, so choose names that are easy to remember and descriptive. There's no need for a <code>clueF</code> variable when you can have <code>sawFootprintsInVault</code> instead.</p>
 <h2 id="variables-have-types"><a class="header" href="#variables-have-types">Variables Have Types</a></h2>
 <p>The example at the start of this section assigned numbers to variables, but variables can hold other types of values.</p>
@@ -862,9 +862,9 @@ True only if both sides are true.</p>
 True if one or both sides are true.</p>
 </li>
 </ul>
-<p>{% hint style='danger' %}
+<p><aside data-hint="danger">
 You cannot use inserts or modifiers in vars sections. They only work inside the displayed text of your passage.
-{% endhint %}</p>
+</aside></p>
 <h2 id="clarifying-expressions-with-parentheses"><a class="header" href="#clarifying-expressions-with-parentheses">Clarifying Expressions With Parentheses</a></h2>
 <p>Often expressions are complex. For example, in a simple role-playing scenario, you might decide a character armed with a hammer does <code>strength * 2 + 4</code> damage. But if <code>strength</code> is 12, does that mean that the expression evaluates to 28 (multiply 12 by 2, then add 4) or 72 (add 2 to 4, then multiply by 12)?</p>
 <p>You may remember from algebra class that mathematical operators have rules relating to precedence; specifically, multiplication occurs before addition. But you probably have never been taught what the rules are for boolean logic--e.g. what does <code>!true || false</code> evaluate to?<sup class="footnote-reference"><a href="#4">4</a></sup>--and even if you do know the rules, it can be tricky to correctly apply them in a complex expression.</p>
@@ -1097,9 +1097,9 @@ The official language of {country} is {language}.
 </li>
 </ol>
 <p>Because state is retained across sessions, you <em>must</em> use the [<code>{restart link}</code> insert][restart-insert] in order to start the story fresh once you begin using state in your stories. If you only link back to the first passage, variables will remain in the state they were at the end of play--which is likely to produce weird results.</p>
-<p>{% hint style='working' %}
+<p><aside data-hint="working">
 Additional functionality related to saving progress, such as being able to share saved states between browsers or devices, or allowing players on a device the ability to have more than one save, may come in a future version of Chapbook.
-{% endhint %}</p>
+</aside></p>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <p>In fact, you'll often see a loading indicator briefly when this occurs, instead of the page reappearing instantly.
 [save scumming]: http://tvtropes.org/pmwiki/pmwiki.php/Main/SaveScumming
@@ -1113,9 +1113,9 @@ Additional functionality related to saving progress, such as being able to share
 <h2 id="state-snaphots"><a class="header" href="#state-snaphots">State Snaphots</a></h2>
 <p>Beneath the variables table is the Snapshots heading. Snapshots allow you to quickly save and restore the state of your story at any point. For example, if you'd like to skip the prologue or test a specific scene, play through your story as usual. When you've reached the point you'd like to skip to, use the Add Snapshot button. After giving your snapshot a name, it will appear under the Snapshots heading as a button. Using this button will immediately set the state of your story, including the passage you were viewing, to what it was.</p>
 <p>Use the × button at the end of a snapshot button to remove it. Snapshots are saved to your web browser only.</p>
-<p>{% hint style='working' %}
+<p><aside data-hint="working">
 Exporting snapshots for use by other people working on your story may come in a future version of Chapbook.
-{% endhint %}</p>
+</aside></p>
 <h2 id="state-in-history"><a class="header" href="#state-in-history">State in History</a></h2>
 <p>The History tab also shows changes to state as you navigate through a story. If a passage changes a variable, you'll see a separate row in the history table showing that change. This is informational only--you cannot change variables from the History tab.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="objects-and-lookup-variables"><a class="header" href="#objects-and-lookup-variables">Objects and Lookup Variables</a></h1>
@@ -1323,18 +1323,18 @@ ul.directory-listing li.directory {
 
 {embed Flickr image: '&lt;a data-flickr-embed=&quot;true&quot;  href=&quot;https://www.flickr.com/photos/kees-scherer/43929816675/in/photolist-29VVN1k-MxBBfR-Mxmaoa-2abPdAf-28uxzXE-MsR1ev-MqbA18-P2bWEY-29LvwHZ-P1DPQ7-2b3znq5-28jiA4E-2b4qGd6-29QQrVa-2a4C5X3-MhDEFV-2b3tVwa-MfPdhz-2aZTken-2aTGEx1-2aVbrLg-NLVUU7-289o89h-288U1wq-2aN6BuN-NH87Jm-2aQH3Ta-NDwgPd-NB3Mym-2aHjvXP-29jgSN2-29zFLg5-27TFbQw-Nw3iLs-2aD2Dfn-27SXWGo-29f84mZ-LRdL8r-2aVtHgk-2awe7hj-29ux7nq-LPVrYk-2avhxQJ-2azf7ct-2ayX3mM-2aygKz8-27Nwi91-27NmmvS-NqvSME-2axAzDV&quot; title=&quot;The Andromeda Galaxy, Messier 31&quot;&gt;&lt;img src=&quot;https://farm2.staticflickr.com/1857/43929816675_07357e53b0_m.jpg&quot; width=&quot;240&quot; height=&quot;185&quot; alt=&quot;The Andromeda Galaxy, Messier 31&quot;&gt;&lt;/a&gt;&lt;script async src=&quot;//embedr.flickr.com/assets/client-code.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;', alt: 'the Andromeda galaxy'}
 </code></pre>
-<p>{% hint style='danger' %}
+<p><aside data-hint="danger">
 Just because Flickr allows you to embed an image does not mean you have the <em>right</em> to use it in your story freely. Check the image's page for the license the photo's uploader is using. Some may not be allowed to be used in commercial projects, while others may not allow usage at all.
-{% endhint %}</p>
+</aside></p>
 <h2 id="embedding-images-from-unsplash"><a class="header" href="#embedding-images-from-unsplash">Embedding Images from Unsplash</a></h2>
 <p><a href="https://unsplash.com">Unsplash</a> is a stock photography service that hosts photos that can embedded into a story royalty-free. To use an image from Unsplash, combine the <code>{embed Unsplash image}</code> insert with the image's URL on unsplash.com. No embed code is required.</p>
 <pre><code>{embed Unsplash image: 'https://unsplash.com/photos/Na0BbqKbfAo', alt: 'the moon'}
 
 What a horrible night to have to study for exams.
 </code></pre>
-<p>{% hint style='working' %}
+<p><aside data-hint="working">
 Other types of image embeds may come in a future version of Chapbook, as well as more flexibility in layout--e.g. having an image appear to the left or right of the text.
-{% endhint %}</p>
+</aside></p>
 <h2 id="alternate-text"><a class="header" href="#alternate-text">Alternate Text</a></h2>
 <p>Regardless of where your image comes from, you must give it <em>alternate text</em>. This is so that players who have a visual disability are able to have an equivalent experience to those who don't. <a href="https://webaim.org/techniques/alttext/">WebAIM</a> has an excellent in-depth treatment of alternative text, but the gist is that it should contain a brief description of what the image depicts, that would work well for someone reading your story out loud. Because, for players with a visual disability, they often in fact will have your story read out loud by screen reader software.</p>
 <p>When writing alternate text, avoid phrases like &quot;image of Abraham Lincoln&quot; or &quot;Boston Harbor photo&quot;-- just write &quot;Abraham Lincoln&quot; or &quot;Boston Harbor.&quot;</p>
@@ -1428,21 +1428,21 @@ You walk outside.
 <p>The text inside the will not be displayed ordinarily.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="video"><a class="header" href="#video">Video</a></h1>
 <h2 id="embedding-your-own-video"><a class="header" href="#embedding-your-own-video">Embedding Your Own Video</a></h2>
-<p>{% hint style='working' %}
+<p><aside data-hint="working">
 Chapbook doesn't yet support embedding your own video, but it will.
-{% endhint %}</p>
+</aside></p>
 <h2 id="embedding-a-youtube-video"><a class="header" href="#embedding-a-youtube-video">Embedding a YouTube Video</a></h2>
 <p>You've heard of <a href="https://youtube.com">YouTube</a>, right? To embed a YouTube video, use its URL with the <code>{embed YouTube video}</code> insert:</p>
 <pre><code>Tell me if you've seen this one before.
 
 {embed YouTube video: 'https://www.youtube.com/watch?v=9bZkp7q19f0'}
 </code></pre>
-<p>{% hint style='working' %}
+<p><aside data-hint="working">
 For now, it's not possible to have a YouTube video start when a passage displays. The player will need to begin playback.
-{% endhint %}</p>
-<p>{% hint style='working' %}
+</aside></p>
+<p><aside data-hint="working">
 Accessibility features for video will be added to a future release of Chapbook.
-{% endhint %}</p>
+</aside></p>
 <div style="break-before: page; page-break-before: always;"></div><div class="intro customization">
     <h1 id="customization"><a class="header" href="#customization">Customization</a></h1>
 </div>
@@ -1497,7 +1497,7 @@ Applies to:</p>
 <li><code>config.style.page.header.font</code></li>
 <li><code>config.style.page.header.link.font</code></li>
 <li><code>config.style.page.header.link.active.font</code>
-{% endhint %}</li>
+</aside></li>
 </ul>
 <p>Chapbook uses a concise notation for specifying text style. Below is a simple example:</p>
 <pre><code>Palatino 18
@@ -1541,7 +1541,7 @@ Applies to: </p>
 <li><code>config.style.page.link.lineColor</code></li>
 <li><code>config.style.page.link.active.color</code></li>
 <li><code>config.style.page.link.active.lineColor</code>
-{% endhint %}</li>
+</aside></li>
 </ul>
 <p>Although you don't have to use it, Chapbook has a built-in color palette called <a href="https://yeun.github.io/open-color/">Open Color</a>. It has a versatile range of hues that are designed to harmonize with each other.</p>
 <p>Besides <code>black</code> and <code>white</code>, Open Color has 13 base hues:</p>
@@ -1929,7 +1929,7 @@ What would you like to name your loyal canine companion?
 <p>Note that as above, the variable name should be quoted, but <code>false</code> should not.</p>
 <p>{% hint style='info' %}
 The restriction on navigation only applies to player-initiated navigation. A required text input will not block navigation initiated by the story itself, or the player choosing to restart the story.
-{% endhint %}</p>
+</aside></p>
 <p>You also do not have to save a text input's value to a variable, if for some reason you won't need the value later. To do this, write <code>{text input}</code> or <code>{text input, required: true}</code>. </p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="dropdown-menus-and-cycling-links"><a class="header" href="#dropdown-menus-and-cycling-links">Dropdown Menus and Cycling Links</a></h1>
 <p>Instead of allowing any kind of input at all from a player, you may want to contrain them to a specific set of choices. Chapbook has two mechanisms for this that look different to the player, but behave identically behind the scenes: menus and cycling links.</p>
@@ -2022,9 +2022,9 @@ engine.extend('1.0.0', () =&gt; {
 <li><code>match</code>: a regular expression that the template engine will look for to render your insert. Leave out the curly braces; the template engine will take care of this for you. Inserts must always have at least one space in their <code>match</code> property, so that they can never be mistaken for a variable insert.</li>
 <li><code>render</code>: a function that returns a string for what should be displayed. The returned value will be eventually rendered as Markdown.</li>
 </ul>
-<p>{% hint style='danger' %}
+<p><aside data-hint="danger">
 Do not mutate <code>config.template.inserts</code> directly, e.g. with <code>config.template.inserts.push()</code> or direct assignment. Doing so may cause incorrect behavior.
-{% endhint %}</p>
+</aside></p>
 <p>You may remember that inserts <a href="advanced/../modifiers-and-inserts/link-inserts.html">can take multiple parameters</a>. Here's a more complex example that demonstrates this:</p>
 <pre><code>[JavaScript]
 engine.extend('1.0.0', () =&gt; {
