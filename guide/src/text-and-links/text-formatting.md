@@ -2,7 +2,7 @@
 
 Of course, you can type paragraphs into a Twine passage in Chapbook and it will display them as you would expect. But for other kinds of formatting, such as bold or italics, Chapbook follows the syntax of a popular markup language called [Markdown][markdown].
 
-The term 'markup language' might sound complex, but in reality it's just a set of conventions of how to represent formatting in plain text. For example, to make part of your text italicized when displayed, you simply type asterisks around it, `*like so*`.
+The term 'markup language' might sound complex, but in reality it's just a set of conventions of how to represent formatting in plain text. For example, to make part of your text italicized when displayed, you type asterisks around it, `*like so*`.
 
 If you've never used Markdown before, try using the [dingus][dingus] as you read this section. It's an online playground with a funny name that not only allows you to quickly see how text will be rendered, but also has a cheatsheet that summarizes the different formatting available to you. Bear in mind, however, that Chapbook has a few extra formatting options available to you above and beyond the standard Markdown set.
 
@@ -28,12 +28,22 @@ It doesn't matter whether you use asterisks or underscores, so long as you're co
 | -------------------------------------- | ------------------------------------ |
 | `**"I'll _murder_ you,"** she hissed.` | **"I'll _murder_ you,"** she hissed. |
 
+## Underlined text
+
+Underlined text is often avoided on the web because underlining is used as a convention to mark text as a hyperlink, and in many case, italicizing text is preferable to underlining it.[^2] However, if you'd like to underline plain text, it can be done by writing `<span style="text-decoration:underline">` and `</span>` around it.
+
+(There is also a `<u>` HTML tag that originally was a signal to underline text, and still does so in many web browsers. But its meaning has changed to "text that is annotated in some way"; for example, underlined because it's misspelled.)
+
+| Typed                                  | Displayed                            |
+| -------------------------------------- | ------------------------------------ |
+| `This isn't a <span style="text-decoration:underline">link</span> but it feels like it should be.` | This isn't a <span style="text-decoration:underline">link</span> but it feels like it should be. |
+
 ## Monospaced Type
 
 To set text in a monospaced typeface, `like this`, type backticks (<code>`</code>) around it.
 
-| Typed                                    | Displayed                   |
-| ---------------------------------------- | --------------------------- |
+| Typed                                      | Displayed                   |
+| ------------------------------------------ | --------------------------- |
 | <code>\`Beep boop,\` HAL commented.</code> | `Beep boop,` HAL commented. |
 
 ## Small Caps
@@ -111,11 +121,12 @@ You can also enter HTML into a passage without any extra code surrounding it. It
 
 Chapbook formatting differs from standard Markdown in how it displays blockquotes--that is, a long stretch of text, often multiple paragraphs, that is indented to indicate it isn't part of the main text. Markdown uses `>` at the start of a line to indicate this. However, Chapbook uses the `>` to mark text as part of a [fork][forks] instead. If you'd like to display a block quotation, put `<blockquote>` and `</blockquote>` around it.
 
-| Typed                                                                                                                                                                                                                                                | Displayed                                                                                                                                                                                                                                                   |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Typed                                                                                                                                                                                                                                                                                | Displayed                                                                                                                                                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <code>&lt;blockquote&gt;Call me Ishmael. Some years ago--never mind how long precisely--having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.&lt;/blockquote&gt;</code> | <blockquote>Call me Ishmael. Some years ago--never mind how long precisely--having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.</blockquote> |
 
 [^1]: Underscores as italics have a tangled history behind them; they resemble underlines, which were more-or-less invented as a workaround for typewriters being unable to italicize words.
+[^2]: Underlines were originally a proofreading convention to tell typesetters to italicize the text, in fact.
 
 [markdown]: https://daringfireball.net/markdown
 [dingus]: https://daringfireball.net/projects/markdown/dingus

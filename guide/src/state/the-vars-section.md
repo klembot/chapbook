@@ -21,9 +21,9 @@ When the player visits this passage, Chapbook will add six variables to the stor
 
 Vars sections never display anything to the player; this is so that, for example, you can set a variable named `doomedToDieInFiveMinutes` and the player will be none the wiser unless you wish it.
 
-{% hint style='info' %}
-If a passage is embedded in another using the `{embed passage}` modifier, its vars section will also take effect.
-{% endhint %}
+<aside data-hint="info">
+If a passage is embedded in another using the <code>{embed passage}</code> modifier, its vars section will also take effect.
+</aside>
 
 You may only have one vars section in each passage, but then there's really only ever need for one. The name of state variables must follow a few rules, too. They must start with a letter (upper or lowercase), underscore (`_`), or dollar sign (`$`); after the first character can come any combination of the preceding kinds of characters as well as digits.[^1]
 
@@ -31,22 +31,28 @@ Sadly, you can't use spaces in your variable names. Because of this, a common pr
 
 Another common practice is to put an underscore in front of variable names when the value will only be used in the current passage. This practice is just a hint to yourself; Chapbook does not enforce this usage.[^2]
 
-{% hint style='info' %}
-A variable name can contain periods (`.`), but they carry a special meaning. Until you've read [Objects and Lookup Values](objects-and-lookups.md), it's best to leave them out of variable names.
-{% endhint %}
+<aside data-hint="info">
+A variable name can contain periods (<code>.</code>), but they carry a special meaning. Until you've read <a href="objects-and-lookups.html">Objects and Lookup Values</a>, it's best to leave them out of variable names.
+</aside>
 
-{% hint style='danger' %}
+<aside data-hint="danger">
+<p>
 Chapbook and web browsers reserve certain variable names for their own use. If you try to use a variable whose name overlaps them, unpredictable things may happen, so you should avoid them. Chapbook reserves the following names:
+</p>
 
-- `browser`
-- `engine`
-- `now`
-- `passage`
-- `random`
-- `story`
+<ul>
+<li><code>browser</code></li>
+<li><code>engine</code></li>
+<li><code>now</code></li>
+<li><code>passage</code></li>
+<li><code>random</code></li>
+<li><code>story</code></li>
+</ul>
 
-The browser reserves quite a few (over two hundred at time of writing), but you're unlikely to want to use most of them, like `ondeviceorientation`. See [the exhaustive list](https://developer.mozilla.org/en-US/docs/Web/API/Window#Properties) for more details.
-{% endhint %}
+<p>
+The browser reserves quite a few (over two hundred at time of writing), but you're unlikely to want to use most of them, like <code>ondeviceorientation</code>. See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window#Properties">the exhaustive list</a> for more details.
+</p>
+</aside>
 
 The only time variable names are shown to a player is if an error occurs in your story while they are playing it, so choose names that are easy to remember and descriptive. There's no need for a `clueF` variable when you can have `sawFootprintsInVault` instead.
 
@@ -116,9 +122,9 @@ True only if both sides are true.
 * <code>&#124;&#124;</code>, "or"  
 True if one or both sides are true.
 
-{% hint style='danger' %}
+<aside data-hint="danger">
 You cannot use inserts or modifiers in vars sections. They only work inside the displayed text of your passage.
-{% endhint %}
+</aside>
 
 ## Clarifying Expressions With Parentheses
 

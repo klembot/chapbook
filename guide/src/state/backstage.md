@@ -6,7 +6,7 @@ State can be very slippery to work with, as it's not normally directly visible i
 
 Under the State tab, you'll find a Variables heading. This shows the current state of your story as you play. You can also select a value on the right side of the variables table and enter a new one--press the Return or Enter key when you're done to set the variable. You may only enter values in the variables table, not expressions.
 
-If the Show Defaults checkbox is ticked, Chapbook will show various built-in variables--mainly related to Chapbook's configuration. See [Customization][customization] for more details.
+If the Show Defaults checkbox is ticked, Chapbook will show various built-in variables--mainly related to Chapbook's configuration. See [Customization][../customization/index.md] for more details.
 
 ## State Snaphots
 
@@ -14,12 +14,10 @@ Beneath the variables table is the Snapshots heading. Snapshots allow you to qui
 
 Use the &times; button at the end of a snapshot button to remove it. Snapshots are saved to your web browser only.
 
-{% hint style='working' %}
+<aside data-hint="working">
 Exporting snapshots for use by other people working on your story may come in a future version of Chapbook.
-{% endhint %}
+</aside>
 
 ## State in History
 
 The History tab also shows changes to state as you navigate through a story. If a passage changes a variable, you'll see a separate row in the history table showing that change. This is informational only--you cannot change variables from the History tab.
-
-[customization]: ../customization/index.md
