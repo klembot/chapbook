@@ -7,7 +7,7 @@ There are two other differences between sound effects and ambient audio:
 - There can only be one ambient sound playing at a time under normal circumstances.
 - Sound effects are preloaded when your story begins. This is so that when you ask for an effect to be played in your story, there will be as little delay as possible before it begins playback. However, this means that you should be careful about the file size of the sound effects you use. The preloading process takes place in the background as players interact with your story, so large sound effects will not delay the start of your story. But it's still wasteful to load large files.
 
-You should also make sure that all your sounds are in MP3 format. There are other types of audio formats, such as Ogg Theora or WAV, but browser support varies for each of these. MP3 is as universal a format as possible. There are many applications, including the open-source [Audacity], that can convert audio files into MP3 format for you.
+You should also make sure that all your sounds are in MP3 format. There are other types of audio formats, such as Ogg Vorbis or WAV, but browser support varies for each of these. MP3 is as universal a format as possible. There are many applications, including the open-source [Audacity], that can convert audio files into MP3 format for you.
 
 ## Sound Effects
 

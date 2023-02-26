@@ -201,9 +201,9 @@ such as numbers, must not have quotation marks around them. </li>
 </p>
 <p>You can also leave off the <code>label</code> property and just write <code>{back link}</code>: in this case, Chapbook will assume you'd like it to use the word 'Back' as the link label.</p>
 <p>If Chapbook is unable to understand the contents of an insert, it displays it as-is. This is so that you can otherwise use curly brackets in your text.</p>
-<p>{% hint style='danger' %}
+<p><aside data-hint="danger">
 You cannot nest inserts inside each other.
-{% endhint %}</p>
+</aside></p>
 <h2 id="restarting-the-story"><a class="header" href="#restarting-the-story">Restarting the Story</a></h2>
 <p>There's another insert very similar to <code>{back link}</code> that's named <code>{restart link}</code>. Instead of going to a previous passage, it takes the player back to the very beginning of the story. You could of course link back to the first passage by name, but for now, consider this a handy shortcut. <code>{restart link}</code> also resets other aspects of Chapbook's operation, as you'll learn in <a href="../state/continuity.html">Continuity Between Sessions</a>.</p>
 <p>As with <code>{back link}</code>, <code>{restart link}</code> allows you to specify a label:</p>

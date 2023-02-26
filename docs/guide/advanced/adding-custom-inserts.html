@@ -160,9 +160,9 @@ engine.extend('1.0.0', () =&gt; {
 <li><code>match</code>: a regular expression that the template engine will look for to render your insert. Leave out the curly braces; the template engine will take care of this for you. Inserts must always have at least one space in their <code>match</code> property, so that they can never be mistaken for a variable insert.</li>
 <li><code>render</code>: a function that returns a string for what should be displayed. The returned value will be eventually rendered as Markdown.</li>
 </ul>
-<p>{% hint style='danger' %}
+<p><aside data-hint="danger">
 Do not mutate <code>config.template.inserts</code> directly, e.g. with <code>config.template.inserts.push()</code> or direct assignment. Doing so may cause incorrect behavior.
-{% endhint %}</p>
+</aside></p>
 <p>You may remember that inserts <a href="../modifiers-and-inserts/link-inserts.html">can take multiple parameters</a>. Here's a more complex example that demonstrates this:</p>
 <pre><code>[JavaScript]
 engine.extend('1.0.0', () =&gt; {

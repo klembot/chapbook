@@ -24,7 +24,7 @@ This will work the same way as the previous example, only it will show the conte
 
 {% hint style='info' %}
 A passage shown by a reveal link will not be recorded in a session's history.
-{% endhint %}
+</aside>
 
 When using a reveal link with a passage containing multiple paragraphs, Chapbook inserts the paragraphs in such a way that the surrounding text's order is maintained.
 

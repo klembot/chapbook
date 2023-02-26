@@ -18,16 +18,17 @@ The values you set for page, header, and footer styles inherit from each other. 
 
 ## Setting Text Style
 
-{% hint style="info" %}
+<aside data-hint="info">
 Applies to:
 
-- `config.style.page.font`
-- `config.style.page.link.font`
-- `config.style.page.link.active.font`
-- `config.style.page.header.font`
-- `config.style.page.header.link.font`
-- `config.style.page.header.link.active.font`
-{% endhint %}
+<ul>
+<li><code>config.style.page.font</code></li>
+<li><code>config.style.page.link.font</code></li>
+<li><code>config.style.page.link.active.font</code></li>
+<li><code>config.style.page.header.font</code></li>
+<li><code>config.style.page.header.link.font</code></li>
+<li><code>config.style.page.header.link.active.font</code></li>
+</aside>
 
 Chapbook uses a concise notation for specifying text style. Below is a simple example:
 
@@ -77,20 +78,21 @@ The omitted parts are inherited as described above.
 
 ## Colors
 
-{% hint style="info" %}
-Applies to: 
-- `config.style.backdrop`
-- `config.style.page.color`
-- `config.style.page.link.color`
-- `config.style.page.link.lineColor`
-- `config.style.page.link.active.color`
-- `config.style.page.link.active.lineColor`
-- `config.style.page.color`
-- `config.style.page.link.color`
-- `config.style.page.link.lineColor`
-- `config.style.page.link.active.color`
-- `config.style.page.link.active.lineColor`
-{% endhint %}
+<aside data-hint="info">
+Applies to:
+<ul>
+<li><code>config.style.backdrop</code></li>
+<li><code>config.style.page.color</code></li>
+<li><code>config.style.page.link.color</code></li>
+<li><code>config.style.page.link.lineColor</code></li>
+<li><code>config.style.page.link.active.color</code></li>
+<li><code>config.style.page.link.active.lineColor</code></li>
+<li><code>config.style.page.color</code></li>
+<li><code>config.style.page.link.color</code></li>
+<li><code>config.style.page.link.lineColor</code></li>
+<li><code>config.style.page.link.active.color</code></li>
+<li><code>config.style.page.link.active.lineColor</code></li>
+</aside>
 
 Although you don't have to use it, Chapbook has a built-in color palette called [Open Color][open-color]. It has a versatile range of hues that are designed to harmonize with each other.
 

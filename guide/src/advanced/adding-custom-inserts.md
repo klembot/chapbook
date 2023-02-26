@@ -14,16 +14,16 @@ engine.extend('1.0.0', () => {
 
 You can also place code like this into your story's JavaScript in Twine--this uses the `[JavaScript]` modifier for clarity.[^1]
 
-First, any extension of the Chapbook engine must be wrapped in a `engine.extend()` function call. The first argument is the minimum version of Chapbook required to make your insert work; this is so that if you share your customization, anyone plugging it into a Chapbook version it won't work in will receive a harmless warning, instead of the engine crashing with an error. Chapbook follows [semantic versioning] to assist with this.
+First, any extension of the Chapbook engine must be wrapped in a `engine.extend()` function call. The first argument is the minimum version of Chapbook required to make your insert work; this is so that if you share your customization, anyone plugging it into a Chapbook version it won't work in will receive a harmless warning, instead of the engine crashing with an error. Chapbook follows [semantic versioning](https://semver.org/) to assist with this.
 
-The second argument to `engine.extend()` is the customization code you'd like to run. In this function, we add a new insert to `config.template.inserts` using [array spread syntax]. Every item in `config.template.inserts` must be an object with two properties:
+The second argument to `engine.extend()` is the customization code you'd like to run. In this function, we add a new insert to `config.template.inserts` using [array spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_array_literals). Every item in `config.template.inserts` must be an object with two properties:
 
 -   `match`: a regular expression that the template engine will look for to render your insert. Leave out the curly braces; the template engine will take care of this for you. Inserts must always have at least one space in their `match` property, so that they can never be mistaken for a variable insert.
 -   `render`: a function that returns a string for what should be displayed. The returned value will be eventually rendered as Markdown.
 
-{% hint style='danger' %}
-Do not mutate `config.template.inserts` directly, e.g. with `config.template.inserts.push()` or direct assignment. Doing so may cause incorrect behavior.
-{% endhint %}
+<aside data-hint="danger">
+Do not mutate <code>config.template.inserts</code> directly, e.g. with <code>config.template.inserts.push()</code> or direct assignment. Doing so may cause incorrect behavior.
+</aside>
 
 You may remember that inserts [can take multiple parameters](../modifiers-and-inserts/link-inserts.md). Here's a more complex example that demonstrates this:
 
@@ -84,5 +84,3 @@ Below are some examples as to how these arguments work in practice.
 | `{smiley face: 'happy', size: 'large'}` | `'happy'` | `{size: 'large'}` | `smiley face: 'happy', size: 'large'` |
 
 [^1]: Word of warning--you cannot define an insert in the same passage that you use it in.
-[semantic versioning]: https://semver.org/
-[array spread syntax]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_array_literals

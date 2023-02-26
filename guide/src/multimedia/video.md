@@ -2,9 +2,9 @@
 
 ## Embedding Your Own Video
 
-{% hint style='working' %}
+<aside data-hint="working">
 Chapbook doesn't yet support embedding your own video, but it will.
-{% endhint %}
+</aside>
 
 ## Embedding a YouTube Video
 
@@ -16,12 +16,12 @@ Tell me if you've seen this one before.
 {embed YouTube video: 'https://www.youtube.com/watch?v=9bZkp7q19f0'}
 ```
 
-{% hint style='working' %}
+<aside data-hint="working">
 For now, it's not possible to have a YouTube video start when a passage displays. The player will need to begin playback.
-{% endhint %}
+</aside>
 
-{% hint style='working' %}
+<aside data-hint="working">
 Accessibility features for video will be added to a future release of Chapbook.
-{% endhint %}
+</aside>
 
 [youtube]: https://youtube.com
