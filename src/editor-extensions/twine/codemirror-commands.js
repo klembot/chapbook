@@ -82,12 +82,12 @@ export default {
 		insertPassageLink: "{link to: 'Passage name', label: 'Label text'}",
 		insertRestartLink: "{restart link, label: 'Label text'}",
 		insertRevealPassageLink:
-			"{restart link: 'Label text', passage: 'Passage name'}",
+			"{reveal link: 'Label text', passage: 'Passage name'}",
 		insertRevealTextLink:
 			"{restart link: 'Label text', text: 'Displayed text'}",
 		insertSectionBreak: '\n***\n',
 		insertTextInput:
-			"{text input for: 'variable name', choices: ['choice', 'choice']}",
+			"{text input for: 'variable name'}",
 		insertUnless: '\n[unless condition]\nText\n\n[continued]\n'
 	})
 };
