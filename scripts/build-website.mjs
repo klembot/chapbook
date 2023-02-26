@@ -14,7 +14,7 @@ async function writeHomepage() {
 		pug.renderFile('homepage/index.pug', pkg)
 	);
 	await cpy('homepage/*{.css,.jpeg}', 'docs');
-	await cpy(`logo.svg`, 'docs');
+	await cpy(`src/logo.svg`, 'docs');
 }
 
 async function writeExamples() {
