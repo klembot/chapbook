@@ -22,7 +22,10 @@ export default {
 
 		return htmlify(
 			'select',
-			{'data-cb-menu-set': varName || undefined},
+			{
+				'data-cb-menu-choices': JSON.stringify(props.choices),
+				'data-cb-menu-set': varName ?? undefined
+			},
 			props.choices.map(choice => {
 				const opts = {value: choice};
 
@@ -38,9 +41,18 @@ export default {
 
 event.on('dom-change', el => {
 	if (el.dataset.cbMenuSet) {
-		set(
-			el.dataset.cbMenuSet,
-			el.querySelectorAll('option')[el.selectedIndex].value
-		);
+		const choices = JSON.parse(el.dataset.cbMenuChoices);
+		const value = el.querySelectorAll('option')[el.selectedIndex].value;
+
+		// Coerce choices here to strings because the value in the DOM will have
+		// been converted to one.
+
+		const choiceIndex = choices
+			.map(choice => (typeof choice === 'string' ? choice : choice.toString()))
+			.findIndex(choice => choice === value);
+
+		if (choiceIndex !== -1) {
+			set(el.dataset.cbMenuSet, choices[choiceIndex]);
+		}
 	}
 });
