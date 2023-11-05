@@ -19,7 +19,6 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
 <div class="patreon-supporters">
     <ul>
 		<li>Adia Alderson</li>
-		<li>Albert Gyulgazyan</li>
 		<li>Anastasia Salter</li>
 		<li>Andrew Smith</li>
 		<li>Antonio Garcia</li>
@@ -31,10 +30,8 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
 		<li>Cathie LeBlanc</li>
 		<li>Chris Martens</li>
 		<li>Clive Henrick</li>
-		<li>Dan Q</li>
 		<li>Dan Steward</li>
 		<li>David Ball</li>
-		<li>Duane Johnson</li>
 		<li>Emily Short</li>
 		<li>Ian</li>
 		<li>Jim Graziano</li>
@@ -42,23 +39,26 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
 		<li>John Chapman</li>
 		<li>John McDaid</li>
 		<li>José Dias</li>
+		<li>Joshua A. C. Newman</li>
 		<li>JRUndercover</li>
 		<li>Laura Gibbs</li>
+		<li>LDK</li>
 		<li>Leanne Taylor-Giles</li>
 		<li>Luc Schurgers</li>
 		<li>Matt Campbell</li>
 		<li>Molly Jameson</li>
+		<li>Petalbook Interactive</li>
 		<li>Robert Giacinto</li>
-		<li>Robot Parking</li>
 		<li>Sarah Choukah</li>
 		<li>Soliriok</li>
 		<li>Stephen Wardle</li>
 		<li>Stuart Moulthrop</li>
 		<li>Thandle2</li>
 		<li>Tim Thompson</li>
-		<li>Tom</li>
+		<li>Travis</li>
 		<li>Venceremos</li>
 		<li>Whisper</li>
+		<li>治坤 郭</li>
     </ul>
 </div>
 

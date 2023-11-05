@@ -71,10 +71,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -87,11 +89,33 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
@@ -156,7 +180,6 @@
 <div class="patreon-supporters">
     <ul>
 		<li>Adia Alderson</li>
-		<li>Albert Gyulgazyan</li>
 		<li>Anastasia Salter</li>
 		<li>Andrew Smith</li>
 		<li>Antonio Garcia</li>
@@ -168,10 +191,8 @@
 		<li>Cathie LeBlanc</li>
 		<li>Chris Martens</li>
 		<li>Clive Henrick</li>
-		<li>Dan Q</li>
 		<li>Dan Steward</li>
 		<li>David Ball</li>
-		<li>Duane Johnson</li>
 		<li>Emily Short</li>
 		<li>Ian</li>
 		<li>Jim Graziano</li>
@@ -179,23 +200,26 @@
 		<li>John Chapman</li>
 		<li>John McDaid</li>
 		<li>José Dias</li>
+		<li>Joshua A. C. Newman</li>
 		<li>JRUndercover</li>
 		<li>Laura Gibbs</li>
+		<li>LDK</li>
 		<li>Leanne Taylor-Giles</li>
 		<li>Luc Schurgers</li>
 		<li>Matt Campbell</li>
 		<li>Molly Jameson</li>
+		<li>Petalbook Interactive</li>
 		<li>Robert Giacinto</li>
-		<li>Robot Parking</li>
 		<li>Sarah Choukah</li>
 		<li>Soliriok</li>
 		<li>Stephen Wardle</li>
 		<li>Stuart Moulthrop</li>
 		<li>Thandle2</li>
 		<li>Tim Thompson</li>
-		<li>Tom</li>
+		<li>Travis</li>
 		<li>Venceremos</li>
 		<li>Whisper</li>
+		<li>治坤 郭</li>
     </ul>
 </div>
 <p>Supporters at particular tiers receive access to devlogs and other rewards. If you use Chapbook, please consider <a href="https://patreon.com/klembot">supporting the project on Patreon</a>.</p>
