@@ -1,0 +1,12 @@
+backstage-state-variables .variables {
+	display: flex;
+	flex-direction: column;
+	gap: calc(var(--backstage-grid) / 2);
+	margin: calc(var(--backstage-grid)) 0;
+}
+
+backstage-state-variables .variables label {
+	display: grid;
+	gap: var(--backstage-grid);
+	grid-template-columns: 15em 1fr;
+}

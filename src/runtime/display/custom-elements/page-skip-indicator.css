@@ -1,0 +1,14 @@
+page-skip-indicator {
+	background-image: url('page-skip-indicator-watch.svg');
+	background-size: contain;
+	display: block;
+	height: 50px;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.3s;
+	width: 50px;
+}
+
+page-skip-indicator[active] {
+	opacity: 1;
+}

@@ -1,0 +1,21 @@
+backstage-state-snapshots button[data-add-snapshot] {
+	width: 100%;
+}
+
+backstage-state-snapshots .snapshot-button {
+	display: flex;
+	margin-bottom: var(--backstage-grid);
+}
+
+backstage-state-snapshots .snapshot-button [data-restore] {
+	flex-grow: 1;
+	border-right-color: var(--oc-gray-4);
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+}
+
+backstage-state-snapshots .snapshot-button [data-remove] {
+	border-left: none;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+}

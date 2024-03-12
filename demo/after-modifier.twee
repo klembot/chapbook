@@ -1,0 +1,14 @@
+:: After modifier
+This text appears immediately...
+
+[after 4 seconds]
+... after 4 seconds ...
+
+[after 2 seconds]
+... after 2 seconds ...
+
+[after 3 seconds]
+... after 3 seconds ...
+
+[continue]
+[[Start]]

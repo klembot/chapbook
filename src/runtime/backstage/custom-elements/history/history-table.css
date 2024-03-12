@@ -1,0 +1,36 @@
+backstage-history-table button {
+	display: block;
+	width: 100%;
+}
+
+backstage-history-table table {
+	border-collapse: collapse;
+	margin: var(--backstage-grid) 0;
+	table-layout: fixed;
+}
+
+backstage-history-table thead {
+	/* Visually hide it, but leave it accessible to AX technology. */
+	height: 1px;
+	left: -10000px;
+	overflow: hidden;
+	position: absolute;
+	top: auto;
+	width: 1px;
+}
+
+backstage-history-table tr:not(:last-child) {
+	border-bottom: 1px solid var(--oc-gray-8);
+}
+
+backstage-history-table td {
+	text-overflow: ellipsis;
+	overflow-wrap: break-word;
+	padding: calc(var(--backstage-grid) / 2);
+	vertical-align: top;
+}
+
+backstage-history-table td:first-child {
+	border-right: 1px solid var(--oc-gray-8);
+	width: 45%;
+}

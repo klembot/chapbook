@@ -1,0 +1,6 @@
+:: Restart link insert
+color: 'red'
+--
+This passage sets the variable `color` to `red`. Using this link should restart the story and clear the variable: {restart link}
+
+The same restart link, but with a label: {restart link, label: 'Label'}

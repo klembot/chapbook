@@ -1,0 +1,6 @@
+backstage-tabs {
+	background: var(--oc-gray-1);
+	border: 1px solid var(--oc-gray-5);
+	border-radius: var(--backstage-grid);
+	display: flex;
+}

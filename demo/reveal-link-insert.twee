@@ -1,0 +1,19 @@
+:: Reveal link insert
+
+This link {reveal link: 'opens in place', text: 'shows **Markdown** and a [[link->Start]]'}.
+
+This link {reveal link: 'shows a separate passage.', passage: 'Revealed passage'}
+
+This link {reveal link: 'shows a longer separate passage.', passage: 'Long revealed passage'}
+
+This is text in the original passage.
+
+
+:: Revealed passage
+points to a passage with a single line of text. This text should be italicized: _italics_
+
+
+:: Long revealed passage
+points to a passage with two paragraphs. This line should be in the same paragraph as the text leading up to it.
+
+This text should be in a separate paragraph.

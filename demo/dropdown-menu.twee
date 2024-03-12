@@ -1,0 +1,17 @@
+:: Dropdown menu
+color: 'red'
+--
+
+Color dropdown (should be preset to "red"): {dropdown menu for: 'color', choices: ['orange', 'red', 'yellow']}
+
+Dropdown for a variable that has no pre-existing value: {dropdown menu for: 'newDropdown', choices: ['vanilla', 'chocolate', 'strawberry', 'mint']}
+
+[[Check dropdown menu result]]
+
+[[Start]]
+
+
+:: Check dropdown menu result
+Color is {color}. New variable is {newDropdown}.
+
+[[Start]]

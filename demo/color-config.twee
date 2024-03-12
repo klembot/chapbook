@@ -1,0 +1,11 @@
+:: Color config
+config.style.backdrop: 'red-1'
+config.style.page.color: 'blue-9 on blue-1'
+config.style.page.link.color: 'green'
+config.style.page.link.lineColor: '#0000ff'
+config.style.page.link.active.color: 'indigo-5'
+config.style.page.link.active.lineColor: 'orange-7'
+--
+This sets colors on all parts of the page, including links. This change is permanent unless another passage changes it.
+
+[[Start]]

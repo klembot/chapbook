@@ -1,0 +1,8 @@
+:: HTML in Markdown
+A sentence with a <span style="color: red">red span</span> in it.
+
+<div style="padding: 1em; border: 1px solid green">
+This is a styled div. Two underscores should be visible around this sentence: __You can't mix HTML and Markdown.__
+</div>
+
+[[Start]]
