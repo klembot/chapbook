@@ -21,6 +21,12 @@ jobs:
         run: npx playwright install --with-deps
       - name: Tests
         run: npm run e2e:extensions
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report-editor-extensions/
+          retention-days: 30
   e2e-tests-runtime:
     runs-on: ubuntu-latest
     steps:
@@ -35,6 +41,11 @@ jobs:
         run: npx playwright install --with-deps
       - name: Tests
         run: npm run e2e
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report-runtime/
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -59,4 +70,3 @@ jobs:
         run: npm ci
       - name: Unit tests
         run: npm test
-      
