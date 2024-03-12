@@ -23,4 +23,5 @@ updateReferences();
 
 // Place the instance into global scope for testing.
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 (window as any).cm = cm;
