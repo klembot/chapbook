@@ -7,7 +7,7 @@ on:
     branches: [develop]
 
 jobs:
-  extensions-e2e-tests:
+  e2e-tests-editor-extensions:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -21,19 +21,7 @@ jobs:
         run: npx playwright install --with-deps
       - name: Tests
         run: npm run e2e:extensions
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-          cache: npm
-      - name: Install
-        run: npm ci
-      - name: Lint
-        run: npm run lint
-  runtime-e2e-tests:
+  e2e-tests-runtime:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -47,6 +35,18 @@ jobs:
         run: npx playwright install --with-deps
       - name: Tests
         run: npm run e2e
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+      - name: Install
+        run: npm ci
+      - name: Lint
+        run: npm run lint
   unit-tests:
     runs-on: ubuntu-latest
     steps:
