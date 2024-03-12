@@ -1,0 +1,41 @@
+:: JavaScript
+- [[Test basic JavaScript]]
+- [[Display content using JavaScript]]
+- [[Use variables in JavaScript]]
+
+[[Start]]
+
+
+:: Test basic JavaScript
+[JavaScript]
+window.alert('Hello');
+
+[continue]
+You should have seen a browser alert.
+
+[[JavaScript]]
+
+
+:: Display content using JavaScript
+This should count to 10:
+
+[JavaScript]
+for (let i = 1; i <= 10; i++) {
+    write(i + '... ');
+}
+
+[continue]
+[[JavaScript]]
+
+
+:: Use variables in JavaScript
+color: 'red'
+--
+
+[JavaScript]
+if (color === 'red') {
+	color = 'green';
+}
+
+[continue]
+Color is {color} (should be green, not red).

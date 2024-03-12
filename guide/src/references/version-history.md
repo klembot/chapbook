@@ -1,5 +1,67 @@
 # Version History
 
+## 2.0.0, 12 March 2024
+
+This version contains breaking changes from the 1.x series, but the majority of
+authors won't need to make any changes to their stories to start using this
+version. The 2.0 version is mostly a behind-the-scenes update.
+
+_Changes authors should be aware of_
+
+- Chapbook 2 now relies heavily on CSS variables and custom elements in the
+  browser. Both these features have been available in mainstream web browsers
+  since 2018 (six years ago at time of writing), but this means that old
+  browsers will not play Chapbook 2.0 stories.
+- The micro version of Chapbook, which removed backstage code, is no longer
+  available. This is because thanks to refactoring the code, the full version of
+  Chapbook 2.0 is now smaller than the micro version of 1.x was, and also
+  because very few people used the micro version.
+- The way to add custom inserts and modifiers has changed. Instead of modifying
+  state variables, call
+  [`engine.template.inserts.add()`](../advanced/adding-custom-inserts.html) or
+  [`engine.template.modifiers.add()`](../advanced/adding-custom-modifiers.html).
+  This change was made so that all of Chapbook's state can be serialized to
+  JSON. In the 1.x versions, non-serializable things like functions were allowed
+  to be added to state, but they wouldn't be saved permanently. This led to
+  unpredictable behavior.
+- Setting fonts to use `small caps` now uses native CSS (specifically, the
+  [`font-variant-caps`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-caps)
+  property) instead of trying to imitate small caps styling.
+- In the unlikely event that the `trail` variable has become malformed, the
+  lookup `passage.visits` will have the value `0` instead of `undefined`.
+
+_Changes people extending Chapbook should be aware of_
+
+- The DOM structure of the page has changed considerably. Chapbook now uses
+  custom elements instead of `data-cb-` attributes for behavior. \
+  
+  One popular `data-cb-` attribute that extensions used was `data-cb-go`, which
+caused navigation to a passage when an element was clicked. Here is JavaScript
+code that can be added to a story that will carry over this behavior if an extension
+you use depends on it:
+
+```
+window.addEventListener('click', ({target}) => {  
+  const goable = target.closest('[data-cb-go]');
+  
+  if (goable) {
+    window.go(goable.dataset.cbGo);
+  }
+});
+```
+
+- Instead of managing its own event bus, Chapbook now dispatches custom events
+  on `window`. The names of these events have changed. See [the API
+  documentation](../../api/) for more details.
+
+- The `engine.render()` function has been moved to `engine.template.render()`.
+
+- Chapbook's backstage components now use the prefix `chapbookbackstage-` for
+  storing notes and state snapshots in browser local storage instead of `cb-`.
+  This better parallels the local storage keys used by the rest of Chapbook
+  code, which uses `chapbook-`.
+
+
 ## 1.2.3, 26 February 2023
 
 - The `{cycling link}` and `{dropdown menu}` inserts now handle numeric choices

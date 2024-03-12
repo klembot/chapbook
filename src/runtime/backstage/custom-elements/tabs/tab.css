@@ -1,0 +1,28 @@
+backstage-tab {
+	border-left: 1px solid var(--oc-gray-4);
+	cursor: pointer;
+	flex-grow: 1;
+	padding: calc(var(--backstage-grid) / 2);
+	text-align: center;
+}
+
+backstage-tab:hover {
+	background: white;
+}
+
+backstage-tab:first-child {
+	border-left: none;
+	border-bottom-left-radius: var(--backstage-grid);
+	border-top-left-radius: var(--backstage-grid);
+}
+
+backstage-tab:last-child {
+	border-bottom-right-radius: var(--backstage-grid);
+	border-top-right-radius: var(--backstage-grid);
+}
+
+backstage-tab[aria-selected="true"] {
+	background-color: white;
+	cursor: default;
+	font-weight: bold;
+}

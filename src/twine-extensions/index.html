@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Editor Extensions Test</title>
+		<meta charset="utf-8" />
+	</head>
+	<body>
+		<textarea style="width: 300px" data-testid="source">myVar: true
+myVar2 (condition): 'red'
+myVar3.myVar3: 10
+--
+This is text.
+
+[Modifier]
+Modified text.
+
+[[This is a link on a line by itself]]
+
+This is a [[link]], {insert}, [[pointer link->passage]], {link to: 'passage 1'}, [[pointer link|passage]], {reveal link, passage: 'passage 2'}</textarea>
+		<ul id="references">
+		</ul>
+		<script src="dev.ts" type="module"></script>
+		<style>
+			.CodeMirror {
+				border: 1px solid gray;
+				float: left;
+				height: 90vh;
+				width: 400px;
+			}
+
+			#references {
+				margin-left: 420px;
+			}
+		</style>
+	</body>
+</html>

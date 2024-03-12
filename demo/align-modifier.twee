@@ -1,0 +1,11 @@
+:: Align modifier
+[align center]
+Centered
+
+[align right]
+Right-aligned
+
+[align left]
+Left-aligned
+
+[[Start]]

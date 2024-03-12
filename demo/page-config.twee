@@ -1,0 +1,12 @@
+:: Page config
+color: 'red'
+config.footer.left: '{color} **left** footer'
+config.footer.center: '{color} **center** footer'
+config.footer.right: '{color} **right** footer'
+config.header.left: '{color} **left** header'
+config.header.center: '{color} **center** header'
+config.header.right: '{color} **right** header'
+--
+This sets all parts of the header and footer. This change is permanent unless another passage changes it.
+
+[[Start]]

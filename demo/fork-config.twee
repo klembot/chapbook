@@ -1,0 +1,22 @@
+:: Fork config
+This allows testing of the fork style config.
+
+Set divider style to: {dropdown menu for: 'config.style.page.fork.divider.style', choices: ['dashed', 'dotted', 'double', 'solid', 'none']}
+
+Set divider size to: {text input for: 'config.style.page.fork.divider.size'}
+
+Set divider color to: {text input for: 'config.style.page.fork.divider.color'}
+
+[[See result]]
+
+[[Start]]
+
+:: See result
+
+These links return to the start.
+
+> [[Lorem ipsum->Start]]
+> [[Dolor sit amet->Start]]
+> [[Consectetur adipiscing elit->Start]]
+
+[[Change config->Fork config]]

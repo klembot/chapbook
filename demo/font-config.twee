@@ -1,0 +1,14 @@
+:: Font config
+config.style.page.font: "serif 24 bold"
+config.style.page.link.font: "serif 30 italic"
+config.style.page.link.active.font: "serif 48"
+config.style.page.header.font: "monospace 24 bold"
+config.style.page.header.link.font: "monospace 30 italic"
+config.style.page.header.link.active.font: "monospace 48"
+config.style.page.footer.font: "sans-serif 24 bold"
+config.style.page.footer.link.font: "sans-serif 30 italic"
+config.style.page.footer.link.active.font: "sans-serif 48"
+--
+This sets fonts on all parts of the page, including links. This change is permanent unless another passage changes it.
+
+[[Start]]

@@ -1,0 +1,7 @@
+#backdrop {
+	align-items: center;
+	background-color: var(--backdrop-color);
+	display: flex;
+	justify-content: center;
+	min-height: 100vh;
+}

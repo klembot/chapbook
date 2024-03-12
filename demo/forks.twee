@@ -1,0 +1,27 @@
+:: Forks
+
+> [[Start]]
+
+Multiple links in a fork:
+
+> [[Start]]
+> [[Start]]
+> [[Start]]
+
+Fork with conditions on links:
+
+[if true]
+> [[Start]]
+
+[if true]
+> [[Start]]
+
+[if true]
+
+> [[Start]]
+
+Forks with very long text options (all links still return to Start):
+
+> [[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in ullamcorper purus. Nulla eget porttitor quam, ut imperdiet augue. Ut convallis eros felis, mattis blandit lacus malesuada nec.->Start]]
+> [[Short text->Start]]
+> [[Mauris vitae nulla id metus condimentum ultrices. Nunc cursus sem libero. Cras condimentum, augue eu fringilla ultrices, purus elit ornare metus, in sollicitudin lacus nulla non ante. Nulla condimentum magna finibus, feugiat quam quis, viverra sapien. Integer dapibus faucibus tellus sit amet vulputate.->Start]]

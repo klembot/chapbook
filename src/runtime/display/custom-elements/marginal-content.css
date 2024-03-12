@@ -1,0 +1,16 @@
+marginal-content {
+	display: flex;
+	justify-content: space-between;
+}
+
+marginal-content[hidden] {
+	display: none;
+}
+
+marginal-content .center {
+	text-align: center;
+}
+
+marginal-content .right {
+	text-align: right;
+}

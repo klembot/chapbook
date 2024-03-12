@@ -1,0 +1,66 @@
+:: Start
+
+This exercises all of Chapbook's functionality.
+
+Basics
+
+- [[Errors]]
+- [[Forks]]
+- [[HTML in Markdown]]
+- [[Links]]
+- [[Markdown formatting]]
+- [[Variables]]
+
+Config
+
+- [[Color config]]
+- [[External fonts]]
+- [[Font config]]
+- [[Fork config]]
+- [[Page config]]
+
+Extensions
+
+- [[CSS]]
+- [[Custom insert]]
+- [[Custom modifier]]
+- [[JavaScript]]
+
+Input
+
+- [[Cycling link]]
+- [[Dropdown menu]]
+- [[Text input]]
+
+Inserts
+
+- [[Back link insert]]
+- [[Embed passage insert]]
+- [[Passage link insert]]
+- [[Restart link insert]]
+- [[Reveal link insert]]
+
+Lookups
+
+- [[Lookups]]
+- [[Randomness]]
+
+Modifiers
+
+- [[After modifier]]
+- [[Align modifier]]
+- [[If modifier]]
+- [[If/else modifier]]
+- [[Ifalways and ifnever modifiers]]
+- [[Note modifier]]
+- [[Unless modifier]]
+
+Multimedia
+
+- [[Audio]]
+- [[Images]]
+- [[Video]]
+
+Variables
+- [[Setting variables]]
+- [[Displaying variables]]

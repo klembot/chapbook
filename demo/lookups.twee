@@ -1,0 +1,21 @@
+:: Lookups
+
+`browser.height`: {browser.height}  
+`browser.online`: {browser.online}  
+`browser.width`: {browser.width}  
+`engine.version`: {engine.version}  
+`now.datestamp`: {now.datestamp}  
+`now.day`: {now.day}  
+`now.hour`: {now.hour}  
+`now.minute`: {now.minute}  
+`now.month`: {now.month}  
+`now.monthName`: {now.monthName}  
+`now.second`: {now.second}  
+`now.timestamp`: {now.timestamp}  
+`now.weekday`: {now.weekday}  
+`now.year`: {now.year}  
+`passage.name`: {passage.name}  
+`passage.visits`: {passage.visits}  
+`story.name`: {story.name}
+
+[[Start]]

@@ -1,0 +1,8 @@
+backstage-tab-panel {
+	display: block;
+	padding: calc(var(--backstage-grid) / 2) 0;
+}
+
+backstage-tab-panel[hidden] {
+	display: none;
+}

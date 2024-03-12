@@ -1,5 +1,0 @@
-:: Start
-This is one paragraph
-
-[append]
-and only one.

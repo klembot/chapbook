@@ -1,0 +1,94 @@
+@import 'open-color/open-color.css';
+
+body.backstage-visible #backdrop {
+	max-width: 67vw;
+}
+
+backstage-sidebar {
+	--backstage-grid: 10px;
+	background: var(--oc-gray-3);
+	border-left: 1px solid var(--oc-gray-5);
+	bottom: 0;
+	color: var(--oc-gray-8);
+	display: block;
+	font-family: var(--font-system);
+	font-size: 13px;
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 33vw;
+}
+
+backstage-sidebar .content {
+	overflow: auto;
+	padding: var(--backstage-grid);
+	height: 100%;
+	width: 100%;
+}
+
+backstage-sidebar[collapsed] {
+	width: 0;
+}
+
+backstage-sidebar button[data-toggle-collapsed] {
+	background: var(--oc-gray-3);
+	border-bottom: 1px solid var(--oc-gray-5);
+	border-left: 1px solid var(--oc-gray-5);
+	border-right: none;
+	border-top: 1px solid var(--oc-gray-5);
+	border-bottom-left-radius: 60px;
+	border-bottom-right-radius: 0;
+	border-top-left-radius: 60px;
+	border-top-right-radius: 0;
+	color: var(--oc-gray-8);
+	font-size: 20px;
+	height: 60px;
+	min-width: 30px;
+	padding: 0;
+	position: absolute;
+	top: 50%;
+	left: -30px;
+	transform: translateY(-50%);
+	width: 30px;
+}
+
+backstage-sidebar button[data-toggle-collapsed]:hover {
+	background: var(--oc-gray-4);
+	cursor: pointer;
+}
+
+/* Shared styles for children. */
+
+backstage-sidebar button {
+	background: var(--oc-gray-1);
+	border: 1px solid var(--oc-gray-5);
+	border-radius: var(--backstage-grid);
+	cursor: pointer;
+	font-size: 100%;
+	min-width: 40px;
+	padding: calc(var(--backstage-grid) / 2);
+}
+
+backstage-sidebar button:hover {
+	background: white;
+}
+
+backstage-sidebar details summary {
+	cursor: pointer;
+	font-size: 110%;
+	font-variant: small-caps;
+	padding: calc(var(--backstage-grid) / 2) 0;
+	text-transform: lowercase;
+}
+
+backstage-sidebar input, backstage-sidebar textarea {
+	background: var(--oc-gray-1);
+	border: 1px solid var(--oc-gray-5);
+	font: 100% var(--font-system);
+	padding: calc(var(--backstage-grid) / 2);
+}
+
+backstage-sidebar table {
+	max-width: 100%;
+	width: 100%;
+}

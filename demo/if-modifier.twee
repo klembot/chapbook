@@ -1,0 +1,23 @@
+:: If modifier
+count: 5
+--
+[if count > 1]
+Count is greater than 1.
+
+[if count < 10]
+Count is less than 10.
+
+[if count === 5]
+Count is equal to 5.
+
+[if count > 10]
+This text should not display.
+
+[if count < 0]
+This text should not display.
+
+[if count === 1]
+This text should not display.
+
+[continued]
+This text is visible in all cases.

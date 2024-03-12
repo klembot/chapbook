@@ -1,0 +1,11 @@
+:: Passage link insert
+A link to a passage: {link to: 'Another Passage'}
+
+The same link with a label: {link to: 'Another Passage', label: 'Label'}
+
+[[Start]]
+
+:: Another Passage
+This is the passage linked.
+
+[[Start]]

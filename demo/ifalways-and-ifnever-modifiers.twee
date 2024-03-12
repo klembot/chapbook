@@ -1,0 +1,9 @@
+:: Ifalways and ifnever modifiers
+[ifalways false]
+This text is shown even though its condition is false.
+
+[ifnever true]
+This text should not appear.
+
+[continue]
+[[Start]]

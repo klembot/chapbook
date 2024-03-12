@@ -1,0 +1,19 @@
+backstage-notes label {
+	display: block;
+	margin-top: var(--backstage-grid);
+}
+
+backstage-notes textarea {
+	height: 10em;
+	margin: var(--backstage-grid) 0;
+	width: 100%;
+}
+
+backstage-notes .actions {
+	display: flex;
+	gap: var(--backstage-grid);
+}
+
+backstage-notes .actions button {
+	flex-grow: 1;
+}

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+	<rect width="38" height="72" x="31" y="14" fill="#fff" rx="4" />
+	<circle cx="50" cy="50" r="28" fill="#fff" />
+	<rect
+		width="30"
+		height="64"
+		x="35"
+		y="18"
+		fill="#fff"
+		stroke="#000"
+		stroke-width="2"
+		rx="4"
+	/>
+	<circle
+		cx="50"
+		cy="50"
+		r="20"
+		fill="#fff"
+		stroke="#000"
+		stroke-width="2"
+	/>
+	<path
+		stroke="#000"
+		stroke-linecap="round"
+		stroke-width="2"
+		d="M50 50V37"
+	>
+		<animateTransform
+			attributeName="transform"
+			begin="0s"
+			dur="20s"
+			from="0 50 50"
+			repeatCount="indefinite"
+			to="360 50 50"
+			type="rotate"
+		/>
+	</path>
+	<path
+		stroke="#000"
+		stroke-linecap="round"
+		stroke-width="2"
+		d="M50 50h-8"
+	>
+		<animateTransform
+			attributeName="transform"
+			begin="0s"
+			dur="120s"
+			from="0 50 50"
+			repeatCount="indefinite"
+			to="360 50 50"
+			type="rotate"
+		/>
+	</path>
+</svg>

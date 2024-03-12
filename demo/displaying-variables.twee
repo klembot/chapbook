@@ -1,0 +1,12 @@
+:: Displaying variables
+color: 'red'
+money: 1.23
+rich: false
+--
+A string: {color}
+
+A number: {money}
+
+A boolean: {rich}
+
+[[Start]]

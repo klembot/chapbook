@@ -1,0 +1,11 @@
+:: Embed passage insert
+This is text around an embedded passage:
+
+{embed passage: 'Embedded passage'}
+
+This is text after an embedded passage.
+
+This is text {embed passage: 'Embedded passage'} around an embedded passage.
+
+:: Embedded passage
+This is the *embedded* passage.

@@ -1,0 +1,19 @@
+@import 'open-color/open-color.css';
+
+warning-list {
+	background: var(--oc-yellow-0);
+	color: var(--oc-yellow-9);
+	display: block;
+	font-family: var(--font-system);
+	padding: 0.5em;
+}
+
+warning-list[hidden] {
+	display: none;
+}
+
+warning-list ul {
+	list-style-type: none;
+	margin: 0;
+	padding-left: 0;
+}

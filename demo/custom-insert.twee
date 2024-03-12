@@ -1,0 +1,20 @@
+:: Custom insert
+[JavaScript]
+engine.extend('2.0.0', () => {
+	engine.template.inserts.add({
+		match: /^smiley face$/i,
+    render: () => '😀'
+  });
+	console.log('Successfully added insert');
+});
+
+[continue]
+This requires a second click so that after the custom insert is added, a new passage is rendered.
+
+[[Test custom insert]]
+
+:: Test custom insert
+
+This should show an emoji: {smiley face}
+
+[[Start]]
