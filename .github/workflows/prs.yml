@@ -39,7 +39,7 @@ jobs:
         with:
           name: playwright-test-results-editor-extensions
           path: test-results/
-          retention-days: 180
+          retention-days: 90
   e2e-tests-runtime:
     runs-on: ubuntu-latest
     steps:
@@ -72,7 +72,7 @@ jobs:
         with:
           name: playwright-test-results-runtine
           path: test-results/
-          retention-days: 180
+          retention-days: 90
   lint:
     runs-on: ubuntu-latest
     steps:
