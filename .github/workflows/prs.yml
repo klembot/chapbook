@@ -7,7 +7,7 @@ on:
     branches: [develop]
 
 jobs:
-  e2e-tests-editor-extensions:
+  e2e-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,62 +17,13 @@ jobs:
           cache: npm
       - name: Install
         run: npm ci
-      # See https://github.com/microsoft/playwright/issues/7249#issuecomment-1809552398
-      - name: Get installed Playwright version
-        id: playwright-version
-        run: |
-          PLAYWRIGHT_VERSION=$(npm ls @playwright/test | grep @playwright | sed 's/.*@//')
-          echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
-      - name: Cache Playwright browsers
-        id: cache-playwright-browsers
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
       - name: Install Playwright Browsers
         if: steps.cache-playwright-browsers.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps
-      - name: Run tests
+      - name: Run editor extension tests
         run: npm run e2e:extensions
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: playwright-test-results-editor-extensions
-          path: test-results/
-          retention-days: 90
-  e2e-tests-runtime:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-          cache: npm
-      - name: Install
-        run: npm ci
-       # See https://github.com/microsoft/playwright/issues/7249#issuecomment-1809552398
-      - name: Get installed Playwright version
-        id: playwright-version
-        run: |
-          PLAYWRIGHT_VERSION=$(npm ls @playwright/test | grep @playwright | sed 's/.*@//')
-          echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
-      - name: Cache Playwright browsers
-        id: cache-playwright-browsers
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
-      - name: Install Playwright Browsers
-        if: steps.cache-playwright-browsers.outputs.cache-hit != 'true'
-        run: npx playwright install --with-deps
-      - name: Run tests
-        run: npm run e2e -- --ignore-missing-snapshots
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: playwright-test-results-runtine
-          path: test-results/
-          retention-days: 90
+      - name: Run runtime tests
+        run: npm run e2e -- --ignore-snapshots
   lint:
     runs-on: ubuntu-latest
     steps:
