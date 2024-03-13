@@ -2,6 +2,8 @@
 
 ## 2.0.0, 12 March 2024
 
+`https://klembot.github.io/chapbook/use/2.0.0/format.js`
+
 This version contains breaking changes from the 1.x series, but the majority of
 authors won't need to make any changes to their stories to start using this
 version. The 2.0 version is mostly a behind-the-scenes update.
@@ -64,6 +66,8 @@ window.addEventListener('click', ({target}) => {
 
 ## 1.2.3, 26 February 2023
 
+`https://klembot.github.io/chapbook/use/1.2.3/format.js`
+
 - The `{cycling link}` and `{dropdown menu}` inserts now handle numeric choices
   correctly.
 - Fixed a bug where the watch icon that appears when using the `[after
@@ -72,9 +76,13 @@ window.addEventListener('click', ({target}) => {
 
 ## 1.2.2, 5 April 2022
 
+`https://klembot.github.io/chapbook/use/1.2.2/format.js`
+
 - Added Twine editor extensions.
 
 ## 1.2.1, 17 January 2021
+
+`https://klembot.github.io/chapbook/use/1.2.1/format.js`
 
 - If a variable is set to an array, it can now be dereferenced using an insert,
   e.g. `{myArray[1]}`.
@@ -83,6 +91,8 @@ window.addEventListener('click', ({target}) => {
 - Fixed typos in the guide.
 
 ## 1.2.0, 6 July 2020
+
+`https://klembot.github.io/chapbook/use/1.2.0/format.js`
 
 **This introduces a change in how story progress is saved in players' browsers.
 If you re-publish a story with this version of Chapbook that had been published
@@ -106,10 +116,14 @@ with an earlier one, players will lose their progress.**
 
 ## 1.1.1, 17 May 2020
 
+`https://klembot.github.io/chapbook/use/1.1.1/format.js`
+
 - Fixes a bug introduced in 1.1.0 where nested lookup variables (like
   `random.coinFlip`) did not work--which is to say, all of them.
 
 ## 1.1.0, 10 May 2020
+
+`https://klembot.github.io/chapbook/use/1.1.0/format.js`
 
 - Adds a new insert, `{no ambient sound}`, which stops any existing ambient sound.
 - Adds a link to this documentation in the story format's description in Twine.
@@ -123,6 +137,8 @@ with an earlier one, players will lose their progress.**
 - Fixes some inaccurate parts of this guide.
 
 ## 1.0.0, 18 August 2019
+
+`https://klembot.github.io/chapbook/use/1.0.0/format.js`
 
 Initial public release.
 
