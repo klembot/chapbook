@@ -1,0 +1,17 @@
+:: Randomness
+
+`random.fraction`	<span data-testid="fraction">{random.fraction}</span>  
+`random.d4`	<span data-testid="d4">{random.d4}</span>  
+`random.d5`	<span data-testid="d5">{random.d5}</span>  
+`random.d6` <span data-testid="d6">{random.d6}</span>  
+`random.d8` <span data-testid="d8">{random.d8}</span>  
+`random.d10` <span data-testid="d10">{random.d10}</span>  
+`random.d12` <span data-testid="d12">{random.d12}</span>  
+`random.d20` <span data-testid="d20">{random.d20}</span>  
+`random.d25` <span data-testid="d25">{random.d25}</span>  
+`random.d50` <span data-testid="d50">{random.d50}</span>  
+`random.d100` <span data-testid="d100">{random.d100}</span>
+
+[[Re-display this passage->Randomness]]
+
+[[Start]]

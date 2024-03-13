@@ -1,0 +1,16 @@
+:: Text input
+color: 'red'
+--
+Text input for `color` (should be preset to "red"): {text input for: 'color'}
+
+Text input that isn't required: {text input for: 'optional', required: false}
+
+[[Check text input result]]
+
+[[Start]]
+
+
+:: Check text input result
+Color is {color}. Optional variable is {optional}.
+
+[[Start]]

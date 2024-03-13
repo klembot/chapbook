@@ -1,0 +1,12 @@
+:: External fonts
+config.style.fonts.openSans.url: 'open-sans.woff'
+config.style.fonts.openSans.name: 'Open Sans'
+config.style.googleFont: '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap" rel="stylesheet">'
+--
+<span style="font: 24px Nunito">
+This should appear in the Nunito typeface. It was loaded with Google Fonts.
+</span>
+
+<span style="font: 24px 'Open Sans'">
+This should appear in the Open Sans typeface. It was loaded with a local WOFF file.
+</span>

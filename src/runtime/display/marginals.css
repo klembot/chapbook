@@ -1,0 +1,83 @@
+#page > marginal-content[type="footer"] {
+	background-color: var(--page-footer-background-color);
+	border-top: 1px solid black; /* FIXME */
+	color: var(--page-footer-color);
+	font-family: var(--page-footer-font-family);
+	font-size: var(--page-footer-font-size);
+	font-style: var(--page-footer-font-style);
+	font-variant: var(--page-footer-font-variant);
+	font-weight: var(--page-footer-font-weight);
+	text-decoration: var(--page-footer-text-decoration);
+	text-decoration-color: var(--page-footer-text-decoration-color);
+	text-transform: var(--page-footer-text-transform);
+}
+
+#page > marginal-content[type="footer"]  .link {
+	background-color: var(--page-footer-link-background-color);
+	color: var(--page-footer-link-color);
+	font-family: var(--page-footer-link-font-family);
+	font-size: var(--page-footer-link-font-size);
+	font-style: var(--page-footer-link-font-style);
+	font-variant: var(--page-footer-link-font-variant);
+	font-weight: var(--page-footer-link-font-weight);
+	text-decoration: var(--page-footer-link-text-decoration);
+	text-decoration-color: var(--page-footer-link-text-decoration-color);
+	text-transform: var(--page-footer-link-text-transform);
+}
+
+#page > marginal-content[type="footer"]  .link:hover {
+	background-color: var(--page-footer-link-active-background-color);
+	color: var(--page-footer-link-active-color);
+	font-family: var(--page-footer-link-active-font-family);
+	font-size: var(--page-footer-link-active-font-size);
+	font-style: var(--page-footer-link-active-font-style);
+	font-variant: var(--page-footer-link-active-font-variant);
+	font-weight: var(--page-footer-link-active-font-weight);
+	text-decoration: var(--page-footer-link-active-text-decoration);
+	text-decoration-color: var(
+		--page-footer-link-active-text-decoration-color
+	);
+	text-transform: var(--page-footer-link-active-text-transform);
+}
+
+#page > marginal-content[type="header"]  {
+	background-color: var(--page-header-background-color);
+	border-bottom: 1px solid black; /* FIXME */
+	color: var(--page-header-color);
+	font-family: var(--page-header-font-family);
+	font-size: var(--page-header-font-size);
+	font-style: var(--page-header-font-style);
+	font-variant: var(--page-header-font-variant);
+	font-weight: var(--page-header-font-weight);
+	text-decoration: var(--page-header-text-decoration);
+	text-decoration-color: var(--page-header-text-decoration-color);
+	text-transform: var(--page-header-text-transform);
+}
+
+#page > marginal-content[type="header"] .link {
+	background-color: var(--page-header-link-background-color);
+	color: var(--page-header-link-color);
+	font-family: var(--page-header-link-font-family);
+	font-size: var(--page-header-link-font-size);
+	font-style: var(--page-header-link-font-style);
+	font-variant: var(--page-header-link-font-variant);
+	font-weight: var(--page-header-link-font-weight);
+	text-decoration: var(--page-header-link-text-decoration);
+	text-decoration-color: var(--page-header-link-text-decoration-color);
+	text-transform: var(--page-header-link-text-transform);
+}
+
+#page > marginal-content[type="header"] .link:hover {
+	background-color: var(--page-header-link-active-background-color);
+	color: var(--page-header-link-active-color);
+	font-family: var(--page-header-link-active-font-family);
+	font-size: var(--page-header-link-active-font-size);
+	font-style: var(--page-header-link-active-font-style);
+	font-variant: var(--page-header-link-active-font-variant);
+	font-weight: var(--page-header-link-active-font-weight);
+	text-decoration: var(--page-header-link-active-text-decoration);
+	text-decoration-color: var(
+		--page-header-link-active-text-decoration-color
+	);
+	text-transform: var(--page-header-link-active-text-transform);
+}

@@ -1,0 +1,35 @@
+@import 'open-color/open-color.css';
+
+error-handler {
+	display: none;
+}
+
+error-handler.active {
+	background: var(--oc-red-0);
+	color: var(--oc-red-9);
+	display: block;
+	font-family: var(--font-system); 
+	font-size: max(90%, 16px);
+	padding: 0.5em;
+	border-left: 4px solid var(--oc-red-3);
+	position: relative;
+	margin: 1em 0;
+	overflow: auto;
+}
+
+error-handler pre {
+	font-size: 90%;
+}
+
+error-handler a {
+	color: var(--oc-red-9);
+}
+
+error-handler button {
+	appearance: none;
+	background: none;
+	border: none;
+	color: var(--oc-red-9);
+	cursor: pointer;
+	padding: 0;
+}

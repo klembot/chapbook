@@ -1,0 +1,20 @@
+:: Note modifier
+There should be no text below except the link back to Start.
+
+[note]
+Shouldn't be visible.
+
+[note to myself]
+Shouldn't be visible.
+
+[n.b.]
+Shouldn't be visible.
+
+[fixme]
+Shouldn't be visible.
+
+[todo]
+Shouldn't be visible.
+
+[continue]
+[[Start]]

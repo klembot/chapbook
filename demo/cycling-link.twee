@@ -1,0 +1,17 @@
+:: Cycling link
+color: 'red'
+--
+
+Cycling link (should be preset to "red"): {cycling link for: 'color', choices: ['orange', 'red', 'yellow']}
+
+Cycling link for a variable that has no pre-existing value: {cycling link for: 'newCyclingLink', choices: ['vanilla', 'chocolate', 'strawberry', 'mint']}
+
+[[Check cycling link result]]
+
+[[Start]]
+
+
+:: Check cycling link result
+Color is {color}. New variable is {newCyclingLink}.
+
+[[Start]]

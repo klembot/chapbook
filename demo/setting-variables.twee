@@ -1,0 +1,29 @@
+:: Setting variables
+color: 'red'
+nested.color: 'blue'
+count: 1
+conditionallySet (1 < 2): 'yes'
+alsoConditionallySet (color === 'red'): 'yes'
+--
+
+The `color` variable should be red (no quotation marks): {color}
+
+The `nested.color` variables should be blue: {nested.color}
+
+Count should be 1: {count}
+
+Two variables have been conditionally set. Both should be yes: {conditionallySet} and {alsoConditionallySet}
+
+[[Increase count]]
+
+[[Start]]
+
+
+:: Increase count
+count: count + 1
+--
+Count should now be 2: {count}
+
+{back link}
+
+[[Start]]

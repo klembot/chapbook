@@ -1,0 +1,9 @@
+:: Back link insert
+{link to: 'Back link', label: 'Try a back link'}
+
+[[Start]]
+
+:: Back link
+This should take you back to the link insert passage: {back link}
+
+This link does the same, but has a label: {back link, label: 'A set label'}

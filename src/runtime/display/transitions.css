@@ -7,12 +7,6 @@
 	animation: fade-in 1s ease-out reverse forwards;
 }
 
-/* The !important is needed because it needs to override inline styles. */
-
-.skip-animation {
-	animation-delay: 0s !important;
-}
-
 @keyframes fade-in {
 	from {
 		opacity: 0;

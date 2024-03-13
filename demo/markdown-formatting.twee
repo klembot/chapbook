@@ -1,0 +1,36 @@
+:: Markdown formatting
+_italics 1_, *italics 2* __bold 1__ **bold 2**. **bold with _italics_ inside**. _italic with **bold** inside_. `Monospaced text`. ~~small caps~~
+
+Escaped symbols: \*\* two asterisks around this phrase \*\*
+
+This line is broken \
+in two
+
+This line also should be  
+broken with no paragraph break
+
+There should be a section break between this line...
+
+***
+
+... and this line.
+
+Example lists:
+
+- Red
+	- Crimson
+		- Dark crimson
+	- Rose
+- Green
+	- Emerald 
+- Blue
+
+1. Red
+	1. Crimson
+		1. Dark crimson
+	2. Rose
+2. Green
+	3. Should be one layer down, even thought it was indented twice
+3. Blue
+
+[[Start]]

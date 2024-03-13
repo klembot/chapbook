@@ -4,11 +4,11 @@ Chapbook can be extended with custom inserts. Below is code that adds a `{smiley
 
 ```
 [JavaScript]
-engine.extend('1.0.0', () => {
-	config.template.inserts = [{
+engine.extend('2.0.0', () => {
+	engine.template.inserts.add({
 		match: /^smiley face$/i,
 		render: () => '😀'
-	}, ...config.template.inserts];
+	});
 });
 ```
 
@@ -16,21 +16,22 @@ You can also place code like this into your story's JavaScript in Twine--this us
 
 First, any extension of the Chapbook engine must be wrapped in a `engine.extend()` function call. The first argument is the minimum version of Chapbook required to make your insert work; this is so that if you share your customization, anyone plugging it into a Chapbook version it won't work in will receive a harmless warning, instead of the engine crashing with an error. Chapbook follows [semantic versioning](https://semver.org/) to assist with this.
 
-The second argument to `engine.extend()` is the customization code you'd like to run. In this function, we add a new insert to `config.template.inserts` using [array spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_array_literals). Every item in `config.template.inserts` must be an object with two properties:
+The second argument to `engine.extend()` is the customization code you'd like to run. In this function, we add a new insert, which is an object with two properties:
 
--   `match`: a regular expression that the template engine will look for to render your insert. Leave out the curly braces; the template engine will take care of this for you. Inserts must always have at least one space in their `match` property, so that they can never be mistaken for a variable insert.
--   `render`: a function that returns a string for what should be displayed. The returned value will be eventually rendered as Markdown.
-
-<aside data-hint="danger">
-Do not mutate <code>config.template.inserts</code> directly, e.g. with <code>config.template.inserts.push()</code> or direct assignment. Doing so may cause incorrect behavior.
-</aside>
+-   `match`: a regular expression that the template engine will look for to
+    render your insert. Leave out the curly braces; the template engine will
+    take care of this for you. Inserts must always have at least one space in
+    their `match` property, so that they can never be mistaken for a variable
+    insert.
+-   `render`: a function that returns a string for what should be displayed. The
+    returned value will be eventually rendered as Markdown.
 
 You may remember that inserts [can take multiple parameters](../modifiers-and-inserts/link-inserts.md). Here's a more complex example that demonstrates this:
 
 ```
 [JavaScript]
-engine.extend('1.0.0', () => {
-	config.template.inserts = [{
+engine.extend('2.0.0', () => {
+	engine.template.inserts.add({
 		match: /^icon of/i,
 		render(firstArg, props, invocation) {
 			let result = '';
@@ -55,7 +56,7 @@ engine.extend('1.0.0', () => {
 
 			return result;
 		}
-	}, ...config.template.inserts];
+	});
 });
 ```
 

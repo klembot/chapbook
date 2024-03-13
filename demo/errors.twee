@@ -1,0 +1,17 @@
+:: Errors
+
+- [[Go to a nonexistent passage->nonexistent passage, nope]]
+- [[Refer to an undefined variable when setting another]]
+- [[Throw an error in a JavaScript modifier]]
+
+[[Start]]
+
+:: Refer to an undefined variable when setting another
+foo: undefinedVariableName + 2
+--
+This should never be visible.
+
+
+:: Throw an error in a JavaScript modifier
+[JavaScript]
+throw new Error('This is a test error');

@@ -1,0 +1,6 @@
+{
+	"entryPoints": ["src/runtime"],
+	"entryPointStrategy": "expand",
+	"exclude": ["**/__tests__/**", "**/__mocks__/**", "**/vite-env.d.ts"],
+	"out": "dist/api"
+}

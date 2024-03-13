@@ -1,0 +1,25 @@
+:: Custom modifier
+[JavaScript]
+engine.extend('2.0.0', () => {
+  engine.template.modifiers.add({
+    match: /^uppercase$/i,
+    process(output) {
+      output.text = output.text.toUpperCase();
+    }
+  });
+});
+
+
+[continue]
+This requires a second click so that after the custom modifier is added, a new passage is rendered.
+
+[[Test custom modifier]]
+
+:: Test custom modifier
+[uppercase]
+This text should be in all uppercase.
+
+[continue]
+This text should not.
+
+[[Start]]

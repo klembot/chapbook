@@ -1,0 +1,15 @@
+:: Links
+
+All of these go to the same passage.
+
+- [[Linked Passage]]
+- [[Label with right arrow->Linked Passage]]
+- [[Linked Passage<-Label with left arrow]]
+- [[Label with pipe|Linked Passage]]
+
+[[Start]]
+
+:: Linked Passage
+This is the linked passage.
+
+[[Links]], [[Start]]

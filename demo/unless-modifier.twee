@@ -1,0 +1,11 @@
+:: Unless modifier
+count: 5
+--
+[unless count < 5]
+Count is greater than or equal to 5.
+
+[else]
+This text should not appear.
+
+[continue]
+This text should appear always.

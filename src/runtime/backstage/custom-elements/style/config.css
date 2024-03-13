@@ -1,0 +1,5 @@
+backstage-style-config textarea {
+	height: 10em;
+	margin: var(--backstage-grid) 0;
+	width: 100%;
+}
