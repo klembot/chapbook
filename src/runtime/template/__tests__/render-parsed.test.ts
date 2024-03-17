@@ -194,4 +194,16 @@ describe('renderParsed()', () => {
 				[]
 			).trim()
 		).toBe('<div class="fork"><p>one\ntwo\nthree</p>\n</div>'));
+
+		it("doesn't remove whitespace around italicized paragraphs", () =>
+      expect(
+        renderParsed(
+          {
+            blocks: [{type: 'text', content: '*italic*\n\n*italic*'}],
+            vars: []
+          },
+          [],
+          []
+        ).trim()
+      ).toBe('<p><em>italic</em></p>\n<p><em>italic</em></p>'));
 });
