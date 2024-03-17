@@ -12,7 +12,12 @@ import {
 	setDefaults
 } from './state';
 import {initLookups} from './state/lookups';
-import {initStory, loadFromData} from './story';
+import {
+  addCustomStyles,
+  initStory,
+  loadFromData,
+  runCustomScripts
+} from './story';
 import {initStyle} from './style';
 import {initTemplate} from './template';
 
@@ -21,43 +26,48 @@ import {initTemplate} from './template';
  * first loads.
  */
 export function init() {
-	const data = document.querySelectorAll('tw-storydata');
+  const data = document.querySelectorAll('tw-storydata');
 
-	if (data.length === 0) {
-		console.warn('No <tw-storydata> element was found in HTML.');
-		return;
-	}
+  if (data.length === 0) {
+    console.warn('No <tw-storydata> element was found in HTML.');
+    return;
+  }
 
-	if (data.length > 1) {
-		console.warn(
-			'Multiple <tw-storydata> elements were found in HTML. Using the first.'
-		);
-	}
+  if (data.length > 1) {
+    console.warn(
+      'Multiple <tw-storydata> elements were found in HTML. Using the first.'
+    );
+  }
 
-	loadFromData(data[0] as HTMLElement);
-	initExtensibility();
-	initState();
-	Object.assign(window, {go, restart});
+  loadFromData(data[0] as HTMLElement);
+  initExtensibility();
+  initState();
+  Object.assign(window, {go, restart});
 
-	// Logger-related init is here to avoid a circular dependency between state
-	// and logger.
+  // Logger-related init is here to avoid a circular dependency between state
+  // and logger.
 
-	initLoggerState();
-	setDefaults(loggerDefaults);
-	initDisplay();
-	initStyle();
-	initTemplate();
-	initLookups();
-	initSound();
-	initStory();
+  initLoggerState();
+  setDefaults(loggerDefaults);
+  initDisplay();
+  initStyle();
+  initTemplate();
+  initLookups();
+  initSound();
+  initStory();
 
-	if (get('config.testing')) {
-		initBackstage();
-	} else {
-		if (canRestoreFromStorage()) {
-			restoreFromStorage();
-		}
-	}
+  if (get('config.testing')) {
+    initBackstage();
+  } else {
+    if (canRestoreFromStorage()) {
+      restoreFromStorage();
+    }
+  }
+
+  // Run story custom code last.
+
+  addCustomStyles();
+  runCustomScripts();
 }
 
 init();

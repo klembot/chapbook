@@ -1,3 +1,4 @@
 examples/*.html
 guide/book
 dist
+playwright-report

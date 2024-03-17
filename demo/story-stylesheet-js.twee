@@ -1,0 +1,10 @@
+:: Story stylesheet and JavaScript
+This text should be red: <span class="custom-style">.custom-style</span>
+
+This should be true:
+
+[JavaScript; append]
+write(window.customScriptLoaded)
+
+[continue]
+Both of these are set in the story the format is bound to, not code in Chapbook itself.
