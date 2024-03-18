@@ -127,7 +127,7 @@ There seems to be nothing of note here, but perhaps [[a search would turn up som
 
 Remember that `doorFound`, `doorUnlocked`, and `hasKey` are set in other passages. And beware--you cannot use an `[else]` in front of `but you haven't found a key yet that will open it.` The `else` will display in all cases that the `[if]` does not, even when `doorFound` is `false`.
 
-An alternate method is to move parts of your logic to a separate passage and [embed it][embed-passage]:
+An alternate method is to move parts of your logic to a separate passage and [embed it](../modifiers-and-inserts/embedding-passages.html):
 
 ```
 _doorOpen: doorFound && doorUnlocked
@@ -157,4 +157,3 @@ This would have been shown with a regular [if], but isn't.
 This affects any `[else]` modifiers that follow it.
 
 [^1]: Truthfully, it is also possible to write `[if stringVariable]` or `[if 2 + 2]`. In these cases, any non-empty string (e.g. not `''`) is treated as true, and any non-zero number is treated as true. It's best to be explicit, however, and write `[if stringVariable !== '']` and `[if 2 + 2 !== 0]`.
-[embed-passage]: ../text-and-links/embedding-passages.html
