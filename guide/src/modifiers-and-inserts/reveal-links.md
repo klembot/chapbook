@@ -22,7 +22,7 @@ I was driving home late one night when {reveal link: 'something odd occurred', p
 
 This will work the same way as the previous example, only it will show the contents of the passage named 'A Dangerous Incident'.
 
-{% hint style='info' %}
+<aside data-hint="info">
 A passage shown by a reveal link will not be recorded in a session's history.
 </aside>
 
