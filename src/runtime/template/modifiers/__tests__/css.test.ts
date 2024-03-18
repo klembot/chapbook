@@ -13,10 +13,10 @@ describe('CSS modifier', () => {
 			text: 'One line\n\nTwo lines'
 		};
 
-		cssModifier.process?.(output, {
-			invocation: 'css',
-			state: {}
-		});
+		cssModifier.processRaw?.(output, {
+      invocation: 'css',
+      state: {}
+    });
 
 		expect(output).toEqual({
 			startsNewParagraph: false,

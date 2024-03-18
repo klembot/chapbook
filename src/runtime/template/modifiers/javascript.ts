@@ -8,10 +8,10 @@ import {Modifier} from './types';
  * not after the passage content transitions in.
  */
 export const javascriptModifier: Modifier = {
-	match: /^javascript$/i,
-	process(output) {
-		try {
-			const func = new Function(`
+  match: /^javascript$/i,
+  processRaw(output) {
+    try {
+      const func = new Function(`
 						function write() { write.__out += write.__join.call(arguments, ''); }
 						write.__out = '';
 						write.__join = Array.prototype.join;
@@ -19,22 +19,22 @@ export const javascriptModifier: Modifier = {
 						return write.__out;
 					`);
 
-			output.text = func.apply(window);
-		} catch (rawError) {
-			if (get('config.testing')) {
-				const error = rawError as Error;
-				let detail = 'unknown error';
+      output.text = func.apply(window);
+    } catch (rawError) {
+      if (get('config.testing')) {
+        const error = rawError as Error;
+        let detail = 'unknown error';
 
-				if (error.stack) {
-					detail = error.stack;
-				} else {
-					detail = error.message + '\n[No stack trace available]';
-				}
+        if (error.stack) {
+          detail = error.stack;
+        } else {
+          detail = error.message + '\n[No stack trace available]';
+        }
 
-				output.text = `<div class="error">An error occurred evaluating:<pre>${output.text}</pre><p><pre>${detail}</pre></p></div>`;
-			} else {
-				throw rawError;
-			}
-		}
-	}
+        output.text = `<div class="error">An error occurred evaluating:<pre>${output.text}</pre><p><pre>${detail}</pre></p></div>`;
+      } else {
+        throw rawError;
+      }
+    }
+  }
 };

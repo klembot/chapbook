@@ -2,6 +2,7 @@
 - [[Test basic JavaScript]]
 - [[Display content using JavaScript]]
 - [[Use variables in JavaScript]]
+- [[Test that JavaScript isn't rendered as Markdown]]
 
 [[Start]]
 
@@ -39,3 +40,16 @@ if (color === 'red') {
 
 [continue]
 Color is {color} (should be green, not red).
+
+
+:: Test that JavaScript isn't rendered as Markdown
+This should be true:
+
+[JavaScript; append]
+if (true) {
+	write(`${true}`);
+}
+else {
+	write(`${false}`);
+}
+[continue]

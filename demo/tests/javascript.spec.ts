@@ -28,3 +28,17 @@ test('Display content using JavaScript', async ({page}) => {
     content.getByText('1… 2… 3… 4… 5… 6… 7… 8… 9… 10…')
   ).toBeVisible();
 });
+
+test("JavaScript isn't interpreted as Markdown", async ({page}) => {
+  await page.goto('http://localhost:5173/');
+
+  const content = page.locator('body-content');
+
+  await content.getByRole('link', {name: 'JavaScript', exact: true}).click();
+  await content
+    .getByRole('link', {
+      name: 'Test that JavaScript isn’t rendered as Markdown'
+    })
+    .click();
+  await expect(content.getByText('This should be true: true')).toBeVisible();
+});
