@@ -10,7 +10,6 @@
 	font-style: var(--page-font-style);
 	font-variant: var(--page-font-variant);
 	font-weight: var(--page-font-weight);
-	/* FIXME check warnings placement */
 	grid-template-areas: 'header' 'body' 'footer';
 	grid-template-rows: min-content 1fr min-content;
 	line-height: 150%;

@@ -34,6 +34,7 @@
     -   [The Header and Footer](customization/header-and-footer.md)
     -   [Fonts and Colors](customization/fonts-and-colors.md)
     -   [External Web Fonts](customization/external-web-fonts.md)
+    -   [Font Scaling](customization/font-scaling.md)
     -   [Page Style](customization/page-style.md)
     -   [Fork Style](customization/fork-style.md)
     -   [Design Considerations](customization/design-considerations.md)

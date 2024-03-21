@@ -2,20 +2,30 @@ import {test, expect} from '@playwright/test';
 import {waitForPageTransition} from './util';
 
 test('Font config', async ({page}) => {
-	await page.goto('http://localhost:5173/');
+  // Font sizes checked include font scaling adjustments.
 
-	const content = page.locator('body-content');
+  await page.goto('http://localhost:5173/');
 
-	await content.getByRole('link', {name: 'Font config'}).click();
-	await waitForPageTransition(page);
-	await expect(content).toHaveCSS('font-family', 'serif');
-	await expect(content).toHaveCSS('font-size', '24px');
-	await expect(content.locator('passage-link')).toHaveCSS('font-size', '30px');
-	await expect(page.locator('marginal-content[type="footer"]')).toHaveCSS(
-		'font-family',
-		'sans-serif'
-	);
-	await expect(
-		page.locator('marginal-content[type="footer"] restart-link')
-	).toHaveCSS('font-size', '30px');
+  const content = page.locator('body-content');
+
+  await content.getByRole('link', {name: 'Font config'}).click();
+  await waitForPageTransition(page);
+  await expect(content).toHaveCSS('font-family', 'serif');
+  expect(
+    await content.evaluate(el => parseInt(window.getComputedStyle(el).fontSize))
+  ).toBe(25);
+  expect(
+    await content
+      .locator('passage-link')
+      .evaluate(el => parseInt(window.getComputedStyle(el).fontSize))
+  ).toBe(31);
+  await expect(page.locator('marginal-content[type="footer"]')).toHaveCSS(
+    'font-family',
+    'sans-serif'
+  );
+  expect(
+    await page
+      .locator('marginal-content[type="footer"] restart-link')
+      .evaluate(el => parseInt(window.getComputedStyle(el).fontSize))
+  ).toBe(31);
 });
