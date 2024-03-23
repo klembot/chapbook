@@ -59,6 +59,7 @@
 		"lodash-es": "^4.17.21",
 		"marked": "^4.2.12",
 		"open-color": "^1.9.1",
+		"reasonable-colors": "^0.4.0",
 		"seedrandom": "^3.0.5",
 		"timestring": "^6.0.0"
 	}

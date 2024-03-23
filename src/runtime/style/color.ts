@@ -1,22 +1,55 @@
 import 'open-color/open-color.css';
+import 'reasonable-colors/reasonable-colors.css';
 
 /**
- * Color keys present in open-color that have numeric shades.
+ * Color keys present in open-color that have numeric shades. These are prefixed
+ * because they're deprecated.
  */
-const openColorShades = [
-	'gray',
-	'red',
-	'pink',
-	'grape',
-	'violet',
-	'indigo',
-	'blue',
-	'cyan',
-	'teal',
-	'green',
-	'lime',
-	'yellow',
-	'orange'
+const openColorHues = [
+  'gray',
+  'red',
+  'pink',
+  'grape',
+  'violet',
+  'indigo',
+  'blue',
+  'cyan',
+  'teal',
+  'green',
+  'lime',
+  'yellow',
+  'orange'
+].map(value => `oc-${value}`);
+
+/**
+ * Color keys present in reasonable-colors that have numeric shades.
+ */
+const reasonableColorHues = [
+  'gray',
+  'rose',
+  'raspberry',
+  'red',
+  'orange',
+  'cinnamon',
+  'amber',
+  'yellow',
+  'lime',
+  'chartreuse',
+  'green',
+  'emerald',
+  'aquamarine',
+  'teal',
+  'cyan',
+  'powder',
+  'sky',
+  'cerulean',
+  'azure',
+  'blue',
+  'indigo',
+  'violet',
+  'purple',
+  'magenta',
+  'pink'
 ];
 
 /**
@@ -25,26 +58,41 @@ const openColorShades = [
  * @private
  */
 export function parseColorValue(value: string) {
-	if (typeof value !== 'string') {
-		throw new Error('Only strings can be parsed as color values.');
-	}
+  if (typeof value !== 'string') {
+    throw new Error('Only strings can be parsed as color values.');
+  }
 
-	let result = value;
+  // Parse Open Color values. These are are deprecated and are planned to go
+  // away entirely in the next major release.
 
-	// If we matched only one part of an Open Color keyword, check to see if
-	// there's a range.
+  // If we matched only one part of an Open Color keyword, check to see if
+  // there's a range.
 
-	if (openColorShades.includes(value)) {
-		return `var(--oc-${value}-9)`;
-	}
+  if (openColorHues.includes(value)) {
+    return `var(--${value}-9)`;
+  }
 
-	const colorLookup = /^(\w+)-(\d)$/.exec(value);
+  const colorLookup = /^(oc-\w+)-\d$/.exec(value);
 
-	if (colorLookup && openColorShades.includes(colorLookup[1])) {
-		result = `var(--oc-${value})`;
-	}
+  if (colorLookup && openColorHues.includes(colorLookup[1])) {
+    return `var(--${value})`;
+  }
 
-	return result;
+  // End parsing Open Color.
+
+  // If we matched only one part of a Reasonable Color keyword, check to see if
+  // there's a range.
+
+  const reasonableColorLookup = /^(\w+)-([1-6])$/.exec(value);
+
+  if (
+    reasonableColorLookup &&
+    reasonableColorHues.includes(reasonableColorLookup[1])
+  ) {
+    return `var(--color-${value})`;
+  }
+
+  return value;
 }
 
 /**
@@ -52,30 +100,30 @@ export function parseColorValue(value: string) {
  * or `color on color` (foreground and background).
  */
 export function parseColor(source?: string) {
-	const result: Pick<CSSStyleDeclaration, 'backgroundColor' | 'color'> = {
-		backgroundColor: 'inherit',
-		color: 'inherit'
-	};
+  const result: Pick<CSSStyleDeclaration, 'backgroundColor' | 'color'> = {
+    backgroundColor: 'inherit',
+    color: 'inherit'
+  };
 
-	if (source === undefined) {
-		return result;
-	}
+  if (source === undefined) {
+    return result;
+  }
 
-	if (typeof source !== 'string') {
-		throw new Error('Only strings can be parsed as colors.');
-	}
+  if (typeof source !== 'string') {
+    throw new Error('Only strings can be parsed as colors.');
+  }
 
-	const bits = source.split(/ on /i);
+  const bits = source.split(/ on /i);
 
-	result.color = parseColorValue(bits[0].trim().toLowerCase());
+  result.color = parseColorValue(bits[0].trim().toLowerCase());
 
-	if (result.color === '') {
-		result.color = 'inherit';
-	}
+  if (result.color === '') {
+    result.color = 'inherit';
+  }
 
-	if (bits.length === 2) {
-		result.backgroundColor = parseColorValue(bits[1].trim().toLowerCase());
-	}
+  if (bits.length === 2) {
+    result.backgroundColor = parseColorValue(bits[1].trim().toLowerCase());
+  }
 
-	return result;
+  return result;
 }

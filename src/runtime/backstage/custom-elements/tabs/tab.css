@@ -1,5 +1,7 @@
+@import 'reasonable-colors/reasonable-colors.css';
+
 backstage-tab {
-	border-left: 1px solid var(--oc-gray-4);
+	border-left: 1px solid var(--color-gray-3);
 	cursor: pointer;
 	flex-grow: 1;
 	padding: calc(var(--backstage-grid) / 2);

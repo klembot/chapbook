@@ -1,17 +1,17 @@
-@import 'open-color/open-color.css';
+@import 'reasonable-colors/reasonable-colors.css';
 
 error-handler {
 	display: none;
 }
 
 error-handler.active {
-	background: var(--oc-red-0);
-	color: var(--oc-red-9);
+	background: var(--color-red-1);
+	color: var(--color-red-5);
 	display: block;
 	font-family: var(--font-system); 
 	font-size: max(90%, 16px);
 	padding: 0.5em;
-	border-left: 4px solid var(--oc-red-3);
+	border-left: 4px solid var(--color-red-2);
 	position: relative;
 	margin: 1em 0;
 	overflow: auto;
@@ -22,14 +22,14 @@ error-handler pre {
 }
 
 error-handler a {
-	color: var(--oc-red-9);
+	color: var(--color-red-4);
 }
 
 error-handler button {
 	appearance: none;
 	background: none;
 	border: none;
-	color: var(--oc-red-9);
+	color: var(--color-red-4);
 	cursor: pointer;
 	padding: 0;
 }
