@@ -13,6 +13,7 @@ test('Lookups', async ({page}) => {
 
 	// Skipping date-related lookups.
 
+	await expect(content.getByText('passage.from: Start')).toBeVisible();
 	await expect(content.getByText('passage.name: Lookups')).toBeVisible();
 	await expect(content.getByText('passage.visits: 1')).toBeVisible();
 	await expect(content.getByText('story.name: Demo')).toBeVisible();
