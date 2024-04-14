@@ -7,6 +7,21 @@ const {warn} = createLoggers('lookups');
  * Initializes all lookups related to the current passage.
  */
 export function initPassageLookups() {
+	setLookup('passage.from', () => {
+    const trail = get('trail');
+
+    if (!Array.isArray(trail)) {
+      warn(
+        `The trail variable has been set to a ${typeof trail}, not an array.`
+      );
+      return undefined;
+    }
+
+    if (trail.length > 1) {
+      return trail[trail.length - 2];
+    }
+  });
+
 	setLookup('passage.name', () => {
 		const trail = get('trail');
 
