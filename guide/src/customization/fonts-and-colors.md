@@ -76,6 +76,10 @@ There is a special font style named `regular`, which removes any bold, italic, u
 
 The omitted parts are inherited as described above.
 
+<aside data-hint="info">
+The font size you specify may be increased by Chapbook. See <a href="font-scaling.html">Font Scaling</a> for more information.
+</aside>
+
 ## Colors
 
 <aside data-hint="info">
