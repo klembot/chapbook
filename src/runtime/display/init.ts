@@ -3,18 +3,18 @@ import {initDisplayCustomElements} from './custom-elements/init';
 import {initDisplayEvents} from './events';
 
 const defaults = {
-	'config.body.transition.name': 'crossfade',
-	'config.body.transition.duration': '300ms',
-	'config.header.left': '',
-	'config.header.center': '',
-	'config.header.right': '',
-	'config.header.transition.name': 'crossfade',
-	'config.header.transition.duration': '300ms',
-	'config.footer.left': '_{story.name}_',
-	'config.footer.center': '',
-	'config.footer.right': '{restart link}',
-	'config.footer.transition.name': 'crossfade',
-	'config.footer.transition.duration': '300ms'
+  'config.body.transition.name': 'crossfade',
+  'config.body.transition.duration': '300ms',
+  'config.header.left': '',
+  'config.header.center': '',
+  'config.header.right': '',
+  'config.header.transition.name': 'crossfade',
+  'config.header.transition.duration': '300ms',
+  'config.footer.left': '_{story.name}_',
+  'config.footer.center': '',
+  'config.footer.right': '{theme switcher}&emsp;{restart link}',
+  'config.footer.transition.name': 'crossfade',
+  'config.footer.transition.duration': '300ms'
 };
 
 /**

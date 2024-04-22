@@ -37,6 +37,7 @@
     -   [Font Scaling](customization/font-scaling.md)
     -   [Page Style](customization/page-style.md)
     -   [Fork Style](customization/fork-style.md)
+    -   [Dark Theme](customization/dark-theme.md)
     -   [Design Considerations](customization/design-considerations.md)
 -   [Player Input](player-input/index.md)
     -   [Text Input](player-input/text-input.md)

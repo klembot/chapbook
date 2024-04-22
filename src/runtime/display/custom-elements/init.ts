@@ -6,20 +6,22 @@ import {MarginalContent} from './marginal-content';
 import {PageSkip} from './page-skip';
 import {PageSkipIndicator} from './page-skip-indicator';
 import {StateCssVariables} from './state-css-variables';
+import {StateDarkThemeCssOverrides} from './state-dark-theme-css-overrides';
 import {WarningList} from './warning-list';
 
 /**
  * Initializes custom elements related to display.
  */
 export function initDisplayCustomElements() {
-	defineElements({
-		'body-content': BodyContent,
-		'error-handler': ErrorHandler,
-		'external-fonts': ExternalFonts,
-		'marginal-content': MarginalContent,
-		'page-skip': PageSkip,
-		'page-skip-indicator': PageSkipIndicator,
-		'state-css-variables': StateCssVariables,
-		'warning-list': WarningList
-	});
+  defineElements({
+    'body-content': BodyContent,
+    'error-handler': ErrorHandler,
+    'external-fonts': ExternalFonts,
+    'marginal-content': MarginalContent,
+    'page-skip': PageSkip,
+    'page-skip-indicator': PageSkipIndicator,
+    'state-css-variables': StateCssVariables,
+    'state-dark-theme-css-overrides': StateDarkThemeCssOverrides,
+    'warning-list': WarningList
+  });
 }

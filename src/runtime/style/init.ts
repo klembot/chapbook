@@ -1,6 +1,16 @@
 import {setDefaults} from '../state';
 
 const defaults = {
+  'config.style.dark.backdrop': 'black',
+  'config.style.dark.page.fork.divider.color': 'gray-5',
+  'config.style.dark.page.color': 'white on gray-6',
+  'config.style.dark.page.footer.link.active.color':
+    'raspberry-3 on raspberry-6',
+  'config.style.dark.page.header.link.active.color':
+    'raspberry-3 on raspberry-6',
+  'config.style.dark.page.link.color': 'white',
+  'config.style.dark.page.link.lineColor': 'raspberry-4',
+  'config.style.dark.page.link.active.color': 'raspberry-3 on raspberry-6',
   'config.style.backdrop': 'gray-1',
   'config.style.fontScaling.enabled': true,
   'config.style.fontScaling.baseViewportWidth': 1000,
@@ -28,7 +38,9 @@ const defaults = {
   'config.style.page.footer.link.lineColor': 'raspberry-4',
   'config.style.page.footer.link.active.color': 'raspberry-4 on raspberry-1',
   'config.style.page.footer.link.active.font': 'small caps underlined',
-  'config.style.page.footer.link.active.lineColor': 'raspberry-4'
+  'config.style.page.footer.link.active.lineColor': 'raspberry-4',
+  'config.style.page.theme.override': undefined,
+  'config.style.page.theme.enableSwitching': true
 };
 
 /**
