@@ -62,7 +62,7 @@ describe('parseFont', () => {
           maximumSize: '36px'
         }
       }).fontSize
-    ).toBe('min(calc(24px + (50 * (100vw - 1000px) / 1000)), 36px)'));
+    ).toBe('min(calc(24px + max(50 * (100vw - 1000px) / 1000, 0px)), 36px)'));
 
   it('sets font size correctly when maximum font size is omitted', () =>
     expect(
@@ -72,5 +72,5 @@ describe('parseFont', () => {
           baseViewportWidth: 1000
         }
       }).fontSize
-    ).toBe('calc(24px + (50 * (100vw - 1000px) / 1000))'));
+    ).toBe('calc(24px + max(50 * (100vw - 1000px) / 1000, 0px))'));
 });

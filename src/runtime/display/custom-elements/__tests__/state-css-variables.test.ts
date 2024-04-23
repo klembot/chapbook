@@ -160,7 +160,7 @@ describe('<state-css-variables>', () => {
     });
     dispatchStateChange('config.style.fontScaling.enabled', true);
     expect(cssVariable('--test-font-size')).toBe(
-      'min(calc(18px + (10 * (100vw - 1000px) / 1000)), 5em)'
+      'min(calc(18px + max(10 * (100vw - 1000px) / 1000, 0px)), 5em)'
     );
   });
 
@@ -172,7 +172,7 @@ describe('<state-css-variables>', () => {
     });
     dispatchStateChange('config.style.fontScaling.enabled', true);
     expect(cssVariable('--test-font-size')).toBe(
-      'min(calc(18px + (10 * (100vw - 1000px) / 1000)), 5em)'
+      'min(calc(18px + max(10 * (100vw - 1000px) / 1000, 0px)), 5em)'
     );
     mockState({
       'config.style.test.font': 'test-font 18',
@@ -191,7 +191,7 @@ describe('<state-css-variables>', () => {
     });
     dispatchStateChange('config.style.fontScaling.baseViewportWidth', 1234);
     expect(cssVariable('--test-font-size')).toBe(
-      'min(calc(18px + (10 * (100vw - 1234px) / 1234)), 5em)'
+      'min(calc(18px + max(10 * (100vw - 1234px) / 1234, 0px)), 5em)'
     );
     mockState({
       'config.style.test.font': 'test-font 18',
@@ -200,7 +200,7 @@ describe('<state-css-variables>', () => {
     });
     dispatchStateChange('config.style.fontScaling.baseViewportWidth', 2000);
     expect(cssVariable('--test-font-size')).toBe(
-      'min(calc(18px + (10 * (100vw - 5678px) / 5678)), 5em)'
+      'min(calc(18px + max(10 * (100vw - 5678px) / 5678, 0px)), 5em)'
     );
   });
 
@@ -213,7 +213,7 @@ describe('<state-css-variables>', () => {
     });
     dispatchStateChange('config.style.fontScaling.addAtDoubleWidth', 50);
     expect(cssVariable('--test-font-size')).toBe(
-      'min(calc(18px + (50 * (100vw - 1000px) / 1000)), 5em)'
+      'min(calc(18px + max(50 * (100vw - 1000px) / 1000, 0px)), 5em)'
     );
     mockState({
       'config.style.test.font': 'test-font 18',
@@ -222,7 +222,7 @@ describe('<state-css-variables>', () => {
     });
     dispatchStateChange('config.style.fontScaling.addAtDoubleWidth', 100);
     expect(cssVariable('--test-font-size')).toBe(
-      'min(calc(18px + (100 * (100vw - 1000px) / 1000)), 5em)'
+      'min(calc(18px + max(100 * (100vw - 1000px) / 1000, 0px)), 5em)'
     );
   });
 
@@ -235,7 +235,7 @@ describe('<state-css-variables>', () => {
     });
     dispatchStateChange('config.style.fontScaling.maximumSize', '10em');
     expect(cssVariable('--test-font-size')).toBe(
-      'min(calc(18px + (10 * (100vw - 1000px) / 1000)), 10em)'
+      'min(calc(18px + max(10 * (100vw - 1000px) / 1000, 0px)), 10em)'
     );
     mockState({
       'config.style.test.font': 'test-font 18',
@@ -244,7 +244,7 @@ describe('<state-css-variables>', () => {
     });
     dispatchStateChange('config.style.fontScaling.maximumSize', '20em');
     expect(cssVariable('--test-font-size')).toBe(
-      'min(calc(18px + (10 * (100vw - 1000px) / 1000)), 20em)'
+      'min(calc(18px + max(10 * (100vw - 1000px) / 1000, 0px)), 20em)'
     );
   });
 });
