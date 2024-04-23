@@ -127,7 +127,7 @@ export function parseFont(source: string, {scaling}: FontParsingOptions) {
     // Apply font scaling.
 
     if (scaling) {
-      result.fontSize = `calc(${result.fontSize} + (${scaling.addAtDoubleWidth} * (100vw - ${scaling.baseViewportWidth}px) / ${scaling.baseViewportWidth}))`;
+      result.fontSize = `calc(${result.fontSize} + max(${scaling.addAtDoubleWidth} * (100vw - ${scaling.baseViewportWidth}px) / ${scaling.baseViewportWidth}, 0px))`;
 
       if (scaling.maximumSize) {
         result.fontSize = `min(${result.fontSize}, ${scaling.maximumSize})`;

@@ -29,3 +29,19 @@ test('Font config', async ({page}) => {
       .evaluate(el => parseInt(window.getComputedStyle(el).fontSize))
   ).toBe(31);
 });
+
+test('Font never goes below set size', async ({page}) => {
+  // Assumes default font scaling and size (18px).
+
+  await page.goto('http://localhost:5173/');
+
+  const content = page.locator('body-content');
+
+  expect(
+    await content.evaluate(el => parseInt(window.getComputedStyle(el).fontSize))
+  ).toBe(19);
+  page.setViewportSize({height: 100, width: 100});
+  expect(
+    await content.evaluate(el => parseInt(window.getComputedStyle(el).fontSize))
+  ).toBe(18);
+});
