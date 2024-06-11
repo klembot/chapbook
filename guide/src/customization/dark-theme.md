@@ -50,6 +50,10 @@ Both the light and dark themes will use Courier 24 as their font, but the
 backdrop color will be a dark blue in the dark theme, and a light blue in the
 light theme.
 
+<aside data-hint="info">
+If you set <code>config.style.dark.page.style.borderColor</code>, make sure to set <code>config.style.dark.page.style.border</code> as well, even if it has the same value as <code>config.style.page.style.border</code> (e.g. the light theme version). This is a quirk in how these variables are translated to onscreen display.
+</aside>
+
 # Using the Current Theme in Code
 
 The [lookup](../state/objects-and-lookups.html) `browser.darkTheme` holds
