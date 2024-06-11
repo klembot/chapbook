@@ -1,7 +1,7 @@
 import {setDefaults} from '../state';
 
 const defaults = {
-  'config.style.dark.backdrop': 'black',
+  'config.style.dark.backdrop': 'hsl(0, 0%, 10%)',
   'config.style.dark.page.fork.divider.color': 'gray-5',
   'config.style.dark.page.color': 'white on gray-6',
   'config.style.dark.page.footer.link.active.color':

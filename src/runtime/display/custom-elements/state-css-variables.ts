@@ -139,9 +139,10 @@ export class StateCssVariables extends CustomElement {
 
           case 'shadow':
             this.style.setProperty(`${cssPrefix}-border`, 'none');
+            // The idea is to create a somewhat subtle inner and outer glow, then a blended drop shadow.
             this.style.setProperty(
               `${cssPrefix}-box-shadow`,
-              '0 4px 8px hsla(0, 0%, 0%, 0.25)'
+              'inset 0 0 2px 2px hsla(0, 0%, 100%, 0.05), 0 0 0 1px hsla(0, 0%, 0%, 0.05), 0 2px 2px hsla(0, 0%, 0%, 0.05), 0 4px 4px hsla(0, 0%, 0%, 0.05), 0 8px 8px hsla(0, 0%, 0%, 0.05), 0 16px 16px hsla(0, 0%, 0%, 0.05)'
             );
             break;
 

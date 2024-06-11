@@ -139,7 +139,11 @@ describe('<state-css-variables>', () => {
 
     it.each([
       ['none', 'none', 'none'],
-      ['shadow', 'none', '0 4px 8px hsla(0, 0%, 0%, 0.25)'],
+      [
+        'shadow',
+        'none',
+        'inset 0 0 2px 2px hsla(0, 0%, 100%, 0.05), 0 0 0 1px hsla(0, 0%, 0%, 0.05), 0 2px 2px hsla(0, 0%, 0%, 0.05), 0 4px 4px hsla(0, 0%, 0%, 0.05), 0 8px 8px hsla(0, 0%, 0%, 0.05), 0 16px 16px hsla(0, 0%, 0%, 0.05)'
+      ],
       ['thick-line', '4px solid test-border-color', 'none'],
       ['thin-line', '1px solid test-border-color', 'none']
     ])(
