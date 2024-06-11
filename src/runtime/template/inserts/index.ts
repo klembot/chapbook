@@ -12,25 +12,27 @@ import {restartLink} from './restart-link';
 import {revealLink} from './reveal-link';
 import {soundEffect} from './sound-effect';
 import {textInput} from './text-input';
+import {themeSwitcher} from './theme-switcher';
 import {Insert} from './types';
 
 export * from './types';
 
 const builtins: Insert[] = [
-	ambientSound,
-	backLink,
-	cyclingLink as Insert<Record<string, unknown>>,
-	dropdownMenu as Insert<Record<string, unknown>>,
-	embedFlickrImage,
-	embedImage,
-	embedPassage,
-	embedUnsplashImage as Insert<Record<string, unknown>>,
-	embedYouTubeVideo,
-	link,
-	restartLink,
-	revealLink,
-	soundEffect,
-	textInput
+  ambientSound,
+  backLink,
+  cyclingLink as Insert<Record<string, unknown>>,
+  dropdownMenu as Insert<Record<string, unknown>>,
+  embedFlickrImage,
+  embedImage,
+  embedPassage,
+  embedUnsplashImage as Insert<Record<string, unknown>>,
+  embedYouTubeVideo,
+  link,
+  restartLink,
+  revealLink,
+  soundEffect,
+  textInput,
+  themeSwitcher
 ];
 
 let inserts: Insert[] = [...builtins];

@@ -1,4 +1,4 @@
-@import 'open-color/open-color.css';
+@import 'reasonable-colors/reasonable-colors.css';
 
 body.backstage-visible #backdrop {
 	max-width: 67vw;
@@ -6,10 +6,10 @@ body.backstage-visible #backdrop {
 
 backstage-sidebar {
 	--backstage-grid: 10px;
-	background: var(--oc-gray-3);
-	border-left: 1px solid var(--oc-gray-5);
+	background: var(--color-gray-2);
+	border-left: 1px solid var(--color-gray-3);
 	bottom: 0;
-	color: var(--oc-gray-8);
+	color: var(--color-gray-5);
 	display: block;
 	font-family: var(--font-system);
 	font-size: 13px;
@@ -31,16 +31,16 @@ backstage-sidebar[collapsed] {
 }
 
 backstage-sidebar button[data-toggle-collapsed] {
-	background: var(--oc-gray-3);
-	border-bottom: 1px solid var(--oc-gray-5);
-	border-left: 1px solid var(--oc-gray-5);
+	background: var(--color-gray-2);
+	border-bottom: 1px solid var(--color-gray-3);
+	border-left: 1px solid var(--color-gray-3);
 	border-right: none;
-	border-top: 1px solid var(--oc-gray-5);
+	border-top: 1px solid var(--color-gray-3);
 	border-bottom-left-radius: 60px;
 	border-bottom-right-radius: 0;
 	border-top-left-radius: 60px;
 	border-top-right-radius: 0;
-	color: var(--oc-gray-8);
+	color: var(--color-gray-5);
 	font-size: 20px;
 	height: 60px;
 	min-width: 30px;
@@ -53,16 +53,17 @@ backstage-sidebar button[data-toggle-collapsed] {
 }
 
 backstage-sidebar button[data-toggle-collapsed]:hover {
-	background: var(--oc-gray-4);
+	background: var(--color-gray-1);
 	cursor: pointer;
 }
 
 /* Shared styles for children. */
 
 backstage-sidebar button {
-	background: var(--oc-gray-1);
-	border: 1px solid var(--oc-gray-5);
+	background: var(--color-gray-1);
+	border: 1px solid var(--color-gray-3);
 	border-radius: var(--backstage-grid);
+	color: var(--color-gray-5);
 	cursor: pointer;
 	font-size: 100%;
 	min-width: 40px;
@@ -82,8 +83,9 @@ backstage-sidebar details summary {
 }
 
 backstage-sidebar input, backstage-sidebar textarea {
-	background: var(--oc-gray-1);
-	border: 1px solid var(--oc-gray-5);
+	background: var(--color-gray-1);
+	border: 1px solid var(--color-gray-3);
+	color: var(--color-gray-5);
 	font: 100% var(--font-system);
 	padding: calc(var(--backstage-grid) / 2);
 }

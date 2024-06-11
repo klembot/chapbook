@@ -1,6 +1,8 @@
+@import 'reasonable-colors/reasonable-colors.css';
+
 backstage-tabs {
-	background: var(--oc-gray-1);
-	border: 1px solid var(--oc-gray-5);
+	background: var(--color-gray-1);
+	border: 1px solid var(--color-gray-3);
 	border-radius: var(--backstage-grid);
 	display: flex;
 }

@@ -7,15 +7,15 @@ test('Color config', async ({page}) => {
 
 	await content.getByRole('link', {name: 'Color config'}).click();
 	await expect(page.locator('#backdrop')).toHaveCSS(
-		'background-color',
-		'rgb(255, 227, 227)'
-	);
+    'background-color',
+    'rgb(255, 248, 246)'
+  );
 
-	const contentPage = page.locator('#page');
+  const contentPage = page.locator('#page');
 
-	await expect(contentPage).toHaveCSS('background-color', 'rgb(208, 235, 255)');
-	await expect(contentPage).toHaveCSS('color', 'rgb(24, 100, 171)');
+  await expect(contentPage).toHaveCSS('background-color', 'rgb(240, 244, 255)');
+  await expect(contentPage).toHaveCSS('color', 'rgb(0, 26, 57)');
 	await expect(
-		content.getByRole('link', {name: 'Start', exact: true})
-	).toHaveCSS('color', 'rgb(43, 138, 62)');
+    content.getByRole('link', {name: 'Start', exact: true})
+  ).toHaveCSS('color', 'rgb(0, 128, 0)');
 });

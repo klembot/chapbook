@@ -28,6 +28,7 @@ describe('<state-css-variables>', () => {
 
       switch (name) {
         case 'config.style.page.style.borderColor':
+        case 'config.style.dark.page.style.borderColor':
           return 'test-border-color';
         case 'config.style.fontScaling.enabled':
           return false;
@@ -96,52 +97,69 @@ describe('<state-css-variables>', () => {
     expect(cssVariable('--test-nested-font-weight')).toBe('bold');
   });
 
-  it('sets config.style.backdrop', () => {
-    dispatchStateChange('config.style.backdrop', '#fff');
-    expect(cssVariable('--backdrop-color')).toBe('#fff');
-  });
+  describe.each([
+    ['style', ''],
+    ['style.dark', 'dark-']
+  ])('special-cased variables in config.%s', (varNamespace, cssNamespace) => {
+    it(`sets config.${varNamespace}.backdrop`, () => {
+      dispatchStateChange(`config.${varNamespace}.backdrop`, '#fff');
+      expect(cssVariable(`--${cssNamespace}backdrop-color`)).toBe('#fff');
+    });
 
-  it('sets config.style.page.fork.divider.size', () => {
-    dispatchStateChange('config.style.page.fork.divider.size', 4);
-    expect(cssVariable('--page-fork-divider-size')).toBe('4px');
-  });
-
-  it('sets config.style.page.fork.divider.style', () => {
-    dispatchStateChange('config.style.page.fork.divider.style', 'test');
-    expect(cssVariable('--page-fork-divider-style')).toBe('test');
-  });
-
-  it.each([
-    ['top', 'flex-start'],
-    ['center', 'center'],
-    ['bottom', 'flex-end']
-  ])(
-    'when config.style.page.verticalAlign is set to %s, sets the variable to %s',
-    (value, expected) => {
-      dispatchStateChange('config.style.page.verticalAlign', value);
-      expect(cssVariable('--page-current-passage-justify-content')).toBe(
-        expected
+    it(`sets config.${varNamespace}.page.fork.divider.size`, () => {
+      dispatchStateChange(`config.${varNamespace}.page.fork.divider.size`, 4);
+      expect(cssVariable(`--${cssNamespace}page-fork-divider-size`)).toBe(
+        '4px'
       );
-    }
-  );
+    });
 
-  describe.each([['border'], ['borderColor']])(
-    'When config.style.page.style.%s is set',
-    name =>
-      it.each([
-        ['none', 'none', 'none'],
-        ['shadow', 'none', '0 4px 8px hsla(0, 0%, 0%, 0.25)'],
-        ['thick-line', '4px solid test-border-color', 'none'],
-        ['thin-line', '1px solid test-border-color', 'none']
-      ])(
-        'to %s, sets border and shadow correctly',
-        (value, expectedBorder, expectedShadow) => {
-          dispatchStateChange(`config.style.page.style.${name}`, value);
-          expect(cssVariable('--page-border')).toBe(expectedBorder);
-          expect(cssVariable('--page-box-shadow')).toBe(expectedShadow);
-        }
-      )
-  );
+    it(`sets config.${varNamespace}.page.fork.divider.style`, () => {
+      dispatchStateChange(
+        `config.${varNamespace}.page.fork.divider.style`,
+        'test'
+      );
+      expect(cssVariable(`--${cssNamespace}page-fork-divider-style`)).toBe(
+        'test'
+      );
+    });
+
+    it.each([
+      ['top', 'flex-start'],
+      ['center', 'center'],
+      ['bottom', 'flex-end']
+    ])(
+      `when config.${varNamespace}.page.verticalAlign is set to %s, sets the variable to %s`,
+      (value, expected) => {
+        dispatchStateChange(`config.${varNamespace}.page.verticalAlign`, value);
+        expect(
+          cssVariable(`--${cssNamespace}page-current-passage-justify-content`)
+        ).toBe(expected);
+      }
+    );
+
+    it.each([
+      ['none', 'none', 'none'],
+      ['shadow', 'none', '0 4px 8px hsla(0, 0%, 0%, 0.25)'],
+      ['thick-line', '4px solid test-border-color', 'none'],
+      ['thin-line', '1px solid test-border-color', 'none']
+    ])(
+      `When config.${varNamespace}.page.style.border is set to %s, sets border and shadow correctly`,
+      (value, expectedBorder, expectedShadow) => {
+        mockState({
+          [`config.${varNamespace}.page.style.border`]: value
+        });
+        dispatchStateChange(`config.${varNamespace}.page.style.border`, value);
+        expect(cssVariable(`--${cssNamespace}page-border`)).toBe(
+          expectedBorder
+        );
+        expect(cssVariable(`--${cssNamespace}page-box-shadow`)).toBe(
+          expectedShadow
+        );
+      }
+    );
+
+    // TODO test changes to border color
+  });
 
   it("ignores values that aren't strings or numbers", () => {
     dispatchStateChange('config.style.page.fork.divider.size', false);

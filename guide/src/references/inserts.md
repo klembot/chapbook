@@ -133,6 +133,14 @@ Begins playing a [previously-defined sound effect][sound]. <code>volume</code> c
 Renders a text field, saving the text entered to the variable named. <code>for 'variable name'</code> can be omitted; Chapbook will not save the selected value anywhere. <code>required</code> can also be omitted; Chapbook will make the field required unless you specify otherwise.
 </dd>
 
+<dt>
+<code>{theme switcher<i>, darkLabel: 'label'</i>, <i>lightLabel: 'label'</i>}</code>
+</td>
+
+<dd>
+Renders a link that switches between light and dark themes. <code>darkLabel</code> and <code>lightLabel</code> set the label shown when the theme is currently dark or light.
+</dd>
+
 </dl>
 
 [sound]: ../multimedia/audio.md
