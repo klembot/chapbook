@@ -27,7 +27,11 @@ describe('<state-css-variables>', () => {
       }
 
       switch (name) {
+        case 'config.style.page.footer.borderColor':
+        case 'config.style.page.header.borderColor':
         case 'config.style.page.style.borderColor':
+        case 'config.style.dark.page.footer.borderColor':
+        case 'config.style.dark.page.header.borderColor':
         case 'config.style.dark.page.style.borderColor':
           return 'test-border-color';
         case 'config.style.fontScaling.enabled':
@@ -159,6 +163,28 @@ describe('<state-css-variables>', () => {
         expect(cssVariable(`--${cssNamespace}page-box-shadow`)).toBe(
           expectedShadow
         );
+      }
+    );
+
+    describe.each([['footer'], ['header']])(
+      `config.${varNamespace}.page.%s.border`,
+      marginal => {
+        it.each([
+          ['none', 'none'],
+          ['thick-line', '4px solid test-border-color'],
+          ['thin-line', '1px solid test-border-color']
+        ])(`When set to %s, sets border correctly`, (value, expectedBorder) => {
+          mockState({
+            [`config.${varNamespace}.page.${marginal}.border`]: value
+          });
+          dispatchStateChange(
+            `config.${varNamespace}.page.${marginal}.border`,
+            value
+          );
+          expect(cssVariable(`--${cssNamespace}page-${marginal}-border`)).toBe(
+            expectedBorder
+          );
+        });
       }
     );
 
