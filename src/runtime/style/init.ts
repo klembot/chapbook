@@ -2,10 +2,14 @@ import {setDefaults} from '../state';
 
 const defaults = {
   'config.style.dark.backdrop': 'hsl(0, 0%, 10%)',
-  'config.style.dark.page.fork.divider.color': 'gray-5',
-  'config.style.dark.page.color': 'white on gray-6',
+  'config.style.dark.page.footer.border': 'thin-line',
+  'config.style.dark.page.footer.borderColor': 'white',
   'config.style.dark.page.footer.link.active.color':
     'raspberry-3 on raspberry-6',
+  'config.style.dark.page.fork.divider.color': 'gray-5',
+  'config.style.dark.page.color': 'white on gray-6',
+  'config.style.dark.page.header.border': 'thin-line',
+  'config.style.dark.page.header.borderColor': 'white',
   'config.style.dark.page.header.link.active.color':
     'raspberry-3 on raspberry-6',
   'config.style.dark.page.link.color': 'white',
@@ -27,12 +31,16 @@ const defaults = {
   'config.style.page.link.font': 'underline',
   'config.style.page.link.active.color': 'raspberry-4 on raspberry-1',
   'config.style.page.verticalAlign': 'center',
+  'config.style.page.header.border': 'thin-line',
+  'config.style.page.header.borderColor': 'gray-6',
   'config.style.page.header.font': '16',
   'config.style.page.header.link.font': 'small caps underlined',
   'config.style.page.header.link.lineColor': 'raspberry-4',
   'config.style.page.header.link.active.color': 'raspberry-4 on raspberry-1',
   'config.style.page.header.link.active.font': 'small caps underlined',
   'config.style.page.header.link.active.lineColor': 'raspberry-4',
+  'config.style.page.footer.border': 'thin-line',
+  'config.style.page.footer.borderColor': 'gray-6',
   'config.style.page.footer.font': '16',
   'config.style.page.footer.link.font': 'small caps underlined',
   'config.style.page.footer.link.lineColor': 'raspberry-4',

@@ -4,8 +4,8 @@ On sufficiently wide web browser windows, Chapbook will add horizontal margins a
 
 First, the variable `config.style.page.style.border` takes one of several possible values:
 
-- `'none'` creates no visible border around the page content
-- `'thin-line'` and `'thick-line'` create flat borders around the content
+- `'none'` creates no visible border around the page content.
+- `'thin-line'` and `'thick-line'` create flat borders around the content.
 - `'shadow'` adds a drop shadow around the content.
 
 Chapbook's default appearance is `'shadow'`.

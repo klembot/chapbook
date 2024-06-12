@@ -122,11 +122,21 @@ export class StateCssVariables extends CustomElement {
         break;
       }
 
+      case '--page-footer-border':
+      case '--page-footer-borderColor':
+      case '--page-header-border':
+      case '--page-header-borderColor':
+      case '--dark-page-footer-border':
+      case '--dark-page-footer-borderColor':
+      case '--dark-page-header-border':
+      case '--dark-page-header-borderColor':
       case '--page-style-border':
       case '--dark-page-style-border':
       case '--page-style-borderColor':
       case '--dark-page-style-borderColor': {
-        const cssPrefix = cssName.replace(/-style-[^-]*?$/, '');
+        const cssPrefix = cssName
+          .replace(/-style-[^-]*?$/, '')
+          .replace(/-border(Color)?$/, '');
         const namePrefix = name.replace(/\.[^.]*?$/, '');
         const borderStyle = get(`${namePrefix}.border`);
         const borderColor = get(`${namePrefix}.borderColor`);
