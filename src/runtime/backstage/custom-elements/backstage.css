@@ -70,7 +70,12 @@ backstage-sidebar button {
 	padding: calc(var(--backstage-grid) / 2);
 }
 
-backstage-sidebar button:hover {
+backstage-sidebar button:disabled {
+	color: var(--color-gray-3);
+	cursor: not-allowed;
+}
+
+backstage-sidebar button:not(:disabled):hover {
 	background: white;
 }
 

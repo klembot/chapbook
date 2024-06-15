@@ -13,9 +13,14 @@ Personalization options. If Chapbook is unable to determine what the system
 theme is, or the browser the player is using doesn't make this information
 available to web pages, then it will use the light theme.
 
-Chapbook also shows a link labeled "Switch Theme" in the footer of the story
+Chapbook also shows a link labeled **Switch Theme** in the footer of the story
 that allow players to swap between light and dark themes. This setting, like
 other [state](../state/), is remembered across play sessions.
+
+The light theme can also be considered the default theme. When the dark theme is
+active, Chapbook uses the light theme for any styles not defined by the dark
+theme. Typically, dark themes vary only in colors from light themes, so you do
+not need to set some styles twice, like fonts.
 
 All of this behavior may be customized.
 
@@ -24,7 +29,23 @@ All of this behavior may be customized.
   light theme, or a theme you've customized.
 - You can place a link that switches the theme elsewhere in your story.
 
-# Customizing Themes
+## Customizing Themes Using the Style Backstage Tab
+
+At the top of the **Style** backstage tab, there's text explaining which theme
+is active: either light or dark. Use the **Switch Theme** button beside this
+text to switch between light and dark themes. This button works exactly the same
+as the **Switch Theme** link in the page footer.
+
+The text fields under the **Page**, **Header**, and **Footer** update to show
+the value for the current theme. When the dark theme is active but a particular
+style is falling back to what has been defined in the light theme, then that
+value is shown in a light gray in the field.
+
+The **Theme Switching** checkbox controls whether Chapbook will switch between
+themes. If this is unchecked, Chapbook will always use the light theme
+regardless of system settings, and will hide the theme switcher on the page.
+
+## Customizing Themes in Code
 
 All of the descriptions of how to customize appearance in this section have
 applied to the default, light theme. So for example, setting
@@ -54,7 +75,7 @@ light theme.
 If you set <code>config.style.dark.page.style.borderColor</code>, make sure to set <code>config.style.dark.page.style.border</code> as well, even if it has the same value as <code>config.style.page.style.border</code> (e.g. the light theme version). This is a quirk in how these variables are translated to onscreen display.
 </aside>
 
-# Using the Current Theme in Code
+## Using the Current Theme in Code
 
 The [lookup](../state/objects-and-lookups.html) `browser.darkTheme` holds
 whether the current theme is dark (`true`) or light (`false`). As with other
@@ -66,7 +87,7 @@ There is also a `browser.darkSystemTheme` lookup that acts the same way as
 Chapbook code. It reports back whether the system is using as dark theme, to the
 best of its ability.
 
-# Controlling Theme Switching
+## Controlling Theme Switching
 
 The [variable](../state/the-vars-section.html)
 `config.style.page.theme.override` tracks which theme Chapbook is using.
@@ -92,7 +113,7 @@ the one that that will be switched to. So `darkLabel`, as in the example above, 
 If you'd like the same label to be shown regardless of the current theme, set
 `darkLabel` and `lightLabel` to the same value.
 
-# Disabling Theme Switching
+## Disabling Theme Switching
 
 If you'd like your story to use the same theme regardless of the system theme,
 set the variable `config.style.page.theme.enableSwitching` to `false`. This will

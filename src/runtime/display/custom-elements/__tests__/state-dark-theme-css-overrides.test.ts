@@ -1,12 +1,4 @@
-import {
-  afterEach,
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  vi
-} from 'vitest';
+import {beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
 import {defineElements} from '../../../util/custom-element';
 import {StateDarkThemeCssOverrides} from '../state-dark-theme-css-overrides';
 import {render} from '../../../../test-utils';
@@ -56,16 +48,8 @@ describe('<state-dark-theme-css-overrides>', () => {
     mockState();
   });
 
-  afterEach(() => {
-    vi.unstubAllGlobals();
-  });
-
   describe('When the theme is light', () => {
     beforeEach(() => {
-      vi.stubGlobal('matchMedia', () => ({
-        matches: false,
-        addEventListener: vi.fn()
-      }));
       mockState({'browser.darkTheme': false});
     });
 
@@ -90,10 +74,6 @@ describe('<state-dark-theme-css-overrides>', () => {
 
   describe('When the theme is dark', () => {
     beforeEach(() => {
-      vi.stubGlobal('matchMedia', () => ({
-        matches: true,
-        addEventListener: vi.fn()
-      }));
       mockState({'browser.darkTheme': true});
     });
 
@@ -140,56 +120,35 @@ describe('<state-dark-theme-css-overrides>', () => {
 
   describe('When the theme changes from light to dark', () => {
     it('sets all variables', async () => {
-      const addEventListener = vi.fn();
-
-      vi.stubGlobal('matchMedia', () => ({
-        addEventListener,
-        matches: false
-      }));
       renderWithParent('--dark-test-value: dark');
       await Promise.resolve();
       expect(cssVariable('--test-value')).toBe('');
       mockState({'browser.darkTheme': true});
-      addEventListener.mock.calls[0][1].handleEvent({
-        type: 'change',
-        matches: true
-      });
+      window.dispatchEvent(
+        new CustomEvent('system-theme-change', {detail: {theme: 'dark'}})
+      );
       expect(cssVariable('--test-value')).toBe('var(--dark-test-value)');
     });
 
     it("sets variables that don't have a light counterpart", () => {
-      const addEventListener = vi.fn();
-
-      vi.stubGlobal('matchMedia', () => ({
-        addEventListener,
-        matches: false
-      }));
       renderWithParent();
       expect(cssVariable('--test-value')).toBe('');
       mockState({'browser.darkTheme': true});
-      addEventListener.mock.calls[0][1].handleEvent({
-        type: 'change',
-        matches: true
-      });
+      window.dispatchEvent(
+        new CustomEvent('system-theme-change', {detail: {theme: 'dark'}})
+      );
       expect(cssVariable('--test-value')).toBe('var(--dark-test-value)');
     });
 
     it("does nothing if there's no parent element to override", () => {
-      const addEventListener = vi.fn();
-
-      vi.stubGlobal('matchMedia', () => ({
-        addEventListener,
-        matches: false
-      }));
       render(
         '<state-dark-theme-css-overrides></state-dark-theme-css-overrides>'
       );
       expect(cssVariable('--test-value')).toBe('');
       mockState({'browser.darkTheme': true});
-      addEventListener.mock.calls[0][1].handleEvent({
-        type: 'change',
-        matches: true
-      });
+      window.dispatchEvent(
+        new CustomEvent('system-theme-change', {detail: {theme: 'dark'}})
+      );
       expect(
         (
           document.querySelector(
@@ -202,21 +161,14 @@ describe('<state-dark-theme-css-overrides>', () => {
 
   describe('When the theme changes from dark to light', () => {
     it('removes all variables', async () => {
-      const addEventListener = vi.fn();
-
-      vi.stubGlobal('matchMedia', (query: string) => ({
-        addEventListener,
-        matches: query === '(prefers-color-scheme: dark)'
-      }));
       mockState({'browser.darkTheme': true});
       renderWithParent();
       await Promise.resolve();
       expect(cssVariable('--test-value')).toBe('var(--dark-test-value)');
       mockState({'browser.darkTheme': false});
-      addEventListener.mock.calls[0][1].handleEvent({
-        type: 'change',
-        matches: false
-      });
+      window.dispatchEvent(
+        new CustomEvent('system-theme-change', {detail: {theme: 'dark'}})
+      );
       expect(cssVariable('--test-value')).toBe('');
     });
   });
