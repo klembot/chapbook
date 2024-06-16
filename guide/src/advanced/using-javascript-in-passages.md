@@ -26,7 +26,7 @@ for (let i = 1; i <= 10; i++) {
 You can refer to variables defined in vars sections as you would expect in JavaScript. Changing them in JavaScript will persist changes as you'd expect, as well.
 
 ```
-color: 'red
+color: 'red'
 --
 [JavaScript]
 write(`The sky is ${color}.`);

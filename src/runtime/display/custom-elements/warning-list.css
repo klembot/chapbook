@@ -1,8 +1,9 @@
-@import 'open-color/open-color.css';
+@import 'reasonable-colors/reasonable-colors.css';
 
 warning-list {
-	background: var(--oc-yellow-0);
-	color: var(--oc-yellow-9);
+	background: var(--color-yellow-1);
+	border-left: 4px solid var(--color-yellow-2);
+	color: var(--color-yellow-4);
 	display: block;
 	font-family: var(--font-system);
 	padding: 0.5em;

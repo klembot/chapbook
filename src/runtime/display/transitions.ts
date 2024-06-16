@@ -30,35 +30,46 @@ export function fadeInOut(el: HTMLElement, html: string, duration: string) {
 	return new Promise<void>(resolve => {
 		const oldAnimationDuration = el.style.animationDuration;
 		const oldPointerEvents = el.style.pointerEvents;
+		const oldVisibility = el.style.visibility;
 
-		el.style.pointerEvents = 'none';
+    el.style.pointerEvents = 'none';
 
-		function finish() {
-			el.removeEventListener('animationend', finish);
-			el.classList.remove('fade-in');
-			el.style.animationDuration = oldAnimationDuration;
-			el.style.pointerEvents = oldPointerEvents;
-			resolve();
-		}
+    function finish() {
+      el.removeEventListener('animationend', finish);
+      el.classList.remove('fade-in');
+      el.style.animationDuration = oldAnimationDuration;
+      el.style.pointerEvents = oldPointerEvents;
+      resolve();
+    }
 
-		if (el.innerHTML.trim() !== '') {
-			// Fade out old content, then fade in new content.
+    if (el.innerHTML.trim() !== '') {
+      // Fade out old content, then fade in new content.
 
-			el.style.animationDuration = `${stepDuration}s`;
-			el.addEventListener('animationend', function fadeIn() {
-				el.removeEventListener('animationend', fadeIn);
-				el.innerHTML = html;
-				el.classList.remove('fade-out');
-				el.classList.add('fade-in');
-			});
-		} else {
-			// There's no outgoing content, so our fade is twice as slow.
+      el.style.animationDuration = `${stepDuration}s`;
+      el.addEventListener('animationend', async function fadeIn() {
+        el.removeEventListener('animationend', fadeIn);
+        el.classList.remove('fade-out');
+        el.style.visibility = 'hidden';
 
-			el.innerHTML = html;
-			el.style.animationDuration = `${stepDuration * 2}s`;
-			el.classList.add('fade-in');
-			el.addEventListener('animationend', finish);
-		}
+        // This delay is needed because if we add finish() as an event listener
+        // immediately, it never gets called.
+
+        window.setTimeout(() => {
+          el.addEventListener('animationend', finish);
+          el.innerHTML = html;
+          el.style.visibility = oldVisibility;
+          el.classList.add('fade-in');
+        }, 0);
+      });
+      el.classList.add('fade-out');
+    } else {
+      // There's no outgoing content, so our fade is twice as slow.
+
+      el.innerHTML = html;
+      el.style.animationDuration = `${stepDuration * 2}s`;
+      el.classList.add('fade-in');
+      el.addEventListener('animationend', finish);
+    }
 	});
 }
 

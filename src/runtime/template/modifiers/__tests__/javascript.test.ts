@@ -17,10 +17,10 @@ describe('JavaScript modifier', () => {
 		};
 
 		expect(logSpy).not.toBeCalled();
-		javascriptModifier.process?.(output, {
-			invocation: 'JavaScript',
-			state: {}
-		});
+		javascriptModifier.processRaw?.(output, {
+      invocation: 'JavaScript',
+      state: {}
+    });
 		expect(logSpy.mock.calls).toEqual([['pass']]);
 		logSpy.mockRestore();
 	});
@@ -31,10 +31,10 @@ describe('JavaScript modifier', () => {
 			text: 'write("pass");'
 		};
 
-		javascriptModifier.process?.(output, {
-			invocation: 'JavaScript',
-			state: {}
-		});
+		javascriptModifier.processRaw?.(output, {
+      invocation: 'JavaScript',
+      state: {}
+    });
 
 		expect(output).toEqual({
 			startsNewParagraph: false,
@@ -54,23 +54,23 @@ describe('JavaScript modifier', () => {
 			};
 
 			set('config.testing', true);
-			javascriptModifier.process?.(output, {
-				invocation: 'JavaScript',
-				state: {}
-			});
+			javascriptModifier.processRaw?.(output, {
+        invocation: 'JavaScript',
+        state: {}
+      });
 			expect(output.startsNewParagraph).toBe(false);
 			expect(output.text).toContain('An error occurred evaluating');
 		});
 
 		it('rethrows the error if config.testing is falsy', () =>
-			expect(() =>
-				javascriptModifier.process?.(
-					{
-						startsNewParagraph: true,
-						text: 'throw new Error()'
-					},
-					{invocation: 'JavaScript', state: {}}
-				)
-			).toThrow());
+      expect(() =>
+        javascriptModifier.processRaw?.(
+          {
+            startsNewParagraph: true,
+            text: 'throw new Error()'
+          },
+          {invocation: 'JavaScript', state: {}}
+        )
+      ).toThrow());
 	});
 });

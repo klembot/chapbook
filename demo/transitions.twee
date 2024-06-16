@@ -1,0 +1,33 @@
+:: Transitions
+These demonstrate the different types of transitions available.
+
+- [[Crossfade transition]]
+- [[Fade in/out transition]]
+- [[No transition]]
+
+
+:: Crossfade transition
+config.body.transition.name: 'crossfade'
+config.body.transition.duration: '3s'
+--
+This passage should fade in at the same time the previous one fades out.
+
+[[Start]]
+
+
+:: Fade in/out transition
+config.body.transition.name: 'fadeInOut'
+config.body.transition.duration: '3s'
+--
+This passage should fade in after the previous one fades out.
+
+[[Start]]
+
+
+:: No transition
+config.body.transition.name: 'none'
+--
+This passage should appear immediately.
+
+[[Start]]
+

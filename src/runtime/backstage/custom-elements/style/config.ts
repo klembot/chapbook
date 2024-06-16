@@ -1,23 +1,8 @@
-import {get} from '../../../state';
+import {get, varNames} from '../../../state';
 import {CustomElement} from '../../../util/custom-element';
 import './config.css';
 
-// State keys we care about.
-
-const keys = ['page', 'page.header', 'page.footer'].reduce<string[]>(
-	(out, key) =>
-		out.concat([
-			`config.style.${key}.font`,
-			`config.style.${key}.color`,
-			`config.style.${key}.link.font`,
-			`config.style.${key}.link.color`,
-			`config.style.${key}.link.lineColor`,
-			`config.style.${key}.link.active.font`,
-			`config.style.${key}.link.active.color`,
-			`config.style.${key}.link.active.lineColor`
-		]),
-	[]
-);
+const ignoredKeys = ['config.style.page.theme.override'];
 
 /**
  * Shows a read-only text field showing code that reflects the current style.
@@ -25,8 +10,8 @@ const keys = ['page', 'page.header', 'page.footer'].reduce<string[]>(
  * section of the Style backstage tab.
  */
 export class StyleConfig extends CustomElement {
-	connectedCallback() {
-		this.defaultHtml(`
+  connectedCallback() {
+    this.defaultHtml(`
 			<details open>
 				<summary>Config</summary>
 				<label for="cb-backstage-style-config">
@@ -39,29 +24,33 @@ export class StyleConfig extends CustomElement {
 				></textarea>
 			</details>
 		`);
-		window.addEventListener('state-change', this);
-		this.update();
-	}
+    window.addEventListener('state-change', this);
+    this.update();
+  }
 
-	disconnectedCallback() {
-		window.removeEventListener('state-change', this);
-	}
+  disconnectedCallback() {
+    window.removeEventListener('state-change', this);
+  }
 
-	handleEvent() {
-		this.update();
-	}
+  handleEvent() {
+    this.update();
+  }
 
-	update() {
-		this.query<HTMLTextAreaElement>('textarea').value = keys
-			.reduce((out, key) => {
-				const value = get(key);
+  update() {
+    this.query<HTMLTextAreaElement>('textarea').value = varNames(false)
+      .reduce((out, key) => {
+        if (!/^config.style/.test(key) || ignoredKeys.includes(key)) {
+          return out;
+        }
 
-				if (value) {
-					return out + `${key}: ${JSON.stringify(value)}\n`;
-				}
+        const value = get(key);
 
-				return out;
-			}, '')
-			.trim();
-	}
+        if (value === undefined) {
+          return out;
+        }
+
+        return out + `${key}: ${JSON.stringify(get(key))}\n`;
+      }, '')
+      .trim();
+  }
 }

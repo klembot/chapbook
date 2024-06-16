@@ -1,5 +1,4 @@
 :: Start
-
 This exercises all of Chapbook's functionality.
 
 Basics
@@ -18,6 +17,8 @@ Config
 - [[Font config]]
 - [[Fork config]]
 - [[Page config]]
+- [[Story stylesheet and JavaScript]]
+- [[Transitions]]
 
 Extensions
 

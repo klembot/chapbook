@@ -52,7 +52,7 @@ What's your darkest secret? You don't have to tell me now if you don't want to.
 
 Note that as above, the variable name should be quoted, but `false` should not.
 
-{% hint style='info' %}
+<aside data-hint="info">
 The restriction on navigation only applies to player-initiated navigation. A required text input will not block navigation initiated by the story itself, or the player choosing to restart the story.
 </aside>
 

@@ -1,6 +1,6 @@
 #page > marginal-content[type="footer"] {
 	background-color: var(--page-footer-background-color);
-	border-top: 1px solid black; /* FIXME */
+	border-top: var(--page-footer-border);
 	color: var(--page-footer-color);
 	font-family: var(--page-footer-font-family);
 	font-size: var(--page-footer-font-size);
@@ -42,7 +42,7 @@
 
 #page > marginal-content[type="header"]  {
 	background-color: var(--page-header-background-color);
-	border-bottom: 1px solid black; /* FIXME */
+	border-bottom: 1px solid var(--page-footer-borderColor);
 	color: var(--page-header-color);
 	font-family: var(--page-header-font-family);
 	font-size: var(--page-header-font-size);

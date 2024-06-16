@@ -1,5 +1,25 @@
 # Version History
 
+## 2.1.0, 16 June 2024
+
+`https://klembot.github.io/chapbook/use/2.1.0/format.js`
+
+- Chapbook now supports switching between a light and dark theme. These themes
+  can be customized, and theme switching can be disabled.
+- Chapbook also support fluid font sizing, where font size is proportional the
+  the browser width. This feature can be customized or disabled.
+- The header and footer borders can now be customized using state variables
+  instead of CSS.
+- A new lookup, `passage.from`, records the text of the link the player used to
+  visit the current passage. It can be used to implement basic setter links as
+  popularized in other story format, though it doesn't handle all ways that
+  setter links work there.
+- A bug where `[JavaScript]` and `[CSS]` modifiers weren't processing their code
+  properly has been fixed.
+- A bug where story JavaScript and style wasn't loaded has been fixed.
+- A bug where multiple consecutive italicized paragraphs weren't displayed
+  properly has been fixed.
+
 ## 2.0.0, 12 March 2024
 
 `https://klembot.github.io/chapbook/use/2.0.0/format.js`

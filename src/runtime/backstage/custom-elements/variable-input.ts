@@ -11,49 +11,51 @@ import './variable-input.css';
  * This isn't meant to be used outside of the backstage UI.
  */
 export class VariableInput extends CustomElement {
-	constructor() {
-		super();
-		this.addEventListener('input', event => {
-			const name = this.getAttribute('name');
+  constructor() {
+    super();
+    this.addEventListener('input', event => {
+      const name = this.getAttribute('name');
 
-			if (!name || !event.target) {
-				return;
-			}
+      if (!name || !event.target) {
+        return;
+      }
 
-			const value = (event.target as HTMLInputElement).value;
+      const value = (event.target as HTMLInputElement).value;
 
-			try {
-				if (this.hasAttribute('string')) {
-					set(name, value);
-				} else {
-					set(name, JSON.parse(value));
-				}
-			} catch {
-				// The value couldn't be parsed, so do nothing.
-			}
-		});
-	}
+      try {
+        if (this.hasAttribute('string')) {
+          set(name, value);
+        } else {
+          set(name, JSON.parse(value));
+        }
+      } catch {
+        // The value couldn't be parsed, so do nothing.
+      }
+    });
+  }
 
-	attributeChangedCallback() {
-		const name = this.getAttribute('name');
+  attributeChangedCallback() {
+    const name = this.getAttribute('name');
 
-		if (!name) {
-			return;
-		}
+    if (!name) {
+      return;
+    }
 
-		const value = get(name);
-		let stringValue = JSON.stringify(value);
+    const value = get(name);
+    let stringValue = JSON.stringify(value);
 
-		if (this.hasAttribute('string')) {
-			if (value === null || value === undefined) {
-				stringValue = '';
-			} else {
-				stringValue = (value as object).toString();
-			}
-		}
+    if (this.hasAttribute('string')) {
+      if (value === null || value === undefined) {
+        stringValue = '';
+      } else {
+        stringValue = (value as object).toString();
+      }
+    }
 
-		this.innerHTML = `<input type="text" value="${escape(stringValue)}" />`;
-	}
+    this.innerHTML = `<input type="text" placeholder="${
+      this.getAttribute('placeholder') ?? ''
+    }" value="${escape(stringValue)}" />`;
+  }
 
-	static observedAttributes = ['name', 'string'];
+  static observedAttributes = ['name', 'placeholder', 'string'];
 }

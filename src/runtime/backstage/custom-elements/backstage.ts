@@ -67,6 +67,7 @@ export class BackstageSidebar extends CustomElement {
 				aria-labelledby="backstage-style-tab"
 				id="backstage-style-tab-panel"
 			>
+				<backstage-style-theme></backstage-style-theme>
 				<backstage-style-config></backstage-style-config>
 				<backstage-style-group title="Page" prefix="page"></backstage-style-group>
 				<backstage-style-group title="Header"></backstage-style-group>
@@ -91,14 +92,14 @@ export class BackstageSidebar extends CustomElement {
 
 		if (this.hasAttribute('collapsed')) {
 			for (const button of toggleButtons) {
-				button.innerHTML = '&rarr;';
+				button.innerHTML = '&larr;';
 				button.setAttribute('aria-label', 'Show Backstage');
 			}
 
 			document.body.classList.remove('backstage-visible');
 		} else {
 			for (const button of toggleButtons) {
-				button.innerHTML = '&larr;';
+				button.innerHTML = '&rarr;';
 				button.setAttribute('aria-label', 'Hide Backstage');
 			}
 

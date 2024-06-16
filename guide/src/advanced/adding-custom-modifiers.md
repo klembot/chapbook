@@ -6,12 +6,12 @@ modifier that turns its text uppercase:
 ```
 [JavaScript]
 engine.extend('2.0.0', () => {
-	engine.template.modifiers.add({
-		match: /^uppercase$/i,
-		process(output) {
-			output.text = output.text.toUpperCase();
-		}
-	});
+  engine.template.modifiers.add({
+    match: /^uppercase$/i,
+    process(output) {
+      output.text = output.text.toUpperCase();
+    }
+  });
 });
 ```
 
@@ -37,7 +37,8 @@ _not_ HTML as it will be finally rendered.
   modifier](../modifiers-and-inserts/delayed-text.md), for example, sets this to
   `false`.)
 
-Modifiers also receive two other arguments which the example above didn't show:
+Modifiers also receive an argument, `options`, which the example above didn't
+show. `options` is an object with two properties:
 
 - `state`, a private state object that is carried over invocations of a modifier
   in a single passage
@@ -50,17 +51,18 @@ more and more letters from a passage.
 ```
 [JavaScript]
 engine.extend('2.0.0', () => {
-	engine.template.modifiers.add({
-		match: /^(also\b)?remove\b/i,
-		process(output, state, invocation) {
-			const invokeLetters = invocation.replace(/^(also\b)?remove/, '').split('');
+  engine.template.modifiers.add({
+    match: /^(also\s)?remove\b/i,
+    process(output, {invocation, state}) {
+      const invokeLetters = invocation.replace(/^(also\s)?remove\s/, '').split('');
 
-			state.letters = (state.letters || []).concat(invokeLetter);
-			state.letters.forEach(letter => {
-				output.text = output.text.replace(new RegExp(letter, 'gi'), 'X');
-			});
-		}
-	});
+      state.letters = (state.letters ?? []).concat(invokeLetters);
+
+      for (const letter of state.letters) {
+        output.text = output.text.replace(new RegExp(letter, 'gi'), 'X');
+      }
+    }
+  });
 });
 ```
 

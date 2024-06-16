@@ -195,7 +195,7 @@ export function renderParsed(
 	// Close any whitespace between list items or forks. This can be a side effect
 	// of modifiers running.
 
-	const multipleLinesBetweenItems = /^((>|-|\*).*$)\n{2,}\2/gm;
+	const multipleLinesBetweenItems = /^((>|-|(\*\s)).*$)\n{2,}\2/gm;
 
 	while (multipleLinesBetweenItems.test(markdown)) {
 		markdown = markdown.replace(multipleLinesBetweenItems, '$1\n$2');
