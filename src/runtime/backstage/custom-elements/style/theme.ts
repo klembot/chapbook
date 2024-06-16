@@ -4,6 +4,7 @@ import {
 } from '../../../custom-events';
 import {get, set} from '../../../state';
 import {CustomElement} from '../../../util/custom-element';
+import './theme.css';
 
 export class StyleTheme extends CustomElement {
   connectedCallback() {

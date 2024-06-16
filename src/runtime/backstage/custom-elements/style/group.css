@@ -1,0 +1,5 @@
+backstage-style-group label {
+	display: grid;
+	gap: 0.25em;
+	margin-bottom: 0.5em;
+}
