@@ -4,6 +4,7 @@ import {
 } from '../../../custom-events';
 import {get} from '../../../state';
 import {CustomElement} from '../../../util/custom-element';
+import './group.css';
 
 const fields = [
   {name: 'Font', suffix: 'font'},

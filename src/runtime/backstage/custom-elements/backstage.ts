@@ -92,14 +92,14 @@ export class BackstageSidebar extends CustomElement {
 
 		if (this.hasAttribute('collapsed')) {
 			for (const button of toggleButtons) {
-				button.innerHTML = '&rarr;';
+				button.innerHTML = '&larr;';
 				button.setAttribute('aria-label', 'Show Backstage');
 			}
 
 			document.body.classList.remove('backstage-visible');
 		} else {
 			for (const button of toggleButtons) {
-				button.innerHTML = '&larr;';
+				button.innerHTML = '&rarr;';
 				button.setAttribute('aria-label', 'Hide Backstage');
 			}
 

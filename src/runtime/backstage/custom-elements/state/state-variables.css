@@ -6,6 +6,7 @@ backstage-state-variables .variables {
 }
 
 backstage-state-variables .variables label {
+	align-items: center;
 	display: grid;
 	gap: var(--backstage-grid);
 	grid-template-columns: 15em 1fr;

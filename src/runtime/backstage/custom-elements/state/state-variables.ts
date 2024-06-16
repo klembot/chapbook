@@ -3,19 +3,21 @@ import {varNames} from '../../../state';
 import {CustomElement} from '../../../util/custom-element';
 import './state-variables.css';
 
+const ignoredVariablePrefixes = ['config.random.privateState'];
+
 export class StateVariables extends CustomElement {
-	showDefaults = false;
+  showDefaults = false;
 
-	constructor() {
-		super();
-		this.delegate('change', 'input[type="checkbox"]', event => {
-			this.showDefaults = (event.target as HTMLInputElement).checked;
-			this.update();
-		});
-	}
+  constructor() {
+    super();
+    this.delegate('change', 'input[type="checkbox"]', event => {
+      this.showDefaults = (event.target as HTMLInputElement).checked;
+      this.update();
+    });
+  }
 
-	connectedCallback() {
-		this.defaultHtml(`
+  connectedCallback() {
+    this.defaultHtml(`
 			<details open>
 				<summary>Variables</summary>
 				<label>
@@ -25,28 +27,31 @@ export class StateVariables extends CustomElement {
 				<div class="variables"></div>
 			</details>
 		`);
-		this.update();
-		window.addEventListener('state-change', this);
-	}
+    this.update();
+    window.addEventListener('state-change', this);
+  }
 
-	disconnectedCallback() {
-		window.removeEventListener('state-change', this);
-	}
+  disconnectedCallback() {
+    window.removeEventListener('state-change', this);
+  }
 
-	handleEvent() {
-		this.update();
-	}
+  handleEvent() {
+    this.update();
+  }
 
-	update() {
-		this.query('.variables').innerHTML = varNames(this.showDefaults)
-			.map(
-				name =>
-					`<div><label><span>${escape(
-						name
-					)}</span><backstage-variable-input name="${escape(
-						name
-					)}"></backstage-variable-input></label></div>`
-			)
-			.join('');
-	}
+  update() {
+    this.query('.variables').innerHTML = varNames(this.showDefaults)
+      .filter(
+        name => !ignoredVariablePrefixes.some(prefix => name.startsWith(prefix))
+      )
+      .map(
+        name =>
+          `<div><label><span>${escape(
+            name
+          )}</span><backstage-variable-input name="${escape(
+            name
+          )}"></backstage-variable-input></label></div>`
+      )
+      .join('');
+  }
 }
