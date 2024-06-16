@@ -11,16 +11,9 @@ import {StateCssVariables} from './state-css-variables';
  * This is available as `<state-dark-theme-css-overrides>`.
  */
 export class StateDarkThemeCssOverrides extends CustomElement {
-  themeWatcher: MediaQueryList;
-
-  constructor() {
-    super();
-    this.themeWatcher = window.matchMedia('(prefers-color-scheme: dark)');
-    this.themeWatcher.addEventListener('change', this);
-  }
-
   connectedCallback() {
     window.addEventListener('state-change', this);
+    window.addEventListener('system-theme-change', this);
 
     // This needs to be delayed so that the rest of the engine can initialize,
     // and the value of `browser.darkTheme` is accurate.
@@ -29,6 +22,7 @@ export class StateDarkThemeCssOverrides extends CustomElement {
 
   disconnectedCallback() {
     window.removeEventListener('state-change', this);
+    window.removeEventListener('system-theme-change', this);
   }
 
   update() {
@@ -81,7 +75,7 @@ export class StateDarkThemeCssOverrides extends CustomElement {
   handleEvent(
     event: CustomEvent<StateChangeEventDetail> | MediaQueryListEvent
   ) {
-    if (event.type === 'change') {
+    if (event.type === 'system-theme-change') {
       this.update();
     } else {
       const {name} = (event as CustomEvent<StateChangeEventDetail>).detail;

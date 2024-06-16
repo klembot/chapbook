@@ -67,6 +67,7 @@ export class BackstageSidebar extends CustomElement {
 				aria-labelledby="backstage-style-tab"
 				id="backstage-style-tab-panel"
 			>
+				<backstage-style-theme></backstage-style-theme>
 				<backstage-style-config></backstage-style-config>
 				<backstage-style-group title="Page" prefix="page"></backstage-style-group>
 				<backstage-style-group title="Header"></backstage-style-group>

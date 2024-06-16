@@ -7,6 +7,11 @@ so you can easily experiment to find a look that fits your story. However,
 changes you make will not be permanently saved. The next time you test or play
 your story, it will revert back to its previous appearance.
 
+<aside data-hint="info">
+<p>The <strong>Style</strong> tab mentions theme and lets you switch between them. See <a href="dark-theme.html">Dark Theme</a> for more information on what this does.</p>
+<p>The most important thing to understand is that the text fields in the <strong>Style</strong> tab reflect the style of the current theme, and update when the theme changes.</p>
+</aside>
+
 In order to make changes in the **Style** tab permanent, you must copy the code
 in the **Config** panel at the top of the tab into your starting passage's vars
 section. (This passage is shown with a rocket-ship icon in Twine's story map.)
@@ -353,7 +358,9 @@ To use a particular shade, enter the name in its box, e.g. `yellow-6`. To ensure
 that text has enough color contrast, choose two shades that have at least a
 numerical difference of 3. That is, `yellow-6` on a `yellow-3` background has
 sufficient contrast, but `red-5` on `red-3` doesn't. The [Reasonable
-Colors][reasonable-colors] site also has suggestions on colors that will complement a given hue--choose a hue to see detailed information--but you don't have to follow these suggestions, of course.
+Colors][reasonable-colors] site also has suggestions on colors that will
+complement a given hue--choose a hue to see detailed information--but you don't
+have to follow these suggestions, of course.
 
 You can also use [any other color notation][color-notation] that web browsers
 understand, from the traditional hex triplet notation (e.g. `#0b7285`) to more
@@ -367,7 +374,6 @@ foreground. For instance, you can set `config.style.page.color` to
 As with fonts, you can omit parts of a color declaration. Setting
 `config.style.page.link.color` to `'on blue-3'` causes links to use the page's
 foreground color, whatever it may be, but use a medium blue as background.
-
 
 ## Open Color (deprecated)
 
@@ -429,11 +435,18 @@ project web site][open-color].
 }
 </style>
 
-[^1]:To review, launching your story with Twine's **Test** button will cause the backstage view to appear, including the **Style** tab.
+[^1]:
+    To review, launching your story with Twine's **Test** button will cause the
+    backstage view to appear, including the **Style** tab.
 
-[^2]: If you are familiar with [CSS units](https://developer.mozilla.org/en-US/docs/Web/CSS/length), you can also use them, e.g. `Palatino 1rem` or `Palatino 25%`.
+[^2]:
+    If you are familiar with
+    [CSS units](https://developer.mozilla.org/en-US/docs/Web/CSS/length), you
+    can also use them, e.g. `Palatino 1rem` or `Palatino 25%`.
 
-[^3]: What's a serif? [Wikipedia](https://en.wikipedia.org/wiki/Serif) aptly answers.
+[^3]:
+    What's a serif? [Wikipedia](https://en.wikipedia.org/wiki/Serif) aptly
+    answers.
 
 [reasonable-colors]: https://www.reasonable.work/colors/
 [open-color]: https://yeun.github.io/open-color/

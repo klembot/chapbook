@@ -22,6 +22,16 @@ describe('<backstage-variable-input>', () => {
 		expect(screen.getByRole('textbox')).toBeInTheDocument();
 	});
 
+	it('sets the placeholder attribute on its child input', () => {
+    render(
+      '<backstage-variable-input placeholder="placeholder" name="test"></backstage-variable-input>'
+    );
+    expect(screen.getByRole('textbox')).toHaveAttribute(
+      'placeholder',
+      'placeholder'
+    );
+  });
+
 	describe('When the text input is changed', () => {
 		describe('When the string attribute is unset', () => {
 			it('sets the value to the value as parsed by JSON', () => {

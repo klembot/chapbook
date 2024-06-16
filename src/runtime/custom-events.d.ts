@@ -74,20 +74,28 @@ export interface StateChangeEventDetail {
 	value: Settable;
 }
 
+/**
+ * The `detail` property of a `system-theme-change` custom event.
+ */
+export interface SystemThemeChangeEventDetail {
+	theme: 'dark' | 'light';
+}
+
 declare global {
 	// Allows automatic typing of event listeners.
 	// See https://43081j.com/2020/11/typed-events-in-typescript
 
 	interface WindowEventHandlersEventMap {
-		'backstage-state-recorder-update': CustomEvent;
-		'backstage-state-snapshots-update': CustomEvent;
-		'body-content-change': CustomEvent;
-		'log-info': CustomEvent<LogEventDetail>;
-		'log-warning': CustomEvent<LogEventDetail>;
-		'display-change': CustomEvent<DisplayChangeEventDetail>;
-		'page-skip-indicator-show': CustomEvent;
-		'page-skip-indicator-hide': CustomEvent;
-		'state-change': CustomEvent<StateChangeEventDetail>;
-		'state-reset': CustomEvent;
-	}
+    'backstage-state-recorder-update': CustomEvent;
+    'backstage-state-snapshots-update': CustomEvent;
+    'body-content-change': CustomEvent;
+    'log-info': CustomEvent<LogEventDetail>;
+    'log-warning': CustomEvent<LogEventDetail>;
+    'display-change': CustomEvent<DisplayChangeEventDetail>;
+    'page-skip-indicator-show': CustomEvent;
+    'page-skip-indicator-hide': CustomEvent;
+    'state-change': CustomEvent<StateChangeEventDetail>;
+    'state-reset': CustomEvent;
+    'system-theme-change': CustomEvent<SystemThemeChangeEventDetail>;
+  }
 }
