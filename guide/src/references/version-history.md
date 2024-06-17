@@ -4,15 +4,22 @@
 
 `https://klembot.github.io/chapbook/use/2.1.0/format.js`
 
+- Chapbook now uses [Reasonable Colors](https://www.reasonable.work/colors/) as
+  its built-in palette. More hues are available, but there are fewer shades than
+  with the previous palette. This palette is designed to make choosing
+  accessible color schemes (i.e. with sufficient color contrast) easy. The
+  previous palette can still be used by adding `oc-` in front of a color name,
+  like `oc-red-5`. But this palette will be removed entirely in a future
+  release.
 - Chapbook now supports switching between a light and dark theme. These themes
   can be customized, and theme switching can be disabled.
-- Chapbook also support fluid font sizing, where font size is proportional the
-  the browser width. This feature can be customized or disabled.
+- Chapbook also supports fluid font sizing, where font size is proportional to
+  the the browser width. This feature can be customized or disabled.
 - The header and footer borders can now be customized using state variables
   instead of CSS.
 - A new lookup, `passage.from`, records the text of the link the player used to
   visit the current passage. It can be used to implement basic setter links as
-  popularized in other story format, though it doesn't handle all ways that
+  popularized in other story formats, though it doesn't handle all ways that
   setter links work there.
 - A bug where `[JavaScript]` and `[CSS]` modifiers weren't processing their code
   properly has been fixed.
