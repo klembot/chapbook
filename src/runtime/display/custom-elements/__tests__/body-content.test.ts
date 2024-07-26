@@ -59,6 +59,30 @@ describe('<body-content>', () => {
 	});
 
 	describe('when a display-change event is dispatched on window', () => {
+		it('scrolls the window to the top if no disablescroll attribute is set', async () => {
+      const scrollTo = vi.fn();
+
+      vi.stubGlobal('scrollTo', scrollTo);
+      render('<body-content></body-content>');
+      window.dispatchEvent(
+        new CustomEvent('display-change', {detail: {body: 'test'}})
+      );
+      await Promise.resolve();
+      expect(scrollTo.mock.calls).toEqual([[0, 0]]);
+    });
+
+    it("doesn't scroll the window if a disablescroll attribute is set", async () => {
+      const scrollTo = vi.fn();
+
+      vi.stubGlobal('scrollTo', scrollTo);
+      render('<body-content disablescroll></body-content>');
+      window.dispatchEvent(
+        new CustomEvent('display-change', {detail: {body: 'test'}})
+      );
+      await Promise.resolve();
+      expect(scrollTo).not.toBeCalled();
+    });
+
 		it('transitions content with the body transition type and duration', async () => {
 			render('<body-content></body-content>');
 			window.dispatchEvent(
