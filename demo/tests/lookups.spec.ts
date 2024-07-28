@@ -9,7 +9,7 @@ test('Lookups', async ({page}) => {
 	await expect(content.getByText('browser.height: 720')).toBeVisible();
 	await expect(content.getByText('browser.online: true')).toBeVisible();
 	await expect(content.getByText('browser.width: 1280')).toBeVisible();
-	await expect(content.getByText('engine.version: 2.1.0')).toBeVisible();
+	await expect(content.getByText('engine.version: 2.2.0')).toBeVisible();
 
 	// Skipping date-related lookups.
 

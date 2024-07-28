@@ -1,5 +1,15 @@
 # Version History
 
+## 2.2.0, 28 July 2024
+
+`https://klembot.github.io/chapbook.use/2.2.0/format.js`
+
+- Navigating to a new passage resets the window scroll position to the top, as
+  it had under Chapbook 1.
+- Added a new lookup `passage.fromText`, which records the text of the last link
+  used to navigate to another passage. Like `passage.from`, this can be used for
+  setter-style links.
+
 ## 2.1.0, 16 June 2024
 
 `https://klembot.github.io/chapbook/use/2.1.0/format.js`

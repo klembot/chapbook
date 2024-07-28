@@ -25,8 +25,14 @@ export class PassageLink extends InlineButton {
 			}
 
 			if (target) {
-				go(target);
-			}
+        // We dispatch this event so that listeners interested in what triggered
+        // a passage navigation can see us.
+
+        this.dispatchEvent(
+          new CustomEvent('passage-navigate', {bubbles: true})
+        );
+        go(target);
+      }
 		});
 	}
 

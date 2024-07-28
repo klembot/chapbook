@@ -15,6 +15,7 @@
 `now.weekday`: {now.weekday}  
 `now.year`: {now.year}  
 `passage.from`: {passage.from}  
+`passage.fromText`: {passage.fromText}  
 `passage.name`: {passage.name}  
 `passage.visits`: {passage.visits}  
 `story.name`: {story.name}

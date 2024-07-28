@@ -7,6 +7,9 @@ import {DisplayChangeEventDetail} from '../../custom-events';
 /**
  * Shows the main body content. Available as `<body-content>` and listens for
  * `display-change` events on `window` to perform updates.
+ *
+ * If this has a `disablescroll` attribute, this will not scroll the window when
+ * its content changes as the result of a `display-change` event.
  */
 export class BodyContent extends ContentElement {
 	connectedCallback() {
@@ -38,5 +41,9 @@ export class BodyContent extends ContentElement {
 		this.changeContent(content => {
 			content.innerHTML = detail.body;
 		});
+
+    if (this.getAttribute('disablescroll') === null) {
+      window.scrollTo(0, 0);
+    }
 	}
 }
