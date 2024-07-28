@@ -72,6 +72,20 @@ describe('initPassageLookups', () => {
     mute('lookups');
   });
 
+  it('initially sets passage.fromText to undefined', () => {
+    initPassageLookups();
+
+    const setupCall = setLookupMock.mock.calls.find(
+      ([name]) => name === 'passage.fromText'
+    );
+
+    expect(setupCall).not.toBeUndefined();
+    expect(setupCall?.[1]()).toBeUndefined();
+  });
+
+  // We cannot test passage.fromText otherwise because jsdom doesn't support innerText.
+  // See https://github.com/jsdom/jsdom/issues/1245
+
   it('sets passage.name to the name of the last entry of the trail variable', () => {
     initPassageLookups();
 

@@ -94,6 +94,7 @@ declare global {
     'display-change': CustomEvent<DisplayChangeEventDetail>;
     'page-skip-indicator-show': CustomEvent;
     'page-skip-indicator-hide': CustomEvent;
+    'passage-navigate': CustomEvent;
     'state-change': CustomEvent<StateChangeEventDetail>;
     'state-reset': CustomEvent;
     'system-theme-change': CustomEvent<SystemThemeChangeEventDetail>;
