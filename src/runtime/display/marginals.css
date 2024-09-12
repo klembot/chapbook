@@ -42,7 +42,7 @@
 
 #page > marginal-content[type="header"]  {
 	background-color: var(--page-header-background-color);
-	border-bottom: 1px solid var(--page-footer-borderColor);
+	border-bottom: var(--page-header-border); 
 	color: var(--page-header-color);
 	font-family: var(--page-header-font-family);
 	font-size: var(--page-header-font-size);
