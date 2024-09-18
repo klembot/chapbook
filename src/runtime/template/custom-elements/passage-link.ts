@@ -12,19 +12,19 @@ import {InlineButton} from './inline-button';
  * Available as `<passage-link>`.
  */
 export class PassageLink extends InlineButton {
-	constructor() {
-		super();
-		this.addEventListener('click', () => {
-			const target = this.getAttribute('to');
-			const parent: BodyContent | MarginalContent | null = this.closest(
-				'body-content, marginal-content'
-			);
+  constructor() {
+    super();
+    this.addEventListener('click', () => {
+      const target = this.getAttribute('to');
+      const parent: BodyContent | MarginalContent | null = this.closest(
+        'body-content, marginal-content'
+      );
 
-			if (parent && !parent.allChildInputsValid()) {
-				return;
-			}
+      if (parent && !parent.allChildInputsValid()) {
+        return;
+      }
 
-			if (target) {
+      if (target) {
         // We dispatch this event so that listeners interested in what triggered
         // a passage navigation can see us.
 
@@ -33,10 +33,11 @@ export class PassageLink extends InlineButton {
         );
         go(target);
       }
-		});
-	}
+    });
+  }
 
-	connectedCallback() {
-		this.setAttribute('role', 'link');
-	}
+  connectedCallback() {
+    super.connectedCallback();
+    this.setAttribute('role', 'link');
+  }
 }
