@@ -71,7 +71,7 @@ test('Line breaks', async ({page}) => {
 test('Lists', async ({page}) => {
 	await page.goto('http://localhost:5173/');
 
-	const content = page.locator('body-content');
+	const content = page.locator('body-content div');
 
 	await content.getByRole('link', {name: 'Markdown formatting'}).click();
 	await waitForPageTransition(page);

@@ -29,11 +29,14 @@ export class BodyContent extends ContentElement {
 
 		await callback(content);
 		await transition(
-			this,
-			content.innerHTML,
-			get(`config.body.transition.name`),
-			get(`config.body.transition.duration`)
-		);
+      this,
+      // We need to wrap the content in a `<div>` tag because we use `display:
+      // flex` for vertical alignment, and that causes margins to not collapse
+      // in content as they would normally.
+      `<div>${content.innerHTML}</div>`,
+      get(`config.body.transition.name`),
+      get(`config.body.transition.duration`)
+    );
 		this.dispatchEvent(new CustomEvent('body-content-change', {bubbles: true}));
 	}
 

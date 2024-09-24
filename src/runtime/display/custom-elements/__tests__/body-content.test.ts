@@ -30,19 +30,24 @@ describe('<body-content>', () => {
 	});
 
 	describe('its changeContent() method', () => {
-		it('transitions content with the body transition type and duration', async () => {
-			render('<body-content></body-content>');
+		it('transitions content with an enclosing div with the body transition type and duration', async () => {
+      render('<body-content></body-content>');
 
-			const el = document.querySelector('body-content') as BodyContent;
+      const el = document.querySelector('body-content') as BodyContent;
 
-			await el.changeContent(content => {
-				content.innerHTML = '<p>changed</p>';
-			});
-			expect(screen.getByText('changed')).toBeInTheDocument();
-			expect(transitionMock.mock.calls).toEqual([
-				[el, '<p>changed</p>', 'mock-body-transition', 'mock-body-duration']
-			]);
-		});
+      await el.changeContent(content => {
+        content.innerHTML = '<p>changed</p>';
+      });
+      expect(screen.getByText('changed')).toBeInTheDocument();
+      expect(transitionMock.mock.calls).toEqual([
+        [
+          el,
+          '<div><p>changed</p></div>',
+          'mock-body-transition',
+          'mock-body-duration'
+        ]
+      ]);
+    });
 
 		it('dispatches a body-content-change event when done', async () => {
 			const listener = vi.fn();
