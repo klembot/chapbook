@@ -3,7 +3,7 @@ import './page-skip.css';
 /**
  * Manages allowing the user to skip forward in time (right now, just past
  * delayed content). It listens to `body-content-change` events dispatched by
- * children to do this, so `<body-content>` should be a child of this element.
+ * children to do this, so the body content element should be a child of this.
  */
 export class PageSkip extends HTMLElement {
 	constructor() {

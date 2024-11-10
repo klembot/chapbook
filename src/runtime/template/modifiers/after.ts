@@ -1,7 +1,6 @@
 import timestring from 'timestring';
 import {Modifier} from './types';
 import {wrapMarkdown} from '../wrap-markdown';
-import '../../display/transitions.css';
 
 /**
  * Displays text after a delay.

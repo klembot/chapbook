@@ -3,7 +3,7 @@ import {test, expect} from '@playwright/test';
 test('Basic JavaScript', async ({page}) => {
   await page.goto('http://localhost:5173/');
 
-  const content = page.locator('body-content');
+  const content = page.locator('article');
 
   await content.getByRole('link', {name: 'JavaScript', exact: true}).click();
   page.on('dialog', async dialog => {
@@ -17,7 +17,7 @@ test('Basic JavaScript', async ({page}) => {
 test('Display content using JavaScript', async ({page}) => {
   await page.goto('http://localhost:5173/');
 
-  const content = page.locator('body-content');
+  const content = page.locator('article');
 
   await content.getByRole('link', {name: 'JavaScript', exact: true}).click();
   await content
@@ -32,7 +32,7 @@ test('Display content using JavaScript', async ({page}) => {
 test("JavaScript isn't interpreted as Markdown", async ({page}) => {
   await page.goto('http://localhost:5173/');
 
-  const content = page.locator('body-content');
+  const content = page.locator('article');
 
   await content.getByRole('link', {name: 'JavaScript', exact: true}).click();
   await content

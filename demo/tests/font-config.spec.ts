@@ -6,7 +6,7 @@ test('Font config', async ({page}) => {
 
   await page.goto('http://localhost:5173/');
 
-  const content = page.locator('body-content');
+  const content = page.locator('article');
 
   await content.getByRole('link', {name: 'Font config'}).click();
   await waitForPageTransition(page);
@@ -19,13 +19,10 @@ test('Font config', async ({page}) => {
       .locator('passage-link')
       .evaluate(el => parseInt(window.getComputedStyle(el).fontSize))
   ).toBe(31);
-  await expect(page.locator('marginal-content[type="footer"]')).toHaveCSS(
-    'font-family',
-    'sans-serif'
-  );
+  await expect(page.locator('footer')).toHaveCSS('font-family', 'sans-serif');
   expect(
     await page
-      .locator('marginal-content[type="footer"] restart-link')
+      .locator('footer restart-link')
       .evaluate(el => parseInt(window.getComputedStyle(el).fontSize))
   ).toBe(31);
 });
@@ -35,7 +32,7 @@ test('Font never goes below set size', async ({page}) => {
 
   await page.goto('http://localhost:5173/');
 
-  const content = page.locator('body-content');
+  const content = page.locator('article');
 
   expect(
     await content.evaluate(el => parseInt(window.getComputedStyle(el).fontSize))

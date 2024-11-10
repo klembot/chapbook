@@ -11,17 +11,16 @@
       <state-dark-theme-css-overrides>
         <div id="backdrop">
           <page-skip>
-            <div id="page" aria-live="polite">
-              <marginal-content role="banner" type="header"></marginal-content>
-              <body-content role="main"></body-content>
-              <warning-list></warning-list>
-              <marginal-content
-                role="contentinfo"
-                type="footer"
-              ></marginal-content>
-              <error-handler></error-handler>
-              <page-skip-indicator></page-skip-indicator>
-            </div>
+            <page-transition>
+              <div id="page" aria-live="polite">
+                <header hidden></header>
+                <article></article>
+                <warning-list></warning-list>
+                <footer hidden></footer>
+                <error-handler></error-handler>
+                <page-skip-indicator></page-skip-indicator>
+              </div>
+            </page-transition>
           </page-skip>
         </div>
       </state-dark-theme-css-overrides>

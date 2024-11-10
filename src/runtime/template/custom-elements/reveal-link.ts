@@ -1,5 +1,4 @@
-import {BodyContent} from '../../display/custom-elements/body-content';
-import {MarginalContent} from '../../display/custom-elements/marginal-content';
+import {PageTransition} from '../../display/custom-elements/page-transition';
 import {passageNamed} from '../../story';
 import {render} from '../render';
 import {InlineButton} from './inline-button';
@@ -13,88 +12,87 @@ import {InlineButton} from './inline-button';
  * Available as `<reveal-link>`.
  */
 export class RevealLink extends InlineButton {
-	constructor() {
-		super();
-		this.addEventListener('click', () => {
-			let source = this.getAttribute('text');
-			const passageAttribute = this.getAttribute('passage');
+  constructor() {
+    super();
+    this.addEventListener('click', () => {
+      let source = this.getAttribute('text');
+      const passageAttribute = this.getAttribute('passage');
 
-			if (passageAttribute) {
-				const passage = passageNamed(passageAttribute);
+      if (passageAttribute) {
+        const passage = passageNamed(passageAttribute);
 
-				if (passage) {
-					source = passage.source;
-				}
-			}
+        if (passage) {
+          source = passage.source;
+        }
+      }
 
-			if (source) {
-				const output = document.createElement('div');
+      if (source) {
+        const output = document.createElement('div');
 
-				// Need to trim() this to avoid spurious empty text nodes at the end.
+        // Need to trim() this to avoid spurious empty text nodes at the end.
 
-				output.innerHTML = render(source).trim();
+        output.innerHTML = render(source).trim();
 
-				// Output contains only block-level elements as its children. We know this
-				// because when we render source, it always comes wrapped in block
-				// elements; a bare link in a paragraphy by itself, for example, gets
-				// rendered with a <p> container by marked.
+        // Output contains only block-level elements as its children. We know this
+        // because when we render source, it always comes wrapped in block
+        // elements; a bare link in a paragraphy by itself, for example, gets
+        // rendered with a <p> container by marked.
 
-				const parent: BodyContent | MarginalContent | null = this.closest(
-					'body-content, marginal-content'
-				);
+        const transitionEl: PageTransition | null =
+          this.closest('page-transition');
 
-				if (!parent) {
-					throw new Error(
-						"Couldn't find suitable parent element to do a reveal link transition on."
-					);
-				}
+        if (!transitionEl) {
+          throw new Error(
+            "Couldn't find suitable parent element to do a reveal link transition on."
+          );
+        }
 
-				parent.changeContent(() => {
-					const toInsert = output.children.length;
+        transitionEl.startTransition(() => {
+          const toInsert = output.children.length;
 
-					if (toInsert > 0 && this.parentNode) {
-						// Put the first child where the link was in the DOM. Set its display
-						// as inline to make it imitate the link's layout.
+          if (toInsert > 0 && this.parentNode) {
+            // Put the first child where the link was in the DOM. Set its display
+            // as inline to make it imitate the link's layout.
 
-						const firstInsert = document.createElement('span');
+            const firstInsert = document.createElement('span');
 
-						firstInsert.innerHTML = output.firstElementChild?.innerHTML ?? '';
-						this.parentNode.insertBefore(firstInsert, this);
-						output.firstElementChild?.remove();
+            firstInsert.innerHTML = output.firstElementChild?.innerHTML ?? '';
+            this.parentNode.insertBefore(firstInsert, this);
+            output.firstElementChild?.remove();
 
-						if (
-							toInsert > 1 &&
-							this.parentNode.parentNode &&
-							output.lastChild
-						) {
-							// If there are other block elements, place them as siblings of the
-							// parent.
+            if (
+              toInsert > 1 &&
+              this.parentNode.parentNode &&
+              output.lastChild
+            ) {
+              // If there are other block elements, place them as siblings of the
+              // parent.
 
-							const lastInsert = output.lastChild;
+              const lastInsert = output.lastChild;
 
-							while (output.lastChild) {
-								this.parentNode.parentNode.insertBefore(
-									output.lastChild,
-									this.parentNode.nextSibling
-								);
-							}
+              while (output.lastChild) {
+                this.parentNode.parentNode.insertBefore(
+                  output.lastChild,
+                  this.parentNode.nextSibling
+                );
+              }
 
-							// Move any inline elements after the link we just expanded to the
-							// end of the last newly-inserted block element. Otherwise, they'll
-							// be sandwiched in by the new insert and order of content won't be
-							// preserved.
+              // Move any inline elements after the link we just expanded to the
+              // end of the last newly-inserted block element. Otherwise, they'll
+              // be sandwiched in by the new insert and order of content won't be
+              // preserved.
 
-							while (this.nextSibling) {
-								lastInsert.insertBefore(this.nextSibling, null);
-							}
-						}
-					}
+              while (this.nextSibling) {
+                lastInsert.insertBefore(this.nextSibling, null);
+              }
+            }
+          }
 
-					// Remove ourselves from the DOM.
+          // Remove ourselves from the DOM.
 
-					this.remove();
-				});
-			}
-		});
-	}
+          this.remove();
+        });
+      }
+    });
+  }
 }
