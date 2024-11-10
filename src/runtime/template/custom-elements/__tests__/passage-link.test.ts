@@ -11,12 +11,7 @@ import {
 import * as actions from '../../../actions';
 import {defineElements} from '../../../util/custom-element';
 import {PassageLink} from '../passage-link';
-import {
-  fireEvent,
-  mockContentElements,
-  render,
-  screen
-} from '../../../../test-utils';
+import {fireEvent, render, screen} from '../../../../test-utils';
 
 describe('<passage-link>', () => {
   const goSpy = vi.spyOn(actions, 'go');
@@ -47,31 +42,33 @@ describe('<passage-link>', () => {
       window.removeEventListener('passage-navigate', listener);
     });
 
-    it('calls go() on its to attribute and dispatches a passage-navigate event if all inputs are valid', () => {
-      render(
-        '<body-content><passage-link to="passage">test</passage-link></body-content>'
-      );
-      expect(goSpy).not.toBeCalled();
-      mockContentElements({allChildInputsValid: () => true});
-      fireEvent.click(screen.getByRole('link', {name: 'test'}));
-      expect(goSpy.mock.calls).toEqual([['passage']]);
-      expect(listener).toBeCalledTimes(1);
-    });
+    describe.each([['article'], ['header'], ['footer']])(
+      'When inside a <%s> element',
+      container => {
+        it('calls go() on its to attribute and dispatches a passage-navigate event if all inputs are valid', () => {
+          render(
+            `<${container}><passage-link to="passage">test</passage-link><input type="text" required value="x" /></${container}>`
+          );
+          expect(goSpy).not.toBeCalled();
+          fireEvent.click(screen.getByRole('link', {name: 'test'}));
+          expect(goSpy.mock.calls).toEqual([['passage']]);
+          expect(listener).toBeCalledTimes(1);
+        });
 
-    it('does nothing if in a content element where any input is invalid', () => {
-      render(
-        '<body-content><passage-link to="passage">test</passage-link></body-content>'
-      );
-      mockContentElements({allChildInputsValid: () => false});
-      fireEvent.click(screen.getByRole('link', {name: 'test'}));
-      expect(goSpy).not.toBeCalled();
-      expect(listener).not.toBeCalled();
-    });
+        it('does nothing if in a content element where any input is invalid', () => {
+          render(
+            `<${container}><passage-link to="passage">test</passage-link><input type="text" required value="" /></${container}>`
+          );
+          fireEvent.click(screen.getByRole('link', {name: 'test'}));
+          expect(goSpy).not.toBeCalled();
+          expect(listener).not.toBeCalled();
+        });
+      }
+    );
 
     it('calls go() and dispatches a passage-navigate event without checking input validity if not in a content element', () => {
       render('<passage-link to="passage">test</passage-link>');
       expect(goSpy).not.toBeCalled();
-      mockContentElements({allChildInputsValid: () => true});
       fireEvent.click(screen.getByRole('link', {name: 'test'}));
       expect(goSpy.mock.calls).toEqual([['passage']]);
       expect(listener).toBeCalledTimes(1);

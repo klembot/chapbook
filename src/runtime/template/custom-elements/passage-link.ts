@@ -1,6 +1,5 @@
 import {go} from '../../actions';
-import {BodyContent} from '../../display/custom-elements/body-content';
-import {MarginalContent} from '../../display/custom-elements/marginal-content';
+import {allChildInputsValid} from '../../util/all-child-inputs-valid';
 import {InlineButton} from './inline-button';
 
 /**
@@ -16,11 +15,11 @@ export class PassageLink extends InlineButton {
     super();
     this.addEventListener('click', () => {
       const target = this.getAttribute('to');
-      const parent: BodyContent | MarginalContent | null = this.closest(
-        'body-content, marginal-content'
+      const parent: HTMLElement | null = this.closest(
+        'article, footer, header'
       );
 
-      if (parent && !parent.allChildInputsValid()) {
+      if (parent && !allChildInputsValid(parent)) {
         return;
       }
 

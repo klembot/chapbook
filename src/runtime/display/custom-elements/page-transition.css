@@ -1,0 +1,10 @@
+/* This selector needs to be global to affect the page transition. */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--page-transition-duration);
+}
+
+page-transition {
+	display: block;
+}

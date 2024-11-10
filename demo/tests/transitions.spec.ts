@@ -23,7 +23,7 @@ for (const {link, text} of tests) {
   test(link, async ({page}) => {
     await page.goto('http://localhost:5173/');
 
-    const content = page.locator('body-content');
+    const content = page.locator('article');
 
     await content.getByRole('link', {name: 'Transition'}).click();
     await content.getByRole('link', {name: link}).click();
