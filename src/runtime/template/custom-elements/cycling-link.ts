@@ -1,5 +1,4 @@
-import {BodyContent} from '../../display/custom-elements/body-content';
-import {MarginalContent} from '../../display/custom-elements/marginal-content';
+import {PageTransition} from '../../display/custom-elements/page-transition';
 import {createLoggers} from '../../logger';
 import {set} from '../../state';
 import {InlineButton} from './inline-button';
@@ -16,69 +15,68 @@ const {warn} = createLoggers('inserts');
  * Available as `<cycling-link>`.
  */
 export class CyclingLink extends InlineButton {
-	constructor() {
-		super();
+  constructor() {
+    super();
 
-		this.addEventListener('click', () => {
-			const choicesAttribute = this.getAttribute('choices');
+    this.addEventListener('click', () => {
+      const choicesAttribute = this.getAttribute('choices');
 
-			if (choicesAttribute) {
-				let choices: unknown[];
+      if (choicesAttribute) {
+        let choices: unknown[];
 
-				try {
-					choices = JSON.parse(choicesAttribute);
-				} catch (error) {
-					warn(
-						`The choices attribute, "${choicesAttribute}" couldn't be parsed.`
-					);
-					return;
-				}
+        try {
+          choices = JSON.parse(choicesAttribute);
+        } catch (error) {
+          warn(
+            `The choices attribute, "${choicesAttribute}" couldn't be parsed.`
+          );
+          return;
+        }
 
-				// If choices can't be deserialized, do nothing.
+        // If choices can't be deserialized, do nothing.
 
-				if (!Array.isArray(choices)) {
-					warn(
-						"The choices attribute of this cycling link doesn't deserialize to an array."
-					);
-					return;
-				}
+        if (!Array.isArray(choices)) {
+          warn(
+            "The choices attribute of this cycling link doesn't deserialize to an array."
+          );
+          return;
+        }
 
-				// Coerce choices here to strings because the value in the DOM will have
-				// been converted to one.
+        // Coerce choices here to strings because the value in the DOM will have
+        // been converted to one.
 
-				let index =
-					choices
-						.map(choice =>
-							typeof choice === 'string'
-								? choice
-								: (choice as object).toString()
-						)
-						.indexOf((this.textContent ?? '').trim()) + 1;
+        let index =
+          choices
+            .map(choice =>
+              typeof choice === 'string'
+                ? choice
+                : (choice as object).toString()
+            )
+            .indexOf((this.textContent ?? '').trim()) + 1;
 
-				if (index === choices.length) {
-					index = 0;
-				}
+        if (index === choices.length) {
+          index = 0;
+        }
 
-				const parent: BodyContent | MarginalContent | null = this.closest(
-					'body-content, marginal-content'
-				);
+        const transitionEl: PageTransition | null =
+          this.closest('page-transition');
 
-				if (!parent) {
-					throw new Error(
-						"Couldn't find suitable parent element to do a cycle link transition on."
-					);
-				}
+        if (!transitionEl) {
+          throw new Error(
+            "Couldn't find suitable parent element to do a cycle link transition on."
+          );
+        }
 
-				parent.changeContent(() => {
-					this.textContent = (choices[index] as object).toString();
-				});
+        transitionEl.startTransition(() => {
+          this.textContent = (choices[index] as object).toString();
+        });
 
-				const setAttribute = this.getAttribute('set');
+        const setAttribute = this.getAttribute('set');
 
-				if (setAttribute) {
-					set(setAttribute, choices[index]);
-				}
-			}
-		});
-	}
+        if (setAttribute) {
+          set(setAttribute, choices[index]);
+        }
+      }
+    });
+  }
 }

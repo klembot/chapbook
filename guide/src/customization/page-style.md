@@ -20,16 +20,13 @@ When the story shows a new passage, it creates a transition between text based o
 - `'fadeInOut'` causes the old text to fade out, then the new text to fade in
 - `'none'` causes the new text to replace the old text immediately
 
+<aside data-hint="info">
+<p>The <code>'crossfade'</code> and <code>'fadeInOut'</code> transitions require that the player's web browser supports the View Transitions API. If it doesn't, Chapbook will use the <code>'none'</code> transition instead.
+</aside>
+
 Chapbook's default transition is `'crossfade'`.
 
-If you use `'crossfade'` or `'fadeInOut'`, you can control how long the transition takes by setting `config.body.transition.duration`, which should be a string in the same format that the [after modifer][after] accepts. Remember that it doesn't understand decimals, so if you'd like a transition to take half a second, set `config.page.transition.duration` to `'500ms'`. Also keep in mind that the duration is the duration of the complete transition-- a `'crossfade'` and `'fadeInOut'` transition with the same duration might look as though they last different amounts of time, as the `'fadeInOut'` has two steps.
-
-You can also set how the header and footer content update using the following variables. They take the same values as their `body` counterparts.
-
-- `config.header.transition.name`
-- `config.header.transition.duration`
-- `config.footer.transition.name`
-- `config.footer.transition.duration`
+If you use `'crossfade'` or `'fadeInOut'`, you can control how long the transition takes by setting `config.body.transition.duration`, which should be a string in the same format that the [after modifer][after] accepts. Remember that it doesn't understand decimals, so if you'd like a transition to take half a second, set `config.page.transition.duration` to `'500ms'`. Also keep in mind that the duration is the duration of the complete transition--a `'crossfade'` and `'fadeInOut'` transition with the same duration might look as though they last different amounts of time, as the `'fadeInOut'` has two steps.
 
 Finally, Chapbook vertically centers text inside the page by default. To change this, set `config.style.page.verticalAlign` to either `'top'`, `'center'`, or `'bottom'`.
 

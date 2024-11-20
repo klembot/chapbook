@@ -1,10 +1,9 @@
 import {defineElements} from '../../util/custom-element';
-import {BodyContent} from './body-content';
 import {ErrorHandler} from './error-handler';
 import {ExternalFonts} from './external-fonts';
-import {MarginalContent} from './marginal-content';
 import {PageSkip} from './page-skip';
 import {PageSkipIndicator} from './page-skip-indicator';
+import {PageTransition} from './page-transition';
 import {StateCssVariables} from './state-css-variables';
 import {StateDarkThemeCssOverrides} from './state-dark-theme-css-overrides';
 import {WarningList} from './warning-list';
@@ -14,12 +13,11 @@ import {WarningList} from './warning-list';
  */
 export function initDisplayCustomElements() {
   defineElements({
-    'body-content': BodyContent,
     'error-handler': ErrorHandler,
     'external-fonts': ExternalFonts,
-    'marginal-content': MarginalContent,
     'page-skip': PageSkip,
     'page-skip-indicator': PageSkipIndicator,
+    'page-transition': PageTransition,
     'state-css-variables': StateCssVariables,
     'state-dark-theme-css-overrides': StateDarkThemeCssOverrides,
     'warning-list': WarningList

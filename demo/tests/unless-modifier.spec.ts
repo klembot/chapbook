@@ -3,7 +3,7 @@ import {test, expect} from '@playwright/test';
 test('Unless modifier', async ({page}) => {
 	await page.goto('http://localhost:5173/');
 
-	const content = page.locator('body-content');
+	const content = page.locator('article');
 
 	await content.getByRole('link', {name: 'Unless modifier'}).click();
 	await expect(
