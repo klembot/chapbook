@@ -115,95 +115,97 @@ function renderInsert(source: string, inserts: Insert[]) {
  * If an insert can't be parsed successfully, it is left as-is.
  **/
 export default function render(source: string, inserts: Insert[]) {
-	let result = '';
+  let result = '';
 
-	// startText is the index of the text before the first curly bracket;
-	// startCurly is the index of the bracket.
+  // startText is the index of the text before the first curly bracket;
+  // startCurly is the index of the bracket.
 
-	let startText = 0;
-	let startCurly = source.indexOf('{');
+  let startText = 0;
+  let startCurly = source.indexOf('{');
 
-	if (startCurly === -1) {
-		return source;
-	}
+  if (startCurly === -1) {
+    return source;
+  }
 
-	// Scan forward until we reach:
-	// -   another '{', indicating that the original '{' isn't the start of an
-	//     insert
-	// -   a single or double quote, indicating the start of a string value
-	// -   a '}' that isn't inside a string, indicating the end of a possible
-	//     insert
+  // Scan forward until we reach:
+  // -   another '{' outside of a string value, indicating that the original '{'
+  //     isn't the start of an insert
+  // -   a single or double quote, indicating the start of a string value
+  // -   a '}' that isn't inside a string, indicating the end of a possible
+  //     insert
 
-	let inString = false;
-	let stringDelimiter;
+  let inString = false;
+  let stringDelimiter;
 
-	for (let i = startCurly + 1; i < source.length; i++) {
-		switch (source[i]) {
-			case '{':
-				// Reset start variables for the next match.
+  for (let i = startCurly + 1; i < source.length; i++) {
+    switch (source[i]) {
+      case '{':
+        if (!inString) {
+          // Reset start variables for the next match.
 
-				startCurly = i;
-				inString = false;
-				break;
+          startCurly = i;
+        }
+        break;
 
-			case '"':
-			case "'":
-				// Ignore backslashed quotes.
+      case '"':
+      case "'":
+        // Ignore backslashed quotes.
 
-				if (i > 0 && source[i - 1] !== '\\') {
-					// Toggle inString status as needed.
+        if (i > 0 && source[i - 1] !== '\\') {
+          // Toggle inString status as needed.
 
-					if (!inString) {
-						inString = true;
-						stringDelimiter = source[i];
-					} else if (inString && stringDelimiter === source[i]) {
-						inString = false;
-					}
-				}
-				break;
+          if (!inString) {
+            inString = true;
+            stringDelimiter = source[i];
+          } else if (inString && stringDelimiter === source[i]) {
+            inString = false;
+          }
+        }
+        break;
 
-			case '}':
-				if (!inString) {
-					const renderSrc = source.substring(startCurly, i + 1);
-					let insertResult = '';
+      case '}':
+        if (!inString) {
+          const renderSrc = source.substring(startCurly, i + 1);
+          let insertResult = '';
 
-					try {
-						insertResult = renderInsert(renderSrc, inserts);
-					} catch (error) {
-						console.warn(
-							`An error occurred while rendering "${renderSrc}": ${
-								(error as Error).message
-							}`
-						);
+          try {
+            insertResult = renderInsert(renderSrc, inserts);
+          } catch (error) {
+            console.warn(
+              `An error occurred while rendering "${renderSrc}": ${
+                (error as Error).message
+              }`
+            );
 
-						insertResult = renderSrc;
-					}
+            insertResult = renderSrc;
+          }
 
-					if (insertResult === undefined) {
-						insertResult = '';
-					}
+          if (insertResult === undefined) {
+            insertResult = '';
+          }
 
-					result += source.substring(startText, startCurly) + insertResult;
+          result += source.substring(startText, startCurly) + insertResult;
 
-					// Advance start variables for the next match.
+          // Advance start variables for the next match.
 
-					startText = i + 1;
-					startCurly = source.indexOf('{', startText);
+          startText = i + 1;
+          startCurly = source.indexOf('{', startText);
+          i = startCurly;
 
-					if (startCurly === -1) {
-						// There are no more open curly brackets left to examine.
-						// Short-circuit the for loop to bring it to an end.
+          if (startCurly === -1) {
+            // There are no more open curly brackets left to examine.
+            // Short-circuit the for loop to bring it to an end.
 
-						i = source.length;
-					}
-				}
-				break;
+            i = source.length;
+          }
+        }
+        break;
 
-			// Take no action on normal characters.
-		}
-	}
+      // Take no action on normal characters.
+    }
+  }
 
-	// Any remaining text in src must be plain text, not an insert.
+  // Any remaining text in src must be plain text, not an insert.
 
-	return result + source.substring(startText);
+  return result + source.substring(startText);
 }

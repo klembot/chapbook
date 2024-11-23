@@ -102,17 +102,47 @@ describe('insert renderer', () => {
 		expect(render('{test insert}', inserts)).toBe('null#{}#test insert');
 	});
 
-	it('invokes functional inserts that contain }', () => {
-		expect(render('{test insert: "hello }"}', inserts)).toBe(
-			'hello }#{}#test insert: "hello }"'
-		);
-	});
+	it('invokes multiple functional inserts in one string', () =>
+    expect(
+      render('{test insert: "green"} {test insert: "blue"}', inserts)
+    ).toBe('green#{}#test insert: "green" blue#{}#test insert: "blue"'));
 
-	it('invokes functional inserts that contain quotation marks', () => {
-		expect(render(`{test insert: '"hello m\\'dear"'}`, inserts)).toBe(
-			`"hello m'dear"#{}#test insert: '"hello m\\'dear"'`
-		);
-	});
+  it('invokes functional inserts that contain }', () =>
+    expect(render('{test insert: "hello }"}', inserts)).toBe(
+      'hello }#{}#test insert: "hello }"'
+    ));
+
+  it('invokes functional inserts that contain {', () =>
+    expect(render('{test insert: "hello {"}', inserts)).toBe(
+      'hello {#{}#test insert: "hello {"'
+    ));
+
+  it('invokes multiple functional inserts that contain { and }', () =>
+    expect(
+      render('{test insert: "hello }"} {test insert: "hello {"}', inserts)
+    ).toBe(
+      'hello }#{}#test insert: "hello }" hello {#{}#test insert: "hello {"'
+    ));
+
+	it('invokes functional inserts that contain quotation marks', () =>
+    expect(render(`{test insert: '"hello m\\'dear"'}`, inserts)).toBe(
+      `"hello m'dear"#{}#test insert: '"hello m\\'dear"'`
+    ));
+
+  it("doesn't get confused by quotation marks outside of inserts", () => {
+    expect(render(`'ignore' {test insert: 'hello'}`, inserts)).toBe(
+      `'ignore' hello#{}#test insert: 'hello'`
+    );
+    expect(render(`'ignore {test insert: 'hello'}`, inserts)).toBe(
+      `'ignore hello#{}#test insert: 'hello'`
+    );
+    expect(render(`"ignore" {test insert: 'hello'}`, inserts)).toBe(
+      `"ignore" hello#{}#test insert: 'hello'`
+    );
+    expect(render(`"ignore {test insert: 'hello'}`, inserts)).toBe(
+      `"ignore hello#{}#test insert: 'hello'`
+    );
+  });
 
 	it('leaves unparseable inserts alone', () => {
 		expect(render('{???}', [])).toBe('{???}');
