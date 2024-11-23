@@ -58,18 +58,21 @@ describe('<state-dark-theme-css-overrides>', () => {
       expect(cssVariable('--test-value')).toBe('');
     });
 
-    it("doesn't set variables after being mounted", () => {
-      const {parent} = renderWithParent();
+    it.each([['config'], ['config.style'], ['config.style.dark.new.value']])(
+      "doesn't set variables after being mounted and a change to %s occurs",
+      varName => {
+        const {parent} = renderWithParent();
 
-      parent.style.setProperty('--new-value', 'new-light');
-      parent.style.setProperty('--dark-new-value', 'new-dark');
-      window.dispatchEvent(
-        new CustomEvent<StateChangeEventDetail>('state-change', {
-          detail: {name: 'config.style.dark.new.value', value: 'ignored'}
-        })
-      );
-      expect(cssVariable('--new-value')).toBe('');
-    });
+        parent.style.setProperty('--new-value', 'new-light');
+        parent.style.setProperty('--dark-new-value', 'new-dark');
+        window.dispatchEvent(
+          new CustomEvent<StateChangeEventDetail>('state-change', {
+            detail: {name: varName, value: 'ignored'}
+          })
+        );
+        expect(cssVariable('--new-value')).toBe('');
+      }
+    );
   });
 
   describe('When the theme is dark', () => {
@@ -83,19 +86,22 @@ describe('<state-dark-theme-css-overrides>', () => {
       expect(cssVariable('--test-value')).toBe('var(--dark-test-value)');
     });
 
-    it('sets variables after being mounted', async () => {
-      const {parent} = renderWithParent();
+    it.each([['config'], ['config.style'], ['config.style.dark.new.value']])(
+      'sets variables after being mounted and a change to %s occurs',
+      async varName => {
+        const {parent} = renderWithParent();
 
-      await Promise.resolve();
-      parent.style.setProperty('--new-value', 'new-light');
-      parent.style.setProperty('--dark-new-value', 'new-dark');
-      window.dispatchEvent(
-        new CustomEvent<StateChangeEventDetail>('state-change', {
-          detail: {name: 'config.style.dark.new.value', value: 'ignored'}
-        })
-      );
-      expect(cssVariable('--new-value')).toBe('var(--dark-new-value)');
-    });
+        await Promise.resolve();
+        parent.style.setProperty('--new-value', 'new-light');
+        parent.style.setProperty('--dark-new-value', 'new-dark');
+        window.dispatchEvent(
+          new CustomEvent<StateChangeEventDetail>('state-change', {
+            detail: {name: varName, value: 'ignored'}
+          })
+        );
+        expect(cssVariable('--new-value')).toBe('var(--dark-new-value)');
+      }
+    );
 
     it("sets variables that don't have a light counterpart", async () => {
       renderWithParent('--dark-test-value: dark');
