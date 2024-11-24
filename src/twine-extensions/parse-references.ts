@@ -1,14 +1,14 @@
 export function parsePassageText(text: string) {
 	const matchers = [
-		// {embed passage: 'passage name'}
-		/\{embed\s+passage\s*:\s*['"](.+?)['"]\s*}/g,
+    // {embed passage: 'passage name'}
+    /\{embed\s+passage\s*:\s*['"](.+?)['"]\s*}/g,
 
-		// {link to: 'passage name'}
-		/\{link\s+to\s*:\s*['"](.+?)['"]\s*\}/g,
+    // {link to: 'passage name', [label: '']}
+    /\{link\s+to\s*:\s*['"](.+?)['"][^}]*\}/g,
 
-		// {reveal link: 'label', passage: 'passage name'}
-		/\{reveal\s+link.+passage\s*:\s*['"](.+?)['"].*\}/g
-	];
+    // {reveal link: 'label', passage: 'passage name'}
+    /\{reveal\s+link.+passage\s*:\s*['"](.+?)['"].*\}/g
+  ];
 
 	const results = [];
 

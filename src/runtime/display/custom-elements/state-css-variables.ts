@@ -23,10 +23,27 @@ export class StateCssVariables extends CustomElement {
   handleEvent(event: CustomEvent<StateChangeEventDetail>) {
     const {name, value} = event.detail;
 
-    if (!name.startsWith('config.style.')) {
-      return;
-    }
+    if (name === 'config' || name === 'config.style') {
+      // The entire config object has changed, likely because we just restored
+      // state. We need to update all properties.
 
+      for (const varName of varNames()) {
+        if (varName.startsWith('config.style.')) {
+          const varValue = get(varName);
+
+          if (typeof varValue === 'string') {
+            this.handleStateChange(varName, varValue);
+          }
+        }
+      }
+    } else if (name.startsWith('config.style.')) {
+      // An individual style property has changed.
+
+      this.handleStateChange(name, value);
+    }
+  }
+
+  handleStateChange(name: string, value: string) {
     const cssName = `--${name
       .replace(/^config\.style\./, '')
       .replace(/\./g, '-')}`;

@@ -80,8 +80,13 @@ export class StateDarkThemeCssOverrides extends CustomElement {
     } else {
       const {name} = (event as CustomEvent<StateChangeEventDetail>).detail;
 
+      // We need to listen to changes on config and config.style because they
+      // may be changed when state is restored at the start of a session.
+
       if (
         [
+          'config',
+          'config.style',
           'config.style.page.theme.enableSwitching',
           'config.style.page.theme.override'
         ].includes(name) ||

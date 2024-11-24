@@ -295,4 +295,15 @@ describe('<state-css-variables>', () => {
       'min(calc(18px + max(10 * (100vw - 1000px) / 1000, 0px)), 20em)'
     );
   });
+
+  it.each([['config'], ['config.style']])(
+    'handles changes to %s correctly',
+    varName => {
+      mockState({'config.style.test.color': '#000 on #fff'});
+      varNamesMock.mockReturnValue(['config.style.test.color']);
+      dispatchStateChange(varName, {value: 'ignored'});
+      expect(cssVariable('--test-color')).toBe('#000');
+      expect(cssVariable('--test-background-color')).toBe('#fff');
+    }
+  );
 });

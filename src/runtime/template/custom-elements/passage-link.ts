@@ -1,6 +1,5 @@
 import {go} from '../../actions';
-import {BodyContent} from '../../display/custom-elements/body-content';
-import {MarginalContent} from '../../display/custom-elements/marginal-content';
+import {allChildInputsValid} from '../../util/all-child-inputs-valid';
 import {InlineButton} from './inline-button';
 
 /**
@@ -12,19 +11,19 @@ import {InlineButton} from './inline-button';
  * Available as `<passage-link>`.
  */
 export class PassageLink extends InlineButton {
-	constructor() {
-		super();
-		this.addEventListener('click', () => {
-			const target = this.getAttribute('to');
-			const parent: BodyContent | MarginalContent | null = this.closest(
-				'body-content, marginal-content'
-			);
+  constructor() {
+    super();
+    this.addEventListener('click', () => {
+      const target = this.getAttribute('to');
+      const parent: HTMLElement | null = this.closest(
+        'article, footer, header'
+      );
 
-			if (parent && !parent.allChildInputsValid()) {
-				return;
-			}
+      if (parent && !allChildInputsValid(parent)) {
+        return;
+      }
 
-			if (target) {
+      if (target) {
         // We dispatch this event so that listeners interested in what triggered
         // a passage navigation can see us.
 
@@ -33,10 +32,11 @@ export class PassageLink extends InlineButton {
         );
         go(target);
       }
-		});
-	}
+    });
+  }
 
-	connectedCallback() {
-		this.setAttribute('role', 'link');
-	}
+  connectedCallback() {
+    super.connectedCallback();
+    this.setAttribute('role', 'link');
+  }
 }

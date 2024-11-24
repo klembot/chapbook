@@ -1,4 +1,21 @@
-#page > marginal-content[type="footer"] {
+#page > header, #page > footer {
+	display: flex;
+	justify-content: space-between;
+}
+
+#page > header[hidden], #page > footer[hidden] {
+	border: none;
+}
+
+#page > header .center, #page > footer .center {
+	text-align: center;
+}
+
+#page > header .right, #page > footer .right {
+	text-align: right;
+}
+
+#page > footer {
 	background-color: var(--page-footer-background-color);
 	border-top: var(--page-footer-border);
 	color: var(--page-footer-color);
@@ -12,7 +29,7 @@
 	text-transform: var(--page-footer-text-transform);
 }
 
-#page > marginal-content[type="footer"]  .link {
+#page > footer .link {
 	background-color: var(--page-footer-link-background-color);
 	color: var(--page-footer-link-color);
 	font-family: var(--page-footer-link-font-family);
@@ -25,7 +42,7 @@
 	text-transform: var(--page-footer-link-text-transform);
 }
 
-#page > marginal-content[type="footer"]  .link:hover {
+#page > footer .link:hover {
 	background-color: var(--page-footer-link-active-background-color);
 	color: var(--page-footer-link-active-color);
 	font-family: var(--page-footer-link-active-font-family);
@@ -40,9 +57,9 @@
 	text-transform: var(--page-footer-link-active-text-transform);
 }
 
-#page > marginal-content[type="header"]  {
+#page > header  {
 	background-color: var(--page-header-background-color);
-	border-bottom: 1px solid var(--page-footer-borderColor);
+	border-bottom: var(--page-header-border); 
 	color: var(--page-header-color);
 	font-family: var(--page-header-font-family);
 	font-size: var(--page-header-font-size);
@@ -54,7 +71,7 @@
 	text-transform: var(--page-header-text-transform);
 }
 
-#page > marginal-content[type="header"] .link {
+#page > header .link {
 	background-color: var(--page-header-link-background-color);
 	color: var(--page-header-link-color);
 	font-family: var(--page-header-link-font-family);
@@ -67,7 +84,7 @@
 	text-transform: var(--page-header-link-text-transform);
 }
 
-#page > marginal-content[type="header"] .link:hover {
+#page > header .link:hover {
 	background-color: var(--page-header-link-active-background-color);
 	color: var(--page-header-link-active-color);
 	font-family: var(--page-header-link-active-font-family);

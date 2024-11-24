@@ -88,15 +88,15 @@
 	text-transform: lowercase;
 }
 
-#page > marginal-content[type="footer"] {
+#page > footer {
 	grid-area: footer;
 }
 
-#page > marginal-content[type="header"] {
+#page > header {
 	grid-area: header;
 }
 
-#page > body-content {
+#page > article {
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;

@@ -3,7 +3,7 @@ import {waitForPageTransition} from './util';
 
 test('Setting custom style', async ({page}) => {
   await page.goto('http://localhost:5173/');
-  const content = page.locator('body-content');
+  const content = page.locator('article');
 
   await content
     .getByRole('link', {name: 'Story stylesheet and JavaScript'})
@@ -17,7 +17,7 @@ test('Setting custom style', async ({page}) => {
 
 test('Running custom JavaScript', async ({page}) => {
   await page.goto('http://localhost:5173/');
-  const content = page.locator('body-content');
+  const content = page.locator('article');
 
   await content
     .getByRole('link', {name: 'Story stylesheet and JavaScript'})
