@@ -1,8 +1,45 @@
 # Version History
 
+## 2.3.0, 24 November 24
+
+`https://klembot.github.io.chapbook/use/2.3.0/format.js`
+
+- Passage transitions now use the View Transition API where available. This will
+  result in smoother transitions, with less possibility for content to jump
+  around. If the browser doesn't support this API (as of this writing, Chrome
+  and Safari do but Firefox does not yet), Chapbook automatically uses the
+  `none` transition, e.g. changing content instantaneously. 
+- It's now no longer possible to configure header and footer transitions
+  separately from the main body content. These configuration variables are no
+  longer used.
+- The spacing between paragraphs and other content has been corrected. (Earlier
+  2.x versions used too much space.)
+- When restoring state at the start of a session, style changes in
+  `config.style` are handled properly.
+- Passage links are now properly keyboard-focusable.
+- Borders on header and footer content are now styled properly.
+- Using `{` inside of a quoted part of an insert, like `{restart link, label:
+  '{Start over'}`, is handled correctly.
+- The "Reveal Link" toolbar button in Twine now inserts the correct code.
+- Passages referenced via the `{link to}` insert now show as references in Twine.
+
+_Changes people extending Chapbook should be aware of_
+
+- The `body-content` and `marginal-content` custom elements that previous 2.x
+  versions are no longer present, and the HTML structure of the page has changed
+  to more closely resemble what it looked like in version 1.
+- There's now a `<page-transition>` element enclosing the page that allows for
+  changing content with the the configured transition. To do this, use JavaScript like this:
+
+```
+document.querySelector('page-transition').startTransition(() => {
+    // Code that changes content here
+  }, {preserveWindowScroll: true});
+```
+
 ## 2.2.0, 28 July 2024
 
-`https://klembot.github.io/chapbook.use/2.2.0/format.js`
+`https://klembot.github.io/chapbook/use/2.2.0/format.js`
 
 - Navigating to a new passage resets the window scroll position to the top, as
   it had under Chapbook 1.
