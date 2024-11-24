@@ -15,6 +15,10 @@ test('Forks', async ({page}) => {
 
   // Intent here is for the DOM structure to stay the same (e.g. no extraneous
   // line or paragraph breaks).
+  //
+  // Setting mouse position here because repeated runs seemed to trigger
+  // different hover states.
 
+  await page.mouse.move(0, 0);
   await expect(content).toHaveScreenshot();
 });

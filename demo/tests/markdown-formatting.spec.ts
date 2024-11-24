@@ -77,7 +77,7 @@ test('Lists', async ({page}) => {
 
   const lists = content.locator('> ul, > ol');
 
-  expect(lists).toHaveCount(2);
+  await expect(lists).toHaveCount(2);
   await expect(lists.first()).toHaveScreenshot();
   await expect(lists.last()).toHaveScreenshot();
 });
