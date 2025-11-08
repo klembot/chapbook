@@ -22,11 +22,8 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
 		<li>Andrew Smith</li>
 		<li>Ben McKenzie</li>
 		<li>Ben Sawyer</li>
-		<li>Bouncy Monad</li>
 		<li>Brendan Hennessy</li>
 		<li>Caelyn Sandel</li>
-		<li>Cathie LeBlanc</li>
-		<li>Chris Martens</li>
 		<li>Clive Henrick</li>
 		<li>Dan Steward</li>
 		<li>David Ball</li>
@@ -34,29 +31,26 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
 		<li>Ian</li>
 		<li>Illia</li>
 		<li>January November</li>
-		<li>Jim Graziano</li>
 		<li>Joe Nobody</li>
 		<li>John Chapman</li>
 		<li>John McDaid</li>
 		<li>José Dias</li>
-		<li>Joshua A.C. Newman</li>
 		<li>JRUndercover</li>
-		<li>Laura Gibbs</li>
+		<li>Konstanty Kalicki</li>
 		<li>LDK</li>
-		<li>Leanne Taylor-Giles</li>
+		<li>max puliero</li>
 		<li>Molly Jameson</li>
-		<li>Petalbook Interactive</li>
-		<li>Quen</li>
 		<li>Robert Giacinto</li>
+		<li>RSS</li>
 		<li>Sarah Choukah</li>
 		<li>Snophysh</li>
 		<li>Soliriok</li>
 		<li>Stuart Moulthrop</li>
 		<li>Thandle2</li>
+		<li>TheBuggiest<li>
+		<li>Tielesti<li>
 		<li>Travis<li>
 		<li>Venceremos</li>
-		<li>Zitronenarzt VR</li>
-		<li>治坤 郭</li>
     </ul>
 </div>
 
