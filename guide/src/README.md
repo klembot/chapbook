@@ -24,8 +24,6 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
 		<li>Ben Sawyer</li>
 		<li>Brendan Hennessy</li>
 		<li>Caelyn Sandel</li>
-		<li>Cathie LeBlanc</li>
-		<li>Chris Martens</li>
 		<li>Clive Henrick</li>
 		<li>Dan Steward</li>
 		<li>David Ball</li>
@@ -37,20 +35,20 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
 		<li>John Chapman</li>
 		<li>John McDaid</li>
 		<li>José Dias</li>
-		<li>Joshua A.C. Newman</li>
 		<li>JRUndercover</li>
 		<li>Konstanty Kalicki</li>
 		<li>LDK</li>
-		<li>Leanne Taylor-Giles</li>
+		<li>max puliero</li>
 		<li>Molly Jameson</li>
-		<li><a href="http://morganlanewrites.com/">Morgan Lane</a></li>
-		<li>Quen</li>
 		<li>Robert Giacinto</li>
+		<li>RSS</li>
 		<li>Sarah Choukah</li>
 		<li>Snophysh</li>
 		<li>Soliriok</li>
 		<li>Stuart Moulthrop</li>
 		<li>Thandle2</li>
+		<li>TheBuggiest<li>
+		<li>Tielesti<li>
 		<li>Travis<li>
 		<li>Venceremos</li>
     </ul>
