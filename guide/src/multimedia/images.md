@@ -26,16 +26,6 @@ The night sky is alive:
 Just because Flickr allows you to embed an image does not mean you have the <em>right</em> to use it in your story freely. Check the image's page for the license the photo's uploader is using. Some may not be allowed to be used in commercial projects, while others may not allow usage at all.
 </aside>
 
-## Embedding Images from Unsplash
-
-[Unsplash][unsplash] is a stock photography service that hosts photos that can embedded into a story royalty-free. To use an image from Unsplash, combine the `{embed Unsplash image}` insert with the image's URL on unsplash.com. No embed code is required.
-
-```
-{embed Unsplash image: 'https://unsplash.com/photos/Na0BbqKbfAo', alt: 'the moon'}
-
-What a horrible night to have to study for exams.
-```
-
 <aside data-hint="working">
 Other types of image embeds may come in a future version of Chapbook, as well as more flexibility in layout--e.g. having an image appear to the left or right of the text.
 </aside>
