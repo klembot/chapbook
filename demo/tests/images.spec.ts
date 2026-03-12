@@ -15,8 +15,4 @@ test('Images', async ({page}) => {
 		'src',
 		'https://farm2.staticflickr.com/1857/43929816675_07357e53b0_m.jpg'
 	);
-	await expect(content.getByRole('img', {name: 'the moon'})).toHaveAttribute(
-		'src',
-		'https://source.unsplash.com/Na0BbqKbfAo/undefinedxundefined'
-	);
 });

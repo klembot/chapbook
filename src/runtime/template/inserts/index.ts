@@ -5,7 +5,6 @@ import {dropdownMenu} from './dropdown-menu';
 import {embedFlickrImage} from './embed-flickr-image';
 import {embedImage} from './embed-image';
 import {embedPassage} from './embed-passage';
-import {embedUnsplashImage} from './embed-unsplash-image';
 import {embedYouTubeVideo} from './embed-youtube-video';
 import {link} from './link';
 import {restartLink} from './restart-link';
@@ -25,7 +24,6 @@ const builtins: Insert[] = [
   embedFlickrImage,
   embedImage,
   embedPassage,
-  embedUnsplashImage as Insert<Record<string, unknown>>,
   embedYouTubeVideo,
   link,
   restartLink,
