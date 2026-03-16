@@ -1,19 +1,19 @@
-# Forks
+# 分叉｜Forks
 
-It's a staple of interactive fiction to show a set of possible choices together, often at the end of a passage. The _Choose Your Own Adventure_ series of books would have text like this at the bottom of a page:
+在互动小说中，展示一系列可能的选择是一种常见手法，通常出现在段落结尾处。《选择你自己的冒险》系列丛书会在页面底部呈现如下文本：
 
-> If you decide to walk along the beach, turn to page 5.
+> 如果你决定沿着海滩行走，请翻到第 5 页。
 >
-> If you decide to climb the rocky hill, turn to page 6.
+> 如果你决定攀爬岩石山丘，请翻到第 6 页。
 
-We don't need to specify page numbers when working in a digital format, of course, but it can still be nice to set off these choices from the rest of the text. Chapbook calls these bundles of links _forks_, and they are signalled by placing each link on separate line, with `>` at its beginning:
+在数字格式中工作时，我们当然不需要指定页码，但将这些选择与正文区分开来仍然是不错的做法。Chapbook 将这些链接集合称为 _分叉_，并通过将每个链接单独成行并在开头加上 `>` 来标示：
 
 ```
-> [[Walk along the beach]]
-> [[Climb the rocky hall]]
+> [[沿着海滩漫步]]
+> [[攀爬岩石大崖]]
 ```
 
-Forks display light lines between the links and horizontally center the text of the links. See [Fork Style][fork-style] to learn how to change this.
+分叉会在链接之间显示浅色线条，并将链接文本水平居中。请参阅[分叉样式][fork-style]以了解如何更改此设置。
 
 
 [fork-style]: ../customization/fork-style.md

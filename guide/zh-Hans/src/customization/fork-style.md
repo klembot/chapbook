@@ -1,15 +1,15 @@
-# Fork Style
+# 分叉样式｜Fork Style
 
-The way [forks] display can be customized through several variables.
+[分叉]的显示方式可以通过多个变量进行自定义。
 
-First, `config.style.page.fork.divider.style` sets the style of the dividing line between links. It can be set to any of these values:
+首先，使用 `config.style.page.fork.divider.style` 设置链接之间分隔线的样式。它可以设置为以下任一值：
 
 -	`dashed`
 -	`dotted`
--	`double`, which displays two thin horizontal lines
+-	`double`，显示两条细水平线
 -	`solid`
--	`none`, which hides the dividers completely
+-	`none`，完全隐藏分隔线
 
-`config.style.page.fork.divider.size` sets the thickness of the dividing line, and `config.style.page.fork.divider.color` sets its color.
+`config.style.page.fork.divider.size` 设置分隔线的粗细，`config.style.page.fork.divider.color` 设置其颜色。
 
-[forks]: ../text-and-links/forks.md
+[分叉]: ../text-and-links/forks.md

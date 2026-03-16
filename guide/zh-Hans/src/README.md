@@ -1,5 +1,5 @@
 <div class="intro intro-path">
-    <h1>Introduction</h1>
+    <h1>简介｜Introduction</h1>
 </div>
 
 This is a guide to the Chapbook story format for Twine 2.[^1] Story formats control how a story created with the Twine editor plays in a Web browser; once you select the **Play** button in Twine or publish your story to a file, whatever story format you have selected takes over.

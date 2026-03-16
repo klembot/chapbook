@@ -29,26 +29,27 @@ The `after` modifier should be used sparingly, and the delays should be specifie
 
 Chapbook signals that more text will be coming by displaying an animated watch in the lower-right corner of the page, and impatient players can click the mouse or press a key to skip over the delay. This functionality cannot be disabled.
 
-## Modifiers Normally Create Paragraphs
-Modifiers normally cause the text that follows them to be in a separate paragraph from the text before it. There are cases, though, where you want text to appear with the preceding paragraph instead. The `append` modifier makes this happen.
+## 修饰符通常创建段落｜Modifiers Normally Create Paragraphs
+
+修饰符通常会使紧随其后的文本与前文处于不同的段落中。不过，在某些情况下，您可能希望文本与前一段落一起显示。`append` 修饰符可以实现这一效果。
 
 ```
-You've solved the mystery at last.
+你终于解开了这个谜团。
 
 [after 500ms; append]
-But then it hits you: why _did_ Mrs. Peacock have a lead pipe in her purse?
+但随后你突然意识到：为什么皮考克夫人的手提包里会有一根铅管呢？
 ```
 
-The semicolon allows you to join multiple modifiers together in a single line. It's equivalent to:
+分号允许您将多个修饰符连接在同一行中。它相当于：
 
 ```
 [after 500ms]
 [append]
-But then it hits you: why _did_ Mrs. Peacock have a lead pipe in her purse?
+但随后你突然意识到：为什么皮考克夫人的手提包里会有一根铅管呢？
 ```
 
-It doesn't matter which order you put `append`, and unlike `after`, you enter it by itself, without any extra explanation.
+无论您以何种顺序放置 `append` 修饰符，这都无关紧要；与 `after` 不同，您可以单独输入它，无需任何额外说明。
 
 [will not let me go]: http://ifarchive.org/if-archive/games/competition2017/Will%20Not%20Let%20Me%20Go/Will%20Not%20Let%20Me%20Go.html
 
-[^1]: Including, fiendishly, days, months, and years. Chapbook uses a library called `timestring` to parse these delays. [Its documentation](https://github.com/mike182uk/timestring/blob/master/README.md#keywords) lists out all of the possibilities.
+[^1]: 包括，令人头疼的是，日、月、年。Chapbook使用一个名为 `timestring` 的库来解析这些延迟。其[文档](https://github.com/mike182uk/timestring/blob/master/README.md#keywords)列出了所有可能性。

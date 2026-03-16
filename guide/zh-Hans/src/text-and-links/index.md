@@ -1,5 +1,5 @@
 <div class="intro links">
-    <h1>Text and Links</h1>
+    <h1>文本与链接｜Text and Links</h1>
 </div>
 
-This section begins with an explanation of how to add text formatting, such as boldface or small caps, to text in your story, and create links between passages. Once you've finished it, you'll be able to create the digital equivalent of books like the _Choose Your Own Adventure_ series.
+本节首先讲解如何为故事中的文本添加格式，例如粗体或小型大写字母，以及如何在段落间创建链接。完成学习后，您将能够制作出类似《选择你的冒险》系列书籍的数字版本。

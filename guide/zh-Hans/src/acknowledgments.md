@@ -1,4 +1,4 @@
-# Acknowledgments
+# 致谢｜Acknowledgments
 
 Chapbook is a confluence of ideas rather than one, wholly original one. Its vars sections are familiar territory to anyone who has used YAML front matter in a static site generator like [Hexo][hexo]. And much of its state-centered design--in opposition to an imperative design, where change occurs mostly through function calls--comes from what I've learned from [Redux][redux], the de facto standard library for managing state in the [React][react] ecosystem.
 
@@ -14,9 +14,9 @@ You might also notice some resemblance between this guide and the [Inform Design
 
 Finally, I want to thank my creative partner Joel Haddock for patiently playing the roles of guinea pig and sounding board in equal measure.
 
-## Photos in this Guide
+## 本指南中的照片｜Photos in this Guide
 
-The photos found in this guide come from a combination of [Pixabay][pixabay] and [Unsplash][unsplash], and are used under terms of the licenses on those web sites. The people who took these photos are:
+本指南中的照片来源于 [Pixabay][pixabay] 和 [Unsplash][unsplash] 网站，并根据这些网站的许可条款使用。拍摄这些照片的作者包括：
 
 -	[Angela Bedürftig](https://pixabay.com/en/chess-game-board-chess-game-1403622/)
 -	[Gregory Butler](https://pixabay.com/en/battleship-engine-room-historic-war-389274/)

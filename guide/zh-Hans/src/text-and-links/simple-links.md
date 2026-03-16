@@ -1,50 +1,53 @@
-# Simple Links
-At the heart of every Twine story are links. Chapbook follows the Twine conventions for typing links, which is to say, it steals shamelessly from the syntax used by wikis everywhere.
+# 简单链接｜Simple Links
 
-The simplest link notation surrounds a name of a passage with double square brackets: `[[A tiny door]]`. This displays the title of the passage directly in the text.
+每个 Twine 故事的核心都是链接。Chapbook 遵循 Twine 的链接输入惯例，也就是说，它毫不客气地借鉴了各处维基所使用的语法。
 
-Sometimes it makes sense to obscure the name of the destination in the text--perhaps because your passage is named `A Grisly End`, or the title of the passage is capitalized but you'd like to link it in the middle of a sentence. You can do this in two different, but equivalent ways.
+最简单的链接标记法是用双括号将段落名称括起来：[[一扇小门]]。这会在文本中直接显示该段落的标题。
 
-Typed | Displayed
+但有时，在文本中隐藏目的地的名称是有道理的——可能是因为你的段落名为“`一个可怕的结局`”，或者段落标题是大写的，但你希望在一个句子中间链接它。你可以用两种不同但等效的方式来实现这一点。
+
+输入 | 显示
 ------|----------
-`You [[open the door->A Grisly End]] with great confidence.` | You <a href="javascript:void(0)">open the door</a> with great confidence.
-`The [[Miss Scarlet<-young lady]] seated in the chaise seems inexplicably guilty to you.` | The <a href="javascript:void(0)">young lady</a> seated in the chaise seems inexplicably guilty to you.
+`你信心十足地[[打开了门->一个可怕的结局]]。` | 你信心十足地<a href="javascript:void(0)">打开了门</a>。
+`坐在长椅上的那位[[Scarlet 小姐<-年轻女士]]，在你看来似乎莫名地对你心怀愧疚。` | 坐在长椅上的那位<a href="javascript:void(0)">年轻女士</a>，在你看来似乎莫名地对你心怀愧疚。
 
-(The links don't lead anywhere in the examples above, of course.)
+（当然，以上示例中的链接并未指向任何具体位置。）
 
-The easiest way to remember this is to think of the arrow pointing to the passage you're linking to. It doesn't matter which direction the arrow points; use the syntax that feels most comfortable to you.
+最简单的记忆方法是：将箭头视为指向你所链接的段落。箭头指向哪个方向并不重要；选择让你感觉最舒适的语法即可。
 
-You cannot use [Markdown or other formatting characters][formatting] inside a simple link. If you'd like to italicize a certain link, for example, put the formatting around the link instead, i.e. `_[[a friend of a friend]]_`. See [Link Inserts](../modifiers-and-inserts/link-inserts.md) for how to create a link that has formatting inside it, like <a href="javascript:void(0)">a man with <em>particular</em> skills</a>.
+你不能在简单链接内部使用 [Markdown 或其他格式字符][formatting]。例如，如果你想将某个链接设为斜体，应将格式放在链接外部，即 `_[[a friend of a friend]]_`。关于如何创建内部包含格式的链接（例如<a href="javascript:void(0)">《一个拥有<em>特定</em>技能的人》</a>），请参阅[链接插入](../modifiers-and-inserts/link-inserts.md)。
 
-## External Links
-To link to another web page, enter a URL instead of a passage name. You can use any link syntax you'd like, though the arrow syntax makes your text more readable in most cases:
+## 外部链接｜External Links
 
-Typed                                                       | Displayed
+要链接到另一个网页，请输入一个 URL，而不是段落名称。您可以使用任何您喜欢的链接语法，不过箭头语法在大多数情况下能让您的文本更具可读性：
+
+输入 | 显示
 ------------------------------------------------------------|----------
-`You [[open Twine->https://twinery.org]] on your computer.` | You <a href="https://twinery.org">open Twine</a> on your computer.
+`你在你的电脑上[[打开了 Twine->https://twinery.org]]。` | 你在你的电脑上打开了 <a href="https://twinery.org">打开了 Twine</a>。
 
-## Older Link Syntax
-Chapbook also supports the link syntax from Twine 1 that used a vertical bar (or pipe character):
+## 旧版链接语法｜Older Link Syntax
+
+Chapbook 也支持来自 Twine 1 的链接语法，该语法使用竖线（或称管道字符）：
 
 <table>
 <thead>
 <tr>
-<th>Typed</th>
-<th>Displayed</th>
+<th>输入</th>
+<th>显示</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>
-<code>You [[open the door|A Grisly End]] with great confidence.</code>
+<code>你信心满满地[[打开了门|一个可怕的结局]]。</code>
 <td>
-You <a href="javascript:void(0)">open the door</a> with great confidence.
+你信心满满地<a href="javascript:void(0)">打开了门</a>。
 </td>
 </tr>
 <tbody>
 </table>
 
-This is harder to remember than the arrow syntax, so there's little reason to use it now unless you learned it from Twine 1.
+这种语法比箭头语法更难记忆，因此现在几乎没有理由使用它，除非你是从 Twine 1 中学到的。
 
 <style>
 tr, td {

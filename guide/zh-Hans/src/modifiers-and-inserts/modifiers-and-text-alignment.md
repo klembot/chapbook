@@ -13,21 +13,23 @@ _Lasciate ogne speranza, voi ch'intrate_
 
 The text `[align center]` is never shown to the player. Instead, Chapbook centers the text following it. As you might have guessed, you can also write `[align right]` and `[align left]`.
 
-## The `continue` modifier
+## `continue` 修饰符｜The `continue` modifier
 
-Modifiers apply to all the text that follow them, until either the end of the passage or another modifier appears in the source text. To cancel all active modifiers, use `[continue]` like so:
+修饰符会应用于其后出现的所有文本，直到段落结束或源文本中出现另一个修饰符。若要取消所有生效的修饰符，请使用 [continue] 如下所示：
 
 ```
-Above the cave mouth, someone has carved:
+洞口上方，有人刻着：
 
 [align center]
-_Lasciate ogne speranza, voi ch'intrate_
+_Lasciate ogne speranza, voi ch'intrate（来者需要放弃一切希望）_
 
 [continue]
-You feel a little less confident in your plan.
+你对你的计划感到有点不那么自信了。
 ```
 
-`[continue]` simply cancels all active modifiers. You can abbreviate it as `[cont'd]` or `[cont]`.
+`[continue]` 仅用于取消所有生效的修饰符。可缩写为 `[cont'd]` 或 `[cont]`。
+
+王洛木：简单来说，就是用来划清上一个修饰符的修饰范围的。
 
 ## Vertical text alignment
 
