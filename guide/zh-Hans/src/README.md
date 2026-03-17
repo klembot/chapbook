@@ -2,19 +2,19 @@
     <h1>简介｜Introduction</h1>
 </div>
 
-This is a guide to the Chapbook story format for Twine 2.[^1] Story formats control how a story created with the Twine editor plays in a Web browser; once you select the **Play** button in Twine or publish your story to a file, whatever story format you have selected takes over.
+本文是面向 Twine 2[^1] 的 Chapbook 故事格式指南。故事格式决定了通过 Twine 编辑器创作的故事在网页浏览器中的呈现方式；当您在 Twine 中点击"**播放**"按钮或将故事发布为文件时，所选的故事格式便会接管后续处理。
 
-Chapbook is designed to be easy to work with as an author and generate output that is a pleasure to read by players. It provides sensible default behaviors for your story that can be customized to fit your particular needs.
+Chapbook 的设计宗旨是让创作者易于使用，同时为玩家生成赏心悦目的阅读体验。它为您的故事提供了合理的默认行为，并支持根据特定需求进行自定义调整。
 
-This guide does not assume you have any programming knowledge; however, it doesn't hurt to know CSS or JavaScript, as it uses both technologies heavily. It's split into several chapters that will gently guide you through the process of story creation.
+本指南不要求您具备任何编程知识；不过，了解 CSS 或 JavaScript 会有所帮助，因为本指南大量运用了这两种技术。指南分为若干章节，将循序渐进地引导您完成故事创作过程。
 
-This guide does assume, however, that you're familiar with the Twine 2 editor itself. If you're new to Twine, the [Twine 2 guide](http://twinery.org/wiki/twine2:guide) is an excellent place to start. There are also numerous tutorials on the web that can be helpful.
+但本指南默认您已熟悉 Twine 2 编辑器本身。若您是 Twine 的新用户，[《Twine 2 指南》]((http://twinery.org/wiki/twine2:guide)) 是绝佳的入门资料。网络上还有大量可供参考的教程资源。
 
-## Licensing
+## 许可协议｜Licensing
 
-Chapbook is released under the [MIT license](mit-license). Broadly speaking, it can be used to create free and commercial works alike without royalty payment of any kind. Mentioning Chapbook and Twine in the credits of your work isn't required, but it is appreciated.
+Chapbook 基于 [MIT 许可证](mit-license)发布。简而言之，您可将其用于创作免费或商业作品，无需支付任何版权费用。虽不强制要求，但若能在作品鸣谢中提及 Chapbook 与 Twine，我们将不胜感激。
 
-Because Chapbook is open source, its ongoing development and maintenance is supported by [Patreon supporters](https://patreon.com/klembot) like:
+因为 Chapbook 是开源的，其持续的开发与维护得到了以下 [Patreon]((https://patreon.com/klembot)) 支持者的资助：
 
 <div class="patreon-supporters">
     <ul>
@@ -54,65 +54,45 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
     </ul>
 </div>
 
-Supporters at particular tiers receive access to devlogs and other rewards. If you use Chapbook, please consider [supporting the project on Patreon](https://patreon.com/klembot).
+特定等级的赞助者可获得开发日志访问权限及其他奖励。若您使用 Chapbook，请考虑[在 Patreon 上支持本项目](https://patreon.com/klembot)。
 
-## Browser Support
+## 浏览器支持｜Browser Support
 
-Chapbook supports the `defaults` set of web browsers set by [the browserslist project](https://github.com/browserslist/browserslist). You can view what that entails in detail [on browserl.ist](https://browserl.ist/).
+Chapbook 支持由 [browserslist 项目](https://github.com/browserslist/browserslist)设定的`默认`网页浏览器集合。您可以在 [browserl.ist](https://browserl.ist/) 上查看其详细内容。
 
-## How to Use Chapbook
+## 如何使用 Chapbook｜How to Use Chapbook
 
-Chapbook is bundled as part of the Twine 2 editor now, though releases of Twine sometimes lag behind Chapbook. If you would like to use it separately, or update by hand, choose the **Story Formats** option under the top **Twine** toolbar tab, then the **Add** button in the top toolbar. Paste the address on the [home page](https://klembot.github.io/chapbook/) into the text field that Twine shows you.
+Chapbook 现已作为 Twine 2 编辑器的一部分捆绑提供，尽管 Twine 的发布有时会落后于 Chapbook。如果您希望单独使用它，或手动更新，请在顶部 **Twine** 工具栏选项卡下选择“**故事格式**”选项，然后点击顶部工具栏中的“**添加**”按钮。将[主页上的地址](https://klembot.github.io/chapbook/)粘贴到 Twine 显示的文本字段中。
 
-Once you do that, you must set the story you're working with to publish using Chapbook. Edit one of your stories, then choose **Change Story Format** from the story menu at the bottom of the editor. Choose Chapbook here. Once you do, selecting the **Play** button or publishing your story to a file will use the Chapbook format.
+完成此操作后，您必须将正在创作的故事设置为使用 Chapbook 发布。编辑您的任意一篇故事，然后从编辑器底部的故事菜单中选择"**更改故事格式**"。在此处选择 Chapbook。完成设置后，点击播放按钮或将故事发布为文件时都将采用 Chapbook 格式。
 
-## Why To Use Chapbook
+## 为何选择Chapbook｜Why To Use Chapbook
 
-There is a relative embarassment of riches when it comes to selecting a Twine 2 story format. What are Chapbook's advantages?
+在 Twine 2 故事格式的众多选择中，难免令人眼花缭乱。那么 Chapbook 具备哪些优势呢？
 
--   Chapbook source code is easy to read. It disallows certain practices, such
-    as nesting conditional statements[^2], and enforces others, like placing all
-    variable declarations in one place in a passage, that lead to
-    easier-to-follow code.
+-   Chapbook 源代码易于阅读。它禁止某些编程实践，例如嵌套条件语句[^2]，同时强制推行其他规范（比如将所有变量声明集中置于段落固定位置），这些设计使得代码逻辑更易于追踪。
 
--   Chapbook has built-in functionality for common authoring scenarios. From
-    cycling links to delayed text, many things you'll want to do with your
-    stories will only require a single line of code.
+-   Chapbook 内置了常见创作场景的功能。从循环链接到延迟文本，许多你想在故事中实现的效果只需一行代码即可完成。
 
--   Chapbook has a backstage view that aids in testing; it allows you to inspect
-    the state of play, change variables on the fly, and save state anywhere so
-    that you can quickly debug a particular part of your story.
+-   Chapbook 设有辅助测试的后台视图，允许你实时检查游戏状态、动态修改变量，并可在任意节点保存进度，从而快速定位故事特定环节的问题。
 
--   Chapbook is designed to be used on a variety of devices, especially mobile
-    ones. It uses responsive design to adapt its page layout so that it's
-    readable on any type of device without having to zoom in or scroll
-    unnecessarily. It also is lightweight-- it currently contains 120K of code,
-    which takes less than a second to load on cellular networks.
+-   Chapbook 专为多设备适配设计，尤其优化移动端体验。它采用响应式布局技术，能根据屏幕尺寸自动调整页面排版，确保在任何设备上无需缩放或多余滚动即可舒适阅读。同时其代码结构轻量化——目前仅 120 KB，即使在蜂窝网络下也能在一秒内完成加载。
 
--   Chapbook's appearance can be customized without knowing HTML or CSS, and has
-    built-in tools that allow you to preview style changes in your story
-    immediately, so you can craft the appearance you're looking for without
-    having to learn browser developer tools.
+-   Chapbook 的外观可以在不了解 HTML 或 CSS 的情况下进行自定义，它内置的工具让你能够立即在故事中预览样式更改，因此无需学习浏览器开发者工具，你就能打造出理想的外观。
 
-## Why Not To Use Chapbook
+## 为什么不使用 Chapbook｜Why Not To Use Chapbook
 
--   Chapbook is young. This means that resources apart from this guide are
-    scarce compared to the many tutorials you'll find related to the venerable
-    formats SugarCube and Harlowe. And there will be fewer people to turn to if
-    you have a question or encounter a problem.
+-   Chapbook 还很年轻。这意味着除了本指南之外，相关资源非常稀缺，远不及那些历史悠久的格式（如 SugarCube 和 Harlowe）的众多教程。如果你遇到问题或疑问，能求助的人也会更少。
 
--   You've invested significant time already in learning another story format.
-    There's nothing that Chapbook can do that other formats can't. It may be
-    easier to write with, depending on your point of view, but if you've already
-    spent the time to learn how to write for another story format, it may not be
-    worth the time investment.
+-   你已经投入了大量时间学习另一种故事格式。Chapbook 能做到的事情，其他格式也都能实现。根据你的喜好，用它写作可能更容易，但如果你已经花时间学习了另一种故事格式的写作方法，再投入时间可能就不值得了。
 
-## An Aside on Names
+## 关于名称的题外话｜An Aside on Names
 
-There's been some debate as to whether Twine produces games or merely stories: the truth is, with Twine you can make games, you can make interactive stories, and you can also make things that nobody can quite pin down. Keeping in the spirit of vexing formalists who prefer clear boundaries, this guide calls the things you'll create with Chapbook _stories_ and the people who you share them with _players_, but you shouldn't infer anything from this usage. Please make strange things with Twine and Chapbook.
+关于 Twine 产出的是游戏还是仅仅故事，一直存在一些争论：事实上，使用 Twine 既可以制作游戏，也可以创作互动故事，还能创造出那些难以确切归类的事物。秉承着困扰那些偏爱清晰界限的形式主义者的精神，本指南将你在 Chapbook 中创作的内容称为 _故事_，而与你分享这些故事的人则称为 _玩家_，但你不应从这个用法中推断出任何特定含义。请用 Twine 和 Chapbook 创造出奇妙的作品吧。
 
-[^1]: Chapbook, sadly, cannot be used with Twine 1.
-[^2]: If you have programming experience, this idea may immediately cause some alarm--how can you possibly write anything serious without this functionality? [Conditional Display](state/conditional-display.md) discusses this subject, but it may be a bit hard to follow if you skip ahead immediately.
+
+[^1]: 遗憾的是，Chapbook 无法与 Twine 1 版本兼容使用。
+[^2]: 如果你有编程经验，这个想法可能会立即引起一些警觉——没有这个功能，怎么可能写出任何严肃的作品呢？[条件显示](state/conditional-display.md) 功能讨论了这个主题，但如果你直接跳过去看，可能会有点难以理解。
 
 [mit-license]: https://en.wikipedia.org/wiki/MIT_License
 
