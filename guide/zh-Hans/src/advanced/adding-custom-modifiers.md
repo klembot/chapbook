@@ -34,7 +34,7 @@ _not_ HTML as it will be finally rendered.
 - `text`, the text that the modifier is being applied to.
 - `startsNewParagraph`, a Boolean value indicating whether this block of text
   should begin a new paragraph. (The [append
-  modifier](../modifiers-and-inserts/delayed-text.md), for example, sets this to
+  modifier](./modifiers-and-inserts/delayed-text.md), for example, sets this to
   `false`.)
 
 Modifiers also receive an argument, `options`, which the example above didn't

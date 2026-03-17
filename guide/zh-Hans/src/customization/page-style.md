@@ -31,4 +31,4 @@ If you use `'crossfade'` or `'fadeInOut'`, you can control how long the transiti
 Finally, Chapbook vertically centers text inside the page by default. To change this, set `config.style.page.verticalAlign` to either `'top'`, `'center'`, or `'bottom'`.
 
 [color]: fonts-and-colors.html#colors
-[after]: ../text-and-links/modifiers-and-delayed-text.html
+[after]: ./text-and-links/modifiers-and-delayed-text.html

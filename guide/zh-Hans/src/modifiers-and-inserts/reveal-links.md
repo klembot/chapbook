@@ -56,4 +56,4 @@ Notice how the period after the link insert is moved to the end, after Carrots, 
 
 [stone harbor]: https://stoneharborgame.com/
 [windrift]: https://github.com/lizadaly/windrift
-[formatting]: ../text-and-links/text-formatting.md
+[formatting]: ./text-and-links/text-formatting.md

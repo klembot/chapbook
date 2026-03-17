@@ -22,5 +22,5 @@ While testing your story in Twine, it's best to use the <strong>Test</strong> bu
 
 您可通过“**导出笔记**”按钮导出已输入的笔记，并使用“**导入笔记**”按钮将其导入他人的浏览器。若某段落已存在笔记，新导入的笔记将显示在原有内容下方。如需清空笔记，请使用“**删除全部笔记**”按钮。
 
-[state-backstage]: ../state/backstage.md
-[page-style]: ../customization/page-style.md
+[state-backstage]: ./state/backstage.md
+[page-style]: ./customization/page-style.md

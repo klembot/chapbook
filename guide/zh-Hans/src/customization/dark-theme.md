@@ -15,7 +15,7 @@ available to web pages, then it will use the light theme.
 
 Chapbook also shows a link labeled **Switch Theme** in the footer of the story
 that allow players to swap between light and dark themes. This setting, like
-other [state](../state/), is remembered across play sessions.
+other [state](./state/), is remembered across play sessions.
 
 The light theme can also be considered the default theme. When the dark theme is
 active, Chapbook uses the light theme for any styles not defined by the dark
@@ -77,7 +77,7 @@ If you set <code>config.style.dark.page.style.borderColor</code>, make sure to s
 
 ## Using the Current Theme in Code
 
-The [lookup](../state/objects-and-lookups.html) `browser.darkTheme` holds
+The [lookup](./state/objects-and-lookups.html) `browser.darkTheme` holds
 whether the current theme is dark (`true`) or light (`false`). As with other
 lookups, you can't change this directly. Instead, set
 `config.style.page.theme.override` as described below.
@@ -89,7 +89,7 @@ best of its ability.
 
 ## Controlling Theme Switching
 
-The [variable](../state/the-vars-section.html)
+The [variable](./state/the-vars-section.html)
 `config.style.page.theme.override` tracks which theme Chapbook is using.
 
 | Value           | Effect                                          |
@@ -102,7 +102,7 @@ The "Switch Theme" link that appears in the page footer changes this value. You
 can also set this value directly as well.
 
 You can use a `{theme switcher}`
-[insert](../modifiers-and-inserts/link-inserts.html) to display a link that
+[insert](./modifiers-and-inserts/link-inserts.html) to display a link that
 switches theme. You can customize the label shown for each theme like so:
 
 `{theme switcher, darkLabel: 'Use Light Theme', lightLabel: 'Use Dark Theme'}`

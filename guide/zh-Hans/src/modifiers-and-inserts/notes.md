@@ -28,7 +28,7 @@ Maybe have the screen flash?
 And you felt quite depressed.
 ```
 
-These notes are stored separately from what is entered in the [Notes backstage tab](../text-and-links/backstage.md), unfortunately.
+These notes are stored separately from what is entered in the [Notes backstage tab](./text-and-links/backstage.md), unfortunately.
 
 <aside data-hint="danger">
 Unlike backstage comments, notes are still visible to anyone who knows how to use their web browser's development tools. Don't put anything you need to keep secret in a note.

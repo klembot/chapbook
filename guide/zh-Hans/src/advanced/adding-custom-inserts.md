@@ -26,7 +26,7 @@ The second argument to `engine.extend()` is the customization code you'd like to
 -   `render`: a function that returns a string for what should be displayed. The
     returned value will be eventually rendered as Markdown.
 
-You may remember that inserts [can take multiple parameters](../modifiers-and-inserts/link-inserts.md). Here's a more complex example that demonstrates this:
+You may remember that inserts [can take multiple parameters](./modifiers-and-inserts/link-inserts.md). Here's a more complex example that demonstrates this:
 
 ```
 [JavaScript]

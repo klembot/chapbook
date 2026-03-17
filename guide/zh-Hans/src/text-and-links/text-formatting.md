@@ -132,7 +132,7 @@ Chapbook formatting differs from standard Markdown in how it displays blockquote
 [dingus]: https://daringfireball.net/projects/markdown/dingus
 [smallcaps]: https://practicaltypography.com/small-caps.html
 [forks]: forks.md
-[js-in-passages]: ../advanced/using-javascript-in-passages.md
+[js-in-passages]: ./advanced/using-javascript-in-passages.md
 
 <style>
 tr, td {

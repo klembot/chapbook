@@ -14,4 +14,4 @@ This text will be in green.
 
 The CSS in this modifier will be applied globally--hence why the `.page article` selector is needed.
 
-[customization]: ../customization
+[customization]: ./customization

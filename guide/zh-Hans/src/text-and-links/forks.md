@@ -16,4 +16,4 @@
 分叉会在链接之间显示浅色线条，并将链接文本水平居中。请参阅[分叉样式][fork-style]以了解如何更改此设置。
 
 
-[fork-style]: ../customization/fork-style.md
+[fork-style]: ./customization/fork-style.md

@@ -12,4 +12,4 @@
 
 `config.style.page.fork.divider.size` 设置分隔线的粗细，`config.style.page.fork.divider.color` 设置其颜色。
 
-[分叉]: ../text-and-links/forks.md
+[分叉]: ./text-and-links/forks.md

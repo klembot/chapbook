@@ -125,5 +125,5 @@ You walk outside.
 The text inside the will not be displayed ordinarily.
 
 [Audacity]: https://www.audacityteam.org/
-[object]: ../state/objects-and-lookups.md
-[after modifier]: ../modifiers-and-inserts/delayed-text.md
+[object]: ./state/objects-and-lookups.md
+[after modifier]: ./modifiers-and-inserts/delayed-text.md

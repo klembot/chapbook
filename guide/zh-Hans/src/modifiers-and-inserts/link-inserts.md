@@ -77,7 +77,7 @@ You cannot nest inserts inside each other.
 
 ## Restarting the Story
 
-There's another insert very similar to `{back link}` that's named `{restart link}`. Instead of going to a previous passage, it takes the player back to the very beginning of the story. You could of course link back to the first passage by name, but for now, consider this a handy shortcut. `{restart link}` also resets other aspects of Chapbook's operation, as you'll learn in [Continuity Between Sessions](../state/continuity.md).
+There's another insert very similar to `{back link}` that's named `{restart link}`. Instead of going to a previous passage, it takes the player back to the very beginning of the story. You could of course link back to the first passage by name, but for now, consider this a handy shortcut. `{restart link}` also resets other aspects of Chapbook's operation, as you'll learn in [Continuity Between Sessions](./state/continuity.md).
 
 As with `{back link}`, `{restart link}` allows you to specify a label:
 
@@ -105,9 +105,9 @@ The third example demonstrates one use of manual link inserts: although they are
 
 Chapbook has an insert for cycling links--that is, links that do not move the player anywhere, but change their label. See [Menus and Cycling Links][cycling] for more information.
 
-[vars-section]: ../state/the-vars-section.html
-[cycling]: ../player-input/dropdown-menus-cycling-links.md
-[vars-in-inserts]: ../state/the-vars-section.html#expressions-can-be-used-in%20inserts
+[vars-section]: ./state/the-vars-section.html
+[cycling]: ./player-input/dropdown-menus-cycling-links.md
+[vars-in-inserts]: ./state/the-vars-section.html#expressions-can-be-used-in%20inserts
 
 [^1]: If you need to use a single or double quote inside a text value set off with the same punctuation mark, put a backslash (`\`) in front of it, like so: `{back link, label: '"I couldn\'t possibly comment," he replied.'}`
 

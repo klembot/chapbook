@@ -102,4 +102,4 @@ Only displays the text if <i>expression</i> evaluates to false, or a falsy (<a h
 
 </dl>
 
-[mods-inserts]: ../modifiers-and-inserts/index.md
+[mods-inserts]: ./modifiers-and-inserts/index.md

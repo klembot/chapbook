@@ -49,4 +49,4 @@ The official language of {country} is {language}.
 Although Chapbook sets variables in the order you write them, often times it won't matter much, as you'll usually want to write conditions that are mutually exclusive of each other--that is, only one line ever takes effect.
 
 [^1]: Truthfully, it is also possible to write `[if stringVariable]` or `[if 2 + 2]`. In these cases, any non-empty string (e.g. not `''`) is treated as true, and any non-zero number is treated as true. It's best to be explicit, however, and write `[if stringVariable !== '']` and `[if 2 + 2 !== 0]`.
-[embed-passage]: ../text-and-links/embedding-passages.html
+[embed-passage]: ./text-and-links/embedding-passages.html

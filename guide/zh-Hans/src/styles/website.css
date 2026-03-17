@@ -29,41 +29,41 @@
 }
 
 .markdown-section .intro.intro-path {
-	background-image: url('../path.jpeg');
+	background-image: url('./path.jpeg');
 	background-position: bottom center;
 }
 
 .markdown-section .intro.links {
-	background-image: url('../text-and-links/links.jpeg');
+	background-image: url('./text-and-links/links.jpeg');
 }
 
 .markdown-section .intro.modifiers-inserts {
-	background-image: url('../modifiers-and-inserts/letterblocks.jpeg');
+	background-image: url('./modifiers-and-inserts/letterblocks.jpeg');
 }
 
 .markdown-section .intro.state {
-	background-image: url('../state/chess.jpeg');
+	background-image: url('./state/chess.jpeg');
 	background-position: bottom;
 }
 
 .markdown-section .intro.multimedia {
-	background-image: url('../multimedia/slides.jpeg');
+	background-image: url('./multimedia/slides.jpeg');
 }
 
 .markdown-section .intro.customization {
-	background-image: url('../customization/clothes.jpeg');
+	background-image: url('./customization/clothes.jpeg');
 }
 
 .markdown-section .intro.input {
-	background-image: url('../player-input/microphone.jpeg');
+	background-image: url('./player-input/microphone.jpeg');
 }
 
 .markdown-section .intro.advanced {
-	background-image: url('../advanced/controls.jpeg');
+	background-image: url('./advanced/controls.jpeg');
 }
 
 .markdown-section .intro.references {
-	background-image: url('../references/books.jpeg');
+	background-image: url('./references/books.jpeg');
 }
 
 .markdown-section .intro h1 {
@@ -80,7 +80,7 @@
 }
 
 .markdown-section .intro.path {
-	background-image: url('../path.jpeg');
+	background-image: url('./path.jpeg');
 	background-position: bottom center;
 }
 

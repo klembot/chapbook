@@ -9,7 +9,7 @@ All of the below cause text or other types of content to appear in your passage.
 </dt>
 
 <dd>
-Begins playing a <a href="../multimedia/audio.html">previously-defined ambient sound</a>. <code>volume</code> can be omitted; by default, the ambient sound is played at full volume.
+Begins playing a <a href="./multimedia/audio.html">previously-defined ambient sound</a>. <code>volume</code> can be omitted; by default, the ambient sound is played at full volume.
 </dd>
 
 <dt>
@@ -143,5 +143,5 @@ Renders a link that switches between light and dark themes. <code>darkLabel</cod
 
 </dl>
 
-[sound]: ../multimedia/audio.md
-[mods-inserts]: ../modifiers-and-inserts/
+[sound]: ./multimedia/audio.md
+[mods-inserts]: ./modifiers-and-inserts/

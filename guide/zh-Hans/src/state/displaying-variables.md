@@ -35,4 +35,4 @@ _unreasonablePrice: cash + 3
 
 [^1]: You can always distinguish a variable insert from another type of insert by looking for spaces inside it. `{back link}` could never be a variable insert because `back link` contains spaces, and thus could never be the name of a variable.
 
-[link-inserts]: ../text-and-links/link-inserts.html
+[link-inserts]: ./text-and-links/link-inserts.html

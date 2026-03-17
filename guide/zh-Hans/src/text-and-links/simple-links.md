@@ -15,7 +15,7 @@
 
 最简单的记忆方法是：将箭头视为指向你所链接的段落。箭头指向哪个方向并不重要；选择让你感觉最舒适的语法即可。
 
-你不能在简单链接内部使用 [Markdown 或其他格式字符][formatting]。例如，如果你想将某个链接设为斜体，应将格式放在链接外部，即 `_[[a friend of a friend]]_`。关于如何创建内部包含格式的链接（例如<a href="javascript:void(0)">《一个拥有<em>特定</em>技能的人》</a>），请参阅[链接插入](../modifiers-and-inserts/link-inserts.md)。
+你不能在简单链接内部使用 [Markdown 或其他格式字符][formatting]。例如，如果你想将某个链接设为斜体，应将格式放在链接外部，即 `_[[a friend of a friend]]_`。关于如何创建内部包含格式的链接（例如<a href="javascript:void(0)">《一个拥有<em>特定</em>技能的人》</a>），请参阅[链接插入](./modifiers-and-inserts/link-inserts.md)。
 
 ## 外部链接｜External Links
 

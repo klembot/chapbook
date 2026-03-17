@@ -131,10 +131,10 @@ _doorLocked: doorFound && !doorUnlocked
 
 请记住，`doorFound`、`doorUnlocked` 和 `hasKey` 是在其他段落中设置的。请注意——您不能在“`但你还没找到能打开它的钥匙。`”前使用 [else]。该 else 会在所有 [if] 不成立的情况下显示，即使 `doorFound` 为 `false` 时也是如此。
 
-另一种方法是将部分逻辑移至单独的段落并[嵌入](../modifiers-and-inserts/embedding-passages.html):
+另一种方法是将部分逻辑移至单独的段落并[嵌入](./modifiers-and-inserts/embedding-passages.html):
 
 
-An alternate method is to move parts of your logic to a separate passage and [embed it](../modifiers-and-inserts/embedding-passages.html):
+An alternate method is to move parts of your logic to a separate passage and [embed it](./modifiers-and-inserts/embedding-passages.html):
 
 ```
 _doorOpen: doorFound && doorUnlocked

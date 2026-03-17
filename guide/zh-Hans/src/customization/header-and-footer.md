@@ -72,5 +72,5 @@ This should be a single [color](fonts-and-colors.html#colors), like
 `'orange-2'`.
 
 [cloak of darkness]: https://klembot.github.io/chapbook/examples/cloak-of-darkness.html
-[inserts]: ../modifiers-and-inserts/link-inserts.md
-[modifiers]:../modifiers-and-inserts/modifiers-and-text-alignment.md
+[inserts]: ./modifiers-and-inserts/link-inserts.md
+[modifiers]:./modifiers-and-inserts/modifiers-and-text-alignment.md

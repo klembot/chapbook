@@ -94,8 +94,8 @@ _Changes authors should be aware of_
   because very few people used the micro version.
 - The way to add custom inserts and modifiers has changed. Instead of modifying
   state variables, call
-  [`engine.template.inserts.add()`](../advanced/adding-custom-inserts.html) or
-  [`engine.template.modifiers.add()`](../advanced/adding-custom-modifiers.html).
+  [`engine.template.inserts.add()`](./advanced/adding-custom-inserts.html) or
+  [`engine.template.modifiers.add()`](./advanced/adding-custom-modifiers.html).
   This change was made so that all of Chapbook's state can be serialized to
   JSON. In the 1.x versions, non-serializable things like functions were allowed
   to be added to state, but they wouldn't be saved permanently. This led to
@@ -128,7 +128,7 @@ window.addEventListener('click', ({target}) => {
 
 - Instead of managing its own event bus, Chapbook now dispatches custom events
   on `window`. The names of these events have changed. See [the API
-  documentation](../../api/) for more details.
+  documentation](././api/) for more details.
 
 - The `engine.render()` function has been moved to `engine.template.render()`.
 
