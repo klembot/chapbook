@@ -1,4 +1,4 @@
-# Audio
+# 音频｜Audio
 
 Chapbook supports two types of audio: _ambient sound_ and _sound effects_. Ambient sounds are long-running audio, such as music or background noise, that automatically loop when playback completes. Sound effects are one-off sounds, like the sound of a door opening or an explosion.
 

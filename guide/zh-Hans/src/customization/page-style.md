@@ -1,4 +1,4 @@
-# Page Style
+# 页面风格｜Page Style
 
 On sufficiently wide web browser windows, Chapbook will add horizontal margins around the text of your story so that it's comfortable to read. The exact width of the text column is based upon the font size that's set in `config.style.page.font`. You can control the appearance around the text through several variables.
 

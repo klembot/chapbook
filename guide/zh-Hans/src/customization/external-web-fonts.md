@@ -1,4 +1,4 @@
-# External Web Fonts
+# 外部网页字体｜External Web Fonts
 
 Creating a good font stack is difficult because there are very few typefaces you can count on a majority of your players having installed. Fortunately, you aren't limited to what your players happen to have installed--instead, you can use web fonts.
 

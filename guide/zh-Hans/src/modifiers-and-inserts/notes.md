@@ -1,37 +1,37 @@
-# Notes
+# 注释｜Notes
 
-You may want to enter text in your story as a note to yourself as you work--for example, to note that a passage needs some revision, clarify how players could reach a passage, or just remind yourself where to pick up in your next editing session.
+在创作过程中，你可能需要在故事中插入一些文字作为给自己的注释——例如，标记某段文字需要修改、说明玩家如何进入某个段落，或者只是提醒自己下次编辑时从何处继续。
 
-To do this, use the `[note]` modifier.
+为此，请使用 `[note]` 修饰符。
 
 ```
-It was a dark and stormy night.
+那是一个风雨交加的夜晚。
 
 [note]
-I really need a better beginning.
+我真的需要一个更好的开头。
 ```
 
-When Chapbook displays the passage, it will only show `It was a dark and stormy night.` You can write `[note to myself]` or `[n.b.]`[^1] instead of `[note]`. You can also write `[fixme]` and `[todo]`, which come from the programming world. They work identically to `[note]`, but you can easily do a search in the Twine editor for these terms to make sure you've addressed everything before a release. `[todo]` is useful for noting things yet to be implemented, while `[fixme]` is useful for problems you've noticed, but haven't yet had time to fix.
+当Chapbook显示该段落时，只会呈现“`那是一个黑暗而暴风雨的夜晚`”。你也可以使用`[note to myself]`或`[n.b.]`[^1]来代替`[note]`。此外，你还可以使用编程领域常用的 `[fixme]` 和 `[todo]`。它们的功能与`[note]`完全相同，但你可以方便地在 Twine 编辑器中搜索这些关键词，以确保在发布前处理完所有事项。比如 `[todo]` 适用于标记尚未实现的内容，而 `[fixme]` 则适合标注已发现但尚未修复的问题。
 
-You can, of course, use more than one note in a passage, and mix them with regular text:
+当然，你可以在一个段落中使用多个注释，并与常规文本混合使用：
 
 ```
-It was a dark and stormy night.
+那是一个风雨交加的夜晚。
 
 [note]
-I really need a better beginning.
+我真的需要一个更好的开头。
 
 [todo]
-Maybe have the screen flash?
+也许让屏幕闪烁一下？
 
 [continue]
-And you felt quite depressed.
+而你感到相当沮丧。
 ```
 
-These notes are stored separately from what is entered in the [Notes backstage tab](./text-and-links/backstage.md), unfortunately.
+遗憾的是，这些注释与[后台“注释”标签页](./text-and-links/backstage.md)中输入的内容是分开存储的。
 
 <aside data-hint="danger">
-Unlike backstage comments, notes are still visible to anyone who knows how to use their web browser's development tools. Don't put anything you need to keep secret in a note.
+与后台注释不同，注释对于任何知道如何使用浏览器开发者工具的人来说仍然是可见的。不要在注释中放入任何需要保密的内容。
 </aside>
 
-[^1]: Short for _nota bene_, which is a fancy way to write _pay attention to this_.
+[^1]: “注意” (nota bene) 的缩写，这是一种 _提醒关注此处_的花哨写法。

@@ -1,18 +1,19 @@
 # 致谢｜Acknowledgments
 
-Chapbook is a confluence of ideas rather than one, wholly original one. Its vars sections are familiar territory to anyone who has used YAML front matter in a static site generator like [Hexo][hexo]. And much of its state-centered design--in opposition to an imperative design, where change occurs mostly through function calls--comes from what I've learned from [Redux][redux], the de facto standard library for managing state in the [React][react] ecosystem.
+Chapbook 是多种理念的汇流，而非一个完全原创的构想。其变量部分对于任何使用过像 [Hexo][hexo] 这样的静态网站生成器中 YAML 前置元数据的人来说，都是熟悉的领域。而其以状态为中心的设计——与主要通过函数调用实现变化的命令式设计相对——很大程度上源于我从 [Redux][redux] 中学到的东西，Redux 是 [React][react] 生态系统中管理状态的事实标准库。
 
-You may not be able to tell it by looking at the syntax, but the named hooks of Leon Arnott's [Harlowe story format][harlowe] inspired many of the thoughts that Chapbook is based upon. What I found so appealing about named hooks is the idea of keeping code separate from the text it affects; that logic could be kept, if only at arm's length, separate from prose.
+仅从语法上看，你可能无法察觉，但 Leon Arnott 的 [Harlowe 故事格式][harlowe]中的命名钩子，启发了我构建 Chapbook 的许多核心思想。命名钩子最吸引我的地方在于，它将代码与其影响的文本分离开来；这种设计使得逻辑能够与叙述文本相分离——即便只是保持一定距离。
 
-Chapbook's default aesthetics owe a lot to the style of the interactive fiction engine [Undum][undum], by Ian Millington, as well as Liza Daly's works _[Stone Harbor][stone-harbor]_ and _[Harmonia][harmonia]_. I hope you find Chapbook's appearance half as graceful as these examples. Or if not--I hope I've left you enough hooks to customize it away into something better.
+Chapbook 的默认美学在很大程度上借鉴了 Ian Millington 的互动小说引擎 [Undum][undum] 的风格，以及 Liza Daly 的作品[《石港》][stone-harbor]和[《和谐》][harmonia]。我希望您能发现 Chapbook 的外观至少能达到这些范例一半的优雅。如果没有——我希望我为您留下了足够的自定义空间，让您能将其调整得更好。
 
-The notes feature of Chapbook's backstage view was inspired by [Illume][illume], which is an excellent way to review a Twine story before release.
+Chapbook 后台视图中的注释功能灵感来源于 [Illume][illume]，这是在发布前审阅 Twine 故事的绝佳方式。
 
-If you take a look at the [Twine Cookbook][cookbook], you’ll see more than a few similarities between its table of contents and this guide's. This is no accident. One of my design goals with Chapbook was to make common use cases easy--and the Twine Cookbook has been a wonderful signpost as to what people wanted to achieve with Twine.
 
-You might also notice some resemblance between this guide and the [Inform Designer's Manual][dm6], written by Graham Nelson, which not only is one of my favorite works of technical writing, but is possibly the one document that's most responsible for my ongoing infatuation with interactive fiction.
+如果您查看一下 [Twine Cookbook][cookbook]，会发现其目录与本指南的目录有不少相似之处。这并非偶然。我设计 Chapbook 的目标之一就是让常见用例变得简单——而 Twine Cookbook 正是人们希望通过 Twine 实现目标的一个绝佳路标。
 
-Finally, I want to thank my creative partner Joel Haddock for patiently playing the roles of guinea pig and sounding board in equal measure.
+你可能还会注意到本指南与 Graham Nelson 所著的[《Inform 设计者手册》][dm6]有某些相似之处。这不仅是我最喜爱的技术写作作品之一，而且很可能正是这份文档，让我对互动小说持续保持着痴迷。
+
+最后，我要感谢我的创意伙伴 Joel Haddock，他耐心地同时扮演了实验对象和共鸣板的角色。
 
 ## 本指南中的照片｜Photos in this Guide
 
@@ -40,3 +41,7 @@ Finally, I want to thank my creative partner Joel Haddock for patiently playing 
 [dm6]: https://inform-fiction.org/manual/
 [pixabay]: https://pixabay.com
 [unsplash]: https://unplash.com
+
+## 指南翻译｜Guide book translator
+
+- 简体中文：王洛木　Mail: <Nomo_Wang@outlook.com> Link: <https://Raster.Team>

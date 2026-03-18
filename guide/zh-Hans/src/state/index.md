@@ -1,5 +1,5 @@
 <div class="intro state">
-    <h1>State</h1>
+    <h1>状态｜State</h1>
 </div>
 
-In this section, you'll learn how to add state to your stories, which allows you to track more information about a playthrough of your story than just what links the player followed.
+在本节中，你将学习如何为故事添加状态，这让你能够追踪到比玩家所遵循的链接更多的信息，从而记录故事的一次完整游玩过程。

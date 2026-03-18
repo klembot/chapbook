@@ -1,4 +1,4 @@
-# Dark Theme
+# 暗黑主题｜Dark Theme
 
 Chapbook has two themes:
 

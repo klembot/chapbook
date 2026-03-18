@@ -1,4 +1,4 @@
-# What is State?
+# 状态是什么？｜What is State?
 
 You can create a compelling story with just the techniques outlined in the previous section. The [_Choose Your Own Adventure_ book series][cyoa] that has been part of Western pop culture since it exploded in popularity in the 1980s did just that. Turning to a particular page in the book is the equivalent of following a link in a digital medium, of course.
 

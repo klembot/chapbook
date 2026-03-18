@@ -1,59 +1,59 @@
-# Text Input
+# 文本输入｜Text Input
 
-Sometimes selecting a link isn't expressive enough to capture player intent. One common scenario is allowing the player to name a character--often, the protagonist. To do this, use the `{text input}` insert.
+有时，仅通过选择链接无法充分表达玩家的意图。一个常见的场景是允许玩家为角色命名——通常是主角。为此，请使用 `{text input}` 插入。
 
 ```
-What would you like to name your loyal canine companion?
+您想为您的忠诚犬类伙伴取什么名字？
 
 {text input for: 'dogName'}
 
 [[Continue]]
 ```
 
-This displays a text field after the first paragraph that, once the player moves to another passage, saves its contents to the variable named `dogName`. Take careful note of the quotation marks around `'dogName'` in the insert. These are needed so that the variable name is passed as-is to the insert, instead of being evaluated. Consider this contrived passage:
+这会在第一段之后显示一个文本字段，一旦玩家移动到另一个段落，就会将其内容保存到名为 `dogName` 的变量中。请特别注意 `'dogName'` 周围的引号。这些引号是必需的，以便将变量名按原样传递给插入内容，而不是被求值。想想以下被设计的段落：
 
 ```
-petType: 'cat'
+宠物类型: '猫'
 --
-What would you like to name your loyal {petType} companion?
+您想为您忠诚的{宠物类型}伙伴取什么名字？
 
-{text input for: petType}
+{text input for: 宠物类型}
 
 [[Continue]]
 ```
 
-This would save what the player entered to a variable named `cat`, not `petType`, because the variable `petType` is evaluated by the insert.
+这将把玩家输入的内容保存到名为`猫`的变量中，而非`宠物类型`，因为`宠物类型`变量在此处插入时因为没有引号而被解析为`猫`。
 
-If the variable that the text input is saving to already has a value, the text input will start with that value already filled in. For example:
+若文本输入框所保存的变量已存在值，则文本输入框将默认显示该预填值。例如：
 
 ```
-dogName: 'Lassie'
+狗的名字: '来喜'
 --
-What would you like to name your loyal canine companion?
+您想为您忠诚的犬类伙伴取什么名字？
 
-{text input for: 'dogName'}
+{text input for: '狗的名字'}
 
 [[Continue]]
 ```
 
-Will suggest a default name of 'Lassie' for the player's dog.
+系统会为玩家的宠物狗建议默认名称“来喜”。
 
-Unless you specify otherwise, players must enter some text into a text input before moving onto another passage. If navigation is blocked, the player's web browser will show a message highlighting the text input that's empty. The exact appearance of this message varies from browser to browser, and can't be customized.
+除非另行设定，否则玩家必须在文本输入框中输入内容后才能继续进入下一个段落。若因未输入内容导致导航受阻，玩家的网页浏览器将显示高亮空白输入框的提示信息。该提示信息的具体显示样式因浏览器而异，且无法自定义。
 
-## Optional Parts
+## 可选部分｜Optional Parts
 
-To allow the player to skip entering anything into a text input, set the insert's `required` property to `false`.
+若希望允许玩家跳过文本输入而不输入任何内容，可将插入部件的 `required` 属性设为 `false`。
 
 ```
-What's your darkest secret? You don't have to tell me now if you don't want to.
+你最深的秘密是什么？如果你现在不想说，可以不说。
 
-{text input for: 'secret', required: false}
+{text input for: '秘密', required: false}
 ```
 
-Note that as above, the variable name should be quoted, but `false` should not.
+请注意，如上所述，变量名称需加引号，但 `false` 不应加引号。
 
 <aside data-hint="info">
-The restriction on navigation only applies to player-initiated navigation. A required text input will not block navigation initiated by the story itself, or the player choosing to restart the story.
+对导航的限制仅适用于玩家主动发起的导航。必需的文本输入不会阻止故事本身发起的导航，或玩家选择重启故事的操作。
 </aside>
 
-You also do not have to save a text input's value to a variable, if for some reason you won't need the value later. To do this, write `{text input}` or `{text input, required: true}`. 
+如果出于某种原因，您后续不需要使用文本输入的值，那么您也不必将其保存到变量中。为此，可以只写 `{text input}` 或 `{text input, required: true}`。

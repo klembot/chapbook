@@ -1,4 +1,4 @@
-# Fonts and Colors
+# 字体和颜色｜Fonts and Colors
 
 The easiest way to customize your story's fonts and colors is with the **Style**
 backstage tab[^1], which sets values in the `config.style` object for you. As

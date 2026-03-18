@@ -1,38 +1,37 @@
-# Displaying Variables
+# 显示变量｜Displaying Variables
 
-Of course, setting variables isn't very useful by itself. They need to affect the course of a story somehow. The simplest way they can do this is simply being inserted into the story. You can display the contents of a variable using an insert.
+当然，仅设置变量本身并无太大意义。它们需要以某种方式影响故事进程。最简单的方式就是直接将变量插入故事中。您可以使用插入功能来显示变量的内容。
 
-The passage source below:
+以下段落：
 
 ```
-name: 'Chris'
+名字: '克里斯'
 --
-"Hi, {name}," your guide greets you.
+“你好，{名字}，你的向导向你打招呼。”
 ```
 
-Will display as: `"Hi, Chris," your guide greets you.` This example is a little silly, since you could just as easily write `Chris` where <code>`name`</code> is. But the advantage of storing it in a variable is that you could keep using <code>`name`</code> later in your story. You could also use this, for example, to allow the player to choose a gender (or lack thereof) and then use the correct pronouns throughout the story.
+将显示为："嗨，克里斯，"你的向导向你打招呼。这个例子有点傻，因为你完全可以在`名字`的位置直接写`克里斯`。但将其存储在变量中的优势在于，你可以在故事后续部分继续使用`名字`。例如，你也可以利用这一点，允许玩家选择性别（或不选择性别），然后在整个故事中使用正确的代词。
 
-Variable inserts do not allow any parameters, as introduced in [Link Inserts][link-inserts]; the name of the variable acts as the insert name.[^1]
+变量插入不允许任何参数，正如在[链接插入][link-inserts]中介绍的那样；变量名充当插入名称。[^1]
 
-## You Cannot Put Expressions In An Insert
+## 不能在插入中使用表达式｜You Cannot Put Expressions In An Insert
 
-The following will not display as you might expect:
+以下内容**不会**如你所期望的那样显示：
 
 ```
-cash: 3
+现金: 3
 --
-"Sorry, but I decided that I want {cash + 2} dollars for it," the salesman replies.
+“抱歉，但我决定要价 {现金 + 2} 美元，”销售员回答道。
 ```
-
-Expressions like this are not allowed in variable inserts-- you may only enter the name of a variable. It's simple enough to accomplish this with a temporary variable:
+在变量插入中不允许使用这样的表达式——您只能输入变量的名称。不过，使用临时变量可以轻松实现这一点：
 
 ```
-cash: 3
-_unreasonablePrice: cash + 3
+现金: 3
+_不合理价格: 现金 + 3
 --
-"Sorry, but I decided that I want {_unreasonablePrice} for it," the salesman replies.
+“抱歉，但我决定这件东西要价{_不合理价格}。”销售员回答道。replies.
 ```
 
-[^1]: You can always distinguish a variable insert from another type of insert by looking for spaces inside it. `{back link}` could never be a variable insert because `back link` contains spaces, and thus could never be the name of a variable.
+[^1]: 您总是可以通过查看其中是否包含空格来区分变量插入与其他类型的插入。`{back link}` 绝不可能是变量插入，因为 `back link` 包含空格，因此绝不可能是变量的名称。
 
-[link-inserts]: ./text-and-links/link-inserts.html
+[link-inserts]: ./modifiers-and-inserts/link-inserts.html

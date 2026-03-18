@@ -1,17 +1,17 @@
-# Modifiers and Text Alignment
+# 修饰符与文本对齐｜Modifiers and Text Alignment
 
-One thing not mentioned in the previous section is how you would center text, or even right-align it. Alignment was never part of the original version of Markdown, and so various dialects of Markdown use their own notation for it.[^1]
+上一节未提及的一点是如何将文本居中，甚至右对齐。对齐功能从未包含在原始版本的 Markdown 中，因此各种 Markdown 方言都使用自己的标记来实现它。[^1]
 
-Chapbook uses a general-purpose notation called a _modifier_ to apply special handling to blocks of text. Modifiers are always single lines that begin and end with square brackets[^2], like so:
+Chapbook 使用一种称为修饰符的通用标记，对文本块应用特殊处理。修饰符始终是单行，以方括号[^2]开始和结束，如下所示：
 
 ```
-Above the cave mouth, someone has carved:
+洞口上方，有人刻着：
 
 [align center]
-_Lasciate ogne speranza, voi ch'intrate_
+_入此门者，当弃绝一切希望_
 ```
 
-The text `[align center]` is never shown to the player. Instead, Chapbook centers the text following it. As you might have guessed, you can also write `[align right]` and `[align left]`.
+文本中的 `[align center]` 永远不会显示给玩家。相反，Chapbook 会将其后的文本居中显示。正如你可能猜到的，你也可以使用 `[align right]` 和 `[align left]`。
 
 ## `continue` 修饰符｜The `continue` modifier
 
@@ -21,7 +21,7 @@ The text `[align center]` is never shown to the player. Instead, Chapbook center
 洞口上方，有人刻着：
 
 [align center]
-_Lasciate ogne speranza, voi ch'intrate（来者需要放弃一切希望）_
+_入此门者，当弃绝一切希望_
 
 [continue]
 你对你的计划感到有点不那么自信了。
@@ -29,12 +29,11 @@ _Lasciate ogne speranza, voi ch'intrate（来者需要放弃一切希望）_
 
 `[continue]` 仅用于取消所有生效的修饰符。可缩写为 `[cont'd]` 或 `[cont]`。
 
-王洛木：简单来说，就是用来划清上一个修饰符的修饰范围的。
+（王洛木：简单来说，就是用来划清上一个修饰符的修饰范围的。）
 
-## Vertical text alignment
+## 垂直文本对齐｜Vertical text alignment
 
-If you'd like to change how text is aligned vertically inside the page
-container, see the [Page Style](./customization/page-style.html) section.
+如果您想更改页面容器内文本的垂直对齐方式，请参阅[页面样式(./customization/page-style.html)]部分。
 
-[^1]: Twine 2's default format, Harlowe, for instance, uses punctuation like ` =><= ` on the preceding line to indicate centered text, while other Markdown dialects put arrows around centered text, like `->SALE TODAY<-`.
-[^2]: If you'd like to show players a line of text with brackets in it, enter a single backslash (`\`) at the start of the line. Chapbook will display the text as-is without the backslash you entered.
+[^1]: 例如，Twine 2 的默认格式 Harlowe 使用前一行上的标点符号如 `=><=` 来表示居中文本，而其他 Markdown 方言则用箭头包围居中文本，如`->今日特卖<-`。
+[^2]: 如果您想向玩家显示一行包含括号的文本，请在行首输入一个反斜杠（`\`）。Chapbook 将按原样显示文本，而不显示您输入的反斜杠。

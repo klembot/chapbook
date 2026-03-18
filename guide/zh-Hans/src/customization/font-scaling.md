@@ -1,4 +1,4 @@
-# Font Scaling
+# 字体缩放｜Font Scaling
 
 By default, Chapbook scales the font size of text based on the width of the
 _viewport_: the container in which the page is viewed. On a desktop computer,

@@ -1,43 +1,40 @@
-# The Vars Section
+# 变量部分｜The Vars Section
 
-The primary way that Chapbook allows you to work with state is through _vars (short for variables) sections_. These sections always come at the beginning of a passage and are separated from normal text by two dashes (`--`).
+Chapbook 允许你处理状态的主要方式是通过 _变量 (vars) _部分。这些部分总是出现在段落开头，并且通过两个短杠（`--`）与普通文本分隔开。
 
-To carry forward the example from the previous section, here's how a desperately stereotypical dungeon crawl's first passage might look:
+延续上一节的例子，一个极其刻板的地牢探险的第一段可能看起来是这样的：
 
 ```
-strength: 18
-dexterity: 7
-constitution: 14
-intelligence: 9
-wisdom: 8
-charisma: 11
+力量：18
+敏捷：7
+体质：14
+智力：9
+感知：8
+魅力：11
 --
-After a lusty evening in the village tavern, you set off down the trail to
-the nearest dungeon. It's a bright, sunny day, and you're happy to have a
-clear destination in mind.
+在村中酒馆度过一个纵情狂欢的夜晚后，你踏上了前往最近地下城的小径。这是个阳光明媚的日子，心中有了明确的目标让你倍感愉悦。
 ```
+当玩家访问该段落时，Chapbook 会在故事状态中添加六个变量：`力量`、`敏捷`、`体质`等，并将它们设置为所列出的数值。
 
-When the player visits this passage, Chapbook will add six variables to the story's state: `strength`, `dexterity`, `constitution`, and so on, and sets them to the numbers listed.
-
-Vars sections never display anything to the player; this is so that, for example, you can set a variable named `doomedToDieInFiveMinutes` and the player will be none the wiser unless you wish it.
+变量区块永远不会向玩家显示任何内容；这样，例如，你可以设置一个名为 `doomedToDieInFiveMinutes` 的变量，而除非你希望让玩家知道，否则玩家将对此一无所知。
 
 <aside data-hint="info">
-If a passage is embedded in another using the <code>{embed passage}</code> modifier, its vars section will also take effect.
+如果一个段落使用 <code>{embed passage}</code> 修饰符嵌入到另一个段落中，其变量区块也会生效。
 </aside>
 
-You may only have one vars section in each passage, but then there's really only ever need for one. The name of state variables must follow a few rules, too. They must start with a letter (upper or lowercase), underscore (`_`), or dollar sign (`$`); after the first character can come any combination of the preceding kinds of characters as well as digits.[^1]
+每个段落中只能有一个变量区块，但实际上也只需要一个。状态变量的命名也必须遵循一些规则。它们必须以字母（大写或小写）、下划线（`_`）或美元符号（`$`）开头；第一个字符之后可以是前述类型的字符以及数字的任意组合。[^1]
 
-Sadly, you can't use spaces in your variable names. Because of this, a common practice called _camel casing_ (because of the camel-like humps in the resulting word) glues phrases together using capital letters, like the `doomedToDieInFiveMinutes` example above. Another school of thought, _snake casing_, prefers to use underscores instead; e.g. `doomed_to_die_in_five_minutes`. Either's perfectly fine. Use whichever feels most comfortable to you.
+遗憾的是，你不能在变量名中使用空格。因此，一种被称为 _驼峰命名法_（因其产生的单词形似驼峰）的常见做法是使用大写字母将短语连接在一起，就像上面那个 `doomedToDieInFiveMinutes` 的例子一样。另一种命名风格，_蛇形命名法_，则倾向于使用下划线；例如 `doomed_to_die_in_five_minutes` 。两种方式都完全可以。选择你觉得最舒服的使用即可。
 
-Another common practice is to put an underscore in front of variable names when the value will only be used in the current passage. This practice is just a hint to yourself; Chapbook does not enforce this usage.[^2]
+另一种常见做法是，当变量的值仅在当前段落中使用时，在变量名前加一个下划线。这种做法只是给自己一个提示；Chapbook 并不强制要求这样使用。[^2]
 
 <aside data-hint="info">
-A variable name can contain periods (<code>.</code>), but they carry a special meaning. Until you've read <a href="objects-and-lookups.html">Objects and Lookup Values</a>, it's best to leave them out of variable names.
+变量名可以包含句点 (<code>.</code>)，但它们具有特殊含义。在阅读"<a href="objects-and-lookups.html">对象与查找值</a>"部分之前，最好避免在变量名中使用句点。
 </aside>
 
 <aside data-hint="danger">
 <p>
-Chapbook and web browsers reserve certain variable names for their own use. If you try to use a variable whose name overlaps them, unpredictable things may happen, so you should avoid them. Chapbook reserves the following names:
+Chapbook 和网页浏览器会保留某些变量名供其自身使用。如果你尝试使用与这些保留名重叠的变量名，可能会发生不可预测的情况，因此应避免使用它们。Chapbook 保留了以下名称（意思是，以下内容不可做为变量名）：
 </p>
 
 <ul>
@@ -50,131 +47,130 @@ Chapbook and web browsers reserve certain variable names for their own use. If y
 </ul>
 
 <p>
-The browser reserves quite a few (over two hundred at time of writing), but you're unlikely to want to use most of them, like <code>ondeviceorientation</code>. See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window#Properties">the exhaustive list</a> for more details.
+浏览器保留了相当多的变量名（截至本文撰写时超过两百个），但你不太可能想使用其中的大多数，例如 `ondeviceorientation`。更多详细信息请参阅<a href="https://developer.mozilla.org/en-US/docs/Web/API/Window#Properties">详尽列表</a>。
 </p>
 </aside>
 
-The only time variable names are shown to a player is if an error occurs in your story while they are playing it, so choose names that are easy to remember and descriptive. There's no need for a `clueF` variable when you can have `sawFootprintsInVault` instead.
+变量名唯一会向玩家显示的时刻，是在他们游玩你的故事时发生错误的情况下，因此请选择易于记忆且具有描述性的名称。既然可以使用 `sawFootprintsInVault`，就没有必要使用 `clueF` 这样的变量名。
 
-## Variables Have Types
+## 变量具有类型｜Variables Have Types
 
-The example at the start of this section assigned numbers to variables, but variables can hold other types of values.
+本节开头的例子为变量分配了数字，但变量也可以保存其他类型的值。
 
-_Strings_ are collections of letters, numbers, spaces, and other symbols. Strings are surrounded by either apostrophes (`'`) or quotation marks (`"`) so that's it clear where they begin and end, in the same way that is used for textual parameter values. You can use either punctuation mark to mark off a string's beginning and end, but just like Markdown italics and bold, you have to be consistent with each usage. If you need to use a delimiter character inside a string, type a backslash (`\`) in front of it, e.g. `'Don\'t, just don\'t.'`.
+_字符串_ 是字母、数字、空格和其他符号的集合。字符串由撇号（`'`）或引号（`"`）包围，以明确其起始和结束位置，这与文本参数值的用法相同。你可以使用任一标点符号来标记字符串的开头和结尾，但就像 Markdown 的斜体和粗体一样，每次使用必须保持一致。如果需要在字符串内部使用分隔符字符，请在其前面键入反斜杠（`\`），例如 `'Don\'t, just don\'t.'`。
 
-Strings are great for storing names for things. For example, if you want to allow the player to set the name of the main character at the start of a story, a string would be the best type of variable to use. You can also use strings to store fuzzy kinds of values. You could record the state of a relationship between two characters as `'friendly'`, `'neutral'`, `'wary'`, or `'hostile'`.
+字符串非常适合用于存储事物的名称。例如，如果您想让玩家在故事开始时为主角命名，字符串将是最佳变量类型。您还可以使用字符串来存储模糊类型的值。例如，您可以将两个角色之间的关系状态记录为“`友好`”、“`中立`”、“`警惕`”或“`敌对`”。
 
-_Booleans_ simply record a true or false value. Like numbers, you don't need to put anything around a boolean to signal what it is; just type `true` or `false`. Booleans are good for recording whether something has occurred in a story; for example, whether the main character has found a clue.
+_布尔值_ 简单地记录真或假的值。与数字类似，你不需要在布尔值周围添加任何符号来表明它是什么；只需输入 `true` 或 `false`。布尔值非常适合记录故事中是否发生了某事；例如，主角是否找到了线索。
 
-There are other, more complex types of values that will be discussed later, but numbers, strings, and booleans will get you quite far. To review, here's an example of a passage whose vars section contains all three types of variables.
+还有其他更复杂的值类型将在后面讨论，但数字、字符串和布尔值已经足够你使用很长一段时间了。作为回顾，这里有一个示例段落，其变量部分包含了所有三种类型的变量。
 
 ```
 dollarsInPocket: 12
 openedPortalToAlternateDimension: true
-name: 'James'
+名字: 'James'
 --
-You've nearly reached the end of your adventure.
+你的冒险旅程即将抵达终点。
 ```
 
-## Variables Can Be Calculated
+## 变量可以被计算｜Variables Can Be Calculated
 
-You don't have to set variables to plain values--meaning, a vars section could look like this when the main character finds a dollar lying on the ground:
+你不必将变量设置为某个单一的值——也就是说，当主角在地上发现一美元时，变量部分可以这样写：
 
 ```
 dollarsInPocket: dollarsInPocket + 1
 ```
 
-This vars section increases the `dollarsInPocket` variable by 1 using an _expression_. You can think of an expression as a formula or calculation. It's anything that can be transformed into a single value via the _evaluation_ process. For example, you can use the basic mathematical operations--addition, subtraction, multiplication, and division--with numeric variables. You can also use addition to connect two strings together--for instance, `fullName: first + ' ' + last`--but you cannot use any other mathematical operators with strings.
+此变量部分通过表达式将 dollarsInPocket 变量增加1。您可以将`表达式`理解为公式或计算过程，即任何能通过求值转换为单一值的元素。例如，您可以使用基础数学`运算`——加法、减法、乘法、除法——来处理数值变量。您还可以使用加法连接两个字符串，例如 `fullName: first + ' ' + last`，但不可对字符串使用其他数学运算符。
 
-You can also compare two numbers or strings, yielding a boolean.
+您还可以比较两个数字或字符串，得到一个布尔值。
 
-* `===`, "equal to"  
-True if both sides are the same number or string. Strings have to be exactly the same: `'DOE'` does not equal `'doe'`, nor does `'doe '` (note the trailing space) equal `'doe'`.
+* `===`，“等于”  
+如果两侧是相同的数字或字符串，则为真。字符串必须完全相同：`'DOE'` 不等于 `'DOE'`，`'DOE '`（注意末尾的空格）也不等于 `'DOE'`。
 
-* `!==`, "not equal to"  
-True if both sides aren't the same.
+* `!==`，“不等于”  
+如果两边不相同，则为真。
 
-* `>`, "greater than," and `>=`, "greater than or equal to"  
-True if the left side is larger than the right side. If you use `>=`, then this is also true when the two sides are equal.
+* `>`, “大于”，以及 `>=`，“大于或等于”  
+如果左侧大于右侧，则为真。如果使用 `>=`，则当两边相等时也为真。
 
-* `<`, "less than," and `<=`, "less than or equal to"  
-True if the left side is smaller than the right side. If you use `<=`, then this is also true when the two sides are equal.
+* `<`,“小于”，以及 `<=`，“小于或等于”   
+当左侧小于右侧时为真。如果使用 `<=`，那么当两侧相等时也为真。
 
-Generally speaking, one string is considered larger than another if it would come after it in alphabetical order. For example, `'b' > 'a'`. But these comparisons can be confusing and unintuitive. Is `'+'` greater than `'&'`? It in fact is, but would you know at a glance? It might surprise you to learn than `'A' < 'a'`.[^3] So it is usually best not to use greater-than or less-than operators with strings.
+一般来说，如果一个字符串在字母顺序中排在另一个之后，就认为它更大。例如，`'b' > 'a'`。但这些比较可能会令人困惑且不直观。`'+'` 是否大于 `'&'`？实际上是的，但你能一眼看出来吗？你可能会惊讶地发现 `'A' < 'a'`。[^3]因此，通常最好不要对字符串使用大于或小于运算符。
 
-Below is an example vars section that demonstrates how these can be used.
+以下是一个变量部分的示例，展示了如何使用这些变量。
 
 ```
 correct: guess === 3
 nighttime: hour >= 18
 --
-The quizmaster leans back in his chair and grins.
+主持人向后靠在椅子上，咧嘴一笑。
 ```
 
-Boolean variables have their own separate set of operators.
+布尔变量有自己独立的一套运算符。
 
-* `!`, "not"  
-Changes a true value to false and vice versa.
+* `!`，“非”
+将真值变为假，反之亦然。
 
-* `&&`, "and"  
-True only if both sides are true.
+* `&&`，“和”  
+仅当两侧都为真时，结果为真。
 
-* <code>&#124;&#124;</code>, "or"  
-True if one or both sides are true.
+* <code>&#124;&#124;</code>，“或”  
+当一侧或两侧为真时，结果为真。
 
 <aside data-hint="danger">
-You cannot use inserts or modifiers in vars sections. They only work inside the displayed text of your passage.
+您不能在变量部分使用插入或修饰符。它们仅在您用于段落显示的文本内部有效。
 </aside>
 
-## Clarifying Expressions With Parentheses
+## 用括号澄清表达式｜Clarifying Expressions With Parentheses
 
-Often expressions are complex. For example, in a simple role-playing scenario, you might decide a character armed with a hammer does `strength * 2 + 4` damage. But if `strength` is 12, does that mean that the expression evaluates to 28 (multiply 12 by 2, then add 4) or 72 (add 2 to 4, then multiply by 12)?
+表达式常常很复杂。例如，在一个简单的角色扮演场景中，你可能决定一个手持锤子的角色造成`力量 * 2 + 4` 的伤害。但如果`力量`是 12，这个表达式是得出 28（12 乘以 2，再加 4）还是 72（2 加 4，再乘以 12）？
 
-You may remember from algebra class that mathematical operators have rules relating to precedence; specifically, multiplication occurs before addition. But you probably have never been taught what the rules are for boolean logic--e.g. what does `!true || false` evaluate to?[^4]--and even if you do know the rules, it can be tricky to correctly apply them in a complex expression.
+你可能记得数学课上学过数学运算符有优先级规则；具体来说，乘法在加法之前进行。但你很可能从未学过布尔逻辑的规则——例如，`!true || false` 会得出什么结果？[^4]——即使你知道这些规则，在复杂表达式中正确应用它们也可能很棘手。
 
-In these situations, you can use parentheses to help make an expression easy to follow, or even to override the normal order of operations. `(strength * 2) + 4` makes it clear how the expression will be evaluated--and if indeed you wanted the answer above to be 72, you can specify that by writing `strength * (2 + 4)`.
+在这些情况下，你可以使用括号来帮助表达式更易于理解，甚至可以覆盖正常的运算顺序。`(力量 * 2) + 4` 清楚地表明了表达式将如何被求值——如果你确实希望上面的答案是 72，你可以通过写成 `力量 * (2 + 4)` 来指定。
 
-## Evaluation Only Happens Once
+## 求值仅发生一次｜Evaluation Only Happens Once
 
-An important thing to remember about setting a variable to an expression is that the evaluation only happens once, when you set the variable. Imagine this scenario:
+关于将变量设置为表达式，需要记住的一个重要点是，求值只发生一次，即在你设置变量的时候。想象一下这个场景：
 
-1. In a passage, you set the variable `teethChattering` to `temperature < 0`.
-2. In a later passage, the protagonist moves inside and sets `temperature: temperature + 20`.
+1. 在一个段落中，你将变量 `牙齿打颤` 设置为 `温度 < 0`。
+2. 在后续段落中，主角进入室内并设置温度：`温度 + 20`。
 
-The variables are now inconsistent: `teethChattering` is true but `temperature` is above 0. The best way to avoid this problem is to avoid making a variable completely derived from another. You don't need a separate variable named `teethChattering` if all it does is reflect whether `temperature` is greater than 0. A better use would be setting `hasACold: temperature < 0 && !wearingJacket`, to reflect that the protagonist caught a cold by being outside without a jacket. They may subsequently go inside or put on a jacket, but obviously neither change will affect the fact that the protagonist `hasACold`.
+变量现在不一致了：`牙齿打颤`为真，但`温度`高于 0。避免此问题的最佳方法是避免让一个变量完全从另一个变量派生。如果`牙齿打颤`这个变量所做的只是反映`温度`是否大于 0，那么你就不需要一个单独的名为`牙齿打颤`的变量。更好的用法是设置`感冒: 温度 < 0 && !穿着夹克`，以反映主角因未穿夹克在室外而感冒了。他们随后可能会进入室内或穿上夹克，但显然这些变化都不会影响主角已经`感冒`的事实。
 
-## Expressions Can Be Used in Inserts
+## 表达式可用于插入语句中｜Expressions Can Be Used in Inserts
 
-An expression can be used in place of a value in an insert. For example, the passage below:
+在插入中，表达式可以替代值使用。例如，以下段落：
 
 ```
-target: 'another passage'
+目标: '另一个段落'
 --
-{embed passage: target}
+{embed passage: 目标}
 ```
 
-Will display the contents of the passage named 'another passage'. Remember that this usage differs from placing a variable name in quotation marks, which Chapbook treats as a string. That is, this passage:
+将显示名为“另一个段落”的段落内的内容。请注意，这种用法与将变量名放在引号内不同，Chapbook 会将引号内的内容视为字符串。也就是说，这个段落：
 
 ```
-target: 'another passage'
+目标: '另一个段落'
 --
-{embed passage: 'target'}
+{embed passage: '目标'}
 ```
 
-Shows the contents of the passage named 'target' instead. This can be confusing, of course. The simplest rule to keep in mind is that quotation marks, either single or double, always go around strings. If you don't see quotation marks around something, it will be evaluated.
+会显示文字“目标”，而非变量值。这当然可能造成混淆。最简单的记忆规则是：单引号或双引号始终用于包裹字符串。如果某个内容没有引号包裹，它就会被求值。
 
-As the heading advertises, inserts can use entire expressions, not just variables, as values. For instance:
+正如标题所示，插入可以使用整个表达式而不仅仅是将变量作为值。例如：
 
 ```
-petType: 'cat'
-activity: 'Walk'
+宠物类型: '猫'
+活动: '走路'
 --
-{embed passage: petType + activity}
+{embed passage: 猫 + 走路}
 ```
+将显示段落内容为“猫走路”。
 
-Will display the contents of the passage 'catWalk'.
-
-[^1]: You can use non-Latin characters in variable names, such as `sabiduría` or `мудрость`, but bear in mind that older web browsers that do not fully support the Unicode standard--in practice, old versions of Internet Explorer that have miniscule usage rates nowadays--may be deeply confused by them.
-[^2]: The SugarCube story format popularized this practice, and in fact does discard variables whose name starts with an underscore after the player navigates to another passage. 
-[^3]: The final authority on ordering characters in a string is the Unicode standard. Characters are compared by their Unicode code points; a higher numeric code point means that a character is greater than another.
-[^4]: In case you're curious, `!true || false` evaluates to false. The not operator takes precedent over the or.
+[^1]: 变量名中可以使用非拉丁字符，例如 `sabiduría` 或 `мудрость`，但请注意，不完全支持 Unicode 标准的旧版网页浏览器——实际上是指如今使用率极低的旧版 Internet Explorer——可能会因此产生严重混淆。（王洛木：真的还有人在用 IE 上网冲浪么……）
+[^2]: SugarCube 故事格式推广了这一做法，并且事实上确实会在玩家导航到另一个段落后丢弃以下划线开头的变量。（王洛木：也就是临时变量。）
+[^3]: 字符串中字符排序的最终依据是 Unicode 标准。字符通过其 Unicode 码点进行比较；数值更高的码点意味着一个字符大于另一个字符。
+[^4]: 如果你好奇的话，`!true || false` 会得出 false。“非”运算符的优先级高于“或”运算符。
