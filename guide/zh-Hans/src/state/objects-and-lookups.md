@@ -1,66 +1,48 @@
-# Objects and Lookup Variables
+# 对象与查找变量｜Objects and Lookup Variables
 
-In addition to variables you create, Chapbook also maintains a number of
-built-in variables called _lookups_. Unlike regular variables, lookups cannot be
-changed by you. Instead, they correspond to properties in the environment--the
-current date and time when the player is interacting with your story, for
-example, or even the story itself.
+除了您创建的变量之外，Chapbook 还维护了许多称为*查找*的内置变量。与常规变量不同，查找变量无法由您更改。相反，它们对应于环境中的属性——例如玩家与您的故事互动时的当前日期和时间，甚至故事本身。
 
-## Introducing Objects
+## 对象简介｜Introducing Objects
 
-In order to leave as many variable names available to you as possible, Chapbook
-groups its built-in lookup variables together using _objects_. An objects are
-another type of variable--like a string, boolean, or number--that acts as a
-container for other variables. Unlike simple variable types like strings or
-numbers, objects don't have values unto themselves. They only contain other
-variables.
+为了尽可能为您保留更多可用的变量名，Chapbook 将其内置的查找变量通过*对象*进行分组。对象是另一种类型的变量——类似于字符串、布尔值或数字——它充当其他变量的容器。与字符串或数字等简单变量类型不同，对象本身没有值。它们只包含其他变量。
 
-To access a variable inside an object container, enter the object's name, then a
-period (`.`), then the variable. For instance, `story.name` accesses the
-variable named `name` inside of `story`.
+要访问对象容器内的变量，请输入对象名称，然后是一个句点（`.`），再然后是变量名。例如，`story.name` 访问的是 `story` 对象内名为 `name` 的变量。
 
-You can nest objects as much as you'd like, and you can also write something
-like this in the vars section of a passage:
+您可以根据需要任意嵌套对象，并且也可以在段落（passage）的变量部分编写类似这样的内容：
 
 ```
-my.favorite.variable: 'red'
+my.favorite.variable: '红色'
 ```
 
-Chapbook will create each object variable (e.g. `my` and `favorite`) for you if
-it doesn't already exist.
+如果尚不存在，Chapbook 将为您创建每个对象变量（例如 `my` 和 `favorite`）。
 
-## Built-In Lookup Variables
+## 内置查找变量｜Built-In Lookup Variables
 
-Below is a list of lookups that Chapbook maintains for you:
+以下是 Chapbook 为您维护的查找列表：
 
-| Variable Name             | Description                                                                                                                                                                                                                                                                    | Example                |
+| 变量名称           | 描述                                                                                                                                                                                                                                                                    | 示例                |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- |
-| `browser.darkTheme`       | Whether the effective theme currently used by Chapbook is dark. See [Dark Theme](./style/dark-theme.html) for more details.                                                                                                                                                   | `true`                 |
-| `browser.darkSystemTheme` | Whether the browser is currently set to use a dark user interface. Typically, this done through a system preference.                                                                                                                                                           | `true`                 |
-| `browser.height`          | The height of the browser window in pixels.                                                                                                                                                                                                                                    | `768`                  |
-| `browser.online`          | Whether the browser currently has a network connection.                                                                                                                                                                                                                        | `true`                 |
-| `browser.width`           | The width of the browser window in pixels.                                                                                                                                                                                                                                     | `1024`                 |
-| `engine.version`          | The version of Chapbook currently running, as a string.                                                                                                                                                                                                                        | `'1.0.0'`              |
-| `now.datestamp`           | A short human-readable description of the date right now.                                                                                                                                                                                                                      | `'2/15/2011'`          |
-| `now.day`                 | The current day of the month, 1-31.                                                                                                                                                                                                                                            | `15`                   |
-| `now.hour`                | The hour of the time right now, where midnight is 0 and 11:00 PM is 23.                                                                                                                                                                                                        | `18`                   |
-| `now.minute`              | The minute of the time right now, 0-59.                                                                                                                                                                                                                                        | `15`                   |
-| `now.month`               | The current month, 1-12.                                                                                                                                                                                                                                                       | `2`                    |
-| `now.monthName`           | The name of the current month.                                                                                                                                                                                                                                                 | `'February'`           |
-| `now.second`              | The second of the time right now, 0-59.                                                                                                                                                                                                                                        | `45`                   |
-| `now.timestamp`           | A short human-readable description of the time right now.                                                                                                                                                                                                                      | `'6:18:15 PM'`         |
-| `now.weekday`             | The current day of the week, where Sunday is 1, Wednesday is 4, and Saturday is 7.                                                                                                                                                                                             | `3`                    |
-| `now.weekdayName`         | The name of the current day of the week.                                                                                                                                                                                                                                       | `'Tuesday'`            |
-| `now.year`                | The current four-digit year.                                                                                                                                                                                                                                                   | `2011`                 |
-| `passage.from`            | The name of the last passage the player visited, as set in the Twine editor. If the player has only visited a single passage, this is `undefined`.                                                                                                                             | `'Untitled Passage 1'` |
-| `passage.fromText`        | The text of the last link the player used to go to a new passage. If the player has only visited a single passage, this is `undefined`. If the player moved to another passage by some other means that didn't involve clicking a link, then this reflects the last link used. | `'Link name'` |
-| `passage.name`            | The name of the current passage as set in the Twine editor.                                                                                                                                                                                                                    | `'Untitled Passage'`   |
-| `passage.visits`          | The number of times the player has seen the current passage, including the current time. That is, the first time the player sees a passage, this lookup's value is 1.                                                                                                          | 1                      |
-| `story.name`              | The name of the story as set in the Twine editor.                                                                                                                                                                                                                              | `'Untitled Story'`     |
+| `browser.darkTheme`       | 当前 Chapbook 使用的有效主题是否为[深色模式](./style/dark-theme.html)。                                                                                                   | `true`                 |
+| `browser.darkSystemTheme` | 浏览器当前是否设置为使用深色用户界面。通常通过系统偏好设置实现。                                                                                                                                          | `true`                 |
+| `browser.height`          | 浏览器窗口的高度（以像素为单位）。                                                                                                                                                                                                           | `768`                  |
+| `browser.online`          | 浏览器当前是否具有网络连接。                                                                                                                                                                                                  | `true`                 |
+| `browser.width`           | 浏览器窗口的宽度，以像素为单位。                                                                                                                                                                                                          | `1024`                 |
+| `engine.version`          | 当前运行的 Chapbook 版本，以字符串形式表示。                                                                                                                                                                                               | `'1.0.0'`              |
+| `now.datestamp`           | 当前日期的简短、人类可读描述。                                                                                                                                                                                 | `'2/15/2011'`          |
+| `now.day`                 | 当前月份中的日期，范围是 1 到 31。                                                                                                                                                                                                             | `15`                   |
+| `now.hour`                | 当前时间的小时数，其中午夜为 0，晚上 11 点为23。                                                                                                                                                                             | `18`                   |
+| `now.minute`              | 当前时间的分钟数，范围是 0 到 59。                                                                                                                                                                                                           | `15`                   |
+| `now.month`               | 当前月份，范围是 1 到 12。                                                                                                                                                                                                                        | `2`                    |
+| `now.monthName`           | 当前月份的名称。                                                                                                                                                                                                                      | `'February'`           |
+| `now.second`              | 当前时间的秒数，范围 0-59。                                                                                                                                                                                                        | `45`                   |
+| `now.timestamp`           | 当前时间的十二小时制易读版本。                                                                                                                                                                                    | `'6:18:15 PM'`         |
+| `now.weekday`             | 当前星期几，其中星期日为 1，星期三为 4，星期六为 7。7.                                                                                                                                                                                             | `3`                    |
+| `now.weekdayName`         | 前星期几的名称。                                                                                                                                                                                                          | `'Tuesday'`            |
+| `now.year`                | 当前的四位数年份。                                                                                                                                                                                                                       | `2011`                 |
+| `passage.from`            | 玩家最后访问的段落名称，由 Twine 编辑器中设置的一样。若玩家仅访问过单个段落，则此项 `undefined`（未定义）。`undefined`.                                                                                                                             | `'Untitled Passage 1'` |
+| `passage.fromText`        | 玩家上次用于跳转至新段落的链接文本。若玩家仅访问过单个段落，则此项为 `undefined`。若玩家通过点击链接以外的其他方式移动至另一段落，则此项反映的是最后使用的链接。| `'Link name'` |
+| `passage.name`            | 在 Twine 编辑器中设置的当前段落名称。                                                                               | `'Untitled Passage'`   |
+| `passage.visits`          | 玩家已查看当前段落的次数，包括当前这次。也就是说，玩家首次查看一个段落时，此查找变量的值为 1。        | 1                      |
+| `story.name`              | 故事在 Twine 编辑器中设定的名称。                                                                                                                                                                   | `'Untitled Story'`     |
 
-Note that `now` lookup values reflect when they were last accessed, which is
-usually when a passage is navigated to. String values like `now.monthName` will
-vary by the language the player has set as default in their browser-- a French
-person will see `Août` where an American sees `August`, for example, and
-similarly the French will see `now.datestamp` as `'15/2/2011'` where Americans
-see it as `'2/15/2011'`.
+请注意，`now` 查找值反映的是它们最后一次被访问的时间，这通常是在导航到某个段落时。像 `now.monthName` 这样的字符串值会根据玩家在浏览器中设置的默认语言而变化——例如，法国人会看到 `Août`，而美国人会看到 `August`；同样地，法国人看到的 `now.datestamp` 会是 `'15/2/2011'`，而美国人看到的则是 `'2/15/2011'`。

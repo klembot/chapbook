@@ -1,23 +1,23 @@
-# State Backstage
+# 状态后台｜State Backstage
 
-State can be very slippery to work with, as it's not normally directly visible in your story--you can only infer from its side effects. Chapbook provides tools to track and even change state as you test your story.
+状态处理起来可能非常棘手，因为它通常不会直接在故事中显现——你只能从其副作用中推断。Chapbook 提供了工具，让你在测试故事时能够追踪甚至更改状态。
 
-## The State Tab
+## 状态标签页｜The State Tab
 
-Under the State tab, you'll find a Variables heading. This shows the current state of your story as you play. You can also select a value on the right side of the variables table and enter a new one--press the Return or Enter key when you're done to set the variable. You may only enter values in the variables table, not expressions.
+在"状态"选项卡下，您会看到一个"变量"标题。这里会显示您在游玩过程中故事的当前状态。您还可以在变量表的右侧选择一个值并输入新值——完成后按回车键或 Enter 键来设置变量。您只能在变量表中输入数值，不能输入表达式。
 
-If the Show Defaults checkbox is ticked, Chapbook will show various built-in variables--mainly related to Chapbook's configuration. See [Customization](./customization/index.md) for more details.
+如果勾选了"显示默认值"复选框，Chapbook 将显示各种内置变量——主要与 Chapbook 的配置相关。更多详情请参阅"[自定义](./customization/index.md)"部分。
 
-## State Snaphots
+## 状态快照｜State Snaphots
 
-Beneath the variables table is the Snapshots heading. Snapshots allow you to quickly save and restore the state of your story at any point. For example, if you'd like to skip the prologue or test a specific scene, play through your story as usual. When you've reached the point you'd like to skip to, use the Add Snapshot button. After giving your snapshot a name, it will appear under the Snapshots heading as a button. Using this button will immediately set the state of your story, including the passage you were viewing, to what it was.
+变量表下方是快照标题。快照功能允许您快速保存和恢复故事在任意时间点的状态。例如，若想跳过序章或测试特定场景，只需照常推进故事流程。当抵达希望跳转的位置时，点击"添加快照"按钮。命名快照后，它将作为按钮出现在快照标题下方。点击该按钮可立即将故事状态（包括您当时浏览的段落）恢复至保存时的状态。
 
-Use the &times; button at the end of a snapshot button to remove it. Snapshots are saved to your web browser only.
+点击快照按钮末端的 &times; 按钮即可将其删除。快照仅保存在您的网页浏览器中。
 
 <aside data-hint="working">
-Exporting snapshots for use by other people working on your story may come in a future version of Chapbook.
+未来版本的 Chapbook 可能会支持导出快照，供其他协作者使用。
 </aside>
 
-## State in History
+## 历史状态｜State in History
 
-The History tab also shows changes to state as you navigate through a story. If a passage changes a variable, you'll see a separate row in the history table showing that change. This is informational only--you cannot change variables from the History tab.
+历史标签页还会在您浏览故事时显示状态的变化。如果某个段落修改了变量，您会在历史表格中看到单独的一行显示该变更。这仅为信息展示——您无法通过历史标签页修改变量。
