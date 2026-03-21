@@ -1,52 +1,52 @@
-# Conditions and Variables
+# 条件和变量｜Conditions and Variables
 
-You cannot use inserts or modifiers in the vars section of a passage, so you cannot write something like:
+你不能在段落变量部分使用插入或修饰符，因此不能编写如下代码：
 
 ```
-[if cousins > 10]
-largeFamily: true
+[if 亲戚 > 10]
+大家庭: true
 --
-You sit back in your chair and consider everyone you'll need to invite to the reunion.
+你靠在椅背上，开始考虑需要邀请哪些人来参加这次聚会。
 ```
 
-Instead, there are two ways you can assign a variable a value based on a condition. First, you can assign a variable to the result of a comparison, either true or false:
+相反，有两种方法可以根据条件为变量赋值。首先，可以将变量赋值为比较结果，即真或假：
 
 ```
-largeFamily: cousins > 10
+大家庭: 亲戚 > 10
 --
-You sit back in your chair and consider everyone you'll need to invite to the reunion.
+你靠在椅背上，开始考虑需要邀请哪些人来参加这次聚会。
 ```
 
-This passage sets the variable `largeFamily` to either `true` or `false`, depending on what value the variable `cousins` has. However, you may want to set variables to other types of values besides booleans. To do this, add a condition to the assignment:
+这段文字根据变量`亲戚`的值，将变量`大家庭`设置为 `true` 或 `false` 。然而，除了布尔值之外，您可能还想将变量设置为其他类型的值。为此，请在赋值中添加一个条件：
 
 ```
-transportation: 'car'
-transportation (kilometers > 1000): 'plane' 
+载具: '汽车'
+载具 (里程 > 1000): '飞机' 
 --
-You'll need to take a {transportation} to get there.
+你需要乘坐{载具}以到达那里。
 ```
 
-This example demonstrates two new things about vars sections:
+此示例展示了关于变量部分的两个新特性：
 
-- You may change a variable more than once in a single vars section. Chapbook changes the variables in the order they are written, top to bottom.
-- If you write an expression inside parentheses before the colon (`:`) that tells Chapbook what value to set, that particular line will only take effect if the expression evaluates to `true`.
+- 您可以在单个变量部分中多次更改变量。Chapbook 会按照从上到下的顺序更改变量。
+- 如果在冒号（`:`）之前的括号内写入一个表达式，该表达式用于告诉 Chapbook 要设置的值需要在表达式评估为 `true` 时才会生效。
 
-So first `transportation` is set to `'car'`, and then, if `kilometers` is greater than `1000`, the value of `transportation` is immediately changed to `'plane'`. Chapbook runs through each variable assignment in sequence, doing nothing else in between, so the two assignments effectively work as one.
+首先，交通工具被设置为`汽车`，然后，如果`里程`大于 `1000`，交通工具的值会立即被改为“飞机”。Chapbook 会按顺序处理每个变量赋值，中间不进行其他操作，因此这两个赋值实际上相当于一个操作。
 
-Here's a more complex example showing how multiple assignments and conditions go hand in hand.
+这里有一个更复杂的例子，展示了多个赋值和条件如何协同工作。
 
 ```
-language: 'an unknown language'
-language (country === 'Brazil'): 'Portuguese' 
-language (country === 'China'): 'Mandarin' 
-language (country === 'Ethiopia'): 'Amharic'
-language (country === 'Russia'): 'Russian'
-language (country === 'Australia' || country === 'United States'): 'English'
+语言: '未知语言'
+语言 (国家 === '巴西'): '葡萄牙语' 
+语言 (国家 === '中国'): '普通话' 
+语言 (国家 === '埃塞俄比亚'): '阿姆哈拉语'
+语言 (国家 === '俄罗斯'): '俄语'
+语言 (国家 === '澳大利亚' || 国家 === '美国'): '英语'
 --
-The official language of {country} is {language}.
+{country}的官方语言是{language}。
 ```
 
-Although Chapbook sets variables in the order you write them, often times it won't matter much, as you'll usually want to write conditions that are mutually exclusive of each other--that is, only one line ever takes effect.
+尽管 Chapbook 会按照你编写的顺序设置变量，但通常这并不重要，因为你通常会编写相互排斥的条件——也就是说，只有一行会实际生效。
 
 [^1]: Truthfully, it is also possible to write `[if stringVariable]` or `[if 2 + 2]`. In these cases, any non-empty string (e.g. not `''`) is treated as true, and any non-zero number is treated as true. It's best to be explicit, however, and write `[if stringVariable !== '']` and `[if 2 + 2 !== 0]`.
 [embed-passage]: ./text-and-links/embedding-passages.html

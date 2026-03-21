@@ -1,21 +1,21 @@
-# Continuity Between Sessions
+# 话间的连续性｜Continuity Between Sessions
 
-Chapbook is designed so that players don't need to manually save their progress, as is often typical in digital games. Instead, it silently saves the state of play every time the player navigates to a new passage.
+Chapbook 的设计使得玩家无需像在数字游戏中通常那样手动保存进度。相反，每当玩家导航至新的段落时，它都会静默地保存游戏状态。
 
-This is partly by necessity and partly by design. It's necessary to continually save progress because browsers, especially those on mobile devices, are extremely stingy with resources. If a player begins your story but decides to check social media in another browser tab and then gets lost in a series of adorable cat pictures, the browser may decide to put your story's tab into the equivalent of hibernation. When the player returns to your story, the browser essentially reloads the story[^1], which causes any unsaved progress to be lost. Thus, progress needs to be continually saved.
+这既是出于必要，也是设计使然。持续保存进度是必要的，因为浏览器，尤其是移动设备上的浏览器，对资源极为吝啬。如果玩家开始阅读你的故事，但决定在另一个浏览器标签页中查看社交媒体，然后沉浸在一系列可爱的猫咪图片中，浏览器可能会决定将你的故事标签页置于类似休眠的状态。当玩家返回你的故事时，浏览器基本上会重新加载故事[^1]，这会导致任何未保存的进度丢失。因此，需要持续保存进度。
 
-It also discourages a habit in players that is nicknamed _[save scumming](https://tvtropes.org/pmwiki/pmwiki.php/Main/SaveScumming)_, where players constantly save and reload their progress in an effort to find what they believe is the most optimal outcome. 
+这也抑制了玩家中一种被称为“[存档作弊](https://tvtropes.org/pmwiki/pmwiki.php/Main/SaveScumming)”的习惯，即玩家不断保存并重新加载进度，以寻求他们认为最理想的结果。
 
-Chapbook saves state by using a feature of web browsers called _local storage_. If you are familiar with browser cookies, local storage works similarly to them, though local storage allows for storing much more data than a cookie. You don't need to know what either technology is to use Chapbook successfully, but it is important to understand two things:
+Chapbook 通过使用网络浏览器的一项名为*本地存储*的功能来保存状态。如果你熟悉浏览器 cookie，本地存储的工作原理与之类似，不过本地存储允许存储的数据量远大于 cookie。你无需了解这两项技术即可成功使用 Chapbook，但需要理解以下两点：
 
-1. A player's state is saved only to their device, and to the browser they are using. If a player starts out using Microsoft Edge but changes halfway to Mozilla Firefox, they'll start from the very beginning of your story in Firefox. Their progress in Edge isn't lost, of course. Likewise if they begin on their phone and switch to a laptop halfway through, they will start from the beginning.
+1. 玩家的状态仅保存在其设备和所使用的浏览器中。如果玩家开始时使用 Microsoft Edge，中途改用 Mozilla Firefox，他们将在 Firefox 中从故事的最开始重新开始。当然，他们在 Edge 中的进度并未丢失。同样地，如果他们在手机上开始游戏，中途切换到笔记本电脑，也将从头开始。
 
-2. If a player clears their browsing history, they'll lose their progress in your story.
+2. 如果玩家清除了浏览历史记录，他们将会丢失在您故事中的进度。
 
-Because state is retained across sessions, you _must_ use the [`{restart link}` insert](./text-and-links/link-inserts.html#restarting-the-story) in order to start the story fresh once you begin using state in your stories. If you only link back to the first passage, variables will remain in the state they were at the end of play--which is likely to produce weird results.
+由于状态会在会话间保留，一旦开始在故事中使用状态，您*必须*使用 [`{restart link}` 插入](./text-and-links/link-inserts.html#restarting-the-story)才能重新开始故事。如果仅链接回第一个段落，变量将保持在游戏结束时的状态——这很可能会导致奇怪的结果。
 
 <aside data-hint="working">
-Additional functionality related to saving progress, such as being able to share saved states between browsers or devices, or allowing players on a device the ability to have more than one save, may come in a future version of Chapbook.
+与保存进度相关的附加功能，例如能够在不同浏览器或设备间共享保存的状态，或允许设备上的玩家拥有多个存档，可能会在 Chapbook 的未来版本中推出。
 </aside>
 
-[^1]: In fact, you'll often see a loading indicator briefly when this occurs, instead of the page reappearing instantly.
+[^1]: 实际上，当这种情况发生时，您通常会短暂看到一个加载指示器，而不是页面立即重新出现。
