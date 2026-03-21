@@ -1,58 +1,58 @@
-# Reveal Links
+# 揭示链接｜Reveal Links
 
-A link can also reveal more text in your passage instead of displaying an entirely different one. Liza Daly uses this effect in _[Stone Harbor]_ (a story she created using another authoring system called [Windrift]) to give the story a novelistic feel.
+链接不仅可以显示完全不同的段落，还能在原有段落中揭示更多文本。Liza Daly 在《石港》（她用另一款名为 [Windrift] 的创作系统编写的故事）中运用了这种效果，赋予故事小说般的质感。
 
-Chapbook calls these _reveal links_, and they can either display more text or the contents of an entire passage.
+Chapbook 将这类链接称为 _揭示链接_，它们既能展示更多文本，也能呈现整个段落的内容。
 
-To display more text, write:
-
-```
-I was driving home late one night when {reveal link: 'something odd occurred', text: 'I saw five deer staring at me from one side of the road, all in a line'}.
-```
-
-This will first display "I was driving home late one night when something odd occurred," and then when the player selected "something odd occurred," it will change to "I was driving home late one night when I saw five deer staring at me from one side of the road, all in a line."
-
-The text you enter in either part of the insert will be interpreted as source code, so you can use [formatting] to further customize its appearance.
-
-Revealing text works well for short substitutions, but writing long stretches of text can be awkward. In these instances, try revealing a passage:
+要显示更多文本，请编写：
 
 ```
-I was driving home late one night when {reveal link: 'something odd occurred', passage: 'A Dangerous Incident'}.
+我深夜驾车回家时，{reveal link: '发生了件怪事', text: '看见五只鹿在路边一字排开，齐刷刷地盯着我'}。
 ```
 
-This will work the same way as the previous example, only it will show the contents of the passage named 'A Dangerous Incident'.
+这将首先显示“我深夜驾车回家时，发生了件怪事”，然后当玩家选择“发生了件怪事”时，文本会变为“我深夜驾车回家时，看见五只鹿在路边一字排开，齐刷刷地盯着我”
+
+您在插入内容的任一部分输入的文本都将被解释为源代码，因此您可以使用[格式化][formatting]设置进一步自定义其外观。
+
+文本揭示功能适用于短文本替换，但编写大段文字可能显得笨拙。在这些情况下，请尝试揭示段落内容：
+
+```
+我深夜驾车回家时，{reveal link: '发生了件怪事', passage: '危险事件'}。
+```
+
+这与之前的示例工作原理相同，只是它会显示名为"危险事件"的段落内容。
 
 <aside data-hint="info">
-A passage shown by a reveal link will not be recorded in a session's history.
+由揭示链接显示的段落不会被记录在会话历史中。
 </aside>
 
-When using a reveal link with a passage containing multiple paragraphs, Chapbook inserts the paragraphs in such a way that the surrounding text's order is maintained.
+当使用揭示链接显示包含多个自然段的段落时，Chapbook 会以保持周围文本顺序的方式插入这些段落。
 
-For example, if you have a passage named 'Shopping List':
-
-```
-Apples
-
-Bananas
-
-Carrots
-```
-
-and then a passage with this:
+例如，如果您有一个名为"购物清单"的段落：
 
 ```
-I went to buy {reveal link: 'groceries', passage: 'Shopping List'}. It was a rainy day.
+苹果
+
+香蕉
+
+胡萝卜
 ```
 
-The player will see this after they click the link:
+然后是一段包含以下内容的文字：
 
-> I went to buy Apples
+```
+我去买{reveal link: '杂货', passage: '购物清单'}。那是个下雨天。
+```
+
+玩家点击链接后将看到以下内容：
+
+> 我去买了苹果
 >
-> Bananas
+> 香蕉
 >
-> Carrots. It was a rainy day.
+> 胡萝卜。那是个下雨天。
 
-Notice how the period after the link insert is moved to the end, after Carrots, but not on a line by itself, and the rest of the paragraph continues.
+请注意，链接插入后的句号被移到了末尾，在“胡萝卜”之后，但并非单独成行，而段落的其余部分继续。
 
 [stone harbor]: https://stoneharborgame.com/
 [windrift]: https://github.com/lizadaly/windrift

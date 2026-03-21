@@ -1,33 +1,31 @@
-# Delayed Text
+# 延迟文本｜Delayed Text
 
-You can also use a modifier to cause part of the text of a passage to appear after a delay. If you've never seen this effect before, take a look at the introduction to Stephen Granade's _[Will Not Let Me Go]_. The sentences fade in and out, leaving you with a single word, "remember." Although that story wasn't built with Chapbook, you can use Chapbook's delayed text functionality to achieve the same effect.
+您也可以使用修饰符使段落中的部分文本延迟显示。如果您从未见过这种效果，不妨看看 Stephen Granade 的《不会让我走》的引言部分。句子会逐渐淡入淡出，最终只留下一个词——“记住”。虽然那个故事并非用 Chapbook 构建，但您可以使用 Chapbook 的延迟文本功能来实现相同的效果。
 
-Here's an example of this modifier in action:
+以下是该修饰符的实际应用示例：
 
 ```
-You settle in for the long transatlantic flight.
+你安顿下来，准备度过漫长的跨大西洋飞行。
 
 [after 1 second]
-You remember suddenly that you left the stove on at home.
+你突然想起家里的炉子没关。
 ```
+文本 `[after 1s]` 永远不会向玩家显示。相反，Chapbook 会在前一段文本显示一秒后，呈现“`你突然想起家里的炉子没关。`。
 
-The text `[after 1s]` is never shown to the player. Instead, Chapbook displays `You remember suddenly that you left the stove on at home.` after the previous text has been onscreen for one second.
-
-You can put any measurement of time you want in the `after` modifier[^1], and you can abbreviate the units of time. The below are all valid:
+您可以在 `after` 修饰符[^1]中使用任意时间单位，且可缩写时间单位。以下均为有效格式：
 
 ```
 [after 300 milliseconds]
 [after 300ms]
 [after 1 minute]
 ```
+`after` 修饰符仅允许使用整数。因此，不能写作 `1.5 seconds`，而必须写成 `1 second 500 milliseconds`，或更简短的写法：`1s500ms` 或 `1500ms`。
 
-The `after` modifier only allows round numbers. Instead of writing `1.5 seconds`, you must write `1 second 500 milliseconds`, or shorter: `1s500ms` or `1500ms`.
+## 关于使用 `after` 的建议｜Advice on Using `after`
 
-## Advice on Using `after`
+应谨慎使用 `after` 修饰符，且在设定延迟时间时需考虑到每个人的阅读速度不同。一分钟或许看似不长，但对于阅读速度快的玩家而言却无比漫长。
 
-The `after` modifier should be used sparingly, and the delays should be specified keeping in mind that everyone reads a different pace. One minute may not seem very long, but it's an eternity for fast players.
-
-Chapbook signals that more text will be coming by displaying an animated watch in the lower-right corner of the page, and impatient players can click the mouse or press a key to skip over the delay. This functionality cannot be disabled.
+Chapbook 通过在页面右下角显示一个动画手表图标来提示后续将有更多文本出现，不耐烦的玩家可通过点击鼠标或按键跳过延迟。此功能无法被禁用。
 
 ## 修饰符通常创建段落｜Modifiers Normally Create Paragraphs
 

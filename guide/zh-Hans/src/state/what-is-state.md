@@ -1,32 +1,32 @@
 # 状态是什么？｜What is State?
 
-You can create a compelling story with just the techniques outlined in the previous section. The [_Choose Your Own Adventure_ book series][cyoa] that has been part of Western pop culture since it exploded in popularity in the 1980s did just that. Turning to a particular page in the book is the equivalent of following a link in a digital medium, of course.
+仅凭前一节概述的技巧，你就能创作出引人入胜的故事。自20世纪80年代风靡以来，成为西方流行文化一部分的[《选择你自己的冒险》系列丛书][cyoa]正是这样做的。当然，翻到书中特定页面的行为，等同于在数字媒介中点击链接。
 
-But in the wake of _CYOA_'s popularity came another wave of interactive books written by people familiar with tabletop role-playing games like _Dungeons & Dragons_.[^1] They thought the format could be adapted to provide similar experiences to a live RPG session, but without the trouble of having to round up three or four other people to play with. They began to incorporate the trappings of RPGs--in particular, the character sheet.
+但在《选择你自己的冒险》系列走红之后，另一波互动书籍的浪潮随之而来，这些书籍由熟悉《龙与地下城》[^1]等桌面角色扮演游戏的人士创作。他们认为，这种形式可以加以调整，以提供类似现场角色扮演游戏的体验，同时又无需费力召集三四个其他人一同参与。他们开始融入角色扮演游戏的典型元素——尤其是角色卡。
 
-If you've never seen a character sheet, they resemble a spreadsheet, but instead of a household budget or a corporate profit and loss statement, they describe a character numerically. A very smart D&D character has an intelligence of 17, but an average strength of 7. A character might start with 20 hit points, but after taking a nasty fall into a mountain crevasse only have 8 left.
+如果你从未见过角色卡，它们类似于电子表格，但并非用于家庭预算或公司损益表，而是以数字方式描述一个角色。一个非常聪明的《龙与地下城》角色可能拥有 17 点的智力，但力量仅为平均水平的 7 点。一个角色可能初始拥有 20 点生命值，但在不幸坠入山体裂缝后仅剩 8 点。
 
-With character sheets came the concept of _state_: that is, two readers could reach the same page of a gamebook, but one could be doing very well for themselves, but the other on death's door. The essential quality of state is that it varies between sessions; hence, it contains _variables_. Variables may be independent (strength and intelligence) or dependent (a weakened character, for example, may be able to carry less weight than usual).
+伴随角色卡而来的是*状态*的概念：即两位读者可能到达游戏书的同一页，但其中一人可能状态极佳，而另一人却濒临死亡。状态的核心特性在于它在不同游戏会话之间会发生变化；因此，它包含*变量*。这些变量可能是独立的（如力量和智力），也可能是相互依赖的（例如，一个虚弱的角色可能比平时能携带更少的重量）。
 
-The other popular use of state has been to record whether an event has happened and enable or disable links based on that. The [_Sherlock Holmes Solo Mysteries_][sherlock] series, for example, asks the reader to check Clue A or Clue Q on their character sheet after making a discovery, and then later only allow the protagonist to solve the mystery if they had uncovered all the necessary clues along the way.
+状态另一个常见的用途是记录事件是否发生，并据此启用或禁用链接。例如，[《夏洛克·福尔摩斯单人探案》系列][sherlock]要求读者在发现线索后，在角色表上勾选线索 A 或线索 Q，随后只有当主角沿途收集到所有必要线索时，才允许其解开谜团。
 
-Later, the Storyspace hypertext system would incorporate the concept of state with its guard fields. Similar to checking off clues, stories created with Storyspace can choose to show certain links only to players who satisfy the conditions of their guard fields.
+后来，Storyspace 超文本系统通过其守卫字段引入了状态概念。与勾选线索类似，用 Storyspace 创作的故事可以选择仅向满足守卫字段条件的玩家显示特定链接。
 
-The Choice of Games series uses a system well-suited to long narratives that its designers named fairmath. Fairmath averages variable changes so that each time a variable increases or decreases, it does so at a diminishing rate. The effect is similar to the experience-point system of _D&D_	, where it takes increasingly longer for a skill to improve as a character becomes better at it--although fairmath allows a variable to both increase and decrease, _D&D_ players almost always simply accumulate experience points.
+《选择游戏》系列采用了一种非常适合长篇叙事的系统，其设计者将其命名为 Fairmath。Fairmath 对变量变化进行平均处理，使得每次变量增减时，其变化率都会递减。这种效果类似于《龙与地下城》的经验值系统，即随着角色技能提升，进一步升级所需的时间越来越长——尽管 Fairmath 允许变量增减双向变动，而《龙与地下城》玩家几乎总是在单纯积累经验值。
 
-Although state in hypertext may have its roots in the number crunching of RPGs, there's no reason it needs to be so clinical or reductionist.[^2] Tom McHenry's [_Horse Master_][horse-master] shows a player numerous variables about their horse, including Uncanny and Realness, but it never explains their purpose directly. Porpentine's [_Begscape_][begscape] uses precious few variables--most apparent to the player are coins and health--but uses them cruelly.
+尽管超文本中的状态设定可能源于角色扮演游戏的数值计算，但这并不意味着它必须如此刻板或简化[^2]。Tom McHenry 的[《驭马大师》][horse-master]向玩家展示了关于马匹的众多变量，包括"灵异值"和"真实度"，却从未直接解释这些变量的作用。波旁汀的[《乞讨景观》][begscape]使用的变量极少——对玩家而言最明显的是硬币和生命值——但却以残酷的方式运用这些变量。
 
-## Is State Separate From The Player's Path?
+## 状态设定是否独立于玩家路径？｜Is State Separate From The Player's Path?
 
-From a certain point of view, though, isn't state simply a side effect of the choices the player makes? That is--do we really need to record anything but what links the player followed? If the outcome of a story hinges on whether the player found Clue M, then surely all we really need to track is what passages they visited. There's no need for this extra bookkeeping.
+不过，从某种角度来看，状态难道不正是玩家选择所产生的副作用吗？也就是说——除了记录玩家点击了哪些链接，我们真的还需要记录其他东西吗？如果故事结局取决于玩家是否找到线索 M，那么我们真正需要追踪的显然只是他们访问过哪些段落。这种额外的记录工作根本没有必要。
 
-There are two reasons to record state separately: first, for convenience's sake. It's tedious to type out the code equivalent of "if the player has visited this passage but not this other one" or "if the player has visited any one of these four passages" repeatedly. Secondly, a story might incorporate elements of randomness, such that multiple playthroughs following the same links may yield different results.[^3]
+将状态单独记录有两个原因：首先是为了方便。反复编写类似"如果玩家访问过此段落但未访问另一段落"或"如果玩家访问过这四个段落中的任意一个"的代码是件繁琐的事。其次，故事可能包含随机性元素，即使多次游戏遵循相同的链接路径，也可能产生不同的结果[^3]。
 
-[^1]: [_You Are The Hero_][yath], a retrospective of the _Fighting Fantasy_ book series, offers an intriguing peek into the history of one of these RPG-influenced gamebook series. And if you've never tried the genre, [Project Aon][aon] hosts nearly all of the works of Joe Dever, who was perhaps the most prolific RPG gamebook author, in a format that can be played in a web browser for free.
+[^1]: [《你就是英雄》][yath]作为一部对《战斗幻想》系列书籍的回顾，为读者提供了窥探这一受角色扮演游戏影响的游戏书系列历史的迷人视角。若你从未尝试过此类作品，[Project Aon][aon]网站几乎收录了 Joe Dever 的全部著作——他或许是多产的游戏书作者——并以可在网页浏览器中免费游玩的格式呈现。
 
-[^2]: To pick apart just one thing in the _D&D_ paradigm: there are many different types of intelligence, and the concept of assigning numeric scores to intelligence in people has a [dark history](https://www.theatlantic.com/national/archive/2013/05/why-people-keep-misunderstanding-the-connection-between-race-and-iq/275876/).
+[^2]: 仅剖析龙与地下城范式中的一个方面：智力存在多种不同类型，而用数值衡量人类智力的概念背后有着一段[黑暗的历史](https://www.theatlantic.com/national/archive/2013/05/why-people-keep-misunderstanding-the-connection-between-race-and-iq/275876/)。
 
-[^3]: For more on incorporating randomness into your story, see [Randomness](randomness.md).
+[^3]: 关于如何在故事中融入随机元素，请参阅[《随机性》](randomness.md)章节。
 
 [cyoa]: https://en.wikipedia.org/wiki/Choose_Your_Own_Adventure
 [sherlock]: https://gamebooks.org/Series/389
