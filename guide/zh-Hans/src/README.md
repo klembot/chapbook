@@ -47,9 +47,9 @@ Chapbook 基于 [MIT 许可证](mit-license)发布。简而言之，您可将其
 		<li>Soliriok</li>
 		<li>Stuart Moulthrop</li>
 		<li>Thandle2</li>
-		<li>TheBuggiest<li>
-		<li>Tielesti<li>
-		<li>Travis<li>
+		<li>TheBuggiest</li>
+		<li>Tielesti</li>
+		<li>Travis</li>
 		<li>Venceremos</li>
     </ul>
 </div>
