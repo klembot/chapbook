@@ -1,7 +1,7 @@
 <div class="intro advanced">
-    <h1>Advanced Topics</h1>
+    <h1>进阶话题｜Advanced Topics</h1>
 </div>
 
-This section covers topics that require existing knowledge of Web technologies such as JavaScript and CSS. Learning these is more than this documentation can handle; the [Mozilla Developer Network][mdn] is one place to start if you're interested in learning.
+本节涵盖需要具备 JavaScript 和 CSS 等 Web 技术基础知识的内容。掌握这些知识已超出本文档的范畴；如果您有兴趣学习，[Mozilla 开发者网络][mdn]是一个不错的起点。
 
 [mdn]: https://developer.mozilla.org/en-US/

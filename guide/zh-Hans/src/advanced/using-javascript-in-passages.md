@@ -1,21 +1,21 @@
-# Using JavaScript in Passages
+# 在段落中使用 JavaScript｜Using JavaScript in Passages
 
-As a last resort, Chapbook allows you to mix JavaScript into the text of your passage. To do this, use a `[JavaScript]` modifier:
+作为最后的手段，Chapbook 允许您在段落文本中混入 JavaScript。为此，请使用 `[JavaScript]` 修饰符：
 
 ```
 [JavaScript]
-document.title = 'A Sticky Pickle';
+document.title = '一个棘手的困境';
 
 [continued]
-"Oh dear," you think to yourself. "That stain will never come out."
+“哎呀，”你暗自思忖，“那块污渍怕是再也洗不掉了。”
 ```
 
-The JavaScript modifier normally does not output anything in Chapbook; however, if you would like to output text, the modifier provides a function `write()`--just plain `write()`, not `document.write()`--that will output HTML source code. Text output via `write()` _will_ be processed for links and Markdown.
+JavaScript 修饰符在 Chapbook 中通常不会输出任何内容；但是，如果您想输出文本，该修饰符提供了一个函数 `write()`——就是普通的 `write()`，而不是 `document.write()`——它将输出 HTML 源代码。通过 `write()` 输出的文本将进行链接和 Markdown 处理。
 
-Below is an example showing how `write()` works:
+下面是一个展示 `write()` 如何工作的例子：
 
 ```
-Before you lose your temper, you count to yourself:
+在你发脾气之前，先在心里默数：
 
 [JavaScript]
 for (let i = 1; i <= 10; i++) {
@@ -23,28 +23,28 @@ for (let i = 1; i <= 10; i++) {
 }
 ```
 
-You can refer to variables defined in vars sections as you would expect in JavaScript. Changing them in JavaScript will persist changes as you'd expect, as well.
+你可以像在 JavaScript 中预期的那样引用在变量部分定义的变量。在 JavaScript 中更改它们也会如预期般保持更改。
 
 ```
-color: 'red'
+颜色: '红色的'
 --
 [JavaScript]
-write(`The sky is ${color}.`);
+write(`天空是${颜色}。`);
 ```
 
-As a result, if you would like your JavaScript code to communicate back with the rest of your story, the easiest way to do this is to set the variable to an initial value in a vars section. If you absolutely need to create new variables in JavaScript, you can call `engine.state.set()` as below. This usage may change in future versions of Chapbook, though, whereas setting a variable initially in a vars section will always work.
+因此，如果你希望你的 JavaScript 代码与故事的其他部分进行通信，最简单的方法是在 变量部分将变量设置为初始值。如果你真的需要在 JavaScript 中创建新变量，可以像下面这样调用 `engine.state.set()`。不过，这种用法在 Chapbook 的未来版本中可能会改变，而在变量部分初始设置变量将始终有效。
 
 ```
 [JavaScript]
-let color = 'red';
-engine.state.set('weather', 'sunny');
+let 颜色 = '红色';
+engine.state.set('天气', '阳光明媚');
 
 [continued]
-It was a {weather} day. The sky was {color}.
+真是个{天气}的日子。天空是{颜色}的。
 ```
 
-This would display:
+这将显示：
 
-> It was a sunny day. The sky was {color}.
+> 真是个阳光明媚的日子。天空是{颜色}。
 
-`{color}` is displayed as-is because if Chapbook cannot find a matching insert or variable name, it displays the source text as it was entered. Any variables declared using `let` or `const` will *not* be visible to other Chapbook code, and will not be persisted across browser sessions.
+`{颜色}` 会原样显示，因为如果 Chapbook 找不到匹配的插入内容或变量名，它会按输入时的原样显示文本。任何使用 `let` 或 `const` 声明的变量对其他 Chapbook 代码*不可见*，并且不会在浏览器会话之间保留。

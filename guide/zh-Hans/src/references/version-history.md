@@ -1,4 +1,6 @@
-# Version History
+# 版本历史｜Version History
+
+（王洛木：这页就不翻译了，需要的自己机翻哈～）
 
 ## 2.3.0, 24 November 24
 

@@ -1,39 +1,39 @@
-# Modifiers
+# 修饰符｜Modifiers
 
-All of the below affect the text following them. See [Modifiers and Inserts][mods-inserts] for more information.
+以下所有内容都会影响其后的文本。更多信息请参阅“[修饰符与插入][mods-inserts]”。
 
 <dl>
 
 <dt>
-<code>[after <i>time</i>]</code>
+<code>[after <i>time</i>]</code>（延迟）
 </dt>
 
 <dd>
-Causes the text to appear after a certain amount of time has passed after the passage is first displayed.
+使文本在首次到达段落后经过一定时间才出现。
 </dd>
 
 <dt>
-<code>[align center]</code>, <code>[align left]</code>, <code>[align right]</code>
+<code>[align center]</code>（居中）, <code>[align left]</code>（左对齐）, <code>[align right]</code>（右对齐）
 </dt>
 
 <dd>
-Causes the text to be aligned a particular way. Aligning left isn't needed under normal circumstances, but is included for compeleteness's sake--use <code>[continue]</code> instead.
+使文本按特定方式对齐。在正常情况下，左对齐通常不需要特意指定，但为了完整性而包含——通常应使用 <code>[continue]</code> 替代。
 </dd>
 
 <dt>
-<code>[append]</code>
+<code>[append]</code>（追加）
 </dt>
 
 <dd>
-Used in conjunction with another modifier to have text immediately follow the text preceding it, instead of appearing in a new paragraph.
+与其他修饰符结合使用，使文本紧接在前一段文本之后追加显示，而不是另起一个自然段。
 </dd>
 
 <dt>
-<code>[continue]</code>, <code>[cont'd]</code>, <code>[cont]</code>
+<code>[continue]</code>, <code>[cont'd]</code>, <code>[cont]</code>（这三个修饰符都是“继续”的意思，除了写法不一样以外，没有区别）
 </dt>
 
 <dd>
-Clears all previously active modifiers.
+清除所有先前激活的修饰符。
 </dd>
 
 <dt>
@@ -41,39 +41,39 @@ Clears all previously active modifiers.
 </dt>
 
 <dd>
-Acts like a <code>&lt;style&gt;</code> tag in the passage; the contents of the text will be interpreted as CSS rules instead of normal text.
+作用类似于段落中的 <code>&lt;style&gt;</code> 标签；文本内容将被解释为 CSS 规则而非普通文本。
 </dd>
 
 <dt>
-<code>[else]</code>
+<code>[else]</code>（否则）
 </dt>
 
 <dd>
-Only displays the text if the previous <code>[if]</code> condition was not met. If no previous <code>[if]</code> appeared in the passage's source code, an error occurs.
+仅当先前的 <code>[if]</code> 条件未满足时显示文本。若段落源代码中未出现先前的 <code>[if]</code> 指令，则会产生错误。
 </dd>
 
 <dt>
-<code>[if <i>expression</i>]</code>
+<code>[if <i>表达式</i>]</code>（如果 表达式 为真）
 </dt>
 
 <dd>
-Only displays the text if <i>expression</i> evaluates to true, or a truthy (<a href="https://developer.mozilla.org/en-US/docs/Glossary/Truthy">as defined by Javascript</a>) value.
+仅当表达式计算结果为真值（<a href="https://developer.mozilla.org/en-US/docs/Glossary/Truthy">或 JavaScript 定义的 truthy 值</a>）时才显示文本。
 </dd>
 
 <dt>
-<code>[ifalways <i>expression</i>]</code>
+<code>[ifalways <i>表达式</i>]</code>（不管表达式是真是假都会输出真的如果）
 </dt>
 
 <dd>
-Acts like the <code>[if]</code> modifier, except that it always displays the text it affects, regardless of the condition. This can be useful for quick testing.
+其作用类似于 <code>[if]</code> 修饰符，但无论条件如何，它都始终会给出真值以显示其影响的文本。这对于快速测试很有用。
 </dd>
 
 <dt>
-<code>[ifnever <i>expression</i>]</code>
+<code>[ifnever <i>表达式</i>]</code>（不管表达式是真是假都会输出假的如果）
 </dt>
 
 <dd>
-Acts like the <code>[if]</code> modifier, except that it never displays the text it affects, regardless of the condition. This can be useful for quick testing.
+其作用类似于 <code>[if]</code> 修饰符，但无论条件如何，它都始终会给出假值以永远不显示其影响的文本。这对于快速测试很有用。
 </dd>
 
 <dt>
@@ -81,23 +81,23 @@ Acts like the <code>[if]</code> modifier, except that it never displays the text
 </dt>
 
 <dd>
-Acts like a <code>&lt;script&gt;</code> tag in the passage; the contents of the text will be interpreted as JavaScript code instead of normal text. To write output from inside the text, use the function `write()`.
+其作用类似于段落中的 <code>&lt;script&gt;</code> 标签；文本内容将被解释为 JavaScript 代码，而不是普通文本。若要在文本内部输出内容，请使用 `write()` 函数。
 </dd>
 
 <dt>
-<code>[note to self]</code>, <code>[note]</code>, <code>[todo]</code>, <code>[fixme]</code>
+<code>[note to self]</code>, <code>[note]</code>, <code>[todo]</code>, <code>[fixme]</code>（给自己看的笔记、待办清单）
 </dt>
 
 <dd>
-Causes the text to never be visible to the player. This is useful for leaving notes or other information for yourself.
+使文本对玩家永远不可见。这适用于为自己留下笔记或其他信息。
 </dd>
 
 <dt>
-<code>[unless <i>expression</i>]</code>
+<code>[unless <i>表达式</i>]</code>（反如果，表达式假时输出真）
 </dt>
 
 <dd>
-Only displays the text if <i>expression</i> evaluates to false, or a falsy (<a href="https://developer.mozilla.org/en-US/docs/Glossary">as defined by Javascript</a>) value.
+仅在表达式评估为假（<a href="https://developer.mozilla.org/en-US/docs/Glossary">或 JavaScript 定义的假值</a>）时显示文本。
 </dd>
 
 </dl>

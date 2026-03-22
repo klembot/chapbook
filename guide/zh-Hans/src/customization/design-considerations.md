@@ -1,38 +1,22 @@
-# Design Considerations
+# 设计考量｜Design Considerations
 
-Players will spend quite a lot of time with your story simply reading its text, so they deserve a well-considered experience. Which is not to say the experience should always be comfortable. Cara Ellison's _[Sacrilege]_ has a searing purple background for its text and bright yellow links that turn green when you point at them, but all this is in service to its content. _Sacrilege's_ story is, in part, about the sensory overload of a nightclub, so it's fitting that the text itself somewhat overload the player's senses.[^1]
+玩家将花费大量时间阅读故事文本，因此他们理应获得精心设计的体验。但这并不意味着体验必须始终舒适。Cara Ellison 的《亵渎》采用灼目的紫色背景搭配亮黄色链接，鼠标悬停时变为绿色，这一切都服务于其内容。《亵渎》的故事部分涉及夜店的感官过载，因此文本本身对玩家感官造成某种程度的过载恰如其分。[^1]
 
-Fortunately, people have been designing reading experiences for centuries now, and there's quite a lot of accumulated wisdom on how to use type gracefully.
+所幸人类设计阅读体验已有数百年历史，关于如何优雅运用字体的智慧积淀颇丰。
 
--   If you're new to typography, the best first port of call is Matthew
-    Butterick's [Practical Typography][practical-typography]. Butterick is
-    opinionated and a bit patrician in some of his pronouncements, but his basic
-    ideas are sound, and he takes the _Practical_ part of the name of his web
-    site seriously.
+-   如果你刚接触排版，最好的起点是 Matthew
+    Butterick 的[《实用排版》][practical-typography]。Butterick 的观点有时显得固执且带点贵族气，但他的基本理念是可靠的，并且他认真对待自己网站名称中的*实用*部分。
 
--   The Yale Web Style Guide's [chapter on typography][yale-typography] is also
-    worth reading, though it is intended for web designers and developers, who
-    must build pages from the ground up.
+-   耶鲁大学网页风格指南中[关于排版的章节][yale-typography]也值得一读，尽管它主要面向需要从头构建页面的网页设计师和开发者。
 
--   If you find yourself truly intrigued by typography, it's worth tracking down
-    a copy of _[The Elements of Typographical Style][typographical-style]_.
+-   如果你发现自己对排版真正产生了兴趣，值得找一本[《排版风格要素》][typographical-style]来读。
 
-There is also a strange kind of science to selecting colors.
+选择颜色也涉及一种奇特的科学。
 
--   If you've never delved into color theory, try starting  with with the [Color
-    Schemes][color-schemes] chapter of Rune Madsen's _Programming Design
-    Systems_. It uses code examples using a programming language called
-    [Processing][processing], but you can safely skim over them. If you find
-    yourself intrigued by the subject, try the rest of Madsen's section on
-    color.
--   Khan Academy has a free [online course on the science of color][khan-color]
-    that talks about both how our eyes and brains perceive color, and the
-    different color models used to represent color.
--   There's no substitute for simply playing with color. The best tool online
-    for this is perhaps [Adobe Color CC][adobe-color], which is beginning to
-    show its age but is still useful.
--   WebAIM has a [contrast checker][webaim-contrast] that ensures that the color
-    scheme you design has sufficient contrast for low-vision players. Your colors should pass the WCAG AAA criteria for normal text.
+-   如果你从未接触过色彩理论，不妨从阅读 Rune Madsen 的《编程设计系统》中关于[配色方案][color-schemes]的章节开始。书中使用了名为 [Processing][processing] 的编程语言代码示例，但你可以大致浏览即可。如果你对这个主题产生了兴趣，可以继续阅读Madsen关于色彩的其他部分。
+-   可汗学院提供一门[关于色彩科学的免费在线课程][khan-color]，内容涵盖我们的眼睛和大脑如何感知色彩，以及用于表示色彩的不同颜色模型。
+-   没有什么能替代亲手尝试调配色彩。在这方面，或许最好的在线工具是 [Adobe Color CC][adobe-color]，它虽然略显陈旧，但依然实用。
+-   WebAIM 提供了一个[对比度检查器][webaim-contrast]，确保你设计的配色方案能为视力不佳的玩家提供足够的对比度。你的颜色搭配应通过 WCAG AAA 标准的普通文本要求。
 
 [Sacrilege]: https://unwinnable.com/2013/04/25/play-at-heartbreaking-with-cara-ellison/
 [practical-typography]: https://practicaltypography.com/
@@ -44,4 +28,4 @@ There is also a strange kind of science to selecting colors.
 [adobe-color]: https://color.adobe.com/create/color-wheel/
 [webaim-contrast]: https://webaim.org/resources/contrastchecker/
 
-[^1]: Try playing it, even for a little, then go back to the plain-jane white background of a typical web site. You'll see afterimages.
+[^1]: 试着玩一下，哪怕只是一小会儿，然后再回到普通网站那种单调的白色背景上。你会看到残影。

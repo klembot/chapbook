@@ -1,6 +1,6 @@
-# Adding Custom Inserts
+# 添加自定义插入｜Adding Custom Inserts
 
-Chapbook can be extended with custom inserts. Below is code that adds a `{smiley face}` insert that displays a 😀 emoji.
+Chapbook 可以通过自定义插入内容进行扩展。以下代码添加了一个 `{smiley face}` 插入，用于显示 😀 表情符号。
 
 ```
 [JavaScript]
@@ -12,21 +12,16 @@ engine.extend('2.0.0', () => {
 });
 ```
 
-You can also place code like this into your story's JavaScript in Twine--this uses the `[JavaScript]` modifier for clarity.[^1]
+您还可以将类似这样的代码放入 Twine 故事中的 JavaScript 部分——这里使用 `[JavaScript]` 修饰符以增加清晰度。[^1]
 
-First, any extension of the Chapbook engine must be wrapped in a `engine.extend()` function call. The first argument is the minimum version of Chapbook required to make your insert work; this is so that if you share your customization, anyone plugging it into a Chapbook version it won't work in will receive a harmless warning, instead of the engine crashing with an error. Chapbook follows [semantic versioning](https://semver.org/) to assist with this.
+首先，任何对 Chapbook 引擎的扩展都必须封装在 `engine.extend()` 函数调用中。第一个参数是使你的插入内容正常工作所需的最低 Chapbook 版本；这样，如果你分享你的自定义内容，任何将其插入到无法兼容的 Chapbook 版本中的用户都会收到一个无害的警告，而不是引擎因错误而崩溃。Chapbook [遵循语义化版本控制](https://semver.org/)以协助实现这一点。
 
-The second argument to `engine.extend()` is the customization code you'd like to run. In this function, we add a new insert, which is an object with two properties:
+`engine.extend()` 的第二个参数是你想要运行的自定义代码。在这个函数中，我们添加了一个新的插入内容，它是一个具有两个属性的对象：
 
--   `match`: a regular expression that the template engine will look for to
-    render your insert. Leave out the curly braces; the template engine will
-    take care of this for you. Inserts must always have at least one space in
-    their `match` property, so that they can never be mistaken for a variable
-    insert.
--   `render`: a function that returns a string for what should be displayed. The
-    returned value will be eventually rendered as Markdown.
+-   `match`: 模板引擎将查找以渲染插入内容的正则表达式。请省略花括号；模板引擎会为你处理这一点。插入内容的 `match` 属性必须始终至少包含一个空格，这样它们就永远不会被误认为是变量插入。
+-   `render`: 一个返回应显示内容的字符串的函数。返回的值最终将作为 Markdown 渲染。
 
-You may remember that inserts [can take multiple parameters](./modifiers-and-inserts/link-inserts.md). Here's a more complex example that demonstrates this:
+你可能还记得，插入内容可以[接受多个参数](./modifiers-and-inserts/link-inserts.md)。以下是一个更复杂的示例来演示这一点：
 
 ```
 [JavaScript]
@@ -60,9 +55,9 @@ engine.extend('2.0.0', () => {
 });
 ```
 
-This has the following effect:
+这会产生以下效果：
 
-| Typed                                 | Displayed |
+| 输入                                 | 显示 |
 | ------------------------------------- | --------- |
 | `{icon of: 'wizard'}`                 | 🧙        |
 | `{icon of: 'wizard', mood: 'anger'}`  | 🧙💥      |
@@ -71,17 +66,17 @@ This has the following effect:
 | `{icon of: 'vampire', mood: 'anger'}` | 🧛💥      |
 | `{icon of: 'vampire', mood: 'love'}`  | 🧛❤️      |
 
-First, notice that the `match` property doesn't try to match the entire insert; it just needs to be able to distinguish this insert from any other entered. Also, remember that the first part of the insert needed to be two words, `icon of`, to distinguish it from a variable insert.
+首先，请注意，`match` 属性并不试图匹配整个插入内容；它只需要能够将此插入与其他任何已输入的插入区分开来。同时，请记住，插入的第一部分需要是两个单词，即`icon of`，以便将其与变量插入区分开。
 
-Then, the `render()` property takes three new arguments, `firstArg`, `props`, and `invocation`. `firstArg` is the parameter given to the first part of the insert, and `props` is an object listing out all other parameters given in the insert. The names of properties are case-sensitive, so `{icon of: 'wizard', Mood: 'anger'}` would only display 🧙. The final argument, `invocation`, is the entire text of the insert exactly as it was typed, except for the surrounding curly braces. This is provided so that if neither `firstArg` or `props` is enough to achieve the effect you're looking for, you can look at `invocation` directly.
+然后，`render()` 属性接受三个新参数：`firstArg`, `props`（属性）, 和 `invocation`（调用）。`firstArg` 是提供给插入第一部分的参数，`props` 是一个对象，列出了插入中给出的所有其他参数。属性名称区分大小写，因此 `{icon of: 'wizard', mood: 'anger'}` 将只显示 🧙。最后一个参数 `invocation` 是整个插入文本，完全按照输入时的样子，但不包括周围的花括号。提供这个参数是为了在 `firstArg` 或 `props` 不足以实现你想要的效果时，你可以直接查看 `invocation`。
 
-Below are some examples as to how these arguments work in practice.
+以下是一些示例，说明这些参数在实际中如何工作。
 
-| Typed                                   | firstArg  | props             | invocation                            |
+| 输入                                   | firstArg  | props             | invocation                            |
 | --------------------------------------- | --------- | ----------------- | ------------------------------------- |
 | `{smiley face}`                         | `null`    | `{}`              | `smiley face`                         |
 | `{smiley face: 'happy'}`                | `'happy'` | `{}`              | `smiley face: 'happy'`                |
 | `{smiley face, size: 'large'}`          | `null`    | `{size: 'large'}` | `smiley face, size: 'large'`          |
 | `{smiley face: 'happy', size: 'large'}` | `'happy'` | `{size: 'large'}` | `smiley face: 'happy', size: 'large'` |
 
-[^1]: Word of warning--you cannot define an insert in the same passage that you use it in.
+[^1]: 重要提醒：不能在同一个段落中定义并使用同一个插入内容。

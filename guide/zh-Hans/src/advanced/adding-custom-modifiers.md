@@ -1,7 +1,6 @@
-# Adding Custom Modifiers
+# 添加自定义修饰符｜Adding Custom Modifiers
 
-Chapbook can also be extended with custom modifiers. Below is code that adds a
-modifier that turns its text uppercase:
+Chapbook 也可以通过自定义修饰符进行扩展。以下代码添加了一个功能为将文本转换为大写的修饰符：
 
 ```
 [JavaScript]
@@ -15,38 +14,25 @@ engine.extend('2.0.0', () => {
 });
 ```
 
-You can also place code like this into your story's JavaScript in Twine--this
-uses the `[JavaScript]` modifier for clarity.
+您也可以将类似代码放入 Twine 中故事的 JavaScript 部分——为清晰起见，这里使用了 `[JavaScript]` 修饰符。
 
 <aside data-hint="danger">
-You cannot define a modifier in the same passage that you use it in.
+你不能在同一个段落中定义并使用一个修饰符。
 </aside>
 
-See [the first part of Adding Custom Inserts](adding-custom-inserts.md) for an
-explanation of the `engine.extend()` function call. The `match` property works
-the same way as the `match` property for an insert; Chapbook compares possible
-modifier text with `match` properties until it finds a match.
+关于 `engine.extend()`（引擎扩展）函数调用的解释，请参见[《添加自定义插入》](adding-custom-inserts.md)的第一部分。`match`（匹配）属性的工作原理与插入的 `match` 属性相同；Chapbook 会将可能的修饰符文本与 `match` 属性进行比较，直到找到匹配项。
 
-The `process()` property is where the work of a modifier occurs. The `output`
-argument it is passed has three properties. Each one is Markdown source code,
-_not_ HTML as it will be finally rendered.
+`process()` 属性是修饰符执行其功能的地方。它接收的 `output`（输出）参数有三个属性。每一个都是 Markdown 源代码，*而非*最终渲染的 HTML。
 
-- `text`, the text that the modifier is being applied to.
-- `startsNewParagraph`, a Boolean value indicating whether this block of text
-  should begin a new paragraph. (The [append
-  modifier](./modifiers-and-inserts/delayed-text.md), for example, sets this to
-  `false`.)
+- `text`，即修饰符所应用的文本。
+- `startsNewParagraph`，一个布尔值，指示此文本块是否应开始新段落。（例如，[append 修饰符](./modifiers-and-inserts/delayed-text.md)将此值设为 `false`。）
 
-Modifiers also receive an argument, `options`, which the example above didn't
-show. `options` is an object with two properties:
+修饰符还会接收一个参数，`options`，上述示例未展示此参数。`options` 是一个包含两个属性的对象：
 
-- `state`, a private state object that is carried over invocations of a modifier
-  in a single passage
-- `invocation`, the exact text that was typed in the modifier, without the
-  square brackets surrounding it
+- `state`（状态），一个私有状态对象，在单个段落中修饰符的多次调用间持续存在。
+- `invocation`（调用），即修饰符中键入的确切文本，不包含其周围的方括号。
 
-Below is an example showing how `state` and `invocation` can be used to remove
-more and more letters from a passage.
+以下是一个示例，展示了如何利用 `state` 和 `invocation` 来逐步删除段落中的字母。
 
 ```
 [JavaScript]
@@ -66,7 +52,7 @@ engine.extend('2.0.0', () => {
 });
 ```
 
-So that the following passage (from Kurt Vonnegut's _Slaughterhouse Five_)...
+因此，以下段落（摘自 Kurt Vonnegut 的《第五号屠宰场》）……
 
 ```
 [remove aeiou]
@@ -78,8 +64,7 @@ The formation flew backwards over a German city that was in flames. The bombers 
 [also remove t]
 When the bombers got back to their base, the steel cylinders were taken from the racks and shipped back to the United States of America, where factories were operating night and day, dismantling the cylinders, separating the dangerous contents into minerals. Touchingly, it was mainly women who did this work. The minerals were then shipped to specialists in remote areas. It was their business to put them into the ground, to hide them cleverly, so they would never hurt anybody ever again.
 ```
-
-... Would display as:
+……将显示为：
 
     XmXrXcXn plXnXs, fXll Xf hXlXs Xnd wXXndXd mXn Xnd cXrpsXs tXXk Xff bXckwXrds frXm Xn XXrfXXld Xn XnglXnd. XvXr FrXncX X fXw GXrmXn fXghtXr plXnXs flXw Xt thXm bXckwXrds, sXckXd bXllXts Xnd shXll frXgmXnts frXm sXmX Xf thX plXnXs Xnd crXwmXn. ThXy dXd thX sXmX fXr wrXckXd XmXrXcXn bXmbXrs Xn thX grXXnd, Xnd thXsX plXnXs flXw Xp bXckwXrds tX jXXn thX fXrmXtXXn.
 
@@ -87,7 +72,4 @@ When the bombers got back to their base, the steel cylinders were taken from the
 
     WXXn XXX bXmbXXX gXX bXck XX XXXXX bXXX, XXX XXXXX cyXXnXXXX wXXX XXkXn fXXm XXX XXckX XnX XXXppXX bXck XX XXX XnXXXX XXXXXX Xf XmXXXcX, wXXXX fXcXXXXXX wXXX XpXXXXXng nXgXX XnX XXy, XXXmXnXXXng XXX cyXXnXXXX, XXpXXXXXng XXX XXngXXXXX cXnXXnXX XnXX mXnXXXXX. XXXcXXngXy, XX wXX mXXnXy wXmXn wXX XXX XXXX wXXk. XXX mXnXXXXX wXXX XXXn XXXppXX XX XpXcXXXXXXX Xn XXmXXX XXXXX. XX wXX XXXXX bXXXnXXX XX pXX XXXm XnXX XXX gXXXnX, XX XXXX XXXm cXXvXXXy, XX XXXy wXXXX nXvXX XXXX XnybXXy XvXX XgXXn.
 
-Finally, in some cases, you may want a modifier to modify the source text as it
-was exactly entered by the author, before inserts and links are transformed into
-Markdown/HTML equivalents. To do this, write a `processRaw()` function instead
-of `process`. It takes the same exact arguments that `process()` does.
+最后，在某些情况下，你可能希望修饰符能直接修改作者输入的原始文本，即在插入内容和链接被转换为 Markdown/HTML 的等效形式之前进行处理。为此，你可以编写一个 `processRaw()` 函数来替代 `process` 函数。它接收的参数与 `process()` 函数完全相同。
