@@ -1,128 +1,126 @@
 # 音频｜Audio
 
-Chapbook supports two types of audio: _ambient sound_ and _sound effects_. Ambient sounds are long-running audio, such as music or background noise, that automatically loop when playback completes. Sound effects are one-off sounds, like the sound of a door opening or an explosion.
+Chapbook 支持两种类型的音频：*环境音*和*音效*。环境音是持续播放的音频，例如音乐或背景噪音，播放完毕后会自动循环。音效是一次性的声音，比如开门声或爆炸声。
 
-There are two other differences between sound effects and ambient audio:
+音效与环境音之间还有另外两个区别：
 
-- There can only be one ambient sound playing at a time under normal circumstances.
-- Sound effects are preloaded when your story begins. This is so that when you ask for an effect to be played in your story, there will be as little delay as possible before it begins playback. However, this means that you should be careful about the file size of the sound effects you use. The preloading process takes place in the background as players interact with your story, so large sound effects will not delay the start of your story. But it's still wasteful to load large files.
+- 通常情况下，同一时间只能播放一种环境音。
+- 音效会在故事开始时预加载。这样当你在故事中要求播放某个音效时，就能最大程度减少播放前的延迟。但这也意味着你需要注意所用音效的文件大小。预加载过程会在玩家与故事互动时于后台进行，因此大型音效文件不会延迟故事的开始。但加载大文件仍然会造成资源浪费。
 
-You should also make sure that all your sounds are in MP3 format. There are other types of audio formats, such as Ogg Vorbis or WAV, but browser support varies for each of these. MP3 is as universal a format as possible. There are many applications, including the open-source [Audacity], that can convert audio files into MP3 format for you.
+你还需要确保所有音频均为 MP3 格式。虽然存在 Ogg Vorbis 或 WAV 等其他音频格式，但不同浏览器对这些格式的支持程度各异。MP3 是兼容性最广的通用格式。包括开源软件 [Audacity] 在内的许多应用程序都能帮你将音频文件转换为 MP3 格式。
 
-## Sound Effects
+## 音效｜Sound Effects
 
-Before playing a sound effect, you must first define it in your story state. Below is an example of how you would define a sound effect:
+在播放音效前，你必须在故事状态中先定义它。以下是如何定义音效的示例：
 
 ```
-sound.effect.explosion.url: 'boom.mp3'
-sound.effect.explosion.description: 'a large explosion'
+sound.effect.爆炸.url: '爆炸.mp3'
+sound.effect.爆炸.description: '一场大爆炸'
 --
-The timer reads 0:00...
+计时器显示为 0:00…
 ```
 
-The `explosion` keyword defines the name of the ambient sound, which you'll use later. The `url` property defines the address to load the sound from, and the `description` provides a textual description of the contents of the sound. This is so that players who have difficulty hearing, or who have muted your story, can receive an alternate version of the sound.
+`explosion` 关键字定义了环境音的名称，你稍后会用到它。`url` 属性定义了加载声音的地址，`description` 则提供了声音内容的文字描述。这样，听力有困难的玩家或已将故事静音的玩家就能获得声音的替代版本。
 
-Once you've defined your sound effect, you can play it in a passage using the `{sound effect}` insert.
+定义好音效后，你可以使用 `{sound effect}` 插入在段落中播放它。
 
 ```
-sound.effect.explosion.url: 'boom.mp3'
-sound.effect.explosion.description: 'a large explosion'
+sound.effect.爆炸.url: '爆炸.mp3'
+sound.effect.爆炸.description: '一场大爆炸'
 --
-The timer reads 0:00...
+计时器显示为 0:00…
 
-{sound effect: 'explosion'}
+{sound effect: '爆炸'}
 ```
 
-The exact place you put the insert matters. If a player has disabled sound, or is unable to hear your sound, they will see the text of the `description` property instead where you enter the insert.
+插入的确切位置很重要。如果玩家禁用了声音，或无法听到你的声音，他们将在你插入的地方看到 `description` 属性的文本。
 
-If you insert multiple different sound effects in a single passage, they will play simultaneously. If you insert a sound effect in another passage the player reaches while the effect is stil playing, the second insert will have no effect.
+如果你在同一段落中插入多个不同的音效，它们会同时播放。如果某个音效仍在播放时，玩家进入了另一个插入了该音效的段落，则第二次插入不会产生效果。（王洛木：也就是说，正在播放音效不会因为被另一段落中重复触发而重播或打断。）
 
-If you need to play a sound effect repeatedly, define it multiple times. You can assign the entire object to save time. For example:
+如果你需要重复播放一个音效，请多次定义它。你可以通过赋值整个对象来节省时间。例如：
 
 ```
-sound.effect.explosion.url: 'boom.mp3'
-sound.effect.explosion.description: 'a large explosion'
-sound.effect.explosion2: sound.effect.explosion
+sound.effect.爆炸.url: '爆炸.mp3'
+sound.effect.爆炸.description: '一场大爆炸'
+sound.effect.爆炸2: sound.effect.爆炸
 --
-The timer reads 0:00...
+计时器显示为 0:00…
 
-{sound effect: 'explosion'}
+{sound effect: '爆炸'}
 
-[[Oof.]]
+[[哦呼。]]
 ```
 
-(Note the lack of quotation marks around `sound.effect.explosion` in the line that sets `sound.effect.explosion2`.)
+（请注意，在设置 `sound.effect.爆炸2` 的那一行中，`sound.effect.爆炸` 没有使用引号。）
 
-Assigning the `sound.effect.explosion2` [object] wholesale, instead of setting it property-by-property, causes it to be a copy of `sound.effect.explosion`. If you ever change a property of `sound.effect.explosion`, `sound.effect.explosion2` will change too.
+将 `sound.effect.爆炸2` [对象][object]整体赋值，而不是逐属性设置，可以让它成为 `sound.effect.爆炸` 的一个副本。如果你之后更改了 `sound.effect.爆炸` 的某个属性，`sound.effect.爆炸2` 也会随之改变。
 
-And then, in the passage named `Oof.`, you'd write:
-
-```
-That wasn't so bad. Wait...
-
-{sound effect: 'explosion2'}
-```
-
-## Ambient Sound
-
-The process of defining an ambient sound is very similar to defining a sound effect.
+接着，在名为`哦呼。`的段落中，你会写道：
 
 ```
-sound.ambient.forest.url: 'forest.mp3'
-sound.ambient.forest.description: 'midday forest sounds'
+这还不算太糟。等等……
+
+{sound effect: '爆炸2'}
+```
+
+## 环境音效｜Ambient Sound
+
+定义环境音效的过程与定义音效非常相似。
+
+```
+sound.ambient.森林.url: '森林.mp3'
+sound.ambient.森林.description: '中午的森林氛围声'
 --
-It's a beautiful day.
+完美的一天。
 ```
 
-Similarly, you begin playing an ambient sound with an insert:
+同样地，你可以通过插入 `{ambient sound}` 来开始播放环境音效。
 
 ```
-sound.ambient.forest.url: 'forest.mp3'
-sound.ambient.forest.description: 'midday forest sounds'
+sound.ambient.森林.url: '森林.mp3'
+sound.ambient.森林.description: '中午的森林氛围声'
 --
-{ambient sound: 'forest'}
+{ambient sound: '森林'}
 
-It's a beautiful day.
-
-```
-
-The only difference here is that the sound will fade in, and if there was already an ambient sound playing, the two will crossfade. The exact length of the fade is determined by the state variable `sound.transitionDuration`. It is a string in the same format that the [after modifier] accepts.
-
-To stop playing all ambient sound, write `{no ambient sound}`.
-
-## Controlling Sound Volume
-
-To set the master sound volume for your story, change the state variable `sound.volume` to a decimal between 0 and 1. 0 is muted, and 1 is full volume. You can also temporarily mute all sound by setting `sound.mute` (note the lack of a D at the end) to `true`. The advantage of using `sound.mute` is that it allows you to toggle between no sound and a previously-set volume.
-
-You can also set a sound's volume when playing it using an insert. Both of the inserts below begin playing a sound at half normal volume.
+完美的一天。
 
 ```
-{sound effect: 'explosion', volume: 0.5}
-{ambient sound: 'forest', volume: 0.5}
-```
 
-## Browser Autoplay Problems
+唯一的区别在于，音效会淡入播放，如果已有环境音正在播放，两者会交叉淡出过渡。淡入淡出的具体时长由状态变量 `sound.transitionDuration` 决定。该变量为字符串格式，与 [after 修饰符][after modifier]接受的格式相同。
 
-Chapbook makes every effort to resume sound playback between play sessions, so that if you begin playing an ambient sound, it resumes whenever the player comes back to your story. However, this runs afoul of strict restrictions most browsers have regarding sound that immediately plays when a web page is loaded. Some browsers have a blanket ban on this, while others take into account a player's behavior on the web site hosting your story--if a player has previously interacted a lot with the site, it may allow it, but the exact criteria for allowing it is often unclear.
+若要停止播放所有环境音，请写入 `{no ambient sound}`。
 
-Playing sound after a player has followed a link or otherwise clicked or tapped a link in your story should always work, whatever a browser's autoplay policy is.
+## 控制音效音量｜Controlling Sound Volume
 
-## Manually Controlling Sound
-
-You may also manually play sounds, either sound effects or ambient sound, by setting their `playing` property to `true`. This property automatically becomes `false` once an effect finishes playing, but will never change for ambient sound unless you use an `{ambient sound}` insert or set its `playing` property to `false` again.
-
-You can use this for more complex effects, such as layering ambient sounds; however, you *must* make sure to include appropriate descriptions for people who are unable to hear your audio. To do this, enclose the description inside `<audio>` and `</audio>` like so:
+要设置故事的主音量，可将状态变量 `sound.volume` 更改为 0 到 1 之间的小数。0 表示静音，1 表示最大音量。您也可以通过将 `sound.mute`（注意末尾没有字母 D）设为 `true` 来临时静音所有音效。使用 `sound.mute` 的优势在于，它允许您在静音状态与先前设置的音量之间切换。
 
 ```
-sound.ambient.forest.playing: true
-sound.ambient.rain.playing: true
+{sound effect: '爆炸', volume: 0.5}
+{ambient sound: '森林', volume: 0.5}
+```
+
+## 浏览器自动播放问题｜Browser Autoplay Problems
+
+Chapbook 会尽力在游戏会话之间恢复音频播放，这样如果你开始播放环境音效，每当玩家返回你的故事时，音效都会自动继续。然而，这种做法与大多数浏览器对网页加载时立即播放声音的严格限制相冲突。部分浏览器会全面禁止此类行为，而另一些则会考虑玩家在托管你故事的网站上的行为记录——如果玩家之前在该网站有过频繁互动，浏览器可能会允许播放，但具体的允许标准往往并不明确。
+
+但是玩家在故事中点击或轻触链接后播放声音，无论浏览器的自动播放政策如何，这个操作都会终有效。
+
+## 手动控制声音｜Manually Controlling Sound
+
+您也可以通过将音效或环境音的 `playing` 属性设置为 `true` 来手动播放声音。音效播放完毕后，该属性会自动变为 `false`，但环境音的播放属性除非您使用 `{ambient sound}` 插入或再次将其播放属性设为 `false`，否则不会改变。
+
+所以您可以将此用于更复杂的效果，例如叠加环境音；但必须*确保*为无法听到音频的人提供适当的描述。为此，请将描述内容置于`<audio>` 和 `</audio>` 标签之间，如下所示：
+
+```
+sound.ambient.森林.playing: true
+sound.ambient.下雨.playing: true
 --
-You walk outside.
+你走到室外了了。
 
-<audio>Rainy forest background sound</audio>
+<audio>雨林的背景音</audio>
 ```
 
-The text inside the will not be displayed ordinarily.
+其中的文本通常不会显示。
 
 [Audacity]: https://www.audacityteam.org/
 [object]: ./state/objects-and-lookups.md

@@ -1,5 +1,5 @@
-# The Chapbook Lifecycle
+# Chapbook 的生命周期｜The Chapbook Lifecycle
 
-The diagram below shows the overall flow of execution in Chapbook beginning from when the web browser first loads the page, and is mainly of use when extending Chapbook.
+下图展示了 Chapbook 从网页浏览器首次加载页面开始的整体执行流程，主要适用于扩展 Chapbook 功能时参考。
 
-![Lifecycle Diagram](lifecycle.svg)
+![生命周期图表](lifecycle.svg)

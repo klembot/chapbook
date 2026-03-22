@@ -1,5 +1,5 @@
 <div class="intro references">
-    <h1>References</h1>
+    <h1>参考｜References</h1>
 </div>
 
-This section contains quick references to specific Chapbook topics.
+本节包含 Chapbook 特定主题的快速参考。

@@ -1,22 +1,22 @@
-# Randomness
+# 随机性｜Randomness
 
-Randomness is a powerful tool for creating interactive experiences. It can assist with simulation--to decide whether actions of a character succeed, as in tabletop role-playing games--but it can also be used for aesthetic purposes, from altering phrasings in text to creating an entirely randomized narrative.
+随机性是创造互动体验的强大工具。它不仅能用于模拟——例如决定角色行动是否成功，就像桌面角色扮演游戏那样——还能用于美学目的，从改变文本措辞到创造完全随机的叙事。
 
-The main way to make use of randomness with Chapbook is through [lookup variables][lookups] in the `random` object. For instance:
+在 Chapbook 中利用随机性的主要方式是通过 `random` 对象中的[查询变量][lookups]。例如：
 
 ```
 [if random.coinFlip]
-Heads!
+正面！
 
 [else]
-Tails!
+反面！
 ```
 
-... will display "Heads!" half of the time the story is played and "Tails!" the other half. The value of `random.coinFlip` potentially changes every time its value is used.[^1]
+……在故事运行时，有一半的概率会显示“正面！”，另一半概率显示“反面！”。`random.coinFlip` 的值在每次使用时都可能发生变化。[^1]
 
-For more fine-grained randomness, you can use lookup variables such as `random.d100`, which is a random whole number between 1 to 100. The full list is:
+如需更精细的随机性，可以使用查询变量，例如 `random.d100`，这是一个介于 1 到 100 之间的随机整数。完整列表如下：
 
-Lookup            | Range 
+查询            | 范围 
 ------------------|------
 `random.fraction` | 0-1
 `random.d4`       | 1-4
@@ -30,77 +30,78 @@ Lookup            | Range
 `random.d50`      | 1-50
 `random.d100`     | 1-100
 
-All of the lookups listed above are always whole numbers, except `random.fraction`, which is a decimal between 0 and 1.
+上面列出的所有查询结果都是整数，只有 `random.fraction` 例外，它是介于 0 到 1 之间的小数。
 
-One easy mistake that can be made with these lookup variables is to forget that their values change every time they are used. For instance:
+使用这些查询变量时容易犯的一个错误是忘记它们的值每次被调用时都会改变。例如：
 
 ```
 [if random.d4 === 1]
-One.
+一。
 
 [if random.d4 === 2]
-Two.
+二。
 
 [if random.d4 === 3]
-Three.
+三。
 
 [if random.d4 === 4]
-Four.
+四。
 ```
 
-The passage above may show just one paragraph, but it's also possible for it to show more than one, or even none at all. Because `random.d4` changes value, the end result could look like this:
+上面这段文字可能只显示一个段落，但也可能显示多个段落，甚至完全不显示任何内容。由于 `random.d4` 的值会变化，最终结果可能呈现如下形式：
 
 ```
 [if 4 === 1]
-One.
+一。
 
 [if 2 === 2]
-Two.
+二。
 
 [if 1 === 3]
-Three.
+三。
 
 [if 4 === 4]
-Four.
+四。
 ```
 
-... which would display:
+…这将显示：
+
 
 ```
-Two.
+二。
 
-Four.
+四。
 ```
 
-If you'd like to re-use a specific random value, the easiest thing to do is to assign it to a variable like so:[^2]
+若想重复使用某个特定的随机值，最简单的方法就是将其赋值给变量，例如：[^2]
 
 ```
 _chosen: random.d4
 --
 [if _chosen === 1]
-One.
+一。
 
 [if _chosen === 2]
-Two.
+二。
 
 [if _chosen === 3]
-Three.
+三。
 
 [if _chosen === 4]
-Four.
+四。
 
 ```
 
-## Chapbook Is Pseudorandom
+## Chapbook 是伪随机的｜Chapbook Is Pseudorandom
 
-Chapbook's randomness is not truly random: in fact, the process by which it generates random numbers is entirely predictable. This may sound ludicrous, but this is how almost all computer-generated random numbers work. Chapbook uses what is called a pseudorandom number generator, which generates a stream of apparently random numbers based on a seed value.
+Chapbook 的随机性并非真正随机：实际上，它生成随机数的过程完全可预测。这听起来可能很荒谬，但几乎所有计算机生成的随机数都是如此运作的。Chapbook 使用的是所谓的伪随机数生成器，它基于一个种子值生成一串看似随机的数字。
 
-The pseudorandom number generator will always generate the same values when using a particular seed value. Unless otherwise specified, Chapbook will use a seed value based on the date and time that a playthrough first begins, so each session will see different pseudorandom values. Chapbook stores this seed value in `config.random.seed`. This variable can be both read and written to.
+伪随机数生成器在使用特定种子值时，总会生成相同的数值。除非另有说明，Chapbook 将采用基于游戏流程首次启动日期时间的种子值，因此每个会话将呈现不同的伪随机数值。Chapbook将此种子值存储在 `config.random.seed` 中，该变量支持读取与写入操作。
 
-Why would you want to change the pseudorandom seed, though? It can help with testing--for example, if someone reports a problem with your story, you can set your seed value to theirs and be able to replay things exactly as they experienced them. You can also set a seed value manually in a version of your story you give to others to test, so that you can ensure everyone has a consistent experience.
+不过，你为何要更改伪随机种子呢？这有助于测试——例如，如果有人报告了你的故事存在问题，你可以将种子值设置为他们的，从而能够完全按照他们经历的方式重现事件。你还可以在提供给他人测试的故事版本中手动设置种子值，以确保每个人都有一致的体验。
 
-[^1]: Which is to say it is possible, as demonstrated in _[Rosencrantz and Guildenstern Are Dead][rosencrantz]_, that `random.coinFlip` holds the same value after it is read. 
-[^2]: This example uses an underscore in its variable name to signal a temporary variable, but remember that this is merely a convention.
+[^1]: 也就是说，正如[《Rosencrantz 和 Guildenstern 已死》][rosencrantz]中所展示的那样，`random.coinFlip` 在被读取后仍可能保持相同的值。
+[^2]: 此例在变量名中使用下划线来标识临时变量，但请记住这仅是一种约定。
 
 [lookups]: objects-and-lookups.html
 [rosencrantz]: https://en.wikipedia.org/wiki/Rosencrantz_and_Guildenstern_Are_Dead#Act_One

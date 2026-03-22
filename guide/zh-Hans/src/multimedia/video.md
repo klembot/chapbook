@@ -1,27 +1,27 @@
 # 视频｜Video
 
-## Embedding Your Own Video
+## 嵌入您自己的视频｜Embedding Your Own Video
 
 <aside data-hint="working">
-Chapbook doesn't yet support embedding your own video, but it will.
+Chapbook 目前尚不支持嵌入您自己的视频，但未来将会支持。
 </aside>
 
-## Embedding a YouTube Video
+## 嵌入 YouTube 视频｜Embedding a YouTube Video
 
-You've heard of [YouTube][youtube], right? To embed a YouTube video, use its URL with the `{embed YouTube video}` insert:
+您听说过 [YouTube][youtube] 吧？要嵌入 YouTube 视频，请使用其 URL 搭配 `{embed YouTube video}` 插入此功能：
 
 ```
-Tell me if you've seen this one before.
+告诉我你以前是否看过这个。
 
 {embed YouTube video: 'https://www.youtube.com/watch?v=9bZkp7q19f0'}
 ```
 
 <aside data-hint="working">
-For now, it's not possible to have a YouTube video start when a passage displays. The player will need to begin playback.
+目前尚无法实现当段落显示时 YouTube 视频自动开始播放。播放器仍需手动启动。
 </aside>
 
 <aside data-hint="working">
-Accessibility features for video will be added to a future release of Chapbook.
+视频的无障碍功能将在 Chapbook 的未来版本中添加。
 </aside>
 
 [youtube]: https://youtube.com

@@ -1,60 +1,59 @@
 # 外部网页字体｜External Web Fonts
 
-Creating a good font stack is difficult because there are very few typefaces you can count on a majority of your players having installed. Fortunately, you aren't limited to what your players happen to have installed--instead, you can use web fonts.
+构建一个良好的字体栈很困难，因为你能指望大多数玩家已安装的字体种类非常少。幸运的是，你并不局限于玩家恰好安装的字体——相反，你可以使用网页字体。
 
-## Using Google Fonts
+## 使用 Google Fonts｜Using Google Fonts
 
-Google provides a wide variety of freely-usable fonts through their [Google Fonts][google-fonts] service. To use Google Fonts in your story, first find the embed code for the families you wish to use:
+Google 通过其 [Google Fonts][google-fonts] 服务提供了多种可免费使用的字体。要在故事中使用 Google Fonts，首先找到您希望使用的字体的嵌入代码：
 
 <p style="text-align: center">
 <img src="google-font.png" width="300" height="198" alt="Google Fonts screenshot">
 </p>
 
-Copy the embed code that Google Fonts offers you, i.e. `<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-`, and set the variable `config.style.googleFont` to it in your first passage. You can then use the font name anywhere in the rest of `config.style` as usual:
+复制 Google Fonts 提供的嵌入代码，例如 `<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">`，并在您的第一个段落中将其赋值给变量 `config.style.googleFont`。然后，您就可以像往常一样在 `config.style` 的其他任何地方使用该字体名称：
 
 ```
 config.style.googleFont: '<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">'
 config.style.page.font: 'Open Sans/sans-serif 18'
 --
-Welcome aboard the U.S.S. Hood.
+欢迎登上 U.S.S. Hood。
 ```
 
-Note that because `config.style.googleFont` is a string, you must put single quotes around its value. (It's much easier to type single quotes here, since the embed code has double quotes in it.)
+请注意，由于 `config.style.googleFont` 是一个字符串，您必须在其值周围加上单引号。（在这里输入单引号会比较好，因为嵌入代码中已经包含双引号。）
 
-## Using Adobe Typekit Fonts
+## 使用 Adobe Typekit 字体｜Using Adobe Typekit Fonts
 
-Adobe Typekit serves a similar purpose to Google Fonts, but most of its collection requires an Adobe Creative Cloud subscription to use. That said, it does permit free use of some of its font families.
+Adobe Typekit 与 Google Fonts 功能类似，但其字体库中的大部分字体需要订阅 Adobe Creative Cloud 才能使用。不过，它也允许免费使用部分字体家族。
 
-Once you've assembled a kit--Adobe's terminology for one or more font families you plan to use--find its embed code in Typekit.
+在 Typekit 中创建好字体套件（Adobe 对计划使用的一个或多个字体家族的术语）后，找到其嵌入代码。
 
 <p style="text-align: center">
 <img src="typekit-font.png" width="300" height="152" alt="Typekit screenshot">
 </p>
 
-Copy the default code, i.e. `<link rel="stylesheet" href="https://use.typekit.net/abcdefgh.css">`, and set the variable `config.style.typekitFont` to it in your first passage. As with Google Fonts, you can then use the font name anywhere in the rest of `config.style`.
+复制默认代码，比如 `<link rel="stylesheet" href="https://use.typekit.net/abcdefgh.css">`，并将其赋值给变量 `config.style.typekitFont`，放在你的第一个段落中。与 Google Fonts 一样，之后你就可以在 `config.style` 的其他任何地方使用该字体名称。
 
 ```
 config.style.typekitFont: '<link rel="stylesheet" href="https://use.typekit.net/abdefgh.css">'
 config.style.page.font: 'Open Sans/sans-serif 18'
 --
-Welcome aboard the U.S.S. Hood.
+欢迎登上 U.S.S. Hood。
 ```
 
-## Other Web Fonts
+## 其他网络字体｜Other Web Fonts
 
-You can also use web fonts separately from a cloud service. Please make sure to check the license for the font; it's not uncommon, for example, to be required to pay a certain fee to use a font for personal use, but a different for use on the web, or in an app.
+你也可以从云服务单独使用网络字体。请务必检查字体的许可证；例如，通常需要支付一定费用才能将字体用于个人用途，但在网页或应用程序中使用则可能需要支付不同的费用。
 
-To include a font directly by URL, add two properties to `config.style.fonts`:
+要通过 URL 直接包含字体，请向 `config.style.fonts` 添加两个属性：
 
 ```
 config.style.fonts.leagueSpartan.url: 'league-spartan.woff2'
 config.style.fonts.leagueSpartan.name: 'League Spartan'
 config.style.page.font: 'League Spartan/sans-serif 16'
 --
-It is the year 1969, and you are walking on the moon.
+这是 1969 年，你正在月球上行走。
 ```
 
-Chapbook can't infer the name of the font from the `url` property, so you must tell it what it is.
+Chapbook 无法从 `url` 属性推断字体名称，因此您必须明确告知它是什么。
 
 [google-fonts]: https://fonts.google.com

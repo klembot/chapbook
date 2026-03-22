@@ -1,50 +1,30 @@
 # 字体和颜色｜Fonts and Colors
 
-The easiest way to customize your story's fonts and colors is with the **Style**
-backstage tab[^1], which sets values in the `config.style` object for you. As
-you make changes in that tab, your story's appearance will automatically update,
-so you can easily experiment to find a look that fits your story. However,
-changes you make will not be permanently saved. The next time you test or play
-your story, it will revert back to its previous appearance.
+自定义故事字体与颜色的最简便方法是使用*样式*后台选项卡[^1]，该选项卡会为您自动设置 `config.style` 对象中的值。当您在该选项卡中进行调整时，故事外观将实时更新，方便您轻松尝试不同风格以匹配故事基调。但请注意，此处所做的更改不会永久保存。下次测试或运行故事时，界面将恢复至先前的外观状态。
 
 <aside data-hint="info">
-<p>The <strong>Style</strong> tab mentions theme and lets you switch between them. See <a href="dark-theme.html">Dark Theme</a> for more information on what this does.</p>
-<p>The most important thing to understand is that the text fields in the <strong>Style</strong> tab reflect the style of the current theme, and update when the theme changes.</p>
+<p><strong>样式</strong>选项卡中提及了主题功能，并允许您在不同主题间切换。关于此功能的详细说明，请参阅<a href="dark-theme.html">深色主题</a>文档。</p>
+<p>最重要的是要理解<strong>样式</strong>选项卡中的文本字段是反映当前主题的样式，并会在主题更改时更新。</p>
 </aside>
 
-In order to make changes in the **Style** tab permanent, you must copy the code
-in the **Config** panel at the top of the tab into your starting passage's vars
-section. (This passage is shown with a rocket-ship icon in Twine's story map.)
-Clicking anywhere in the box the code sits in will automatically select all of
-it to make copying and pasting easy.
+若要使**样式**选项卡中的更改永久生效，必须将选项卡顶部**配置**面板中的代码复制到起始段落的变量部分。（该段落在 Twine 故事地图中显示为火箭图标。）点击代码所在框内的任意位置将自动全选所有内容，便于复制粘贴。
 
-Doing so will cause the appropriate variables to be set when your story first
-begins--which doesn't mean that it has to be the only appearance your story
-takes on. You can change variables in the `config.style` object in a later
-passage's vars section and your story's appearance will change when the passage
-is visited. You could use this, for example, to denote a dream sequence or
-flashback.
+这样做会在故事开始时设置相应的变量——但这并不意味着这是故事唯一的呈现方式。你可以在后续段落的变量部分更改 `config.style` 对象中的变量，当访问该段落时，故事的外观就会改变。例如，你可以利用这一点来表示梦境序列或闪回。
 
-The other panels in the **Style** tab, **Page**, **Header**, and **Footer**, all
-have the same fields. As you might guess, **Page** sets the base style of your
-story and **Header** and **Footer** govern the areas above and below the main
-text. By default, Chapbook stories don't have a header.
+**样式**选项卡中的其他面板，**页面**、**页眉**和**页脚**，都包含相同的字段。正如你可能猜到的，**页面**设置故事的基础样式，而**页眉**和**页脚**则控制主文本上方和下方的区域。默认情况下，Chapbook 故事没有页眉。
 
 <div class="page-diagram">
-	<div class="header">header</div>
-	<div class="content">main content</div>
-	<div class="footer">footer</div>
+	<div class="header">页眉</div>
+	<div class="content">主要内容</div>
+	<div class="footer">页脚</div>
 </div>
 
-The values you set for page, header, and footer styles inherit from each other.
-That means that if a header or footer style value isn't set, it will use the
-corresponding page value instead. If a page value isn't set either, Chapbook's
-default style will be used instead.
+您为页面、页眉和页脚样式设置的值会相互继承。 这意味着如果页眉或页脚样式值未设置，则会使用对应的页面值。如果页面值也未设置，则会使用 Chapbook 的默认样式。
 
-## Setting Text Style
+## 设置文本样式｜Setting Text Style
 
 <aside data-hint="info">
-Applies to:
+适用于：
 
 <ul>
 <li><code>config.style.page.font</code></li>
@@ -55,66 +35,44 @@ Applies to:
 <li><code>config.style.page.header.link.active.font</code></li>
 </aside>
 
-Chapbook uses a concise notation for specifying text style. Below is a simple
-example:
+Chapbook 使用一种简洁的符号来指定文本样式。下面是一个简单的例子：
 
 ```
 Palatino 18
 ```
 
-This sets a Palatino typeface at 18 pixels tall.[^2] But in actual use, you
-ought to use something like this instead:
+这将设置一个 18 像素高的 Palatino 字体。[^2]但在实际使用中，你应该使用类似这样的方式：
 
 ```
 Palatino/serif 18
 ```
 
-Slashes separate alternate typefaces in what is called a _font stack_. Before
-the advent of web fonts, font stacks were a crucial part of web design. At that
-time, web browsers were only capable of displaying fonts installed in the
-operating system, so designers had to specify alternate typefaces in order to
-create a consistent appearance across different operating systems.
+斜杠分隔了所谓的*字体栈*中的备用字体。在网络字体出现之前，字体栈是网页设计的关键组成部分。那时，网页浏览器只能显示操作系统中已安装的字体，因此设计师必须指定备用字体，以确保在不同操作系统上呈现一致的外观。
 
-In our current times, font stacks affect more what a page looks like at first
-glance--typically, text appears immediately in a system font, then in a web font
-after it finishes loading. (See [External Web Fonts](external-web-fonts.md) for
-details on how to use a web font with Chapbook.) But there are players who will
-have disabled web fonts, either out of personal preference or a need to save
-network bandwidth, and it's good practice to design your story to accommodate
-that.
+在我们当前的时代，字体栈更多影响的是页面第一眼的外观——通常，文本会先以系统字体立即显示，然后在网络字体加载完成后切换。（关于如何在Chapbook中使用网络字体的详细信息，请参阅[外部网络字体](external-web-fonts.md)。）但有些用户可能会出于个人偏好或节省网络带宽的需要而禁用网络字体，因此将你的故事设计成能适应这种情况是一种良好的实践。
 
-The example above indicates that if a typeface named Palatino isn't available to
-the player's web browser, `serif` signals it should fall back to a generic serif
-font.[^3] If you'd like to set your story in Helvetica, you might use:
+上面的例子表明，如果玩家的网页浏览器没有名为 Palatino 的字体，`serif` 这个信号会指示其回退到通用的衬线字体。[^3]如果你想将故事文本设置为 Helvetica 字体，可以使用：
 
 ```
 Helvetica/Arial/sans-serif 14
 ```
 
-Many people viewing your story using a Windows computer won't have Helvetica
-available, but they almost certainly will have Arial, Microsoft's [Helvetica
-competitor][helvetica-vs-arial], and if for some reason they have neither, the
-story will use whatever sans serif font is available.
+许多使用 Windows 电脑查看你故事的读者可能没有 Helvetica 字体，但他们几乎肯定会有 Arial——这是微软开发的 Helvetica 竞品字体。如果出于某种原因两者都没有，故事将使用任何可用的无衬线字体。
 
-When specifying typefaces that have spaces in their name, you don't need to do
-anything special:
+当指定名称中包含空格的字体时，你无需进行任何特殊处理：
 
 ```
 Times/Times New Roman/serif 20
 ```
 
-You can also modify a font with the words `bold`, `italic`, `underline` or
-`small caps`. If you'd like to use multiple styles, put spaces between them:
+你还可以使用单词 `bold`（加粗），`italic`（斜体），`underline`（下划线）或 `small caps`（小型大写字母）来修改字体样式。如果想同时使用多种样式，请在它们之间用空格分隔：
 
 ```
 Palatino 18 bold italic
 ```
+有一种特殊的字体样式名为 `regular`（常规），它会移除字体通常会继承的任何粗体、斜体、下划线或小型大写字母样式。
 
-There is a special font style named `regular`, which removes any bold, italic,
-underline, or small-cap styling that the font would normally inherit.
-
-Font styles _must_ be entered in all-lowercase. This is because you can omit
-parts of the declaration. All of the below are valid font notations:
+字体样式*必须*全部以小写字母输入。这是因为你可以省略声明的部分内容。以下所有都是有效的字体表示法：
 
 - `Palatino`
 - `18`
@@ -122,16 +80,16 @@ parts of the declaration. All of the below are valid font notations:
 - `Palatino bold`
 - `18 small caps`
 
-The omitted parts are inherited as described above.
+省略的部分将按照上述描述进行继承。
 
 <aside data-hint="info">
-The font size you specify may be increased by Chapbook. See <a href="font-scaling.html">Font Scaling</a> for more information.
+你指定的字体大小可能会被 Chapbook 增加。更多信息请参阅<a href="font-scaling.html">字体缩放</a>。
 </aside>
 
-## Colors
+## 颜色｜Colors
 
 <aside data-hint="info">
-Applies to:
+适用于：
 <ul>
 <li><code>config.style.backdrop</code></li>
 <li><code>config.style.page.color</code></li>
@@ -146,12 +104,9 @@ Applies to:
 <li><code>config.style.page.link.active.lineColor</code></li>
 </aside>
 
-Although you don't have to use it, Chapbook includes a color palette called
-[Reasonable Colors][reasonable-colors] created by Matthew Howell. Reasonable
-Colors is designed to make designing accessible and attractive color
-combinations easy.
+虽然并非必须使用，但 Chapbook 包含一个名为"[合理色彩][reasonable-colors]"的调色板，由 Matthew Howell 创建。合理色彩旨在让设计既易于查看又美观的色彩组合变得简单。
 
-There are 25 hues, and each hue has 6 shades:
+共有 25 种色调，每种色调有 6 种深浅：
 
 <div class="swatch-row">
 <div class="swatch" style="background-color: rgb(246, 246, 246);">gray-1</div>
@@ -354,36 +309,19 @@ There are 25 hues, and each hue has 6 shades:
 <div class="swatch" style="background-color: rgb(75, 0, 48);">pink-6</div>
 </div>
 
-To use a particular shade, enter the name in its box, e.g. `yellow-6`. To ensure
-that text has enough color contrast, choose two shades that have at least a
-numerical difference of 3. That is, `yellow-6` on a `yellow-3` background has
-sufficient contrast, but `red-5` on `red-3` doesn't. The [Reasonable
-Colors][reasonable-colors] site also has suggestions on colors that will
-complement a given hue--choose a hue to see detailed information--but you don't
-have to follow these suggestions, of course.
+要使用特定色调，请在对应框中输入名称，例如 `yellow-6`。为确保文本具有足够的色彩对比度，请选择数值差异至少为 3 的两种色调。也就是说，`yellow-6` 在 `yellow-3` 背景上具有足够的对比度，但 `red-5` 在 `red-3` 背景上则不然。“[合理色彩][reasonable-colors]”网站还提供了关于如何搭配特定色调的色彩建议——选择一种色调即可查看详细信息——当然，您r是否遵循这些建议只取决于您。
 
-You can also use [any other color notation][color-notation] that web browsers
-understand, from the traditional hex triplet notation (e.g. `#0b7285`) to more
-modern ones, such as `hsla(0%, 65%, 48%, 0.75)`.
+您也可以使用任何其他网络浏览器支持的[颜色注释法][color-notation]，从传统的十六进制三元组表示法（例如 `#0b7285`）到更现代的表示法，例如 `hsla(0%, 65%, 48%, 0.75)`。
 
-When setting colors in `config`, often you can specify both a background and
-foreground. For instance, you can set `config.style.page.color` to
-`'orange-4 on orange-1'`. However, when specifying a border color, for instance
-`config.style.page.link.lineColor`, only the foreground is used.
+在 `config`（配置）中设置颜色时，通常可以同时指定背景色和前景色。例如，您可以将 `config.style.page.color` 设置为 `'orange-4 on orange-1'`。然而，在指定边框颜色时，例如 `config.style.page.link.lineColor`，则仅使用前景色。
 
-As with fonts, you can omit parts of a color declaration. Setting
-`config.style.page.link.color` to `'on blue-3'` causes links to use the page's
-foreground color, whatever it may be, but use a medium blue as background.
+与字体一样，您可以省略颜色声明的部分内容。将 `config.style.page.link.color` 设置为 `'on blue-3'` 会使链接使用页面的前景色（无论其具体颜色如何），但使用中等蓝色作为背景。
 
-## Open Color (deprecated)
+## Open Color（已弃用）｜Open Color (deprecated)
 
-Version 1 of Chapbook included a different color palette called [Open
-Color][open-color]. You can continue to use it, but this palette will be removed
-in version 3 of Chapbook. To continue to use these colors, add `oc-` in front of
-their name: i.e. `oc-red-6` or `oc-gray`.
+Chapbook 版本 1 包含一个名为开放色彩的不同调色板。您可以继续使用它，但此调色板将在 Chapbook 版本 3 中被移除。若要继续使用这些颜色，请在它们的名称前添加 `oc-`，例如：`oc-red-6` 或 `oc-gray`。
 
-The full list of hues and shades available in Open Color is available on [its
-project web site][open-color].
+Open Color 中可用的完整色调和色度列表可在[其项目网站][open-color]上找到。
 
 <style>
 .page-diagram {
@@ -436,17 +374,13 @@ project web site][open-color].
 </style>
 
 [^1]:
-    To review, launching your story with Twine's **Test** button will cause the
-    backstage view to appear, including the **Style** tab.
+    回顾一下，使用 Twine 的**测试**按钮启动你的故事可以让后台视图出现，其中包括**样式**选项卡。
 
 [^2]:
-    If you are familiar with
-    [CSS units](https://developer.mozilla.org/en-US/docs/Web/CSS/length), you
-    can also use them, e.g. `Palatino 1rem` or `Palatino 25%`.
+	如果你熟悉 [CSS 单位](https://developer.mozilla.org/en-US/docs/Web/CSS/length)，也可以使用它们，例如 `Palatino 1rem` 或 `Palatino 25%`。
 
 [^3]:
-    What's a serif? [Wikipedia](https://en.wikipedia.org/wiki/Serif) aptly
-    answers.
+    什么是衬线字体？[维基百科](https://en.wikipedia.org/wiki/Serif)给出了恰当的回答。
 
 [reasonable-colors]: https://www.reasonable.work/colors/
 [open-color]: https://yeun.github.io/open-color/

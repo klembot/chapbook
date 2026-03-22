@@ -1,39 +1,39 @@
-# Dropdown Menus and Cycling Links
+# 下拉菜单与循环链接｜Dropdown Menus and Cycling Links
 
-Instead of allowing any kind of input at all from a player, you may want to contrain them to a specific set of choices. Chapbook has two mechanisms for this that look different to the player, but behave identically behind the scenes: menus and cycling links.
+与其允许玩家输入任何内容，不如将他们限制在特定的选择范围内。Chapbook 提供了两种机制来实现这一点，它们对玩家来说看起来不同，但在幕后行为相同：菜单和循环链接。
 
-In order to do this, we need to introduce a new type of variable, an _array_. An array is similar to an object[^1] in that it's a container for other variables. However, where objects contain named variables, arrays are simply an ordered list of values. This array lists the colors of the rainbow:
-
-```
-['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
-```
-
-Arrays are easy to spot: they simply put square brackets around a list of values separated by commas. An array can contain any type of value: `['red', 3, true]` is a valid array. Arrays can also be empty, though in practice you'll rarely encounter this. The way to express an empty array is by writing `[]`.
-
-## Dropdown Menus
-
-The `{dropdown menu}` insert displays a menu of choices to the player.
+为此，我们需要引入一种新的变量类型：*数组*。数组与对象[^1]类似，都是其他变量的容器。然而，对象包含的是命名变量，而数组只是一个有序的值列表。这个数组列出了彩虹的颜色：
 
 ```
-What meal do you enjoy most?
-
-{dropdown menu for: 'meal', choices: ['Breakfast', 'Lunch', 'Dinner']}
+['红', '橙', '黄', '绿', '蓝', '靛', '紫']
 ```
 
-As with text inputs, `{dropdown menu}` inserts save the selected value to a variable--in the example above, a variable named `meal`. If `meal` were previously set to a value in the menu, that value will be automatically preselected for the player. Otherwise, the menu shows the first option you list in the array of choices.
+数组很容易识别：它们只是用方括号括起一个由逗号分隔的值列表。数组可以包含任何类型的值：`['红色', 3, true]` 就是一个有效的数组。数组也可以是空的，尽管在实践中你很少会遇到这种情况。表示空数组的方法是写成 `[]`。
 
-Unlike a text input, a dropdown menu does not block navigation to another passage, since it always has some value set.
+## 下拉菜单｜Dropdown Menus
 
-## Cycling Links
-
-The `{cycling link}` insert works exactly the same way as `{dropdown menu}`, only it shows a text link that the player selects to change. As the name implies, when the player reaches the last value in the `choices` array, the link starts over at the first element in the array.
+插入 `{dropdown menu}` 会向玩家显示一个选项菜单。
 
 ```
-I enjoy {cycling link for: 'meal', choices: ['Breakfast', 'Lunch', 'Dinner']} the most.
+你最喜欢哪一餐？
+
+{ropdown menu for: '餐点', choices: ['早餐', '午餐', '晚餐']}
 ```
 
-## Optional Parts
+与文本输入类似，`{dropdown menu}` 插入会将所选值保存到一个变量中——在上面的例子中，是一个名为 `餐点` 的变量。如果 `餐点` 之前被设置为菜单中的某个值，该值将自动预选给玩家。否则，菜单将显示你在选项数组中列出的第一个选项。
 
-Just like text inputs, dropdown menus and cycling links don't require that their value be saved to a variable. To do this, omit the `for:` part of the insert. For example, `{cycling link, choices: ['Breakfast', 'Lunch', 'Dinner']}`.
+与文本输入不同，下拉菜单不会阻碍导航到其他段落，因为它始终有某个已设定的值。
 
-[^1]: It is a peculiarity of JavaScript, the programming language of web browsers, that arrays are in fact implemented as objects, so in a sense arrays _are_ objects. However, it's best to think of them at this stage as a distinct concept.
+## 循环链接｜Cycling Links
+
+`{cycling link}` 的工作方式与 `{dropdown menu}` 完全相同，只是它显示一个文本链接供玩家点击时切换。顾名思义，当玩家到达 `choices`（选项）数组中的最后一个值时，链接会重新从数组的第一个元素开始循环。
+
+```
+我最喜欢{cycling link for: '餐点', choices: ['早餐', '午餐', '晚餐']}。
+```
+
+## 可选部分｜Optional Parts
+
+就像文本输入一样，下拉菜单和循环链接并不要求将其值保存到变量中。要实现这一点，只需省略插入中的 `for:` 部分。例如，`{cycling link, choices: ['Breakfast', 'Lunch', 'Dinner']}`。
+
+[^1]: JavaScript（网页浏览器的编程语言）有一个独特之处：数组实际上是以对象的形式实现的，因此在某种意义上，数组*就是*对象。不过，现阶段最好还是将它们视为一个独立的概念。
