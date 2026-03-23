@@ -5,23 +5,23 @@
 例如，想象一下，主角在前往名为“L.A.”的段落途中，要么乘坐飞机，要么乘坐火车：
 
 ```
-你花了几个小时看着云朵在飞机机翼下飘移，随后抵达了[[L.A.]]。
+你花了几个小时看着云朵在飞机机翼下飘移，随后抵达了 [[L.A.]]。
 ```
 
 ```
-The cross-country train ride leaves plenty of space for contemplation on the way to [[L.A.]]
+横穿全国的火车之旅，在前往 [[L.A.]] 的途中，为沉思留下了充足的空间。
 ```
 
 你也可以使用 `{embed passage}` 插入功能，直接将段落合并：
 
 ```
-You spend a few hours watching the clouds drift below the wings of the plane.
+你花了几个小时看着云朵在飞机机翼下飘移。
 
 {embed passage: 'L.A.'}
 ```
 
 ```
-The cross-country train ride leaves plenty of space for contemplation.
+横穿全国的火车之旅，为沉思留下了充足的空间。
 
 {embed passage: 'L.A.'}
 ```
