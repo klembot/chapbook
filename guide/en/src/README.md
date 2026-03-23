@@ -47,9 +47,9 @@ Because Chapbook is open source, its ongoing development and maintenance is supp
 		<li>Soliriok</li>
 		<li>Stuart Moulthrop</li>
 		<li>Thandle2</li>
-		<li>TheBuggiest<li>
-		<li>Tielesti<li>
-		<li>Travis<li>
+		<li>TheBuggiest</li>
+		<li>Tielesti</li>
+		<li>Travis</li>
 		<li>Venceremos</li>
     </ul>
 </div>
