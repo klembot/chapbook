@@ -44,8 +44,6 @@
 
 除了插入名称外，上述示例中的所有内容都是可选的。不同的插入使用此用法的不同变体——例如，`back link` 插入在插入名称后不使用值：
 
-Everything in the example above is optional except the insert name. Different inserts use different variations of this usage--for instance, the `back link` insert does not use a value following the insert name:
-
 <p class="insert-example">
 	<span class="punc">{</span>
 	<span class="identifier">back link</span>
