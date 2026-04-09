@@ -206,11 +206,6 @@ export function toolbar(
         },
         {
           type: 'button',
-          label: 'Embed Image from Unsplash',
-          command: 'insertImageUnsplash'
-        },
-        {
-          type: 'button',
           label: 'Embed Ambient Sound',
           command: 'insertEmbedAmbientSound'
         },
