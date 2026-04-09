@@ -1,8 +1,15 @@
 # Version History
 
-## 2.3.0, 24 November 24
+## 2.3.1, 8 April 2026
 
-`https://klembot.github.io.chapbook/use/2.3.0/format.js`
+`https://klembot.github.io/chapbook/use/2.3.1/format.js`
+
+- Removes the {embed Unsplash image}` insert. Unfortunately, the API that this
+  insert used is no longer available, so the insert was no longer functional.
+
+## 2.3.0, 24 November 2024
+
+`https://klembot.github.io/chapbook/use/2.3.0/format.js`
 
 - Passage transitions now use the View Transition API where available. This will
   result in smoother transitions, with less possibility for content to jump
