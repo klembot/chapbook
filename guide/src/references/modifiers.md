@@ -29,7 +29,7 @@ Used in conjunction with another modifier to have text immediately follow the te
 </dd>
 
 <dt>
-<code>[continue]</code>, <code>[cont'd]</code>, <code>[cont]</code>
+<code>[continued]</code>, <code>[continue]</code>, <code>[cont'd]</code>, <code>[cont]</code>
 </dt>
 
 <dd>
