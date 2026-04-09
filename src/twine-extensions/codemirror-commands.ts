@@ -62,7 +62,7 @@ export const commands = {
     insertAfter: '\n[after 1 second]\nText\n\n[continued]',
     insertAppend: '\n[append]\n',
     insertBlockquote: '\n<blockquote>Text</blockquote>\n',
-    insertContinue: '\n[continued]\n',
+    insertContinue: '\n[continue]\n',
     insertBulletedList: '\n- Item\n- Item\n',
     insertCss: '\n[CSS]\n.page article {\n  color: green;\n}\n\n[continued]\n',
     insertCyclingLink:
