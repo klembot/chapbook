@@ -76,7 +76,7 @@ async function buildExample() {
 }
 
 async function buildGuide() {
-  await $({cwd: `${root}/guide`})`mdbook build`;
+  await $({cwd: `${root}/guide`})`npx honkit build . ../dist/guide`;
   console.log('Wrote guide.');
 }
 
