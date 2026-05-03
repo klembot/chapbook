@@ -1,0 +1,19 @@
+{
+  "pluginsConfig": {
+    "i18nsettings": {
+      "language": "en",
+      "languages": [
+        {
+          "config": "en",
+          "text": "English"
+        },
+	      {
+          "config": "zh-hans",
+          "text": "Simplified Chinese"
+        }
+
+      ]
+    }
+  },
+  "plugins": ["i18nsettings", "typogr"]
+}

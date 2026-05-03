@@ -1,0 +1,18 @@
+* {
+	-webkit-font-smoothing: auto;
+}
+
+.book-langs-index {
+	font-family: 'Iowan Old Style', Constantia, Georgia, serif;
+}
+
+.book-langs-index h3 {
+	font-size: 16px;
+	font-weight: normal;
+	font-style: italic;
+	text-align: center;
+}
+
+.book-langs-index .inner .languages li {
+	font-size: 24px;
+}
