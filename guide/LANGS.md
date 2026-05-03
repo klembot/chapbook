@@ -1,4 +1,4 @@
 # Languages
 
 - [English](en/)
-- [Simplified Chinese](zh-hans/)
+- [简体中文](zh-hans/)
