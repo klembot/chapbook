@@ -9,8 +9,7 @@ it. For information on how to use Chapbook to build stories in Twine, see [the g
 
 ## Installing
 
-Run `npm install` to install most dependencies. [mdbook] is also required to
-generate the guide.
+Run `npm install` to install most dependencies.
 
 ## Development
 
@@ -74,4 +73,3 @@ These are updated manually.
 `src/twine-extensions/` contains code related to Twine editor extensions.
 
 [the guide]: https://klembot.github.io/chapbook/guide/
-[mdbook]: https://rust-lang.github.io/mdBook/

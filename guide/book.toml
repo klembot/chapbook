@@ -1,5 +1,0 @@
-[build]
-build-dir = "../dist/guide"
-
-[output.html]
-additional-css = ["custom.css"]
