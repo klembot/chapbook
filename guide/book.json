@@ -7,13 +7,12 @@
           "config": "en",
           "text": "English"
         },
-	      {
+        {
           "config": "zh-hans",
           "text": "Simplified Chinese"
         }
-
       ]
     }
   },
-  "plugins": ["i18nsettings", "typogr"]
+  "plugins": ["typogr"]
 }
