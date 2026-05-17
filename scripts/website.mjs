@@ -76,8 +76,14 @@ async function buildExample() {
 }
 
 async function buildGuide() {
-  await $({cwd: `${root}/guide`})`npx honkit build . ../dist/guide`;
-  console.log('Wrote guide.');
+  await Promise.allSettled(['en', 'zh-hans'].map(async locale => {
+    await $({
+      cwd: `${root}/guide/${locale}`,
+    })`npx honkit build . ${dest}/guide/${locale}`;
+    console.log(`Wrote guide (${locale}).`);
+  }));
+  await fs.copy(`${root}/guide/index.html`, `${dest}/guide/index.html`);
+  console.log('Wrote guide language selection page.');
 }
 
 async function buildFormat() {
