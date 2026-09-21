@@ -26,7 +26,7 @@ export class PageSkip extends HTMLElement {
 					result.delay = parseInt(
 						(el as HTMLElement).getAttribute('skippable-delay') ?? '0'
 					);
-				} catch (error) {
+				} catch {
 					// Treat it as though it has a 0 delay.
 				}
 

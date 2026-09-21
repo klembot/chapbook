@@ -76,7 +76,6 @@ export class ErrorHandler extends CustomElement {
 			const trail = get('trail');
 
 			this.classList.add('active');
-			/* eslint-disable indent */
 			this.innerHTML = `
 			<p>
 			An unexpected error has occurred.

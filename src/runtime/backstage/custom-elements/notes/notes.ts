@@ -64,9 +64,7 @@ export class Notes extends CustomElement {
 
 			link.setAttribute(
 				'download',
-				`${get(
-					'story.name'
-				)} Notes - ${new Date().toDateString()} ${new Date().toTimeString()}.html`
+				`${storyName} Notes - ${new Date().toDateString()} ${new Date().toTimeString()}.html`
 			);
 			link.setAttribute(
 				'href',

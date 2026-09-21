@@ -26,7 +26,7 @@ export class CyclingLink extends InlineButton {
 
         try {
           choices = JSON.parse(choicesAttribute);
-        } catch (error) {
+        } catch {
           warn(
             `The choices attribute, "${choicesAttribute}" couldn't be parsed.`
           );
