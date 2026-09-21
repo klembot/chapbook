@@ -14,7 +14,6 @@ export function domify(
 	if (attributes) {
 		for (const attribute of Object.keys(attributes)) {
 			if (attributes[attribute] !== undefined) {
-				// Don't understand why TypeScript flags this.
 				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 				result.setAttribute(attribute, attributes[attribute]!);
 			}

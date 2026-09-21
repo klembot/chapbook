@@ -38,6 +38,7 @@ function renderInsert(source: string, inserts: Insert[]) {
 				const props = new Function(`return {"${keyword}" ${args}}`)();
 				const firstArg = props[keyword];
 
+				// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
 				delete props[keyword];
 				return insert.render(firstArg, props, invocation);
 			} else if (args[0] === ',') {
@@ -166,7 +167,7 @@ export default function render(source: string, inserts: Insert[]) {
       case '}':
         if (!inString) {
           const renderSrc = source.substring(startCurly, i + 1);
-          let insertResult = '';
+          let insertResult: string;
 
           try {
             insertResult = renderInsert(renderSrc, inserts);

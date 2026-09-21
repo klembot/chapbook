@@ -5,6 +5,5 @@ import {Modifier} from './types';
  */
 export const continueModifier: Modifier = {
 	match: /^continued?|cont('d)?$/i,
-	// eslint-disable-next-line @typescript-eslint/no-empty-function
 	process() {}
 };

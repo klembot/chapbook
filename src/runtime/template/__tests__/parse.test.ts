@@ -17,9 +17,7 @@ describe('parse()', () => {
 	beforeEach(() => {
 		logSpy = vi.spyOn(window.console, 'log');
 		warnSpy = vi.spyOn(window.console, 'warn');
-		// eslint-disable-next-line @typescript-eslint/no-empty-function
 		logSpy.mockImplementation(() => {});
-		// eslint-disable-next-line @typescript-eslint/no-empty-function
 		warnSpy.mockImplementation(() => {});
 	});
 

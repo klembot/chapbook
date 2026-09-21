@@ -145,6 +145,7 @@ export function reset() {
 
 				const previous = obj[k];
 
+				// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
 				delete obj[k];
 				removeProxy(window, objName);
 				window.dispatchEvent(
@@ -336,7 +337,7 @@ export function canSaveToStorage() {
 		window.localStorage.setItem('chapbook-test', 'a');
 		window.localStorage.removeItem('chapbook-test');
 		return true;
-	} catch (e) {
+	} catch {
 		return false;
 	}
 }

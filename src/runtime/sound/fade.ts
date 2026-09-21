@@ -44,6 +44,8 @@ export default function fadeAudioEl(
 					lastTimestamp = timestamp;
 					window.requestAnimationFrame(step);
 				} else {
+					// Set the volume to be sure.
+					el.volume = volume;
 					resolve();
 				}
 			}

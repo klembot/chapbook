@@ -21,10 +21,15 @@ describe('Display events', () => {
     matches: false
   };
   const passageNamedMock = vi.mocked(passageNamed);
+  let initialMatchMediaMockAddEventListenerCalls: typeof matchMediaMock.addEventListener.mock.calls;
 
   beforeAll(() => {
     vi.stubGlobal('matchMedia', () => matchMediaMock);
     initDisplayEvents();
+
+    // Record these calls because the mock loses them after this.
+
+    initialMatchMediaMockAddEventListenerCalls = [...matchMediaMock.addEventListener.mock.calls];
   });
 
   afterAll(() => {
@@ -116,7 +121,7 @@ describe('Display events', () => {
 
     window.addEventListener('system-theme-change', listener);
     matchMediaMock.matches = true;
-    matchMediaMock.addEventListener.mock.calls[0][1]({
+    initialMatchMediaMockAddEventListenerCalls[0][1]({
       type: 'change',
       matches: true
     });
@@ -134,7 +139,7 @@ describe('Display events', () => {
 
     window.addEventListener('system-theme-change', listener);
     matchMediaMock.matches = false;
-    matchMediaMock.addEventListener.mock.calls[0][1]({
+    initialMatchMediaMockAddEventListenerCalls[0][1]({
       type: 'change',
       matches: false
     });

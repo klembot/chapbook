@@ -17,7 +17,7 @@ const isRelease = process.env.NODE_ENV === 'production';
 async function demoStoryData() {
   let source = '';
 
-  for (const filename of await readdir(resolve(__dirname, 'demo'))) {
+  for (const filename of await readdir(resolve(import.meta.dirname, 'demo'))) {
     if (
       extname(filename) !== '.twee' ||
       filename === 'cloak-of-darkness.twee'
@@ -27,7 +27,7 @@ async function demoStoryData() {
     }
 
     source +=
-      (await readFile(resolve(__dirname, 'demo', filename), 'utf8')) + '\n';
+      (await readFile(resolve(import.meta.dirname, 'demo', filename), 'utf8')) + '\n';
   }
 
   const story = parseTwee(source);
