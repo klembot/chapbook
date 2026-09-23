@@ -29,11 +29,11 @@ describe('fadeAudioEl', () => {
     expect(passed).toBe(true);
   });
 
-  it("sets the audio element's volume to the requested when the promise resolves", async () => {
+  it("sets the audio element's volume to the requested value when the promise resolves", async () => {
     fadeAudioEl(el, 1, 100);
     vi.advanceTimersByTime(1000000);
     await Promise.resolve();
-    expect(el.volume).toBeCloseTo(1);
+    expect(el.volume).toBe(1);
   });
 
   it("returns a promise that resolves immediately if the element volume doesn't need to be changed", async () => {

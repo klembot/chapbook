@@ -15,7 +15,6 @@ describe('initPassageLookups', () => {
       name === 'trail' ? ['one', 'two'] : undefined
     );
     warnSpy = vi.spyOn(window.console, 'warn');
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     warnSpy.mockImplementation(() => {});
   });
 

@@ -9,7 +9,7 @@ export type SettablePrimitive = string | boolean | number | null | undefined;
 export type SettablePrimitiveOrArray = SettablePrimitive | SettablePrimitive[];
 
 // Needs to extend in order to avoid a circular declaration error
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface SettableObject
 	extends Record<string, SettablePrimitiveOrArray | SettableObject> {}
 

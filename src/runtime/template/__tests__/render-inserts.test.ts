@@ -26,7 +26,6 @@ const inserts: Insert[] = [
 	},
 	{
 		match: /^insert without return/i,
-		// eslint-disable-next-line @typescript-eslint/no-empty-function
 		render() {}
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	} as any

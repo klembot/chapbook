@@ -14,6 +14,11 @@ import seedrandom from 'seedrandom';
 vi.mock('seedrandom');
 vi.mock('../../state');
 
+// Capture the callsthat were made when ../random was first imported, because we
+// lose them inside the beforeEach().
+
+const initialSeedrandomCalls = [...vi.mocked(seedrandom).mock.calls];
+
 describe('initRandomLookups', () => {
 	let randomValue = 0.25;
 	let seedrandomMock: SpyInstance;
@@ -41,10 +46,10 @@ describe('initRandomLookups', () => {
 	});
 
 	it('defaults config.random.seed to the same value the RNG was initially seeded to', () => {
-		expect(seedrandomMock).toBeCalledTimes(1);
+		expect(initialSeedrandomCalls.length).toBe(1);
 		expect(setDefaultsMock).toBeCalledWith(
 			expect.objectContaining({
-				'config.random.seed': seedrandomMock.mock.calls[0][0]
+				'config.random.seed': initialSeedrandomCalls[0][0]
 			})
 		);
 	});

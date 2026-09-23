@@ -31,10 +31,8 @@ describe('Cycling link insert', () => {
 	beforeAll(initTemplateCustomElements);
 
 	beforeEach(() => {
-		/* eslint-disable @typescript-eslint/no-empty-function */
 		getMock = vi.spyOn(state, 'get').mockImplementation(() => {});
 		setMock = vi.spyOn(state, 'set').mockImplementation(() => {});
-		/* eslint-enable @typescript-eslint/no-empty-function */
 	});
 
 	describe('its invocations', () => {
