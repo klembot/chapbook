@@ -26,7 +26,6 @@ Chapbook 基于 [MIT 许可证](mit-license)发布。简而言之，您可将其
 		<li>Caelyn Sandel</li>
 		<li>Clive Henrick</li>
 		<li>Dan Steward</li>
-		<li>David Ball</li>
 		<li>Emily Short</li>
 		<li>Ian</li>
 		<li>Illia</li>
@@ -34,12 +33,16 @@ Chapbook 基于 [MIT 许可证](mit-license)发布。简而言之，您可将其
 		<li>Joe Nobody</li>
 		<li>John Chapman</li>
 		<li>John McDaid</li>
+		<li>Joshua A.C. Newman</li>
+		<li>Joshua Kaden</li>
 		<li>José Dias</li>
 		<li>JRUndercover</li>
 		<li>Konstanty Kalicki</li>
 		<li>LDK</li>
-		<li>max puliero</li>
+		<li>Mike Deming</li>
 		<li>Molly Jameson</li>
+		<li>Morgan Stone Grether</li>
+		<li>OngoingWorlds</li>
 		<li>Robert Giacinto</li>
 		<li>RSS</li>
 		<li>Sarah Choukah</li>
@@ -47,9 +50,7 @@ Chapbook 基于 [MIT 许可证](mit-license)发布。简而言之，您可将其
 		<li>Soliriok</li>
 		<li>Stuart Moulthrop</li>
 		<li>Thandle2</li>
-		<li>TheBuggiest</li>
-		<li>Tielesti</li>
-		<li>Travis</li>
+		<li>Tielesti<li>
 		<li>Venceremos</li>
     </ul>
 </div>
