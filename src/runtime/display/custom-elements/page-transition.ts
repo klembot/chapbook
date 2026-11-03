@@ -30,6 +30,7 @@ export class PageTransition extends CustomElement {
 
     if (
       document.startViewTransition &&
+      !document.activeViewTransition &&
       typeof transitionName === 'string' &&
       ['crossfade', 'fadeInOut'].includes(transitionName) &&
       parsedDuration > 0
