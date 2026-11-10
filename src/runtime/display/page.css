@@ -33,6 +33,13 @@
 	text-align: center;
 }
 
+#page input[type="text"], #page select {
+	background-color: transparent;
+	border: 1px solid var(--page-color);
+	color: var(--page-color);
+	font: inherit;
+}
+
 #page page-skip-indicator {
 	position: absolute;
 	bottom: 0;

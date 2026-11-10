@@ -29,11 +29,6 @@ img {
 	height: auto;
 }
 
-input[type='text'],
-select {
-	padding: 0.25em;
-}
-
 noscript {
 	align-items: center;
 	background: black;
